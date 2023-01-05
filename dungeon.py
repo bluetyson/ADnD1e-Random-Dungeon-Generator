@@ -58,7 +58,7 @@ def roll_dice(number, sides):
     roll = random.randint(number,sides)
     return roll
 
-exit_stack = {}
+exit_stack = {}  #only non-dead ends etc?
 door_stack= {}
 level_stack = {}
 
