@@ -10,6 +10,31 @@ import json
 from tqdm import tqdm
 
 #pass location?
+def coord_limits(dungeon):
+    minx = 0
+    maxx = 0
+    miny = 0
+    maxy = 0
+    minz = 0
+    maxz = 0
+
+    for key in dungeon:
+        if key[0] > maxx:
+            maxx = key[0]
+        if key[0] < minx:
+            minx = key[0]
+        if key[1] > maxy:
+            maxy = key[1]
+        if key[1] < maxy:
+            miny = key[1]
+        if key[2] > maxz:
+            maxz = key[2]
+
+    coord_min = (minx,miny,minz)
+    coord_max = (maxx,maxy,maxz)
+
+    ##make arrrays for each level
+
 def periodic_check():
     pc_dict = {}
     pc = roll_dice(1,20)
