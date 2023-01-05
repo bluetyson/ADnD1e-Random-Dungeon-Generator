@@ -56,6 +56,10 @@ def roll_dice(number, sides):
     roll = random.randint(number,sides)
     return roll
 
+exit_stack = {}
+door_stack= {}
+level_stack = {}
+
 dungeon = {}
 dungeon[(0,0,0)] = {}
 dungeon[(0,0,0)]['direction'] = 'level'
@@ -68,7 +72,7 @@ roll_first = periodic_check()
 while roll_first == 18:
     roll_first = periodic_check()
 
-    
+
 
 
 
