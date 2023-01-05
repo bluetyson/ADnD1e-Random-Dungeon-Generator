@@ -9,32 +9,8 @@ import copy
 import json
 from tqdm import tqdm
 
-#need data structure
-#do we have an exit order stack?
-#array of corridors and walls, where corridor can be room/staircase etc odd corridor, even wall
-#how big a fake canvas to make - or do we just have a dictionary and add parts in as they go
-#eg have 1000 x 1000 and fake easting and northing
-#direction preference - n,w,e,s?
-
-PERIODIC_CHECKS = 10  #number of rolls to make before stopping algorithm
-#make this a script argument
-START_LEVEL = 0
-
-def roll_dice(number, sides):
-    roll = random.randint(number,sides)
-    return roll
-
-dungeon = {}
-dungeon[(0,0,0)] = {}
-dungeon[(0,0,0)]['direction'] = 'level'
-dungeon[(0,0,0)]['check'] = 'up_down'
-dungeon[(0,0,0)]['go'] = -1
-
-START_COORD = (0,0,-1)
-
-
 #pass location?
-def periodic_check:
+def periodic_check():
     pc_dict = {}
     pc = roll_dice(1,20)
     if pc <= 2:
@@ -64,6 +40,36 @@ def periodic_check:
     elif pc == 20:
         pc_dict['direction'] = 'random_encounter'
         pc_dict['check'] = 'roll_again'
+
+#need data structure
+#do we have an exit order stack?
+#array of corridors and walls, where corridor can be room/staircase etc odd corridor, even wall
+#how big a fake canvas to make - or do we just have a dictionary and add parts in as they go
+#eg have 1000 x 1000 and fake easting and northing
+#direction preference - n,w,e,s?
+
+PERIODIC_CHECKS = 10  #number of rolls to make before stopping algorithm
+#make this a script argument
+START_LEVEL = 0
+
+def roll_dice(number, sides):
+    roll = random.randint(number,sides)
+    return roll
+
+dungeon = {}
+dungeon[(0,0,0)] = {}
+dungeon[(0,0,0)]['direction'] = 'level'
+dungeon[(0,0,0)]['check'] = 'up_down'
+dungeon[(0,0,0)]['go'] = -1
+
+START_COORD = (0,0,-1)
+
+roll_first = periodic_check()
+while roll_first == 18:
+    roll_first = periodic_check()
+
+    
+
 
 
    
