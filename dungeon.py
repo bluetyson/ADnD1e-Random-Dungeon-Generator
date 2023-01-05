@@ -35,7 +35,7 @@ def coord_limits(dungeon):
 
     ##make arrrays for each level
 
-def periodic_check():
+def random_check():
     pc_dict = {}
     pc = roll_dice(1,20)
     if pc <= 2:
@@ -68,6 +68,10 @@ def periodic_check():
 
         return pc_dict
 
+def check_action(pc_dict):
+    pass
+    return 0
+
 #need data structure
 #do we have an exit order stack?
 #array of corridors and walls, where corridor can be room/staircase etc odd corridor, even wall
@@ -95,9 +99,9 @@ dungeon[(0,0,0)]['go'] = -1
 
 START_COORD = (0,0,-1)
 
-roll_first = periodic_check()
+roll_first = random_check()
 while roll_first == 18:
-    roll_first = periodic_check()
+    roll_first = random_check()
 
 
 
