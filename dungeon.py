@@ -50,7 +50,7 @@ def periodic_check():
 #eg have 1000 x 1000 and fake easting and northing
 #direction preference - n,w,e,s?
 
-PERIODIC_CHECKS = 10  #number of rolls to make before stopping algorithm
+PERIODIC_CHECKS = 10  #number of rolls to make before stopping algorithm  #don't count first one down
 #make this a script argument
 START_LEVEL = 0
 
