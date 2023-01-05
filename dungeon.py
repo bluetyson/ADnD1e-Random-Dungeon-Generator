@@ -17,6 +17,7 @@ from tqdm import tqdm
 #direction preference - n,w,e,s?
 
 PERIODIC_CHECKS = 10  #number of rolls to make before stopping algorithm
+#make this a script argument
 
 def roll_dice(number, sides):
     roll = random.randint(number,sides)
