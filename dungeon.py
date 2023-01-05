@@ -9,6 +9,10 @@ import copy
 import json
 from tqdm import tqdm
 
+#need data structure
+#do we have an exit order stack?
+#array of corridors and walls, where corridor can be room/staircase etc odd corridor, even wall
+
 def roll_dice(number, sides):
     roll = random.randint(number,sides)
     return roll
