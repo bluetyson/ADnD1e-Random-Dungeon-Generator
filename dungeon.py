@@ -14,6 +14,7 @@ from tqdm import tqdm
 #array of corridors and walls, where corridor can be room/staircase etc odd corridor, even wall
 #how big a fake canvas to make - or do we just have a dictionary and add parts in as they go
 #eg have 1000 x 1000 and fake easting and northing
+#direction preference - n,w,e,s?
 
 def roll_dice(number, sides):
     roll = random.randint(number,sides)
