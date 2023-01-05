@@ -16,6 +16,8 @@ from tqdm import tqdm
 #eg have 1000 x 1000 and fake easting and northing
 #direction preference - n,w,e,s?
 
+PERIODIC_CHECKS = 10  #number of rolls to make before stopping algorithm
+
 def roll_dice(number, sides):
     roll = random.randint(number,sides)
     return roll
