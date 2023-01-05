@@ -34,16 +34,16 @@ def periodic_check:
         pc_dict['check'] = 3
     elif pc == 17:
         pc_dict['direction'] = 'level'
-        pc_dict['check'] = 3
+        pc_dict['check'] = 'up_down'
     elif pc == 18:
         pc_dict['direction'] = 'stop'
-        pc_dict['check'] = 3
+        pc_dict['check'] = 'spy_things'
     elif pc == 19:
         pc_dict['direction'] = 'bad_things'
         pc_dict['check'] = 3
     elif pc == 20:
         pc_dict['direction'] = 'random_encounter'
-        pc_dict['check'] = 3
+        pc_dict['check'] = 'roll_again'
 
 
     ```
