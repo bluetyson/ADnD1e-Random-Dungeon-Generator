@@ -41,6 +41,8 @@ def periodic_check():
         pc_dict['direction'] = 'random_encounter'
         pc_dict['check'] = 'roll_again'
 
+        return pc_dict
+
 #need data structure
 #do we have an exit order stack?
 #array of corridors and walls, where corridor can be room/staircase etc odd corridor, even wall
