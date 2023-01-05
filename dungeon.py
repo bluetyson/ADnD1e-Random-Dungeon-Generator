@@ -12,6 +12,8 @@ from tqdm import tqdm
 #need data structure
 #do we have an exit order stack?
 #array of corridors and walls, where corridor can be room/staircase etc odd corridor, even wall
+#how big a fake canvas to make - or do we just have a dictionary and add parts in as they go
+#eg have 1000 x 1000 and fake easting and northing
 
 def roll_dice(number, sides):
     roll = random.randint(number,sides)
