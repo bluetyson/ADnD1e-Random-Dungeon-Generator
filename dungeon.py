@@ -13,8 +13,39 @@ def roll_dice(number, sides):
     roll = random.randint(number,sides)
     return roll
 
-
+#pass location?
 def periodic_check:
+    pc_dict = {}
+    pc = roll_dice(1,20)
+    if pc <= 2:
+        pc_dict['direction'] = 'ahead'
+        pc_dict['check'] = 6
+    elif pc >= 3 and pc <= 5:
+        pc_dict['direction'] = 'exit'
+        pc_dict['check'] = 6
+    elif pc >= 6 and pc <= 10:
+        pc_dict['direction'] = 'side'
+        pc_dict['check'] = 3
+    elif pc >= 11 and pc <= 13:
+        pc_dict['direction'] = 'turn'
+        pc_dict['check'] = 3
+    elif pc >= 14 and pc <= 16:
+        pc_dict['direction'] = 'side'
+        pc_dict['check'] = 3
+    elif pc == 17:
+        pc_dict['direction'] = 'level'
+        pc_dict['check'] = 3
+    elif pc == 18:
+        pc_dict['direction'] = 'stop'
+        pc_dict['check'] = 3
+    elif pc == 19:
+        pc_dict['direction'] = 'bad_things'
+        pc_dict['check'] = 3
+    elif pc == 20:
+        pc_dict['direction'] = 'random_encounter'
+        pc_dict['check'] = 3
+
+
     ```
     Die Result
     1-2 Continue straight — check again in 60’ (this table)
