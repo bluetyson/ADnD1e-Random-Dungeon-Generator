@@ -18,10 +18,18 @@ from tqdm import tqdm
 
 PERIODIC_CHECKS = 10  #number of rolls to make before stopping algorithm
 #make this a script argument
+START_LEVEL = 0
 
 def roll_dice(number, sides):
     roll = random.randint(number,sides)
     return roll
+
+dungeon = {}
+dungeon[(0,0)] = {}
+dungeon[(0,0)]['direction'] = 'level'
+dungeon[(0,0)]['check'] = 'up_down'
+dungeon[(0,0)]['go'] = 1
+
 
 #pass location?
 def periodic_check:
