@@ -25,10 +25,12 @@ def roll_dice(number, sides):
     return roll
 
 dungeon = {}
-dungeon[(0,0)] = {}
-dungeon[(0,0)]['direction'] = 'level'
-dungeon[(0,0)]['check'] = 'up_down'
-dungeon[(0,0)]['go'] = 1
+dungeon[(0,0,0)] = {}
+dungeon[(0,0,0)]['direction'] = 'level'
+dungeon[(0,0,0)]['check'] = 'up_down'
+dungeon[(0,0,0)]['go'] = -1
+
+START_COORD = (0,0,-1)
 
 
 #pass location?
