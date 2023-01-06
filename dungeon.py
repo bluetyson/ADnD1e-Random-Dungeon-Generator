@@ -73,6 +73,9 @@ def random_check():
 def check_action(pc_dict, coord):
     if pc_dict['direction'] == 'ahead':
         new_coord = (coord[0],coord[1]+6,coord[2])
+        for y in range(6):
+            dungeon[(coord[0],coord[1]+1+y,coord[2])] = {}
+            dungeon[(coord[0],coord[1]+1+y,coord[2])]['fill'] = 'C'
     elif pc_dict['direction'] == 'exit':
         pass
     elif pc_dict['direction'] == 'side':
@@ -122,6 +125,9 @@ while roll_first == 18:
     roll_first = random_check()
 
 coord = START_COORD
+
+print(coord)
+print(dungeon)
 
 
 
