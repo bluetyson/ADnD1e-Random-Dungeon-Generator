@@ -110,7 +110,15 @@ def check_action(pc_dict, coord):
     return new_coord
 
 def exit(coord):
-    pass
+    e_dict = {}
+    d = roll_dice(1,20)
+    if d <= 6:
+        e_dict['direction'] = 'L'
+    elif d>=7 and d <= 12:
+        e_dict['direction'] = 'R'
+    else:
+        e_dict['direction'] = 'A'
+
 
 def side(coord):
     pass
