@@ -83,18 +83,25 @@ def check_action(pc_dict, coord):
             dungeon[(coord[0],coord[1]+1+y,coord[2])] = {}
             dungeon[(coord[0],coord[1]+1+y,coord[2])]['fill'] = 'C'
     elif pc_dict['direction'] == 'exit':
+        new_coord = coord
         pass
     elif pc_dict['direction'] == 'side':
+        new_coord = coord
         pass
     elif pc_dict['direction'] == 'room':
+        new_coord = coord
         pass
     elif pc_dict['direction'] == 'level':
+        new_coord = coord
         pass
     elif pc_dict['direction'] == 'stop':
+        new_coord = coord
         pass
     elif pc_dict['direction'] == 'bad_things':
+        new_coord = coord
         pass
     elif pc_dict['direction'] == 'random_encounter':
+        new_coord = coord
         pass
 
     return new_coord
