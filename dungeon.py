@@ -33,6 +33,8 @@ def coord_limits(dungeon):
     coord_min = (minx,miny,minz)
     coord_max = (maxx,maxy,maxz)
 
+    return [coord_min, coord_max]
+
     ##make arrrays for each level
 
 def random_check():
