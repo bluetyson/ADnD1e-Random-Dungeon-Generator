@@ -132,15 +132,15 @@ def exit(coord):
     if b <= 4:
         e_dict['beyond'] = 'P'
     elif d>=5 and d <= 8:
-        e_dict['direction'] = 'A'
+        e_dict['beyond'] = 'A'
     elif d==9:
-        e_dict['direction'] = '4AB'
+        e_dict['beyond'] = '4AB'
     elif d==10:
-        e_dict['direction'] = '4BA'
-    elif d==10:
-        e_dict['direction'] = '4BA'
+        e_dict['beyond'] = '4BA'
     else:
-        e_dict['direction'] = 'Room'
+        e_dict['beyond'] = 'Room'
+
+    retrun e_dict
 
 
 def side(coord):
