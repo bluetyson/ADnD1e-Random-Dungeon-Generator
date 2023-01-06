@@ -181,7 +181,7 @@ def stinky():
 #eg have 1000 x 1000 and fake easting and northing
 #direction preference - n,w,e,s?
 
-PERIODIC_CHECKS = 10  #number of rolls to make before stopping algorithm  #don't count first one down
+PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't count first one down
 #make this a script argument
 START_LEVEL = 0
 
@@ -206,7 +206,10 @@ while roll_first == 18:
 print("roll_first", roll_first)
 first_action = check_action(roll_first, coord)    
 
-
+i = 0
+result = first_action
+while i < PERIODIC_CHECKS:
+    result = check_action(result)
 
 print(coord)
 print(dungeon)
