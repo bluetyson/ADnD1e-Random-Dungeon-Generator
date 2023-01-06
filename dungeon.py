@@ -210,7 +210,7 @@ i = 0
 result_coord = first_action
 
 while i < PERIODIC_CHECKS:
-    print(i)
+    print("ROLL:",i)
     roll_first = random_check()
     result_coord = check_action(roll_first, result_coord)
     i +=1
