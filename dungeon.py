@@ -73,19 +73,19 @@ def random_check():
 def check_action(pc_dict, coord):
     if pc_dict['direction'] = 'ahead':
         new_coord = (coord[0],coord[1]+6,coord[2])
-    elif pc_dict['direction'] = 'exit':
+    elif pc_dict['direction'] == 'exit':
         pass
-    elif pc_dict['direction'] = 'side':
+    elif pc_dict['direction'] == 'side':
         pass
-    elif pc_dict['direction'] = 'room':
+    elif pc_dict['direction'] == 'room':
         pass
-    elif pc_dict['direction'] = 'level':
+    elif pc_dict['direction'] == 'level':
         pass
-    elif pc_dict['direction'] = 'stop':
+    elif pc_dict['direction'] == 'stop':
         pass
-    elif pc_dict['direction'] = 'bad_things':
+    elif pc_dict['direction'] == 'bad_things':
         pass
-    elif pc_dict['direction'] = 'random_encounter':
+    elif pc_dict['direction'] == 'random_encounter':
         pass
 
     return new_coord
