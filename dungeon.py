@@ -106,6 +106,7 @@ START_LEVEL = 0
 
 def roll_dice(number, sides):
     roll = random.randint(number,sides)
+    print(roll)
     return roll
 
 exit_stack = {}  #only non-dead ends etc?
