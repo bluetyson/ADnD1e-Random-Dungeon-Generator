@@ -71,11 +71,23 @@ def random_check():
         return pc_dict
 
 def check_action(pc_dict, coord):
-    pass
     if pc_dict['direction'] = 'ahead':
         new_coord = (coord[0]+6,coord[1]+6,coord[2])
+    elif pc_dict['direction'] = 'exit':
+        pass
     elif pc_dict['direction'] = 'side':
         pass
+    elif pc_dict['direction'] = 'room':
+        pass
+    elif pc_dict['direction'] = 'level':
+        pass
+    elif pc_dict['direction'] = 'stop':
+        pass
+    elif pc_dict['direction'] = 'bad_things':
+        pass
+    elif pc_dict['direction'] = 'random_encounter':
+        pass
+
     return new_coord
 
 #need data structure
