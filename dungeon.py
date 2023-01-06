@@ -12,7 +12,6 @@ from tqdm import tqdm
 #pass location?
 def roll_dice(number, sides):
     roll = random.randint(number,sides)
-    print(roll)
     return roll
 
 def coord_limits(dungeon):
@@ -45,6 +44,7 @@ def coord_limits(dungeon):
 def random_check():
     pc_dict = {}
     pc = roll_dice(1,20)
+    print("RANDOM_CHECK",pc)
     if pc <= 2:
         pc_dict['direction'] = 'ahead'
         pc_dict['check'] = 6
