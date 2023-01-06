@@ -109,6 +109,71 @@ def check_action(pc_dict, coord):
 
     return new_coord
 
+def exit(coord):
+    pass
+
+def side(coord):
+    pass
+
+def turn(coord):
+    pass
+
+def room(coord):
+    pass
+
+def width():
+    pass
+
+def fancy_width():
+    pass
+def fancy_shape():
+    pass
+def fancy_size():
+    pass
+
+def exit_no():
+    pass
+def exit_loc():
+    pass
+def exit_dir():
+    pass
+
+def room_contents():
+    pass
+
+def loot():
+    pass
+
+def loot_store():
+    pass
+
+def loot_guard():
+    pass
+
+def loot_hide():
+    pass
+
+def level():
+    pass
+
+def bad_things():
+    pass
+
+def fancy_cave():
+    pass
+
+def wet_small():
+    pass
+
+def wet_large():
+    pass
+
+def wet_magic():
+    pass
+
+def stinky():
+    pass
+
 #need data structure
 #do we have an exit order stack?
 #array of corridors and walls, where corridor can be room/staircase etc odd corridor, even wall
