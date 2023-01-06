@@ -88,6 +88,9 @@ def check_action(pc_dict, coord):
     elif pc_dict['direction'] == 'side':
         new_coord = coord
         pass
+    elif pc_dict['direction'] == 'turn':
+        new_coord = coord
+        pass
     elif pc_dict['direction'] == 'room':
         new_coord = coord
         pass
