@@ -124,6 +124,8 @@ roll_first = random_check()
 while roll_first == 18:
     roll_first = random_check()
 
+first_action = check_action(roll_first)    
+
 coord = START_COORD
 
 print(coord)
