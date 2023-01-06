@@ -73,7 +73,8 @@ def random_check():
         pc_dict['direction'] = 'random_encounter'
         pc_dict['check'] = 'roll_again'
 
-        return pc_dict
+
+    return pc_dict
 
 def check_action(pc_dict, coord):
     if pc_dict['direction'] == 'ahead':
@@ -126,6 +127,7 @@ coord = START_COORD
 roll_first = random_check()
 while roll_first == 18:
     roll_first = random_check()
+
 print("roll_first", roll_first)
 first_action = check_action(roll_first, coord)    
 
