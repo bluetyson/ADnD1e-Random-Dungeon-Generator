@@ -10,6 +10,11 @@ import json
 from tqdm import tqdm
 
 #pass location?
+def roll_dice(number, sides):
+    roll = random.randint(number,sides)
+    print(roll)
+    return roll
+
 def coord_limits(dungeon):
     minx = 0
     maxx = 0
@@ -104,10 +109,6 @@ PERIODIC_CHECKS = 10  #number of rolls to make before stopping algorithm  #don't
 #make this a script argument
 START_LEVEL = 0
 
-def roll_dice(number, sides):
-    roll = random.randint(number,sides)
-    print(roll)
-    return roll
 
 exit_stack = {}  #only non-dead ends etc?
 door_stack= {}
