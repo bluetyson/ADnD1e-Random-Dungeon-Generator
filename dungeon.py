@@ -53,7 +53,7 @@ def random_check():
         pc_dict['direction'] = 'turn'
         pc_dict['check'] = 3
     elif pc >= 14 and pc <= 16:
-        pc_dict['direction'] = 'side'
+        pc_dict['direction'] = 'room'
         pc_dict['check'] = 3
     elif pc == 17:
         pc_dict['direction'] = 'level'
@@ -70,9 +70,13 @@ def random_check():
 
         return pc_dict
 
-def check_action(pc_dict):
+def check_action(pc_dict, coord):
     pass
-    return 0
+    if pc_dict['direction'] = 'ahead':
+        new_coord = (coord[0]+6,coord[1]+6,coord[2])
+    elif pc_dict['direction'] = 'side':
+        pass
+    return new_coord
 
 #need data structure
 #do we have an exit order stack?
@@ -104,6 +108,8 @@ START_COORD = (0,0,-1)
 roll_first = random_check()
 while roll_first == 18:
     roll_first = random_check()
+
+coord = START_COORD
 
 
 
