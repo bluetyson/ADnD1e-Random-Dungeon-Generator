@@ -44,7 +44,6 @@ def coord_limits(dungeon):
 def random_check():
     pc_dict = {}
     pc = roll_dice(1,20)
-    print("RANDOM_CHECK",pc)
     if pc <= 2:
         pc_dict['direction'] = 'ahead'
         pc_dict['check'] = 6
@@ -72,6 +71,9 @@ def random_check():
     elif pc == 20:
         pc_dict['direction'] = 'random_encounter'
         pc_dict['check'] = 'roll_again'
+
+    print("RANDOM_CHECK",pc, pc_dict['direction'])
+
 
 
     return pc_dict
