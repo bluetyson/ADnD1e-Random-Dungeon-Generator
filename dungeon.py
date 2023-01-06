@@ -84,7 +84,14 @@ def check_action(pc_dict, coord):
             dungeon[(coord[0],coord[1]+1+y,coord[2])]['fill'] = 'C'
     elif pc_dict['direction'] == 'exit':
         new_coord = coord
-        pass
+        e_dict = exit(coord)
+        if 'L' in e_dict:
+            exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
+        elif 'R' in e_dict:
+            exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
+        else:
+            exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
+
     elif pc_dict['direction'] == 'side':
         new_coord = coord
         pass
@@ -225,6 +232,7 @@ while i < PERIODIC_CHECKS:
 
 print(coord)
 print(dungeon)
+print(exit_stack)
 
 
 
