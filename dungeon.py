@@ -119,14 +119,15 @@ dungeon[(0,0,0)]['check'] = 'up_down'
 dungeon[(0,0,0)]['go'] = -1
 
 START_COORD = (0,0,-1)
+coord = START_COORD
 
 roll_first = random_check()
 while roll_first == 18:
     roll_first = random_check()
 
-first_action = check_action(roll_first)    
+first_action = check_action(roll_first, coord)    
 
-coord = START_COORD
+
 
 print(coord)
 print(dungeon)
