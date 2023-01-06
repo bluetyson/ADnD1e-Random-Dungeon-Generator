@@ -71,7 +71,7 @@ def random_check():
         return pc_dict
 
 def check_action(pc_dict, coord):
-    if pc_dict['direction'] = 'ahead':
+    if pc_dict['direction'] == 'ahead':
         new_coord = (coord[0],coord[1]+6,coord[2])
     elif pc_dict['direction'] == 'exit':
         pass
