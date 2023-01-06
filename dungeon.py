@@ -207,9 +207,13 @@ print("roll_first", roll_first)
 first_action = check_action(roll_first, coord)    
 
 i = 0
-result = first_action
+result_coord = first_action
+
 while i < PERIODIC_CHECKS:
-    result = check_action(result)
+    print(i)
+    roll_first = random_check()
+    result_coord = check_action(roll_first, result_coord)
+    i -=1
 
 print(coord)
 print(dungeon)
