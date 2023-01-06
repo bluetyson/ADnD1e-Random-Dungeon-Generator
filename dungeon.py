@@ -140,7 +140,7 @@ def exit(coord):
     else:
         e_dict['beyond'] = 'Room'
 
-    retrun e_dict
+    return e_dict
 
 
 def side(coord):
