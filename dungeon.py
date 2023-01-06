@@ -128,6 +128,20 @@ def exit(coord):
     else:
         e_dict['direction'] = 'A'
 
+    b = roll_dice(1,20)
+    if b <= 4:
+        e_dict['beyond'] = 'P'
+    elif d>=5 and d <= 8:
+        e_dict['direction'] = 'A'
+    elif d==9:
+        e_dict['direction'] = '4AB'
+    elif d==10:
+        e_dict['direction'] = '4BA'
+    elif d==10:
+        e_dict['direction'] = '4BA'
+    else:
+        e_dict['direction'] = 'Room'
+
 
 def side(coord):
     pass
