@@ -175,7 +175,7 @@ def side(coord):
     if s <= 16 and s <= 19:
         s_dict['direction'] = 'P'
     if s == 20:
-        s_dict['direction'] = 'x'
+        s_dict['direction'] = 'X'
 
 
 
