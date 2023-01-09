@@ -181,20 +181,6 @@ def side(coord):
 
 def turn(coord):
     pass
-1-2 left 90 degrees
-3-4 right 90 degrees
-5 left 45 degrees ahead
-6 right 45 degrees ahead
-7 left 45 degrees behind (left 135 degrees)
-8 right 45 degrees behind (right 135 degrees)
-9 left curve 45 degrees ahead
-10 right curve 45 degrees ahead
-11-13 passage “T”s
-14-15 passage “Y”s
-16-19 four-way intersection
-20 passage “X”s (if present passage is horizontal or vertical it forms a
-fifth passage into the “X”)
-TABLE III. A.: PASSAGE WIDTH (d20)    
 
 def room(coord):
     pass
