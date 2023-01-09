@@ -206,11 +206,6 @@ def check_action(pc_dict, coord):
             else: #AHEAD
                 new_coord = (coord[0]+3,coord[1]-3,coord[2])
 
-
-
-
-            pass
-
         
 
     elif pc_dict['direction'] == 'turn':
@@ -361,7 +356,11 @@ def stinky():
 #array of corridors and walls, where corridor can be room/staircase etc odd corridor, even wall
 #how big a fake canvas to make - or do we just have a dictionary and add parts in as they go
 #eg have 1000 x 1000 and fake easting and northing
-#direction preference - n,w,e,s?
+#direction preference - n,w,e,s? - roll randomly?
+#not as yet checking for space already occupied
+#not checking to backtrack the exit stack if dead-end
+#not checking any level stacks to go up down, similarly
+
 
 PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't count first one down
 #make this a script argument
