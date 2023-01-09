@@ -334,8 +334,8 @@ while i < PERIODIC_CHECKS:
     i +=1
 
 print("COORD:", coord)
-print("DUNGEON":, dungeon)
-print("EXIT_STACK":, exit_stack)
+print("DUNGEON:", dungeon)
+print("EXIT_STACK:", exit_stack)
 
 
 
