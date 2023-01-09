@@ -333,9 +333,9 @@ while i < PERIODIC_CHECKS:
     result_coord = check_action(roll_first, result_coord)
     i +=1
 
-print(coord)
-print(dungeon)
-print(exit_stack)
+print("COORD:", coord)
+print("DUNGEON":, dungeon)
+print("EXIT_STACK":, exit_stack)
 
 
 
