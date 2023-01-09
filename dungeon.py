@@ -173,7 +173,7 @@ def check_action(pc_dict, coord):
             for x in range(3):
                 dungeon[(coord[0],coord[1]+1+x,coord[2])] = {}
                 dungeon[(coord[0],coord[1]+1+x,coord[2])]['fill'] = 'C'
-            which_way = roll_dice(1,2)
+            which_way = roll_dice(1,3)
             if which_way == 1:
                 new_coord = (coord[0]-3,coord[1],coord[2])
             elif which_way == 2:
@@ -181,9 +181,34 @@ def check_action(pc_dict, coord):
             else: #AHEAD
                 new_coord = (coord[0],coord[1]+3,coord[2])
 
-
         else:
-        #s_dict['direction'] == 'X':
+        #s_dict['direction'] == 'X': 45 and 135
+            for x in range(3):
+                dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+            for x in range(3):
+                dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+            for x in range(3):
+                dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+            for x in range(3):
+                dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+
+            which_way = roll_dice(1,4)
+            if which_way == 1:
+                new_coord = (coord[0]-3,coord[1]+3,coord[2])
+            elif which_way == 2:
+                new_coord = (coord[0]+3,coord[1]+3,coord[2])
+            elif which_way == 3:                
+                new_coord = (coord[0]-3,coord[1]-3,coord[2])
+            else: #AHEAD
+                new_coord = (coord[0]+3,coord[1]-3,coord[2])
+
+
+
+
             pass
 
         
