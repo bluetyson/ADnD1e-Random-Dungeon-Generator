@@ -305,19 +305,39 @@ def width():
         get a basic version going first, then this slower version later
     '''
     w = roll_dice(1,20)
-    pw = 10
+    pw = '10'
     if w >=13 and w <=16:
-        pw = 20
+        pw = '20'
     elif w ==17:
-        pw = 30
+        pw = '30'
     elif w ==18:
-        pw = 5
+        pw = '5'
     else
-        pw = -1
+        pw = fancy_width()
     return pw
 
 def fancy_width():
-    pass
+    w = roll_dice(1,20)
+    if w <=4:
+        pw = '40CL'
+    elif w >=5 and w <=7:
+        pw = '40CLCR'
+    elif w >=8 and w <=10:
+        pw = '50CLCR'
+    if w >=11 and w <=12:
+        pw = '50CLCRGA'
+    if w >=13 and w <=15:
+        pw = '10S'
+    if w >=16 and w <=17:
+        pw = '20R'
+    elif w ==18:
+        pw = '40R'
+    elif w ==19:
+        pw = '60R'
+    else
+        pw = '20C'
+    return pw
+
 def fancy_shape():
     pass
 def fancy_size():
