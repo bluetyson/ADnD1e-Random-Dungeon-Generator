@@ -250,7 +250,7 @@ def side(coord):
         s_dict['direction'] = 'R45'
     if s >= 11 and s <= 13:
         s_dict['direction'] = 'T'
-    if s ?= 14 and s <= 15:
+    if s >= 14 and s <= 15:
         s_dict['direction'] = 'Y'
     if s >= 16 and s <= 19:
         s_dict['direction'] = 'P'
