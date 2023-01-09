@@ -298,8 +298,19 @@ def turn(coord):
 def room(coord):
     pass
 
+#not implemented yet
 def width():
-    pass
+    w = roll_dice(1,20)
+    pw = 10
+    if w >=13 and w <=16:
+        pw = 20
+    elif w ==17:
+        pw = 30
+    elif w ==18:
+        pw = 5
+    else
+        pw = -1
+    return pw
 
 def fancy_width():
     pass
@@ -360,6 +371,7 @@ def stinky():
 #not as yet checking for space already occupied
 #not checking to backtrack the exit stack if dead-end
 #not checking any level stacks to go up down, similarly
+#not implemented passage width as yet - default only
 
 
 PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't count first one down
