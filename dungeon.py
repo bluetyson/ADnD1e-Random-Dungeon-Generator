@@ -150,7 +150,7 @@ def check_action(pc_dict, coord):
 
         elif s_dict['direction'] == 'Y':
             pass
-        elif s_dict['direction'] == 'P':
+        elif s_dict['direction'] == 'P': #plus
             for x in range(3):
                 dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
                 dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
@@ -234,25 +234,25 @@ def side(coord):
     print("SIDE CHECK",s)
     if s <= 2:
         s_dict['direction'] = 'L90'
-    if s <= 3 and s <= 4:
+    if s >= 3 and s <= 4:
         s_dict['direction'] = 'R90'
-    if s <= 5 :
+    if s == 5 :
         s_dict['direction'] = 'L45'
-    if s <= 6 :
+    if s == 6 :
         s_dict['direction'] = 'R45'
-    if s <= 7 :
+    if s == 7 :
         s_dict['direction'] = 'L135'
-    if s <= 8 :
+    if s == 8 :
         s_dict['direction'] = 'R135'
-    if s <= 9 :
+    if s == 9 :
         s_dict['direction'] = 'L45'
-    if s <= 10 :
+    if s == 10 :
         s_dict['direction'] = 'R45'
-    if s <= 11 and s <= 13:
+    if s >= 11 and s <= 13:
         s_dict['direction'] = 'T'
-    if s <= 14 and s <= 15:
+    if s ?= 14 and s <= 15:
         s_dict['direction'] = 'Y'
-    if s <= 16 and s <= 19:
+    if s >= 16 and s <= 19:
         s_dict['direction'] = 'P'
     if s == 20:
         s_dict['direction'] = 'X'
