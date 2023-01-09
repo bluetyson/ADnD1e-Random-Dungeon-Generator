@@ -150,10 +150,51 @@ def exit(coord):
 
 
 def side(coord):
-    pass
+    s_dict = {}
+    s = roll_dice(1,20)
+    if s <= 2:
+        s_dict['direction'] = 'L90'
+    if s <= 3 and s <= 4:
+        s_dict['direction'] = 'R90'
+    if s <= 5 :
+        s_dict['direction'] = 'L45'
+    if s <= 6 :
+        s_dict['direction'] = 'R45'
+    if s <= 7 :
+        s_dict['direction'] = 'L135'
+    if s <= 8 :
+        s_dict['direction'] = 'R135'
+    if s <= 9 :
+        s_dict['direction'] = 'L45'
+    if s <= 10 :
+        s_dict['direction'] = 'R45'
+    if s <= 11 and s <= 13:
+        s_dict['direction'] = 'T'
+    if s <= 14 and s <= 15:
+        s_dict['direction'] = 'Y'
+    if s <= 16 and s <= 19:
+        s_dict['direction'] = 'P'
+    if s == 20:
+        s_dict['direction'] = 'x'
+
+
 
 def turn(coord):
     pass
+1-2 left 90 degrees
+3-4 right 90 degrees
+5 left 45 degrees ahead
+6 right 45 degrees ahead
+7 left 45 degrees behind (left 135 degrees)
+8 right 45 degrees behind (right 135 degrees)
+9 left curve 45 degrees ahead
+10 right curve 45 degrees ahead
+11-13 passage “T”s
+14-15 passage “Y”s
+16-19 four-way intersection
+20 passage “X”s (if present passage is horizontal or vertical it forms a
+fifth passage into the “X”)
+TABLE III. A.: PASSAGE WIDTH (d20)    
 
 def room(coord):
     pass
