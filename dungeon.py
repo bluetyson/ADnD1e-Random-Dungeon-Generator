@@ -142,7 +142,7 @@ def check_action(pc_dict, coord):
                 dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
                 dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
 
-            which_way = roll(1,2)
+            which_way = roll_dice(1,2)
             if which_way == 1:
                 new_coord = (coord[0]-3,coord[1],coord[2])
             else:
@@ -156,7 +156,7 @@ def check_action(pc_dict, coord):
                 dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
                 dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
                 new_coord = (coord[0]-3,coord[1]+3,coord[2])
-            which_way = roll(1,2)
+            which_way = roll_dice(1,2)
             if which_way == 1:
                 new_coord = (coord[0]-3,coord[1]+3,coord[2])
             else:
@@ -173,7 +173,7 @@ def check_action(pc_dict, coord):
             for x in range(3):
                 dungeon[(coord[0],coord[1]+1+x,coord[2])] = {}
                 dungeon[(coord[0],coord[1]+1+x,coord[2])]['fill'] = 'C'
-            which_way = roll(1,2)
+            which_way = roll_dice(1,2)
             if which_way == 1:
                 new_coord = (coord[0]-3,coord[1],coord[2])
             elif which_way == 2:
