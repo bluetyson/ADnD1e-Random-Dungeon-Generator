@@ -144,6 +144,8 @@ def exit(coord):
     else:
         e_dict['beyond'] = 'Room'
 
+    exit_stack[coord] = e_dict
+
     return e_dict
 
 
