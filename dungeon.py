@@ -96,7 +96,36 @@ def check_action(pc_dict, coord):
 
     elif pc_dict['direction'] == 'side':
         new_coord = coord
-        pass
+        s_dict = side(coord)
+
+        if s_dict['direction'] == 'L90':
+            pass
+        elif s_dict['direction'] == 'R90':
+            pass
+        elif s_dict['direction'] == 'L45':
+            pass
+        elif s_dict['direction'] == 'R45':
+            pass
+        elif s_dict['direction'] == 'L135':
+            pass
+        elif s_dict['direction'] == 'R135':
+            pass
+        elif s_dict['direction'] == 'L45':
+            pass
+        elif s_dict['direction'] == 'R45':
+            pass
+        elif s_dict['direction'] == 'T':
+            pass
+        elif s_dict['direction'] == 'Y':
+            pass
+        elif s_dict['direction'] == 'P':
+            pass
+        else
+        #s_dict['direction'] == 'X':
+            pass
+
+        
+
     elif pc_dict['direction'] == 'turn':
         new_coord = coord
         pass
@@ -177,7 +206,7 @@ def side(coord):
     if s == 20:
         s_dict['direction'] = 'X'
 
-
+    return s_dict
 
 def turn(coord):
     pass
