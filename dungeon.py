@@ -312,7 +312,7 @@ def width():
         pw = '30'
     elif w ==18:
         pw = '5'
-    else
+    else:
         pw = fancy_width()
     return pw
 
