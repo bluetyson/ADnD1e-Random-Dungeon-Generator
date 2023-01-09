@@ -123,10 +123,14 @@ def exit(coord):
     d = roll_dice(1,20)
     if d <= 6:
         e_dict['direction'] = 'L'
+        e_dict['coord'] = (coord[0]-1,coord[1],coord[2])
+
     elif d>=7 and d <= 12:
         e_dict['direction'] = 'R'
+        e_dict['coord'] = (coord[0]+1,coord[1],coord[2])
     else:
         e_dict['direction'] = 'A'
+        e_dict['coord'] = (coord[0],coord[1]+1,coord[2])
 
     b = roll_dice(1,20)
     if b <= 4:
