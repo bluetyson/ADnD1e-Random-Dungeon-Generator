@@ -148,13 +148,27 @@ def check_action(pc_dict, coord):
             else:
                 new_coord = (coord[0]+3,coord[1],coord[2])
 
-
-            
-            pass
         elif s_dict['direction'] == 'Y':
             pass
         elif s_dict['direction'] == 'P':
-            pass
+            for x in range(3):
+                dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
+            for x in range(3):
+                dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
+            for x in range(3):
+                dungeon[(coord[0],coord[1]+1+x,coord[2])] = {}
+                dungeon[(coord[0],coord[1]+1+x,coord[2])]['fill'] = 'C'
+            which_way = roll(1,2)
+            if which_way == 1:
+                new_coord = (coord[0]-3,coord[1],coord[2])
+            elif which_way == 2:
+                new_coord = (coord[0]+3,coord[1],coord[2])
+            else: #AHEAD
+                new_coord = (coord[0],coord[1]+3,coord[2])
+
+
         else:
         #s_dict['direction'] == 'X':
             pass
