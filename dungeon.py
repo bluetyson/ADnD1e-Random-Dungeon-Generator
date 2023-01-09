@@ -97,9 +97,11 @@ def check_action(pc_dict, coord):
     elif pc_dict['direction'] == 'side':
         new_coord = coord
         s_dict = side(coord)
-
         if s_dict['direction'] == 'L90':
-            pass
+            for x in range(3):
+                dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
+
         elif s_dict['direction'] == 'R90':
             pass
         elif s_dict['direction'] == 'L45':
