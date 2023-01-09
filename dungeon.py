@@ -165,6 +165,7 @@ def check_action(pc_dict, coord):
 def exit(coord):
     e_dict = {}
     d = roll_dice(1,20)
+    print("EXIT CHECK",d)
     if d <= 6:
         e_dict['direction'] = 'L'
         e_dict['coord'] = (coord[0]-1,coord[1],coord[2])
@@ -196,6 +197,7 @@ def exit(coord):
 def side(coord):
     s_dict = {}
     s = roll_dice(1,20)
+    print("SIDE CHECK",s)
     if s <= 2:
         s_dict['direction'] = 'L90'
     if s <= 3 and s <= 4:
