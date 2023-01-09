@@ -101,11 +101,13 @@ def check_action(pc_dict, coord):
             for x in range(3):
                 dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
                 dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]-3,coord[1],coord[2])
 
         elif s_dict['direction'] == 'R90':
             for x in range(3):
                 dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
                 dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]+3,coord[1],coord[2])
 
         elif s_dict['direction'] == 'L45':
             pass
