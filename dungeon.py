@@ -532,7 +532,7 @@ print(chararray)
 
 #make dungeon html
 strhead = '''<html>
-<head></head>
+<head>RANDOM DUNGEON</head>
 <title>DUNGEON</title>
 <body>
 <table>
@@ -545,7 +545,13 @@ strend = '''</table>
 
 with open('dungeon.html','w') as f:
     f.write(strhead)
-    f.write(strend)
+    
+    for j in range(chararray.shape[1]):
+        f.write('<TR>')
+        for i in range(chararray.shape[0]):
+            strdata = '<TD>' + charray[j,i,0] + '<TD>'
+            f.write(strdata)
+        f.write('</TR>')
 
 
 
