@@ -83,6 +83,7 @@ def random_check():
     return pc_dict
 
 def check_action(pc_dict, coord):
+    ## need a current 'orientation' 'L R A B
     if pc_dict['direction'] == 'ahead':
         will_fit = True
         
