@@ -376,7 +376,7 @@ def room(coord, size="C"):
     r = roll_dice(1,20)
     room_size = [0,0]
     if r <= 2:
-        if size="C":
+        if size=="C":
             room_size = [2,2]
         else:
             room_size = [1,1]
@@ -387,19 +387,19 @@ def room(coord, size="C"):
     if r >= 7 and r<=8:
         room_size = [4,4]
     if r >= 9 and r <=10:
-        if size="C":
+        if size=="C":
             room_size = [2,3]
         else:
             room_size = [1,2]
     if r >= 11 and r<=13:
         room_size = [2,3]
     if r >= 14 and r <=15:
-        if size="C":
+        if size=="C":
             room_size = [3,5]
         else:
             room_size = [2,4]
     if r >= 16 and r <=17:
-        if size="C":
+        if size=="C":
             room_size = [4,6]
         else:
             room_size = [3,4]
