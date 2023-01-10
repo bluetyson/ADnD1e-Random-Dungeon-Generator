@@ -1,6 +1,6 @@
 import os
 import json
-import numpy as numpy
+import numpy as np
 import pandas as pd
 import random
 import time
