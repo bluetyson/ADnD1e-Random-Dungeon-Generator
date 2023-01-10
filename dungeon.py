@@ -525,8 +525,7 @@ print("SHAPE",chararray.shape)
 
 chararray[0,0,0] = 'S'
 for key in dungeon:
-    print("KEY:",key)
-    print("KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
+    print("KEY:",key,"KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
     if 'fill' in dungeon[key]:
         #chararray[[key][0],key[1],key[2]] = dungeon[key]['fill']
         chararray[key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1] = dungeon[key]['fill']
