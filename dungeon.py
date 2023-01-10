@@ -509,7 +509,9 @@ while i < PERIODIC_CHECKS:
     result_coord = check_action(roll_first, result_coord)
     i +=1
 
-print("COORD:", coord)
+coord_lim = coord_limits(dungeon)
+print("COORD:", coord, result_coord, coord_limits)
+
 print("DUNGEON:", dungeon)
 print("EXIT_STACK:", exit_stack)
 
