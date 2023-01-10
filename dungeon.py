@@ -168,27 +168,27 @@ def check_action(pc_dict, coord):
                             break
 
                 if e_dict['beyond'] == '4BA':   ##45 A
-                which_way = roll_dice(1,2)  #work out random direction         
-                if which_way == 1:  #corridor left
-                    for x in range(3):
-                        will_fit = in_dungeon((coord[0]+1+-x,coord[1]-1-x,coord[2]))
-                        if not will_fit:                
-                            dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
-                            dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
-                            if which_way == 1:
-                                new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
-                        else:
-                            break
-                else:
-                    for x in range(3): #corridor right
-                        will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
-                        if not will_fit:                
-                            dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
-                            dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
-                            if which_way == 2:
-                                new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
-                        else:
-                            break
+                    which_way = roll_dice(1,2)  #work out random direction         
+                    if which_way == 1:  #corridor left
+                        for x in range(3):
+                            will_fit = in_dungeon((coord[0]+1+-x,coord[1]-1-x,coord[2]))
+                            if not will_fit:                
+                                dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
+                                dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                                if which_way == 1:
+                                    new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
+                            else:
+                                break
+                    else:
+                        for x in range(3): #corridor right
+                            will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
+                            if not will_fit:                
+                                dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
+                                dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                                if which_way == 2:
+                                    new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
+                            else:
+                                break
 
 
         elif 'R' in e_dict:
