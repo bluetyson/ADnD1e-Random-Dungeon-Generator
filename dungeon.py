@@ -210,6 +210,8 @@ def check_action(pc_dict, coord):
     elif pc_dict['direction'] == 'turn':
         new_coord = coord
         t_dict = turn(coord)
+        print("T_DICT:",t_dict)
+
         t = roll_dice(1,20)
         if t_dict['direction'] == 'L90':
             for x in range(3):
@@ -355,7 +357,6 @@ def side(coord):
 def turn(coord):
     t_dict = {}
     t = roll_dice(1,20)
-    print("T_DICT:",t_dict)
     print("TURN CHECK",t)
     if t <= 8:
         t_dict['direction'] = 'L90'
