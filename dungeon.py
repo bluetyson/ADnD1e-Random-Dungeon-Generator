@@ -355,6 +355,7 @@ def side(coord):
 def turn(coord):
     t_dict = {}
     t = roll_dice(1,20)
+    print("T_DICT:",t_dict)
     print("TURN CHECK",t)
     if t <= 8:
         t_dict['direction'] = 'L90'
