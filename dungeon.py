@@ -306,8 +306,11 @@ def check_action(pc_dict, coord):
 
         #this will also need checking
         if dead_end == True:
+            dungeon[new_coord[0],new_coord[1]+1,new_coord[2]] = {}
             dungeon[new_coord[0],new_coord[1]+1,new_coord[2]]['fill'] = 'D'
+            dungeon[new_coord[0]-1,new_coord[1],new_coord[2]] = {}
             dungeon[new_coord[0]-1,new_coord[1],new_coord[2]]['fill'] = 'D'
+            dungeon[new_coord[0]+1,new_coord[1],new_coord[2]] = {}
             dungeon[new_coord[0]+1,new_coord[1],new_coord[2]]['fill'] = 'D'
             #need to retrace to last on exit stack?
 
