@@ -305,6 +305,41 @@ def check_action(pc_dict, coord):
                             else:
                                 break
 
+                if e_dict['beyond'] == 'Room':
+                    #want those we randomly position lr
+                    new_coord = coord
+                    shape_dict = room(coord, C='R')  ## different type to get slightly different table
+                    #each room part check for inside
+
+                    print("ROOM SHAPE:",shape_dict)
+                    ## do simple version first of x directions and y directions of rectangular
+                    if shape_dict['shape'] == 'R':
+                        print("rectangular")
+                        #H x W
+                        #position based on size
+                        adjust = 0
+                        if shape_dict['size'][1] % 2 == 0:
+                            lr = roll_dice(1,2)
+                            if lr == 1:
+                                adjust = -1
+                            else:
+                                adjust = 1
+
+                        #if shape_dict['size'][1] == 2:
+                        for j in range(shape_dict['size'][1]):
+                            for i in range(shape_dict['size'][0]):
+                                will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
+                                if not will_fit:                
+                                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
+                                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
+                                else:
+                                    break
+                        
+                    else:
+                        pass
+                        #fancy shape/size not yet implemented
+
+
 
 
                 
