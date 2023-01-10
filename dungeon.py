@@ -91,6 +91,7 @@ def check_action(pc_dict, coord):
             exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
         else:
             exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
+        ## got to proceed with direction/type of exit
 
     elif pc_dict['direction'] == 'side':
         new_coord = coord
@@ -297,10 +298,11 @@ def check_action(pc_dict, coord):
             #need to retrace to last on exit stack?
 
             for key in exit_stack:
+                ## this needs to be checked for level
                 pass
 
             new_coord = key
-            
+
             return new_coord
         
 
