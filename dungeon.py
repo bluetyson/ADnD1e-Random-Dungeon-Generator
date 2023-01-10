@@ -397,7 +397,7 @@ def check_action(pc_dict, coord):
             #position based on size
             adjust = 0
             if shape_dict['size'][1] % 2 == 0:
-                lr = roll_dict(1,2)
+                lr = roll_dice(1,2)
                 if lr == 1:
                     adjust = -1
                 else:
