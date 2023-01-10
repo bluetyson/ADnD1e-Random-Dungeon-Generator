@@ -517,9 +517,9 @@ xmax = coord_lim[1][0]
 ymax = coord_lim[1][1]
 zmax = coord_lim[1][2]
 
-xwidth = xmax - xmin
-ywidth = ymax - ymin
-zwidth = zmax - zmin
+xwidth = xmax - xmin + 1
+ywidth = ymax - ymin + 1
+zwidth = zmax - zmin + 1
 
 zwidth = max(1, zwidth)
 
