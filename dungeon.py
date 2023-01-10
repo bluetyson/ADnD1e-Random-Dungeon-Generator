@@ -510,8 +510,8 @@ while i < PERIODIC_CHECKS:
     i +=1
 
 coord_lim = coord_limits(dungeon)
-xwidth = coord_lim[1][0] - coord_lim[0][0]
-ywidth = coord_lim[1][1] - coord_lim[0][1]
+xwidth = coord_lim[1][0] - coord_lim[0][0] + 1
+ywidth = coord_lim[1][1] - coord_lim[0][1] + 1
 zwidth = coord_lim[1][2] - coord_lim[0][2] + 1
 
 print("COORD:", coord, result_coord, coord_lim)
