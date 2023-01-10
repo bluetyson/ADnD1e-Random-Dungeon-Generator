@@ -897,6 +897,7 @@ START_COORD = (0,0,-1)
 coord = START_COORD
 
 roll_first = random_check()
+#no possible dead_end on first action
 while roll_first == 18:
     roll_first = random_check()
 
