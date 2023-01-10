@@ -450,8 +450,19 @@ def fancy_width():
 def fancy_shape():
     s = roll_dice(1,20)
     shape_dict = {}    
+    shape_dict['water'] = 'N'
+    shape_dict['size'] = 0
+
     if s <= 5:
         shape_dict['shape'] = 'C'
+        p = roll_dice(1,20)
+        if p <= 5:
+            shape_dict['water'] = 'P'
+        if p >=6 and p <= 7:
+            shape_dict['water'] = 'W'
+        if p >=8 and p <= 10:
+            shape_dict['water'] = 'S'
+
     if s >= 6 and s <=8:
         shape_dict['shape'] = 'T'
     if s >= 9 and s <=11:
@@ -467,6 +478,29 @@ def fancy_shape():
     if s >= 18 and s <=19:
         shape_dict['shape'] = 'CV'
 
+    z = roll_dice(1,20)     
+    if z <=3:
+        shape_dict['size'] = 5
+    if z >=4 and z <= 6:
+        shape_dict['size'] = 9
+    if z >=7 and z <= 8:
+        shape_dict['size'] = 13
+    if z >=9 and z <= 10:
+        shape_dict['size'] = 20
+    if z >=11 and z <= 12:
+        shape_dict['size'] = 27
+    if z >=13 and z <= 14:
+        shape_dict['size'] = 34
+    if z >=15:
+        rollflag = True
+        while flag == True:
+            zr = roll_dice(1,20)
+            shape_dict['size'] = shape_dict['size'] + 2000 + zr
+            if zr <= 15:
+                rollflag = False
+
+    return shape_dict
+    
 def fancy_size():
     pass
 
