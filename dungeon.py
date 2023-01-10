@@ -250,36 +250,42 @@ def check_action(pc_dict, coord):
         t = roll_dice(1,20)
         if t_dict['direction'] == 'L90':
             for x in range(3):
+                will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
                 dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
                 dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
             new_coord = (coord[0]-3,coord[1],coord[2])
 
         elif t_dict['direction'] == 'L45':
             for x in range(3):
+                will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
                 dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
                 dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
             new_coord = (coord[0]-3,coord[1]+3,coord[2])
 
         elif t_dict['direction'] == 'L135':
             for x in range(3):
+                will_fit = in_dungeon((coord[0]-1-x,coord[1]-1-x,coord[2]))
                 dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
                 dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
             new_coord = (coord[0]-3,coord[1]-3,coord[2])
 
         elif t_dict['direction'] == 'R90':
             for x in range(3):
+                will_fit = in_dungeon((coord[0]+1+x,coord[1],coord[2]))
                 dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
                 dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
             new_coord = (coord[0]+3,coord[1],coord[2])
 
         elif t_dict['direction'] == 'R45':
             for x in range(3):
+                will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
                 dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
                 dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
             new_coord = (coord[0]+3,coord[1]+3,coord[2])
 
         else: # 'R135'
             for x in range(3):
+                will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
                 dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
                 dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
             new_coord = (coord[0]+3,coord[1]-3,coord[2])
