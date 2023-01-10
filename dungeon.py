@@ -543,6 +543,13 @@ strhead = '''
         border: 1px solid black;
         border-collapse: collapse;
       }
+      .green_background {
+            background-color: green;
+        }
+
+        .blue_background {
+            background-color: blue;
+        }
     </style>
 </head>
 <body>
@@ -561,7 +568,7 @@ with open('dungeon.html','w') as f:
     for j in range(chararray.shape[1]):
         f.write('<TR>')
         for i in range(chararray.shape[0]):
-            strdata = '<TD>' + chararray[i,j,0] + '</TD>'
+            strdata = '<td class="blue_background">' + chararray[i,j,0] + '</td>'
             f.write(strdata)
         f.write('</TR>')
 
