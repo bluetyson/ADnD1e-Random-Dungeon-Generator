@@ -191,24 +191,6 @@ def check_action(pc_dict, coord):
                                 break
 
                 if e_dict['beyond'] == 'Room':
-                    '''
-                        lr = roll_dict(1,2)
-                        shape_dict['size'] = [2,2]
-                        shape_dict['size'] = [4,4]
-                        shape_dict['size'] = [1,2]
-                        shape_dict['size'] = [2,4]
-                        shape_dict['size'] = [4,6]
-                        shape_dict['size'] = [3,4]
-                        
-                        others
-                        shape_dict['size'] = [1,1]
-                        shape_dict['size'] = [3,3]
-                        shape_dict['size'] = [2,3]
-                        shape_dict['size'] = [2,3]
-                        shape_dict['size'] = [3,5]
-                
-                        shape_dict = fancy_shape()
-                    '''
                     #want those we randomly position lr
                     new_coord = coord
                     shape_dict = room(coord, C='R')  ## different type to get slightly different table
@@ -828,6 +810,9 @@ def turn(coord):
 
 
 def room(coord, size="C"):
+    '''
+    just rectangular results for now
+    '''
     r = roll_dice(1,20)
     room_size = [0,0]
     shape_dict = {}
@@ -863,7 +848,9 @@ def room(coord, size="C"):
         else:
             shape_dict['size'] = [3,4]
     if r >= 18:
-            shape_dict = fancy_shape()
+            #shape_dict = fancy_shape()
+            ##MAKE ALL ROOMS RECTANGULAR TO START
+            shape_dict['size'] = [4,6]
 
     return shape_dict
 
