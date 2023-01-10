@@ -606,7 +606,7 @@ def wet_magic():
             wet_magic_dict['characteristic'] = 'WIS'
         else:
             wet_magic_dict['characteristic'] = 'CHA'
-        e = roll_dice(1,2):
+        e = roll_dice(1,2)
         s = roll_dict(1,3)
         if e == 1:
             wet_magic_dict['sign'] = 1            
@@ -627,7 +627,7 @@ def wet_magic():
         else:
             wet_magic_dict['alignment'] = 'N'
 
-            
+
 
 
 
