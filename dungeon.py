@@ -226,11 +226,14 @@ def check_action(pc_dict, coord):
                     break
 
         elif s_dict['direction'] == 'P': #plus
+            which_way = roll_dice(1,3)
             for x in range(3):
                 will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
                 if not will_fit:
                     dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
                     dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
+                    if which_way == 1:
+                        new_coord = (coord[0]-1-x,coord[1],coord[2])
                 else:
                     break
             for x in range(3):
@@ -238,6 +241,8 @@ def check_action(pc_dict, coord):
                 if not will_fit:
                     dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
                     dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
+                    if which_way == 2:
+                        new_coord = (coord[0]+1+x,coord[1],coord[2])
                 else:
                     break
             for x in range(3):
@@ -245,19 +250,14 @@ def check_action(pc_dict, coord):
                 if not will_fit:
                     dungeon[(coord[0],coord[1]+1+x,coord[2])] = {}
                     dungeon[(coord[0],coord[1]+1+x,coord[2])]['fill'] = 'C'
+                    if which_way == 3:
+                        new_coord = (coord[0],coord[1]+1+x,coord[2])
                 else:
                     break
 
-            which_way = roll_dice(1,3)
-            if which_way == 1:
-                new_coord = (coord[0]-3,coord[1],coord[2])
-            elif which_way == 2:
-                new_coord = (coord[0]+3,coord[1],coord[2])
-            else: #AHEAD
-                new_coord = (coord[0],coord[1]+3,coord[2])
-
         else:
         #s_dict['direction'] == 'X': 45 and 135
+            which_way = roll_dice(1,4) ##got to move this up
             for x in range(3):
                 will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
                 if not will_fit:
@@ -290,7 +290,7 @@ def check_action(pc_dict, coord):
                 else:
                     break
 
-            which_way = roll_dice(1,4) ##got to move this up
+            
             if which_way == 1:
                 new_coord = (coord[0]-3,coord[1]+3,coord[2])
             elif which_way == 2:
