@@ -734,6 +734,7 @@ for key in dungeon:
         print("KEY:",key,"KEYWIDTH:",key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1)
 chararray[0+xmin*-1,0+ymin*-1,+zmin*-1] = 'S'        
 
+#need a multi-level maker, this is just doing first for now
 
 #make dungeon html
 strhead = '''
