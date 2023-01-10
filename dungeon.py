@@ -535,7 +535,7 @@ strhead = '''<html>
 <head>RANDOM DUNGEON</head>
 <title>DUNGEON</title>
 <body>
-<table>
+<table border="0>
 '''
 
 strend = '''</table>
