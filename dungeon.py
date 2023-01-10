@@ -578,7 +578,7 @@ with open('dungeon.html','w') as f:
         for i in range(chararray.shape[0]):
             if chararray[i,j,0] == 'B':
                 strdata = '<td class="black_background">' + chararray[i,j,0] + '</td>'
-            elif chararray[i,j,0] == 'C'
+            elif chararray[i,j,0] == 'C':
                 strdata = '<td>' + chararray[i,j,0] + '</td>'
             else:
                 strdata = '<td class="black_background">' + chararray[i,j,0] + '</td>'
