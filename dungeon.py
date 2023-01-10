@@ -524,11 +524,7 @@ chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U1')
 for key in dungeon:
     print(key)
     if 'fill' in dungeon[key]:
-        print(dungeon[key])
-        t = dungeon[key]
-        print("T", t)
-        print("T0", t[0])
-        #chararray[dungeon[key][0],dungeon[key][1],dungeon[key][2]] = dungeon[key]['fill']
+        chararray[[key][0],key[1],key[2]] = dungeon[key]['fill']
 
 print(chararray.shape)
 print(chararray)
