@@ -563,6 +563,7 @@ def turn(coord):
 def room(coord, size="C"):
     r = roll_dice(1,20)
     room_size = [0,0]
+    shape_dict = {}
     shape_dict['shape'] = 'R'
     shape_dict['size'] = [0,0]
     
