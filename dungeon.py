@@ -523,7 +523,7 @@ chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U1')
 
 for key in dungeon:
     print(key)
-    if 'fill' in key:
+    if 'fill' in dungeon[key]:
         chararray[dungeon[key][0],dungeon[key][1],dungeon[key][2]] = dungeon['key']['fill']
 
 print(chararray.shape)
