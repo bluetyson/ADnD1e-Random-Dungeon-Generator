@@ -102,14 +102,38 @@ def check_action(pc_dict, coord):
             else:
                 break
     elif pc_dict['direction'] == 'exit':
+        '''
+            e_dict['beyond'] = 'P'
+            e_dict['beyond'] = 'A'
+            e_dict['beyond'] = '4AB'
+            e_dict['beyond'] = '4BA'
+            e_dict['beyond'] = 'Room'
+        '''
         new_coord = coord
         e_dict = exit(coord)
         if 'L' in e_dict:
-            exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
+            if e_dict['type'] == 'N':
+                exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
+                if e_dict['beyond'] == 'P':
+                    for x in range(3):
+                        will_fit = in_dungeon((coord[0]-1,coord[1]+x-1,coord[2]))
+                        if not will_fit:
+                            dungeon[(coord[0]-1,coord[1]+x-1,coord[2])] = {}
+                            dungeon[(coord[0]-1,coord[1]+x-1,coord[2])]['fill'] = 'C'
+                            new_coord = (coord[0]-1,coord[1]+x-1,coord[2])
+                    for x in range(3):
+                        will_fit = in_dungeon((coord[0]-1,coord[1]+x+1,coord[2]))
+                        if not will_fit:
+                            dungeon[(coord[0]-1,coord[1]+x+1,coord[2])] = {}
+                            dungeon[(coord[0]-1,coord[1]+x+1,coord[2])]['fill'] = 'C'
+                            new_coord = (coord[0]-1,coord[1]+x+1,coord[2])
+
         elif 'R' in e_dict:
-            exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
+            if e_dict['type'] == 'N':
+                exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
         else:
-            exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
+            if e_dict['type'] == 'N':
+                exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
         ## got to proceed with direction/type of exit
 
     elif pc_dict['direction'] == 'side':
@@ -523,24 +547,14 @@ def exit(coord):
     b = roll_dice(1,20)
     if b <= 4:
         e_dict['beyond'] = 'P'
-        if e_dict['type'] == 'N':  #could possibly fit
-            pass
     elif d>=5 and d <= 8:
         e_dict['beyond'] = 'A'
-        if e_dict['type'] == 'N':  #could possibly fit
-            pass
     elif d==9:
         e_dict['beyond'] = '4AB'
-        if e_dict['type'] == 'N':  #could possibly fit
-            pass
     elif d==10:
         e_dict['beyond'] = '4BA'
-        if e_dict['type'] == 'N':  #could possibly fit
-            pass
     else:
         e_dict['beyond'] = 'Room'
-        if e_dict['type'] == 'N':  #could possibly fit
-            pass
 
     exit_stack[coord] = e_dict
 
