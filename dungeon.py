@@ -510,9 +510,16 @@ while i < PERIODIC_CHECKS:
     i +=1
 
 coord_lim = coord_limits(dungeon)
-xwidth = coord_lim[1][0] - coord_lim[0][0] + 1
-ywidth = coord_lim[1][1] - coord_lim[0][1] + 1
-zwidth = coord_lim[1][2] - coord_lim[0][2] + 1
+xmin = coord_lim[0][0]
+ymin = coord_lim[0][1]
+zmin = coord_lim[0][2]
+xmax = coord_lim[1][0]
+ymax = coord_lim[1][1]
+zmax = coord_lim[1][2]
+
+xwidth = xmax - xmin
+ywidth = ymax - ymin
+zwidth = zmax - zmin
 
 print("COORD:", coord, result_coord, coord_lim)
 
@@ -528,7 +535,7 @@ for key in dungeon:
     print("KEY:",key,"KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
     if 'fill' in dungeon[key]:
         #chararray[[key][0],key[1],key[2]] = dungeon[key]['fill']
-        chararray[key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1] = dungeon[key]['fill']
+        chararray[key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2]] = dungeon[key]['fill']
 chararray[0,0,0] = 'S'        
 
 
