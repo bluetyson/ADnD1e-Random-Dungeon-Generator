@@ -425,6 +425,7 @@ def check_action(pc_dict, coord):
 
         dead_end = True
         if check_coord_L not in dungeon:
+            ## need to check if in dungeons where putting Ds
             e_dict_f = fancy_exit(coord)
             if 'S' in e_dict_f:
                 e_dict = {}
@@ -434,6 +435,7 @@ def check_action(pc_dict, coord):
                 exit_stack[coord] = e_dict
                 dead_end = False
         if check_coord_R not in dungeon:
+            ## need to check if in dungeons where putting Ds
             e_dict_f = fancy_exit(coord)
             if 'S' in e_dict_f:
                 e_dict = {}
@@ -443,6 +445,7 @@ def check_action(pc_dict, coord):
                 exit_stack[coord] = e_dict
                 dead_end = False
         if check_coord_A not in dungeon:
+            ## need to check if in dungeons where putting Ds
             e_dict_f = fancy_exit(coord)
             if 'S' in e_dict_f:
                 e_dict = {}
