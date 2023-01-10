@@ -581,7 +581,7 @@ with open('dungeon.html','w') as f:
             elif chararray[i,j,0] == 'C':
                 strdata = '<td>' + chararray[i,j,0] + '</td>'
             else:
-                strdata = '<td class="black_background">' + chararray[i,j,0] + '</td>'
+                strdata = '<td class="red_background">' + chararray[i,j,0] + '</td>'
 
             f.write(strdata)
         f.write('</TR>')
