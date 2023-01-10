@@ -521,6 +521,7 @@ print("EXIT_STACK:", exit_stack)
 
 chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U1')
 
+chararray[0,0,0] = 'S'
 for key in dungeon:
     print(key)
     if 'fill' in dungeon[key]:
