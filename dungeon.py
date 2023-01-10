@@ -522,7 +522,8 @@ print("EXIT_STACK:", exit_stack)
 chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U1')
 
 for key in dungeon:
-    chararray[dungeon[key][0],dungeon[key][1],dungeon[key][2]] = dungeon['key']['fill']
+    if 'fill' in key:
+        chararray[dungeon[key][0],dungeon[key][1],dungeon[key][2]] = dungeon['key']['fill']
 
 print(chararray.shape)
 print(chararray)
