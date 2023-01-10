@@ -516,6 +516,8 @@ zmin = coord_lim[0][2]
 xmax = coord_lim[1][0]
 ymax = coord_lim[1][1]
 zmax = coord_lim[1][2]
+print("MIN:",xmin,ymin,zmin)
+print("MAX:",xmax,ymax,zmax)
 
 xwidth = xmax - xmin + 1
 ywidth = ymax - ymin + 1
