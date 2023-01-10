@@ -543,13 +543,21 @@ strhead = '''
         border: 1px solid black;
         border-collapse: collapse;
       }
+      .red_background {
+            background-color: red;
+        }
+
       .green_background {
             background-color: green;
         }
 
-        .blue_background {
+      .blue_background {
             background-color: blue;
         }
+      .black_background {
+            background-color: black;
+        }
+
     </style>
 </head>
 <body>
@@ -568,7 +576,13 @@ with open('dungeon.html','w') as f:
     for j in range(chararray.shape[1]):
         f.write('<TR>')
         for i in range(chararray.shape[0]):
-            strdata = '<td class="blue_background">' + chararray[i,j,0] + '</td>'
+            if chararray[i,j,0] == 'B':
+                strdata = '<td class="black_background">' + chararray[i,j,0] + '</td>'
+            elif == chararray[i,j,0] == 'C'
+                strdata = '<td>' + chararray[i,j,0] + '</td>'
+            else:
+                strdata = '<td class="black_background">' + chararray[i,j,0] + '</td>'
+
             f.write(strdata)
         f.write('</TR>')
 
