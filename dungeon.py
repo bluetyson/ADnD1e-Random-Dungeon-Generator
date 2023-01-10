@@ -672,10 +672,16 @@ def check_action(pc_dict, coord):
             new_coord = (coord[0],coord[1],coord[2]+1)
         if s == 9:
             #Up dead end (1 in 6 chance to chute down 2 levels)
+            d = roll_dice(1,6)
+            if d == 1:
+                #chute
+                new_coord = (coord[0],coord[1],coord[2]-2)
+
         if s == 10:
             #Down dead end (1 in 6 chance to chute down 1 level)
-        if s == 11:
-            #Down dead end (1 in 6 chance to chute down 1 level)
+            if d == 1:
+                #chute
+                new_coord = (coord[0],coord[1],coord[2]-1)
         if s == 11:
             #Chimney up 1 level, passage continues, check again in 30’
         if s == 13:
