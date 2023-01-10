@@ -553,6 +553,8 @@ with open('dungeon.html','w') as f:
             f.write(strdata)
         f.write('</TR>')
 
+    f.write(strend)
+
 
 
 
