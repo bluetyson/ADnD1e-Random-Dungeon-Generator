@@ -973,7 +973,7 @@ def stinky():
 
 from monsters import testmonster
 from treasure import testtreasure
-testmonster() + testtreasure()
+print (testmonster() + testtreasure())
 #testtreasure()
 
 PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't count first one down
