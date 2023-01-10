@@ -626,24 +626,26 @@ def wet_magic():
             wet_magic_dict['alignment'] = 'CE'
         else:
             wet_magic_dict['alignment'] = 'N'
+    if w >=18:
+        l = roll_dice
+        wet_magic_dict['effect'] = 'Teleport'
+        if l <= 7:
+            #back to surface
+            new_coord = (0,0,0)
+        elif l >= 8 and if l <= 12:
+            #elsewhere on leve
+            #randomise from current available coords
+            loclist = list(dungeon.keys())
+            t = roll_dice(1,len(loclist))
+            new_coord = loclist[t-1]
+        else:
+            #100 miles away or effectively
+            new_coord = (0,0,0)
 
 
 
 
 
-Die Result
-1-8 Turns gold to platinum (1-11) or lead (12-20), one time only.
-9-15 Will, on a one-time only basis, add (1-3) or subtract (4-6) from one
-characteristic of all who stand within it:
-1 = strength 4 = dexterity
-2 = intelligence 5 = constitution
-3 = wisdom 6 = charisma
- (add or subtract from 1-3 points, checking for each character as to
- addition or subtraction, characteristic, and amount).
-16-17 Talking pool which will grant 1 wish to characters of its alignment and
-damage others from 1-20 points. Wish can be withheld for up to
-1 day. Pool’s alignment is: lawful good 1-6, lawful evil 7-9, chaotic
-good 10-12, chaotic evil 13-17, neutral 18-20.
 18-20 Transporter pool: 1-7, back to surface; 8-12, elsewhere on level; 13-16,
 1 level down; 17-20, 100 miles away for outdoor adventure.
 
