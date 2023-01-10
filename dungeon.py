@@ -583,7 +583,69 @@ def wet_large():
             wet_dict['monster'] = 'Y'
 
 def wet_magic():
-    pass
+    w = roll_dice(1,20)
+    wet_magic_dict = {}
+    if w <=8:
+        e = roll_dice(1,20)
+        if e<= 11:
+            wet_magic_dict['effect'] = 'Au to Pt'
+        else:
+            wet_magic_dict['effect'] = 'Au to Pb'
+    if w >=9 and w<=15:
+        e = roll_dice(1,6)
+        wet_magic_dict['effect'] = 'Per Character'
+        if e == 1:
+            wet_magic_dict['characteristic'] = 'STR'
+        elif e == 2:
+            wet_magic_dict['characteristic'] = 'DEX'
+        elif e == 3:
+            wet_magic_dict['characteristic'] = 'CON'
+        elif e == 4:                
+            wet_magic_dict['characteristic'] = 'INT'
+        elif e == 5:                            
+            wet_magic_dict['characteristic'] = 'WIS'
+        else:
+            wet_magic_dict['characteristic'] = 'CHA'
+        e = roll_dice(1,2):
+        s = roll_dict(1,3)
+        if e == 1:
+            wet_magic_dict['sign'] = 1            
+        else:
+            wet_magic_dict['sign'] = -1            
+            wet_magic_dict['add'] = s * wet_magic_dict['sign']
+    if w >=16 and w<=17:
+        wet_magic_dict['effect'] = 'Talking Pool'
+        a = roll_dice(1,20)
+        if a <= 6:
+            wet_magic_dict['alignment'] = 'LG'
+        elif a >= 7: and a <= 9
+            wet_magic_dict['alignment'] = 'LE'
+        elif a >= 10: and a <= 12
+            wet_magic_dict['alignment'] = 'CG'
+        elif a >= 13: and a <= 17
+            wet_magic_dict['alignment'] = 'CE'
+        else:
+            wet_magic_dict['alignment'] = 'N'
+
+            
+
+
+
+Die Result
+1-8 Turns gold to platinum (1-11) or lead (12-20), one time only.
+9-15 Will, on a one-time only basis, add (1-3) or subtract (4-6) from one
+characteristic of all who stand within it:
+1 = strength 4 = dexterity
+2 = intelligence 5 = constitution
+3 = wisdom 6 = charisma
+ (add or subtract from 1-3 points, checking for each character as to
+ addition or subtraction, characteristic, and amount).
+16-17 Talking pool which will grant 1 wish to characters of its alignment and
+damage others from 1-20 points. Wish can be withheld for up to
+1 day. Pool’s alignment is: lawful good 1-6, lawful evil 7-9, chaotic
+good 10-12, chaotic evil 13-17, neutral 18-20.
+18-20 Transporter pool: 1-7, back to surface; 8-12, elsewhere on level; 13-16,
+1 level down; 17-20, 100 miles away for outdoor adventure.
 
 def stinky():
     pass
