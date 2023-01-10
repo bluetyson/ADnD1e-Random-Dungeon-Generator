@@ -705,9 +705,17 @@ def check_action(pc_dict, coord):
                 dungeon[(coord[0],coord[1]+1,coord[2])-3] = {}
                 dungeon[(coord[0],coord[1]+1,coord[2])-3]['fill'] = 'st'
                 new_coord = (coord[0],coord[1]+1,coord[3]-2)  ##1 in 20 closes
-
         if s == 8:
-            new_coord = (coord[0],coord[1],coord[2]+1)
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
+            if not will_fit:                            
+                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
+                new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+            if not will_fit:                            
+                dungeon[(coord[0],coord[1]+1,coord[2])+1] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])+1]['fill'] = 'st'
+                new_coord = (coord[0],coord[1]+1,coord[2]+1)  ##1 in 20 closes
         if s == 9:
             #Up dead end (1 in 6 chance to chute down 2 levels)
             d = roll_dice(1,6)
