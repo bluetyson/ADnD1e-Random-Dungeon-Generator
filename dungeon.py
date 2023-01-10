@@ -187,7 +187,7 @@ def check_action(pc_dict, coord):
                         dungeon[(coord[0],coord[1]+1,coord[2])] = {}
                         dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'R'
                         new_coord = (coord[0],coord[1]+1,coord[2])
-                        # 10 x 10 room need to check contents
+                        # 10 x 10 room need to check contents!
 
         ## got to proceed with direction/type of exit
 
@@ -971,6 +971,8 @@ def stinky():
 #not checking any level stacks to go up down, similarly
 #not implemented passage width as yet - default only
 
+from monsters import test
+test()
 
 PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't count first one down
 #make this a script argument
