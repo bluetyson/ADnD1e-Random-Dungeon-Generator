@@ -535,7 +535,7 @@ def exit(coord):
             pass
     elif d==10:
         e_dict['beyond'] = '4BA'
-        if e_dict['type'] = 'N':  #could possibly fit
+        if e_dict['type'] == 'N':  #could possibly fit
             pass
     else:
         e_dict['beyond'] = 'Room'
