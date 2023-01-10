@@ -510,7 +510,7 @@ while i < PERIODIC_CHECKS:
     i +=1
 
 coord_lim = coord_limits(dungeon)
-print("COORD:", coord, result_coord, coord_limits)
+print("COORD:", coord, result_coord, coord_lim)
 
 print("DUNGEON:", dungeon)
 print("EXIT_STACK:", exit_stack)
