@@ -168,7 +168,7 @@ def check_action(pc_dict, coord):
                             break
 
                 if e_dict['beyond'] == '4BA':   ##45 A
-                which_way = roll_dice(1,2)           
+                which_way = roll_dice(1,2)  #work out random direction         
                 if which_way == 1:  #corridor left
                     for x in range(3):
                         will_fit = in_dungeon((coord[0]+1+-x,coord[1]-1-x,coord[2]))
