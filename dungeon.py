@@ -293,7 +293,24 @@ def side(coord):
     return s_dict
 
 def turn(coord):
-    pass
+    t_dict = {}
+    t = roll_dice(1,20)
+    print("TURN CHECK",t)
+    if t <= 8:
+        t_dict['direction'] = 'L90'
+    if s == 9:
+        t_dict['direction'] = 'L45'
+    if t == 10 :
+        t_dict['direction'] = 'L135'
+    if t >= 11 and t <= 18:
+        t_dict['direction'] = 'R90'
+    if s == 19:
+        t_dict['direction'] = 'R45'
+    if t == 20:
+        t_dict['direction'] = 'R135'
+
+    return t_dict
+
 
 def room(coord):
     pass
