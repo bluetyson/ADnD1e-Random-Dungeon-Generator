@@ -367,21 +367,26 @@ def check_action(pc_dict, coord):
         
     elif pc_dict['direction'] == 'room':
         '''
+            lr = roll_dict(1,2)
             shape_dict['size'] = [2,2]
-            shape_dict['size'] = [1,1]
-            shape_dict['size'] = [2,2]
-            shape_dict['size'] = [3,3]
             shape_dict['size'] = [4,4]
-            shape_dict['size'] = [2,3]
             shape_dict['size'] = [1,2]
-            shape_dict['size'] = [2,3]
-            shape_dict['size'] = [3,5]
             shape_dict['size'] = [2,4]
             shape_dict['size'] = [4,6]
             shape_dict['size'] = [3,4]
+            
+            others
+            shape_dict['size'] = [1,1]
+            shape_dict['size'] = [3,3]
+            shape_dict['size'] = [2,3]
+            shape_dict['size'] = [2,3]
+            shape_dict['size'] = [3,5]
     
             shape_dict = fancy_shape()
         '''
+        #want those we randomly position lr
+        lr = roll_dict(1,2)
+
         new_coord = coord
         shape_dict = room(coord) #if another room pass not C="R"
         print("ROOM SHAPE:",shape_dict)
