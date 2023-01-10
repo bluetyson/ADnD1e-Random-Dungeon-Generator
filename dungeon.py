@@ -93,7 +93,7 @@ def check_action(pc_dict, coord):
         for y in range(6):
 
             will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
-            print("Y",y, "WILLFIT:",will_fit)
+            #print("Y",y, "WILLFIT:",will_fit)
             if not will_fit:
                 dungeon[(coord[0],coord[1]+1+y,coord[2])] = {}
                 dungeon[(coord[0],coord[1]+1+y,coord[2])]['fill'] = 'C'
@@ -118,45 +118,53 @@ def check_action(pc_dict, coord):
         print("S_DICT:",s_dict)
         if s_dict['direction'] == 'L90':
             for x in range(3):
+                will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
                 dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
                 dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
             new_coord = (coord[0]-3,coord[1],coord[2])
 
         elif s_dict['direction'] == 'R90':
             for x in range(3):
+                will_fit = in_dungeon((coord[0]+1+x,coord[1],coord[2]))
                 dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
                 dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
             new_coord = (coord[0]+3,coord[1],coord[2])
 
         elif s_dict['direction'] == 'L45':
             for x in range(3):
+                will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
                 dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
                 dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
             new_coord = (coord[0]-3,coord[1]+3,coord[2])
 
         elif s_dict['direction'] == 'R45':
             for x in range(3):
+                will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
                 dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
                 dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
             new_coord = (coord[0]+3,coord[1]+3,coord[2])
 
         elif s_dict['direction'] == 'L135':
             for x in range(3):
+                will_fit = in_dungeon((coord[0]-1-x,coord[1]-1-x,coord[2]))
                 dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
                 dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
             new_coord = (coord[0]-3,coord[1]-3,coord[2])
 
         elif s_dict['direction'] == 'R135':
             for x in range(3):
+                will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
                 dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
                 dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
             new_coord = (coord[0]+3,coord[1]-3,coord[2])
 
         elif s_dict['direction'] == 'T':
             for x in range(3):
+                will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
                 dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
                 dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
             for x in range(3):
+                will_fit = in_dungeon((coord[0]+1+x,coord[1],coord[2]))
                 dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
                 dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
 
