@@ -532,8 +532,9 @@ print(chararray)
 
 #make dungeon html
 strhead = '''<html>
-<head>RANDOM DUNGEON</head>
+<head>
 <title>DUNGEON</title>
+</head>
 <body>
 <table border="0">
 '''
