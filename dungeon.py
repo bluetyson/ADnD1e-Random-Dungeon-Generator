@@ -256,13 +256,36 @@ def check_action(pc_dict, coord):
         pass
     elif pc_dict['direction'] == 'stop':
         new_coord = coord
-        e_dict_f = fancy_exit(coord)
-        if 'S' in e_dict_f:
-            e_dict = {}
-            e_dict['direction'] = 'A'
-            e_dict['coord'] = (coord[0],coord[1]+1,coord[2])
-            e_dict['type'] = e_dict_f['type']
-            exit_stack[coord] = e_dict
+        check_coord_L = (new_coord[0]-1,new_coord[1],new_coord[2])
+        check_coord_R = (new_coord[0]+1,new_coord[1],new_coord[2])
+        check_coord_A = (new_coord[0],new_coord[1]+1,new_coord[2])
+
+        if check_coord_L not in dungeon:
+            e_dict_f = fancy_exit(coord)
+            if 'S' in e_dict_f:
+                e_dict = {}
+                e_dict['direction'] = 'L'
+                e_dict['coord'] = (coord[0]-1,coord[1],coord[2])
+                e_dict['type'] = e_dict_f['type']
+                exit_stack[coord] = e_dict
+        if check_coord_R not in dungeon:
+            e_dict_f = fancy_exit(coord)
+            if 'S' in e_dict_f:
+                e_dict = {}
+                e_dict['direction'] = 'R'
+                e_dict['coord'] = (coord[0]+1,coord[1],coord[2])
+                e_dict['type'] = e_dict_f['type']
+                exit_stack[coord] = e_dict
+        if check_coord_A not in dungeon:
+            e_dict_f = fancy_exit(coord)
+            if 'S' in e_dict_f:
+                e_dict = {}
+                e_dict['direction'] = 'R'
+                e_dict['coord'] = (coord[0],coord[1]+1,coord[2])
+                e_dict['type'] = e_dict_f['type']
+                exit_stack[coord] = e_dict
+
+
 
     elif pc_dict['direction'] == 'bad_things':
         new_coord = coord
