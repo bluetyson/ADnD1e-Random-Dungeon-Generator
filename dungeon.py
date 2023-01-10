@@ -824,6 +824,7 @@ def fancy_cave():
     pass
 
 def wet_small():
+    #not implemented yet
     w = roll_dice(1,20)
     wet_dict = {}
     wet_dict['wet'] = 'N'
@@ -847,6 +848,7 @@ def wet_small():
 
 
 def wet_large():
+    #not implemented yet
     w = roll_dice(1,20)
     wet_dict = {}
     wet_dict['wet'] = 'N'
@@ -871,6 +873,7 @@ def wet_large():
             wet_dict['monster'] = 'Y'
 
 def wet_magic():
+    #not implemented yet
     w = roll_dice(1,20)
     wet_magic_dict = {}
     if w <=8:
