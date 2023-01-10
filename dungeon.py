@@ -389,21 +389,27 @@ def check_action(pc_dict, coord):
         shape_dict = room(coord) #if another room pass not C="R"        
         #each room part check for inside
 
-        if shape_dict['size'] % 2 == 0:
-            lr = roll_dict(1,2)
-            if lr == 1:
-                pass
-            else:
-                pass
-
-        
         print("ROOM SHAPE:",shape_dict)
         ## do simple version first of x directions and y directions of rectangular
         if shape_dict['shape'] == 'R':
             #rectangular
             #H x W
             #position based on size
-            pass
+            adjust = 0
+            if shape_dict['size'][1] % 2 == 0:
+                lr = roll_dict(1,2)
+                if lr == 1:
+                    adjust = -1
+                else:
+                    adjust = 1
+
+                #if shape_dict['size'][1] == 2:
+                for j in range(shape_dict['size'][1]):
+                    for in i range(shape_dict['size'][0]):
+                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = 'R'
+
+
+            
         else:
             pass
             #fancy shape/size
