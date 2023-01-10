@@ -143,8 +143,6 @@ def check_action(pc_dict, coord):
                                 dungeon[(coord[0]-x-1,coord[1],coord[2])]['fill'] = 'C'
                                 new_coord = ((coord[0]-x-1,coord[1],coord[2]))                        
 
-                    #passage 'ahead' so to the left -1 x
-                    # got to check to see if get another door, if not got 30 feet if not door ignore and do periodic check
 
         elif 'R' in e_dict:
             if e_dict['type'] == 'N':
@@ -163,9 +161,21 @@ def check_action(pc_dict, coord):
                             dungeon[(coord[0]-1,coord[1]+x+1,coord[2])]['fill'] = 'C'
                             new_coord = (coord[0]-1,coord[1]+x+1,coord[2])
 
-                if e_dict['beyond'] == 'A':                            
-                    pass #passage 'ahead' so to the right +1 x
-                    # got to check to see if get another door, if not got 30 feet if not door ignore and do periodic check
+                if e_dict['beyond'] == 'A':              
+                    d = roll_dice(1,20)              
+                    if d >=3 and d >= 5:
+                        will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
+                        if not will_fit:
+                            exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
+                    else:
+                        #30m passage that direction
+                        for x in range(3):
+                            will_fit = in_dungeon((coord[0]-x-1,coord[1],coord[2]))
+                            if not will_fit:
+                                dungeon[(coord[0]+x+1,coord[1],coord[2])] = {}
+                                dungeon[(coord[0]+x+1,coord[1],coord[2])]['fill'] = 'C'
+                                new_coord = ((coord[0]+x+1,coord[1],coord[2]))                        
+
 
                 
         else:
