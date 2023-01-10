@@ -358,13 +358,13 @@ def turn(coord):
     print("TURN CHECK",t)
     if t <= 8:
         t_dict['direction'] = 'L90'
-    if s == 9:
+    if t == 9:
         t_dict['direction'] = 'L45'
     if t == 10 :
         t_dict['direction'] = 'L135'
     if t >= 11 and t <= 18:
         t_dict['direction'] = 'R90'
-    if s == 19:
+    if t == 19:
         t_dict['direction'] = 'R45'
     if t == 20:
         t_dict['direction'] = 'R135'
