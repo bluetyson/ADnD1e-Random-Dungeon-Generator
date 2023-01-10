@@ -964,6 +964,12 @@ strhead = '''
       .green_background {
             background-color: green;
         }
+      .gray_background {
+            background-color: gray;
+        }
+      .brown_background {
+            background-color: brown;
+        }
 
       .blue_background {
             background-color: blue;
