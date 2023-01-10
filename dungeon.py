@@ -149,18 +149,12 @@ def check_action(pc_dict, coord):
             if e_dict['type'] == 'N':
                 exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
                 if e_dict['beyond'] == 'P':
-                    for x in range(3):
-                        will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
-                        if not will_fit:
-                            dungeon[(coord[0]+x-1,coord[1]+1,coord[2])] = {}
-                            dungeon[(coord[0]+x-1,coord[1]+1,coord[2])]['fill'] = 'C'
-                            new_coord = (coord[0]+x-1,coord[1]+1,coord[2])
-                    for x in range(3):
-                        will_fit = in_dungeon((coord[0]-1,coord[1]+x+1,coord[2]))
-                        if not will_fit:
-                            dungeon[(coord[0]+x-1,coord[1]+1,coord[2])] = {}
-                            dungeon[(coord[0]+x-1,coord[1]+1,coord[2])]['fill'] = 'C'
-                            new_coord = (coord[0]+x-1,coord[1]+1,coord[2])
+                    will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
+                    if not will_fit:
+                        dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+                        dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'R'
+                        new_coord = (coord[0],coord[1]+1,coord[2])
+                        # 10 x 10 room need to check contents
 
         ## got to proceed with direction/type of exit
 
