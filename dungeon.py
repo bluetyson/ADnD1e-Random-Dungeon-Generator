@@ -642,13 +642,6 @@ def wet_magic():
             #100 miles away or effectively
             new_coord = (0,0,0)
 
-
-
-
-
-18-20 Transporter pool: 1-7, back to surface; 8-12, elsewhere on level; 13-16,
-1 level down; 17-20, 100 miles away for outdoor adventure.
-
 def stinky():
     pass
 
