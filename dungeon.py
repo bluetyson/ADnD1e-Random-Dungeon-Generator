@@ -81,7 +81,7 @@ def random_check():
     print("RANDOM_CHECK",pc, pc_dict['direction'])
 
     pc_dict['direction'] = 'ahead'
-    
+
     return pc_dict
 
 def check_action(pc_dict, coord):
@@ -93,7 +93,7 @@ def check_action(pc_dict, coord):
 
             will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
             print("Y",y, "WILLFIT:",will_fit)
-            if will_fit:
+            if not will_fit:
                 dungeon[(coord[0],coord[1]+1+y,coord[2])] = {}
                 dungeon[(coord[0],coord[1]+1+y,coord[2])]['fill'] = 'C'
                 #handle not fitting
