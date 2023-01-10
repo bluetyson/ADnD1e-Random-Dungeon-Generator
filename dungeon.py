@@ -663,11 +663,21 @@ def check_action(pc_dict, coord):
         new_coord = coord
         s = roll_dice(1,20)
         if s <= 5:
-            new_coord = (coord[0],coord[1],coord[2]-1)  ##1 in 20 closes
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
+            if not will_fit:                            
+                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
+                new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+            if not will_fit:                            
+                dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'st'
+                new_coord = (coord[0],coord[1]+1,coord[2]-1)  ##1 in 20 closes
+
         if s == 6:
             new_coord = (coord[0],coord[1],coord[2]-2)  ##2 in 20 closes
         if s == 7:
-            new_coord = (coord[0],coord[1],coord[2]-2)  ##3 in 20 closes
+            new_coord = (coord[0],coord[1],coord[2]-3)  ##3 in 20 closes
         if s == 8:
             new_coord = (coord[0],coord[1],coord[2]+1)
         if s == 9:
