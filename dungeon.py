@@ -890,6 +890,9 @@ dungeon[(0,0,0)]['direction'] = 'level'
 dungeon[(0,0,0)]['check'] = 'up_down'
 dungeon[(0,0,0)]['go'] = -1
 
+facing = 'A'
+## got to implement for all here eventually, complicates things
+
 START_COORD = (0,0,-1)
 coord = START_COORD
 
