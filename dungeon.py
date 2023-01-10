@@ -523,15 +523,15 @@ def exit(coord):
     b = roll_dice(1,20)
     if b <= 4:
         e_dict['beyond'] = 'P'
-        if e_dict['type'] = 'N':  #could possibly fit
+        if e_dict['type'] == 'N':  #could possibly fit
             pass
     elif d>=5 and d <= 8:
         e_dict['beyond'] = 'A'
-        if e_dict['type'] = 'N':  #could possibly fit
+        if e_dict['type'] == 'N':  #could possibly fit
             pass
     elif d==9:
         e_dict['beyond'] = '4AB'
-        if e_dict['type'] = 'N':  #could possibly fit
+        if e_dict['type'] == 'N':  #could possibly fit
             pass
     elif d==10:
         e_dict['beyond'] = '4BA'
@@ -539,7 +539,7 @@ def exit(coord):
             pass
     else:
         e_dict['beyond'] = 'Room'
-        if e_dict['type'] = 'N':  #could possibly fit
+        if e_dict['type'] == 'N':  #could possibly fit
             pass
 
     exit_stack[coord] = e_dict
