@@ -177,11 +177,14 @@ def check_action(pc_dict, coord):
                     break
 
         elif s_dict['direction'] == 'T':
+            which_way = roll_dice(1,2)
             for x in range(3):
                 will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
                 if not will_fit:
                     dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
                     dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
+                if which_way == 1:
+                    new_coord = (coord[0]-1-x,coord[1],coord[2])
                 else:
                     break
 
@@ -190,10 +193,11 @@ def check_action(pc_dict, coord):
                 if not will_fit:                
                     dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
                     dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
+                if which_way == 2:
+                    new_coord = (coord[0]+1+x,coord[1],coord[2])
                 else:
                     break
 
-            which_way = roll_dice(1,2)
             if which_way == 1:
                 new_coord = (coord[0]-3,coord[1],coord[2])  ### got to move these up
             else:
