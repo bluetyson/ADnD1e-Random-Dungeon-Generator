@@ -554,7 +554,7 @@ def wet_small():
         wet_dict['pool'] = 'Y'
         wet_dict['monster'] = 'Y'
         wet_dict['treasure'] = 'Y'
-    elif w >= 19:
+    else:
         wet_dict['magic'] = 'Y'
 
 
