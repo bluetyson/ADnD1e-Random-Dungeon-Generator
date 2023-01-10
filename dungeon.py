@@ -260,6 +260,7 @@ def check_action(pc_dict, coord):
         check_coord_R = (new_coord[0]+1,new_coord[1],new_coord[2])
         check_coord_A = (new_coord[0],new_coord[1]+1,new_coord[2])
 
+        dead_end = True
         if check_coord_L not in dungeon:
             e_dict_f = fancy_exit(coord)
             if 'S' in e_dict_f:
@@ -268,6 +269,7 @@ def check_action(pc_dict, coord):
                 e_dict['coord'] = (coord[0]-1,coord[1],coord[2])
                 e_dict['type'] = e_dict_f['type']
                 exit_stack[coord] = e_dict
+                dead_end = False
         if check_coord_R not in dungeon:
             e_dict_f = fancy_exit(coord)
             if 'S' in e_dict_f:
@@ -276,6 +278,7 @@ def check_action(pc_dict, coord):
                 e_dict['coord'] = (coord[0]+1,coord[1],coord[2])
                 e_dict['type'] = e_dict_f['type']
                 exit_stack[coord] = e_dict
+                dead_end = False
         if check_coord_A not in dungeon:
             e_dict_f = fancy_exit(coord)
             if 'S' in e_dict_f:
@@ -284,6 +287,17 @@ def check_action(pc_dict, coord):
                 e_dict['coord'] = (coord[0],coord[1]+1,coord[2])
                 e_dict['type'] = e_dict_f['type']
                 exit_stack[coord] = e_dict
+                dead_end = False
+
+        #this will also need checking
+        if dead_end == True:
+            dungeon[new_coord[0],new_coord[1]+1,new_coord[2]]['fill'] = 'D'
+            dungeon[new_coord[0]-1,new_coord[1],new_coord[2]]['fill'] = 'D'
+            dungeon[new_coord[0]+1,new_coord[1],new_coord[2]]['fill'] = 'D'
+            #need to retrace to last on exit stack?
+
+            return new_coord
+        
 
 
 
