@@ -128,6 +128,10 @@ def check_action(pc_dict, coord):
                             dungeon[(coord[0]-1,coord[1]+x+1,coord[2])]['fill'] = 'C'
                             new_coord = (coord[0]-1,coord[1]+x+1,coord[2])
 
+                if e_dict['beyond'] == 'A':                            
+                    pass #passage 'ahead' so to the left -1 x
+                    # got to check to see if get another door, if not got 30 feet if not door ignore and do periodic check
+
         elif 'R' in e_dict:
             if e_dict['type'] == 'N':
                 exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
@@ -144,6 +148,11 @@ def check_action(pc_dict, coord):
                             dungeon[(coord[0]-1,coord[1]+x+1,coord[2])] = {}
                             dungeon[(coord[0]-1,coord[1]+x+1,coord[2])]['fill'] = 'C'
                             new_coord = (coord[0]-1,coord[1]+x+1,coord[2])
+
+                if e_dict['beyond'] == 'A':                            
+                    pass #passage 'ahead' so to the right +1 x
+                    # got to check to see if get another door, if not got 30 feet if not door ignore and do periodic check
+
                 
         else:
             if e_dict['type'] == 'N':
