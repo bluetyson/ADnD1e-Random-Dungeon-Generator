@@ -418,9 +418,7 @@ def check_action(pc_dict, coord):
 
             for key in exit_stack:
                 ## this needs to be checked for level
-                pass
-
-            new_coord = key
+                new_coord = key
 
             return new_coord
         
