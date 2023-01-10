@@ -14,7 +14,7 @@ def roll_dice(number, sides):
     roll = random.randint(number,sides)
     return roll
 
-def check_coord(coord):
+def in_dungeon(coord):
     in_dungeon = False
     if coord in dungeon:
         in_dungeon = True
