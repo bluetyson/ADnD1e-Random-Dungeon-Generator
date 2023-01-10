@@ -17,7 +17,7 @@ def roll_dice(number, sides):
 def in_dungeon(coord):
     inside = False
     if coord in dungeon:
-        in_dungeon = True
+        inside = True
     return inside
 
 def coord_limits(dungeon):
