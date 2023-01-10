@@ -340,8 +340,6 @@ def check_action(pc_dict, coord):
                         #fancy shape/size not yet implemented
 
 
-
-
                 
         else:
             if e_dict['type'] == 'N':
@@ -663,7 +661,32 @@ def check_action(pc_dict, coord):
 
     elif pc_dict['direction'] == 'level':
         new_coord = coord
-        pass
+        s = roll_dice(1,20)
+        if s <= 5:
+            new_coord = (coord[0],coord[1],coord[2]-1)  ##1 in 20 closes
+        if s == 6:
+            new_coord = (coord[0],coord[1],coord[2]-2)  ##2 in 20 closes
+        if s == 7:
+            new_coord = (coord[0],coord[1],coord[2]-2)  ##3 in 20 closes
+        if s == 8:
+            new_coord = (coord[0],coord[1],coord[2]+1)
+        if s == 9:
+            #Up dead end (1 in 6 chance to chute down 2 levels)
+        if s == 10:
+            #Down dead end (1 in 6 chance to chute down 1 level)
+        if s == 11:
+            #Down dead end (1 in 6 chance to chute down 1 level)
+        if s == 11:
+            #Chimney up 1 level, passage continues, check again in 30’
+        if s == 13:
+            #Chimney down 2 levels, passage continues, check again in 30’
+        if s >= 14 and s <=16:
+            #Trap door down 1 level, passage continues, check again in 30’
+        if s == 17:
+            #Trap door down 2 levels, passage continues, check again in 30’
+        if s >= 18:            
+            #Up 1 then down 2 (total down 1), chamber at end (roll on TABLE V.)
+
     elif pc_dict['direction'] == 'stop':
         new_coord = coord
         check_coord_L = (new_coord[0]-1,new_coord[1],new_coord[2])
