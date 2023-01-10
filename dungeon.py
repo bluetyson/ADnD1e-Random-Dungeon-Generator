@@ -549,7 +549,7 @@ with open('dungeon.html','w') as f:
     for j in range(chararray.shape[1]):
         f.write('<TR>')
         for i in range(chararray.shape[0]):
-            strdata = '<TD>' + chararray[i,j,0] + '<TD>'
+            strdata = '<TD>' + chararray[i,j,0] + '</TD>'
             f.write(strdata)
         f.write('</TR>')
 
