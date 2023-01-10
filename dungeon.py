@@ -519,8 +519,9 @@ print("COORD:", coord, result_coord, coord_lim)
 print("DUNGEON:", dungeon)
 print("EXIT_STACK:", exit_stack)
 
-chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='S1')
+chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U1')
 
+print(chararray.shape)
 print(chararray)
 
 
