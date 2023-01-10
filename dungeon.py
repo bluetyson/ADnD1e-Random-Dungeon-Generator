@@ -14,6 +14,12 @@ def roll_dice(number, sides):
     roll = random.randint(number,sides)
     return roll
 
+def check_coord(coord):
+    in_dungeon = False
+    if coord in dungeon:
+        in_dungeon = True
+    return in_dungeon
+
 def coord_limits(dungeon):
     minx = 0
     maxx = 0
