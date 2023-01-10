@@ -256,8 +256,14 @@ def check_action(pc_dict, coord):
         pass
     elif pc_dict['direction'] == 'stop':
         new_coord = coord
-        
-        pass
+        e_dict_f = fancy_exit(coord)
+        if 'S' in e_dict_f:
+            e_dict = {}
+            e_dict['direction'] = 'A'
+            e_dict['coord'] = (coord[0],coord[1]+1,coord[2])
+            e_dict['type'] = e_dict_f['type']
+            exit_stack[coord] = e_dict
+
     elif pc_dict['direction'] == 'bad_things':
         new_coord = coord
         pass
@@ -272,6 +278,7 @@ def exit(coord):
     note fancy exit for doors on locations already mapped  
     '''
     e_dict = {}
+    e_dict['type'] = 'N'
     d = roll_dice(1,20)
     print("EXIT CHECK",d)
     if d <= 6:
@@ -312,7 +319,6 @@ def fancy_exit(coord):
         e_dict_f['type'] = 'OPP'
 
     return e_dict_f
-
 
 
 def side(coord):
