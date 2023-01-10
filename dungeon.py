@@ -535,9 +535,18 @@ strhead = '''
 <html>
 <head>
 <title>DUNGEON</title>
+<style>
+      table,
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
 </head>
 <body>
-<table border="0">
+<table>
 '''
 
 strend = '''
