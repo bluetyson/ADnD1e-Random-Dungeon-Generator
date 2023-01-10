@@ -676,22 +676,26 @@ def check_action(pc_dict, coord):
             if d == 1:
                 #chute
                 new_coord = (coord[0],coord[1],coord[2]-2)
-
         if s == 10:
             #Down dead end (1 in 6 chance to chute down 1 level)
             if d == 1:
                 #chute
                 new_coord = (coord[0],coord[1],coord[2]-1)
         if s == 11:
+            new_coord = (coord[0],coord[1],coord[2]+1)
             #Chimney up 1 level, passage continues, check again in 30’
         if s == 13:
             #Chimney down 2 levels, passage continues, check again in 30’
+            new_coord = (coord[0],coord[1],coord[2]-2)
         if s >= 14 and s <=16:
             #Trap door down 1 level, passage continues, check again in 30’
+            new_coord = (coord[0],coord[1],coord[2]-1)
         if s == 17:
             #Trap door down 2 levels, passage continues, check again in 30’
+            new_coord = (coord[0],coord[1],coord[2]-1)
         if s >= 18:            
             #Up 1 then down 2 (total down 1), chamber at end (roll on TABLE V.)
+            new_coord = (coord[0],coord[1],coord[2]-1)  ##add chamber room roll as per 5 ##all these still need contents etc.
 
     elif pc_dict['direction'] == 'stop':
         new_coord = coord
