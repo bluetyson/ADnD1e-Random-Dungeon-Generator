@@ -538,7 +538,7 @@ def fancy_cave():
 def wet_small():
     w = roll_dice(1,20)
     wet_dict = {}
-    wet_dict['pool'] = 'N'
+    wet_dict['wet'] = 'N'
     wet_dict['monster'] = 'N'
     wet_dict['treasure'] = 'N'
     wet_dict['magic'] = 'N'
@@ -546,12 +546,12 @@ def wet_small():
     if w <= 8:
         pass
     elif w >= 9 and w <=10:
-        wet_dict['pool'] = 'Y'
+        wet_dict['wet'] = 'Y'
     elif w >= 11 and w <=12:
-        wet_dict['pool'] = 'Y'
+        wet_dict['wet'] = 'Y'
         wet_dict['monster'] = 'Y'
     elif w >= 13 and w <=18:
-        wet_dict['pool'] = 'Y'
+        wet_dict['wet'] = 'Y'
         wet_dict['monster'] = 'Y'
         wet_dict['treasure'] = 'Y'
     else:
@@ -559,7 +559,28 @@ def wet_small():
 
 
 def wet_large():
-    pass
+    w = roll_dice(1,20)
+    wet_dict = {}
+    wet_dict['wet'] = 'N'
+    wet_dict['monster'] = 'N'
+    wet_dict['treasure'] = 'N'
+    wet_dict['magic'] = 'N'
+
+    if w <= 10:
+        pass
+    elif w >= 11 and w <=15:
+        wet_dict['wet'] = 'Y'
+    elif w >= 11 and w <=12:
+        wet_dict['wet'] = 'Y'
+        wet_dict['monster'] = 'Y'
+    elif w >= 16 and w <=18:
+        wet_dict['wet'] = 'Y'
+        wet_dict['monster'] = 'Y' #as per encounter
+    else:
+        wet_dict['magic'] = 'Y'  #portal to another realm/world/dungeon23
+        m = roll_dice(1,20)
+        if m <= 18:
+            wet_dict['monster'] = 'Y'
 
 def wet_magic():
     pass
