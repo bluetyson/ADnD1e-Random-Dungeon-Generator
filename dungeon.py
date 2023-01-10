@@ -373,6 +373,7 @@ def check_action(pc_dict, coord):
             #rectangular
             #H x W
             #position based on size
+            pass
         else:
             pass
             #fancy shape/size
