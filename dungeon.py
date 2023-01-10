@@ -526,6 +526,7 @@ for key in dungeon:
     print(key)
     if 'fill' in dungeon[key]:
         chararray[[key][0],key[1],key[2]] = dungeon[key]['fill']
+chararray[0,0,0] = 'S'        
 
 print("SHAPE",chararray.shape)
 print("ARRAY",chararray)
