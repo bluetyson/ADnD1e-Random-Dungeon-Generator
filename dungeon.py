@@ -86,7 +86,7 @@ def check_action(pc_dict, coord):
     ## need a current 'orientation' 'L R A B
     if pc_dict['direction'] == 'ahead':
         will_fit = True
-        
+        new_coord = coord
         for y in range(6):
             will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
             if will_fit:
