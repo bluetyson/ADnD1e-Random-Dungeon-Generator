@@ -385,6 +385,9 @@ def check_action(pc_dict, coord):
             shape_dict = fancy_shape()
         '''
         #want those we randomly position lr
+        new_coord = coord
+        shape_dict = room(coord) #if another room pass not C="R"        
+        
         if shape_dict['size'] % 2 == 0:
             lr = roll_dict(1,2)
             if lr == 1:
@@ -392,8 +395,7 @@ def check_action(pc_dict, coord):
             else:
                 pass
 
-        new_coord = coord
-        shape_dict = room(coord) #if another room pass not C="R"
+        
         print("ROOM SHAPE:",shape_dict)
         ## do simple version first of x directions and y directions of rectangular
         if shape_dict['shape'] == 'R':
