@@ -534,7 +534,7 @@ chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U1')
 print("SHAPE",chararray.shape)
 #print("ARRAY",chararray)
 
-chararray[0,0,0] = 'S'
+#chararray[0,0,0] = 'S'
 for key in dungeon:
     #print("KEY:",key,"KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
     #print("KEY:",key,"KEYWIDTH:",key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2])
@@ -544,7 +544,7 @@ for key in dungeon:
         #chararray[[key][0],key[1],key[2]] = dungeon[key]['fill']
         #chararray[key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2]] = dungeon[key]['fill']
         chararray[key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1] = dungeon[key]['fill']
-chararray[0,0,0] = 'S'        
+chararray[0+xmin*-1,0+ymin*-1,+zmin*-1] = 'S'        
 
 
 #make dungeon html
