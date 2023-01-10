@@ -406,10 +406,12 @@ def check_action(pc_dict, coord):
             #if shape_dict['size'][1] == 2:
             for j in range(shape_dict['size'][1]):
                 for i in range(shape_dict['size'][0]):
-                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
-                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
-
-
+                    will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
+                    if not will_fit:                
+                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
+                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
+                    else:
+                        break
             
         else:
             pass
