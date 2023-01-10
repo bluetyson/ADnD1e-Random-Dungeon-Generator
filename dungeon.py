@@ -263,6 +263,8 @@ def check_action(pc_dict, coord):
                 if not will_fit:
                     dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
                     dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                    if which_way == 1:
+                        new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
                 else:
                     break
 
@@ -271,6 +273,8 @@ def check_action(pc_dict, coord):
                 if not will_fit:
                     dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
                     dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                    if which_way == 2:
+                        new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
                 else:
                     break
 
@@ -279,6 +283,8 @@ def check_action(pc_dict, coord):
                 if not will_fit:
                     dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
                     dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                    if which_way == 3:
+                        new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
                 else:
                     break
 
@@ -287,19 +293,10 @@ def check_action(pc_dict, coord):
                 if not will_fit:                
                     dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
                     dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                    if which_way == 4:
+                        new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
                 else:
                     break
-
-            
-            if which_way == 1:
-                new_coord = (coord[0]-3,coord[1]+3,coord[2])
-            elif which_way == 2:
-                new_coord = (coord[0]+3,coord[1]+3,coord[2])
-            elif which_way == 3:                
-                new_coord = (coord[0]-3,coord[1]-3,coord[2])
-            else: #AHEAD
-                new_coord = (coord[0]+3,coord[1]-3,coord[2])
-        
 
     elif pc_dict['direction'] == 'turn':
         new_coord = coord
