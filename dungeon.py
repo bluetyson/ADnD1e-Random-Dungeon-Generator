@@ -632,7 +632,7 @@ def wet_magic():
         if l <= 7:
             #back to surface
             new_coord = (0,0,0)
-        elif l >= 8 and if l <= 12:
+        elif l >= 8 and l <= 12:
             #elsewhere on leve
             #randomise from current available coords
             loclist = list(dungeon.keys())
