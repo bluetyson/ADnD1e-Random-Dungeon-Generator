@@ -581,6 +581,9 @@ with open('dungeon.html','w') as f:
                 strdata = '<td class="black_background">' + chararray[i,j,0] + '</td>'
             elif chararray[i,j,0] == 'C':
                 strdata = '<td>' + chararray[i,j,0] + '</td>'
+            elif chararray[i,j,0] == 'R':
+                strdata = '<td class="blue_background">' + chararray[i,j,0] + '</td>'
+
             else:
                 strdata = '<td class="red_background">' + chararray[i,j,0] + '</td>'
 
