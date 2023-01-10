@@ -572,7 +572,7 @@ def room(coord, size="C"):
     if r >= 18:
             shape_dict = fancy_shape()
 
-    return room_size
+    return shape_dict
 
 #not implemented yet
 def width():
