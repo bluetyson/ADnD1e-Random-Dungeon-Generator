@@ -211,7 +211,7 @@ def check_action(pc_dict, coord):
                     dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
                     dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
                     if which_way == 1:
-                        new_coord = (coord[0]-3,coord[1]+3,coord[2])
+                        new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
                 else:
                     break
 
@@ -220,14 +220,10 @@ def check_action(pc_dict, coord):
                 if not will_fit:                
                     dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
                     dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
-                    new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
+                    if which_way == 2:
+                        new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
                 else:
                     break
-
-            
-            
-            else:
-                new_coord = (coord[0]-3,coord[1]+3,coord[2])
 
         elif s_dict['direction'] == 'P': #plus
             for x in range(3):
