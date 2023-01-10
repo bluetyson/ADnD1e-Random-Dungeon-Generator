@@ -1,2 +1,2 @@
-def test():
+def testmonster():
     print("No monsters yet!")

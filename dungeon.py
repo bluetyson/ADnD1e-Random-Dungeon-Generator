@@ -971,8 +971,10 @@ def stinky():
 #not checking any level stacks to go up down, similarly
 #not implemented passage width as yet - default only
 
-from monsters import test
-test()
+from monsters import testmonster
+testmonster()
+from treasure import testtreasure
+testmonster()
 
 PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't count first one down
 #make this a script argument
