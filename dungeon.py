@@ -90,7 +90,7 @@ def check_action(pc_dict, coord):
     if pc_dict['direction'] == 'ahead':
         will_fit = True
         new_coord = coord
-        for y in range(6):
+        for y in range(pc_dict['check']):
 
             will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
             #print("Y",y, "WILLFIT:",will_fit)
@@ -387,7 +387,8 @@ def check_action(pc_dict, coord):
         #want those we randomly position lr
         new_coord = coord
         shape_dict = room(coord) #if another room pass not C="R"        
-        
+        #each room part check for inside
+
         if shape_dict['size'] % 2 == 0:
             lr = roll_dict(1,2)
             if lr == 1:
