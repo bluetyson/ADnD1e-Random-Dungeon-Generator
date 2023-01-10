@@ -525,7 +525,7 @@ print("ARRAY",chararray)
 
 chararray[0,0,0] = 'S'
 for key in dungeon:
-    print"KEY":,key)
+    print("KEY":,key)
     print("KEYWIDTH",key[0]+xwidth,key[1]+ywidth,key[2]+zwidth)
     if 'fill' in dungeon[key]:
         #chararray[[key][0],key[1],key[2]] = dungeon[key]['fill']
