@@ -80,7 +80,8 @@ def random_check():
 
     print("RANDOM_CHECK",pc, pc_dict['direction'])
 
-    pc_dict['direction'] = 'ahead'
+    #test purposes
+    #pc_dict['direction'] = 'ahead'
 
     return pc_dict
 
