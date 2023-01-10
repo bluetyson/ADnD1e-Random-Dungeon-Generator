@@ -521,7 +521,7 @@ print("EXIT_STACK:", exit_stack)
 
 chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U1')
 print("SHAPE",chararray.shape)
-print("ARRAY",chararray)
+#print("ARRAY",chararray)
 
 chararray[0,0,0] = 'S'
 for key in dungeon:
