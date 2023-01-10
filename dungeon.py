@@ -530,6 +530,22 @@ for key in dungeon:
 print(chararray.shape)
 print(chararray)
 
+#make dungeon html
+strhead = '''<html>
+<head></head>
+<title>DUNGEON</title>
+<body>
+<table>
+'''
+
+strend = '''</table>
+</body>
+</html>
+'''
+
+with open('dungeon.html','w') as f:
+    f.write(strhead)
+    f.write(strend)
 
 
 
