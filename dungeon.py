@@ -375,36 +375,40 @@ def turn(coord):
 def room(coord, size="C"):
     r = roll_dice(1,20)
     room_size = [0,0]
+    shape_dict['shape'] = 'R'
+    shape_dict['size'] = [0,0]
+    
     if r <= 2:
         if size=="C":
-            room_size = [2,2]
+            shape_dict['size'] = [2,2]
         else:
-            room_size = [1,1]
+            shape_dict['size'] = [1,1]
     if r >= 3 and r<=4:
-        room_size = [2,2]
+        shape_dict['size'] = [2,2]
     if r >= 5 and r<=6:
-        room_size = [3,3]
+        shape_dict['size'] = [3,3]
     if r >= 7 and r<=8:
-        room_size = [4,4]
+        shape_dict['size'] = [4,4]
     if r >= 9 and r <=10:
         if size=="C":
-            room_size = [2,3]
+            shape_dict['size'] = [2,3]
         else:
-            room_size = [1,2]
+            shape_dict['size'] = [1,2]
     if r >= 11 and r<=13:
-        room_size = [2,3]
+        shape_dict['size'] = [2,3]
     if r >= 14 and r <=15:
         if size=="C":
-            room_size = [3,5]
+            shape_dict['size'] = [3,5]
         else:
-            room_size = [2,4]
+            shape_dict['size'] = [2,4]
     if r >= 16 and r <=17:
         if size=="C":
-            room_size = [4,6]
+            shape_dict['size'] = [4,6]
         else:
-            room_size = [3,4]
+            shape_dict['size'] = [3,4]
     if r >= 18:
-            room_size = [-1,-1]
+            shape_dict = fancy_shape()
+
     return room_size
 
 #not implemented yet
