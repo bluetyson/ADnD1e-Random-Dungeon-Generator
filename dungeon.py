@@ -496,26 +496,51 @@ def exit(coord):
     print("EXIT CHECK",d)
     if d <= 6:
         e_dict['direction'] = 'L'
-        e_dict['coord'] = (coord[0]-1,coord[1],coord[2])
+        will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+        if not will_fit:
+            e_dict['coord'] = (coord[0]-1,coord[1],coord[2])
+        else:
+            e_dict['coord'] = (coord[0]-1,coord[1],coord[2])
+            e_dict['type'] = 'S'
 
     elif d>=7 and d <= 12:
         e_dict['direction'] = 'R'
-        e_dict['coord'] = (coord[0]+1,coord[1],coord[2])
+        will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+        if not will_fit:
+            e_dict['coord'] = (coord[0]+1,coord[1],coord[2])
+        else:
+            e_dict['coord'] = (coord[0]+1,coord[1],coord[2])
+            e_dict['type'] = 'S'
     else:
         e_dict['direction'] = 'A'
-        e_dict['coord'] = (coord[0],coord[1]+1,coord[2])
+        will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+        if not will_fit:        
+            e_dict['coord'] = (coord[0],coord[1]+1,coord[2])
+        else:
+            e_dict['coord'] = (coord[0],coord[1]+1,coord[2])
+            e_dict['type'] = 'S'
 
     b = roll_dice(1,20)
     if b <= 4:
         e_dict['beyond'] = 'P'
+        if e_dict['type'] = 'N':  #could possibly fit
+            pass
     elif d>=5 and d <= 8:
         e_dict['beyond'] = 'A'
+        if e_dict['type'] = 'N':  #could possibly fit
+            pass
     elif d==9:
         e_dict['beyond'] = '4AB'
+        if e_dict['type'] = 'N':  #could possibly fit
+            pass
     elif d==10:
         e_dict['beyond'] = '4BA'
+        if e_dict['type'] = 'N':  #could possibly fit
+            pass
     else:
         e_dict['beyond'] = 'Room'
+        if e_dict['type'] = 'N':  #could possibly fit
+            pass
 
     exit_stack[coord] = e_dict
 
