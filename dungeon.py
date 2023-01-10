@@ -520,17 +520,18 @@ print("DUNGEON:", dungeon)
 print("EXIT_STACK:", exit_stack)
 
 chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U1')
+print("SHAPE",chararray.shape)
+print("ARRAY",chararray)
 
 chararray[0,0,0] = 'S'
 for key in dungeon:
     print(key)
+    print(key[0]+xwidth,key[1]+ywidth,key[2]+zwidth)
     if 'fill' in dungeon[key]:
         #chararray[[key][0],key[1],key[2]] = dungeon[key]['fill']
         chararray[key[0]+xwidth,key[1]+ywidth,key[2]+zwidth] = dungeon[key]['fill']
 chararray[0,0,0] = 'S'        
 
-print("SHAPE",chararray.shape)
-print("ARRAY",chararray)
 
 #make dungeon html
 strhead = '''
