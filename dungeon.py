@@ -123,6 +123,8 @@ def check_action(pc_dict, coord):
                     dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
                     dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
                     new_coord = (coord[0]-1-x,coord[1],coord[2])
+                else:
+                    break
 
         elif s_dict['direction'] == 'R90':
             for x in range(3):
@@ -131,6 +133,8 @@ def check_action(pc_dict, coord):
                     dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
                     dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
                     new_coord = (coord[0]+1+x,coord[1],coord[2])
+                else:
+                    break
 
         elif s_dict['direction'] == 'L45':
             for x in range(3):
@@ -138,7 +142,9 @@ def check_action(pc_dict, coord):
                 if not will_fit:
                     dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
                     dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
-            new_coord = (coord[0]-3,coord[1]+3,coord[2])
+                    new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
+                else:
+                    break
 
         elif s_dict['direction'] == 'R45':
             for x in range(3):
@@ -146,7 +152,9 @@ def check_action(pc_dict, coord):
                 if not will_fit:
                     dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
                     dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
-            new_coord = (coord[0]+3,coord[1]+3,coord[2])
+                    new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
+                else:
+                    break
 
         elif s_dict['direction'] == 'L135':
             for x in range(3):
@@ -154,7 +162,9 @@ def check_action(pc_dict, coord):
                 if not will_fit:
                     dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
                     dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
-            new_coord = (coord[0]-3,coord[1]-3,coord[2])
+                    new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
+                else:
+                    break
 
         elif s_dict['direction'] == 'R135':
             for x in range(3):
@@ -162,7 +172,9 @@ def check_action(pc_dict, coord):
                 if not will_fit:
                     dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
                     dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
-            new_coord = (coord[0]+3,coord[1]-3,coord[2])
+                    new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
+                else:
+                    break
 
         elif s_dict['direction'] == 'T':
             for x in range(3):
@@ -170,15 +182,20 @@ def check_action(pc_dict, coord):
                 if not will_fit:
                     dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
                     dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
+                else:
+                    break
+
             for x in range(3):
                 will_fit = in_dungeon((coord[0]+1+x,coord[1],coord[2]))
                 if not will_fit:                
                     dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
                     dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
+                else:
+                    break
 
             which_way = roll_dice(1,2)
             if which_way == 1:
-                new_coord = (coord[0]-3,coord[1],coord[2])
+                new_coord = (coord[0]-3,coord[1],coord[2])  ### got to move these up
             else:
                 new_coord = (coord[0]+3,coord[1],coord[2])
 
@@ -188,13 +205,19 @@ def check_action(pc_dict, coord):
                 if not will_fit:                
                     dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
                     dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                else:
+                    break
+
             for x in range(3):
                 will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
                 if not will_fit:                
                     dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
                     dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
-                new_coord = (coord[0]-3,coord[1]+3,coord[2])
-            which_way = roll_dice(1,2)
+                    new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
+                else:
+                    break
+
+            which_way = roll_dice(1,2)  #got to move this up
             if which_way == 1:
                 new_coord = (coord[0]-3,coord[1]+3,coord[2])
             else:
@@ -206,16 +229,23 @@ def check_action(pc_dict, coord):
                 if not will_fit:
                     dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
                     dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
+                else:
+                    break
             for x in range(3):
                 will_fit = in_dungeon((coord[0]+1+x,coord[1],coord[2]))
                 if not will_fit:
                     dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
                     dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
+                else:
+                    break
             for x in range(3):
                 will_fit = in_dungeon((coord[0],coord[1]+1+x,coord[2]))
                 if not will_fit:
                     dungeon[(coord[0],coord[1]+1+x,coord[2])] = {}
                     dungeon[(coord[0],coord[1]+1+x,coord[2])]['fill'] = 'C'
+                else:
+                    break
+
             which_way = roll_dice(1,3)
             if which_way == 1:
                 new_coord = (coord[0]-3,coord[1],coord[2])
@@ -231,23 +261,34 @@ def check_action(pc_dict, coord):
                 if not will_fit:
                     dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
                     dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                else:
+                    break
+
             for x in range(3):
                 will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
                 if not will_fit:
                     dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
                     dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                else:
+                    break
+
             for x in range(3):
                 will_fit = in_dungeon((coord[0]-1-x,coord[1]-1-x,coord[2]))
                 if not will_fit:
                     dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
                     dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                else:
+                    break
+
             for x in range(3):
                 will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
                 if not will_fit:                
                     dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
                     dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                else:
+                    break
 
-            which_way = roll_dice(1,4)
+            which_way = roll_dice(1,4) ##got to move this up
             if which_way == 1:
                 new_coord = (coord[0]-3,coord[1]+3,coord[2])
             elif which_way == 2:
