@@ -521,6 +521,8 @@ xwidth = xmax - xmin
 ywidth = ymax - ymin
 zwidth = zmax - zmin
 
+zwidth = max(1, zwidth)
+
 print("COORD:", coord, result_coord, coord_lim)
 
 print("DUNGEON:", dungeon)
