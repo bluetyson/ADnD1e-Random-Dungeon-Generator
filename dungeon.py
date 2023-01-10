@@ -527,8 +527,8 @@ for key in dungeon:
     if 'fill' in dungeon[key]:
         chararray[[key][0],key[1],key[2]] = dungeon[key]['fill']
 
-print(chararray.shape)
-print(chararray)
+print("SHAPE",chararray.shape)
+print("ARRAY",chararray)
 
 #make dungeon html
 strhead = '''
