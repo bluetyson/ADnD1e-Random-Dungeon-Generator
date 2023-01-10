@@ -84,10 +84,17 @@ def random_check():
 
 def check_action(pc_dict, coord):
     if pc_dict['direction'] == 'ahead':
-        new_coord = (coord[0],coord[1]+6,coord[2])
+        will_fit = True
+        
         for y in range(6):
-            dungeon[(coord[0],coord[1]+1+y,coord[2])] = {}
-            dungeon[(coord[0],coord[1]+1+y,coord[2])]['fill'] = 'C'
+            will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
+            if will_fit:
+                dungeon[(coord[0],coord[1]+1+y,coord[2])] = {}
+                dungeon[(coord[0],coord[1]+1+y,coord[2])]['fill'] = 'C'
+                #handle not fitting
+                new_coord = (coord[0],coord[1]+1+y,coord[2])
+            else:
+                break
     elif pc_dict['direction'] == 'exit':
         new_coord = coord
         e_dict = exit(coord)
