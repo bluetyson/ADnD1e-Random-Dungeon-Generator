@@ -448,7 +448,25 @@ def fancy_width():
     return pw
 
 def fancy_shape():
-    pass
+    s = roll_dice(1,20)
+    shape_dict = {}    
+    if s <= 5:
+        shape_dict['shape'] = 'C'
+    if s >= 6 and s <=8:
+        shape_dict['shape'] = 'T'
+    if s >= 9 and s <=11:
+        shape_dict['shape'] = 'Z'
+    if s >= 12 and s <=13:
+        shape_dict['shape'] = 'S'
+    if s >= 14 and s <=15:
+        shape_dict['shape'] = 'V'
+    if s >= 16 and s <=17:
+        shape_dict['shape'] = 'H'
+    if s >= 18 and s <=19:
+        shape_dict['shape'] = 'O'
+    if s >= 18 and s <=19:
+        shape_dict['shape'] = 'CV'
+
 def fancy_size():
     pass
 
