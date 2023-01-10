@@ -673,11 +673,30 @@ def check_action(pc_dict, coord):
                 dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
                 dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'st'
                 new_coord = (coord[0],coord[1]+1,coord[2]-1)  ##1 in 20 closes
-
         if s == 6:
-            new_coord = (coord[0],coord[1],coord[2]-2)  ##2 in 20 closes
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
+            if not will_fit:                            
+                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
+                new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+            if not will_fit:                            
+                dungeon[(coord[0],coord[1]+1,coord[2])-2] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])-2]['fill'] = 'st'
+                new_coord = (coord[0],coord[1]+1,coord[2]-2)  ##1 in 20 closes
         if s == 7:
             new_coord = (coord[0],coord[1],coord[2]-3)  ##3 in 20 closes
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
+            if not will_fit:                            
+                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
+                new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+            if not will_fit:                            
+                dungeon[(coord[0],coord[1]+1,coord[2])-3] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])-3]['fill'] = 'st'
+                new_coord = (coord[0],coord[1]+1,coord[3]-2)  ##1 in 20 closes
+
         if s == 8:
             new_coord = (coord[0],coord[1],coord[2]+1)
         if s == 9:
