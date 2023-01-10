@@ -392,7 +392,7 @@ def check_action(pc_dict, coord):
         print("ROOM SHAPE:",shape_dict)
         ## do simple version first of x directions and y directions of rectangular
         if shape_dict['shape'] == 'R':
-            #rectangular
+            print("rectangular")
             #H x W
             #position based on size
             adjust = 0
@@ -403,10 +403,10 @@ def check_action(pc_dict, coord):
                 else:
                     adjust = 1
 
-                #if shape_dict['size'][1] == 2:
-                for j in range(shape_dict['size'][1]):
-                    for i in range(shape_dict['size'][0]):
-                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = 'R'
+            #if shape_dict['size'][1] == 2:
+            for j in range(shape_dict['size'][1]):
+                for i in range(shape_dict['size'][0]):
+                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = 'R'
 
 
             
