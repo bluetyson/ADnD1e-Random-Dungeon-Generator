@@ -531,7 +531,8 @@ print(chararray.shape)
 print(chararray)
 
 #make dungeon html
-strhead = '''<html>
+strhead = '''
+<html>
 <head>
 <title>DUNGEON</title>
 </head>
@@ -539,7 +540,8 @@ strhead = '''<html>
 <table border="0">
 '''
 
-strend = '''</table>
+strend = '''
+</table>
 </body>
 </html>
 '''
