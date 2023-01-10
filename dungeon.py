@@ -367,7 +367,16 @@ def check_action(pc_dict, coord):
         
     elif pc_dict['direction'] == 'room':
         new_coord = coord
-        pass
+        shape_dict = room(coord) #if another room pass not C="R"
+        ## do simple version first of x directions and y directions of rectangular
+        if shape_dict['shape'] == 'R':
+            #rectangular
+            #H x W
+            #position based on size
+        else:
+            pass
+            #fancy shape/size
+
     elif pc_dict['direction'] == 'level':
         new_coord = coord
         pass
