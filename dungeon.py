@@ -500,7 +500,7 @@ def fancy_shape():
                 rollflag = False
 
     return shape_dict
-    
+
 def fancy_size():
     pass
 
@@ -536,7 +536,27 @@ def fancy_cave():
     pass
 
 def wet_small():
-    pass
+    w = roll_dice(1,20)
+    wet_dict = {}
+    wet_dict['pool'] = 'N'
+    wet_dict['monster'] = 'N'
+    wet_dict['treasure'] = 'N'
+    wet_dict['magic'] = 'N'
+
+    if w <= 8:
+        pass
+    elif w >= 9 and w <=10:
+        wet_dict['pool'] = 'Y'
+    elif w >= 11 and w <=12:
+        wet_dict['pool'] = 'Y'
+        wet_dict['monster'] = 'Y'
+    elif w >= 13 and w <=18:
+        wet_dict['pool'] = 'Y'
+        wet_dict['monster'] = 'Y'
+        wet_dict['treasure'] = 'Y'
+    elif w >= 19:
+        wet_dict['magic'] = 'Y'
+
 
 def wet_large():
     pass
