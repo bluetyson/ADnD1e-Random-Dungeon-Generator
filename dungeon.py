@@ -296,6 +296,11 @@ def check_action(pc_dict, coord):
             dungeon[new_coord[0]+1,new_coord[1],new_coord[2]]['fill'] = 'D'
             #need to retrace to last on exit stack?
 
+            for key in exit_stack:
+                pass
+
+            new_coord = key
+            
             return new_coord
         
 
