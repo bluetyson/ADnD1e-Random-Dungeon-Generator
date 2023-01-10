@@ -618,11 +618,11 @@ def wet_magic():
         a = roll_dice(1,20)
         if a <= 6:
             wet_magic_dict['alignment'] = 'LG'
-        elif a >= 7 and a <= 9
+        elif a >= 7 and a <= 9:
             wet_magic_dict['alignment'] = 'LE'
-        elif a >= 10: and a <= 12
+        elif a >= 10 and a <= 12:
             wet_magic_dict['alignment'] = 'CG'
-        elif a >= 13: and a <= 17
+        elif a >= 13 and a <= 17:
             wet_magic_dict['alignment'] = 'CE'
         else:
             wet_magic_dict['alignment'] = 'N'
