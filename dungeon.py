@@ -405,7 +405,7 @@ def check_action(pc_dict, coord):
 
                 #if shape_dict['size'][1] == 2:
                 for j in range(shape_dict['size'][1]):
-                    for in i range(shape_dict['size'][0]):
+                    for i in range(shape_dict['size'][0]):
                         dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = 'R'
 
 
