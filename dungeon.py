@@ -1322,7 +1322,15 @@ for 60 turns.
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 14:
-            pass
+            t_dict['trap']['pit'] = 1
+            t_dict['trap']['chance'] = 3.0/6.0
+            t_dict['trap']['effect'] = 'crush death'
+            t_dict['trap']['damage'] = roll_dice(2,6)
+            t_dict['trap']['duration'] = roll_dice(1,4) + 1
+            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pic'
+            new_coord = (coord[0],coord[1]+1,coord[2])
+            t_dict['new_coord'] = new_coord            
+
         if t == 15:
             #16 Spear trap, 1-3 spears, 1 in 20 is poisoned.
             t_dict['trap']['arrow'] = 1
@@ -1390,6 +1398,7 @@ for 60 turns.
             new_coord = (coord[0],coord[1]+1,coord[2]-1)
             t_dict['trap']['chute'] = 1
             t_dict['trap']['effect'] = 'one way'
+            t_dict['trap']['duration'] = 'permanent'
             t_dict['new_coord'] = new_coord
 
         t_dict['trap']['fits'] = 'Y'
