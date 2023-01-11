@@ -661,109 +661,6 @@ def check_action(pc_dict, coord):
 
     elif pc_dict['direction'] == 'level':
         new_coord = coord
-        s = roll_dice(1,20)
-        if s <= 5:
-            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
-            if not will_fit:                            
-                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
-                new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
-            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
-            if not will_fit:                            
-                dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'st'
-                new_coord = (coord[0],coord[1]+1,coord[2]-1)  ##1 in 20 closes
-        if s == 6:
-            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
-            if not will_fit:                            
-                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
-                new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
-            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
-            if not will_fit:                            
-                dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'st'
-
-                dungeon[(coord[0],coord[1]+1,coord[2])-2] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])-2]['fill'] = 'st'
-                new_coord = (coord[0],coord[1]+1,coord[2]-2)  ##1 in 20 closes
-        if s == 7:
-            new_coord = (coord[0],coord[1],coord[2]-3)  ##3 in 20 closes
-            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
-            if not will_fit:                            
-                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
-                new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
-            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
-            if not will_fit:                            
-                dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'st'
-
-                dungeon[(coord[0],coord[1]+1,coord[2])-2] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])-2]['fill'] = 'st'
-
-                dungeon[(coord[0],coord[1]+1,coord[2])-3] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])-3]['fill'] = 'st'
-                new_coord = (coord[0],coord[1]+1,coord[3]-2)  ##1 in 20 closes
-        if s == 8:
-            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
-            if not will_fit:                            
-                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
-                new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
-            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]+1))  #down 1#facing
-            if not will_fit:                            
-                dungeon[(coord[0],coord[1]+1,coord[2])+1] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])+1]['fill'] = 'st'
-                new_coord = (coord[0],coord[1]+1,coord[2]+1)  ##1 in 20 closes
-        if s == 9:
-            #UD 
-            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
-            if not will_fit:                            
-                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
-                #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes            
-            d = roll_dice(1,6)
-            if d == 1:
-                #chute down
-                will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
-                if not will_fit:                            
-                    dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
-                    dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'ch'
-
-                    dungeon[(coord[0],coord[1]+1,coord[2])-2] = {}
-                    dungeon[(coord[0],coord[1]+1,coord[2])-2]['fill'] = 'ch'
-                    new_coord = (coord[0],coord[1]+1,coord[2]-2)
-        if s == 10:
-            #DD
-            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
-            if not will_fit:                            
-                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
-                #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes            
-            d = roll_dice(1,6)
-            if d == 1:
-                #chute down
-                will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
-                if not will_fit:                            
-                    dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
-                    dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'ch'
-                    new_coord = (coord[0],coord[1]+1,coord[2]-1)
-        if s == 11:
-            new_coord = (coord[0],coord[1],coord[2]+1)
-            #Chimney up 1 level, passage continues, check again in 30’
-        if s == 13:
-            #Chimney down 2 levels, passage continues, check again in 30’
-            new_coord = (coord[0],coord[1],coord[2]-2)
-        if s >= 14 and s <=16:
-            #Trap door down 1 level, passage continues, check again in 30’
-            new_coord = (coord[0],coord[1],coord[2]-1)
-        if s == 17:
-            #Trap door down 2 levels, passage continues, check again in 30’
-            new_coord = (coord[0],coord[1],coord[2]-1)
-        if s >= 18:            
-            #Up 1 then down 2 (total down 1), chamber at end (roll on TABLE V.)
-            new_coord = (coord[0],coord[1],coord[2]-1)  ##add chamber room roll as per 5 ##all these still need contents etc.
 
     elif pc_dict['direction'] == 'stop':
         new_coord = coord
@@ -1109,9 +1006,125 @@ def loot_guard():
 def loot_hide():
     pass
 
-def level():
-    pass
+def level(coord):
+    level_dict = {}
+    s = roll_dice(1,20)
+    new_coord = coord
+    level_dict['type'] = 'stair'
+    if s <= 5:
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
+        if not will_fit:                            
+            dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
+            new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+        if not will_fit:                            
+            dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'st'
+            new_coord = (coord[0],coord[1]+1,coord[2]-1)  ##1 in 20 closes
+    if s == 6:
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
+        if not will_fit:                            
+            dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
+            new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+        if not will_fit:                            
+            dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'st'
 
+            dungeon[(coord[0],coord[1]+1,coord[2])-2] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])-2]['fill'] = 'st'
+            new_coord = (coord[0],coord[1]+1,coord[2]-2)  ##1 in 20 closes
+    if s == 7:
+        new_coord = (coord[0],coord[1],coord[2]-3)  ##3 in 20 closes
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
+        if not will_fit:                            
+            dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
+            new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+        if not will_fit:                            
+            dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'st'
+
+            dungeon[(coord[0],coord[1]+1,coord[2])-2] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])-2]['fill'] = 'st'
+
+            dungeon[(coord[0],coord[1]+1,coord[2])-3] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])-3]['fill'] = 'st'
+            new_coord = (coord[0],coord[1]+1,coord[3]-2)  ##1 in 20 closes
+    if s == 8:
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
+        if not will_fit:                            
+            dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
+            new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]+1))  #down 1#facing
+        if not will_fit:                            
+            dungeon[(coord[0],coord[1]+1,coord[2])+1] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])+1]['fill'] = 'st'
+            new_coord = (coord[0],coord[1]+1,coord[2]+1)  ##1 in 20 closes
+    if s == 9:
+        #UD 
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
+        if not will_fit:                            
+            dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
+            #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes     
+            level_dict['type'] = 'UD'       
+        d = roll_dice(1,6)
+        if d == 1:
+            #chute down
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+            if not will_fit:                            
+                dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'ch'
+
+                dungeon[(coord[0],coord[1]+1,coord[2])-2] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])-2]['fill'] = 'ch'
+                new_coord = (coord[0],coord[1]+1,coord[2]-2)
+                level_dict['type'] = 'UD-chute'       
+    if s == 10:
+        #DD
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
+        if not will_fit:                            
+            dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
+            #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes            
+            level_dict['type'] = 'DD'       
+        d = roll_dice(1,6)
+        if d == 1:
+            #chute down
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+            if not will_fit:                            
+                dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'ch'
+                new_coord = (coord[0],coord[1]+1,coord[2]-1)
+                level_dict['type'] = 'DD-chute'       
+    if s == 11:
+        new_coord = (coord[0],coord[1],coord[2]+1)
+        level_dict['check'] = 3
+        #Chimney up 1 level, passage continues, check again in 30’
+    if s == 12:
+        new_coord = (coord[0],coord[1],coord[2]+1)
+        level_dict['check'] = 3
+        #Chimney up 1 level, passage continues, check again in 30’
+    if s == 13:
+        #Chimney down 2 levels, passage continues, check again in 30’
+        new_coord = (coord[0],coord[1],coord[2]-2)
+    if s >= 14 and s <=16:
+        #Trap door down 1 level, passage continues, check again in 30’
+        new_coord = (coord[0],coord[1],coord[2]-1)
+    if s == 17:
+        #Trap door down 2 levels, passage continues, check again in 30’
+        new_coord = (coord[0],coord[1],coord[2]-1)
+    if s >= 18:            
+        #Up 1 then down 2 (total down 1), chamber at end (roll on TABLE V.)
+        new_coord = (coord[0],coord[1],coord[2]-1)  ##add chamber room roll as per 5 ##all these still need contents etc.
+
+    level_dict['new_coord'] = new_coord
+    return level_dict
 def bad_things():
     pass
 
