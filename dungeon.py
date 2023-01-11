@@ -711,7 +711,7 @@ def check_action(pc_dict, coord):
                 dungeon[(coord[0],coord[1]+1,coord[2])] = {}
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
                 new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
-            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]+1))  #down 1#facing
             if not will_fit:                            
                 dungeon[(coord[0],coord[1]+1,coord[2])+1] = {}
                 dungeon[(coord[0],coord[1]+1,coord[2])+1]['fill'] = 'st'
