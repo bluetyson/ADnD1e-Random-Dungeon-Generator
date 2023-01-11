@@ -1254,20 +1254,12 @@ def level(coord):
 
 def bad_things(coord):
     new_coord = coord    
-    '''
-9 20’ × 20’ elevator room (party has entered door directly ahead and is
-in room), descends 1 level and will not ascend for 30 turns.
-10 As 9. above, but room descends 2 levels.
-11 As 9. above, but room descends 2-5 levels — 1 upon entering and 1
-additional level each time an unsuccessful attempt at door opening
-is made, or until it descends as far as it can. This will not ascend
-for 60 turns.
-'''
     #all traps located ahead plus 1?
     t_dict = {}
     t_dict['new_coord'] == new_coord
     t_dict['trap'] == {}
     t_dict['secretdoor'] == 'N'
+    t_dict['trap']['type'] == 'secretdoor'
     t_dict['trap']['chance'] = 1.0
     t_dict['trap']['fits'] = 'N'
 
@@ -1287,14 +1279,14 @@ for 60 turns.
             t_dict['new_coord'] = new_coord
             ## do stuff for exits!!
         if t >= 6 and t <= 7:
-            t_dict['trap']['pit'] = 1
+            t_dict['trap']['type'] = 'pit'
             t_dict['trap']['chance'] = 3.0/6.0
             t_dict['trap']['damage'] = roll_dice(1,6)
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pi'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 8:
-            t_dict['trap']['pit'] = 1
+            t_dict['trap']['type'] = 'pit'
             t_dict['trap']['chance'] = 3.0/6.0
             t_dict['trap']['effect'] = 'spikes'
             t_dict['trap']['damage'] = roll_dice(2,6)
@@ -1305,27 +1297,27 @@ for 60 turns.
             #here we have checked if one straight ahead fits so random check if LR 2x2 branch from there
             #down 1
             # loop this for level descent -put in descent will fit checks
-            t_dict['trap']['elevator'] = 1
+            t_dict['trap']['type'] = 'elevator'
             t_dict['trap']['duration'] = 30
         if t == 10:
             #down 2
-            t_dict['trap']['elevator'] = 1
+            t_dict['trap']['type'] = 'elevator'
             t_dict['trap']['duration'] = 30
         if t == 11:
-            t_dict['trap']['elevator'] = 1
+            t_dict['trap']['type'] = 'elevator'
             t_dict['trap']['duration'] = 60
             l = roll_dice(1,4) + 1
             # loop this for level descent - 
         if t == 12:
             #12 Wall 10’ behind slides across passage blocking it for from 40-60 turns.
-            t_dict['trap']['slidingwall'] = 1
+            t_dict['trap']['type'] = 'slidingwall'
             t_dict['trap']['chance'] = roll_dice(1,20) + 40
             t_dict['trap']['effect'] = 'blocked'
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'bw'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 13:
-            t_dict['trap']['oil'] = 1
+            t_dict['trap']['type'] = 'oil'
             t_dict['trap']['chance'] = roll_dice(1,20) + 40
             t_dict['trap']['effect'] = 'random person'
             t_dict['trap']['damage'] = roll_dice(2,6)
@@ -1334,7 +1326,7 @@ for 60 turns.
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 14:
-            t_dict['trap']['pit'] = 1
+            t_dict['trap']['type'] = 'pit'
             t_dict['trap']['chance'] = 3.0/6.0
             t_dict['trap']['effect'] = 'crush death'
             t_dict['trap']['damage'] = roll_dice(2,6)
@@ -1343,7 +1335,7 @@ for 60 turns.
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 15:
-            t_dict['trap']['arrow'] = 1
+            t_dict['trap']['type'] = 'arrow'
             t_dict['trap']['chance'] = 0.05
             t_dict['trap']['damage'] = roll_dice(1,3)  * roll_dice(1,6)
             t_dict['trap']['save'] = 'poison'
@@ -1351,7 +1343,7 @@ for 60 turns.
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 16:
-            t_dict['trap']['spear'] = 1
+            t_dict['trap']['type'] = 'spear'
             t_dict['trap']['chance'] = 0.05
             t_dict['trap']['damage'] = roll_dice(1,3)  * roll_dice(1,8)
             t_dict['trap']['save'] = 'poison'
@@ -1359,7 +1351,7 @@ for 60 turns.
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 17:
-            t_dict['trap']['gas'] = 1
+            t_dict['trap']['type'] = 'gas'
             t_dict['trap']['details'] = stinky()
             for key in t_dict['details']:
                 t_dict[key] = t_dict['details'][key]
@@ -1369,7 +1361,7 @@ for 60 turns.
         if t == 18:
             what_fall = roll_dice(1,2)
             if what_fall == 1:
-                t_dict['trap']['doorfalls'] = 1
+                t_dict['trap']['type'] = 'doorfalls'
                 t_dict['trap']['chance'] = 0.05
                 t_dict['trap']['damage'] = roll_dice(1,10)
                 t_dict['trap']['save'] = 'petrification'
@@ -1377,7 +1369,7 @@ for 60 turns.
                 new_coord = (coord[0],coord[1]+1,coord[2])
                 t_dict['new_coord'] = new_coord                            
             else:
-                t_dict['trap']['stonefalls'] = 1
+                t_dict['trap']['type'] = 'stonefalls'
                 t_dict['trap']['chance'] = 0.05
                 t_dict['trap']['damage'] = roll_dice(2,10)
                 t_dict['trap']['save'] = 'petrification'
@@ -1385,17 +1377,17 @@ for 60 turns.
                 new_coord = (coord[0],coord[1]+1,coord[2])
                 t_dict['new_coord'] = new_coord                            
         if t == 19:
-            t_dict['trap']['illusionarywall'] = 1
+            t_dict['trap']['type'] = 'illusionarywall'
             w = roll_dice(1,20)
             if w <= 6:
-                t_dict['trap']['pit'] = 1
+                t_dict['trap']['type'] = t_dict['trap']['type'] + 'pit'
                 t_dict['trap']['chance'] = 3.0/6.0
                 t_dict['trap']['damage'] = roll_dice(1,6)
                 dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'pi'
                 new_coord = (coord[0],coord[1]+1,coord[2])
                 t_dict['new_coord'] = new_coord
             elif w>=7 and w<=10:
-                t_dict['trap']['chute'] = 1
+                t_dict['trap']['type'] = t_dict['trap']['type'] + 'chute'
                 t_dict['trap']['effect'] = 'one way'
                 dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ch'
@@ -1408,7 +1400,7 @@ for 60 turns.
             dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ch'
             new_coord = (coord[0],coord[1]+1,coord[2]-1)
-            t_dict['trap']['chute'] = 1
+             t_dict['trap']['type'] = 'chute'
             t_dict['trap']['effect'] = 'one way'
             t_dict['trap']['duration'] = 'permanent'
             t_dict['new_coord'] = new_coord
