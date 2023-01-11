@@ -226,8 +226,6 @@ def check_action(pc_dict, coord):
                         #fancy shape/size not yet implemented
 
 
-
-
         elif e_dict['direction'] == 'R':
             if e_dict['type'] == 'N':
                 exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
@@ -1013,23 +1011,27 @@ def level(coord):
     new_coord = coord
     level_dict['type'] = 'stair'
     level_dict['room'] = 'N'
+    level_dict['new_coord'] = new_coord
     if s <= 5:
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
         if not will_fit:                            
             dungeon[(coord[0],coord[1]+1,coord[2])] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
             new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
+            level_dict['new_coord'] = new_coord
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
         if not will_fit:                            
             dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'st'
             new_coord = (coord[0],coord[1]+1,coord[2]-1)  ##1 in 20 closes
+            level_dict['new_coord'] = new_coord
     if s == 6:
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
         if not will_fit:                            
             dungeon[(coord[0],coord[1]+1,coord[2])] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
             new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
+            level_dict['new_coord'] = new_coord
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
         if not will_fit:                            
             dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
@@ -1038,6 +1040,7 @@ def level(coord):
             dungeon[(coord[0],coord[1]+1,coord[2])-2] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])-2]['fill'] = 'st'
             new_coord = (coord[0],coord[1]+1,coord[2]-2)  ##1 in 20 closes
+            level_dict['new_coord'] = new_coord
     if s == 7:
         new_coord = (coord[0],coord[1],coord[2]-3)  ##3 in 20 closes
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
@@ -1045,6 +1048,7 @@ def level(coord):
             dungeon[(coord[0],coord[1]+1,coord[2])] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
             new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
+            level_dict['new_coord'] = new_coord
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
         if not will_fit:                            
             dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
@@ -1056,17 +1060,20 @@ def level(coord):
             dungeon[(coord[0],coord[1]+1,coord[2])-3] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])-3]['fill'] = 'st'
             new_coord = (coord[0],coord[1]+1,coord[3]-2)  ##1 in 20 closes
+            level_dict['new_coord'] = new_coord
     if s == 8:
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
         if not will_fit:                            
             dungeon[(coord[0],coord[1]+1,coord[2])] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'st'
             new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes
+            level_dict['new_coord'] = new_coord
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]+1))  #down 1#facing
         if not will_fit:                            
             dungeon[(coord[0],coord[1]+1,coord[2])+1] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])+1]['fill'] = 'st'
             new_coord = (coord[0],coord[1]+1,coord[2]+1)  ##1 in 20 closes
+            level_dict['new_coord'] = new_coord
     if s == 9:
         #UD 
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
@@ -1074,7 +1081,8 @@ def level(coord):
             dungeon[(coord[0],coord[1]+1,coord[2])] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
             #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes     
-            level_dict['type'] = 'UD'       
+            level_dict['type'] = 'UD'   
+            level_dict['new_coord'] = new_coord    
         d = roll_dice(1,6)
         if d == 1:
             #chute down
@@ -1087,6 +1095,7 @@ def level(coord):
                 dungeon[(coord[0],coord[1]+1,coord[2])-2]['fill'] = 'ch'
                 new_coord = (coord[0],coord[1]+1,coord[2]-2)
                 level_dict['type'] = 'UD-chute'       
+                level_dict['new_coord'] = new_coord
     if s == 10:
         #DD
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
@@ -1095,23 +1104,32 @@ def level(coord):
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
             #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes            
             level_dict['type'] = 'DD'       
+            level_dict['new_coord'] = new_coord
         d = roll_dice(1,6)
         if d == 1:
             #chute down
-            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]+1))  #down 1#facing
             if not will_fit:                            
-                dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'ch'
-                new_coord = (coord[0],coord[1]+1,coord[2]-1)
+                dungeon[(coord[0],coord[1]+1,coord[2])+1] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])+1]['fill'] = 'ch'
+                new_coord = (coord[0],coord[1]+1,coord[2]+1)
                 level_dict['type'] = 'DD-chute'       
-    if s == 11:
-        new_coord = (coord[0],coord[1],coord[2]+1)
-        level_dict['check'] = 3
+                level_dict['new_coord'] = new_coord
+    if s == 11:  ## account for all dungeon chimney levels
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]+1))  #down 1#facing
+        if not will_fit:                            
+            new_coord = (coord[0],coord[1],coord[2]+1)
+            level_dict['check'] = 3
+            level_dict['type'] = 'chimney'       
+            level_dict['new_coord'] = new_coord
         #Chimney up 1 level, passage continues, check again in 30’
     if s == 12:
-        new_coord = (coord[0],coord[1],coord[2]+1)
-        level_dict['check'] = 3
-        #Chimney up 1 level, passage continues, check again in 30’
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]+1))  #down 1#facing
+        if not will_fit:                            
+            new_coord = (coord[0],coord[1],coord[2]+2)
+            level_dict['check'] = 3
+            level_dict['type'] = 'chimney'       
+            level_dict['new_coord'] = new_coord
     if s == 13:
         #Chimney down 2 levels, passage continues, check again in 30’
         new_coord = (coord[0],coord[1],coord[2]-2)
