@@ -660,6 +660,9 @@ def check_action(pc_dict, coord):
 
     elif pc_dict['direction'] == 'level':
         new_coord = coord
+        level_dict = level(coord)
+        new_coord = level_dict['new_coord']
+        #go ahead 3 on check 3
 
     elif pc_dict['direction'] == 'stop':
         new_coord = coord
@@ -1009,6 +1012,7 @@ def level(coord):
     level_dict = {}
     s = roll_dice(1,20)
     new_coord = coord
+    level_dict['check'] = 0
     level_dict['type'] = 'stair'
     level_dict['room'] = 'N'
     level_dict['new_coord'] = new_coord
@@ -1195,8 +1199,9 @@ def level(coord):
 
             level_dict['room'] = 'Y'
 
-    level_dict['new_coord'] = new_coord
+    #level_dict['new_coord'] = new_coord
     return level_dict
+
 def bad_things():
     pass
 
