@@ -1349,6 +1349,8 @@ for 60 turns.
         if t == 17:
             t_dict['trap']['gas'] = 1
             t_dict['trap']['details'] = stinky()
+            for key in t_dict['details']:
+                t_dict[key] = t_dict['details'][key]
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'gs'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
