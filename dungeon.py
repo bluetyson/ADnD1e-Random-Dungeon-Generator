@@ -1270,6 +1270,14 @@ for 60 turns.
     t = roll_dice(1,20)
     if t <= 5:
         t_dict['secretdoor'] == 'Y'
+        s = roll_dice(1,20)
+        t_dict['trap']['chance'] = 0.15
+        t_dict['trap']['chance_elf'] = 0.25
+        t_dict['trap']['damage'] = roll_dice(1,6)
+        dungeon[(coord[0],coord[1]+1,coord[2])+1] = {}
+        dungeon[(coord[0],coord[1]+1,coord[2])+1]['fill'] = 'pi'
+        new_coord = (coord[0],coord[1]+1,coord[2])
+        t_dict['new_coord'] = new_coord
         ## do stuff for exits!!
     if t >= 6 and t <= 7:
             t_dict['trap']['pit'] = 1
