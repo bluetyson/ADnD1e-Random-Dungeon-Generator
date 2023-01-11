@@ -1171,8 +1171,29 @@ def level(coord):
             level_dict['new_coord'] = new_coord
     if s >= 18:            
         #Up 1 then down 2 (total down 1), chamber at end (roll on TABLE V.)
-        new_coord = (coord[0],coord[1],coord[2]-1)  ##add chamber room roll as per 5 ##all these still need contents etc.
-        level_dict['room'] = 'Y'
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]+1))  #down 1#facing
+        if not will_fit:                            
+            new_coord = (coord[0],coord[1]+1,coord[2]+1)
+            dungeon[coord[0],coord[1],coord[2]+1] = {}
+            dungeon[coord[0],coord[1],coord[2]+1]['fill'] = 'st'
+
+            coord = new_coord #up then down
+            
+            dungeon[coord[0],coord[1]+1,coord[2]-1] = {}
+            dungeon[coord[0],coord[1]+1,coord[2]-1]['fill'] = 'td'
+
+            coord = new_coord #up then down
+
+            dungeon[coord[0],coord[1],coord[2]-2] = {}
+            dungeon[coord[0],coord[1],coord[2]-2]['fill'] = 'td'
+
+            new_coord = (coord[0],coord[1],coord[2]-2)
+
+
+            level_dict['check'] = 3
+            level_dict['new_coord'] = new_coord
+
+            level_dict['room'] = 'Y'
 
     level_dict['new_coord'] = new_coord
     return level_dict
