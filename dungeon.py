@@ -1634,6 +1634,7 @@ print("COORD:", coord, result_coord, coord_lim)
 
 print("DUNGEON:", dungeon)
 print("EXIT_STACK:", exit_stack)
+print("LEVEL_STACK:", level_stack)
 
 chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U1')
 print("SHAPE",chararray.shape)
