@@ -717,16 +717,38 @@ def check_action(pc_dict, coord):
                 dungeon[(coord[0],coord[1]+1,coord[2])+1]['fill'] = 'st'
                 new_coord = (coord[0],coord[1]+1,coord[2]+1)  ##1 in 20 closes
         if s == 9:
-            #Up dead end (1 in 6 chance to chute down 2 levels)
+            #UD 
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
+            if not will_fit:                            
+                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
+                #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes            
             d = roll_dice(1,6)
             if d == 1:
-                #chute
-                new_coord = (coord[0],coord[1],coord[2]-2)
+                #chute down
+                will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+                if not will_fit:                            
+                    dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
+                    dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'ch'
+
+                    dungeon[(coord[0],coord[1]+1,coord[2])-2] = {}
+                    dungeon[(coord[0],coord[1]+1,coord[2])-2]['fill'] = 'ch'
+                    new_coord = (coord[0],coord[1]+1,coord[2]-2)
         if s == 10:
-            #Down dead end (1 in 6 chance to chute down 1 level)
+            #DD
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
+            if not will_fit:                            
+                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
+                #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes            
+            d = roll_dice(1,6)
             if d == 1:
-                #chute
-                new_coord = (coord[0],coord[1],coord[2]-1)
+                #chute down
+                will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+                if not will_fit:                            
+                    dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
+                    dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'ch'
+                    new_coord = (coord[0],coord[1]+1,coord[2]-1)
         if s == 11:
             new_coord = (coord[0],coord[1],coord[2]+1)
             #Chimney up 1 level, passage continues, check again in 30’
