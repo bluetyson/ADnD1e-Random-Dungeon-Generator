@@ -194,7 +194,7 @@ def check_action(pc_dict, coord):
                 if e_dict['beyond'] == 'Room':
                     #want those we randomly position lr
                     new_coord = coord
-                    shape_dict = room(coord, C='R')  ## different type to get slightly different table
+                    shape_dict = room(coord, size='R')  ## different type to get slightly different table
                     #each room part check for inside
 
                     print("ROOM SHAPE:",shape_dict)
