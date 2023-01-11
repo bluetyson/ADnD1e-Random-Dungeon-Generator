@@ -1259,29 +1259,34 @@ in room), descends 1 level and will not ascend for 30 turns.
 additional level each time an unsuccessful attempt at door opening
 is made, or until it descends as far as it can. This will not ascend
 for 60 turns.
-19 Illusionary wall concealing 8. (pit) above (1-6), 20. (chute) below (7-10)
-or chamber with monster and treasure (11-20) (see TABLE V.).
 '''
     #all traps located ahead plus 1?
     t_dict = {}
+    t_dict['new_coord'] == new_coord
     t_dict['trap'] == {}
     t_dict['secretdoor'] == 'N'
     t_dict['trap']['chance'] = 1.0
-
 
     t = roll_dice(1,20)
     if t <= 5:
         t_dict['secretdoor'] == 'Y'
         ## do stuff for exits!!
     if t >= 6 and t <= 7:
-        t_dict['trap']['pit'] = 1
-        t_dict['trap']['chance'] = 3.0/6.0
-        t_dict['trap']['damage'] = roll_dice(1,6)
+            t_dict['trap']['pit'] = 1
+            t_dict['trap']['chance'] = 3.0/6.0
+            t_dict['trap']['damage'] = roll_dice(1,6)
+            new_coord = (coord[0],coord[1]+1,coord[2])
+            t_dict['new_coord'] = new_coord            
     if t == 8:
-        t_dict['trap']['pit'] = 1
-        t_dict['trap']['chance'] = 3.0/6.0
-        t_dict['trap']['effect'] = 'spikes'
-        t_dict['trap']['damage'] = roll_dice(2,6)
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #down 1#facing
+        if not will_fit:                            
+            t_dict['trap']['pit'] = 1
+            t_dict['trap']['chance'] = 3.0/6.0
+            t_dict['trap']['effect'] = 'spikes'
+            t_dict['trap']['damage'] = roll_dice(2,6)
+            new_coord = (coord[0],coord[1]+1,coord[2])
+            t_dict['new_coord'] = new_coord            
+
     if t == 9:
         pass
     if t == 10:
@@ -1329,21 +1334,41 @@ or chamber with monster and treasure (11-20) (see TABLE V.).
             t_dict['trap']['save'] = 'petrification'
 
     if t == 19:
-        pass
+        t_dict['trap']['illusionarywall'] = 1
+        w = roll_dice(1,20)
+        if w <= 6:
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
+            if not will_fit:                            
+                t_dict['trap']['pit'] = 1
+                t_dict['trap']['chance'] = 3.0/6.0
+                t_dict['trap']['damage'] = roll_dice(1,6)
+                dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'pi'
+                new_coord = (coord[0],coord[1]+1,coord[2])
+                t_dict['new_coord'] = new_coord
+        elif w>=7 and w<=10:
+            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+            if not will_fit:                            
+                t_dict['trap']['chute'] = 1
+                t_dict['trap']['effect'] = 'one way'
+                dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'ch'
+                new_coord = (coord[0],coord[1]+1,coord[2]-1)
+                t_dict['new_coord'] = new_coord
+        else:
+            pass #put room here
 
     if t == 20:        
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
         if not will_fit:                            
             dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'ch'
-
-            new_coord = (coord[0],coord[1]+1,coord[2]-2)
-            t_dict['trap']['stonefalls'] = 1
-            t_dict['trap']['chance'] = 0.05
-            t_dict['trap']['damage'] = roll_dice(2,10)
-            t_dict['trap']['save'] = 'petrification'
+            new_coord = (coord[0],coord[1]+1,coord[2]-1)
+            t_dict['trap']['chute'] = 1
+            t_dict['trap']['effect'] = 'one way'
+            t_dict['new_coord'] = new_coord
     
-        
+     return t_dict
 
 def fancy_cave():
     pass
