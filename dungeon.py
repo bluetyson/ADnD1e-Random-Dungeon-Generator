@@ -1313,7 +1313,7 @@ for 60 turns.
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 13:
-            t_dict['trap']['po;] = 1
+            t_dict['trap']['oil'] = 1
             t_dict['trap']['chance'] = roll_dice(1,20) + 40
             t_dict['trap']['effect'] = 'random person'
             t_dict['trap']['damage'] = roll_dice(2,6)
