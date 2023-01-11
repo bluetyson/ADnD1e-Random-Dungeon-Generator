@@ -1072,8 +1072,8 @@ def level(coord):
             level_dict['new_coord'] = new_coord
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
         if not will_fit:                            
-            dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
-            dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'st'
+            dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'st'
             new_coord = (coord[0],coord[1]+1,coord[2]-1)  ##1 in 20 closes
             level_dict['new_coord'] = new_coord
     if s == 6:
@@ -1105,11 +1105,11 @@ def level(coord):
             dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'st'
 
-            dungeon[(coord[0],coord[1]+1,coord[2])-2] = {}
-            dungeon[(coord[0],coord[1]+1,coord[2])-2]['fill'] = 'st'
+            dungeon[(coord[0],coord[1]+1,coord[2]-2)] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2]-2)]['fill'] = 'st'
 
-            dungeon[(coord[0],coord[1]+1,coord[2])-3] = {}
-            dungeon[(coord[0],coord[1]+1,coord[2])-3]['fill'] = 'st'
+            dungeon[(coord[0],coord[1]+1,coord[2]-3)] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2]-3)]['fill'] = 'st'
             new_coord = (coord[0],coord[1]+1,coord[3]-2)  ##1 in 20 closes
             level_dict['new_coord'] = new_coord
     if s == 8:
@@ -1121,8 +1121,8 @@ def level(coord):
             level_dict['new_coord'] = new_coord
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]+1))  #down 1#facing
         if not will_fit:                            
-            dungeon[(coord[0],coord[1]+1,coord[2])+1] = {}
-            dungeon[(coord[0],coord[1]+1,coord[2])+1]['fill'] = 'st'
+            dungeon[(coord[0],coord[1]+1,coord[2]+1)] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2]+1)]['fill'] = 'st'
             new_coord = (coord[0],coord[1]+1,coord[2]+1)  ##1 in 20 closes
             level_dict['new_coord'] = new_coord
     if s == 9:
@@ -1139,11 +1139,11 @@ def level(coord):
             #chute down
             will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
             if not will_fit:                            
-                dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'ch'
+                dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'ch'
 
-                dungeon[(coord[0],coord[1]+1,coord[2])-2] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])-2]['fill'] = 'ch'
+                dungeon[(coord[0],coord[1]+1,coord[2]-2)] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2]-2)]['fill'] = 'ch'
                 new_coord = (coord[0],coord[1]+1,coord[2]-2)
                 level_dict['type'] = 'UD-chute'       
                 level_dict['new_coord'] = new_coord
@@ -1161,8 +1161,8 @@ def level(coord):
             #chute down
             will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]+1))  #down 1#facing
             if not will_fit:                            
-                dungeon[(coord[0],coord[1]+1,coord[2])+1] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])+1]['fill'] = 'ch'
+                dungeon[(coord[0],coord[1]+1,coord[2]+1)] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2]+1)]['fill'] = 'ch'
                 new_coord = (coord[0],coord[1]+1,coord[2]-1)
                 level_dict['type'] = 'DD-chute'       
                 level_dict['new_coord'] = new_coord
@@ -1170,8 +1170,8 @@ def level(coord):
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]+1))  #down 1#facing
         if not will_fit:                            
             new_coord = (coord[0],coord[1],coord[2]+1)
-            dungeon[coord[0],coord[1],coord[2]+1] = {}
-            dungeon[coord[0],coord[1],coord[2]+1]['fill'] = 'cm'
+            dungeon[(coord[0],coord[1],coord[2]+1)] = {}
+            dungeon[(coord[0],coord[1],coord[2]+1)]['fill'] = 'cm'
             level_dict['check'] = 3
             level_dict['type'] = 'chimney'       
             level_dict['new_coord'] = new_coord
@@ -1179,11 +1179,11 @@ def level(coord):
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]+1))  #down 1#facing
         if not will_fit:                            
             new_coord = (coord[0],coord[1],coord[2]+2)
-            dungeon[coord[0],coord[1],coord[2]+1] = {}
-            dungeon[coord[0],coord[1],coord[2]+1]['fill'] = 'cm'
+            dungeon[(coord[0],coord[1],coord[2]+1)] = {}
+            dungeon[(coord[0],coord[1],coord[2]+1)]['fill'] = 'cm'
 
-            dungeon[coord[0],coord[1],coord[2]+2] = {}
-            dungeon[coord[0],coord[1],coord[2]+2]['fill'] = 'cm'
+            dungeon[(coord[0],coord[1],coord[2]+2)] = {}
+            dungeon[(coord[0],coord[1],coord[2]+2)]['fill'] = 'cm'
             level_dict['check'] = 3
             level_dict['type'] = 'chimney'       
             level_dict['new_coord'] = new_coord
@@ -1191,11 +1191,11 @@ def level(coord):
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing #need all the level well fits eventually
         if not will_fit:                            
             new_coord = (coord[0],coord[1],coord[2]-2)
-            dungeon[coord[0],coord[1],coord[2]-1] = {}
-            dungeon[coord[0],coord[1],coord[2]-1]['fill'] = 'cm'
+            dungeon[(coord[0],coord[1],coord[2]-1)] = {}
+            dungeon[(coord[0],coord[1],coord[2]-1)]['fill'] = 'cm'
 
-            dungeon[coord[0],coord[1],coord[2]-2] = {}
-            dungeon[coord[0],coord[1],coord[2]-2]['fill'] = 'cm'
+            dungeon[(coord[0],coord[1],coord[2]-2)] = {}
+            dungeon[(coord[0],coord[1],coord[2]-2)]['fill'] = 'cm'
             level_dict['check'] = 3
             level_dict['type'] = 'chimney'       
             level_dict['new_coord'] = new_coord
@@ -1203,8 +1203,8 @@ def level(coord):
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing #need all the level well fits eventually
         if not will_fit:                            
             new_coord = (coord[0],coord[1],coord[2]-1)
-            dungeon[coord[0],coord[1],coord[2]-1] = {}
-            dungeon[coord[0],coord[1],coord[2]-1]['fill'] = 'td'
+            dungeon[(coord[0],coord[1],coord[2]-1)] = {}
+            dungeon[(coord[0],coord[1],coord[2]-1)]['fill'] = 'td'
             level_dict['check'] = 3
             level_dict['type'] = 'trapdoor'       
             level_dict['new_coord'] = new_coord
@@ -1212,11 +1212,11 @@ def level(coord):
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing #need all the level well fits eventually
         if not will_fit:                            
             new_coord = (coord[0],coord[1],coord[2]-2)
-            dungeon[coord[0],coord[1],coord[2]-1] = {}
-            dungeon[coord[0],coord[1],coord[2]-1]['fill'] = 'td'
+            dungeon[(coord[0],coord[1],coord[2]-1)] = {}
+            dungeon[(coord[0],coord[1],coord[2]-1)]['fill'] = 'td'
 
-            dungeon[coord[0],coord[1],coord[2]-2] = {}
-            dungeon[coord[0],coord[1],coord[2]-2]['fill'] = 'td'
+            dungeon[(coord[0],coord[1],coord[2]-2)] = {}
+            dungeon[(coord[0],coord[1],coord[2]-2)]['fill'] = 'td'
             level_dict['check'] = 3
             level_dict['type'] = 'trapdoor'       
             level_dict['new_coord'] = new_coord
@@ -1225,18 +1225,18 @@ def level(coord):
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]+1))  #down 1#facing
         if not will_fit:                            
             new_coord = (coord[0],coord[1]+1,coord[2]+1)
-            dungeon[coord[0],coord[1],coord[2]+1] = {}
-            dungeon[coord[0],coord[1],coord[2]+1]['fill'] = 'st'
+            dungeon[(coord[0],coord[1],coord[2]+1)] = {}
+            dungeon[(coord[0],coord[1],coord[2]+1)]['fill'] = 'st'
 
             coord = new_coord #up then down
             
-            dungeon[coord[0],coord[1]+1,coord[2]-1] = {}
-            dungeon[coord[0],coord[1]+1,coord[2]-1]['fill'] = 'td'
+            dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'td'
 
             coord = new_coord #up then down
 
-            dungeon[coord[0],coord[1],coord[2]-2] = {}
-            dungeon[coord[0],coord[1],coord[2]-2]['fill'] = 'td'
+            dungeon[(coord[0],coord[1],coord[2]-2)] = {}
+            dungeon[(coord[0],coord[1],coord[2]-2)]['fill'] = 'td'
 
             new_coord = (coord[0],coord[1],coord[2]-2)
 
