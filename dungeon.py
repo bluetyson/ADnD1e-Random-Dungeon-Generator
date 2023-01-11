@@ -1447,89 +1447,99 @@ print("SHAPE",chararray.shape)
 #print("ARRAY",chararray)
 
 #chararray[0,0,0] = 'S'
-for key in dungeon:
-    #print("KEY:",key,"KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
-    #print("KEY:",key,"KEYWIDTH:",key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2])
-    
-    if 'fill' in dungeon[key]:
-        print("KEY:",key,"KEYWIDTH:",key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1,dungeon[key]['fill'])
-        #chararray[[key][0],key[1],key[2]] = dungeon[key]['fill']
-        #chararray[key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2]] = dungeon[key]['fill']
-        chararray[key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1] = dungeon[key]['fill']
-    else:
-        print("KEY:",key,"KEYWIDTH:",key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1)
-chararray[0+xmin*-1,0+ymin*-1,+zmin*-1] = 'S'        
 
-#need a multi-level maker, this is just doing first for now
+##make more than one level
 
-#make dungeon html
-strhead = '''
-<html>
-<head>
-<title>DUNGEON</title>
-<style>
-      table,
-      th,
-      td {
-        padding: 10px;
-        border: 1px solid black;
-        border-collapse: collapse;
-      }
-      .red_background {
-            background-color: red;
-        }
+## ignore any random tiny up level things for now on chimneys or trapdoros
+for down in range(zwidth):
 
-      .green_background {
-            background-color: green;
-        }
-      .gray_background {
-            background-color: gray;
-        }
-      .brown_background {
-            background-color: brown;
-        }
-
-      .blue_background {
-            background-color: blue;
-        }
-      .black_background {
-            background-color: black;
-        }
-
-    </style>
-</head>
-<body>
-<table>
-'''
-
-strend = '''
-</table>
-</body>
-</html>
-'''
-
-with open('dungeon.html','w') as f:
-    f.write(strhead)
-    
-    for j in range(chararray.shape[1]):
-        f.write('<TR>')
-        for i in range(chararray.shape[0]):
-            if chararray[i,j,0] == 'B':
-                strdata = '<td class="black_background">' + chararray[i,j,0] + '</td>'
-            elif chararray[i,j,0] == 'C':
-                strdata = '<td>' + chararray[i,j,0] + '</td>'
-            elif chararray[i,j,0] == 'R':
-                strdata = '<td class="gray_background">' + chararray[i,j,0] + '</td>'
-            elif chararray[i,j,0] == 'D':
-                strdata = '<td class="gray_background">' + chararray[i,j,0] + '</td>'
-
+    for key in dungeon:
+        #print("KEY:",key,"KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
+        #print("KEY:",key,"KEYWIDTH:",key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2])
+        
+        if key[2] == (down-1): #-1, -2, etc
+            if 'fill' in dungeon[key] :  
+                print("KEY:",key,"KEYWIDTH:",key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1,dungeon[key]['fill'])
+                #chararray[[key][0],key[1],key[2]] = dungeon[key]['fill']
+                #chararray[key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2]] = dungeon[key]['fill']
+                chararray[key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1] = dungeon[key]['fill']
             else:
-                strdata = '<td class="red_background">' + chararray[i,j,0] + '</td>'
+                print("KEY:",key,"KEYWIDTH:",key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1)
 
-            f.write(strdata)
-        f.write('</TR>')
+    #only for first level        
+    if down == 0:
+        chararray[0+xmin*-1,0+ymin*-1,+zmin*-1] = 'S'        
 
-    f.write(strend)
+    #need a multi-level maker, this is just doing first for now
+
+    #make dungeon html
+    strhead = '''
+    <html>
+    <head>
+    <title>DUNGEON</title>
+    <style>
+        table,
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        .red_background {
+                background-color: red;
+            }
+
+        .green_background {
+                background-color: green;
+            }
+        .gray_background {
+                background-color: gray;
+            }
+        .brown_background {
+                background-color: brown;
+            }
+
+        .blue_background {
+                background-color: blue;
+            }
+        .black_background {
+                background-color: black;
+            }
+
+        </style>
+    </head>
+    <body>
+    <table>
+    '''
+
+    strend = '''
+    </table>
+    </body>
+    </html>
+    '''
+
+    with open('dungeon_' + str(down+1) + '.html','w') as f:
+        f.write(strhead)
+        
+        for j in range(chararray.shape[1]):
+            f.write('<TR>')
+            for i in range(chararray.shape[0]):
+                if chararray[i,j,0] == 'B':
+                    strdata = '<td class="black_background">' + chararray[i,j,0] + '</td>'
+                elif chararray[i,j,0] == 'C':
+                    strdata = '<td>' + chararray[i,j,0] + '</td>'
+                elif chararray[i,j,0] == 'R':
+                    strdata = '<td class="gray_background">' + chararray[i,j,0] + '</td>'
+                elif chararray[i,j,0] == 'D':
+                    strdata = '<td class="gray_background">' + chararray[i,j,0] + '</td>'
+
+                else:
+                    strdata = '<td class="red_background">' + chararray[i,j,0] + '</td>'
+
+                f.write(strdata)
+            f.write('</TR>')
+
+        f.write(strend)
 
 
 
