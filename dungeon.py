@@ -1011,6 +1011,7 @@ def level(coord):
     s = roll_dice(1,20)
     new_coord = coord
     level_dict['type'] = 'stair'
+    level_dict['room'] = 'N'
     if s <= 5:
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
         if not will_fit:                            
@@ -1125,6 +1126,7 @@ def level(coord):
     if s >= 18:            
         #Up 1 then down 2 (total down 1), chamber at end (roll on TABLE V.)
         new_coord = (coord[0],coord[1],coord[2]-1)  ##add chamber room roll as per 5 ##all these still need contents etc.
+        level_dict['room'] = 'Y'
 
     level_dict['new_coord'] = new_coord
     return level_dict
