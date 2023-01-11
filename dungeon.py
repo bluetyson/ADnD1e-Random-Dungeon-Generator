@@ -112,7 +112,7 @@ def check_action(pc_dict, coord):
         new_coord = coord
         e_dict = exit(coord)
         print("EDICT:",e_dict)
-        if 'L' in e_dict:
+        e_dict['direction'] == 'L':
             if e_dict['type'] == 'N':
                 exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
                 if e_dict['beyond'] == 'P':
@@ -228,7 +228,7 @@ def check_action(pc_dict, coord):
 
 
 
-        elif 'R' in e_dict:
+        elif e_dict['direction'] == 'L':
             if e_dict['type'] == 'N':
                 exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
                 if e_dict['beyond'] == 'P':
