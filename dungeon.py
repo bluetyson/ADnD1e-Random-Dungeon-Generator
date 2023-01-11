@@ -1137,16 +1137,17 @@ def level(coord):
             level_dict['type'] = 'chimney'       
             level_dict['new_coord'] = new_coord
     if s == 13:
-        #Chimney down 2 levels, passage continues, check again in 30’
-        new_coord = (coord[0],coord[1],coord[2]-2)
-        dungeon[coord[0],coord[1],coord[2]-1] = {}
-        dungeon[coord[0],coord[1],coord[2]-1]['fill'] = 'cm'
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing #need all the level well fits eventually
+        if not will_fit:                            
+            new_coord = (coord[0],coord[1],coord[2]-2)
+            dungeon[coord[0],coord[1],coord[2]-1] = {}
+            dungeon[coord[0],coord[1],coord[2]-1]['fill'] = 'cm'
 
-        dungeon[coord[0],coord[1],coord[2]-2] = {}
-        dungeon[coord[0],coord[1],coord[2]-2]['fill'] = 'cm'
-        level_dict['check'] = 3
-        level_dict['type'] = 'chimney'       
-        level_dict['new_coord'] = new_coord
+            dungeon[coord[0],coord[1],coord[2]-2] = {}
+            dungeon[coord[0],coord[1],coord[2]-2]['fill'] = 'cm'
+            level_dict['check'] = 3
+            level_dict['type'] = 'chimney'       
+            level_dict['new_coord'] = new_coord
     if s >= 14 and s <=16:
         #Trap door down 1 level, passage continues, check again in 30’
         new_coord = (coord[0],coord[1],coord[2]-1)
