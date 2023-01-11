@@ -111,6 +111,7 @@ def check_action(pc_dict, coord):
         '''
         new_coord = coord
         e_dict = exit(coord)
+        print("EDICT:",e_dict)
         if 'L' in e_dict:
             if e_dict['type'] == 'N':
                 exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
