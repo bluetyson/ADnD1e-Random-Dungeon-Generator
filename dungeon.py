@@ -1299,6 +1299,7 @@ or chamber with monster and treasure (11-20) (see TABLE V.).
         t_dict['trap']['damage'] = roll_dice(2,6)
         t_dict['trap']['save'] = 'magic'
     if t == 14:
+        pass
     if t == 15:
         #16 Spear trap, 1-3 spears, 1 in 20 is poisoned.
         t_dict['trap']['arrow'] = 1
