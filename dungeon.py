@@ -1299,7 +1299,7 @@ for 60 turns.
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 9:
-            #here we have checked if one straight ahead fits so random check if LR 2x2
+            #here we have checked if one straight ahead fits so random check if LR 2x2 branch from there
             #down 1
             # loop this for level descent -put in descent will fit checks
             t_dict['trap']['elevator'] = 1
