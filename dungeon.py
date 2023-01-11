@@ -708,7 +708,7 @@ def check_action(pc_dict, coord):
             else:
                 pass
                 #fancy shape/size
-
+        return new_coord
 
     elif pc_dict['direction'] == 'stop':
         new_coord = coord
