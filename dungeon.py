@@ -1162,7 +1162,7 @@ def level(coord):
             if not will_fit:                            
                 dungeon[(coord[0],coord[1]+1,coord[2])+1] = {}
                 dungeon[(coord[0],coord[1]+1,coord[2])+1]['fill'] = 'ch'
-                new_coord = (coord[0],coord[1]+1,coord[2]+1)
+                new_coord = (coord[0],coord[1]+1,coord[2]-1)
                 level_dict['type'] = 'DD-chute'       
                 level_dict['new_coord'] = new_coord
     if s == 11:  ## account for all dungeon chimney levels
@@ -1248,8 +1248,97 @@ def level(coord):
     #level_dict['new_coord'] = new_coord
     return level_dict
 
-def bad_things():
-    pass
+def bad_things(coord):
+    new_coord = coord    
+    '''
+9 20’ × 20’ elevator room (party has entered door directly ahead and is
+in room), descends 1 level and will not ascend for 30 turns.
+10 As 9. above, but room descends 2 levels.
+11 As 9. above, but room descends 2-5 levels — 1 upon entering and 1
+additional level each time an unsuccessful attempt at door opening
+is made, or until it descends as far as it can. This will not ascend
+for 60 turns.
+19 Illusionary wall concealing 8. (pit) above (1-6), 20. (chute) below (7-10)
+or chamber with monster and treasure (11-20) (see TABLE V.).
+'''
+    #all traps located ahead plus 1?
+    t_dict = {}
+    t_dict['trap'] == {}
+    t_dict['secretdoor'] == 'N'
+    t_dict['trap']['chance'] = 1.0
+
+
+    t = roll_dice(1,20)
+    if t <= 5:
+        t_dict['secretdoor'] == 'Y'
+        ## do stuff for exits!!
+    if t >= 6 and t <= 7:
+        t_dict['trap']['pit'] = 1
+        t_dict['trap']['chance'] = 3.0/6.0
+        t_dict['trap']['damage'] = roll_dice(1,6)
+    if t == 8:
+        t_dict['trap']['pit'] = 1
+        t_dict['trap']['chance'] = 3.0/6.0
+        t_dict['trap']['effect'] = 'spikes'
+        t_dict['trap']['damage'] = roll_dice(2,6)
+    if t == 9:
+        pass
+    if t == 10:
+        pass
+    if t == 11:
+        pass
+    if t == 12:
+        #12 Wall 10’ behind slides across passage blocking it for from 40-60 turns.
+        t_dict['trap']['slidingwall'] = 1
+        t_dict['trap']['chance'] = roll_dice(1,20) + 40
+        t_dict['trap']['effect'] = 'blocked'
+    if t == 13:
+        t_dict['trap']['slidingwall'] = 1
+        t_dict['trap']['chance'] = roll_dice(1,20) + 40
+        t_dict['trap']['effect'] = 'random person'
+        t_dict['trap']['damage'] = roll_dice(2,6)
+        t_dict['trap']['save'] = 'magic'
+    if t == 14:
+    if t == 15:
+        #16 Spear trap, 1-3 spears, 1 in 20 is poisoned.
+        t_dict['trap']['arrow'] = 1
+        t_dict['trap']['chance'] = 0.05
+        t_dict['trap']['damage'] = roll_dice(1,3)  * roll_dice(1,6)
+        t_dict['trap']['save'] = 'poison'
+    if t == 16:
+        t_dict['trap']['spear'] = 1
+        t_dict['trap']['chance'] = 0.05
+        t_dict['trap']['damage'] = roll_dice(1,3)  * roll_dice(1,8)
+        t_dict['trap']['save'] = 'poison'
+    if t == 17:
+        t_dict['trap']['gas'] = 1
+        t_dict['trap']['details'] = stinky()
+    if t == 18:
+        what_fall = roll_dice(1,2)
+        if what_fall == 1:
+            t_dict['trap']['doorfalls'] = 1
+            t_dict['trap']['chance'] = 0.05
+            t_dict['trap']['damage'] = roll_dice(1,10)
+            t_dict['trap']['save'] = 'petrification'
+        else:
+            t_dict['trap']['stonefalls'] = 1
+            t_dict['trap']['chance'] = 0.05
+            t_dict['trap']['damage'] = roll_dice(2,10)
+            t_dict['trap']['save'] = 'petrification'
+
+    if t == 19:
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
+        if not will_fit:                            
+            dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'ch'
+
+            new_coord = (coord[0],coord[1]+1,coord[2]-2)
+            t_dict['trap']['stonefalls'] = 1
+            t_dict['trap']['chance'] = 0.05
+            t_dict['trap']['damage'] = roll_dice(2,10)
+            t_dict['trap']['save'] = 'petrification'
+    if t == 20:
+        pass
 
 def fancy_cave():
     pass
@@ -1365,7 +1454,32 @@ def wet_magic():
             new_coord = (0,0,0)
 
 def stinky():
-    pass
+    s = roll_dice(1,20)
+    stinky_dict = {}
+    if s <=7:
+        stinky_dict['type'] = 'smoke'
+    elif s>=8 and s <= 9:
+        stinky_dict['type'] = 'blinding'
+        stinky_dict['effect'] = roll_dice(1,6)
+    elif s>=10 and s <= 12:
+        stinky_dict['type'] = 'fear'
+        stinky_dict['effect'] = 'run back 12'
+    elif s==13:
+        stinky_dict['type'] = 'sleep'
+        stinky_dict['effect'] = roll_dice(1,6)
+    elif s>=14 and s <= 18:
+        stinky_dict['type'] = 'strength'
+        stinky_dict['effect'] = roll_dice(1,6)
+        stinky_dict['duration'] = roll_dice(1,10)
+        stinky_dict['characters'] = 'fighters'
+    elif s==19:
+        stinky_dict['type'] = 'sickness'
+        stinky_dict['effect'] = 'return to surface or die'
+    else:
+        stinky_dict['type'] = 'poison'
+        stinky_dict['effect'] = 'save vs death or die'
+
+    return stinky_dict
 
 #need data structure
 #do we have an exit order stack?
