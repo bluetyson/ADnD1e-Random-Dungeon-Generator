@@ -1368,7 +1368,7 @@ for 60 turns.
             t_dict['trap']['effect'] = 'one way'
             t_dict['new_coord'] = new_coord
     
-     return t_dict
+    return t_dict
 
 def fancy_cave():
     pass
