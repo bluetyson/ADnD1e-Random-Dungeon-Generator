@@ -1113,12 +1113,15 @@ def level(coord):
     if s == 13:
         #Chimney down 2 levels, passage continues, check again in 30’
         new_coord = (coord[0],coord[1],coord[2]-2)
+        level_dict['check'] = 3
     if s >= 14 and s <=16:
         #Trap door down 1 level, passage continues, check again in 30’
         new_coord = (coord[0],coord[1],coord[2]-1)
+        level_dict['check'] = 3
     if s == 17:
         #Trap door down 2 levels, passage continues, check again in 30’
         new_coord = (coord[0],coord[1],coord[2]-1)
+        level_dict['check'] = 3
     if s >= 18:            
         #Up 1 then down 2 (total down 1), chamber at end (roll on TABLE V.)
         new_coord = (coord[0],coord[1],coord[2]-1)  ##add chamber room roll as per 5 ##all these still need contents etc.
