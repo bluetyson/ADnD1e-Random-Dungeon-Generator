@@ -662,6 +662,8 @@ def check_action(pc_dict, coord):
         new_coord = coord
         level_dict = level(coord)
         new_coord = level_dict['new_coord']
+        level_stack[new_coord] = level_dict
+        
         if level_dict['check'] > 0:
             #go ahead 3 on check 3
             for y in range(level_dict['check']):
@@ -777,6 +779,7 @@ def check_action(pc_dict, coord):
 
     return new_coord
 
+#specific functions
 def exit(coord):
     '''
     note fancy exit for doors on locations already mapped  
