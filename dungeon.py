@@ -1400,7 +1400,7 @@ def bad_things(coord):
             dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ch'
             new_coord = (coord[0],coord[1]+1,coord[2]-1)
-             t_dict['trap']['type'] = 'chute'
+            t_dict['trap']['type'] = 'chute'
             t_dict['trap']['effect'] = 'one way'
             t_dict['trap']['duration'] = 'permanent'
             t_dict['new_coord'] = new_coord
