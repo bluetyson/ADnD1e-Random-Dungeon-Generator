@@ -1299,11 +1299,20 @@ for 60 turns.
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 9:
-            pass
+            #here we have checked if one straight ahead fits so random check if LR 2x2
+            #down 1
+            # loop this for level descent -put in descent will fit checks
+            t_dict['trap']['elevator'] = 1
+            t_dict['trap']['duration'] = 30
         if t == 10:
-            pass
+            #down 2
+            t_dict['trap']['elevator'] = 1
+            t_dict['trap']['duration'] = 30
         if t == 11:
-            pass
+            t_dict['trap']['elevator'] = 1
+            t_dict['trap']['duration'] = 60
+            l = roll_dice(1,4) + 1
+            # loop this for level descent - 
         if t == 12:
             #12 Wall 10’ behind slides across passage blocking it for from 40-60 turns.
             t_dict['trap']['slidingwall'] = 1
