@@ -769,7 +769,8 @@ def check_action(pc_dict, coord):
 
     elif pc_dict['direction'] == 'bad_things':
         new_coord = coord
-        pass
+        #check again in 3
+        
     elif pc_dict['direction'] == 'random_encounter':
         new_coord = coord
         pass
@@ -1328,6 +1329,9 @@ or chamber with monster and treasure (11-20) (see TABLE V.).
             t_dict['trap']['save'] = 'petrification'
 
     if t == 19:
+        pass
+
+    if t == 20:        
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
         if not will_fit:                            
             dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
@@ -1338,8 +1342,8 @@ or chamber with monster and treasure (11-20) (see TABLE V.).
             t_dict['trap']['chance'] = 0.05
             t_dict['trap']['damage'] = roll_dice(2,10)
             t_dict['trap']['save'] = 'petrification'
-    if t == 20:
-        pass
+    
+        
 
 def fancy_cave():
     pass
