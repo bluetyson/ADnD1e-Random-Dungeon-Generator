@@ -1330,9 +1330,7 @@ for 60 turns.
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pic'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
-
         if t == 15:
-            #16 Spear trap, 1-3 spears, 1 in 20 is poisoned.
             t_dict['trap']['arrow'] = 1
             t_dict['trap']['chance'] = 0.05
             t_dict['trap']['damage'] = roll_dice(1,3)  * roll_dice(1,6)
@@ -1526,12 +1524,14 @@ def stinky():
     elif s>=8 and s <= 9:
         stinky_dict['type'] = 'blinding'
         stinky_dict['effect'] = roll_dice(1,6)
+        stinky_dict['duration'] = stinky_dict['effect']
     elif s>=10 and s <= 12:
         stinky_dict['type'] = 'fear'
         stinky_dict['effect'] = 'run back 12'
     elif s==13:
         stinky_dict['type'] = 'sleep'
         stinky_dict['effect'] = roll_dice(1,6)
+        stinky_dict['duration'] = stinky_dict['effect']        
     elif s>=14 and s <= 18:
         stinky_dict['type'] = 'strength'
         stinky_dict['effect'] = roll_dice(1,6)
