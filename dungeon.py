@@ -777,6 +777,8 @@ def exit(coord):
 
     exit_stack[coord] = e_dict
 
+    print("EDICT IN FUNCTION:",e_dict)
+
     return e_dict
 
 def fancy_exit(coord):
