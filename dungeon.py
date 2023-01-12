@@ -1021,7 +1021,7 @@ def fancy_width():
 
 def fancy_shape():
     s = roll_dice(1,20)
-    #shape_dict = {}    
+    shape_dict = {}    
     shape_dict['water'] = 'N'
     shape_dict['size'] = 0
 
