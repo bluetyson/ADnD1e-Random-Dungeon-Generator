@@ -1697,8 +1697,8 @@ print("LEVEL_STACK:", level_stack)
 #map chararray to independent for each level
 ## ignore any random tiny up level things for now on chimneys or trapdoros
 downlist = []
-print("DOWN:",zwidth)
-for down in range(zwidth):
+print("DOWN:",zwidth-1)
+for down in range(zwidth-1):
     print("downloop:",down)
     chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U4')
     print("SHAPE",chararray.shape)
