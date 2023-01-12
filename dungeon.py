@@ -933,10 +933,11 @@ def turn(coord):
     return t_dict
 
 
-def room(coord, size="C"):
+def room(coord, size="C", content=None):
     '''
     can pass anything in that is not C for size and will work, just using R for room not Chamber
     just rectangular results for now
+    pass 'MT' in content to mandate monster and treasure in room - for Illusionary Wall trap
     '''
     r = roll_dice(1,20)
     room_size = [0,0]
@@ -978,7 +979,7 @@ def room(coord, size="C"):
         #shape_dict['size'] = [4,6]
 
     #shape, size, exits, contents, treasure, in  
-    room_contents(shape_dict, coord)
+    room_contents(shape_dict, coord, content)
 
     shape_dict = exit_no(shape_dict)
     shape_dict = exit_loc(shape_dict)
@@ -1194,9 +1195,12 @@ def exit_dir(shape_dict):
 
     return shape_dict            
 
-def room_contents(shape_dict, coord):
+def room_contents(shape_dict, coord, content):
     shape_dict['contents'] = {}
     r = roll_dice(1,20)
+    if content = "MT":
+        r = 15 #make monster and treasure
+
     if r <= 12:
         shape_dict['contents']['empty'] = 'Y'
     elif r >13 and r <=14:
@@ -1728,7 +1732,39 @@ def bad_things(coord):
                 new_coord = (coord[0],coord[1]+1,coord[2]-1)
                 t_dict['new_coord'] = new_coord
             else:
-                pass #put room here
+                #pass put room here
+                shape_dict = room(coord, content="MT") #if another room pass not C="R"        
+                #pass MT for monster and treasure
+                #each room part check for inside
+
+                print("ROOM SHAPE:",shape_dict)
+                ## do simple version first of x directions and y directions of rectangular
+                if shape_dict['shape'] == 'R':
+                    print("rectangular")
+                    #H x W
+                    #position based on size
+                    adjust = 0
+                    if shape_dict['size'][1] % 2 == 0:
+                        lr = roll_dice(1,2)
+                        if lr == 1:
+                            adjust = -1
+                        else:
+                            adjust = 1
+
+                    #if shape_dict['size'][1] == 2:
+                    for j in range(shape_dict['size'][1]):
+                        for i in range(shape_dict['size'][0]):
+                            will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
+                            if not will_fit:                
+                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
+                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
+                            else:
+                                break
+                    
+                else:
+                    pass
+                
+
 
         if t == 20:        
             dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
