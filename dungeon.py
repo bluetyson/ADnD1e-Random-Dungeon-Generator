@@ -1164,7 +1164,7 @@ def exit_no(shape_dict):
 
 def exit_loc(shape_dict):
     shape_dict['exitlocations'] = {}
-    for i in shape_dict['exits']:
+    for i in range(shape_dict['exits']):
         e = roll_dice(1,20)
         if e <= 7:
             shape_dict['exitlocations'][i+1] = 'O'
