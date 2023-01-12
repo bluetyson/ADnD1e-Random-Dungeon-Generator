@@ -973,7 +973,7 @@ def room(coord, size="C"):
             shape_dict['size'] = [4,6]
 
     #shape, size, exits, contents, treasure, in  
-    if size = "CAVE":
+    if size == "CAVE":
         c = roll_dice(1,20)
         if c <= 5:
             shape_dict['size'] = [4,6]
