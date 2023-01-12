@@ -1184,11 +1184,11 @@ def exit_dir(shape_dict):
     for i in range(shape_dict['exits']):
         e = roll_dice(1,20)
         if e<=16:
-            shape_dict['exitdirections']['i+1'] = 'A'
+            shape_dict['exitdirections'][i+1] = 'A'
         elif e >=17 and e<=18:
-            shape_dict['exitdirections']['i+1'] = '45AB'
+            shape_dict['exitdirections'][i+1] = '45AB'
         else:
-            shape_dict['exitdirections']['i+1'] = '45BA'
+            shape_dict['exitdirections'][i+1] = '45BA'
 
     return shape_dict            
 
@@ -2075,8 +2075,8 @@ for down in range(zwidth-1):
     legend_dict['gs'] = "Gas Trap"
     legend_dict['bw'] = "Blocked Wall"
     legend_dict['ol'] = "Oil"
-    legend_dict['m'] = "monster"
-    legend_dict['t'] = "treasure"
+    legend_dict['m'] = "Monster"
+    legend_dict['t'] = "Treasure"
 
     strlegendhead = '''
     <table>
