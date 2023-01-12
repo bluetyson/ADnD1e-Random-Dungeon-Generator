@@ -972,7 +972,30 @@ def room(coord, size="C"):
             ##MAKE ALL ROOMS RECTANGULAR TO START
             shape_dict['size'] = [4,6]
 
-    #shape, size, exits, contents, treasure, in            
+    #shape, size, exits, contents, treasure, in  
+    if size = "CAVE":
+        c = roll_dice(1,20)
+        if c <= 5:
+            shape_dict['size'] = [4,6]
+        elif c>= 6 and c<=7:
+            shape_dict['size'] = [5,roll_dice(1,2)+6]
+        elif c>= 8 and c<=9:            
+            #to implement double cave
+            shape_dict['size'] = [6,6]
+            #Double Cave: 2 × 3, 6 × 6
+        elif c>= 10 and c<=11:            
+            #Double Cave: 35’ × 50’, 80’ × 90’
+            shape_dict['size'] = [8,9]
+        elif c>= 12 and c<=14:            
+            shape_dict['size'] = [roll_dice(1,2)+8,roll_dice(1,2)+11]
+        elif c>= 15 and c<=16:            
+            shape_dict['size'] = [12,15]
+        elif c>= 17 and c<=18:            
+            shape_dict['size'] = [15,20]
+        else:
+            shape_dict['size'] = [roll_dice(1,6)+24,roll_dice(1,6)+34]
+
+        
 
     return shape_dict
 
@@ -1071,6 +1094,7 @@ def fancy_shape():
     return shape_dict
 
 def fancy_size():
+    # in fancy shape
     pass
 
 def exit_no(shape_dict):
@@ -1668,8 +1692,11 @@ def wandering_monster(coord):
     wm_dict['result'] = testmonster()
     return wm_dict
 
-def fancy_cave():
-    pass
+def fancy_cave(coord):
+    '''
+    maybe combine in room? pass 'CAVE
+    '''
+    c = roll_dice(1,20)
 
 def wet_small():
     #not implemented yet
