@@ -972,6 +972,8 @@ def room(coord, size="C"):
             ##MAKE ALL ROOMS RECTANGULAR TO START
             shape_dict['size'] = [4,6]
 
+    #shape, size, exits, contents, treasure, in            
+
     return shape_dict
 
 #not implemented yet
@@ -1071,8 +1073,43 @@ def fancy_shape():
 def fancy_size():
     pass
 
-def exit_no():
-    pass
+def exit_no(shape_dict):
+    area = shape_dict['size'][0]*shape_dict['size'][1]
+    e = roll_dice(1,20)
+    if e <=3:
+        if area <= 6:
+            shape_dict['exits'] = 1
+        else:
+            shape_dict['exits'] = 2
+    elif e>=4: and e<=6
+        if area <= 6:
+            shape_dict['exits'] = 2
+        else:
+            shape_dict['exits'] = 3
+    elif e>=7: and e<=9
+        if area <= 6:
+            shape_dict['exits'] = 3
+        else:
+            shape_dict['exits'] = 4
+    elif e>=10: and e<=12
+        if area <= 1200:
+            shape_dict['exits'] = 0
+            shape_dict['secretdoors'] = 'check'
+        else:
+            shape_dict['exits'] = 1
+    elif e>=13: and e<=15
+        shape_dict['exits'] = roll_dice(1,4)
+    elif e>=16: and e<=18
+        if area <= 1600:
+            shape_dict['exits'] = 0
+            shape_dict['secretdoors'] = 'check'
+        else:
+            shape_dict['exits'] = 1
+    else:
+        shape_dict['exits'] = 1
+        # if differentiate chambers and rooms this becomes passage
+        shape_dict['type'] = 'door'
+
 def exit_loc():
     pass
 def exit_dir():
