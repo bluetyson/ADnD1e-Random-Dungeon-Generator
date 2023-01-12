@@ -1108,10 +1108,21 @@ def exit_no(shape_dict):
     else:
         shape_dict['exits'] = 1
         # if differentiate chambers and rooms this becomes passage
-        shape_dict['type'] = 'door'
+        shape_dict['exitstype'] = 'door'
 
-def exit_loc():
-    pass
+def exit_loc(shape_dict):
+    shape_dict['exitlocations'] = {}
+    for i in shape_dict['exits']:
+        e = roll_dice(1,20)
+        if e <= 7:
+            shape_dict['exitlocations'][i+1] = 'O'
+        elif e>= 8 and e <=12:
+            shape_dict['exitlocations'][i+1] = 'L'
+        elif e>= 13 and e <=17:
+            shape_dict['exitlocations'][i+1] = 'R'
+        else:
+            shape_dict['exitlocations'][i+1] = 'O'
+
 def exit_dir():
     pass
 
