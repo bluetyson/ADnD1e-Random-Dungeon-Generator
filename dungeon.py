@@ -1790,6 +1790,8 @@ for down in range(zwidth-1):
     legend_dict['el'] = "Elevator Trap"
     legend_dict['ar'] = "Arrow Trap"
     legend_dict['sp'] = "Spear Trap"
+    legend_dict['df'] = "Door Falls"
+    legend_dict['sf'] = "Stone Falls"
     legend_dict['gs'] = "Gas Trap"
 
     strlegendhead = '''
