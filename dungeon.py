@@ -1701,7 +1701,7 @@ downlist = []
 print("DOWN:",zwidth-1)
 for down in range(zwidth-1):
     print("downloop:",down)
-    chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U4')
+    chararray = np.full((xwidth,ywidth,1), 'B', dtype='U4')
     print("SHAPE",chararray.shape)
     for key in dungeon:
         #print("KEY:",key,"KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
@@ -1712,7 +1712,7 @@ for down in range(zwidth-1):
                 print("KEY:",key,"KEYWIDTH:",key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1,dungeon[key]['fill'])
                 #chararray[[key][0],key[1],key[2]] = dungeon[key]['fill']
                 #chararray[key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2]] = dungeon[key]['fill']
-                chararray[key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1] = dungeon[key]['fill']
+                chararray[key[0]+xmin*-1,key[1]+ymin*-1,0] = dungeon[key]['fill']
             else:
                 print("KEY:",key,"KEYWIDTH:",key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1)
     downlist.append(chararray)
@@ -1843,9 +1843,10 @@ with open('dungeon.pkl','wb') as fd:
 with open('downlist.pkl','wb') as fd:
     pickle.dump(downlist, fd)
 
-#with open('dungeon.pkl','rb') as fd:
-    #df = pickle.load(fd)
-    #print("picklecheck",df)
+with open('dungeon.pkl','rb') as fd:
+    df = pickle.load(fd)
+    if zwidth -1 > 1:
+        print("picklecheck",df)
 
 with open('downlist.pkl','rb') as fd:
     df = pickle.load(fd)
