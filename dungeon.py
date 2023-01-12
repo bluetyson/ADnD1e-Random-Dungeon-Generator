@@ -1654,7 +1654,7 @@ def bad_things(coord):
             t_dict['trap']['effect'] = 'random person'
             t_dict['trap']['damage'] = roll_dice(2,6)
             t_dict['trap']['save'] = 'magic'
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'sw'
+            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ol'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 14:
@@ -2073,6 +2073,8 @@ for down in range(zwidth-1):
     legend_dict['df'] = "Door Falls"
     legend_dict['sf'] = "Stone Falls"
     legend_dict['gs'] = "Gas Trap"
+    legend_dict['bw'] = "Blocked Wall"
+    legend_dict['ol'] = "Oil"
     legend_dict['m'] = "monster"
     legend_dict['t'] = "treasure"
 
