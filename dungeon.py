@@ -1136,8 +1136,22 @@ def exit_dir(shape_dict):
         else:
             shape_dict['exitdirections']['i+1'] = '45BA'
 
-def room_contents():
-    pass
+def room_contents(shape_dict):
+    shape_dict['contents'] = {}
+    r = roll_dice(1,20)
+    if r <= 12:
+        shape_dict['contents']['empty'] = 'Y'
+    elif r >13 and r <=14:
+        shape_dict['contents']['monster'] = {}
+    elif r >15 and r <=17:
+        shape_dict['contents']['monster'] = {}
+        shape_dict['contents']['treasure'] = {}
+    elif r == 18:
+        shape_dict['contents']['level'] = {}
+    elif r == 19:        
+        shape_dict['contents']['trap'] = {}
+    else:
+        shape_dict['contents']['treasure'] = {}
 
 def loot():
     pass
