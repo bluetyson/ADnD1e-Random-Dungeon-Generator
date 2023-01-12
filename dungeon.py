@@ -663,6 +663,8 @@ def check_action(pc_dict, coord):
         level_dict = level(coord)
         new_coord = level_dict['new_coord']
         level_stack[new_coord] = level_dict
+
+        print("LEVEL:",level_dict)
         
         if level_dict['check'] > 0:
             #go ahead 3 on check 3
@@ -759,7 +761,7 @@ def check_action(pc_dict, coord):
             dungeon[new_coord[0]+1,new_coord[1],new_coord[2]] = {}
             dungeon[new_coord[0]+1,new_coord[1],new_coord[2]]['fill'] = 'D'
             #need to retrace to last on exit stack?
-
+            print("DEAD END")
             for key in exit_stack:
                 ## this needs to be checked for level
                 new_coord = key
@@ -772,6 +774,7 @@ def check_action(pc_dict, coord):
     elif pc_dict['direction'] == 'bad_things':
         new_coord = coord
         t_dict = bad_things(coord)
+        print("TRAP:",t_dict)
         
         if 'chute' in t_dict['trap']['type'] or 'elevator' in t_dict['trap']['type']:
             level_stack[new_coord] = t_dict
