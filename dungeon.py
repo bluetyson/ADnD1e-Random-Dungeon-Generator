@@ -1841,5 +1841,10 @@ with open('dungeon.pkl','wb') as fd:
     pickle.dump(dungeon, fd)
 
 
+with open('dungeon.pkl','rb') as fd:
+    df = pickle.load(fd)
+    print("picklecheck",df)
+
+
    
     
