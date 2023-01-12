@@ -1795,10 +1795,13 @@ PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't 
 #make this a script argument
 START_LEVEL = 0
 
-
+#above maybe also add to dungeon coordinates instead?
 exit_stack = {}  #only non-dead ends etc?
 door_stack= {}
 level_stack = {}
+room_stack = {}
+trap_stack = {}
+monster_stack = {}
 
 dungeon = {}
 dungeon[(0,0,0)] = {}
