@@ -1804,10 +1804,8 @@ for down in range(zwidth-1):
     with open('dungeon_' + str(down+1) + '.html','w') as f:
         f.write(strhead)
         
-        #for j in range(chararray.shape[1]):
         for j in range(downlist[down].shape[1]):            
             f.write('<TR>')
-            #for i in range(chararray.shape[0]):
             for i in range(downlist[down].shape[0]):                
                 if downlist[down][i,j,0] == 'B':
                     strdata = '<td class="black_background">' + downlist[down][i,j,0] + '</td>'
