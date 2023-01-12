@@ -1796,12 +1796,16 @@ PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't 
 START_LEVEL = 0
 
 #above maybe also add to dungeon coordinates instead?
+#function as counters to add keys?
+
 exit_stack = {}  #only non-dead ends etc?
 door_stack= {}
 level_stack = {}
 room_stack = {}
 trap_stack = {}
 monster_stack = {}
+
+
 
 dungeon = {}
 dungeon[(0,0,0)] = {}
@@ -1953,6 +1957,8 @@ for down in range(zwidth-1):
     legend_dict['df'] = "Door Falls"
     legend_dict['sf'] = "Stone Falls"
     legend_dict['gs'] = "Gas Trap"
+    legend_dict['m'] = "monster"
+    legend_dict['t'] = "treasure"
 
     strlegendhead = '''
     <table>
