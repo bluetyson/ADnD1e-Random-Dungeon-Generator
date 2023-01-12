@@ -1907,7 +1907,11 @@ from treasure import testtreasure
 print (testmonster() + ' ' + testtreasure())
 #testtreasure()
 
-PERIODIC_CHECKS = 5  #number of rolls to make before stopping algorithm  #don't count first one down
+PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't count first one down
+
+if len(ARGV) > 0:
+    if ARGV[1] > 1:
+        PERIODIC_CHECKS = ARGV[1]
 #make this a script argument
 START_LEVEL = 0
 
