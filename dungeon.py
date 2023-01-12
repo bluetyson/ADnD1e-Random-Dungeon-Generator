@@ -1193,27 +1193,28 @@ def room_contents(shape_dict):
         shape_dict['contents']['monster'] = {}
         shape_dict['contents']['treasure'] = {}
 
-        loot(shape_dict,new_coord,monster="Y")
-        loot_store(shape_dict)
+        shape_dict = loot(shape_dict,new_coord,monster="Y")
+        shape_dict = loot_store(shape_dict)
         
         if shape_dict['contents']['treasure']['protection'] == 'guard':
-            loot_guard(shape_dict)
+            shape_dict = loot_guard(shape_dict)
         else:
-            loot_hide(shape_dict)
+            shape_dict = loot_hide(shape_dict)
 
     elif r == 18:
         shape_dict['contents']['level'] = {}
     elif r == 19:        
         shape_dict['contents']['trap'] = {}
+        shape_dict['contents']['trap']  = bad_things(new_coord)       
     else:
         shape_dict['contents']['treasure'] = {}
-        loot(shape_dict,new_coord,monster="N")
-        loot_store(shape_dict)
+        shape_dict = loot(shape_dict,new_coord,monster="N")
+        shape_dict = loot_store(shape_dict)
         
         if shape_dict['contents']['treasure']['protection'] == 'guard':
-            loot_guard(shape_dict)
+            shape_dict = loot_guard(shape_dict)
         else:
-            loot_hide(shape_dict)
+            shape_dict = loot_hide(shape_dict)
 
 def loot(shape_dict,new_coord,monster="N"):
     shape_dict['contents']['treasure']['type'] = {}
@@ -1251,7 +1252,7 @@ def loot(shape_dict,new_coord,monster="N"):
         else:
             shape_dict['contents']['treasure']['type']['magic']  += 1
 
-
+        return shape_dict
 
 def loot_store(shape_dict):
     l = roll_dice(1,20)
@@ -1282,6 +1283,7 @@ def loot_store(shape_dict):
     else:
         shape_dict['contents']['treasure']['protection'] = 'hide'
 
+    return shape_dict
 
 def loot_guard(shape_dict):
     l = roll_dice(1,20)    
@@ -1326,6 +1328,8 @@ def loot_guard(shape_dict):
     elif l==20:                                                                                
         shape_dict['contents']['treasure']['guard'] = 'Magic: Symbol'
 
+    return shape_dict
+
 def loot_hide(shape_dict):
     l = roll_dice(1,20)
     if l<=3:
@@ -1353,6 +1357,8 @@ def loot_hide(shape_dict):
     else:
         shape_dict['contents']['treasure']['hide'] = 'Secret room nearby'
         #make 10x10 thing?
+
+    return shape_dict
 
 def level(coord):
     level_dict = {}
