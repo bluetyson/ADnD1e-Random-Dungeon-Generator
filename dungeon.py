@@ -973,7 +973,7 @@ def room(coord, size="C"):
         else:
             shape_dict['size'] = [3,4]
     if r >= 18:
-        shape_dict = fancy_shape()
+        shape_dict = fancy_shape(shape_dict)
         ##MAKE ALL ROOMS RECTANGULAR TO START
         #shape_dict['size'] = [4,6]
 
