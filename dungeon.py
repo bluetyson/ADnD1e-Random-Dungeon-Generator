@@ -1127,7 +1127,7 @@ def level(coord):
             dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'st'
 
             dungeon[(coord[0],coord[1]+1,coord[2]-2)] = {}
-            dungeon[(coord[0],coord[1]+1,coord[2-2])]['fill'] = 'st'
+            dungeon[(coord[0],coord[1]+1,coord[2]-2)]['fill'] = 'st'
             new_coord = (coord[0],coord[1]+1,coord[2]-2)  ##1 in 20 closes
             level_dict['new_coord'] = new_coord
     if s == 7:
