@@ -771,6 +771,10 @@ def check_action(pc_dict, coord):
 
     elif pc_dict['direction'] == 'bad_things':
         new_coord = coord
+        t_dict = bad_things(coord)
+        
+        if 'chute' in t_dict['trap']['type'] or 'elevator' in t_dict['trap']['type']:
+            level_stack[new_coord] = t_dict
         #check again in 3
         
     elif pc_dict['direction'] == 'random_encounter':
