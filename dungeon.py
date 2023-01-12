@@ -1087,7 +1087,7 @@ def fancy_shape():
         rollflag = True
         while flag == True:
             zr = roll_dice(1,20)
-            shape_dict['size'] = shape_dict['size'] + 2000 + zr
+            shape_dict['size'] = shape_dict['size'] + 20 + zr
             if zr <= 15:
                 rollflag = False
 
