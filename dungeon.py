@@ -792,6 +792,7 @@ def check_action(pc_dict, coord):
         #check again in 3
         
     elif pc_dict['direction'] == 'random_encounter':
+        print("WANDERING MONSTER")
         new_coord = coord
         roll_first = random_check()
         "+1 like trap - wm"
