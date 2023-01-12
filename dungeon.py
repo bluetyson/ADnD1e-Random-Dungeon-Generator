@@ -1215,7 +1215,7 @@ def room_contents(shape_dict, coord):
         shape_dict['contents']['level'] = {}
     elif r == 19:        
         shape_dict['contents']['trap'] = {}
-        shape_dict['contents']['trap']  = bad_things(new_coord)       
+        shape_dict['contents']['trap']  = bad_things(coord)       
     else:
         shape_dict['contents']['treasure'] = {}
         shape_dict = loot(shape_dict,coord,monster="N")
