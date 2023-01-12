@@ -1706,7 +1706,7 @@ for down in range(zwidth-1):
         #print("KEY:",key,"KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
         #print("KEY:",key,"KEYWIDTH:",key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2])
         
-        if key[2] == (down-1): #-1, -2, etc
+        if key[2] == (0 - down -1): #-1, -2, etc
             if 'fill' in dungeon[key] :  
                 print("KEY:",key,"KEYWIDTH:",key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1,dungeon[key]['fill'])
                 #chararray[[key][0],key[1],key[2]] = dungeon[key]['fill']
