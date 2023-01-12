@@ -39,6 +39,8 @@ def coord_limits(dungeon):
             miny = key[1]
         if key[2] > maxz:
             maxz = key[2]
+        if key[2] < minz:
+            minz = key[2]
 
     coord_min = (minx,miny,minz)
     coord_max = (maxx,maxy,maxz)
