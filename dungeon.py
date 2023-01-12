@@ -13,7 +13,7 @@ import pickle
 import math
 
 PI = math.pi
-ARGV = sys.argv
+ARGV = sys.ARGV
 
 #pass location?
 def roll_dice(number, sides):
