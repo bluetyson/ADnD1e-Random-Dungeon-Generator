@@ -9,6 +9,9 @@ import copy
 import json
 from tqdm import tqdm
 import pickle
+import math
+
+PI = math.pi
 
 #pass location?
 def roll_dice(number, sides):
@@ -1045,6 +1048,74 @@ def fancy_shape():
     shape_dict['water'] = 'N'
     shape_dict['size'] = 0
 
+    ## get size for later use
+    z = roll_dice(1,20)     
+    if z <=3:
+        shape_dict['size'] = 5
+    if z >=4 and z <= 6:
+        shape_dict['size'] = 9
+    if z >=7 and z <= 8:
+        shape_dict['size'] = 13
+    if z >=9 and z <= 10:
+        shape_dict['size'] = 20
+    if z >=11 and z <= 12:
+        shape_dict['size'] = 27
+    if z >=13 and z <= 14:
+        shape_dict['size'] = 34
+    if z >=15:
+        rollflag = True
+        while flag == True:
+            zr = roll_dice(1,20)
+            shape_dict['size'] = shape_dict['size'] + 20 + zr
+            if zr <= 15:
+                rollflag = False
+
+    if s <= 5:
+        shape_dict['shape'] = 'C'
+        p = roll_dice(1,20)
+        if p <= 5:
+            shape_dict['water'] = 'P'
+        if p >=6 and p <= 7:
+            shape_dict['water'] = 'W'
+        if p >=8 and p <= 10:
+            shape_dict['water'] = 'S'
+            
+        usesize = shape_dict['size'] / pi
+        radius = int(math.sqrt(usesize))
+        shape_dict['size'] = [radius, radius]
+
+    if s >= 6 and s <=8:
+        shape_dict['shape'] = 'T'
+        width = math.sqrt(shape_dict['size'] * 4/math.sqrt(3))
+        height = width * math.sqrt(3)/2
+        shape_dict['size'] = [width, height]
+    if s >= 9 and s <=11:
+        shape_dict['shape'] = 'Z'
+        #trapezoid make height 2 and top = bottom-2 and area +2 = 2* base
+        b = int((shape_dict['size'] + 2)/2)
+        shape_dict['size'] = [b,2]
+    if s >= 12 and s <=13:
+        shape_dict['shape'] = 'S'
+    if s >= 14 and s <=15:
+        #hack a circle
+        shape_dict['shape'] = 'V'
+        usesize = shape_dict['size'] / pi
+        radius = int(math.sqrt(usesize))
+        shape_dict['size'] = [max(1,radius-2), radius+2]
+    if s >= 16 and s <=17:
+        shape_dict['shape'] = 'H'
+        usesize = math.sqrt(shape_dict['size'] * 2.0/3.0*math.sqrt(3))
+        shape_dict['size'] = [int(usesize),int(usesize)]
+    if s >= 18 and s <=19:
+        shape_dict['shape'] = 'O'
+        #A=2(1+2)*a^2
+        usesize = math.sqrt(shape_dict['size'] / 2*(1+*math.sqrt(2))
+        shape_dict['size'] = [int(usesize),int(usesize)]
+    if s >= 18 and s <=19:
+        shape_dict['shape'] = 'CV'
+      
+    return shape_dict
+
     if s <= 5:
         shape_dict['shape'] = 'C'
         p = roll_dice(1,20)
@@ -1070,26 +1141,8 @@ def fancy_shape():
     if s >= 18 and s <=19:
         shape_dict['shape'] = 'CV'
 
-    z = roll_dice(1,20)     
-    if z <=3:
-        shape_dict['size'] = 5
-    if z >=4 and z <= 6:
-        shape_dict['size'] = 9
-    if z >=7 and z <= 8:
-        shape_dict['size'] = 13
-    if z >=9 and z <= 10:
-        shape_dict['size'] = 20
-    if z >=11 and z <= 12:
-        shape_dict['size'] = 27
-    if z >=13 and z <= 14:
-        shape_dict['size'] = 34
-    if z >=15:
-        rollflag = True
-        while flag == True:
-            zr = roll_dice(1,20)
-            shape_dict['size'] = shape_dict['size'] + 20 + zr
-            if zr <= 15:
-                rollflag = False
+
+        
 
     return shape_dict
 
