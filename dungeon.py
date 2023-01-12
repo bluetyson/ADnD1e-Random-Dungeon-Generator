@@ -1118,40 +1118,7 @@ def fancy_shape(shape_dict):
         shape_dict['shape'] = R ## for now
     return shape_dict
 
-    if s <= 5:
-        shape_dict['shape'] = 'C'
-        p = roll_dice(1,20)
-        if p <= 5:
-            shape_dict['water'] = 'P'
-        if p >=6 and p <= 7:
-            shape_dict['water'] = 'W'
-        if p >=8 and p <= 10:
-            shape_dict['water'] = 'S'
-
-    if s >= 6 and s <=8:
-        shape_dict['shape'] = 'T'
-    if s >= 9 and s <=11:
-        shape_dict['shape'] = 'Z'
-    if s >= 12 and s <=13:
-        shape_dict['shape'] = 'S'
-    if s >= 14 and s <=15:
-        shape_dict['shape'] = 'V'
-    if s >= 16 and s <=17:
-        shape_dict['shape'] = 'H'
-    if s >= 18 and s <=19:
-        shape_dict['shape'] = 'O'
-    if s >= 18 and s <=19:
-        shape_dict['shape'] = 'CV'
-
-
-        
-
-    return shape_dict
-
-def fancy_size():
-    # in fancy shape
-    pass
-
+    
 def exit_no(shape_dict):
     area = shape_dict['size'][0]*shape_dict['size'][1]
     e = roll_dice(1,20)
