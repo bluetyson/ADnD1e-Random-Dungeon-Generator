@@ -1721,7 +1721,7 @@ for down in range(zwidth-1):
         #print("START CHECK")
         chararray[0+xmin*-1,0+ymin*-1,0+zmax*-1] = 'O'        
         #print("START CHECK",chararray[0+xmin*-1,0+ymin*-1,0+zmin],0+xmin*-1,0+ymin*-1,-1)
-
+    print(chararray)
     #need a multi-level maker, this is just doing first for now
     #Each side can be set individually using border-top-color, border-right-color, border-bottom-color, and border-left-color; or using the writing mode-aware border-block-start-color, border-block-end-color, border-inline-start-color, and border-inline-end-color.
     #make dungeon html
