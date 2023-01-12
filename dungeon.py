@@ -1849,7 +1849,8 @@ with open('downlist.pkl','wb') as fd:
 
 with open('downlist.pkl','rb') as fd:
     df = pickle.load(fd)
-    print("picklecheck",df)
+    if zwidth -1 > 1:
+        print("picklecheck",df)
 
    
     
