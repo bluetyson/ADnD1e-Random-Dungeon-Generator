@@ -1181,7 +1181,7 @@ def exit_dir(shape_dict):
     #not needed until get chamber/room differentiation
     #not implemented
     shape_dict['exitdirections'] = {}
-    for i in shape_dict['exits']:
+    for i in range(shape_dict['exits']):
         e = roll_dice(1,20)
         if e<=16:
             shape_dict['exitdirections']['i+1'] = 'A'
