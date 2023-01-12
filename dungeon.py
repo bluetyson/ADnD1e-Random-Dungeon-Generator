@@ -1688,7 +1688,7 @@ print("LEVEL_STACK:", level_stack)
 
 
 #can handle up to 4 characters
-print("SHAPE",chararray.shape)
+
 #print("ARRAY",chararray)
 
 #chararray[0,0,0] = 'S'
@@ -1699,6 +1699,7 @@ print("SHAPE",chararray.shape)
 downlist = []
 for down in range(zwidth):
     chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U4')
+    print("SHAPE",chararray.shape)
     for key in dungeon:
         #print("KEY:",key,"KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
         #print("KEY:",key,"KEYWIDTH:",key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2])
