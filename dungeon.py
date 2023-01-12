@@ -207,30 +207,32 @@ def check_action(pc_dict, coord):
 
                     print("ROOM SHAPE:",shape_dict)
                     ## do simple version first of x directions and y directions of rectangular
-                    if shape_dict['shape'] == 'R':
-                        print("rectangular")
-                        #H x W
-                        #position based on size
-                        adjust = 0
-                        if shape_dict['size'][1] % 2 == 0:
-                            lr = roll_dice(1,2)
-                            if lr == 1:
-                                adjust = -1
-                            else:
-                                adjust = 1
-
-                        #if shape_dict['size'][1] == 2:
-                        for j in range(shape_dict['size'][1]):
-                            for i in range(shape_dict['size'][0]):
-                                will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
-                                if not will_fit:                
-                                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
-                                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
+                    room_make(shape_dict, coord)
+                    if 1 == 2:
+                        if shape_dict['shape'] == 'R':
+                            print("rectangular")
+                            #H x W
+                            #position based on size
+                            adjust = 0
+                            if shape_dict['size'][1] % 2 == 0:
+                                lr = roll_dice(1,2)
+                                if lr == 1:
+                                    adjust = -1
                                 else:
-                                    break
-                        
-                    else:
-                        pass
+                                    adjust = 1
+
+                            #if shape_dict['size'][1] == 2:
+                            for j in range(shape_dict['size'][1]):
+                                for i in range(shape_dict['size'][0]):
+                                    will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
+                                    if not will_fit:                
+                                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
+                                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
+                                    else:
+                                        break
+                            
+                        else:
+                            pass
                         #fancy shape/size not yet implemented
 
 
@@ -319,32 +321,35 @@ def check_action(pc_dict, coord):
                     #each room part check for inside
 
                     print("ROOM SHAPE:",shape_dict)
-                    ## do simple version first of x directions and y directions of rectangular
-                    if shape_dict['shape'] == 'R':
-                        print("rectangular")
-                        #H x W
-                        #position based on size
-                        adjust = 0
-                        if shape_dict['size'][1] % 2 == 0:
-                            lr = roll_dice(1,2)
-                            if lr == 1:
-                                adjust = -1
-                            else:
-                                adjust = 1
+                    room_make(shape_dict, coord)
 
-                        #if shape_dict['size'][1] == 2:
-                        for j in range(shape_dict['size'][1]):
-                            for i in range(shape_dict['size'][0]):
-                                will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
-                                if not will_fit:                
-                                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
-                                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
+                    if 1 == 2:
+                        ## do simple version first of x directions and y directions of rectangular
+                        if shape_dict['shape'] == 'R':
+                            print("rectangular")
+                            #H x W
+                            #position based on size
+                            adjust = 0
+                            if shape_dict['size'][1] % 2 == 0:
+                                lr = roll_dice(1,2)
+                                if lr == 1:
+                                    adjust = -1
                                 else:
-                                    break
-                        
-                    else:
-                        pass
-                        #fancy shape/size not yet implemented
+                                    adjust = 1
+
+                            #if shape_dict['size'][1] == 2:
+                            for j in range(shape_dict['size'][1]):
+                                for i in range(shape_dict['size'][0]):
+                                    will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
+                                    if not will_fit:                
+                                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
+                                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
+                                    else:
+                                        break
+                            
+                        else:
+                            pass
+                            #fancy shape/size not yet implemented
 
 
                 
@@ -639,61 +644,8 @@ def check_action(pc_dict, coord):
         #each room part check for inside
 
         print("ROOM SHAPE:",shape_dict)
-        ## do simple version first of x directions and y directions of rectangular
-        if shape_dict['shape'] == 'R':
-            print("rectangular")
-            #H x W
-            #position based on size
-            adjust = 0
-            if shape_dict['size'][1] % 2 == 0:
-                lr = roll_dice(1,2)
-                if lr == 1:
-                    adjust = -1
-                else:
-                    adjust = 1
-
-            #if shape_dict['size'][1] == 2:
-            for j in range(shape_dict['size'][1]):
-                for i in range(shape_dict['size'][0]):
-                    will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
-                    if not will_fit:                
-                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
-                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
-                    else:
-                        break
-            
-        else:
-            pass
-            #fancy shape/size
-
-    elif pc_dict['direction'] == 'level':
-        new_coord = coord
-        level_dict = level(coord)
-        new_coord = level_dict['new_coord']
-        level_stack[new_coord] = level_dict
-
-        print("LEVEL:",level_dict)
-        
-        if level_dict['check'] > 0:
-            #go ahead 3 on check 3
-            for y in range(level_dict['check']):
-                will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
-                if not will_fit:
-                    dungeon[(coord[0],coord[1]+1+y,coord[2])] = {}
-                    dungeon[(coord[0],coord[1]+1+y,coord[2])]['fill'] = 'C'
-                    new_coord = (coord[0],coord[1]+1+y,coord[2])
-                else:
-                    break
-
-
-        if level_dict['room'] == 'Y':
-            #do room check
-
-            ## need to put roominess like this in a function?? as still need all exits and other stuff - maybe go in shape_dict??
-            shape_dict = room(coord) #if another room pass not C="R"        
-            #each room part check for inside
-
-            print("ROOM SHAPE:",shape_dict)
+        room_make(shape_dict, coord)
+        if 1 == 2:
             ## do simple version first of x directions and y directions of rectangular
             if shape_dict['shape'] == 'R':
                 print("rectangular")
@@ -720,6 +672,63 @@ def check_action(pc_dict, coord):
             else:
                 pass
                 #fancy shape/size
+
+    elif pc_dict['direction'] == 'level':
+        new_coord = coord
+        level_dict = level(coord)
+        new_coord = level_dict['new_coord']
+        level_stack[new_coord] = level_dict
+
+        print("LEVEL:",level_dict)
+        
+        if level_dict['check'] > 0:
+            #go ahead 3 on check 3
+            for y in range(level_dict['check']):
+                will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
+                if not will_fit:
+                    dungeon[(coord[0],coord[1]+1+y,coord[2])] = {}
+                    dungeon[(coord[0],coord[1]+1+y,coord[2])]['fill'] = 'C'
+                    new_coord = (coord[0],coord[1]+1+y,coord[2])
+                else:
+                    break
+
+
+        if level_dict['room'] == 'Y':
+            #do room check
+            ## need to put roominess like this in a function?? as still need all exits and other stuff - maybe go in shape_dict??
+            shape_dict = room(coord) #if another room pass not C="R"        
+            #each room part check for inside
+
+            print("ROOM SHAPE:",shape_dict)
+            room_make(shape_dict, coord)
+            ## do simple version first of x directions and y directions of rectangular
+            if 1 == 2:
+                if shape_dict['shape'] == 'R':
+                    print("rectangular")
+                    #H x W
+                    #position based on size
+                    adjust = 0
+                    if shape_dict['size'][1] % 2 == 0:
+                        lr = roll_dice(1,2)
+                        if lr == 1:
+                            adjust = -1
+                        else:
+                            adjust = 1
+
+                    #if shape_dict['size'][1] == 2:
+                    for j in range(shape_dict['size'][1]):
+                        for i in range(shape_dict['size'][0]):
+                            will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
+                            if not will_fit:                
+                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
+                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
+                            else:
+                                break
+                    
+                else:
+                    pass
+                    #fancy shape/size
+
         return new_coord
 
     elif pc_dict['direction'] == 'stop':
@@ -1232,7 +1241,7 @@ def room_contents(shape_dict, coord, content):
         else:
             shape_dict = loot_hide(shape_dict)
 
-def room_make(shape_dict):
+def room_make(shape_dict, coord):
     if shape_dict['shape'] == 'R':
         print("rectangular")
         #H x W
@@ -1759,36 +1768,40 @@ def bad_things(coord):
                 t_dict['new_coord'] = new_coord
             else:
                 #pass put room here
-                shape_dict = room(coord, content="MT") #if another room pass not C="R"        
+                shape_dict = room(coord, content="MT") #if another room pass not C="R"       
+                
                 #pass MT for monster and treasure
                 #each room part check for inside
 
                 print("ROOM SHAPE:",shape_dict)
-                ## do simple version first of x directions and y directions of rectangular
-                if shape_dict['shape'] == 'R':
-                    print("rectangular")
-                    #H x W
-                    #position based on size
-                    adjust = 0
-                    if shape_dict['size'][1] % 2 == 0:
-                        lr = roll_dice(1,2)
-                        if lr == 1:
-                            adjust = -1
-                        else:
-                            adjust = 1
+                room_make(shape_dict, coord) 
 
-                    #if shape_dict['size'][1] == 2:
-                    for j in range(shape_dict['size'][1]):
-                        for i in range(shape_dict['size'][0]):
-                            will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
-                            if not will_fit:                
-                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
-                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
+                ## do simple version first of x directions and y directions of rectangular
+                if 1 == 2:
+                    if shape_dict['shape'] == 'R':
+                        print("rectangular")
+                        #H x W
+                        #position based on size
+                        adjust = 0
+                        if shape_dict['size'][1] % 2 == 0:
+                            lr = roll_dice(1,2)
+                            if lr == 1:
+                                adjust = -1
                             else:
-                                break
-                    
-                else:
-                    pass
+                                adjust = 1
+
+                        #if shape_dict['size'][1] == 2:
+                        for j in range(shape_dict['size'][1]):
+                            for i in range(shape_dict['size'][0]):
+                                will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
+                                if not will_fit:                
+                                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
+                                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
+                                else:
+                                    break
+                        
+                    else:
+                        pass
                 
 
 
