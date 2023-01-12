@@ -1153,16 +1153,38 @@ def room_contents(shape_dict):
     else:
         shape_dict['contents']['treasure'] = {}
 
-def loot():
+def loot(shape_dict):
     pass
 
-def loot_store():
+def loot_store(shape_dict):
+    l = roll_dice(1,20)
+Die Result
+    if l <=2:
+        shape_dict['contents']['treasure']['store'] = 'Bags'
+    elif l >=3 and l<=4:
+        shape_dict['contents']['treasure']['store'] = 'Sacks'
+    elif l >=5 and l<=6:
+        shape_dict['contents']['treasure']['store'] = 'Coffers'
+    elif l >=7 and l<=8:
+        shape_dict['contents']['treasure']['store'] = 'Chests'
+    elif l >=9 and l<=10:
+        shape_dict['contents']['treasure']['store'] = 'Bloody Great Chests'
+    elif l >=11 and l<=12:
+        shape_dict['contents']['treasure']['store'] = 'Clay Jars'
+    elif l >=13 and l<=14:
+        shape_dict['contents']['treasure']['store'] = 'Metal Urns'
+    elif l >=15 and l<=16:
+        shape_dict['contents']['treasure']['store'] = 'Stone Jars'
+    elif l >=17 and l<=18:
+        shape_dict['contents']['treasure']['store'] = 'Metal Trunks'
+    else:
+        shape_dict['contents']['treasure']['store'] = 'Loose'
+
+
+def loot_guard(shape_dict):
     pass
 
-def loot_guard():
-    pass
-
-def loot_hide():
+def loot_hide(shape_dict):
     pass
 
 def level(coord):
