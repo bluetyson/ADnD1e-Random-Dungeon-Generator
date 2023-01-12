@@ -1083,7 +1083,7 @@ def fancy_shape(shape_dict):
     if s >= 14 and s <=15:
         #hack a circle
         shape_dict['shape'] = 'V'
-        usesize = shape_dict['size'] / pi
+        usesize = shape_dict['size'] / PI
         radius = int(math.sqrt(usesize))
         shape_dict['size'] = [max(1,radius-2), radius+2]
     if s >= 16 and s <=17:
