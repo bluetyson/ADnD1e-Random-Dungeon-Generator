@@ -1697,7 +1697,9 @@ print("LEVEL_STACK:", level_stack)
 #map chararray to independent for each level
 ## ignore any random tiny up level things for now on chimneys or trapdoros
 downlist = []
+print("DOWN:",down)
 for down in range(zwidth):
+    print("downloop:",down)
     chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U4')
     print("SHAPE",chararray.shape)
     for key in dungeon:
