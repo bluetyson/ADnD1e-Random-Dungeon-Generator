@@ -1153,8 +1153,42 @@ def room_contents(shape_dict):
     else:
         shape_dict['contents']['treasure'] = {}
 
-def loot(shape_dict):
-    pass
+def loot(shape_dict,new_coord,monster="N"):
+    shape_dict['contents']['treasure']['type'] = {}
+    shape_dict['contents']['treasure']['type']['copper'] = 0
+    shape_dict['contents']['treasure']['type']['silver'] = 0
+    shape_dict['contents']['treasure']['type']['electrum'] = 0
+    shape_dict['contents']['treasure']['type']['gold'] = 0
+    shape_dict['contents']['treasure']['type']['platinum'] = 0
+    shape_dict['contents']['treasure']['type']['gems'] = 0
+    shape_dict['contents']['treasure']['type']['jewellery'] = 0
+    shape_dict['contents']['treasure']['type']['magic'] = 0
+
+    if monster == 'N':
+        multi = 0
+        rolls 1
+    else:
+        multi = 1.1
+        rolls = 2
+    for t in range(rolls):        
+        l = roll_dice(1,100)
+        if l<=25:
+            shape_dict['contents']['treasure']['type']['copper'] = shape_dict['contents']['treasure']['type']['copper'] + abs(new_coord[2]) * 1000
+        elif l >= 26 and l <= 50:
+            shape_dict['contents']['treasure']['type']['silver'] = shape_dict['contents']['treasure']['type']['silver'] + abs(new_coord[2]) * 1000
+        elif l >= 51 and l <= 65:
+            shape_dict['contents']['treasure']['type']['electrum'] = shape_dict['contents']['treasure']['type']['electrum'] + abs(new_coord[2]) * 750
+        elif l >= 66 and l <= 80:
+            shape_dict['contents']['treasure']['type']['gold'] = shape_dict['contents']['treasure']['type']['gold'] + abs(new_coord[2]) * 250
+        elif l >= 81 and l <= 90:
+            shape_dict['contents']['treasure']['type']['silver'] = shape_dict['contents']['treasure']['type']['silver'] + abs(new_coord[2]) * 100
+        elif l >= 91 and l <= 94:
+            shape_dict['contents']['treasure']['type']['gems'] = shape_dict['contents']['treasure']['type']['gems'] + abs(new_coord[2]) * roll_dice(1,4)
+        elif l >= 95 and l <= 97:
+            shape_dict['contents']['treasure']['type']['jewellery'] = shape_dict['contents']['treasure']['type']['jewellery'] + abs(new_coord[2])
+        else:
+            shape_dict['contents']['treasure']['type']['magic'] = shape_dict['contents']['treasure']['type']['magic'] += 1
+
 
 def loot_store(shape_dict):
     l = roll_dice(1,20)
