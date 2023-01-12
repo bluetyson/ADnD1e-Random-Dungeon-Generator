@@ -1121,7 +1121,7 @@ def fancy_shape(shape_dict):
             shape_dict['size'] = [roll_dice(1,6)+24,roll_dice(1,6)+34]
 
       
-        shape_dict['shape'] = R ## for now
+        shape_dict['shape'] = 'R' ## for now
     return shape_dict
 
     
