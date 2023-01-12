@@ -1687,14 +1687,7 @@ print("DUNGEON:", dungeon)
 print("EXIT_STACK:", exit_stack)
 print("LEVEL_STACK:", level_stack)
 
-
 #can handle up to 4 characters
-
-#print("ARRAY",chararray)
-
-#chararray[0,0,0] = 'S'
-
-##make more than one level
 #map chararray to independent for each level
 ## ignore any random tiny up level things for now on chimneys or trapdoros
 downlist = []
