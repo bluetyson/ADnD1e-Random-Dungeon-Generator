@@ -1686,7 +1686,7 @@ print("DUNGEON:", dungeon)
 print("EXIT_STACK:", exit_stack)
 print("LEVEL_STACK:", level_stack)
 
-chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U1')
+chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U2')
 print("SHAPE",chararray.shape)
 #print("ARRAY",chararray)
 
@@ -1713,7 +1713,7 @@ for down in range(zwidth):
     #only for first level        
     if down == 0:
         #print("START CHECK")
-        chararray[0+xmin*-1,0+ymin*-1,0+zmax*-1] = 'S'        
+        chararray[0+xmin*-1,0+ymin*-1,0+zmax*-1] = 'O'        
         #print("START CHECK",chararray[0+xmin*-1,0+ymin*-1,0+zmin],0+xmin*-1,0+ymin*-1,-1)
 
     #need a multi-level maker, this is just doing first for now
@@ -1779,7 +1779,7 @@ for down in range(zwidth):
                     strdata = '<td class="gray_background">' + chararray[i,j,0] + '</td>'
                 elif chararray[i,j,0] == 'D':
                     strdata = '<td class="gray_background">' + chararray[i,j,0] + '</td>'
-                elif chararray[i,j,0] == 'S':
+                elif chararray[i,j,0] == 'O':
                     strdata = '<td class="green_background">' + chararray[i,j,0] + '</td>'
                 else:
                     strdata = '<td class="red_background">' + chararray[i,j,0] + '</td>'
