@@ -1138,15 +1138,15 @@ def level(coord):
             level_dict['new_coord'] = new_coord
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing
         if not will_fit:                            
-            dungeon[(coord[0],coord[1]+1,coord[2])-1] = {}
-            dungeon[(coord[0],coord[1]+1,coord[2])-1]['fill'] = 'st'
+            dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'st'
 
             dungeon[(coord[0],coord[1]+1,coord[2]-2)] = {}
             dungeon[(coord[0],coord[1]+1,coord[2]-2)]['fill'] = 'st'
 
             dungeon[(coord[0],coord[1]+1,coord[2]-3)] = {}
             dungeon[(coord[0],coord[1]+1,coord[2]-3)]['fill'] = 'st'
-            new_coord = (coord[0],coord[1]+1,coord[3]-2)  ##1 in 20 closes
+            new_coord = (coord[0],coord[1]+1,coord[2]-3)  ##1 in 20 closes
             level_dict['new_coord'] = new_coord
     if s == 8:
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
