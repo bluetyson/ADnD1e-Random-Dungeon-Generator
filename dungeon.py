@@ -1712,7 +1712,7 @@ for down in range(zwidth):
     #only for first level        
     if down == 0:
         print("START CHECK")
-        chararray[0+xmin*-1,0+ymin*-1,-1] = 'S'        
+        chararray[0+xmin*-1,0+ymin*-1,0+zmax*-1] = 'S'        
         print("START CHECK",chararray[0+xmin*-1,0+ymin*-1,0+zmin],0+xmin*-1,0+ymin*-1,-1)
 
     #need a multi-level maker, this is just doing first for now
