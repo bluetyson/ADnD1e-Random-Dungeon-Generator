@@ -1282,10 +1282,10 @@ def bad_things(coord):
     new_coord = coord    
     #all traps located ahead plus 1?
     t_dict = {}
-    t_dict['new_coord'] == new_coord
-    t_dict['trap'] == {}
-    t_dict['secretdoor'] == 'N'
-    t_dict['trap']['type'] == 'secretdoor'
+    t_dict['new_coord'] = new_coord
+    t_dict['trap'] = {}
+    t_dict['secretdoor'] = 'N'
+    t_dict['trap']['type'] = 'secretdoor'
     t_dict['trap']['chance'] = 1.0
     t_dict['trap']['fits'] = 'N'
 
