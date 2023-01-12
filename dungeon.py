@@ -1807,7 +1807,8 @@ for down in range(zwidth):
                     strdata = '<td class="red_background">' + chararray[i,j,0] + '</td>'
 
                 f.write(strdata)
-            f.write('</TR></table>')
+            f.write('</TR>')
+            f.write('</table>')
 
         
 
