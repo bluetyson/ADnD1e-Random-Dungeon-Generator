@@ -8,6 +8,7 @@ import datetime
 import copy
 import json
 from tqdm import tqdm
+import pickle
 
 #pass location?
 def roll_dice(number, sides):
@@ -1836,7 +1837,8 @@ for down in range(zwidth-1):
 
 
 
-
+with open('dungeon.pkl','wb') as fd:
+    pickle.dump(dungeon, fd)
 
 
    
