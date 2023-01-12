@@ -1688,7 +1688,7 @@ def bad_things(coord):
             t_dict['trap']['type'] = 'gas'
             t_dict['trap']['details'] = stinky()
             for key in t_dict['trap']['details']:
-                t_dict[key] = t_dict['details'][key]
+                t_dict[key] = t_dict['trap']['details'][key]
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'gs'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
