@@ -1724,14 +1724,13 @@ for down in range(zwidth):
     <head>
     <title>DUNGEON</title>
     <style>
-        table{
-            width: 100%
-        },
+        table,
         th,
         td {
             padding: 10px;
             border: 1px solid black;
             border-collapse: collapse;
+            width:auto
         }
         .red_background {
                 background-color: red;
