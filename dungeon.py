@@ -1351,7 +1351,7 @@ def loot_hide(shape_dict):
     elif l>=7 and l<=8:
         shape_dict['contents']['treasure']['hide'] = 'Secret: Compartment'
     elif l==9:                                                        
-        shape_dict['contents']['treasure']['hide'] = 'Secret: Inside non-storage iem'
+        shape_dict['contents']['treasure']['hide'] = 'Secret: Inside non-storage item'
     elif l==10:                                                        
         shape_dict['contents']['treasure']['hide'] = 'Secret: Disguised as other'
     elif l==11:                                                        
