@@ -1766,7 +1766,7 @@ for down in range(zwidth):
     </html>
     '''
 
-    legend_dict  {}
+    legend_dict =  {}
     legend_dict['O'] = "Outside Entrance"
     legend_dict['C'] = "Corridor/Passage"
     legend_dict['R'] = "Chamber/Room"
