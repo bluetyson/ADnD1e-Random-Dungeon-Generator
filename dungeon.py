@@ -976,7 +976,7 @@ def room(coord, size="C"):
         #shape_dict['size'] = [4,6]
 
     #shape, size, exits, contents, treasure, in  
-    room_contents(shape_dict, new_coord)
+    room_contents(shape_dict, coord)
 
     shape_dict = exit_no(shape_dict)
     shape_dict = exit_loc(shape_dict)
@@ -1192,7 +1192,7 @@ def exit_dir(shape_dict):
 
     return shape_dict            
 
-def room_contents(shape_dict, new_coord):
+def room_contents(shape_dict, coord):
     shape_dict['contents'] = {}
     r = roll_dice(1,20)
     if r <= 12:
@@ -1203,7 +1203,7 @@ def room_contents(shape_dict, new_coord):
         shape_dict['contents']['monster'] = {}
         shape_dict['contents']['treasure'] = {}
 
-        shape_dict = loot(shape_dict,new_coord,monster="Y")
+        shape_dict = loot(shape_dict,coord,monster="Y")
         shape_dict = loot_store(shape_dict)
         
         if shape_dict['contents']['treasure']['protection'] == 'guard':
@@ -1218,7 +1218,7 @@ def room_contents(shape_dict, new_coord):
         shape_dict['contents']['trap']  = bad_things(new_coord)       
     else:
         shape_dict['contents']['treasure'] = {}
-        shape_dict = loot(shape_dict,new_coord,monster="N")
+        shape_dict = loot(shape_dict,coord,monster="N")
         shape_dict = loot_store(shape_dict)
         
         if shape_dict['contents']['treasure']['protection'] == 'guard':
@@ -1226,7 +1226,7 @@ def room_contents(shape_dict, new_coord):
         else:
             shape_dict = loot_hide(shape_dict)
 
-def loot(shape_dict,new_coord,monster="N"):
+def loot(shape_dict,coord,monster="N"):
     shape_dict['contents']['treasure']['type'] = {}
     shape_dict['contents']['treasure']['type']['copper'] = 0
     shape_dict['contents']['treasure']['type']['silver'] = 0
