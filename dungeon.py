@@ -1166,7 +1166,7 @@ def loot(shape_dict,new_coord,monster="N"):
 
     if monster == 'N':
         multi = 0
-        rolls 1
+        rolls = 1
     else:
         multi = 1.1
         rolls = 2
