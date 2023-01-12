@@ -1243,7 +1243,7 @@ def loot_hide(shape_dict):
         shape_dict['contents']['treasure']['hide'] = 'Secret: Inside non-storage iem'
     elif l==10:                                                        
         shape_dict['contents']['treasure']['hide'] = 'Secret: Disguised as other'
-    elif l==10:                                                        
+    elif l==11:                                                        
         r = roll_dice(1,2)
         if r == 1:
             shape_dict['contents']['treasure']['hide'] = 'Secret: In rubbish'
