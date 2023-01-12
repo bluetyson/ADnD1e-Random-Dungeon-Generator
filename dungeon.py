@@ -1309,7 +1309,7 @@ def bad_things(coord):
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pis'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
-        if t >= 9 and t <= 11:
+        if t >= 9 and t <= 11: #fitting in elevator room
             t_dict['trap']['type'] = 'elevator'
             adjust = 0
             lr = roll_dice(1,2)
@@ -1317,38 +1317,33 @@ def bad_things(coord):
                 adjust = -1
             else:
                 adjust = 1
+            if t == 9:
+                #here we have checked if one straight ahead fits so random check if LR 2x2 branch from there
+                d = 1
+                # loop this for level descent -put in descent will fit checks
+                t_dict['trap']['type'] = 'elevator'
+                t_dict['trap']['duration'] = 30
+                
+            elif t == 10:
+                d = 2
+                t_dict['trap']['duration'] = 30
+            else:
+                if t == 11:
+                    t_dict['trap']['duration'] = 60
+                    d = roll_dice(1,4) + 1
+                    # loop this for level descent - 
 
             #2x2 room
-            for j in range(2):
-                for i in range(2):
-                    will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
-                    if not will_fit:                
-                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
-                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'E'
-                    else:
-                        break
-
-
-        if t == 9:
-            #here we have checked if one straight ahead fits so random check if LR 2x2 branch from there
-            #down 1
-            # loop this for level descent -put in descent will fit checks
-            t_dict['trap']['type'] = 'elevator'
-            t_dict['trap']['duration'] = 30
-
-        if t == 9:
-            #here we have checked if one straight ahead fits so random check if LR 2x2 branch from there
-            #down 1
-            # loop this for level descent -put in descent will fit checks
-            t_dict['trap']['duration'] = 30
-
-        if t == 10:
-            #down 2
-            t_dict['trap']['duration'] = 30
-        if t == 11:
-            t_dict['trap']['duration'] = 60
-            l = roll_dice(1,4) + 1
-            # loop this for level descent - 
+            for k in range(d):
+                for j in range(2):
+                    for i in range(2):
+                        will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]-d-1))
+                        if not will_fit:                
+                            dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-d-1)] = {}
+                            dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-d-1)]['fill'] = 'E'
+                            new_coord (coord[0],coord[1]+3,coord[2]-d-1) #past elevator 2 and down
+                        else:
+                            break
         if t == 12:
             #12 Wall 10’ behind slides across passage blocking it for from 40-60 turns.
             t_dict['trap']['type'] = 'slidingwall'
