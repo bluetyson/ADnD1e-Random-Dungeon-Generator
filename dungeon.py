@@ -1913,7 +1913,7 @@ PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't 
 
 if len(ARGV) > 0:
     if int(ARGV[1]) > 1:
-        PERIODIC_CHECKS = ARGV[1]
+        PERIODIC_CHECKS = int(ARGV[1])
 #make this a script argument
 START_LEVEL = 0
 
