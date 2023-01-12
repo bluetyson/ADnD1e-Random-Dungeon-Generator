@@ -1840,11 +1840,16 @@ for down in range(zwidth-1):
 with open('dungeon.pkl','wb') as fd:
     pickle.dump(dungeon, fd)
 
+with open('downlist.pkl','wb') as fd:
+    pickle.dump(downlist, fd)
 
-with open('dungeon.pkl','rb') as fd:
+#with open('dungeon.pkl','rb') as fd:
+    #df = pickle.load(fd)
+    #print("picklecheck",df)
+
+with open('downlist.pkl','rb') as fd:
     df = pickle.load(fd)
     print("picklecheck",df)
-
 
    
     
