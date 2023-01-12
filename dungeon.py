@@ -1230,7 +1230,32 @@ def loot_guard(shape_dict):
         shape_dict['contents']['treasure']['guard'] = 'Magic: Symbol'
 
 def loot_hide(shape_dict):
-    pass
+    l = roll_dice(1,20)
+    if l<=3:
+        shape_dict['contents']['treasure']['hide'] = 'Magic: Invisibility'
+    elif l>=4 and l<=5:
+        shape_dict['contents']['treasure']['hide'] = 'Magic: Ilusion'
+    elif l==6:                                                        
+        shape_dict['contents']['treasure']['hide'] = 'Secret: Compartment under container'
+    elif l>=7 and l<=8:
+        shape_dict['contents']['treasure']['hide'] = 'Secret: Compartment'
+    elif l==9:                                                        
+        shape_dict['contents']['treasure']['hide'] = 'Secret: Inside non-storage iem'
+    elif l==10:                                                        
+        shape_dict['contents']['treasure']['hide'] = 'Secret: Disguised as other'
+    elif l==10:                                                        
+        r = roll_dice(1,2)
+        if r == 1:
+            shape_dict['contents']['treasure']['hide'] = 'Secret: In rubbish'
+        else:
+            shape_dict['contents']['treasure']['hide'] = 'Secret: In poo'
+    elif l>=12 and l<=13:
+        shape_dict['contents']['treasure']['hide'] = 'Secret: Loose stone - under'
+    elif l>=14 and l<=15:
+        shape_dict['contents']['treasure']['hide'] = 'Secret: Loose stone - in wall'
+    else:
+        shape_dict['contents']['treasure']['hide'] = 'Secret room nearby'
+        #make 10x10 thing?
 
 def level(coord):
     level_dict = {}
