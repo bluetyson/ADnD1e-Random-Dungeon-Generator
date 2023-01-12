@@ -1198,7 +1198,7 @@ def exit_dir(shape_dict):
 def room_contents(shape_dict, coord, content):
     shape_dict['contents'] = {}
     r = roll_dice(1,20)
-    if content = "MT":
+    if content == "MT":
         r = 15 #make monster and treasure
 
     if r <= 12:
