@@ -1246,19 +1246,19 @@ def loot(shape_dict,coord,monster="N"):
     for t in range(rolls):        
         l = roll_dice(1,100)
         if l<=25:
-            shape_dict['contents']['treasure']['type']['copper'] = shape_dict['contents']['treasure']['type']['copper'] + int(abs(new_coord[2]) * 1000) * multi 
+            shape_dict['contents']['treasure']['type']['copper'] = shape_dict['contents']['treasure']['type']['copper'] + int(abs(coord[2]) * 1000) * multi 
         elif l >= 26 and l <= 50:
-            shape_dict['contents']['treasure']['type']['silver'] = shape_dict['contents']['treasure']['type']['silver'] + int(abs(new_coord[2]) * 1000) * multi 
+            shape_dict['contents']['treasure']['type']['silver'] = shape_dict['contents']['treasure']['type']['silver'] + int(abs(coord[2]) * 1000) * multi 
         elif l >= 51 and l <= 65:
-            shape_dict['contents']['treasure']['type']['electrum'] = shape_dict['contents']['treasure']['type']['electrum'] + int(abs(new_coord[2]) * 750) * multi 
+            shape_dict['contents']['treasure']['type']['electrum'] = shape_dict['contents']['treasure']['type']['electrum'] + int(abscoord[2]) * 750) * multi 
         elif l >= 66 and l <= 80:
-            shape_dict['contents']['treasure']['type']['gold'] = shape_dict['contents']['treasure']['type']['gold'] + int(abs(new_coord[2]) * 250) * multi 
+            shape_dict['contents']['treasure']['type']['gold'] = shape_dict['contents']['treasure']['type']['gold'] + int(abs(coord[2]) * 250) * multi 
         elif l >= 81 and l <= 90:
-            shape_dict['contents']['treasure']['type']['silver'] = shape_dict['contents']['treasure']['type']['silver'] + int(abs(new_coord[2]) * 100) * multi 
+            shape_dict['contents']['treasure']['type']['silver'] = shape_dict['contents']['treasure']['type']['silver'] + int(abs(coord[2]) * 100) * multi 
         elif l >= 91 and l <= 94:
-            shape_dict['contents']['treasure']['type']['gems'] = shape_dict['contents']['treasure']['type']['gems'] + int(abs(new_coord[2]) * roll_dice(1,4)) * multi 
+            shape_dict['contents']['treasure']['type']['gems'] = shape_dict['contents']['treasure']['type']['gems'] + int(abs(coord[2]) * roll_dice(1,4)) * multi 
         elif l >= 95 and l <= 97:
-            shape_dict['contents']['treasure']['type']['jewellery'] = shape_dict['contents']['treasure']['type']['jewellery'] + int(abs(new_coord[2])) * multi 
+            shape_dict['contents']['treasure']['type']['jewellery'] = shape_dict['contents']['treasure']['type']['jewellery'] + int(abs(coord[2])) * multi 
         else:
             shape_dict['contents']['treasure']['type']['magic']  += 1
 
