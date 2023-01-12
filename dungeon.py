@@ -1777,7 +1777,8 @@ for down in range(zwidth):
                     strdata = '<td class="gray_background">' + chararray[i,j,0] + '</td>'
                 elif chararray[i,j,0] == 'D':
                     strdata = '<td class="gray_background">' + chararray[i,j,0] + '</td>'
-
+                elif chararray[i,j,0] == 'D':
+                    strdata = '<td class="green_background">' + chararray[i,j,0] + '</td>'
                 else:
                     strdata = '<td class="red_background">' + chararray[i,j,0] + '</td>'
 
