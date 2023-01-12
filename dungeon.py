@@ -790,7 +790,15 @@ def check_action(pc_dict, coord):
         
     elif pc_dict['direction'] == 'random_encounter':
         new_coord = coord
-        pass
+        roll_first = random_check()
+        "+1 like trap - wm"
+        result_coord = check_action(roll_first, result_coord)
+        new_coord = result_coord
+
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2])) #square for monster
+        if not will_fit:                                                
+            dungeon[(coord[0],coord[1]+1,coord[2])+1] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2])+1]['fill'] = 'wm'
 
     return new_coord
 
@@ -1444,6 +1452,10 @@ def bad_things(coord):
         t_dict['trap']['fits'] = 'Y'
     
     return t_dict
+
+def wandering_monster(coord):    
+    wm_dict['result'] = testmonster()
+    return wm_dict
 
 def fancy_cave():
     pass
