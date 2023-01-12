@@ -1711,7 +1711,7 @@ for down in range(zwidth):
 
     #only for first level        
     if down == 0:
-        chararray[0+xmin*-1,0+ymin*-1,+zmin*-1] = 'S'        
+        chararray[0+xmin*-1,0+ymin*-1,0+zmin*-1] = 'S'        
 
     #need a multi-level maker, this is just doing first for now
 
