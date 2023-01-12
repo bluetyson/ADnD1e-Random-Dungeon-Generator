@@ -1224,6 +1224,15 @@ def room_contents(shape_dict):
     elif r >15 and r <=17:
         shape_dict['contents']['monster'] = {}
         shape_dict['contents']['treasure'] = {}
+
+        loot(shape_dict,new_coord,monster="Y")
+        loot_store(shape_dict)
+        
+        if shape_dict['contents']['treasure']['protection'] == 'guard':
+            loot_guard(shape_dict)
+        else:
+            loot_hide(shape_dict)
+
     elif r == 18:
         shape_dict['contents']['level'] = {}
     elif r == 19:        
