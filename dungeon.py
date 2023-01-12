@@ -1718,7 +1718,7 @@ for down in range(zwidth):
         #print("START CHECK",chararray[0+xmin*-1,0+ymin*-1,0+zmin],0+xmin*-1,0+ymin*-1,-1)
 
     #need a multi-level maker, this is just doing first for now
-
+    #Each side can be set individually using border-top-color, border-right-color, border-bottom-color, and border-left-color; or using the writing mode-aware border-block-start-color, border-block-end-color, border-inline-start-color, and border-inline-end-color.
     #make dungeon html
     strhead = '''
     <html>
@@ -1766,6 +1766,27 @@ for down in range(zwidth):
     </html>
     '''
 
+    legend_dict  {}
+    legend_dict['O'] = "Outside Entrance"
+    legend_dict['C'] = "Corridor/Passage"
+    legend_dict['R'] = "Chamber/Room"
+    legend_dict['wm'] = "Wandering Monster"
+    legend_dict['st'] = "Stairs"
+    legend_dict['ch'] = "Chute"
+    legend_dict['cm'] = "Chimney"
+    legend_dict['pi'] = "Pit Trap"
+    legend_dict['pis'] = "Pit Trap with Spkes"
+    legend_dict['el'] = "Pit Trap with Spikes"
+    legend_dict['ar'] = "Arrow Trap"
+    legend_dict['sp'] = "Spear Trap"
+
+    strlegendhead = '''
+    <table>
+    <th>Key</th>
+    <th>Explanation</th>
+    '''
+    
+
     with open('dungeon_' + str(down+1) + '.html','w') as f:
         f.write(strhead)
         
@@ -1789,6 +1810,16 @@ for down in range(zwidth):
             f.write('</TR>')
 
         f.write(strend)
+
+        f.write(strlegendhead)
+        for key in legend_dict:
+            f.write('<TR>')
+            f.write('<td>' + key + '</td')
+            f.write('<td>' + legend_dict[key] + '</td')
+            f.write('</TR>')
+        f.write('</table>')
+
+
 
 
 
