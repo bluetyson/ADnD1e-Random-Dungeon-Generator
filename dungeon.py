@@ -1911,7 +1911,7 @@ print (testmonster() + ' ' + testtreasure())
 
 PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't count first one down
 
-if len(ARGV) > 0:
+if len(ARGV) > 1:
     if int(ARGV[1]) > 1:
         PERIODIC_CHECKS = int(ARGV[1])
 #make this a script argument
