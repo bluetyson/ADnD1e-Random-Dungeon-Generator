@@ -775,6 +775,17 @@ def check_action(pc_dict, coord):
         
         if 'chute' in t_dict['trap']['type'] or 'elevator' in t_dict['trap']['type']:
             level_stack[new_coord] = t_dict
+
+        new_coord = t_dict['coord']
+        for x in range(3): #checking again in 3
+            will_fit = in_dungeon((coord[0],coord[1]+x+1,coord[2]))
+            if not will_fit:
+                dungeon[(coord[0],coord[1]+x+1,coord[2])] = {}
+                dungeon[(coord[0],coord[1]+x+1,coord[2])]['fill'] = 'C'
+                new_coord = (coord[0],coord[1]+x+1,coord[2])
+            else:
+                break
+
         #check again in 3
         
     elif pc_dict['direction'] == 'random_encounter':
