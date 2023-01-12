@@ -1686,7 +1686,8 @@ print("DUNGEON:", dungeon)
 print("EXIT_STACK:", exit_stack)
 print("LEVEL_STACK:", level_stack)
 
-chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U2')
+chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U4')
+#can handle up to 4 characters
 print("SHAPE",chararray.shape)
 #print("ARRAY",chararray)
 
