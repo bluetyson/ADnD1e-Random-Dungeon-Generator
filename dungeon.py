@@ -1325,7 +1325,7 @@ def bad_things(coord):
             t_dict['trap']['chance'] = 3.0/6.0
             t_dict['trap']['effect'] = 'spikes'
             t_dict['trap']['damage'] = roll_dice(2,6)
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pis'
+            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ps'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t >= 9 and t <= 11: #fitting in elevator room
@@ -1386,7 +1386,7 @@ def bad_things(coord):
             t_dict['trap']['effect'] = 'crush death'
             t_dict['trap']['damage'] = roll_dice(2,6)
             t_dict['trap']['duration'] = roll_dice(1,4) + 1
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pic'
+            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pc'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 15:
@@ -1785,7 +1785,8 @@ for down in range(zwidth-1):
     legend_dict['cm'] = "Chimney"
     legend_dict['td'] = "Trapdoor"
     legend_dict['pi'] = "Pit Trap"
-    legend_dict['pis'] = "Pit Trap with Spkes"
+    legend_dict['ps'] = "Pit Trap with Spikes"
+    legend_dict['pc'] = "Pit Trap with Crushing Walls"
     legend_dict['el'] = "Elevator Trap"
     legend_dict['ar'] = "Arrow Trap"
     legend_dict['sp'] = "Spear Trap"
