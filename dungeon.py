@@ -976,7 +976,7 @@ def room(coord, size="C"):
         #shape_dict['size'] = [4,6]
 
     #shape, size, exits, contents, treasure, in  
-    room_contents(shape_dict)
+    room_contents(shape_dict, new_coord)
 
     shape_dict = exit_no(shape_dict)
     shape_dict = exit_loc(shape_dict)
@@ -1192,7 +1192,7 @@ def exit_dir(shape_dict):
 
     return shape_dict            
 
-def room_contents(shape_dict):
+def room_contents(shape_dict, new_coord):
     shape_dict['contents'] = {}
     r = roll_dice(1,20)
     if r <= 12:
