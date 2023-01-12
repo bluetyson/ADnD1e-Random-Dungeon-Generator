@@ -1811,13 +1811,13 @@ for down in range(zwidth):
 
         f.write(strend)
 
-        f.write(strlegendhead)
-        for key in legend_dict:
-            f.write('<TR>')
-            f.write('<td>' + key + '</td>')
-            f.write('<td>' + legend_dict[key] + '</td>')
-            f.write('</TR>')
-        f.write('</table>')
+        #f.write(strlegendhead)
+        #for key in legend_dict:
+            #f.write('<TR>')
+            #f.write('<td>' + key + '</td>')
+            #f.write('<td>' + legend_dict[key] + '</td>')
+            #f.write('</TR>')
+        #f.write('</table>')
 
 
 
