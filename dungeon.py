@@ -971,34 +971,11 @@ def room(coord, size="C"):
         else:
             shape_dict['size'] = [3,4]
     if r >= 18:
-            #shape_dict = fancy_shape()
-            ##MAKE ALL ROOMS RECTANGULAR TO START
-            shape_dict['size'] = [4,6]
+        shape_dict = fancy_shape()
+        ##MAKE ALL ROOMS RECTANGULAR TO START
+        #shape_dict['size'] = [4,6]
 
     #shape, size, exits, contents, treasure, in  
-    if size == "CAVE":
-        c = roll_dice(1,20)
-        if c <= 5:
-            shape_dict['size'] = [4,6]
-        elif c>= 6 and c<=7:
-            shape_dict['size'] = [5,roll_dice(1,2)+6]
-        elif c>= 8 and c<=9:            
-            #to implement double cave
-            shape_dict['size'] = [6,6]
-            #Double Cave: 2 × 3, 6 × 6
-        elif c>= 10 and c<=11:            
-            #Double Cave: 35’ × 50’, 80’ × 90’
-            shape_dict['size'] = [8,9]
-        elif c>= 12 and c<=14:            
-            shape_dict['size'] = [roll_dice(1,2)+8,roll_dice(1,2)+11]
-        elif c>= 15 and c<=16:            
-            shape_dict['size'] = [12,15]
-        elif c>= 17 and c<=18:            
-            shape_dict['size'] = [15,20]
-        else:
-            shape_dict['size'] = [roll_dice(1,6)+24,roll_dice(1,6)+34]
-
-        
 
     return shape_dict
 
@@ -1044,7 +1021,7 @@ def fancy_width():
 
 def fancy_shape():
     s = roll_dice(1,20)
-    shape_dict = {}    
+    #shape_dict = {}    
     shape_dict['water'] = 'N'
     shape_dict['size'] = 0
 
@@ -1115,8 +1092,29 @@ def fancy_shape():
         shape_dict['size'] = [int(radius),int(radius)]
     if s >= 18 and s <=19:
         shape_dict['shape'] = 'CV'
+        c = roll_dice(1,20)
+        if c <= 5:
+            shape_dict['size'] = [4,6]
+        elif c>= 6 and c<=7:
+            shape_dict['size'] = [5,roll_dice(1,2)+6]
+        elif c>= 8 and c<=9:            
+            #to implement double cave
+            shape_dict['size'] = [6,6]
+            #Double Cave: 2 × 3, 6 × 6
+        elif c>= 10 and c<=11:            
+            #Double Cave: 35’ × 50’, 80’ × 90’
+            shape_dict['size'] = [8,9]
+        elif c>= 12 and c<=14:            
+            shape_dict['size'] = [roll_dice(1,2)+8,roll_dice(1,2)+11]
+        elif c>= 15 and c<=16:            
+            shape_dict['size'] = [12,15]
+        elif c>= 17 and c<=18:            
+            shape_dict['size'] = [15,20]
+        else:
+            shape_dict['size'] = [roll_dice(1,6)+24,roll_dice(1,6)+34]
+
       
-        shape_dict['shap']
+        shape_dict['shape'] = R ## for now
     return shape_dict
 
     if s <= 5:
