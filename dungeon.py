@@ -1187,7 +1187,47 @@ def loot_store(shape_dict):
 
 
 def loot_guard(shape_dict):
-    pass
+    l = roll_dice(1,20)    
+    if l<=2:
+        shape_dict['contents']['treasure']['guard'] = 'Contact poison: container'
+    elif l>=3 and l<=4:
+        shape_dict['contents']['treasure']['guard'] = 'Contact poison: loot'
+    elif l>=5 and l<=6:
+        shape_dict['contents']['treasure']['guard'] = 'Poison needles: lock'
+    elif l==7:
+        shape_dict['contents']['treasure']['guard'] = 'Poison needles: handle'
+    elif l==8:        
+        shape_dict['contents']['treasure']['guard'] = 'Darts: front'
+    elif l==9:                
+        shape_dict['contents']['treasure']['guard'] = 'Darts: top'
+    elif l==10:                
+        shape_dict['contents']['treasure']['guard'] = 'Darts: inside bottom up'
+    elif l>=11 and l<=12:
+        shape_dict['contents']['treasure']['guard'] = 'Blade: across inside'
+    elif l==13:                        
+        p = roll_dice(1,4)
+        if p == 1:
+            shape_dict['contents']['treasure']['guard'] = 'Snakes: poison'
+        elif p == 2:
+            shape_dict['contents']['treasure']['guard'] = 'Lizards: poison'
+        elif p == 3:
+            shape_dict['contents']['treasure']['guard'] = 'Spiders: poison'
+        else:
+            shape_dict['contents']['treasure']['guard'] = 'Scorpions: poison'
+    elif l==14:                                
+        shape_dict['contents']['treasure']['guard'] = 'Gas'
+    elif l==15:                                        
+        shape_dict['contents']['treasure']['guard'] = 'Trapdoor: front'
+    elif l==16:                                                
+        shape_dict['contents']['treasure']['guard'] = 'Trapdoor: one square back'
+    elif l==17:                                                        
+        shape_dict['contents']['treasure']['guard'] = 'Stone Falls: Front'
+    elif l==18:                                                                
+        shape_dict['contents']['treasure']['guard'] = 'Spear trap: Walls'
+    elif l==19:                                                                        
+        shape_dict['contents']['treasure']['guard'] = 'Magic: Rune Boom'
+    elif l==20:                                                                                
+        shape_dict['contents']['treasure']['guard'] = 'Magic: Symbol'
 
 def loot_hide(shape_dict):
     pass
