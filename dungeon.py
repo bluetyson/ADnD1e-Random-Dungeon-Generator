@@ -1776,7 +1776,7 @@ for down in range(zwidth):
     legend_dict['cm'] = "Chimney"
     legend_dict['pi'] = "Pit Trap"
     legend_dict['pis'] = "Pit Trap with Spkes"
-    legend_dict['el'] = "Pit Trap with Spikes"
+    legend_dict['el'] = "Elevator Trap"
     legend_dict['ar'] = "Arrow Trap"
     legend_dict['sp'] = "Spear Trap"
 
@@ -1814,8 +1814,8 @@ for down in range(zwidth):
         f.write(strlegendhead)
         for key in legend_dict:
             f.write('<TR>')
-            f.write('<td>' + key + '</td')
-            f.write('<td>' + legend_dict[key] + '</td')
+            f.write('<td>' + key + '</td>')
+            f.write('<td>' + legend_dict[key] + '</td>')
             f.write('</TR>')
         f.write('</table>')
 
