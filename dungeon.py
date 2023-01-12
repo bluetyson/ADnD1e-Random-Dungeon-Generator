@@ -1724,7 +1724,9 @@ for down in range(zwidth):
     <head>
     <title>DUNGEON</title>
     <style>
-        table,
+        table{
+            width: 100%
+        },
         th,
         td {
             padding: 10px;
