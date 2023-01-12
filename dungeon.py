@@ -976,6 +976,7 @@ def room(coord, size="C"):
         #shape_dict['size'] = [4,6]
 
     #shape, size, exits, contents, treasure, in  
+    room_contents(shape_dict)
 
     return shape_dict
 
@@ -1019,9 +1020,9 @@ def fancy_width():
         pw = '20C'
     return pw
 
-def fancy_shape():
+def fancy_shape(shape_dict):
     s = roll_dice(1,20)
-    shape_dict = {}    
+    #shape_dict = {}    
     shape_dict['water'] = 'N'
     shape_dict['size'] = 0
 
