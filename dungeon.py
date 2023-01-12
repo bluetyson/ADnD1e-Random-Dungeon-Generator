@@ -1298,7 +1298,7 @@ def bad_things(coord):
 
     will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #down 1#facing
     if not will_fit:                                                
-        dungeon[(coord[0],coord[1]+1,coord[2]+1)] = {}
+        dungeon[(coord[0],coord[1]+1,coord[2])] = {}
 
         t = roll_dice(1,20)
         if t <= 5:
