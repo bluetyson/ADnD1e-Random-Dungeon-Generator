@@ -1736,12 +1736,14 @@ for down in range(zwidth):
         .red_background {
                 background-color: red;
             }
-
         .green_background {
                 background-color: green;
             }
         .gray_background {
                 background-color: gray;
+            }
+        .grey_background {
+                background-color: grey;
             }
         .brown_background {
                 background-color: brown;
@@ -1770,6 +1772,7 @@ for down in range(zwidth):
     legend_dict['O'] = "Outside Entrance"
     legend_dict['C'] = "Corridor/Passage"
     legend_dict['R'] = "Chamber/Room"
+    legend_dict['D'] = "Dead End"
     legend_dict['wm'] = "Wandering Monster"
     legend_dict['st'] = "Stairs"
     legend_dict['ch'] = "Chute"
@@ -1800,7 +1803,7 @@ for down in range(zwidth):
                 elif chararray[i,j,0] == 'R':
                     strdata = '<td class="gray_background">' + chararray[i,j,0] + '</td>'
                 elif chararray[i,j,0] == 'D':
-                    strdata = '<td class="gray_background">' + chararray[i,j,0] + '</td>'
+                    strdata = '<td class="brown_background">' + chararray[i,j,0] + '</td>'
                 elif chararray[i,j,0] == 'O':
                     strdata = '<td class="green_background">' + chararray[i,j,0] + '</td>'
                 else:
