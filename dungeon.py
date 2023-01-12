@@ -1086,7 +1086,7 @@ def fancy_shape():
     if s >= 18 and s <=19:
         shape_dict['shape'] = 'O'
         #A=2(1+2)*a^2
-        usesize = math.sqrt(shape_dict['size'] / 2*(1+*math.sqrt(2))
+        usesize = math.sqrt(shape_dict['size'] / 2*(1+math.sqrt(2))
         #side - now get radius
         radius = usesize * math.sqrt(1 + 1/math.sqrt(2))
         shape_dict['size'] = [int(radius),int(radius)]
