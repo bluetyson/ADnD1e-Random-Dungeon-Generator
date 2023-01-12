@@ -978,6 +978,10 @@ def room(coord, size="C"):
     #shape, size, exits, contents, treasure, in  
     room_contents(shape_dict)
 
+    shape_dict = exit_no(shape_dict)
+    shape_dict = exit_loc(shape_dict)
+    shape_dict = exit_dir(shape_dict)
+
     return shape_dict
 
 #not implemented yet
@@ -1156,6 +1160,8 @@ def exit_no(shape_dict):
         # if differentiate chambers and rooms this becomes passage
         shape_dict['exitstype'] = 'door'
 
+    return shape_dict   
+
 def exit_loc(shape_dict):
     shape_dict['exitlocations'] = {}
     for i in shape_dict['exits']:
@@ -1169,6 +1175,8 @@ def exit_loc(shape_dict):
         else:
             shape_dict['exitlocations'][i+1] = 'O'
 
+    return shape_dict               
+
 def exit_dir(shape_dict):
     #not needed until get chamber/room differentiation
     #not implemented
@@ -1181,6 +1189,8 @@ def exit_dir(shape_dict):
             shape_dict['exitdirections']['i+1'] = '45AB'
         else:
             shape_dict['exitdirections']['i+1'] = '45BA'
+
+    return shape_dict            
 
 def room_contents(shape_dict):
     shape_dict['contents'] = {}
