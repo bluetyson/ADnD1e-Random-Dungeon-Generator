@@ -1250,7 +1250,7 @@ def loot(shape_dict,coord,monster="N"):
         elif l >= 26 and l <= 50:
             shape_dict['contents']['treasure']['type']['silver'] = shape_dict['contents']['treasure']['type']['silver'] + int(abs(coord[2]) * 1000) * multi 
         elif l >= 51 and l <= 65:
-            shape_dict['contents']['treasure']['type']['electrum'] = shape_dict['contents']['treasure']['type']['electrum'] + int(abscoord[2]) * 750) * multi 
+            shape_dict['contents']['treasure']['type']['electrum'] = shape_dict['contents']['treasure']['type']['electrum'] + int(abs(coord[2]) * 750) * multi 
         elif l >= 66 and l <= 80:
             shape_dict['contents']['treasure']['type']['gold'] = shape_dict['contents']['treasure']['type']['gold'] + int(abs(coord[2]) * 250) * multi 
         elif l >= 81 and l <= 90:
