@@ -1064,7 +1064,7 @@ def fancy_shape(shape_dict):
         if p >=8 and p <= 10:
             shape_dict['water'] = 'S'
             
-        usesize = shape_dict['size'] / pi
+        usesize = shape_dict['size'] / PI
         radius = int(math.sqrt(usesize))
         shape_dict['size'] = [radius, radius]
 
