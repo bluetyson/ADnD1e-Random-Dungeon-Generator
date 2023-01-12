@@ -797,7 +797,7 @@ def check_action(pc_dict, coord):
 
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2])) #square for monster
         if not will_fit:                                                
-            dungeon[(coord[0],coord[1]+1,coord[2]1)+] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2]+1)] = {}
             dungeon[(coord[0],coord[1]+1,coord[2]+1)]['fill'] = 'wm'
         else:
             dungeon[(coord[0],coord[1]+1,coord[2]+1)]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2]+1)]['fill'] + 'wm'
