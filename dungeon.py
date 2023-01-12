@@ -808,6 +808,7 @@ def check_action(pc_dict, coord):
         else:
             print('wm filled up check:',dungeon[(coord[0],coord[1]+1,coord[2])])
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'wm'
+            print('wm key check',dungeon[(coord[0],coord[1]+1,coord[2])])
 
     return new_coord
 
