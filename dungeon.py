@@ -1081,25 +1081,25 @@ def exit_no(shape_dict):
             shape_dict['exits'] = 1
         else:
             shape_dict['exits'] = 2
-    elif e>=4: and e<=6
+    elif e>=4 and e<=6
         if area <= 6:
             shape_dict['exits'] = 2
         else:
             shape_dict['exits'] = 3
-    elif e>=7: and e<=9
+    elif e>=7 and e<=9
         if area <= 6:
             shape_dict['exits'] = 3
         else:
             shape_dict['exits'] = 4
-    elif e>=10: and e<=12
+    elif e>=10 and e<=12
         if area <= 1200:
             shape_dict['exits'] = 0
             shape_dict['secretdoors'] = 'check'
         else:
             shape_dict['exits'] = 1
-    elif e>=13: and e<=15
+    elif e>=13 and e<=15
         shape_dict['exits'] = roll_dice(1,4)
-    elif e>=16: and e<=18
+    elif e>=16 and e<=18
         if area <= 1600:
             shape_dict['exits'] = 0
             shape_dict['secretdoors'] = 'check'
