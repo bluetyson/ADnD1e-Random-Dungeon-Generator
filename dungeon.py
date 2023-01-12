@@ -1408,7 +1408,7 @@ def bad_things(coord):
         if t == 17:
             t_dict['trap']['type'] = 'gas'
             t_dict['trap']['details'] = stinky()
-            for key in t_dict['details']:
+            for key in t_dict['trap']['details']:
                 t_dict[key] = t_dict['details'][key]
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'gs'
             new_coord = (coord[0],coord[1]+1,coord[2])
