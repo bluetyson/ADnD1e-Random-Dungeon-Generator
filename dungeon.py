@@ -1686,7 +1686,7 @@ print("DUNGEON:", dungeon)
 print("EXIT_STACK:", exit_stack)
 print("LEVEL_STACK:", level_stack)
 
-chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U4')
+
 #can handle up to 4 characters
 print("SHAPE",chararray.shape)
 #print("ARRAY",chararray)
@@ -1694,10 +1694,11 @@ print("SHAPE",chararray.shape)
 #chararray[0,0,0] = 'S'
 
 ##make more than one level
-
+#map chararray to independent for each level
 ## ignore any random tiny up level things for now on chimneys or trapdoros
+downlist = []
 for down in range(zwidth):
-
+    chararray = np.full((xwidth,ywidth,zwidth), 'B', dtype='U4')
     for key in dungeon:
         #print("KEY:",key,"KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
         #print("KEY:",key,"KEYWIDTH:",key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2])
@@ -1710,6 +1711,7 @@ for down in range(zwidth):
                 chararray[key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1] = dungeon[key]['fill']
             else:
                 print("KEY:",key,"KEYWIDTH:",key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1)
+    downlist.append(chararray)
 
     #only for first level        
     if down == 0:
@@ -1777,11 +1779,13 @@ for down in range(zwidth):
     legend_dict['st'] = "Stairs"
     legend_dict['ch'] = "Chute"
     legend_dict['cm'] = "Chimney"
+    legend_dict['td'] = "Trapdoor"
     legend_dict['pi'] = "Pit Trap"
     legend_dict['pis'] = "Pit Trap with Spkes"
     legend_dict['el'] = "Elevator Trap"
     legend_dict['ar'] = "Arrow Trap"
     legend_dict['sp'] = "Spear Trap"
+    legend_dict['gs'] = "Gas Trap"
 
     strlegendhead = '''
     <table>
@@ -1793,21 +1797,23 @@ for down in range(zwidth):
     with open('dungeon_' + str(down+1) + '.html','w') as f:
         f.write(strhead)
         
-        for j in range(chararray.shape[1]):
+        #for j in range(chararray.shape[1]):
+        for j in range(downlist[down].shape[1]):            
             f.write('<TR>')
-            for i in range(chararray.shape[0]):
-                if chararray[i,j,0] == 'B':
-                    strdata = '<td class="black_background">' + chararray[i,j,0] + '</td>'
-                elif chararray[i,j,0] == 'C':
-                    strdata = '<td>' + chararray[i,j,0] + '</td>'
-                elif chararray[i,j,0] == 'R':
-                    strdata = '<td class="gray_background">' + chararray[i,j,0] + '</td>'
-                elif chararray[i,j,0] == 'D':
-                    strdata = '<td class="brown_background">' + chararray[i,j,0] + '</td>'
-                elif chararray[i,j,0] == 'O':
-                    strdata = '<td class="green_background">' + chararray[i,j,0] + '</td>'
+            #for i in range(chararray.shape[0]):
+            for i in range(downlist[down].shape[0]):                
+                if downlist[down][i,j,0] == 'B':
+                    strdata = '<td class="black_background">' + downlist[down][i,j,0] + '</td>'
+                elif downlist[down][i,j,0] == 'C':
+                    strdata = '<td>' + downlist[down][i,j,0] + '</td>'
+                elif downlist[down][i,j,0] == 'R':
+                    strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
+                elif downlist[down][i,j,0] == 'D':
+                    strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
+                elif downlist[down][i,j,0] == 'O':
+                    strdata = '<td class="green_background">' + downlist[down][i,j,0] + '</td>'
                 else:
-                    strdata = '<td class="red_background">' + chararray[i,j,0] + '</td>'
+                    strdata = '<td class="red_background">' + downlist[down][i,j,0] + '</td>'
 
                 f.write(strdata)
             f.write('</TR>')
