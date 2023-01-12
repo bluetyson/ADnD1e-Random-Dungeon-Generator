@@ -1158,7 +1158,6 @@ def loot(shape_dict):
 
 def loot_store(shape_dict):
     l = roll_dice(1,20)
-Die Result
     if l <=2:
         shape_dict['contents']['treasure']['store'] = 'Bags'
     elif l >=3 and l<=4:
@@ -1179,6 +1178,12 @@ Die Result
         shape_dict['contents']['treasure']['store'] = 'Metal Trunks'
     else:
         shape_dict['contents']['treasure']['store'] = 'Loose'
+
+    g = roll_dice(1,20)
+    if g <=8:
+        shape_dict['contents']['treasure']['protection'] = 'guard'
+    else:
+        shape_dict['contents']['treasure']['protection'] = 'hide'
 
 
 def loot_guard(shape_dict):
