@@ -1090,7 +1090,7 @@ def fancy_shape():
         #side - now get radius
         radius = usesize * math.sqrt(1 + 1/math.sqrt(2))
         shape_dict['size'] = [int(radius),int(radius)]
-    if s >= 18 and s <=19:
+    else:
         shape_dict['shape'] = 'CV'
         c = roll_dice(1,20)
         if c <= 5:
@@ -1230,6 +1230,13 @@ def room_contents(shape_dict):
         shape_dict['contents']['trap'] = {}
     else:
         shape_dict['contents']['treasure'] = {}
+        loot(shape_dict,new_coord,monster="N")
+        loot_store(shape_dict)
+        
+        if shape_dict['contents']['treasure']['protection'] == 'guard':
+            loot_guard(shape_dict)
+        else:
+            loot_hide(shape_dict)
 
 def loot(shape_dict,new_coord,monster="N"):
     shape_dict['contents']['treasure']['type'] = {}
@@ -1267,7 +1274,6 @@ def loot(shape_dict,new_coord,monster="N"):
         else:
             shape_dict['contents']['treasure']['type']['magic']  += 1
 
-        
 
 
 def loot_store(shape_dict):
