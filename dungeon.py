@@ -1761,7 +1761,7 @@ for down in range(zwidth):
     '''
 
     strend = '''
-    </table>
+    
     </body>
     </html>
     '''
@@ -1807,17 +1807,19 @@ for down in range(zwidth):
                     strdata = '<td class="red_background">' + chararray[i,j,0] + '</td>'
 
                 f.write(strdata)
+            f.write('</TR></table>')
+
+        
+
+        f.write(strlegendhead)
+        for key in legend_dict:
+            f.write('<TR>')
+            f.write('<td>' + key + '</td>')
+            f.write('<td>' + legend_dict[key] + '</td>')
             f.write('</TR>')
+        f.write('</table>')
 
         f.write(strend)
-
-        #f.write(strlegendhead)
-        #for key in legend_dict:
-            #f.write('<TR>')
-            #f.write('<td>' + key + '</td>')
-            #f.write('<td>' + legend_dict[key] + '</td>')
-            #f.write('</TR>')
-        #f.write('</table>')
 
 
 
