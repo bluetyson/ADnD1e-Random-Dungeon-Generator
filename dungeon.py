@@ -1358,7 +1358,7 @@ def bad_things(coord):
                         if not will_fit:                
                             dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-d-1)] = {}
                             dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-d-1)]['fill'] = 'el'
-                            new_coord (coord[0],coord[1]+3,coord[2]-d-1) #past elevator 2 and down
+                            new_coord = (coord[0],coord[1]+3,coord[2]-d-1) #past elevator 2 and down
                         else:
                             break
         if t == 12:
