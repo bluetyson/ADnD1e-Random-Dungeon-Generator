@@ -959,6 +959,11 @@ def fancy_shape(shape_dict):
     if s <= 5:
         shape_dict['shape'] = 'C'
         p = roll_dice(1,20)
+
+        pool = wet_small()
+
+        shape_dict['pool'] = wet_small()
+
         if p <= 5:
             shape_dict['water'] = 'P'
         if p >=6 and p <= 7:
@@ -1742,6 +1747,8 @@ def wet_small():
         wet_dict['treasure'] = 'Y'
     else:
         wet_dict['magic'] = 'Y'
+
+    return wet_dict
 
 
 def wet_large():
