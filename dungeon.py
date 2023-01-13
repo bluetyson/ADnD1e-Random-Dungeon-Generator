@@ -1025,9 +1025,8 @@ def fancy_shape(shape_dict):
         else:
             shape_dict['size'] = [roll_dice(1,6)+24,roll_dice(1,6)+34]
             shape_dict = wet_large(shape_dict, coord)
+            #if shape_dict['lake'] needs check in room?? for after room coords done
         #wet check
-        
-
       
         shape_dict['shape'] = 'R' ## for now
     return shape_dict
