@@ -1742,6 +1742,7 @@ def wet_small(shape_dict, coord):
         wet_dict['wet'] = 'Y'
         wet_dict['monster'] = 'Y'
         wet_dict['treasure'] = 'Y'
+
         shape_dict = loot(shape_dict,coord,monster="Y")
         shape_dict = loot_store(shape_dict)
         
@@ -1758,7 +1759,7 @@ def wet_small(shape_dict, coord):
     return shape_dict
 
 
-def wet_large():
+def wet_large(shape_dict, coord):
     #not implemented yet
     w = roll_dice(1,20)
     wet_dict = {}
@@ -1780,6 +1781,22 @@ def wet_large():
         m = roll_dice(1,20)
         if m <= 18:
             wet_dict['monster'] = 'Y'
+
+            shape_dict = loot(shape_dict,coord,monster="Y")
+            shape_dict = loot_store(shape_dict)
+            
+            if shape_dict['contents']['treasure']['protection'] == 'guard':
+                shape_dict = loot_guard(shape_dict)
+            else:
+                shape_dict = loot_hide(shape_dict)
+
+            wet_dict['portal'] = 'another world/dungeon23/other place'
+            #otherwise can be monster, but above is more fun unless solo
+
+        shape_dict['lake'] = wet_dict
+        
+    return shape_dict
+
 
 def wet_magic():
     #not implemented yet
