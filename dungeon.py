@@ -1922,10 +1922,15 @@ START_LEVEL = 0
 #function as counters to add keys?
 
 exit_stack = {}  #only non-dead ends etc?
+
+##add room key as identifier
 door_stack= {}
 level_stack = {}
 room_stack = {}
+room_stack['key_count'] = 0
 trap_stack = {}
+
+##add room key as identifier
 monster_stack = {}
 
 
