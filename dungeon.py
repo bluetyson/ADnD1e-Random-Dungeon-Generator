@@ -960,11 +960,9 @@ def fancy_shape(shape_dict):
         shape_dict['shape'] = 'C'
         p = roll_dice(1,20)
 
- 
         if p <= 5:
             shape_dict['water'] = 'P'
             shape_dict = wet_small(shape_dict)
-
         if p >=6 and p <= 7:
             shape_dict['water'] = 'W'
         if p >=8 and p <= 10:
@@ -1746,6 +1744,7 @@ def wet_small(shape_dict):
         wet_dict['treasure'] = 'Y'
     else:
         wet_dict['magic'] = 'Y'
+        shape_dict = wet_magic(shape_dict)
 
     shape_dict['pool'] = wet_dict
     return shape_dict
@@ -1772,6 +1771,7 @@ def wet_large():
         wet_dict['monster'] = 'Y' #as per encounter
     else:
         wet_dict['magic'] = 'Y'  #portal to another realm/world/dungeon23
+        shape_dict['wet_magic'] = wet_magic_dict
         m = roll_dice(1,20)
         if m <= 18:
             wet_dict['monster'] = 'Y'
@@ -1836,6 +1836,8 @@ def wet_magic():
         else:
             #100 miles away or effectively
             new_coord = (0,0,0)
+    
+    shape_dict['wet_magic'] = wet_magic_dict
 
 def stinky():
     s = roll_dice(1,20)
