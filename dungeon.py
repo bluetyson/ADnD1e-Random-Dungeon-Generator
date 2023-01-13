@@ -1021,8 +1021,12 @@ def fancy_shape(shape_dict):
             shape_dict['size'] = [12,15]
         elif c>= 17 and c<=18:            
             shape_dict['size'] = [15,20]
+            shape_dict = wet_small(shape_dict, coord)
         else:
             shape_dict['size'] = [roll_dice(1,6)+24,roll_dice(1,6)+34]
+            shape_dict = wet_large(shape_dict, coord)
+        #wet check
+        
 
       
         shape_dict['shape'] = 'R' ## for now
@@ -1794,7 +1798,7 @@ def wet_large(shape_dict, coord):
             #otherwise can be monster, but above is more fun unless solo
 
         shape_dict['lake'] = wet_dict
-        
+
     return shape_dict
 
 
