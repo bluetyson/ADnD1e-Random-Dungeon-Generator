@@ -1763,9 +1763,6 @@ def wet_large():
         pass
     elif w >= 11 and w <=15:
         wet_dict['wet'] = 'Y'
-    elif w >= 11 and w <=12:
-        wet_dict['wet'] = 'Y'
-        wet_dict['monster'] = 'Y'
     elif w >= 16 and w <=18:
         wet_dict['wet'] = 'Y'
         wet_dict['monster'] = 'Y' #as per encounter
