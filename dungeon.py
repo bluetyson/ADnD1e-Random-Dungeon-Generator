@@ -840,6 +840,8 @@ def room(coord, size="C", content=None):
     just rectangular results for now
     pass 'MT' in content to mandate monster and treasure in room - for Illusionary Wall trap
     '''
+    room_stack['key_count'] += 1
+
     r = roll_dice(1,20)
     room_size = [0,0]
     shape_dict = {}
@@ -1932,7 +1934,6 @@ trap_stack = {}
 
 ##add room key as identifier
 monster_stack = {}
-
 
 
 dungeon = {}
