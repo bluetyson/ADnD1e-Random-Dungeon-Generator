@@ -962,7 +962,7 @@ def fancy_shape(shape_dict):
 
         if p <= 5:
             shape_dict['water'] = 'P'
-            shape_dict = wet_small(shape_dict)
+            shape_dict = wet_small(shape_dict, coord)
         if p >=6 and p <= 7:
             shape_dict['water'] = 'W'
         if p >=8 and p <= 10:
@@ -1722,7 +1722,7 @@ def fancy_cave(coord):
     '''
     c = roll_dice(1,20)
 
-def wet_small(shape_dict):
+def wet_small(shape_dict, coord):
     #not implemented yet
     w = roll_dice(1,20)
     wet_dict = {}
@@ -1742,6 +1742,14 @@ def wet_small(shape_dict):
         wet_dict['wet'] = 'Y'
         wet_dict['monster'] = 'Y'
         wet_dict['treasure'] = 'Y'
+        shape_dict = loot(shape_dict,coord,monster="Y")
+        shape_dict = loot_store(shape_dict)
+        
+        if shape_dict['contents']['treasure']['protection'] == 'guard':
+            shape_dict = loot_guard(shape_dict)
+        else:
+            shape_dict = loot_hide(shape_dict)
+
     else:
         wet_dict['magic'] = 'Y'
         shape_dict = wet_magic(shape_dict)
