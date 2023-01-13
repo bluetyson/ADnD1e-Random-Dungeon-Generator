@@ -2057,6 +2057,7 @@ for down in range(zwidth-1):
     legend_dict['ol'] = "Oil"
     legend_dict['m'] = "Monster"
     legend_dict['t'] = "Treasure"
+    legend_dict['p'] = "Pool"
 
     strlegendhead = '''
     <table>
