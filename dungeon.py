@@ -1198,7 +1198,9 @@ def room_make(shape_dict, coord):
 
 
             if key == 'exits':
-                for e in key:
+                for e in range(shape_dict['exits']):
+                    #echeck
+                    print("EXIT CHECK",e)
                     print("exit location:",shape_dict['exitlocations'][e])
                     print("exit direction:",shape_dict['exitdirections'][e])
                 #pass
