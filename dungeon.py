@@ -843,7 +843,7 @@ def room(coord, room_stack, size="C", content=None ):
     just rectangular results for now
     pass 'MT' in content to mandate monster and treasure in room - for Illusionary Wall trap
     '''
-    print("ROOM STACK ON ENTRY:",room_stack)
+    #print("ROOM STACK ON ENTRY:",room_stack)
 
     room_stack['key_count'] += 1
 
