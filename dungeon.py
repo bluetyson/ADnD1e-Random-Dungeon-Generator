@@ -1189,12 +1189,18 @@ def room_make(shape_dict, coord):
             if key == 'contents':
                 for c in shape_dict['contents']:
                     if c == 'treasure':
+                        treasure_str = ''
+                        #get what it is
+                        for tt in shape_dict['contents']['treasure']:
+                            if shape_dict['contents']['treasure'][tt] > 0:
+                                treasure_string = tt[0]
+
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
                         w = roll_dice(1,rand_length)
                         #h = roll_dice(1,shape_dict['size'][1])
                         for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
                             if index + 1 == w:
-                                room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + 't'
+                                room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + treasure_string
 
 
             if key == 'exits':
