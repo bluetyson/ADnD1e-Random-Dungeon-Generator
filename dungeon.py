@@ -1197,14 +1197,31 @@ def room_make(shape_dict, coord):
                         for tt in shape_dict['contents']['treasure']['type']:
                             if shape_dict['contents']['treasure']['type'][tt] > 0:
                                 treasure_string = tt[0]
+                                print("TREASURE STRING CHECK:",treasure_string)
 
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
                         w = roll_dice(1,rand_length)
+                        print("TREASURE ROOM ROLL CHECK:",w)
                         #h = roll_dice(1,shape_dict['size'][1])
                         for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
+                            print("treasureindex",r)
                             if index + 1 == w:
                                 room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + treasure_string
+                                print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + treasure_string)
                         #need to output guards and hidden in room_stack
+
+                    if c == 'monster:'   
+                        monster_str = ''  #could be some lookup indicator number maybe or just monster as many long list legend to do otherwise
+                        #or the ref to the table rolled on is maybe good
+                        rand_length = len(list(room_stack[room_stack['key_count']].keys()))
+                        w = roll_dice(1,rand_length)
+                        print("MONSTER ROOM ROLL CHECK:",w)
+                        for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
+                            print("monsterindex",r)
+                            if index + 1 == w:
+                                room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + 'm'
+                                print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + treasure_string)
+
 
                     if c == 'trap':
                         ##need to check for secret doors
@@ -1401,9 +1418,6 @@ def room_make(shape_dict, coord):
 
 
                     #pass
-
-            if key == 'monster':
-                pass
 
             #check treasure, monsters, exits and place these
             #exists need coloring for output so door/exit stack
