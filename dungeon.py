@@ -1220,6 +1220,9 @@ def room_make(shape_dict, coord):
                     print("EXIT CHECK",e)
                     print("exit location:",shape_dict['exitlocations'][e+1])
                     print("exit direction:",shape_dict['exitdirections'][e+1])
+                    
+                    #putting in place
+                    #need the maximum L/R/B/A back and ahead coordinates - so max and min X/Y for the room to place things
                 #pass
 
             if key == 'monster':
