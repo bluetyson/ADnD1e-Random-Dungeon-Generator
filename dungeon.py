@@ -1212,6 +1212,8 @@ def room_make(shape_dict, coord):
                         for tt in shape_dict['contents']['treasure']['type']:
                             if shape_dict['contents']['treasure']['type'][tt] > 0:
                                 treasure_string = tt[0]
+                                if tt == 'gems'
+                                    treasure_string = treasurestring.upper()
                                 print("TREASURE STRING CHECK:",treasure_string)
 
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
@@ -1224,7 +1226,7 @@ def room_make(shape_dict, coord):
                                 room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + treasure_string
                                 print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + treasure_string)
                                 dungeon[r]['fill'] = dungeon[r]['fill'] + treasure_string
-                        #need to output guards and hidden in room_stack
+                        #need to output guards and hidden in room_stack or put shape_dict in room_stack
 
 
 
@@ -2368,25 +2370,62 @@ for down in range(zwidth-1):
     <th>Explanation</th>
     '''
     
+    def colorcheck(dungeonstr):
+        if 'c' in dungeonstr:
+            return '#B87333'
+        elif 's' in dungeonstr:
+            return '#C0C0C0'
+        elif 'g' in dungeonstr:
+            return '#FFD700'
+        elif 'p' in dungeonstr:
+            return '#E5E4E2'
+        elif 'e' in dungeonstr:
+            return '#E7G697'
+        elif 'G' in dungeonstr:
+            return '#B9F2FF'
+        elif 'j' in dungeonstr:
+            return '#E0115F '
+        elif 'm' in dungeonstr:
+            return '#FF1493'
+        else:
+            return 'notreasure'
 
     with open('dungeon_' + str(down+1) + '.html','w') as f:
         f.write(strhead)
         
         for j in range(downlist[down].shape[1]):            
             f.write('<TR>')
-            for i in range(downlist[down].shape[0]):                
-                if downlist[down][i,j,0] == 'B':
-                    strdata = '<td class="black_background">' + downlist[down][i,j,0] + '</td>'
-                elif downlist[down][i,j,0] == 'C':
-                    strdata = '<td>' + downlist[down][i,j,0] + '</td>'
-                elif 'R' in downlist[down][i,j,0]:  #could have numbering
-                    strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
-                elif 'D' in downlist[down][i,j,0]:  #could have WM
-                    strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
-                elif downlist[down][i,j,0] == 'O':
-                    strdata = '<td class="green_background">' + downlist[down][i,j,0] + '</td>'
-                else:
-                    strdata = '<td class="red_background">' + downlist[down][i,j,0] + '</td>'
+            color = colorcheck(downlist[down][i,j,0])
+            if color == 'notreasure':
+
+                for i in range(downlist[down].shape[0]):                
+                    if downlist[down][i,j,0] == 'B':
+                        strdata = '<td class="black_background">' + downlist[down][i,j,0] + '</td>'
+                    elif downlist[down][i,j,0] == 'C':
+                        strdata = '<td>' + downlist[down][i,j,0] + '</td>'
+                    elif 'R' in downlist[down][i,j,0]:  #could have numbering
+                        strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
+                    elif 'D' in downlist[down][i,j,0]:  #could have WM
+                        strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
+                    elif downlist[down][i,j,0] == 'O':
+                        strdata = '<td class="green_background">' + downlist[down][i,j,0] + '</td>'
+                    else:
+                        strdata = '<td class="red_background">' + downlist[down][i,j,0] + '</td>'
+
+            else:
+                for i in range(downlist[down].shape[0]):                
+                    if downlist[down][i,j,0] == 'B':
+                        strdata = '<td class="black_background">' + downlist[down][i,j,0] + '</td>'
+                    elif downlist[down][i,j,0] == 'C':
+                        strdata = '<td>' + downlist[down][i,j,0] + '</td>'
+                    elif 'R' in downlist[down][i,j,0]:  #could have numbering
+                        strdata = '<td class="gray_background"' + "font_color=" + color + '">' + downlist[down][i,j,0] + '</td>'
+                    elif 'D' in downlist[down][i,j,0]:  #could have WM
+                        strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
+                    elif downlist[down][i,j,0] == 'O':
+                        strdata = '<td class="green_background">' + downlist[down][i,j,0] + '</td>'
+                    else:
+                        strdata = '<td class="red_background">' + downlist[down][i,j,0] + '</td>'
 
                 f.write(strdata)
             f.write('</TR>')
