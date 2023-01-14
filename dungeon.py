@@ -1223,6 +1223,8 @@ def room_make(shape_dict, coord):
                     pass
 
                 else:
+                    take_exit = roll_dice(1,shape_dict['exits'])
+
                     for e in range(shape_dict['exits']):
                         #echeck plus 1 for room
                         print("EXIT CHECK",e)
@@ -1232,6 +1234,9 @@ def room_make(shape_dict, coord):
                         ## still need to do 45 degree possible mostly are straight so test
                         #putting in place
                         #need the maximum L/R/B/A back and ahead coordinates - so max and min X/Y for the room to place things
+                        #work out which exit to take - currently will take the most recent one
+                        
+
                         room_lim = coord_limits(room_stack[room_stack['key_count']])
                         rxmin = room_lim[0][0]
                         rymin = room_lim[0][1]
@@ -1256,7 +1261,8 @@ def room_make(shape_dict, coord):
                                 if not will_fit:
                                     dungeon[(el[0],el[1]+1+x,rzmin)] = {}
                                     dungeon[(el[0],el[1]+1+x,rzmin)]['fill'] = 'C'
-                                    new_coord = ((el[0],el[1]+1+x,rzmin))                        
+                                    if take_exit == e+1: #dice 1, loop 0
+                                        new_coord = ((el[0],el[1]+1+x,rzmin))
 
                         elif shape_dict['exitlocations'][e+1] == 'L':
                             #check for possible positions at xmin range from ymin to ymax
@@ -1268,7 +1274,8 @@ def room_make(shape_dict, coord):
                                 if not will_fit:
                                     dungeon[(el[0]-1-x,el[1],rzmin)] = {}
                                     dungeon[(el[0]-1-x,el[1],rzmin)]['fill'] = 'C'
-                                    new_coord = ((el[0]-1-x,el[1],rzmin))                        
+                                    if take_exit == e+1: #dice 1, loop 0
+                                        new_coord = ((el[0]-1-x,el[1],rzmin))                        
 
                         elif shape_dict['exitlocations'][e+1] == 'R':                    
                             #check for possible positions at xmax range from ymin to ymax    
@@ -1280,7 +1287,8 @@ def room_make(shape_dict, coord):
                                 if not will_fit:
                                     dungeon[(el[0]+1+x,el[1],rzmin)] = {}
                                     dungeon[(el[0]+1+x,el[1],rzmin)]['fill'] = 'C'
-                                    new_coord = ((el[0]+1+x,el[1],rzmin))                        
+                                    if take_exit == e+1: #dice 1, loop 0
+                                        new_coord = ((el[0]+1+x,el[1],rzmin))                        
 
                         else: #S wall
                             #check for possible positions at ymin range from xmin to xmax
@@ -1292,9 +1300,8 @@ def room_make(shape_dict, coord):
                                 if not will_fit:
                                     dungeon[(el[0],el[1]-1-x,rzmin)] = {}
                                     dungeon[(el[0],el[1]-1-x,rzmin)]['fill'] = 'C'
-                                    new_coord = ((el[0],el[1]-1-x,rzmin))                        
-
-
+                                    if take_exit == e+1: #dice 1, loop 0
+                                        new_coord = ((el[0],el[1]-1-x,rzmin))                        
 
                     #pass
 
