@@ -1228,6 +1228,7 @@ def room_make(shape_dict, coord):
                         print("exit location:",shape_dict['exitlocations'][e+1])
                         print("exit direction:",shape_dict['exitdirections'][e+1])
                         
+                        ## still need to do 45 degree possible mostly are straight so test
                         #putting in place
                         #need the maximum L/R/B/A back and ahead coordinates - so max and min X/Y for the room to place things
                         room_lim = coord_limits(room_stack[room_stack['key_count']])
