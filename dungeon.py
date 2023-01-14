@@ -1341,7 +1341,7 @@ def room_make(shape_dict, coord):
                                         if not will_fit:                
                                             dungeon[(el[0]-1-x,el[1]+1+x,rzmin)] = {}
                                             dungeon[(el[0]-1-x,el[1]+1+x,rzmin)]['fill'] = 'C'
-                                            if which_way == 1:
+                                            if which_way == 1 and take_exit == e+1:
                                                 new_coord = (el[0]-1-x,el[1]+1+x,rzmin)
                                         else:
                                             break
@@ -1351,7 +1351,7 @@ def room_make(shape_dict, coord):
                                         if not will_fit:                
                                             dungeon[(el[0]+1+x,el[1]+1+x,rzmin)] = {}
                                             dungeon[(el[0]+1+x,el[1]+1+x,rzmin)]['fill'] = 'C'
-                                            if which_way == 2:
+                                            if which_way == 2 and take_exit == e+1:
                                                 new_coord = (el[0]+1+x,el[1]+1+x,rzmin)
                                         else:
                                             break
@@ -1377,7 +1377,7 @@ def room_make(shape_dict, coord):
                                         if not will_fit:                
                                             dungeon[(el[0]-1-x,el[1]+1+x,rzmin)] = {}
                                             dungeon[(el[0]-1-x,el[1]+1+x,rzmin)]['fill'] = 'C'
-                                            if which_way == 1:
+                                            if which_way == 1 and take_exit == e+1:
                                                 new_coord = (el[0]-1-x,el[1]+1+x,rzmin)
                                         else:
                                             break
@@ -1387,7 +1387,7 @@ def room_make(shape_dict, coord):
                                         if not will_fit:                
                                             dungeon[(el[0]-1-x,el[1]-1-x,rzmin)] = {}
                                             dungeon[(el[0]-1-x,el[1]-1-x,rzmin)]['fill'] = 'C'
-                                            if which_way == 2:
+                                            if which_way == 2 and take_exit == e+1:
                                                 new_coord = (el[0]-1-x,el[1]-1-x,rzmin)
                                         else:
                                             break
