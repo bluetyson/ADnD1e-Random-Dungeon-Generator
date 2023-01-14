@@ -834,7 +834,7 @@ def turn(coord):
     return t_dict
 
 
-def room(coord, size="C", content=None):
+def room(coord, size="C", content=None, room_stack=room_stack):
     '''
     can pass anything in that is not C for size and will work, just using R for room not Chamber
     just rectangular results for now
@@ -891,7 +891,7 @@ def room(coord, size="C", content=None):
 
     ## check the room stack and exit functions here
     print("ROOM STACK CHECK:", room_stack)
-    #print("ROOM KEY COUNT:",room_stack['key_count'])
+    print("ROOM KEY COUNT:",room_stack['key_count'])
     #print("ROOM KEY CHECK:",room_stack[room_stack['key_count']])
     #room_stack[room_stack['key_count']]['shape_dict'] = shape_dict
 
