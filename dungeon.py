@@ -1147,7 +1147,8 @@ def room_contents(shape_dict, coord, content):
 
 def room_make(shape_dict, coord):
     if shape_dict['shape'] == 'R':
-        print("rectangular")
+        print("rectangular", room_stack['key_count'])
+        room_stack[room_stack['key_count']] = {}
         #H x W
         #position based on size
         adjust = 0
@@ -1164,7 +1165,11 @@ def room_make(shape_dict, coord):
                 will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
                 if not will_fit:                
                     dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
-                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
+                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R' + room_stack['key_count']
+                    #add to room stack dictionary for key printing
+                    room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
+                    room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R' = {}
+
                 else:
                     break
         
