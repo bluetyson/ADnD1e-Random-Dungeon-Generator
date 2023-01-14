@@ -2053,10 +2053,11 @@ def wet_large(shape_dict, coord):
         wet_dict['monster'] = 'Y' #as per encounter
     else:
         wet_dict['magic'] = 'Y'  #portal to another realm/world/dungeon23
-        shape_dict['wet_magic'] = wet_magic_dict
+        shape_dict['wet_magic'] = wet_dict
         m = roll_dice(1,20)
         if m <= 18:
             wet_dict['monster'] = 'Y'
+            ##need to monster generate
 
             shape_dict = loot(shape_dict,coord,monster="Y")
             shape_dict = loot_store(shape_dict)
