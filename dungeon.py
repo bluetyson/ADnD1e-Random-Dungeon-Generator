@@ -1212,7 +1212,7 @@ def room_make(shape_dict, coord):
                         for tt in shape_dict['contents']['treasure']['type']:
                             if shape_dict['contents']['treasure']['type'][tt] > 0:
                                 treasure_string = tt[0]
-                                if tt == 'gems'
+                                if tt == 'gems':
                                     treasure_string = treasurestring.upper()
                                 print("TREASURE STRING CHECK:",treasure_string)
 
