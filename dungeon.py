@@ -1252,14 +1252,29 @@ def room_make(shape_dict, coord):
                 print("RMAX:",rxmax,rymax,rzmax)
 
                 if shape_dict['exits'] == 0:
+                    secret_door_count = 0
+                    secret_door_dict = {}
                     #check for secret doors in all walls
-                    print("SECRET DOOR CHECK NOT IMPLEMENTED IN FOR SEEMINGLY 0 EXIT ROOM")
+                    print("SECRET DOOR NOT IMPLEMENTED IN OUTPUT YET")
                     #loop through room coords and check edges for sdoors
                     #count the secret doors
                     #randomly choose one to follow 
                     #apply basics of this to other secret door check places
                     #exit stack for all secret doors
-                    pass
+                    #go across xmin from ymin to ymax
+                    #go across xmax from ymin to ymax
+                    #go across ymin from xmin to xmax
+                    #go across ymax from xmin to xmax
+                    for y in range(rymin,rymax_1):
+                        s = roll_dice(1,20)
+                        if s <- 5:
+                            secret_door_count +=1 
+                            secret_door_dict[(rxmin,rymin,rzmin)] = 'Y'
+                            dungeon[(rxmin,y,rzmin)]['fill'] = dungeon[(rxmin,y,rzmin)]['fill'] + 'sd'
+
+                            ##gotta check the exit passageways out etc.
+                            if which_way == 1:
+                                new_coord = (el[0]-1-x,el[1]+1+x,rzmin)
 
                 else:
                     take_exit = roll_dice(1,shape_dict['exits'])
