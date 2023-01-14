@@ -843,6 +843,7 @@ def room(coord, size="C", content=None):
     room_stack['key_count'] += 1
 
     r = roll_dice(1,20)
+    print("ROOM ROLL:",r)
     room_size = [0,0]
     shape_dict = {}
     shape_dict['shape'] = 'R'
