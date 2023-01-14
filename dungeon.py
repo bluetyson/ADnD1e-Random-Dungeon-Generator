@@ -1196,6 +1196,9 @@ def room_make(shape_dict, coord):
                         monster_string = ''  #could be some lookup indicator number maybe or just monster as many long list legend to do otherwise
                         monster_string = 'm' #dummy default
                         #or the ref to the table rolled on is maybe good
+                        #monsters has bug
+                        print("MONSTER ROOM STACK CHECK:",room_stack[room_stack['key_count']].keys())
+                        print("MONSTER ROOM LEN CHECK:",len(list(room_stack[room_stack['key_count']].keys())))
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
                         w = roll_dice(1,rand_length)
                         print("MONSTER ROOM ROLL CHECK:",w)
