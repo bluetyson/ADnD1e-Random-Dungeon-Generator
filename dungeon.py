@@ -203,6 +203,7 @@ def check_action(pc_dict, coord):
                     #want those we randomly position lr
                     new_coord = coord
                     shape_dict = room(coord, room_stack, size='R' )  ## different type to get slightly different table
+                    room_stack = shape_dict['room_stack']
                     #each room part check for inside
 
                     print("ROOM SHAPE:",shape_dict)
@@ -292,6 +293,7 @@ def check_action(pc_dict, coord):
                     #want those we randomly position lr
                     new_coord = coord
                     shape_dict = room(coord, room_stack,size='R')  ## different type to get slightly different table
+                    room_stack = shape_dict['room_stack']
                     #each room part check for inside
 
                     print("ROOM SHAPE:",shape_dict)
@@ -585,7 +587,8 @@ def check_action(pc_dict, coord):
         '''
         #want those we randomly position lr
         new_coord = coord
-        shape_dict = room(coord, room_stack) #if another room pass not C="R"        
+        shape_dict = room(coord, room_stack) #if another room pass not C="R"  
+        room_stack = shape_dict['room_stack']      
         #each room part check for inside
 
         print("ROOM SHAPE:",shape_dict)
@@ -615,6 +618,7 @@ def check_action(pc_dict, coord):
             #do room check
             ## need to put roominess like this in a function?? as still need all exits and other stuff - maybe go in shape_dict??
             shape_dict = room(coord, room_stack) #if another room pass not C="R"        
+            room_stack = shape_dict['room_stack']
             #each room part check for inside
 
             print("ROOM SHAPE:",shape_dict)
@@ -890,10 +894,12 @@ def room(coord, room_stack, size="C", content=None ):
     shape_dict = exit_dir(shape_dict)
 
     ## check the room stack and exit functions here
-    print("ROOM STACK CHECK:", room_stack)
-    print("ROOM KEY COUNT:",room_stack['key_count'])
+    #print("ROOM STACK CHECK:", room_stack)
+    #print("ROOM KEY COUNT:",room_stack['key_count'])
     #print("ROOM KEY CHECK:",room_stack[room_stack['key_count']])
-    #room_stack[room_stack['key_count']]['shape_dict'] = shape_dict
+    
+    room_stack[room_stack['key_count']]['shape_dict'] = shape_dict
+    shape_dict['room_stack'] = room_stack
 
     ### put shape_dict in room_stack
 
@@ -1681,7 +1687,8 @@ def bad_things(coord):
                 t_dict['new_coord'] = new_coord
             else:
                 #pass put room here
-                shape_dict = room(coord, room_stack, content="MT") #if another room pass not C="R"       
+                shape_dict = room(coord, room_stack, content="MT") #if another room pass not C="R"  
+                room_stack = shape_dict['room_stack']     
                 
                 #pass MT for monster and treasure
                 #each room part check for inside
