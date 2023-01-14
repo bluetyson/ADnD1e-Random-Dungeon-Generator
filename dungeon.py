@@ -1223,6 +1223,16 @@ def room_make(shape_dict, coord):
                     
                     #putting in place
                     #need the maximum L/R/B/A back and ahead coordinates - so max and min X/Y for the room to place things
+                    room_lim = coord_limits(room_stack[room_stack['key_count']])
+                    rxmin = room_lim[0][0]
+                    rymin = room_lim[0][1]
+                    rzmin = room_lim[0][2]
+                    rxmax = room_lim[1][0]
+                    rymax = room_lim[1][1]
+                    rzmax = room_lim[1][2]
+                    print("RMIN:",rxmin,rymin,rzmin)
+                    print("RMAX:",rxmax,rymax,rzmax)
+
                 #pass
 
             if key == 'monster':
