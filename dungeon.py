@@ -1210,7 +1210,7 @@ def room_make(shape_dict, coord):
                                 print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + treasure_string)
                         #need to output guards and hidden in room_stack
 
-                    if c == 'monster:'   
+                    if c == 'monster':   
                         monster_str = ''  #could be some lookup indicator number maybe or just monster as many long list legend to do otherwise
                         #or the ref to the table rolled on is maybe good
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
