@@ -1872,6 +1872,10 @@ def level(coord):
             if not will_fit:                            
                 dungeon[(coord[0],coord[1]+1,coord[2]+1)] = {}
                 dungeon[(coord[0],coord[1]+1,coord[2]+1)]['fill'] = 'ch'
+
+                dungeon[(coord[0],coord[1]+1,coord[2]+0)] = {}  ##this is the level down chute part
+                dungeon[(coord[0],coord[1]+1,coord[2]+0)]['fill'] = 'ch'
+
                 new_coord = (coord[0],coord[1]+1,coord[2]-1)
                 level_dict['type'] = 'DD-chute'       
                 level_dict['new_coord'] = new_coord
@@ -2116,6 +2120,8 @@ def bad_things(coord):
                 t_dict['trap']['type'] = t_dict['trap']['type'] + 'chute'
                 t_dict['trap']['effect'] = 'one way'
                 dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
+                dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'ch'  ##add chute down fill
+
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ch'
                 new_coord = (coord[0],coord[1]+1,coord[2]-1)
                 t_dict['new_coord'] = new_coord
@@ -2161,6 +2167,8 @@ def bad_things(coord):
 
         if t == 20:        
             dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
+            dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'ch'  #fill down for chute
+
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ch'
             new_coord = (coord[0],coord[1]+1,coord[2]-1)
             t_dict['trap']['type'] = 'chute'
