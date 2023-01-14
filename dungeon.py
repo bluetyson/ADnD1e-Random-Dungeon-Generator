@@ -1119,6 +1119,7 @@ def exit_dir(shape_dict):
 def room_contents(shape_dict, coord, content):
     shape_dict['contents'] = {}
     r = roll_dice(1,20)
+    print("ROOM CONTENTS ROLL:", r)
     if content == "MT":
         r = 15 #make monster and treasure
 
@@ -1477,6 +1478,10 @@ def room_make(shape_dict, coord):
         pass
 
 def loot(shape_dict,coord,monster="N"):
+    #when coming from wet small or others with no initialisation
+    if contents not in shape_dict:
+        shape_dict['contents'] = {}
+
     shape_dict['contents']['treasure']['type'] = {}
     shape_dict['contents']['treasure']['type']['copper'] = 0
     shape_dict['contents']['treasure']['type']['silver'] = 0
