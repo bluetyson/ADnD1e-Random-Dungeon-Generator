@@ -1205,7 +1205,7 @@ def room_make(shape_dict, coord):
                             if index + 1 == w:
                                 room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + treasure_string
                         #need to output guards and hidden in room_stack
-                        
+
                     if c == 'trap':
                         ##need to check for secret doors
                         for tr in shape_dict['contents']['trap']:
@@ -1252,11 +1252,11 @@ def room_make(shape_dict, coord):
 
                             #30m passage that direction - ahead y+
                             for x in range(3):
-                                will_fit = in_dungeon((el[0],el[1]+1,rzmin))
+                                will_fit = in_dungeon((el[0],el[1]+1+x,rzmin))
                                 if not will_fit:
-                                    dungeon[(el[0],el[1]+1,rzmin)] = {}
-                                    dungeon[(el[0],el[1]+1,rzmin)]['fill'] = 'C'
-                                    new_coord = ((el[0],el[1]+1,rzmin))                        
+                                    dungeon[(el[0],el[1]+1+x,rzmin)] = {}
+                                    dungeon[(el[0],el[1]+1+x,rzmin)]['fill'] = 'C'
+                                    new_coord = ((el[0],el[1]+1+x,rzmin))                        
 
                         elif shape_dict['exitlocations'][e+1] == 'L':
                             #check for possible positions at xmin range from ymin to ymax
@@ -1264,11 +1264,11 @@ def room_make(shape_dict, coord):
                             el = [rxmin,rymin + es -1]
 
                             for x in range(3):
-                                will_fit = in_dungeon((el[0]-1,el[1],rzmin))
+                                will_fit = in_dungeon((el[0]-1-x,el[1],rzmin))
                                 if not will_fit:
-                                    dungeon[(el[0]-1,el[1],rzmin)] = {}
-                                    dungeon[(el[0]-1,el[1],rzmin)]['fill'] = 'C'
-                                    new_coord = ((el[0]-1,el[1],rzmin))                        
+                                    dungeon[(el[0]-1-x,el[1],rzmin)] = {}
+                                    dungeon[(el[0]-1-x,el[1],rzmin)]['fill'] = 'C'
+                                    new_coord = ((el[0]-1-x,el[1],rzmin))                        
 
                         elif shape_dict['exitlocations'][e+1] == 'R':                    
                             #check for possible positions at xmax range from ymin to ymax    
@@ -1276,11 +1276,11 @@ def room_make(shape_dict, coord):
                             el = [rxmax,rymin + es -1]
 
                             for x in range(3):
-                                will_fit = in_dungeon((el[0]+1,el[1],rzmin))
+                                will_fit = in_dungeon((el[0]+1+x,el[1],rzmin))
                                 if not will_fit:
-                                    dungeon[(el[0]+1,el[1],rzmin)] = {}
-                                    dungeon[(el[0]+1,el[1],rzmin)]['fill'] = 'C'
-                                    new_coord = ((el[0]+1,el[1],rzmin))                        
+                                    dungeon[(el[0]+1+x,el[1],rzmin)] = {}
+                                    dungeon[(el[0]+1+x,el[1],rzmin)]['fill'] = 'C'
+                                    new_coord = ((el[0]+1+x,el[1],rzmin))                        
 
                         else: #S wall
                             #check for possible positions at ymin range from xmin to xmax
@@ -1288,11 +1288,11 @@ def room_make(shape_dict, coord):
                             el = [rxmin + es -1,rymin]
 
                             for x in range(3):
-                                will_fit = in_dungeon((el[0],el[1-1],rzmin))
+                                will_fit = in_dungeon((el[0],el[1]-1-x,rzmin))
                                 if not will_fit:
-                                    dungeon[(el[0],el[1]-1,rzmin)] = {}
-                                    dungeon[(el[0],el[1]-1,rzmin)]['fill'] = 'C'
-                                    new_coord = ((el[0],el[1]-1,rzmin))                        
+                                    dungeon[(el[0],el[1]-1-x,rzmin)] = {}
+                                    dungeon[(el[0],el[1]-1-x,rzmin)]['fill'] = 'C'
+                                    new_coord = ((el[0],el[1]-1-x,rzmin))                        
 
 
 
