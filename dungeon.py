@@ -1257,7 +1257,7 @@ def room_make(shape_dict, coord):
                 print("RMIN:",rxmin,rymin,rzmin)
                 print("RMAX:",rxmax,rymax,rzmax)
 
-                if rxmin > 9000 or rxymin > 9000 or rzmin > 9000:
+                if rxmin > 9000 or rymin > 9000 or rzmin > 9000:
                     #NULL room #should handle below exception problem
                     #no coords above to reduce these numbers to room limits
                     #must make sure everything else in contents comes out here
