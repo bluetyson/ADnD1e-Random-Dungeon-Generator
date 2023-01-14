@@ -1307,7 +1307,7 @@ def room_make(shape_dict, coord):
                                     for x in range(3):
                                         will_fit = in_dungeon((el[0]-1-x,el[1]+1+x,rzmin))
                                         if not will_fit:                
-                                            dungeon[(el[0]-1-x,el[1]+1+x,rzmin])] = {}
+                                            dungeon[(el[0]-1-x,el[1]+1+x,rzmin)] = {}
                                             dungeon[(el[0]-1-x,el[1]+1+x,rzmin)]['fill'] = 'C'
                                             if which_way == 1:
                                                 new_coord = (el[0]-1-x,el[1]+1+x,rzmin)
