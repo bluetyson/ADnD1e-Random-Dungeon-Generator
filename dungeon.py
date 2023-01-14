@@ -8,7 +8,6 @@ import time
 import datetime
 import copy
 import json
-from tqdm import tqdm
 import pickle
 import math
 
@@ -1098,7 +1097,7 @@ def exit_loc(shape_dict):
         elif e>= 13 and e <=17:
             shape_dict['exitlocations'][i+1] = 'R'
         else:
-            shape_dict['exitlocations'][i+1] = 'O'
+            shape_dict['exitlocations'][i+1] = 'S'
 
     return shape_dict               
 
@@ -1232,6 +1231,10 @@ def room_make(shape_dict, coord):
                     rzmax = room_lim[1][2]
                     print("RMIN:",rxmin,rymin,rzmin)
                     print("RMAX:",rxmax,rymax,rzmax)
+
+                    if shape_dict['exitlocations'][e+1] == 'O':
+
+                    elif shape_dict['exitlocations'][e+1] == 'L':
 
                 #pass
 
