@@ -1,8 +1,11 @@
 # ADnD1e-Random-Dungeon-Generator
 Attempt to convert DMG tables to code to do something
 
-# Running
+# Environment
 - Only non-standard type library used is numpy
+
+# Running
+
 - So converting to something else will just need something that can do char/string arrays
 - At the moment it is just run for a number of 'rolls' - PERIODIC CHECK can set in code
   - or overide on command line to do 3 rolls for example:
