@@ -1250,11 +1250,14 @@ def room_make(shape_dict, coord):
 
                     if c == 'trap':
                         ##need to check for secret doors
+                        for sh in shape_dict['contents']:
+                            print("TRAP SHAPE DICT CONTENTS:",shape_dict['contents'][sh])
                         for tr in shape_dict['contents']['trap']:
-                            for trtype in shape_dict['contents']['trap'][tr]:
-                                print( "CONTENTS TRAP TYPE:", trtype)
-                                if trtype == 'secretdoor':
-                                    print("secretdoor info:",shape_dict['contents']['trap'][trtype])
+                            #for trtype in shape_dict['contents']['trap'][tr]:
+                            #print( "CONTENTS TRAP TYPE:", trtype)
+                            print( "CONTENTS TRAP TYPE:", shape_dict['contents']['trap'][tr])
+                            if trtype == 'secretdoor':
+                                print("secretdoor info:",shape_dict['contents']['trap'][trtype])
 
                     #if c is wet or other things in contents need to go above exits probably but null rooms should not have
 
