@@ -895,7 +895,7 @@ def room(coord, room_stack, size="C", content=None ):
     shape_dict = exit_dir(shape_dict)
 
     ## check the room stack and exit functions here
-    print("ROOM STACK CHECK:", room_stack)
+    #print("ROOM STACK CHECK:", room_stack)
     print("ROOM KEY COUNT:",room_stack['key_count'])
     #shape_dict['room_stack'] = room_stack #take out for rest
 
@@ -1192,8 +1192,8 @@ def room_make(shape_dict, coord):
             if key == 'contents':
                 for c in shape_dict['contents']:
                     if c == 'monster':   
-                        monster_str = ''  #could be some lookup indicator number maybe or just monster as many long list legend to do otherwise
-                        mosnter_str = 'm' #dummy default
+                        monster_string = ''  #could be some lookup indicator number maybe or just monster as many long list legend to do otherwise
+                        monster_string = 'm' #dummy default
                         #or the ref to the table rolled on is maybe good
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
                         w = roll_dice(1,rand_length)
@@ -1207,7 +1207,7 @@ def room_make(shape_dict, coord):
 
 
                     if c == 'treasure':
-                        treasure_str = ''
+                        treasure_string = ''
                         #get what it is
                         for tt in shape_dict['contents']['treasure']['type']:
                             if shape_dict['contents']['treasure']['type'][tt] > 0:
