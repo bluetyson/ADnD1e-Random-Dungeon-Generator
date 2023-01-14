@@ -1285,7 +1285,7 @@ def room_make(shape_dict, coord):
                             secret_door_dict[(rxmax,y,rzmin)] = 'Y'
                             dungeon[(rxmax,y,rzmin)]['fill'] = dungeon[(rxmax,y,rzmin)]['fill'] + 'sd'
 
-                    for y in range(rxmin,rxmax+1):
+                    for x in range(rxmin,rxmax+1):
                         s = roll_dice(1,20)
                         if s <= 5:
                             secret_door_count +=1 
