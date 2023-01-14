@@ -1336,6 +1336,8 @@ def room_make(shape_dict, coord):
                                         dungeon[(el[0],el[1]+1+x,rzmin)]['fill'] = 'C'
                                         if take_exit == e+1: #dice 1, loop 0
                                             new_coord = ((el[0],el[1]+1+x,rzmin))
+                                    else:
+                                        break
 
                             else: #shape_dict['exitdirections'][e+1]: #AB or BA if opp wall back 45 no good
                                 which_way = roll_dice(1,2)           
@@ -1372,7 +1374,11 @@ def room_make(shape_dict, coord):
                                         dungeon[(el[0]-1-x,el[1],rzmin)] = {}
                                         dungeon[(el[0]-1-x,el[1],rzmin)]['fill'] = 'C'
                                         if take_exit == e+1: #dice 1, loop 0
-                                            new_coord = ((el[0]-1-x,el[1],rzmin))       
+                                            new_coord = ((el[0]-1-x,el[1],rzmin))  
+
+                                    else:
+                                        break
+                                             
                             else: #shape_dict['exitdirections'][e+1]: #AB or BA if opp wall back 45 no good
                                 which_way = roll_dice(1,2)           
                                 if which_way == 1:  #corridor opp
@@ -2420,7 +2426,7 @@ for down in range(zwidth-1):
     legend_dict['p'] = "Treasure: Platinum"
     legend_dict['G'] = "Treasure: Gems"
     legend_dict['j'] = "Treasure: Jewellery"
-    legend_dict['m'] = "Treasure: Magic"
+    legend_dict['M'] = "Treasure: Magic"
 
     strlegendhead = '''
     <table>
@@ -2443,7 +2449,7 @@ for down in range(zwidth-1):
             return '#B9F2FF'
         elif 'j' in dungeonstr:
             return '#E0115F '
-        elif 'm' in dungeonstr:
+        elif 'M' in dungeonstr:
             return '#FF1493'
         else:
             return 'notreasure'
