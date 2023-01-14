@@ -1273,28 +1273,28 @@ def room_make(shape_dict, coord):
 
                     for y in range(rymin,rymax+1):
                         s = roll_dice(1,20)
-                        if s <- 5:
+                        if s <= 5:
                             secret_door_count +=1 
                             secret_door_dict[(rxmin,y,rzmin)] = 'Y'
                             dungeon[(rxmin,y,rzmin)]['fill'] = dungeon[(rxmin,y,rzmin)]['fill'] + 'sd'
 
                     for y in range(rymin,rymax+1):
                         s = roll_dice(1,20)
-                        if s <- 5:
+                        if s <= 5:
                             secret_door_count +=1 
                             secret_door_dict[(rxmax,y,rzmin)] = 'Y'
                             dungeon[(rxmax,y,rzmin)]['fill'] = dungeon[(rxmax,y,rzmin)]['fill'] + 'sd'
 
                     for y in range(rxmin,rxmax+1):
                         s = roll_dice(1,20)
-                        if s <- 5:
+                        if s <= 5:
                             secret_door_count +=1 
                             secret_door_dict[(x,rymin,rzmin)] = 'Y'
                             dungeon[(x,rymin,rzmin)]['fill'] = dungeon[(x,rymin,rzmin)]['fill'] + 'sd'
 
                     for x in range(rxmin,rxmax+1):
                         s = roll_dice(1,20)
-                        if s <- 5:
+                        if s <= 5:
                             secret_door_count +=1 
                             secret_door_dict[(x,rymax,rzmin)] = 'Y'
                             dungeon[(x,rymax,rzmin)]['fill'] = dungeon[(x,rymax,rzmin)]['fill'] + 'sd'
