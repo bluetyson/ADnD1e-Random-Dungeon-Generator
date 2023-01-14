@@ -298,7 +298,6 @@ def check_action(pc_dict, coord, room_stack):
                     else:
                         #chamber
                         shape_dict = room(coord, room_stack)
-                    #room_stack = shape_dict['room_stack']
                     #each room part check for inside
 
                     print("ROOM SHAPE:",shape_dict)
@@ -315,6 +314,14 @@ def check_action(pc_dict, coord, room_stack):
                         dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'R'
                         new_coord = (coord[0],coord[1]+1,coord[2])
                         # 10 x 10 room need to check contents!
+
+                        #need to implement for set type room
+                        new_coord = coord
+                        shape_dict = room(coord, room_stack, size="10") #10 is special case to mandate 1 roll for size
+
+                        print("ROOM SHAPE:",shape_dict)
+                        room_make(shape_dict, coord)
+
 
         ## got to proceed with direction/type of exit
 
@@ -859,6 +866,10 @@ def room(coord, room_stack, size="C", content=None ):
     shape_dict = {}
     shape_dict['shape'] = 'R'
     shape_dict['size'] = [0,0]
+
+    ## pass a 10x10 signifier for set room size
+    if size == "10":
+        r = 1
     
     if r <= 2:
         if size=="C":
