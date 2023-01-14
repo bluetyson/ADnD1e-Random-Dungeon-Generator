@@ -202,7 +202,7 @@ def check_action(pc_dict, coord):
                 if e_dict['beyond'] == 'Room':
                     #want those we randomly position lr
                     new_coord = coord
-                    shape_dict = room(coord, size='R', room_stack=room_stack)  ## different type to get slightly different table
+                    shape_dict = room(coord, room_stack, size='R' )  ## different type to get slightly different table
                     #each room part check for inside
 
                     print("ROOM SHAPE:",shape_dict)
@@ -291,7 +291,7 @@ def check_action(pc_dict, coord):
                 if e_dict['beyond'] == 'Room':
                     #want those we randomly position lr
                     new_coord = coord
-                    shape_dict = room(coord, size='R', room_stack=room_stack)  ## different type to get slightly different table
+                    shape_dict = room(coord, room_stack,size='R')  ## different type to get slightly different table
                     #each room part check for inside
 
                     print("ROOM SHAPE:",shape_dict)
@@ -585,7 +585,7 @@ def check_action(pc_dict, coord):
         '''
         #want those we randomly position lr
         new_coord = coord
-        shape_dict = room(coord, room_stack=room_stack) #if another room pass not C="R"        
+        shape_dict = room(coord, room_stack) #if another room pass not C="R"        
         #each room part check for inside
 
         print("ROOM SHAPE:",shape_dict)
@@ -614,7 +614,7 @@ def check_action(pc_dict, coord):
         if level_dict['room'] == 'Y':
             #do room check
             ## need to put roominess like this in a function?? as still need all exits and other stuff - maybe go in shape_dict??
-            shape_dict = room(coord, room_stack=room_stack) #if another room pass not C="R"        
+            shape_dict = room(coord, room_stack) #if another room pass not C="R"        
             #each room part check for inside
 
             print("ROOM SHAPE:",shape_dict)
@@ -834,7 +834,7 @@ def turn(coord):
     return t_dict
 
 
-def room(coord, size="C", content=None, room_stack=room_stack):
+def room(coord, room_stack, size="C", content=None ):
     '''
     can pass anything in that is not C for size and will work, just using R for room not Chamber
     just rectangular results for now
@@ -1681,7 +1681,7 @@ def bad_things(coord):
                 t_dict['new_coord'] = new_coord
             else:
                 #pass put room here
-                shape_dict = room(coord, content="MT", room_stack=room_stack) #if another room pass not C="R"       
+                shape_dict = room(coord, room_stack, content="MT") #if another room pass not C="R"       
                 
                 #pass MT for monster and treasure
                 #each room part check for inside
