@@ -1187,7 +1187,7 @@ def room_make(shape_dict, coord):
         for key in shape_dict:
             #print(key, shape_dict[key])
             if key == 'contents':
-                for c in contents:
+                for c in shape_dict['contents']:
                     if c == 'treasure':
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
                         w = roll_dice(1,rand_length)
