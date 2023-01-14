@@ -1154,6 +1154,8 @@ def room_contents(shape_dict, coord, content):
             shape_dict = loot_hide(shape_dict)
 
 def room_make(shape_dict, coord):
+    newcoord = coord
+
     if shape_dict['shape'] == 'R':
         print("rectangular", room_stack['key_count'])
         room_stack[room_stack['key_count']] = {}
@@ -1214,44 +1216,85 @@ def room_make(shape_dict, coord):
 
 
             if key == 'exits':
-                for e in range(shape_dict['exits']):
-                    #echeck plus 1 for room
-                    print("EXIT CHECK",e)
-                    print("exit location:",shape_dict['exitlocations'][e+1])
-                    print("exit direction:",shape_dict['exitdirections'][e+1])
-                    
-                    #putting in place
-                    #need the maximum L/R/B/A back and ahead coordinates - so max and min X/Y for the room to place things
-                    room_lim = coord_limits(room_stack[room_stack['key_count']])
-                    rxmin = room_lim[0][0]
-                    rymin = room_lim[0][1]
-                    rzmin = room_lim[0][2]
-                    rxmax = room_lim[1][0]
-                    rymax = room_lim[1][1]
-                    rzmax = room_lim[1][2]
-                    print("RMIN:",rxmin,rymin,rzmin)
-                    print("RMAX:",rxmax,rymax,rzmax)
+                if shape_dict['exits'] == 0:
+                    #check for secret doors in all walls
+                    print("SECRET DOOR CHECK NOT IMPLEMENTED IN FOR SEEMINGLY 0 EXIT ROOm")
+                    pass
 
-                    if shape_dict['exitlocations'][e+1] == 'O':
-                        #check for possible positions at ymax range from xmin to xmax
-                        #find random location in opp wall and add to door
-                        es = roll_dice(1,rxmax-rxmin + 1)
-                        el = [rxmin + es -1,rymax]
+                else:
+                    for e in range(shape_dict['exits']):
+                        #echeck plus 1 for room
+                        print("EXIT CHECK",e)
+                        print("exit location:",shape_dict['exitlocations'][e+1])
+                        print("exit direction:",shape_dict['exitdirections'][e+1])
+                        
+                        #putting in place
+                        #need the maximum L/R/B/A back and ahead coordinates - so max and min X/Y for the room to place things
+                        room_lim = coord_limits(room_stack[room_stack['key_count']])
+                        rxmin = room_lim[0][0]
+                        rymin = room_lim[0][1]
+                        rzmin = room_lim[0][2]
+                        rxmax = room_lim[1][0]
+                        rymax = room_lim[1][1]
+                        rzmax = room_lim[1][2]
+                        print("RMIN:",rxmin,rymin,rzmin)
+                        print("RMAX:",rxmax,rymax,rzmax)
 
-                    elif shape_dict['exitlocations'][e+1] == 'L':
-                        #check for possible positions at xmin range from ymin to ymax
-                        es = roll_dice(1,rymax-rymin + 1)
-                        el = [rxmin,rymin + es -1]
-                    elif shape_dict['exitlocations'][e+1] == 'R':                    
-                        #check for possible positions at xmax range from ymin to ymax    
-                        es = roll_dice(1,rymax-rymin + 1)
-                        el = [rxmax,rymin + es -1]
-                    else: #S wall
-                        #check for possible positions at ymin range from xmin to xmax
-                        es = roll_dice(1,rxmax-rxmin + 1)
-                        el = [rxmin + es -1,rymin]
+                        #also check which random exit to follow
+                        #the below need checks to be secret doors if will fit fails
+                        if shape_dict['exitlocations'][e+1] == 'O':
+                            #check for possible positions at ymax range from xmin to xmax
+                            #find random location in opp wall and add to door
+                            es = roll_dice(1,rxmax-rxmin + 1)
+                            el = [rxmin + es -1,rymax]
 
-                #pass
+                            #30m passage that direction - ahead y+
+                            for x in range(3):
+                                will_fit = in_dungeon((el[0],el[1+1],rzmin))
+                                if not will_fit:
+                                    dungeon[(el[0],el[1+1],rzmin)] = {}
+                                    dungeon[(el[0],el[1+1],rzmin))]['fill'] = 'C'
+                                    new_coord = ((el[0],el[1+1],rzmin))                        
+
+                        elif shape_dict['exitlocations'][e+1] == 'L':
+                            #check for possible positions at xmin range from ymin to ymax
+                            es = roll_dice(1,rymax-rymin + 1)
+                            el = [rxmin,rymin + es -1]
+
+                            for x in range(3):
+                                will_fit = in_dungeon((el[0]-1,el[1],rzmin))
+                                if not will_fit:
+                                    dungeon[(el[0]-1,el[1],rzmin)] = {}
+                                    dungeon[(el[0]-1,el[1],rzmin))]['fill'] = 'C'
+                                    new_coord = ((el[0]-1,el[1],rzmin))                        
+
+                        elif shape_dict['exitlocations'][e+1] == 'R':                    
+                            #check for possible positions at xmax range from ymin to ymax    
+                            es = roll_dice(1,rymax-rymin + 1)
+                            el = [rxmax,rymin + es -1]
+
+                            for x in range(3):
+                                will_fit = in_dungeon((el[0]+1,el[1],rzmin))
+                                if not will_fit:
+                                    dungeon[(el[0]+1,el[1],rzmin)] = {}
+                                    dungeon[(el[0]+1,el[1],rzmin))]['fill'] = 'C'
+                                    new_coord = ((el[0]+1,el[1],rzmin))                        
+
+                        else: #S wall
+                            #check for possible positions at ymin range from xmin to xmax
+                            es = roll_dice(1,rxmax-rxmin + 1)
+                            el = [rxmin + es -1,rymin]
+
+                            for x in range(3):
+                                will_fit = in_dungeon((el[0],el[1-1],rzmin))
+                                if not will_fit:
+                                    dungeon[(el[0],el[1]-1,rzmin)] = {}
+                                    dungeon[(el[0],el[1]-1,rzmin))]['fill'] = 'C'
+                                    new_coord = ((el[0],el[1]-1,rzmin))                        
+
+
+
+                    #pass
 
             if key == 'monster':
                 pass
