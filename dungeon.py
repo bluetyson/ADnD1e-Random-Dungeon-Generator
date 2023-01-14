@@ -27,12 +27,12 @@ def in_dungeon(coord):
     return inside
 
 def coord_limits(dungeon):
-    minx = 0
-    maxx = 0
-    miny = 0
-    maxy = 0
-    minz = 0
-    maxz = 0
+    minx = 9999
+    maxx = -9999
+    miny = 9999
+    maxy = -9999
+    minz = 9999
+    maxz = -9999
 
     for key in dungeon:
         if key[0] > maxx:
