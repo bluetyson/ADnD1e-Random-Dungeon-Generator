@@ -1181,6 +1181,12 @@ def room_make(shape_dict, coord):
 
                 else:
                     break
+
+        #loop the shape_dict contents for exists etc
+        for key in shape_dict:
+            print(key, shape_dict[key])
+            #check treasure, monsters, exists and place these
+            #exists need coloring for output so door/exit stack
         
     else:
         pass
