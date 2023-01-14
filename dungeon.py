@@ -1183,9 +1183,30 @@ def room_make(shape_dict, coord):
                     break
 
         #loop the shape_dict contents for exists etc
+        print("ROOM SHAPE DICT CONTENTS")
         for key in shape_dict:
-            print(key, shape_dict[key])
-            #check treasure, monsters, exists and place these
+            #print(key, shape_dict[key])
+            if key == 'contents':
+                for c in contents:
+                    if c == 'treasure':
+                        rand_length = len(list(room_stack[room_stack['key_count']].keys()))
+                        w = roll_dice(1,rand_length)
+                        #h = roll_dice(1,shape_dict['size'][1])
+                        for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
+                            if index + 1 == w:
+                                room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + 't'
+
+
+            if key == 'exits':
+                for e in key:
+                    print("exit location:",shape_dict['exitlocations'][e])
+                    print("exit direction:",shape_dict['exitdirections'][e])
+                #pass
+
+            if key == 'monster':
+                pass
+
+            #check treasure, monsters, exits and place these
             #exists need coloring for output so door/exit stack
         
     else:
