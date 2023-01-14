@@ -2120,7 +2120,7 @@ for down in range(zwidth-1):
                     strdata = '<td class="black_background">' + downlist[down][i,j,0] + '</td>'
                 elif downlist[down][i,j,0] == 'C':
                     strdata = '<td>' + downlist[down][i,j,0] + '</td>'
-                elif downlist[down][i,j,0] == 'R':
+                elif 'R' in downlist[down][i,j,0]:  #could have numbering
                     strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
                 elif downlist[down][i,j,0] == 'D':
                     strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
