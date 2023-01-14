@@ -203,7 +203,7 @@ def check_action(pc_dict, coord, room_stack):
                     #want those we randomly position lr
                     new_coord = coord
                     shape_dict = room(coord, room_stack, size='R' )  ## different type to get slightly different table
-                    room_stack = shape_dict['room_stack']
+                    #room_stack = shape_dict['room_stack']
                     #each room part check for inside
 
                     print("ROOM SHAPE:",shape_dict)
@@ -293,7 +293,7 @@ def check_action(pc_dict, coord, room_stack):
                     #want those we randomly position lr
                     new_coord = coord
                     shape_dict = room(coord, room_stack,size='R')  ## different type to get slightly different table
-                    room_stack = shape_dict['room_stack']
+                    #room_stack = shape_dict['room_stack']
                     #each room part check for inside
 
                     print("ROOM SHAPE:",shape_dict)
@@ -588,7 +588,7 @@ def check_action(pc_dict, coord, room_stack):
         #want those we randomly position lr
         new_coord = coord
         shape_dict = room(coord, room_stack) #if another room pass not C="R"  
-        room_stack = shape_dict['room_stack']      
+        #room_stack = shape_dict['room_stack']      
         #each room part check for inside
 
         print("ROOM SHAPE:",shape_dict)
@@ -618,7 +618,7 @@ def check_action(pc_dict, coord, room_stack):
             #do room check
             ## need to put roominess like this in a function?? as still need all exits and other stuff - maybe go in shape_dict??
             shape_dict = room(coord, room_stack) #if another room pass not C="R"        
-            room_stack = shape_dict['room_stack']
+            #room_stack = shape_dict['room_stack']
             #each room part check for inside
 
             print("ROOM SHAPE:",shape_dict)
@@ -845,7 +845,7 @@ def room(coord, room_stack, size="C", content=None ):
     pass 'MT' in content to mandate monster and treasure in room - for Illusionary Wall trap
     '''
     print("ROOM STACK ON ENTRY:",room_stack)
-    
+
     room_stack['key_count'] += 1
 
     r = roll_dice(1,20)
@@ -901,7 +901,7 @@ def room(coord, room_stack, size="C", content=None ):
     print("ROOM KEY CHECK:",room_stack[room_stack['key_count']])
     
     room_stack[room_stack['key_count']]['shape_dict'] = shape_dict
-    shape_dict['room_stack'] = room_stack
+    #shape_dict['room_stack'] = room_stack #take out for rest
 
     ### put shape_dict in room_stack
 
