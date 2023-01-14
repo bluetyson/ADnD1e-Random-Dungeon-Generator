@@ -890,10 +890,10 @@ def room(coord, size="C", content=None):
     shape_dict = exit_dir(shape_dict)
 
     ## check the room stack and exit functions here
-    print("ROOM STACK CHECK:", room_stack)
-    print("ROOM KEY COUNT:",room_stack['key_count'])
-    print("ROOM KEY CHECK:",room_stack[room_stack['key_count']])
-    room_stack[room_stack['key_count']]['shape_dict'] = shape_dict
+    #print("ROOM STACK CHECK:", room_stack)
+    #print("ROOM KEY COUNT:",room_stack['key_count'])
+    #print("ROOM KEY CHECK:",room_stack[room_stack['key_count']])
+    #room_stack[room_stack['key_count']]['shape_dict'] = shape_dict
 
     ### put shape_dict in room_stack
 
