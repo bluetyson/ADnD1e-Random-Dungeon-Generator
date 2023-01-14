@@ -1251,7 +1251,7 @@ def room_make(shape_dict, coord):
 
                             #30m passage that direction - ahead y+
                             for x in range(3):
-                                will_fit = in_dungeon((el[0],el[1+1],rzmin))
+                                will_fit = in_dungeon((el[0],el[1]_1,rzmin))
                                 if not will_fit:
                                     dungeon[(el[0],el[1]+1,rzmin)] = {}
                                     dungeon[(el[0],el[1]+1,rzmin)]['fill'] = 'C'
