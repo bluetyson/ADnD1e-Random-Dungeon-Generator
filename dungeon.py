@@ -1188,6 +1188,17 @@ def room_make(shape_dict, coord):
         print("ROOM SHAPE DICT CONTENTS")
         
         print("ROOM STACK CHECK",room_stack[room_stack['key_count']])
+        troom_lim = coord_limits(room_stack[room_stack['key_count']])
+        trxmin = troom_lim[0][0]
+        trymin = troom_lim[0][1]
+        trzmin = troom_lim[0][2]
+        trxmax = troom_lim[1][0]
+        trymax = troom_lim[1][1]
+        trzmax = troom_lim[1][2]
+        print("RMIN-CHECK:",trxmin,trymin,trzmin)
+        print("RMAX-CHECK:",trxmax,trymax,trzmax)
+
+
 
         #check for water to put a pool or lake in
         
