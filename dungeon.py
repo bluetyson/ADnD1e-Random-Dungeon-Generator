@@ -2391,49 +2391,31 @@ for down in range(zwidth-1):
         else:
             return 'notreasure'
 
+    
     with open('dungeon_' + str(down+1) + '.html','w') as f:
         f.write(strhead)
         
         for j in range(downlist[down].shape[1]):            
             f.write('<TR>')
-            color = colorcheck(downlist[down][i,j,0])
-            if color == 'notreasure':
-
-                for i in range(downlist[down].shape[0]):                
-                    if downlist[down][i,j,0] == 'B':
-                        strdata = '<td class="black_background">' + downlist[down][i,j,0] + '</td>'
-                    elif downlist[down][i,j,0] == 'C':
-                        strdata = '<td>' + downlist[down][i,j,0] + '</td>'
-                    elif 'R' in downlist[down][i,j,0]:  #could have numbering
-                        strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
-                    elif 'D' in downlist[down][i,j,0]:  #could have WM
-                        strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
-                    elif downlist[down][i,j,0] == 'O':
-                        strdata = '<td class="green_background">' + downlist[down][i,j,0] + '</td>'
-                    else:
-                        strdata = '<td class="red_background">' + downlist[down][i,j,0] + '</td>'
-
-            else:
-                for i in range(downlist[down].shape[0]):                
-                    if downlist[down][i,j,0] == 'B':
-                        strdata = '<td class="black_background">' + downlist[down][i,j,0] + '</td>'
-                    elif downlist[down][i,j,0] == 'C':
-                        strdata = '<td>' + downlist[down][i,j,0] + '</td>'
-                    elif 'R' in downlist[down][i,j,0]:  #could have numbering
-                        strdata = '<td class="gray_background"' + "font_color=" + color + '">' + downlist[down][i,j,0] + '</td>'
-                    elif 'D' in downlist[down][i,j,0]:  #could have WM
-                        strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
-                    elif downlist[down][i,j,0] == 'O':
-                        strdata = '<td class="green_background">' + downlist[down][i,j,0] + '</td>'
-                    else:
-                        strdata = '<td class="red_background">' + downlist[down][i,j,0] + '</td>'
+            for i in range(downlist[down].shape[0]):                
+                if downlist[down][i,j,0] == 'B':
+                    strdata = '<td class="black_background">' + downlist[down][i,j,0] + '</td>'
+                elif downlist[down][i,j,0] == 'C':
+                    strdata = '<td>' + downlist[down][i,j,0] + '</td>'
+                elif 'R' in downlist[down][i,j,0]:  #could have numbering
+                    strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
+                elif downlist[down][i,j,0] == 'D':
+                    strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
+                elif downlist[down][i,j,0] == 'O':
+                    strdata = '<td class="green_background">' + downlist[down][i,j,0] + '</td>'
+                else:
+                    strdata = '<td class="red_background">' + downlist[down][i,j,0] + '</td>'
 
                 f.write(strdata)
             f.write('</TR>')
             #f.write('</table>')
 
         
-
         #f.write(strlegendhead)
         #for key in legend_dict:
             #f.write('<TR>')
