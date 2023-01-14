@@ -918,9 +918,10 @@ def room(coord, room_stack, size="C", content=None ):
 
     return shape_dict
 
-#not implemented yet
+
 def width():
     '''
+        not implemented yet
         to do 5 foot wide passage, need to redo and the 'default' is then to do 2 squares for everything
         get a basic version going first, then this slower version later
     '''
