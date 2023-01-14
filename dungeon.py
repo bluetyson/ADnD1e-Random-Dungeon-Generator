@@ -5,7 +5,7 @@ import numpy as np
 import random
 import time
 import datetime
-import copy
+#import copy
 import json
 import pickle
 import math
