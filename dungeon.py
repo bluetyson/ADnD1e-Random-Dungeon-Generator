@@ -1254,7 +1254,7 @@ def room_make(shape_dict, coord):
                                 will_fit = in_dungeon((el[0],el[1+1],rzmin))
                                 if not will_fit:
                                     dungeon[(el[0],el[1+1],rzmin)] = {}
-                                    dungeon[(el[0],el[1+1],rzmin))]['fill'] = 'C'
+                                    dungeon[(el[0],el[1+1],rzmin)]['fill'] = 'C'
                                     new_coord = ((el[0],el[1+1],rzmin))                        
 
                         elif shape_dict['exitlocations'][e+1] == 'L':
@@ -1266,7 +1266,7 @@ def room_make(shape_dict, coord):
                                 will_fit = in_dungeon((el[0]-1,el[1],rzmin))
                                 if not will_fit:
                                     dungeon[(el[0]-1,el[1],rzmin)] = {}
-                                    dungeon[(el[0]-1,el[1],rzmin))]['fill'] = 'C'
+                                    dungeon[(el[0]-1,el[1],rzmin)]['fill'] = 'C'
                                     new_coord = ((el[0]-1,el[1],rzmin))                        
 
                         elif shape_dict['exitlocations'][e+1] == 'R':                    
@@ -1278,7 +1278,7 @@ def room_make(shape_dict, coord):
                                 will_fit = in_dungeon((el[0]+1,el[1],rzmin))
                                 if not will_fit:
                                     dungeon[(el[0]+1,el[1],rzmin)] = {}
-                                    dungeon[(el[0]+1,el[1],rzmin))]['fill'] = 'C'
+                                    dungeon[(el[0]+1,el[1],rzmin)]['fill'] = 'C'
                                     new_coord = ((el[0]+1,el[1],rzmin))                        
 
                         else: #S wall
@@ -1290,7 +1290,7 @@ def room_make(shape_dict, coord):
                                 will_fit = in_dungeon((el[0],el[1-1],rzmin))
                                 if not will_fit:
                                     dungeon[(el[0],el[1]-1,rzmin)] = {}
-                                    dungeon[(el[0],el[1]-1,rzmin))]['fill'] = 'C'
+                                    dungeon[(el[0],el[1]-1,rzmin)]['fill'] = 'C'
                                     new_coord = ((el[0],el[1]-1,rzmin))                        
 
 
