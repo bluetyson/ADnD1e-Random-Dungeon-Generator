@@ -709,7 +709,7 @@ def check_action(pc_dict, coord, room_stack):
         new_coord = coord
         roll_first = random_check()
         "+1 like trap - wm"
-        result_coord = check_action(roll_first, new_coord)
+        result_coord = check_action(roll_first, new_coord, room_stack)
         new_coord = result_coord
 
         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2])) #square for monster
