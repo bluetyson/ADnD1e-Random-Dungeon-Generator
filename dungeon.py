@@ -1253,9 +1253,9 @@ def room_make(shape_dict, coord):
                             for x in range(3):
                                 will_fit = in_dungeon((el[0],el[1+1],rzmin))
                                 if not will_fit:
-                                    dungeon[(el[0],el[1+1],rzmin)] = {}
-                                    dungeon[(el[0],el[1+1],rzmin)]['fill'] = 'C'
-                                    new_coord = ((el[0],el[1+1],rzmin))                        
+                                    dungeon[(el[0],el[1]+1,rzmin)] = {}
+                                    dungeon[(el[0],el[1]+1,rzmin)]['fill'] = 'C'
+                                    new_coord = ((el[0],el[1]+1,rzmin))                        
 
                         elif shape_dict['exitlocations'][e+1] == 'L':
                             #check for possible positions at xmin range from ymin to ymax
