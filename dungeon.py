@@ -201,8 +201,6 @@ def check_action(pc_dict, coord):
 
                 if e_dict['beyond'] == 'Room':
                     #want those we randomly position lr
-                    room_stack['key_count'] += 1
-
                     new_coord = coord
                     shape_dict = room(coord, size='R')  ## different type to get slightly different table
                     #each room part check for inside
@@ -293,7 +291,6 @@ def check_action(pc_dict, coord):
                 if e_dict['beyond'] == 'Room':
                     #want those we randomly position lr
                     new_coord = coord
-                    room_stack['key_count'] += 1
                     shape_dict = room(coord, size='R')  ## different type to get slightly different table
                     #each room part check for inside
 
@@ -588,7 +585,6 @@ def check_action(pc_dict, coord):
         '''
         #want those we randomly position lr
         new_coord = coord
-        room_stack['key_count'] += 1
         shape_dict = room(coord) #if another room pass not C="R"        
         #each room part check for inside
 
@@ -618,7 +614,6 @@ def check_action(pc_dict, coord):
         if level_dict['room'] == 'Y':
             #do room check
             ## need to put roominess like this in a function?? as still need all exits and other stuff - maybe go in shape_dict??
-            room_stack['key_count'] += 1
             shape_dict = room(coord) #if another room pass not C="R"        
             #each room part check for inside
 
@@ -1677,7 +1672,6 @@ def bad_things(coord):
                 t_dict['new_coord'] = new_coord
             else:
                 #pass put room here
-                room_stack['key_count'] += 1
                 shape_dict = room(coord, content="MT") #if another room pass not C="R"       
                 
                 #pass MT for monster and treasure
