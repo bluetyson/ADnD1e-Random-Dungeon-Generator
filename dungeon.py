@@ -888,6 +888,8 @@ def room(coord, size="C", content=None):
     shape_dict = exit_loc(shape_dict)
     shape_dict = exit_dir(shape_dict)
 
+    ## check the room stack and exit functions here
+
     return shape_dict
 
 #not implemented yet
@@ -1991,6 +1993,7 @@ print("COORD:", coord, result_coord, coord_lim)
 print("DUNGEON:", dungeon)
 print("EXIT_STACK:", exit_stack)
 print("LEVEL_STACK:", level_stack)
+print("ROOM_STACK:", room_stack)
 
 #can handle up to 4 characters
 #map chararray to independent for each level
