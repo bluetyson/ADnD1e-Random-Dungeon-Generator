@@ -93,7 +93,7 @@ def random_check():
 
     return pc_dict
 
-def check_action(pc_dict, coord):
+def check_action(pc_dict, coord, room_stack):
     ## need a current 'orientation' 'L R A B
     if pc_dict['direction'] == 'ahead':
         will_fit = True
@@ -1975,7 +1975,7 @@ while roll_first == 18:
     roll_first = random_check()
 
 print("roll_first", roll_first)
-first_action = check_action(roll_first, coord)    
+first_action = check_action(roll_first, coord, room_stack)    
 
 i = 0
 result_coord = first_action
@@ -1983,7 +1983,7 @@ result_coord = first_action
 while i < PERIODIC_CHECKS:
     print("ROLL:",i)
     roll_first = random_check()
-    result_coord = check_action(roll_first, result_coord)
+    result_coord = check_action(roll_first, result_coord, room_stack)
     i +=1
 
 coord_lim = coord_limits(dungeon)
