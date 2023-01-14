@@ -1479,7 +1479,7 @@ def room_make(shape_dict, coord):
 
 def loot(shape_dict,coord,monster="N"):
     #when coming from wet small or others with no initialisation
-    if contents not in shape_dict:
+    if 'contents' not in shape_dict:
         shape_dict['contents'] = {}
 
     shape_dict['contents']['treasure']['type'] = {}
