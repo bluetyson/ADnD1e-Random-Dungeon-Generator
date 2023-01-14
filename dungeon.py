@@ -709,8 +709,6 @@ def check_action(pc_dict, coord, room_stack):
                 new_coord = (coord[0],coord[1]+x+1,coord[2])
             else:
                 break
-
-        #check again in 3
         
     elif pc_dict['direction'] == 'random_encounter':
         print("WANDERING MONSTER")
@@ -853,6 +851,7 @@ def room(coord, room_stack, size="C", content=None ):
     can pass anything in that is not C for size and will work, just using R for room not Chamber
     just rectangular results for now
     pass 'MT' in content to mandate monster and treasure in room - for Illusionary Wall trap
+    10 is fof 1 size room ahead of door
     '''
     #print("ROOM STACK ON ENTRY:",room_stack)
 
@@ -925,6 +924,7 @@ def width():
         to do 5 foot wide passage, need to redo and the 'default' is then to do 2 squares for everything
         get a basic version going first, then this slower version later
         maybe for 5 foot corridor do it in html where it works? half the width
+        could have cosmetic width markers as html CCC, CC to start then grid squares later
     '''
     w = roll_dice(1,20)
     pw = '10'
@@ -1357,7 +1357,7 @@ def room_make(shape_dict, coord):
                         print("exit location:",shape_dict['exitlocations'][e+1])
                         print("exit direction:",shape_dict['exitdirections'][e+1])
                         
-                        ## still need to do 45 degree possible mostly are straight so test
+                        
                         #putting in place
                         #need the maximum L/R/B/A back and ahead coordinates - so max and min X/Y for the room to place things
                         #work out which exit to take - currently will take the most recent one
@@ -2294,7 +2294,7 @@ def wet_large(shape_dict, coord):
                 shape_dict = loot_hide(shape_dict)
 
             wet_dict['portal'] = 'another world/dungeon23/other place'
-            #otherwise can be monster, but above is more fun unless solo
+            #otherwise can be monster, but above is more fun unless solo or could random
 
         shape_dict['lake'] = wet_dict
 
@@ -2359,7 +2359,7 @@ def wet_magic():
             t = roll_dice(1,len(loclist))
             new_coord = loclist[t-1]
         else:
-            #100 miles away or effectively
+            #100 miles away or effectively could be exit program
             new_coord = (0,0,0)
     
     shape_dict['wet_magic'] = wet_magic_dict
@@ -2400,7 +2400,7 @@ def stinky():
 #how big a fake canvas to make - or do we just have a dictionary and add parts in as they go
 #eg have 1000 x 1000 and fake easting and northing
 #direction preference - n,w,e,s? - roll randomly?
-#not as yet checking for space already occupied
+
 #not checking to backtrack the exit stack if dead-end
 #not checking any level stacks to go up down, similarly
 #not implemented passage width as yet - default only
