@@ -1213,7 +1213,7 @@ def room_make(shape_dict, coord):
                             if shape_dict['contents']['treasure']['type'][tt] > 0:
                                 treasure_string = tt[0]
                                 if tt == 'gems':
-                                    treasure_string = treasurestring.upper()
+                                    treasure_string = treasure_string.upper()
                                 print("TREASURE STRING CHECK:",treasure_string)
 
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
