@@ -1212,6 +1212,7 @@ def room_make(shape_dict, coord):
 
                     if c == 'monster':   
                         monster_str = ''  #could be some lookup indicator number maybe or just monster as many long list legend to do otherwise
+                        mosnter_str = 'm' #dummy default
                         #or the ref to the table rolled on is maybe good
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
                         w = roll_dice(1,rand_length)
@@ -1219,8 +1220,8 @@ def room_make(shape_dict, coord):
                         for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
                             print("monsterindex",r)
                             if index + 1 == w:
-                                room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + 'm'
-                                print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + treasure_string)
+                                room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + monster_string
+                                print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + monster_string)
 
 
                     if c == 'trap':
