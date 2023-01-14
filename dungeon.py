@@ -924,6 +924,7 @@ def width():
         not implemented yet
         to do 5 foot wide passage, need to redo and the 'default' is then to do 2 squares for everything
         get a basic version going first, then this slower version later
+        maybe for 5 foot corridor do it in html where it works? half the width
     '''
     w = roll_dice(1,20)
     pw = '10'
