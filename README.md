@@ -9,7 +9,9 @@ Attempt to convert DMG tables to code to do something
 - So converting to something else will just need something that can do char/string arrays
 - At the moment it is just run for a number of 'rolls' - PERIODIC CHECK can set in code
   - or overide on command line to do 3 rolls for example:
-  - python dungeon.py 3
+  ```python
+  python dungeon.py 3
+  ```
 
 # Work in progress
 Building things as I go - just using a one roll test for now to see how it goes.
