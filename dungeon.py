@@ -1242,9 +1242,11 @@ def room_make(shape_dict, coord):
                                 if trtype == 'secretdoor':
                                     print("secretdoor info:",shape_dict['contents']['trap'][trtype])
 
-
+                    #if c is wet or other things in contents need to go above exits probably but null rooms should not have
 
             if key == 'exits':
+                #can get errors for null rooms
+
                 room_lim = coord_limits(room_stack[room_stack['key_count']])
                 rxmin = room_lim[0][0]
                 rymin = room_lim[0][1]
@@ -1254,6 +1256,13 @@ def room_make(shape_dict, coord):
                 rzmax = room_lim[1][2]
                 print("RMIN:",rxmin,rymin,rzmin)
                 print("RMAX:",rxmax,rymax,rzmax)
+
+                if rxmin > 9000 or rxymin > 9000 or rzmin > 9000:
+                    #NULL room #should handle below exception problem
+                    #no coords above to reduce these numbers to room limits
+                    #must make sure everything else in contents comes out here
+                    return
+
                 secret_door_count = 0
                 secret_door_dict = {}
 
@@ -1391,8 +1400,14 @@ def room_make(shape_dict, coord):
 
                         elif shape_dict['exitlocations'][e+1] == 'L': #LEFT
                             #check for possible positions at xmin range from ymin to ymax
-                            es = roll_dice(1,rymax-rymin + 1)
-                            el = [rxmin,rymin + es -1]
+                            try:
+                                es = roll_dice(1,rymax-rymin + 1)
+                                el = [rxmin,rymin + es -1]
+                            except Exception as roomsizeE:
+                                #try and work out if null room - might go away if now has no coords
+                                print("error is:",roomsizeE)
+                                print(shape_dict)
+                                print(room_stack)
 
                             if shape_dict['exitdirections'][e+1] == 'A':
                                 for x in range(3):
@@ -1599,7 +1614,7 @@ def room_make(shape_dict, coord):
             #exists need coloring for output so door/exit stack
         
     else:
-        pass
+        pass   #do we want a return
 
 def loot(shape_dict,coord,monster="N"):
     #when coming from wet small or others with no initialisation
