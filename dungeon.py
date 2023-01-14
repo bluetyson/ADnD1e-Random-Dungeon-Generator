@@ -1184,6 +1184,8 @@ def room_make(shape_dict, coord):
 
         #loop the shape_dict contents for exists etc
         print("ROOM SHAPE DICT CONTENTS")
+        #check for water to put a pool or lake in
+
         for key in shape_dict:
             #print(key, shape_dict[key])
             if key == 'contents':
