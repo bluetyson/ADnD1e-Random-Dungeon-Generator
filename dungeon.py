@@ -1235,9 +1235,22 @@ def room_make(shape_dict, coord):
 
 
             if key == 'exits':
+                room_lim = coord_limits(room_stack[room_stack['key_count']])
+                rxmin = room_lim[0][0]
+                rymin = room_lim[0][1]
+                rzmin = room_lim[0][2]
+                rxmax = room_lim[1][0]
+                rymax = room_lim[1][1]
+                rzmax = room_lim[1][2]
+                print("RMIN:",rxmin,rymin,rzmin)
+                print("RMAX:",rxmax,rymax,rzmax)
+
                 if shape_dict['exits'] == 0:
                     #check for secret doors in all walls
                     print("SECRET DOOR CHECK NOT IMPLEMENTED IN FOR SEEMINGLY 0 EXIT ROOM")
+                    #loop through room coords and check edges for sdoors
+                    #count the secret doors
+                    #randomly choose one to follow 
                     pass
 
                 else:
@@ -1253,19 +1266,8 @@ def room_make(shape_dict, coord):
                         #putting in place
                         #need the maximum L/R/B/A back and ahead coordinates - so max and min X/Y for the room to place things
                         #work out which exit to take - currently will take the most recent one
-                        
-
-                        room_lim = coord_limits(room_stack[room_stack['key_count']])
-                        rxmin = room_lim[0][0]
-                        rymin = room_lim[0][1]
-                        rzmin = room_lim[0][2]
-                        rxmax = room_lim[1][0]
-                        rymax = room_lim[1][1]
-                        rzmax = room_lim[1][2]
-                        print("RMIN:",rxmin,rymin,rzmin)
-                        print("RMAX:",rxmax,rymax,rzmax)
-
                         #also check which random exit to follow
+
                         #the below need checks to be secret doors if will fit fails
                         if shape_dict['exitlocations'][e+1] == 'O':
                             #check for possible positions at ymax range from xmin to xmax
