@@ -1194,8 +1194,8 @@ def room_make(shape_dict, coord):
                     if c == 'treasure':
                         treasure_str = ''
                         #get what it is
-                        for tt in shape_dict['contents']['treasure']:
-                            if shape_dict['contents']['treasure'][tt] > 0:
+                        for tt in shape_dict['contents']['treasure']['type']:
+                            if shape_dict['contents']['treasure']['type'][tt] > 0:
                                 treasure_string = tt[0]
 
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
@@ -1204,7 +1204,8 @@ def room_make(shape_dict, coord):
                         for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
                             if index + 1 == w:
                                 room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + treasure_string
-
+                        #need to output guards and hidden in room_stack
+                        
                     if c == 'trap':
                         ##need to check for secret doors
                         for tr in shape_dict['contents']['trap']:
