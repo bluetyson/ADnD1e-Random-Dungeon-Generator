@@ -1191,6 +1191,21 @@ def room_make(shape_dict, coord):
             #print(key, shape_dict[key])
             if key == 'contents':
                 for c in shape_dict['contents']:
+                    if c == 'monster':   
+                        monster_str = ''  #could be some lookup indicator number maybe or just monster as many long list legend to do otherwise
+                        mosnter_str = 'm' #dummy default
+                        #or the ref to the table rolled on is maybe good
+                        rand_length = len(list(room_stack[room_stack['key_count']].keys()))
+                        w = roll_dice(1,rand_length)
+                        print("MONSTER ROOM ROLL CHECK:",w)
+                        for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
+                            print("monsterindex",r)
+                            if index + 1 == w:
+                                room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + monster_string
+                                print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + monster_string)
+                                dungeon[r]['fill'] = dungeon[r]['fill'] + monster_string
+
+
                     if c == 'treasure':
                         treasure_str = ''
                         #get what it is
@@ -1208,20 +1223,9 @@ def room_make(shape_dict, coord):
                             if index + 1 == w:
                                 room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + treasure_string
                                 print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + treasure_string)
+                                dungeon[r]['fill'] = dungeon[r]['fill'] + treasure_string
                         #need to output guards and hidden in room_stack
 
-                    if c == 'monster':   
-                        monster_str = ''  #could be some lookup indicator number maybe or just monster as many long list legend to do otherwise
-                        mosnter_str = 'm' #dummy default
-                        #or the ref to the table rolled on is maybe good
-                        rand_length = len(list(room_stack[room_stack['key_count']].keys()))
-                        w = roll_dice(1,rand_length)
-                        print("MONSTER ROOM ROLL CHECK:",w)
-                        for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
-                            print("monsterindex",r)
-                            if index + 1 == w:
-                                room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + monster_string
-                                print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + monster_string)
 
 
                     if c == 'trap':
@@ -1251,6 +1255,8 @@ def room_make(shape_dict, coord):
                     #loop through room coords and check edges for sdoors
                     #count the secret doors
                     #randomly choose one to follow 
+                    #apply basics of this to other secret door check places
+                    #exit stack for all secret doors
                     pass
 
                 else:
@@ -2375,7 +2381,7 @@ for down in range(zwidth-1):
                     strdata = '<td>' + downlist[down][i,j,0] + '</td>'
                 elif 'R' in downlist[down][i,j,0]:  #could have numbering
                     strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
-                elif downlist[down][i,j,0] == 'D':
+                elif 'D' in downlist[down][i,j,0]:  #could have WM
                     strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
                 elif downlist[down][i,j,0] == 'O':
                     strdata = '<td class="green_background">' + downlist[down][i,j,0] + '</td>'
