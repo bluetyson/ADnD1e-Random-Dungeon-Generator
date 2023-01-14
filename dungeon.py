@@ -1233,8 +1233,16 @@ def room_make(shape_dict, coord):
                     print("RMAX:",rxmax,rymax,rzmax)
 
                     if shape_dict['exitlocations'][e+1] == 'O':
+                        #check for possible past
+                        #find random location in opp wall and add to door
+                        pass
 
                     elif shape_dict['exitlocations'][e+1] == 'L':
+                        pass
+                    elif shape_dict['exitlocations'][e+1] == 'R':                        
+                        pass
+                    else: #S wall
+                        pass
 
                 #pass
 
