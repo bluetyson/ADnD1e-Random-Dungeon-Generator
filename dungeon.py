@@ -1219,7 +1219,7 @@ def room_make(shape_dict, coord):
             if key == 'exits':
                 if shape_dict['exits'] == 0:
                     #check for secret doors in all walls
-                    print("SECRET DOOR CHECK NOT IMPLEMENTED IN FOR SEEMINGLY 0 EXIT ROOm")
+                    print("SECRET DOOR CHECK NOT IMPLEMENTED IN FOR SEEMINGLY 0 EXIT ROOM")
                     pass
 
                 else:
@@ -1256,52 +1256,149 @@ def room_make(shape_dict, coord):
                             el = [rxmin + es -1,rymax]
 
                             #30m passage that direction - ahead y+
-                            for x in range(3):
-                                will_fit = in_dungeon((el[0],el[1]+1+x,rzmin))
-                                if not will_fit:
-                                    dungeon[(el[0],el[1]+1+x,rzmin)] = {}
-                                    dungeon[(el[0],el[1]+1+x,rzmin)]['fill'] = 'C'
-                                    if take_exit == e+1: #dice 1, loop 0
-                                        new_coord = ((el[0],el[1]+1+x,rzmin))
+                            if shape_dict['exitdirections'][e+1] == 'A':
+                                for x in range(3):
+                                    will_fit = in_dungeon((el[0],el[1]+1+x,rzmin))
+                                    if not will_fit:
+                                        dungeon[(el[0],el[1]+1+x,rzmin)] = {}
+                                        dungeon[(el[0],el[1]+1+x,rzmin)]['fill'] = 'C'
+                                        if take_exit == e+1: #dice 1, loop 0
+                                            new_coord = ((el[0],el[1]+1+x,rzmin))
+
+                            else: #shape_dict['exitdirections'][e+1]: #AB or BA if opp wall back 45 no good
+                                which_way = roll_dice(1,2)           
+                                if which_way == 1:  #corridor left
+                                    for x in range(3):
+                                        will_fit = in_dungeon((el[0]-1-x,el[1]+1+x,rzmin))
+                                        if not will_fit:                
+                                            dungeon[(el[0]-1-x,el[1]+1+x,rzmin])] = {}
+                                            dungeon[(el[0]-1-x,el[1]+1+x,rzmin)]['fill'] = 'C'
+                                            if which_way == 1:
+                                                new_coord = (el[0]-1-x,el[1]+1+x,rzmin)
+                                        else:
+                                            break
+                                else:
+                                    for x in range(3): #corridor right
+                                        will_fit = in_dungeon((el[0]+1+x,el[1]+1+x,rzmin))
+                                        if not will_fit:                
+                                            dungeon[(el[0]+1+x,el[1]+1+x,rzmin)] = {}
+                                            dungeon[(el[0]+1+x,el[1]+1+x,rzmin)]['fill'] = 'C'
+                                            if which_way == 2:
+                                                new_coord = (el[0]+1+x,el[1]+1+x,rzmin)
+                                        else:
+                                            break
 
                         elif shape_dict['exitlocations'][e+1] == 'L':
                             #check for possible positions at xmin range from ymin to ymax
                             es = roll_dice(1,rymax-rymin + 1)
                             el = [rxmin,rymin + es -1]
 
-                            for x in range(3):
-                                will_fit = in_dungeon((el[0]-1-x,el[1],rzmin))
-                                if not will_fit:
-                                    dungeon[(el[0]-1-x,el[1],rzmin)] = {}
-                                    dungeon[(el[0]-1-x,el[1],rzmin)]['fill'] = 'C'
-                                    if take_exit == e+1: #dice 1, loop 0
-                                        new_coord = ((el[0]-1-x,el[1],rzmin))                        
+                            if shape_dict['exitdirections'][e+1] == 'A':
+                                for x in range(3):
+                                    will_fit = in_dungeon((el[0]-1-x,el[1],rzmin))
+                                    if not will_fit:
+                                        dungeon[(el[0]-1-x,el[1],rzmin)] = {}
+                                        dungeon[(el[0]-1-x,el[1],rzmin)]['fill'] = 'C'
+                                        if take_exit == e+1: #dice 1, loop 0
+                                            new_coord = ((el[0]-1-x,el[1],rzmin))       
+                            else: #shape_dict['exitdirections'][e+1]: #AB or BA if opp wall back 45 no good
+                                which_way = roll_dice(1,2)           
+                                if which_way == 1:  #corridor opp
+                                    for x in range(3):
+                                        will_fit = in_dungeon((el[0]-1-x,el[1]+1+x,rzmin))
+                                        if not will_fit:                
+                                            dungeon[(el[0]-1-x,el[1]+1+x,rzmin])] = {}
+                                            dungeon[(el[0]-1-x,el[1]+1+x,rzmin)]['fill'] = 'C'
+                                            if which_way == 1:
+                                                new_coord = (el[0]-1-x,el[1]+1+x,rzmin)
+                                        else:
+                                            break
+                                else:
+                                    for x in range(3): #same
+                                        will_fit = in_dungeon((el[0]-1-x,el[1]-1-x,rzmin))
+                                        if not will_fit:                
+                                            dungeon[(el[0]-1-x,el[1]-1-x,rzmin)] = {}
+                                            dungeon[(el[0]-1-x,el[1]-1-x,rzmin)]['fill'] = 'C'
+                                            if which_way == 2:
+                                                new_coord = (el[0]-1-x,el[1]-1-x,rzmin)
+                                        else:
+                                            break
 
                         elif shape_dict['exitlocations'][e+1] == 'R':                    
                             #check for possible positions at xmax range from ymin to ymax    
                             es = roll_dice(1,rymax-rymin + 1)
                             el = [rxmax,rymin + es -1]
 
-                            for x in range(3):
-                                will_fit = in_dungeon((el[0]+1+x,el[1],rzmin))
-                                if not will_fit:
-                                    dungeon[(el[0]+1+x,el[1],rzmin)] = {}
-                                    dungeon[(el[0]+1+x,el[1],rzmin)]['fill'] = 'C'
-                                    if take_exit == e+1: #dice 1, loop 0
-                                        new_coord = ((el[0]+1+x,el[1],rzmin))                        
+                            if shape_dict['exitdirections'][e+1] == 'A':
+                                for x in range(3):
+                                    will_fit = in_dungeon((el[0]+1+x,el[1],rzmin))
+                                    if not will_fit:
+                                        dungeon[(el[0]+1+x,el[1],rzmin)] = {}
+                                        dungeon[(el[0]+1+x,el[1],rzmin)]['fill'] = 'C'
+                                        if take_exit == e+1: #dice 1, loop 0
+                                            new_coord = ((el[0]+1+x,el[1],rzmin))       
+                            else: #shape_dict['exitdirections'][e+1]: #AB or BA if opp wall back 45 no good
+                                which_way = roll_dice(1,2)           
+                                if which_way == 1:  #corridor opp
+                                    for x in range(3):
+                                        will_fit = in_dungeon((el[0]+1+x,el[1]+1+x,rzmin))
+                                        if not will_fit:                
+                                            dungeon[(el[0]+1+x,el[1]+1+x,rzmin])] = {}
+                                            dungeon[(el[0]+1+x,el[1]+1+x,rzmin)]['fill'] = 'C'
+                                            if which_way == 1:
+                                                new_coord = (el[0]+1+x,el[1]+1+x,rzmin)
+                                        else:
+                                            break
+                                else:
+                                    for x in range(3): #same
+                                        will_fit = in_dungeon((el[0]+1+x,el[1]-1-x,rzmin))
+                                        if not will_fit:                
+                                            dungeon[(el[0]+1+x,el[1]-1-x,rzmin)] = {}
+                                            dungeon[(el[0]+1+x,el[1]-1-x,rzmin)]['fill'] = 'C'
+                                            if which_way == 2:
+                                                new_coord = (el[0]+1+x,el[1]-1-x,rzmin)
+                                        else:
+                                            break
+
 
                         else: #S wall
                             #check for possible positions at ymin range from xmin to xmax
                             es = roll_dice(1,rxmax-rxmin + 1)
                             el = [rxmin + es -1,rymin]
 
-                            for x in range(3):
-                                will_fit = in_dungeon((el[0],el[1]-1-x,rzmin))
-                                if not will_fit:
-                                    dungeon[(el[0],el[1]-1-x,rzmin)] = {}
-                                    dungeon[(el[0],el[1]-1-x,rzmin)]['fill'] = 'C'
-                                    if take_exit == e+1: #dice 1, loop 0
-                                        new_coord = ((el[0],el[1]-1-x,rzmin))                        
+                            if shape_dict['exitdirections'][e+1] == 'A':
+                                for x in range(3):
+                                    will_fit = in_dungeon((el[0],el[1]-1-x,rzmin))
+                                    if not will_fit:
+                                        dungeon[(el[0],el[1]-1-x,rzmin)] = {}
+                                        dungeon[(el[0],el[1]-1-x,rzmin)]['fill'] = 'C'
+                                        if take_exit == e+1: #dice 1, loop 0
+                                            new_coord = ((el[0],el[1]-1-x,rzmin))           
+
+                            else: #shape_dict['exitdirections'][e+1]: #angled either way
+                                which_way = roll_dice(1,2)           
+                                if which_way == 1:  #corridor left
+                                    for x in range(3):
+                                        will_fit = in_dungeon((el[0]-1-x,el[1]-1-x,rzmin))
+                                        if not will_fit:                
+                                            dungeon[(el[0]-1-x,el[1]-1-x,rzmin)] = {}
+                                            dungeon[(el[0]-1-x,el[1]-1-x,rzmin)]['fill'] = 'C'
+                                            if which_way == 1:
+                                                new_coord = (el[0]-1-x,el[1]+1+x,rzmin)
+                                        else:
+                                            break
+                                else:
+                                    for x in range(3): #corridor right
+                                        will_fit = in_dungeon((el[0]+1+x,el[1]-1-x,rzmin))
+                                        if not will_fit:                
+                                            dungeon[(el[0]+1+x,el[1]-1-x,rzmin)] = {}
+                                            dungeon[(el[0]+1+x,el[1]-1-x,rzmin)]['fill'] = 'C'
+                                            if which_way == 2:
+                                                new_coord = (el[0]+1+x,el[1]-1-x,rzmin)
+                                        else:
+                                            break
+
+
 
                     #pass
 
