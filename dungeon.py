@@ -2307,7 +2307,7 @@ downlist = []
 print("DOWN:",zwidth-1)
 for down in range(zwidth-1):
     print("downloop:",down)
-    chararray = np.full((xwidth,ywidth,1), 'B', dtype='U4')
+    chararray = np.full((xwidth,ywidth,1), 'B', dtype='U6')
     print("SHAPE",chararray.shape)
     for key in dungeon:
         #print("KEY:",key,"KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
