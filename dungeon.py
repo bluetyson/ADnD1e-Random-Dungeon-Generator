@@ -1204,6 +1204,15 @@ def room_make(shape_dict, coord):
                             if index + 1 == w:
                                 room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + treasure_string
 
+                    if c == 'trap':
+                        ##need to check for secret doors
+                        for tr in shape_dict['contents']['trap']:
+                            for trtype in tr:
+                                print( "CONTENTS TRAP TYPE:", trtype)
+                                if trtype == 'secretdoor':
+                                    print("secretdoor info:",shape_dict['contents']['trap'][trtype])
+
+
 
             if key == 'exits':
                 for e in range(shape_dict['exits']):
