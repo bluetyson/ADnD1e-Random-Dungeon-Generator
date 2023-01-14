@@ -2447,7 +2447,7 @@ for down in range(zwidth-1):
                     if color == 'notreasure':
                         strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
                     else:
-                         strdata = '<td class="gray_background"><font_color="' + color + '">'  + downlist[down][i,j,0] + ' </font></td>'
+                         strdata = '<td class="gray_background" style="color:' + color + '">'  + downlist[down][i,j,0] + '</td>'
                 elif downlist[down][i,j,0] == 'D':
                     strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
                 elif downlist[down][i,j,0] == 'O':
