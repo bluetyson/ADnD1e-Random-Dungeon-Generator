@@ -1207,7 +1207,7 @@ def room_make(shape_dict, coord):
                     if c == 'trap':
                         ##need to check for secret doors
                         for tr in shape_dict['contents']['trap']:
-                            for trtype in tr:
+                            for trtype in shape_dict['contents']['trap'][tr]:
                                 print( "CONTENTS TRAP TYPE:", trtype)
                                 if trtype == 'secretdoor':
                                     print("secretdoor info:",shape_dict['contents']['trap'][trtype])
