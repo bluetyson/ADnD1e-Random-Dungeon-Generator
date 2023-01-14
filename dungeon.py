@@ -1190,8 +1190,7 @@ def room_make(shape_dict, coord):
         print("ROOM STACK CHECK",room_stack[room_stack['key_count']])
 
         #check for water to put a pool or lake in
-        print (room
-
+        
         for key in shape_dict:
             #print(key, shape_dict[key])
             if key == 'contents':
