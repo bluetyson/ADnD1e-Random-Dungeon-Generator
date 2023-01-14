@@ -1665,7 +1665,7 @@ def bad_things(coord):
                 t_dict['trap']['type'] = t_dict['trap']['type'] + 'pit'
                 t_dict['trap']['chance'] = 3.0/6.0
                 t_dict['trap']['damage'] = roll_dice(1,6)
-                dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'pi'
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pi'
                 new_coord = (coord[0],coord[1]+1,coord[2])
                 t_dict['new_coord'] = new_coord
             elif w>=7 and w<=10:
