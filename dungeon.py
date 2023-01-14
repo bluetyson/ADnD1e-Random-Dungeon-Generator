@@ -2590,6 +2590,10 @@ for down in range(zwidth-1):
     '''
     
     def colorcheck(dungeonstr):
+        '''
+        html coloring for copper, silver, electrum, gold, platinum, Gems, jewellery, Magic
+        '''
+
         if 'c' in dungeonstr:
             return '#B87333'
         elif 's' in dungeonstr:
@@ -2604,7 +2608,7 @@ for down in range(zwidth-1):
             return '#B9F2FF'
         elif 'j' in dungeonstr:
             return '#E0115F '
-        elif 'M' in dungeonstr:
+        elif 'M' in dungeonstr: 
             return '#FF1493'
         else:
             return 'notreasure'
