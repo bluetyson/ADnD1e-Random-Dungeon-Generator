@@ -1235,21 +1235,21 @@ def room_make(shape_dict, coord):
                     if shape_dict['exitlocations'][e+1] == 'O':
                         #check for possible positions at ymax range from xmin to xmax
                         #find random location in opp wall and add to door
-                        es = roll_dice(1,xmax-xmin + 1)
-                        el = [xmin + es -1,ymax]
+                        es = roll_dice(1,rxmax-rxmin + 1)
+                        el = [rxmin + es -1,rymax]
 
                     elif shape_dict['exitlocations'][e+1] == 'L':
                         #check for possible positions at xmin range from ymin to ymax
-                        es = roll_dice(1,ymax-ymin + 1)
-                        el = [xmin,ymin + es -1]
+                        es = roll_dice(1,rymax-rymin + 1)
+                        el = [rxmin,rymin + es -1]
                     elif shape_dict['exitlocations'][e+1] == 'R':                    
                         #check for possible positions at xmax range from ymin to ymax    
-                        es = roll_dice(1,ymax-ymin + 1)
-                        el = [xmax,ymin + es -1]
+                        es = roll_dice(1,rymax-rymin + 1)
+                        el = [rxmax,rymin + es -1]
                     else: #S wall
                         #check for possible positions at ymin range from xmin to xmax
-                        es = roll_dice(1,xmax-xmin + 1)
-                        el = [xmin + es -1,ymin]
+                        es = roll_dice(1,rxmax-rxmin + 1)
+                        el = [rxmin + es -1,rymin]
 
                 #pass
 
