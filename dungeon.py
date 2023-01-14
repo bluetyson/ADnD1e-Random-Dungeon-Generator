@@ -628,10 +628,7 @@ def check_action(pc_dict, coord, room_stack):
 
         if level_dict['room'] == 'Y':
             #do room check
-            ## need to put roominess like this in a function?? as still need all exits and other stuff - maybe go in shape_dict??
             shape_dict = room(coord, room_stack) #if another room pass not C="R"        
-            #room_stack = shape_dict['room_stack']
-            #each room part check for inside
 
             print("ROOM SHAPE:",shape_dict)
             room_make(shape_dict, coord)
@@ -667,7 +664,7 @@ def check_action(pc_dict, coord, room_stack):
                 exit_stack[coord] = e_dict
                 dead_end = False
         if check_coord_A not in dungeon:
-            ## need to check if in dungeons where putting Ds
+            ## need to check if in dungeons where putting Ds and handle can't go through dead ends
             e_dict_f = fancy_exit(coord)
             if 'S' in e_dict_f:
                 e_dict = {}
@@ -692,7 +689,6 @@ def check_action(pc_dict, coord, room_stack):
                 new_coord = key
 
             return new_coord
-        
 
 
 
@@ -734,6 +730,8 @@ def check_action(pc_dict, coord, room_stack):
             print('wm key check',dungeon[(coord[0],coord[1]+1,coord[2])])
 
     return new_coord
+
+#basic above options seem good, now to go through specifics and see what needs adding and finessing
 
 #specific functions
 def exit(coord):
