@@ -1186,7 +1186,11 @@ def room_make(shape_dict, coord):
 
         #loop the shape_dict contents for exists etc
         print("ROOM SHAPE DICT CONTENTS")
+        
+        print("ROOM STACK CHECK",room_stack[room_stack['key_count']])
+
         #check for water to put a pool or lake in
+        print (room
 
         for key in shape_dict:
             #print(key, shape_dict[key])
@@ -1268,7 +1272,7 @@ def room_make(shape_dict, coord):
 
                 if shape_dict['exits'] == 0:
                     #check for secret doors in all walls
-                    print("SECRET DOOR NOT IMPLEMENTED IN OUTPUT YET")
+                    #print("SECRET DOOR NOT IMPLEMENTED IN OUTPUT YET")
                     #loop through room coords and check edges for sdoors
                     #count the secret doors
                     #randomly choose one to follow 
