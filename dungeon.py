@@ -2391,6 +2391,7 @@ for down in range(zwidth-1):
     legend_dict['R'] = "Chamber/Room"
     legend_dict['D'] = "Dead End"
     legend_dict['wm'] = "Wandering Monster"
+    legend_dict['sd'] = "Secret Door"
     legend_dict['st'] = "Stairs"
     legend_dict['ch'] = "Chute"
     legend_dict['cm'] = "Chimney"
@@ -2409,6 +2410,14 @@ for down in range(zwidth-1):
     legend_dict['m'] = "Monster"
     legend_dict['t'] = "Treasure"
     legend_dict['p'] = "Pool"
+    legend_dict['c'] = "Treasure: Copper"  
+    legend_dict['s'] = "Treasure: Silver"
+    legend_dict['e'] = "Treasure: Electrum"
+    legend_dict['g'] = "Treasure: Gold"
+    legend_dict['p'] = "Treasure: Platinum"
+    legend_dict['G'] = "Treasure: Gems"
+    legend_dict['j'] = "Treasure: Jewellery"
+    legend_dict['m'] = "Treasure: Magic"
 
     strlegendhead = '''
     <table>
