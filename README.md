@@ -5,10 +5,10 @@ Attempt to convert DMG tables to code to do something
 Building things as I go - just using a one roll test for now to see how it goes.
 - No retracing steps logic as yet for dead ends to block etc.
 - See issues for things to do [lots]
+- No random monster, treasure, magic item tables as yet, hence no stocking output keys printed
 
 # Bugs
 - Will be quite a few I imagine
-- Check issues for known most of known things not implemented yet
 - Basically output stops currently if it 'won't fit' and above comments are still valid
 
 # Output to screen for checking purposes
@@ -16,7 +16,44 @@ Building things as I go - just using a one roll test for now to see how it goes.
   - if there are other levels, dungeon_2.html etc.
   - number the rooms basically
 
+- the current legend, in code
+- these get concatenated to the base type, C, R, D
+- treasure gets some color coding
 
+```python
+legend_dict['O'] = "Outside Entrance"
+legend_dict['C'] = "Corridor/Passage"
+legend_dict['R'] = "Chamber/Room"
+legend_dict['D'] = "Dead End"
+legend_dict['wm'] = "Wandering Monster"
+legend_dict['sd'] = "Secret Door"
+legend_dict['st'] = "Stairs"
+legend_dict['ch'] = "Chute"
+legend_dict['cm'] = "Chimney"
+legend_dict['td'] = "Trapdoor"
+legend_dict['pi'] = "Pit Trap"
+legend_dict['ps'] = "Pit Trap with Spikes"
+legend_dict['pc'] = "Pit Trap with Crushing Walls"
+legend_dict['el'] = "Elevator Trap"
+legend_dict['ar'] = "Arrow Trap"
+legend_dict['sp'] = "Spear Trap"
+legend_dict['df'] = "Door Falls"
+legend_dict['sf'] = "Stone Falls"
+legend_dict['gs'] = "Gas Trap"
+legend_dict['bw'] = "Blocked Wall"
+legend_dict['ol'] = "Oil"
+legend_dict['m'] = "Monster"
+legend_dict['t'] = "Treasure"
+legend_dict['p'] = "Pool"
+legend_dict['c'] = "Treasure: Copper"  
+legend_dict['s'] = "Treasure: Silver"
+legend_dict['e'] = "Treasure: Electrum"
+legend_dict['g'] = "Treasure: Gold"
+legend_dict['p'] = "Treasure: Platinum"
+legend_dict['G'] = "Treasure: Gems"
+legend_dict['j'] = "Treasure: Jewellery"
+legend_dict['M'] = "Treasure: Magic"
+```
 
 # Example html testing output
 
