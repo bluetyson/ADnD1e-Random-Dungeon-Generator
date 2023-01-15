@@ -1303,20 +1303,20 @@ def room_make(shape_dict, coord):
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
                         w = roll_dice(1,rand_length)
                         print("TRAP ROOM ROLL CHECK:",w)
-                        #trap_string = ''
+                        trap_string = ''
                         for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
                             print("treasureindex",r)
                             if 1 == 2:  #work out if shape_dict bad things initial doing what it needs - not putting in ranom place though?
+                                #so this disabled for now
+                                #if use this take it out of shape_dict['trap'] and just use this for indicator
                                 if index + 1 == w:
-                                    t_dict = bad_things(r)
+                                    t_dict = bad_things(r, size="R")
                                     
                                     ##got to find from t_dict what to put in string
-                                    room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + treasure_string
-                                    print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + treasure_string)
-                                    dungeon[r]['fill'] = dungeon[r]['fill'] + treasure_string
+                                    room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + trap_string
+                                    print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + trap_string)
+                                    dungeon[r]['fill'] = dungeon[r]['fill'] + trap_string
 
-
-                        
 
 
 
