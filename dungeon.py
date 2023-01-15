@@ -1228,7 +1228,8 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['level'] = {}
     elif r == 19:        
         shape_dict['contents']['trap'] = {}
-        shape_dict['contents']['trap']  = bad_things(coord, size="R") #or should all traps be on room entry and this is ok?
+        #shape_dict['contents']['trap']  = bad_things(coord, size="R") #or should all traps be on room entry and this is ok?
+        #take out for now won't have write coord
     else:
         shape_dict['contents']['treasure'] = {}
         shape_dict = loot(shape_dict,coord,monster="N")
@@ -1366,17 +1367,17 @@ def room_make(shape_dict, coord):
                         print("TRAP ROOM ROLL CHECK:",w)
                         trap_string = ''
                         for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
-                            print("treasureindex",r)
-                            if 1 == 2:  #work out if shape_dict bad things initial doing what it needs - not putting in ranom place though?
+                            print("trapindex",r)
+                            if 1 == 1:  #work out if shape_dict bad things initial doing what it needs - not putting in ranom place though?
                                 #so this disabled for now
                                 #if use this take it out of shape_dict['trap'] and just use this for indicator
                                 if index + 1 == w:
                                     t_dict = bad_things(r, size="R")
                                     
                                     ##got to find from t_dict what to put in string
-                                    room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + trap_string
-                                    print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + trap_string)
-                                    dungeon[r]['fill'] = dungeon[r]['fill'] + trap_string
+                                    ##room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + trap_string
+                                    ##print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + trap_string)
+                                    ##dungeon[r]['fill'] = dungeon[r]['fill'] + trap_string
 
 
 
@@ -2358,8 +2359,10 @@ def bad_things(coord, size="C"):
                 dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'ch'  #fill down for chute
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ch'
             else:
-                dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] + 'ch'  #fill down for chute
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ch'
+                #dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] + 'ch'  #fill down for chute
+                #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ch'
+                dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'Rch'  #fill down for chute
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Rch'
 
             new_coord = (coord[0],coord[1]+1,coord[2]-1)
             t_dict['trap']['type'] = 'chute'
