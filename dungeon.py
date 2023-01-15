@@ -1352,6 +1352,11 @@ def room_make(shape_dict, coord):
                     #go across ymin from xmin to xmax
                     #go across ymax from xmin to xmax
 
+                    #edges are (xmax - xmin + 1) * 2
+                    #edges are (ymax - ymin + 1) * 2
+
+                    #ymin
+
                     ##gotta check the exit passageways out etc.
                     #if which_way == 1:
                         #new_coord = (el[0]-1-x,el[1]+1+x,rzmin)
@@ -1360,28 +1365,28 @@ def room_make(shape_dict, coord):
                         s = roll_dice(1,20)
                         if s <= 5:
                             secret_door_count +=1 
-                            secret_door_dict[(rxmin,y,rzmin)] = 'Y'
+                            secret_door_dict[(rxmin,y,rzmin)] = 'xmin'
                             dungeon[(rxmin,y,rzmin)]['fill'] = dungeon[(rxmin,y,rzmin)]['fill'] + 'sd'
 
                     for y in range(rymin,rymax+1):
                         s = roll_dice(1,20)
                         if s <= 5:
                             secret_door_count +=1 
-                            secret_door_dict[(rxmax,y,rzmin)] = 'Y'
+                            secret_door_dict[(rxmax,y,rzmin)] = 'xmax'
                             dungeon[(rxmax,y,rzmin)]['fill'] = dungeon[(rxmax,y,rzmin)]['fill'] + 'sd'
 
                     for x in range(rxmin,rxmax+1):
                         s = roll_dice(1,20)
                         if s <= 5:
                             secret_door_count +=1 
-                            secret_door_dict[(x,rymin,rzmin)] = 'Y'
+                            secret_door_dict[(x,rymin,rzmin)] = 'ymin'
                             dungeon[(x,rymin,rzmin)]['fill'] = dungeon[(x,rymin,rzmin)]['fill'] + 'sd'
 
                     for x in range(rxmin,rxmax+1):
                         s = roll_dice(1,20)
                         if s <= 5:
                             secret_door_count +=1 
-                            secret_door_dict[(x,rymax,rzmin)] = 'Y'
+                            secret_door_dict[(x,rymax,rzmin)] = 'ymax'
                             dungeon[(x,rymax,rzmin)]['fill'] = dungeon[(x,rymax,rzmin)]['fill'] + 'sd'
 
                     print("SECRET DOOR COUNT:",secret_door_count)
