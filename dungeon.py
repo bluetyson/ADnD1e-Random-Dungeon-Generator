@@ -1220,7 +1220,7 @@ def room_make(shape_dict, coord):
             #NULL room #should handle below exception problem
             #no coords above to reduce these numbers to room limits
             #must make sure everything else in contents comes out here
-            print "NULL ROOM: no need to progress further with this one"
+            print("NULL ROOM: no need to progress further with this one")
             return
 
 
