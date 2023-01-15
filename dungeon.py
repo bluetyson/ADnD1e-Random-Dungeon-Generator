@@ -2036,6 +2036,11 @@ def level(coord):
     return level_dict
 
 def bad_things(coord, size="C"):
+    '''
+    option to have it concatenate to fill by passing other than size="C"
+    still need to work out bad things for rooms in random spot
+    '''
+
     #have to fill, need if coming from corridor or room
     new_coord = coord    
     #all traps located ahead plus 1?
@@ -2061,6 +2066,7 @@ def bad_things(coord, size="C"):
             if size == "C":
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pd'
             else:
+                ## maybe below is not necessary?
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pd'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord
