@@ -1503,7 +1503,14 @@ def room_make(shape_dict, coord):
                                 #want a reduced exit_result
                                 if secret_door_dict[s + 1][key]['beyond'] == 'Room':
                                 #want those we randomly position lr
+                                    getkey = secret_door_dict[s + 1][key]['loc']
+                                    getkey = getkey.replace('loc','')
+
+
+
                                     new_coord = secret_door_dict[s + 1][key]
+                                    print("SECRETDOORDICT",secret_door_dict)
+                                    print("NEW_COORD",new_coord, "KEY:",key)
                                     shape_dict = room(secret_door_dict[s + 1][key], room_stack, size='R' )  ## different type to get slightly different table
                                     #room_stack = shape_dict['room_stack']
                                     #each room part check for inside
