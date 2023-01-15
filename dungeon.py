@@ -2857,18 +2857,19 @@ zwidth = zmax - zmin + 1
 
 zwidth = max(1, zwidth)
 
+print(\n" --- FINAL OUTPUT ---")
 print("COORD:", coord, result_coord, coord_lim)
 
-print("DUNGEON:", dungeon)
-print("EXIT_STACK:", exit_stack)
-print("LEVEL_STACK:", level_stack)
-print("ROOM_STACK:", room_stack)
+print("\nDUNGEON:", dungeon)
+print("\nEXIT_STACK:", exit_stack)
+print("\nLEVEL_STACK:", level_stack)
+print("\nROOM_STACK:", room_stack)
 
 #can handle up to 4 characters
 #map chararray to independent for each level
 ## ignore any random tiny up level things for now on chimneys or trapdoros
 downlist = []
-print("DOWN:",zwidth-1)
+print("\nDOWN:",zwidth-1)
 for down in range(zwidth-1):
     print("downloop:",down)
     chararray = np.full((xwidth,ywidth,1), 'B', dtype='U6')
