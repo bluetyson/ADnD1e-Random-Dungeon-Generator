@@ -2701,7 +2701,7 @@ def stinky():
 
 
 def secret_doors(shape_dict):
-    print("calling SD, room_stack")
+    print("calling SD", room_stack)
     if 'secret_door_count' in room_stack['shape_dict']:
         secret_door_count = room_stack['shape_dict']['secret_door_count']
         secret_door_dict = room_stack['shape_dict']['secret_door_dict']
