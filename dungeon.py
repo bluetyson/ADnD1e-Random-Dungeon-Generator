@@ -2837,7 +2837,7 @@ while i < PERIODIC_CHECKS:
     print("\n--- ROLL:",i," ---\n")
     roll_first = random_check()
     result_coord = check_action(roll_first, result_coord, room_stack)
-    print("--- END ROLL:",i," ---\n")
+    print("\n--- END ROLL:",i," ---\n")
     i +=1
     
 
@@ -2848,8 +2848,6 @@ zmin = coord_lim[0][2]
 xmax = coord_lim[1][0]
 ymax = coord_lim[1][1]
 zmax = coord_lim[1][2]
-print("MIN:",xmin,ymin,zmin)
-print("MAX:",xmax,ymax,zmax)
 
 xwidth = xmax - xmin + 1
 ywidth = ymax - ymin + 1
@@ -2858,6 +2856,9 @@ zwidth = zmax - zmin + 1
 zwidth = max(1, zwidth)
 
 print("\n --- FINAL OUTPUT ---")
+print("MIN:",xmin,ymin,zmin)
+print("MAX:",xmax,ymax,zmax)
+
 print("COORD:", coord, result_coord, coord_lim)
 
 print("\nDUNGEON:", dungeon)
