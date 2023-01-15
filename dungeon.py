@@ -3062,7 +3062,7 @@ for down in range(zwidth-1):
 
                     color = colorcheck(downlist[down][i,j,0])
                     if color == 'notreasure':
-                        if sdstr == ''
+                        if sdstr == '':
                             strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
                         else:
                             strdata = '<td class="gray_background style="' + sdstr + '">' + downlist[down][i,j,0] + '</td>'
