@@ -1497,20 +1497,20 @@ def room_make(shape_dict, coord):
 
                     #loop through the secret doors  #just rest rooms first
                     for s in range(secret_door_count):
-                        for key in secret_door_dict[secret_door_count + 1]: #room integers 1 onwards
-                            if 'loc' in secret_door_dict[secret_door_count][key]:
+                        for key in secret_door_dict[s + 1]: #room integers 1 onwards
+                            if 'loc' in secret_door_dict[s + 1][key]:
                                 #key is the location
                                 #want a reduced exit_result
-                                if secret_door_dict[secret_door_count][key]['beyond'] == 'Room':
+                                if secret_door_dict[s + 1][key]['beyond'] == 'Room':
                                 #want those we randomly position lr
-                                    new_coord = secret_door_dict[secret_door_count + 1][key]
-                                    shape_dict = room(secret_door_dict[secret_door_count + 1][key], room_stack, size='R' )  ## different type to get slightly different table
+                                    new_coord = secret_door_dict[s + 1][key]
+                                    shape_dict = room(secret_door_dict[s + 1][key], room_stack, size='R' )  ## different type to get slightly different table
                                     #room_stack = shape_dict['room_stack']
                                     #each room part check for inside
 
                                     print("ROOM SHAPE ROOM SD:",shape_dict)
                                     ## do simple version first of x directions and y directions of rectangular
-                                    room_make(shape_dict, secret_door_dict[secret_door_count + 1][key])
+                                    room_make(shape_dict, secret_door_dict[s + 1][key])
 
 
 
