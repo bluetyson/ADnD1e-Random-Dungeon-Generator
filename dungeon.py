@@ -2824,17 +2824,20 @@ roll_first = random_check()
 while roll_first == 18:
     roll_first = random_check()
 
-print("roll_first", roll_first)
+print("SETUP: roll_first", roll_first)
 first_action = check_action(roll_first, coord, room_stack)    
 
 i = 0
 result_coord = first_action
+print("END SETUP:\n",)
 
 while i < PERIODIC_CHECKS:
-    print("ROLL:",i)
+    print("\nROLL:",i,"\N")
     roll_first = random_check()
     result_coord = check_action(roll_first, result_coord, room_stack)
+    print("END ROLL:",i,"\N")
     i +=1
+    
 
 coord_lim = coord_limits(dungeon)
 xmin = coord_lim[0][0]
