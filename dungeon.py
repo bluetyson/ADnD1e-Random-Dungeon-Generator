@@ -2123,7 +2123,11 @@ def bad_things(coord, size="C"):
                         will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1))
                         if not will_fit:                
                             dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)] = {}
-                            dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] = dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] + 'el'
+                            #no prefil here as a trap same as others
+                            if size == "C":
+                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] = 'el'
+                            else:
+                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] = dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] + 'el'
                             new_coord = (coord[0],coord[1]+3,coord[2]-k-1) #past elevator 2 and down
                         else:
                             break
