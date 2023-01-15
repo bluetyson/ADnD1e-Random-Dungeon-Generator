@@ -1391,8 +1391,8 @@ def room_make(shape_dict, coord):
 
                     print("SECRET DOOR COUNT:",secret_door_count)
                     print("SECRET DOOR DICT:",secret_door_dict)
-                    shape_dict['contents']['secret_doors_dict'] = secret_doors_dict
-                    shape_dict['contents']['secret_doors_count'] = secret_doors_count
+                    shape_dict['contents']['secret_door_dict'] = secret_door_dict
+                    shape_dict['contents']['secret_door_count'] = secret_door_count
 
                 else:
                     take_exit = roll_dice(1,shape_dict['exits'])
