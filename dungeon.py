@@ -1216,7 +1216,7 @@ def room_make(shape_dict, coord):
         print("RMIN-CHECK:",trxmin,trymin,trzmin)
         print("RMAX-CHECK:",trxmax,trymax,trzmax)
 
-        if trxmin > 9000 or trymin > 9000 tor rzmin > 9000:
+        if trxmin > 9000 or trymin > 9000 or trzmin > 9000:
             #NULL room #should handle below exception problem
             #no coords above to reduce these numbers to room limits
             #must make sure everything else in contents comes out here
