@@ -1365,6 +1365,8 @@ def room_make(shape_dict, coord):
                 adjust = -1
             else:
                 adjust = 1
+            adjust = 0
+            #don't adjust back rooms into not fitting for secret doors
 
         #if shape_dict['size'][1] == 2:
         for j in range(shape_dict['size'][1]):
@@ -2870,7 +2872,7 @@ print("\nROOM_STACK:", room_stack)
 #map chararray to independent for each level
 ## ignore any random tiny up level things for now on chimneys or trapdoros
 downlist = []
-print("\nDOWN:",zwidth-1)
+print("\nLEVELS DOWN:",zwidth-1)
 for down in range(zwidth-1):
     print("downloop:",down)
     chararray = np.full((xwidth,ywidth,1), 'B', dtype='U6')
@@ -3082,5 +3084,5 @@ with open('downlist.pkl','rb') as fd:
         #print("picklecheck",df)
         pass
 
-print("FINAL ROOM STACK",room_stack)   
+print("\nFINAL ROOM STACK",room_stack)   
     
