@@ -1368,12 +1368,20 @@ def room_make(shape_dict, coord):
                             secret_door_dict[(rxmin,y,rzmin)] = 'xmin'
                             dungeon[(rxmin,y,rzmin)]['fill'] = dungeon[(rxmin,y,rzmin)]['fill'] + 'sd'
 
+                            #exit check is one left of above
+                            e_dict = exit((rxmin-1,y,rzmin))
+                            exit_result((e_dict,rxmin-1,y,rzmin))
+
                     for y in range(rymin,rymax+1):
                         s = roll_dice(1,20)
                         if s <= 5:
                             secret_door_count +=1 
                             secret_door_dict[(rxmax,y,rzmin)] = 'xmax'
                             dungeon[(rxmax,y,rzmin)]['fill'] = dungeon[(rxmax,y,rzmin)]['fill'] + 'sd'
+
+                            #exit check is one left of above
+                            e_dict = exit((rxmax+1,y,rzmin))
+                            exit_result((rxmax+1,y,rzmin))
 
                     for x in range(rxmin,rxmax+1):
                         s = roll_dice(1,20)
@@ -1382,12 +1390,21 @@ def room_make(shape_dict, coord):
                             secret_door_dict[(x,rymin,rzmin)] = 'ymin'
                             dungeon[(x,rymin,rzmin)]['fill'] = dungeon[(x,rymin,rzmin)]['fill'] + 'sd'
 
+                            #exit check is one up min from above
+                            e_dict = exit((x,rymin-1,rzmin))
+                            exit_result((x,rymin-1,rzmin))
+
                     for x in range(rxmin,rxmax+1):
                         s = roll_dice(1,20)
                         if s <= 5:
                             secret_door_count +=1 
                             secret_door_dict[(x,rymax,rzmin)] = 'ymax'
                             dungeon[(x,rymax,rzmin)]['fill'] = dungeon[(x,rymax,rzmin)]['fill'] + 'sd'
+
+                            #exit check is one down max from above
+                            e_dict = exit((x,rymax+1,rzmin))
+                            exit_result((x,rymax+1,rzmin))
+
 
                     print("SECRET DOOR COUNT:",secret_door_count)
                     print("SECRET DOOR DICT:",secret_door_dict)
@@ -2471,6 +2488,469 @@ def stinky():
         stinky_dict['effect'] = 'save vs death or die'
 
     return stinky_dict
+
+
+def exit_result(e_dict, coord):
+    print("EDICT:",e_dict)
+    if e_dict['direction'] == 'L':
+        if e_dict['type'] == 'N':
+            exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
+            if e_dict['beyond'] == 'P':
+                for x in range(3):
+                    will_fit = in_dungeon((coord[0]-1,coord[1]+x-1,coord[2]))
+                    if not will_fit:
+                        dungeon[(coord[0]-1,coord[1]+x-1,coord[2])] = {}
+                        dungeon[(coord[0]-1,coord[1]+x-1,coord[2])]['fill'] = 'C'
+                        new_coord = (coord[0]-1,coord[1]+x-1,coord[2])
+                for x in range(3):
+                    will_fit = in_dungeon((coord[0]-1,coord[1]+x+1,coord[2]))
+                    if not will_fit:
+                        dungeon[(coord[0]-1,coord[1]+x+1,coord[2])] = {}
+                        dungeon[(coord[0]-1,coord[1]+x+1,coord[2])]['fill'] = 'C'
+                        new_coord = (coord[0]-1,coord[1]+x+1,coord[2])
+
+            if e_dict['beyond'] == 'A':              
+                d = roll_dice(1,20)              
+                if d >=3 and d >= 5:
+                    will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                    if not will_fit:
+                        exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
+                else:
+                    #30m passage that direction
+                    for x in range(3):
+                        will_fit = in_dungeon((coord[0]-x-1,coord[1],coord[2]))
+                        if not will_fit:
+                            dungeon[(coord[0]-x-1,coord[1],coord[2])] = {}
+                            dungeon[(coord[0]-x-1,coord[1],coord[2])]['fill'] = 'C'
+                            new_coord = ((coord[0]-x-1,coord[1],coord[2]))                        
+
+
+            if e_dict['beyond'] == '4AB':   ##45 A
+                which_way = roll_dice(1,2)           
+                if which_way == 1:  #corridor left
+                    for x in range(3):
+                        will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
+                        if not will_fit:                
+                            dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
+                            dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                            if which_way == 1:
+                                new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
+                        else:
+                            break
+                else:
+                    for x in range(3): #corridor right
+                        will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
+                        if not will_fit:                
+                            dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
+                            dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                            if which_way == 2:
+                                new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
+                        else:
+                            break
+
+            if e_dict['beyond'] == '4BA':   ##45 A
+                which_way = roll_dice(1,2)  #work out random direction         
+                if which_way == 1:  #corridor left
+                    for x in range(3):
+                        will_fit = in_dungeon((coord[0]+1+-x,coord[1]-1-x,coord[2]))
+                        if not will_fit:                
+                            dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
+                            dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                            if which_way == 1:
+                                new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
+                        else:
+                            break
+                else:
+                    for x in range(3): #corridor right
+                        will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
+                        if not will_fit:                
+                            dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
+                            dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                            if which_way == 2:
+                                new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
+                        else:
+                            break
+
+            if e_dict['beyond'] == 'Room':
+                #want those we randomly position lr
+                new_coord = coord
+                shape_dict = room(coord, room_stack, size='R' )  ## different type to get slightly different table
+                #room_stack = shape_dict['room_stack']
+                #each room part check for inside
+
+                print("ROOM SHAPE:",shape_dict)
+                ## do simple version first of x directions and y directions of rectangular
+                room_make(shape_dict, coord)
+
+
+    elif e_dict['direction'] == 'R':
+        if e_dict['type'] == 'N':
+            exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
+            if e_dict['beyond'] == 'P':
+                for x in range(3):
+                    will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
+                    if not will_fit:
+                        dungeon[(coord[0]+1,coord[1]+x-1,coord[2])] = {}
+                        dungeon[(coord[0]+1,coord[1]+x-1,coord[2])]['fill'] = 'C'
+                        new_coord = (coord[0]+1,coord[1]+x-1,coord[2])
+                for x in range(3):
+                    will_fit = in_dungeon((coord[0]-1,coord[1]+x+1,coord[2]))
+                    if not will_fit:
+                        dungeon[(coord[0]-1,coord[1]+x+1,coord[2])] = {}
+                        dungeon[(coord[0]-1,coord[1]+x+1,coord[2])]['fill'] = 'C'
+                        new_coord = (coord[0]-1,coord[1]+x+1,coord[2])
+
+            if e_dict['beyond'] == 'A':              
+                d = roll_dice(1,20)              
+                if d >=3 and d >= 5:
+                    will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
+                    if not will_fit:
+                        exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
+                else:
+                    #30m passage that direction
+                    for x in range(3):
+                        will_fit = in_dungeon((coord[0]-x-1,coord[1],coord[2]))
+                        if not will_fit:
+                            dungeon[(coord[0]+x+1,coord[1],coord[2])] = {}
+                            dungeon[(coord[0]+x+1,coord[1],coord[2])]['fill'] = 'C'
+                            new_coord = ((coord[0]+x+1,coord[1],coord[2]))      
+
+            if e_dict['beyond'] == '4AB':   ##45 A - need to make facing for R different eventually
+                which_way = roll_dice(1,2)           
+                if which_way == 1:  #corridor left
+                    for x in range(3):
+                        will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
+                        if not will_fit:                
+                            dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
+                            dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                            if which_way == 1:
+                                new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
+                        else:
+                            break
+                else:
+                    for x in range(3): #corridor right
+                        will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
+                        if not will_fit:                
+                            dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
+                            dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                            if which_way == 2:
+                                new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
+                        else:
+                            break
+
+            if e_dict['beyond'] == '4BA':   ##45 A
+                which_way = roll_dice(1,2)  #work out random direction         
+                if which_way == 1:  #corridor left
+                    for x in range(3):
+                        will_fit = in_dungeon((coord[0]+1+-x,coord[1]-1-x,coord[2]))
+                        if not will_fit:                
+                            dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
+                            dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                            if which_way == 1:
+                                new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
+                        else:
+                            break
+                else:
+                    for x in range(3): #corridor right
+                        will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
+                        if not will_fit:                
+                            dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
+                            dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                            if which_way == 2:
+                                new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
+                        else:
+                            break
+
+            if e_dict['beyond'] == 'Room':
+                #want those we randomly position lr
+                new_coord = coord
+                ## check for room or chamber
+                rt = roll_dice(1,10)
+                if rt <=8:
+                    #room
+                    shape_dict = room(coord, room_stack,size='R')  ## different type to get slightly different table
+                else:
+                    #chamber
+                    shape_dict = room(coord, room_stack)
+                #each room part check for inside
+
+                print("ROOM SHAPE:",shape_dict)
+                room_make(shape_dict, coord)
+
+            
+    else:
+        if e_dict['type'] == 'N':
+            exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
+            if e_dict['beyond'] == 'P':
+                will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
+                if not will_fit:
+                    dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'R'
+                    new_coord = (coord[0],coord[1]+1,coord[2])
+                    # 10 x 10 room need to check contents!
+
+                    #need to implement for set type room
+                    new_coord = coord
+                    shape_dict = room(coord, room_stack, size="10") #10 is special case to mandate 1 roll for size
+
+                    print("ROOM SHAPE:",shape_dict)
+                    room_make(shape_dict, coord)
+
+
+    ## got to proceed with direction/type of exit
+
+elif pc_dict['direction'] == 'side':
+    new_coord = coord
+    s_dict = side(coord)
+    print("S_DICT:",s_dict)
+    if s_dict['direction'] == 'L90':
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]-1-x,coord[1],coord[2])
+            else:
+                break
+
+    elif s_dict['direction'] == 'R90':
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]+1+x,coord[1],coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]+1+x,coord[1],coord[2])
+            else:
+                break
+
+    elif s_dict['direction'] == 'L45':
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
+            else:
+                break
+
+    elif s_dict['direction'] == 'R45':
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
+            else:
+                break
+
+    elif s_dict['direction'] == 'L135':
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]-1-x,coord[1]-1-x,coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
+            else:
+                break
+
+    elif s_dict['direction'] == 'R135':
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
+            else:
+                break
+
+    elif s_dict['direction'] == 'T':
+        which_way = roll_dice(1,2)
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
+                if which_way == 1:
+                    new_coord = (coord[0]-1-x,coord[1],coord[2])
+            else:
+                break
+
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]+1+x,coord[1],coord[2]))
+            if not will_fit:                
+                dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
+                if which_way == 2:
+                    new_coord = (coord[0]+1+x,coord[1],coord[2])
+            else:
+                break
+
+        if which_way == 1:
+            new_coord = (coord[0]-3,coord[1],coord[2])  ### got to move these up
+        else:
+            new_coord = (coord[0]+3,coord[1],coord[2])
+
+    elif s_dict['direction'] == 'Y':
+        which_way = roll_dice(1,2)  #got to move this up
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
+            if not will_fit:                
+                dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                if which_way == 1:
+                    new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
+            else:
+                break
+
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
+            if not will_fit:                
+                dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                if which_way == 2:
+                    new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
+            else:
+                break
+
+    elif s_dict['direction'] == 'P': #plus
+        which_way = roll_dice(1,3)
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
+                if which_way == 1:
+                    new_coord = (coord[0]-1-x,coord[1],coord[2])
+            else:
+                break
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]+1+x,coord[1],coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
+                if which_way == 2:
+                    new_coord = (coord[0]+1+x,coord[1],coord[2])
+            else:
+                break
+        for x in range(3):
+            will_fit = in_dungeon((coord[0],coord[1]+1+x,coord[2]))
+            if not will_fit:
+                dungeon[(coord[0],coord[1]+1+x,coord[2])] = {}
+                dungeon[(coord[0],coord[1]+1+x,coord[2])]['fill'] = 'C'
+                if which_way == 3:
+                    new_coord = (coord[0],coord[1]+1+x,coord[2])
+            else:
+                break
+
+    else:
+    #s_dict['direction'] == 'X': 45 and 135
+        which_way = roll_dice(1,4) ##got to move this up
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                if which_way == 1:
+                    new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
+            else:
+                break
+
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                if which_way == 2:
+                    new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
+            else:
+                break
+
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]-1-x,coord[1]-1-x,coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                if which_way == 3:
+                    new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
+            else:
+                break
+
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
+            if not will_fit:                
+                dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                if which_way == 4:
+                    new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
+            else:
+                break
+
+elif pc_dict['direction'] == 'turn':
+    new_coord = coord
+    t_dict = turn(coord)
+    print("T_DICT:",t_dict)
+
+    t = roll_dice(1,20)
+    if t_dict['direction'] == 'L90':
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]-1-x,coord[1],coord[2])
+            else:
+                break
+
+    elif t_dict['direction'] == 'L45':
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
+            else:
+                break
+
+    elif t_dict['direction'] == 'L135':
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]-1-x,coord[1]-1-x,coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
+                dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
+            else:
+                break
+
+    elif t_dict['direction'] == 'R90':
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]+1+x,coord[1],coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]+1+x,coord[1],coord[2])
+            else:
+                break
+
+    elif t_dict['direction'] == 'R45':
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
+            else:
+                break
+
+    else: # 'R135'
+        for x in range(3):
+            will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
+            if not will_fit:
+                dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
+                dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
+            else:
+                break
+
 
 #need data structure
 #do we have an exit order stack?
