@@ -222,9 +222,10 @@ def check_action(pc_dict, coord, room_stack):
                     #want those we randomly position lr
                     new_coord = coord
                     #new part!
-                    dungeon[coord]['fill'] = dungeon[coord]['fill'] + 'd'  #add door indicator
+                    #if coming from here pass door to room function?
+                    #dungeon[coord]['fill'] = dungeon[coord]['fill'] + 'd'  #add door indicator
 
-                    shape_dict = room(coord, room_stack, size='R' )  ## different type to get slightly different table
+                    shape_dict = room(coord, room_stack, size='Rd' )  ## different type to get slightly different table pass Rd to indicate from door
                     #room_stack = shape_dict['room_stack']
                     #each room part check for inside
 
@@ -963,6 +964,9 @@ def room(coord, room_stack, size="C", content=None ):
         #shape_dict['size'] = [4,6]
 
     #shape, size, exits, contents, treasure, in  
+    if size == 'Rd':
+        shape_dict['fromdoor'] = 'Y'
+
     room_contents(shape_dict, coord, content)
 
     shape_dict = exit_no(shape_dict)
@@ -972,10 +976,8 @@ def room(coord, room_stack, size="C", content=None ):
     ## check the room stack and exit functions here
     #print("ROOM STACK CHECK:", room_stack)
     print("ROOM KEY COUNT:",room_stack['key_count'])
-    #shape_dict['room_stack'] = room_stack #take out for rest
 
-    ### put shape_dict in room_stack
-
+        
     return shape_dict
 
 
@@ -1265,7 +1267,10 @@ def room_make(shape_dict, coord):
                     dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R' +  str(room_stack['key_count'])
                     #add to room stack dictionary for key printing
                     room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
-                    room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R' + str(room_stack['key_count'])
+                    if i == 0 and j == 0 and 'fromdoor' in shape_dict:
+                        room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'Rd' + str(room_stack['key_count'])
+                    else:
+                        room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R' + str(room_stack['key_count'])
 
                 else:
                     break
