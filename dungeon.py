@@ -1613,7 +1613,7 @@ def room_make(shape_dict, coord):
                                     #shape_dict = room(secret_door_dict[s + 1][key], room_stack, size='R' )  ## different type to get slightly different table
                                     print("room stack before", room stack)
                                     shape_dict = room(key, room_stack, size='R' )  ## different type to get slightly different table
-                                    print("room stack after", room stack)
+                                    print("room stack after", room_stack)
 
                                     print("SECRETDOORDICT",secret_door_dict)
                                     print("NEW_COORD",new_coord, "KEY:",key)
