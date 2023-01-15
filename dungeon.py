@@ -2380,7 +2380,8 @@ def bad_things(coord, size="C"):
                         #will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1))
                         will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]-k))
                         if not will_fit:                
-                            dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)] = {}
+                            #dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)] = {}
+                            dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k)] = {}
                             #no prefil here as a trap same as others
                             if size == "C":
                                 #dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] = 'el'
