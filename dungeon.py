@@ -3039,7 +3039,7 @@ for down in range(zwidth-1):
                         secret_door_dict = room_stack['shape_dict'][int(usestr)]['contents']['secret_door_dict']
                         for s in secret_door_dict:
                             print("secret door",s)
-                            if s == (i,j,0 - down -1):
+                            if s == (i+xmin,j+ymin,0 - down -1):  ##try and match real coords
                                 print("found a secret door!")
 
                     color = colorcheck(downlist[down][i,j,0])
