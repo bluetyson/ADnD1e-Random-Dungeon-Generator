@@ -1228,7 +1228,7 @@ def room_make(shape_dict, coord):
         
         for key in shape_dict:
             #print(key, shape_dict[key])
-            #test to implement other things
+            #test to implement other things - need fills for these
             if key == 'water':
                 print("HAS WATER",shape_dict[key])
             if key == 'wet_magic':
@@ -1286,7 +1286,7 @@ def room_make(shape_dict, coord):
                             #for trtype in shape_dict['contents']['trap'][tr]:
                             #print( "CONTENTS TRAP TYPE:", trtype)
                             print( "CONTENTS TRAP TYPE:", shape_dict['contents']['trap'][tr])
-                            if trtype == 'secretdoor':
+                            if tr == 'secretdoor':
                                 print("secretdoor info:",shape_dict['contents']['trap'][trtype])
 
                     #if c is wet or other things in contents need to go above exits probably but null rooms should not have
