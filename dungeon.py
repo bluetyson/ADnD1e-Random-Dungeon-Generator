@@ -1370,7 +1370,7 @@ def room_make(shape_dict, coord):
 
                             #exit check is one left of above
                             e_dict = exit((rxmin-1,y,rzmin))
-                            exit_result((e_dict,rxmin-1,y,rzmin))
+                            exit_result(e_dict,(rxmin-1,y,rzmin))
 
                     for y in range(rymin,rymax+1):
                         s = roll_dice(1,20)
@@ -1381,7 +1381,7 @@ def room_make(shape_dict, coord):
 
                             #exit check is one left of above
                             e_dict = exit((rxmax+1,y,rzmin))
-                            exit_result((rxmax+1,y,rzmin))
+                            exit_result(e_dict,(rxmax+1,y,rzmin))
 
                     for x in range(rxmin,rxmax+1):
                         s = roll_dice(1,20)
@@ -1392,7 +1392,7 @@ def room_make(shape_dict, coord):
 
                             #exit check is one up min from above
                             e_dict = exit((x,rymin-1,rzmin))
-                            exit_result((x,rymin-1,rzmin))
+                            exit_result(e_dict,(x,rymin-1,rzmin))
 
                     for x in range(rxmin,rxmax+1):
                         s = roll_dice(1,20)
@@ -1403,7 +1403,7 @@ def room_make(shape_dict, coord):
 
                             #exit check is one down max from above
                             e_dict = exit((x,rymax+1,rzmin))
-                            exit_result((x,rymax+1,rzmin))
+                            exit_result(e_dict,(x,rymax+1,rzmin))
 
 
                     print("SECRET DOOR COUNT:",secret_door_count)
