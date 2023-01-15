@@ -2372,17 +2372,22 @@ def bad_things(coord, size="C"):
                     # loop this for level descent - 
 
             #2x2 room
-            for k in range(d):
+            ##needs the top level to work as well, not at -1
+            #for k in range(d):
+            for k in range(d+1): #loop current level to end d0 is current               
                 for j in range(2):
                     for i in range(2):
-                        will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1))
+                        #will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1))
+                        will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]-k))
                         if not will_fit:                
                             dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)] = {}
                             #no prefil here as a trap same as others
                             if size == "C":
-                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] = 'el'
+                                #dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] = 'el'
+                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k)]['fill'] = 'el'
                             else:
-                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] = 'el'  #get to work later
+                                #dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] = 'el'  #get to work later
+                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k)]['fill'] = 'el'  #get to work later
                                 #dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] = dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] + 'el'
                             new_coord = (coord[0],coord[1]+3,coord[2]-k-1) #past elevator 2 and down
                         else:
