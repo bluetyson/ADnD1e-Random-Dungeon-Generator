@@ -1296,6 +1296,7 @@ def room_make(shape_dict, coord):
             print("NULL ROOM: no need to progress further with this one")
             #delete from room dictionary the stub?
             del room_stack[room_stack['key_count']]
+            room_stack['key_count'] -= 1
             return
 
         #check for water to put a pool or lake in
