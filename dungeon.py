@@ -2415,7 +2415,8 @@ def bad_things(coord, size="C"):
             if size == "C":
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'pc'
             else:
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pc'
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'pc' #get this to work for rooms
+                #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pc'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 15:
