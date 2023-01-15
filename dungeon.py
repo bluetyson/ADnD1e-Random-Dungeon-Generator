@@ -1306,7 +1306,9 @@ def room_make(shape_dict, coord):
                     #if c is wet or other things in contents need to go above exits probably but null rooms should not have
 
             if key == 'exits':
-                #can get errors for null rooms
+                '''
+                can get errors for null rooms - so check if still default min/max and delete entry prior
+                ''''
 
                 room_lim = coord_limits(room_stack[room_stack['key_count']])
                 rxmin = room_lim[0][0]
