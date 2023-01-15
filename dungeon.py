@@ -3037,8 +3037,8 @@ for down in range(zwidth-1):
                         usestr = usestr.replace('sd','')
                         secret_door_dict = room_stack['shape_dict'][int(usestr)]['contents']['secret_door_dict']
                         for s in secret_door_dict:
-                            if s == (i,j,0 - down -1)
-                            print("found a secret door!")
+                            if s == (i,j,0 - down -1):
+                                print("found a secret door!")
 
                     color = colorcheck(downlist[down][i,j,0])
                     if color == 'notreasure':
