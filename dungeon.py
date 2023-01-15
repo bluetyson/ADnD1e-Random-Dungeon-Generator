@@ -223,7 +223,7 @@ def check_action(pc_dict, coord, room_stack):
                     new_coord = coord
                     #new part!
                     dungeon[coord]['fill'] = dungeon[coord]['fill'] + 'd'  #add door indicator
-                    
+
                     shape_dict = room(coord, room_stack, size='R' )  ## different type to get slightly different table
                     #room_stack = shape_dict['room_stack']
                     #each room part check for inside
@@ -241,13 +241,19 @@ def check_action(pc_dict, coord, room_stack):
                         will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
                         if not will_fit:
                             dungeon[(coord[0]+1,coord[1]+x-1,coord[2])] = {}
-                            dungeon[(coord[0]+1,coord[1]+x-1,coord[2])]['fill'] = 'C'
+                            if x != 0:
+                                dungeon[(coord[0]+1,coord[1]+x-1,coord[2])]['fill'] = 'C'
+                            else:
+                                dungeon[(coord[0]+1,coord[1]+x-1,coord[2])]['fill'] = 'Cd'
                             new_coord = (coord[0]+1,coord[1]+x-1,coord[2])
                     for x in range(3):
                         will_fit = in_dungeon((coord[0]-1,coord[1]+x+1,coord[2]))
                         if not will_fit:
                             dungeon[(coord[0]-1,coord[1]+x+1,coord[2])] = {}
-                            dungeon[(coord[0]-1,coord[1]+x+1,coord[2])]['fill'] = 'C'
+                            if x != 0:
+                                dungeon[(coord[0]-1,coord[1]+x+1,coord[2])]['fill'] = 'C'
+                            else:
+                                dungeon[(coord[0]-1,coord[1]+x+1,coord[2])]['fill'] = 'Cd'
                             new_coord = (coord[0]-1,coord[1]+x+1,coord[2])
 
                 if e_dict['beyond'] == 'A':              
@@ -262,7 +268,10 @@ def check_action(pc_dict, coord, room_stack):
                             will_fit = in_dungeon((coord[0]-x-1,coord[1],coord[2]))
                             if not will_fit:
                                 dungeon[(coord[0]+x+1,coord[1],coord[2])] = {}
-                                dungeon[(coord[0]+x+1,coord[1],coord[2])]['fill'] = 'C'
+                                if x != 0:
+                                    dungeon[(coord[0]+x+1,coord[1],coord[2])]['fill'] = 'C'
+                                else:
+                                    dungeon[(coord[0]+x+1,coord[1],coord[2])]['fill'] = 'Cd'
                                 new_coord = ((coord[0]+x+1,coord[1],coord[2]))      
 
                 if e_dict['beyond'] == '4AB':   ##45 A - need to make facing for R different eventually
@@ -272,7 +281,10 @@ def check_action(pc_dict, coord, room_stack):
                             will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
                             if not will_fit:                
                                 dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
-                                dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                                if x != 0:
+                                    dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                                else:
+                                    dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'Cd'
                                 if which_way == 1:
                                     new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
                             else:
@@ -282,7 +294,10 @@ def check_action(pc_dict, coord, room_stack):
                             will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
                             if not will_fit:                
                                 dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
-                                dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                                if x!= 0:
+                                    dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
+                                else:
+                                    dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'Cd'
                                 if which_way == 2:
                                     new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
                             else:
@@ -295,7 +310,10 @@ def check_action(pc_dict, coord, room_stack):
                             will_fit = in_dungeon((coord[0]+1+-x,coord[1]-1-x,coord[2]))
                             if not will_fit:                
                                 dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
-                                dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                                if x!= 0:
+                                    dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                                else:
+                                    dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'Cd'
                                 if which_way == 1:
                                     new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
                             else:
@@ -305,7 +323,10 @@ def check_action(pc_dict, coord, room_stack):
                             will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
                             if not will_fit:                
                                 dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
-                                dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                                if x!= 0:
+                                    dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
+                                else:
+                                    dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'Cd'
                                 if which_way == 2:
                                     new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
                             else:
@@ -314,6 +335,7 @@ def check_action(pc_dict, coord, room_stack):
                 if e_dict['beyond'] == 'Room':
                     #want those we randomly position lr
                     new_coord = coord
+                    dungeon[coord]['fill'] = dungeon[coord]['fill'] + 'd'  #add door indicator
                     ## check for room or chamber
                     rt = roll_dice(1,10)
                     if rt <=8:
@@ -335,7 +357,7 @@ def check_action(pc_dict, coord, room_stack):
                     will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
                     if not will_fit:
                         dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                        dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'R'
+                        dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Rd'
                         new_coord = (coord[0],coord[1]+1,coord[2])
                         # 10 x 10 room need to check contents!
 
