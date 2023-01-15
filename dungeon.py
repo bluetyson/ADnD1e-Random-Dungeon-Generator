@@ -2857,7 +2857,7 @@ zwidth = zmax - zmin + 1
 
 zwidth = max(1, zwidth)
 
-print(\n" --- FINAL OUTPUT ---")
+print("\n --- FINAL OUTPUT ---")
 print("COORD:", coord, result_coord, coord_lim)
 
 print("\nDUNGEON:", dungeon)
