@@ -3046,14 +3046,32 @@ for down in range(zwidth-1):
                         secret_door_dict = room_stack['shape_dict'][int(usestr)]['contents']['secret_door_dict']
                         for s in secret_door_dict:
                             print("secret door",s,secret_door_dict[s],"ijk:",i+xmin,j+ymin,0 - down -1)
-                            if list(secret_door_dict[s].keys())[0] == (i+xmin,j+ymin,0 - down -1):  ##try and match real coords
+                            keylist = list(secret_door_dict[s].keys())
+                            if keylist[0] == (i+xmin,j+ymin,0 - down -1):  ##try and match real coords
                                 print("found a secret door!")
+                                if keylist[2]['loc'] == 'xminloc':
+                                    borderdir = 'left'
+                                elif keylist[2]['loc'] == 'xmaxloc':
+                                    borderdir = 'right'
+                                elif keylist[2]['loc'] == 'yminloc':                                    
+                                    borderdir = 'bottom'
+                                else:
+                                    borderdir = 'top'
+
+                                sdstr = 'border-' + borderdir + '-style: double'
 
                     color = colorcheck(downlist[down][i,j,0])
                     if color == 'notreasure':
-                        strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
+                        if sdstr == ''
+                            strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
+                        else:
+                            strdata = '<td class="gray_background style="' + sdstr + '">' + downlist[down][i,j,0] + '</td>'
                     else:
-                         strdata = '<td class="gray_background" style="color:' + color + '">'  + downlist[down][i,j,0] + '</td>'
+                        if sdstr == "":
+                            strdata = '<td class="gray_background" style="color:' + color + '">'  + downlist[down][i,j,0] + '</td>'
+                        else:
+                            strdata = '<td class="gray_background" style="color:' + color + " " + sdstr + '">'  + downlist[down][i,j,0] + '</td>'
+
                 elif downlist[down][i,j,0] == 'D':
                     strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
                 elif downlist[down][i,j,0] == 'O':
