@@ -1439,7 +1439,7 @@ def room_make(shape_dict, coord):
                             #print("treasureindex",r)print("monsterindex",r)
                             if index + 1 == w:
                                 room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + monster_string
-                                print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + monster_string)
+                                print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill']) 
                                 dungeon[r]['fill'] = dungeon[r]['fill'] + monster_string
 
 
