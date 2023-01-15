@@ -1238,7 +1238,8 @@ def room_make(shape_dict, coord):
             #test to implement other things - need fills for these
             if key == 'water':
                 print("HAS WATER",shape_dict[key])
-                mid_room = [int(shape_dict['size'][0]/2),int(shape_dict['size'][1]/2)]
+                mid_room = [int(shape_dict['size'][0]/2),int(shape_dict['size'][1]/2)]  ## got to get from coords
+                ##need to put in dict - maybe replace R with P in the fill
                 #this is where a pool goes
                 #what about lake
             if key == 'wet_magic':
