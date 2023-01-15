@@ -869,7 +869,7 @@ def room(coord, room_stack, size="C", content=None ):
         r = 1
     
     if r <= 2:
-        if size=="C":
+        if size=="C": 
             shape_dict['size'] = [2,2]
         else:
             shape_dict['size'] = [1,1]
@@ -989,7 +989,7 @@ def fancy_shape(shape_dict):
                 rollflag = False
 
     if s <= 5:
-        shape_dict['shape'] = 'C'
+        shape_dict['shape'] = 'C'  #circle
         p = roll_dice(1,20)
 
         if p <= 5:
@@ -1003,6 +1003,7 @@ def fancy_shape(shape_dict):
         usesize = shape_dict['size'] / PI
         radius = int(math.sqrt(usesize))
         shape_dict['size'] = [radius, radius]
+
 
     if s >= 6 and s <=8:
         shape_dict['shape'] = 'T'
@@ -1215,6 +1216,12 @@ def room_make(shape_dict, coord):
         print("RMIN-CHECK:",trxmin,trymin,trzmin)
         print("RMAX-CHECK:",trxmax,trymax,trzmax)
 
+        if trxmin > 9000 or trymin > 9000 tor rzmin > 9000:
+            #NULL room #should handle below exception problem
+            #no coords above to reduce these numbers to room limits
+            #must make sure everything else in contents comes out here
+            print "NULL ROOM: no need to progress further with this one"
+            return
 
 
         #check for water to put a pool or lake in
