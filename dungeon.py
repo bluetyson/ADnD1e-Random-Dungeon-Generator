@@ -2742,6 +2742,9 @@ for down in range(zwidth-1):
             #f.write('</TR>')
         f.write('</table>')
 
+        for room in room_stack['shape_dict']:
+            f.write(room_stack['shape_dict'][room])
+
         f.write(strend)
 
 
