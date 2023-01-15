@@ -782,6 +782,21 @@ def exit(coord):
 
     return e_dict
 
+def exit_beyond():   
+    e_dict = {}
+    b = roll_dice(1,20)
+    if b <= 4:
+        e_dict['beyond'] = 'P'
+    elif d>=5 and d <= 8:
+        e_dict['beyond'] = 'A'
+    elif d==9:
+        e_dict['beyond'] = '45AB'
+    elif d==10:
+        e_dict['beyond'] = '45BA'
+    else:
+        e_dict['beyond'] = 'Room'
+
+
 def fancy_exit(coord):
     e_dict_f = {}
     s = roll_dice(1,20)
