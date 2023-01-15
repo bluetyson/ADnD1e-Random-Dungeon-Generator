@@ -1595,8 +1595,11 @@ def room_make(shape_dict, coord):
                     print("SECRET DOOR DICT:",secret_door_dict)
 
                     #loop through the secret doors  #just rest rooms first
+                    #somewhere in this loop is a problem
                     for s in range(secret_door_count):
+                        print("s for secret door count", s)
                         for key in secret_door_dict[s + 1]: #room integers 1 onwards
+                            print("key for secret_door_dict[s + 1]", secret_door_dict[s + 1])
                             if 'loc' in secret_door_dict[s + 1][key]:
                                 #key is the location
                                 #want a reduced exit_result
@@ -1610,8 +1613,7 @@ def room_make(shape_dict, coord):
                                     new_coord = secret_door_dict[s + 1][key]
                                     #shape_dict = room(secret_door_dict[s + 1][key], room_stack, size='R' )  ## different type to get slightly different table
                                     shape_dict = room(key, room_stack, size='R' )  ## different type to get slightly different table
-                                    #room_stack = shape_dict['room_stack']
-                                    #each room part check for inside
+
                                     print("SECRETDOORDICT",secret_door_dict)
                                     print("NEW_COORD",new_coord, "KEY:",key)
                                     print("SHAPEDICTSD",shape_dict)
