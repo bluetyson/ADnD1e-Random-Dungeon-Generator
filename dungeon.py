@@ -2832,10 +2832,10 @@ result_coord = first_action
 print("END SETUP:\n",)
 
 while i < PERIODIC_CHECKS:
-    print("\nROLL:",i,"\N")
+    print("\nROLL:",i,"\n")
     roll_first = random_check()
     result_coord = check_action(roll_first, result_coord, room_stack)
-    print("END ROLL:",i,"\N")
+    print("END ROLL:",i,"\n")
     i +=1
     
 
