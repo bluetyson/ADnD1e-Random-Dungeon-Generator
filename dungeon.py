@@ -2382,7 +2382,8 @@ def bad_things(coord, size="C"):
                             if size == "C":
                                 dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] = 'el'
                             else:
-                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] = dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] + 'el'
+                                dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] = 'el'  #get to work later
+                                #dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] = dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2]-k-1)]['fill'] + 'el'
                             new_coord = (coord[0],coord[1]+3,coord[2]-k-1) #past elevator 2 and down
                         else:
                             break
