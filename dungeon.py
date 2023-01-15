@@ -1492,8 +1492,6 @@ def room_make(shape_dict, coord):
 
                     print("SECRET DOOR COUNT:",secret_door_count)
                     print("SECRET DOOR DICT:",secret_door_dict)
-                    shape_dict['contents']['secret_door_dict'] = secret_door_dict
-                    shape_dict['contents']['secret_door_count'] = secret_door_count
 
                     #loop through the secret doors  #just rest rooms first
                     for s in range(secret_door_count):
@@ -1521,6 +1519,8 @@ def room_make(shape_dict, coord):
                                     ## do simple version first of x directions and y directions of rectangular
                                     room_make(shape_dict, key)
 
+                    shape_dict['contents']['secret_door_dict'] = secret_door_dict
+                    shape_dict['contents']['secret_door_count'] = secret_door_count
 
 
                 else:
