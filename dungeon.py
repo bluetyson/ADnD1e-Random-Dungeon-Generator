@@ -816,11 +816,11 @@ def exit(coord):
     b = roll_dice(1,20)
     if b <= 4:
         e_dict['beyond'] = 'P'
-    elif d>=5 and d <= 8:
+    elif b>=5 and b <= 8:
         e_dict['beyond'] = 'A'
-    elif d==9:
+    elif b==9:
         e_dict['beyond'] = '4AB'
-    elif d==10:
+    elif b==10:
         e_dict['beyond'] = '4BA'
     else:
         e_dict['beyond'] = 'Room'
@@ -834,11 +834,11 @@ def exit_beyond():
     b = roll_dice(1,20)
     if b <= 4:
         e_dict['beyond'] = 'P'
-    elif d>=5 and d <= 8:
+    elif b>=5 and b <= 8:
         e_dict['beyond'] = 'A'
-    elif d==9:
+    elif b==9:
         e_dict['beyond'] = '45AB'
-    elif d==10:
+    elif b==10:
         e_dict['beyond'] = '45BA'
     else:
         e_dict['beyond'] = 'Room'
