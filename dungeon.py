@@ -2979,7 +2979,8 @@ for down in range(zwidth-1):
 
         if 'shape_dict' in room_stack:
             for room in room_stack['shape_dict']:
-                f.write(str(room_stack['shape_dict'][room]))
+                f.write('<h3>Key: ' + str(room) + '</h3>')
+                f.write(str(room_stack['shape_dict'][room]) + '<br>')
 
         f.write(strend)
 
