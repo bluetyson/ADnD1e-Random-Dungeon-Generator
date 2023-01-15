@@ -1167,7 +1167,7 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['level'] = {}
     elif r == 19:        
         shape_dict['contents']['trap'] = {}
-        shape_dict['contents']['trap']  = bad_things(coord)       
+        shape_dict['contents']['trap']  = bad_things(coord, size="R")       
     else:
         shape_dict['contents']['treasure'] = {}
         shape_dict = loot(shape_dict,coord,monster="N")
@@ -1306,13 +1306,14 @@ def room_make(shape_dict, coord):
                         #trap_string = ''
                         for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
                             print("treasureindex",r)
-                            if index + 1 == w:
-                                t_dict = bad_things(r)
-                                
-                                ##got to find from t_dict what to put in string
-                                room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + treasure_string
-                                print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + treasure_string)
-                                dungeon[r]['fill'] = dungeon[r]['fill'] + treasure_string
+                            if 1 == 2:  #work out if shape_dict bad things initial doing what it needs - not putting in ranom place though?
+                                if index + 1 == w:
+                                    t_dict = bad_things(r)
+                                    
+                                    ##got to find from t_dict what to put in string
+                                    room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + treasure_string
+                                    print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + treasure_string)
+                                    dungeon[r]['fill'] = dungeon[r]['fill'] + treasure_string
 
 
                         
@@ -2034,7 +2035,8 @@ def level(coord):
     #level_dict['new_coord'] = new_coord
     return level_dict
 
-def bad_things(coord):
+def bad_things(coord, size="C"):
+    #have to fill, need if coming from corridor or room
     new_coord = coord    
     #all traps located ahead plus 1?
     t_dict = {}
@@ -2056,7 +2058,10 @@ def bad_things(coord):
             t_dict['trap']['chance'] = 0.15
             t_dict['trap']['chance_elf'] = 0.25
             t_dict['trap']['damage'] = roll_dice(1,6)
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] +'pd'
+            if size == "C":
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pd'
+            else:
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pd'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord
             ## do stuff for exits!!
@@ -2064,7 +2069,10 @@ def bad_things(coord):
             t_dict['trap']['type'] = 'pit'
             t_dict['trap']['chance'] = 3.0/6.0
             t_dict['trap']['damage'] = roll_dice(1,6)
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pi'
+            if size == "C":
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'pi'
+            else:
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pi'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 8:
@@ -2072,7 +2080,10 @@ def bad_things(coord):
             t_dict['trap']['chance'] = 3.0/6.0
             t_dict['trap']['effect'] = 'spikes'
             t_dict['trap']['damage'] = roll_dice(2,6)
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ps'
+            if size == "C":
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ps'
+            else:
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ps'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t >= 9 and t <= 11: #fitting in elevator room
@@ -2115,7 +2126,10 @@ def bad_things(coord):
             t_dict['trap']['type'] = 'slidingwall'
             t_dict['trap']['chance'] = roll_dice(1,20) + 40
             t_dict['trap']['effect'] = 'blocked'
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'bw'
+            if size == "C":
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'bw'
+            else:
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'bw'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 13:
@@ -2124,7 +2138,10 @@ def bad_things(coord):
             t_dict['trap']['effect'] = 'random person'
             t_dict['trap']['damage'] = roll_dice(2,6)
             t_dict['trap']['save'] = 'magic'
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ol'
+            if size == "C":
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ol'
+            else:
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ol'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 14:
@@ -2133,7 +2150,10 @@ def bad_things(coord):
             t_dict['trap']['effect'] = 'crush death'
             t_dict['trap']['damage'] = roll_dice(2,6)
             t_dict['trap']['duration'] = roll_dice(1,4) + 1
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pc'
+            if size == "C":
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'pc'
+            else:
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pc'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 15:
@@ -2141,7 +2161,10 @@ def bad_things(coord):
             t_dict['trap']['chance'] = 0.05
             t_dict['trap']['damage'] = roll_dice(1,3)  * roll_dice(1,6)
             t_dict['trap']['save'] = 'poison'
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ar'
+            if size == "C":
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ar'
+            else:
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ar'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 16:
@@ -2149,7 +2172,10 @@ def bad_things(coord):
             t_dict['trap']['chance'] = 0.05
             t_dict['trap']['damage'] = roll_dice(1,3)  * roll_dice(1,8)
             t_dict['trap']['save'] = 'poison'
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'sp'
+            if size == "C":
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'sp'
+            else:
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'sp'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 17:
@@ -2157,7 +2183,10 @@ def bad_things(coord):
             t_dict['trap']['details'] = stinky()
             for key in t_dict['trap']['details']:
                 t_dict[key] = t_dict['trap']['details'][key]
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'gs'
+            if size == "C":
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'gs'
+            else:
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'gs'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 18:
@@ -2167,7 +2196,10 @@ def bad_things(coord):
                 t_dict['trap']['chance'] = 0.05
                 t_dict['trap']['damage'] = roll_dice(1,10)
                 t_dict['trap']['save'] = 'petrification'
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'df'
+                if size == "C":
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'df'
+                else:
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'df'
                 new_coord = (coord[0],coord[1]+1,coord[2])
                 t_dict['new_coord'] = new_coord                            
             else:
@@ -2175,7 +2207,10 @@ def bad_things(coord):
                 t_dict['trap']['chance'] = 0.05
                 t_dict['trap']['damage'] = roll_dice(2,10)
                 t_dict['trap']['save'] = 'petrification'
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'sf'
+                if size == "C":
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'sf'
+                else:
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'sf'
                 new_coord = (coord[0],coord[1]+1,coord[2])
                 t_dict['new_coord'] = new_coord                            
         if t == 19:
@@ -2185,16 +2220,23 @@ def bad_things(coord):
                 t_dict['trap']['type'] = t_dict['trap']['type'] + 'pit'
                 t_dict['trap']['chance'] = 3.0/6.0
                 t_dict['trap']['damage'] = roll_dice(1,6)
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pi'
+                if size == "C":
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pi'
+                else:
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pi'
                 new_coord = (coord[0],coord[1]+1,coord[2])
                 t_dict['new_coord'] = new_coord
             elif w>=7 and w<=10:
                 t_dict['trap']['type'] = t_dict['trap']['type'] + 'chute'
                 t_dict['trap']['effect'] = 'one way'
                 dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] + 'ch'  ##add chute down fill
+                if size == "C":
+                    dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'ch'  ##add chute down fill
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ch'
+                else:
+                    dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] + 'ch'  ##add chute down fill
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ch'
 
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ch'
                 new_coord = (coord[0],coord[1]+1,coord[2]-1)
                 t_dict['new_coord'] = new_coord
             else:
@@ -2211,9 +2253,13 @@ def bad_things(coord):
 
         if t == 20:        
             dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
-            dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] + 'ch'  #fill down for chute
+            if size == "C":
+                dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'ch'  #fill down for chute
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ch'
+            else:
+                dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] + 'ch'  #fill down for chute
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ch'
 
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ch'
             new_coord = (coord[0],coord[1]+1,coord[2]-1)
             t_dict['trap']['type'] = 'chute'
             t_dict['trap']['effect'] = 'one way'
