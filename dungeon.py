@@ -2761,7 +2761,7 @@ def secret_doors(shape_dict):
                         print("params for room_make call", shape_dict, key)
                         ##room_make(shape_dict, key)
                         
-                        rm = room_make(shape_dict, coord)
+                        rm = room_make(shape_dict, key)  ##right value here
                         if rm == "GOOD":
                             secret_doors(shape_dict)                    
 
