@@ -336,12 +336,12 @@ def check_action(pc_dict, coord, room_stack):
                 if e_dict['beyond'] == 'Room':
                     #want those we randomly position lr
                     new_coord = coord
-                    dungeon[coord]['fill'] = dungeon[coord]['fill'] + 'd'  #add door indicator
+                    #dungeon[coord]['fill'] = dungeon[coord]['fill'] + 'd'  #add door indicator
                     ## check for room or chamber
                     rt = roll_dice(1,10)
                     if rt <=8:
                         #room
-                        shape_dict = room(coord, room_stack,size='R')  ## different type to get slightly different table
+                        shape_dict = room(coord, room_stack,size='Rd')  ## different type to get slightly different table indicate room from door
                     else:
                         #chamber
                         shape_dict = room(coord, room_stack)
