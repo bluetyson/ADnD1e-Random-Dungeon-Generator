@@ -232,7 +232,7 @@ def check_action(pc_dict, coord, room_stack):
                     print("ROOM SHAPE:",shape_dict)
                     ## do simple version first of x directions and y directions of rectangular
                     rm = room_make(shape_dict, coord)
-                    if rm == "GOOD"
+                    if rm == "GOOD":
                         secret_doors(shape_dict)                    
 
 
@@ -351,7 +351,7 @@ def check_action(pc_dict, coord, room_stack):
 
                     print("ROOM SHAPE:",shape_dict)
                     rm = room_make(shape_dict, coord)
-                    if rm == "GOOD"
+                    if rm == "GOOD":
                         secret_doors(shape_dict)                    
 
                 
@@ -372,7 +372,7 @@ def check_action(pc_dict, coord, room_stack):
 
                         print("ROOM SHAPE:",shape_dict)
                         rm = room_make(shape_dict, coord)
-                        if rm == "GOOD"
+                        if rm == "GOOD":
                             secret_doors(shape_dict)                    
 
                 ### previously not in missing problem
@@ -467,7 +467,7 @@ def check_action(pc_dict, coord, room_stack):
                     print("ROOM SHAPE:",shape_dict)
                     ## do simple version first of x directions and y directions of rectangular
                     rm = room_make(shape_dict, coord)
-                    if rm == "GOOD"
+                    if rm == "GOOD":
                         secret_doors(shape_dict)                    
 
 
@@ -754,7 +754,7 @@ def check_action(pc_dict, coord, room_stack):
 
         print("ROOM SHAPE:",shape_dict)
         rm = room_make(shape_dict, coord)
-        if rm == "GOOD"
+        if rm == "GOOD":
             secret_doors(shape_dict)                    
 
     elif pc_dict['direction'] == 'level':
@@ -783,7 +783,7 @@ def check_action(pc_dict, coord, room_stack):
 
             print("ROOM SHAPE:",shape_dict)
             rm = room_make(shape_dict, coord)
-            if rm == "GOOD"
+            if rm == "GOOD":
                 secret_doors(shape_dict)                    
 
 
@@ -2511,7 +2511,7 @@ def bad_things(coord, size="C"):
 
                 print("ROOM SHAPE:",shape_dict)
                 rm = room_make(shape_dict, coord)
-                if rm == "GOOD"
+                if rm == "GOOD":
                     secret_doors(shape_dict)                    
 
 
