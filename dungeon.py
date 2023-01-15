@@ -2043,7 +2043,7 @@ def bad_things(coord):
             t_dict['trap']['chance'] = 0.15
             t_dict['trap']['chance_elf'] = 0.25
             t_dict['trap']['damage'] = roll_dice(1,6)
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pi'
+            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pd'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord
             ## do stuff for exits!!
@@ -2578,8 +2578,9 @@ for down in range(zwidth-1):
     legend_dict['cm'] = "Chimney"
     legend_dict['td'] = "Trapdoor"
     legend_dict['pi'] = "Pit Trap"
-    legend_dict['ps'] = "Pit Trap with Spikes"
-    legend_dict['pc'] = "Pit Trap with Crushing Walls"
+    legend_dict['pd'] = "Pit Trap: Secret Door"
+    legend_dict['ps'] = "Pit Trap: Spikes"
+    legend_dict['pc'] = "Pit Trap: Crushing Walls"
     legend_dict['el'] = "Elevator Trap"
     legend_dict['ar'] = "Arrow Trap"
     legend_dict['sp'] = "Spear Trap"
