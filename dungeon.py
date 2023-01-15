@@ -1068,8 +1068,9 @@ def room(coord, room_stack, size="C", content=None ):
     shape_dict = exit_dir(shape_dict)
 
     ## check the room stack and exit functions here
-    #print("ROOM STACK CHECK:", room_stack)
+    
     print("ROOM KEY COUNT:",room_stack['key_count'])
+    print("ROOM STACK CHECK in room function:", room_stack)
 
         
     return shape_dict
