@@ -1324,8 +1324,7 @@ def room_make(shape_dict, coord):
             if key == 'exits':
                 '''
                 can get errors for null rooms - so check if still default min/max and delete entry prior
-                ''''
-
+                '''
                 room_lim = coord_limits(room_stack[room_stack['key_count']])
                 rxmin = room_lim[0][0]
                 rymin = room_lim[0][1]
