@@ -2816,11 +2816,12 @@ dungeon[(0,0,0)]['go'] = -1
 facing = 'A'
 ## got to implement for all here eventually, complicates things
 
-print("SETUP: roll_first", roll_first)
+
 START_COORD = (0,0,-1)
 coord = START_COORD
 
 roll_first = random_check()
+print("SETUP: roll_first", roll_first)
 #no possible dead_end on first action
 while roll_first == 18:
     roll_first = random_check()
