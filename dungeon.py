@@ -1709,7 +1709,6 @@ def room_make(shape_dict, coord):
 
             #check treasure, monsters, exits and place these
             #exists need coloring for output so door/exit stack
-        room_stack['shape_dict'] = {}
         room_stack['shape_dict'][room_stack['key_count']] = shape_dict            
         
     else:
@@ -2733,6 +2732,8 @@ door_stack= {}
 level_stack = {}
 room_stack = {}
 room_stack['key_count'] = 0
+room_stack['shape_dict'] = {}
+
 trap_stack = {}
 
 ##add room key as identifier
