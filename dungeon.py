@@ -2319,7 +2319,8 @@ def bad_things(coord, size="C"):
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pd'
             else:
                 ## maybe below is not necessary?
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pd'
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pd'
+                #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pd'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord
             ## do stuff for exits!!
