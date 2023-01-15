@@ -1685,6 +1685,8 @@ def room_make(shape_dict, coord):
 
             #check treasure, monsters, exits and place these
             #exists need coloring for output so door/exit stack
+        room_stack['shape_dict'] = {}
+        room_stack['shape_dict'][room_stack['key_count']] = shape_dict            
         
     else:
         pass   #do we want a return
