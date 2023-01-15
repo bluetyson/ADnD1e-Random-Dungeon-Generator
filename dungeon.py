@@ -2744,7 +2744,7 @@ for down in range(zwidth-1):
 
         if 'shape_dict' in room_stack:
             for room in room_stack['shape_dict']:
-                f.write(room_stack['shape_dict'][room])
+                f.write(str(room_stack['shape_dict'][room]))
 
         f.write(strend)
 
