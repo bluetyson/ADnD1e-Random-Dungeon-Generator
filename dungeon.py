@@ -231,8 +231,9 @@ def check_action(pc_dict, coord, room_stack):
 
                     print("ROOM SHAPE:",shape_dict)
                     ## do simple version first of x directions and y directions of rectangular
-                    room_make(shape_dict, coord)
-                    secret_doors(shape_dict)                    
+                    rm = room_make(shape_dict, coord)
+                    if rm == "GOOD"
+                        secret_doors(shape_dict)                    
 
 
         elif e_dict['direction'] == 'R':
@@ -349,8 +350,9 @@ def check_action(pc_dict, coord, room_stack):
                     #each room part check for inside
 
                     print("ROOM SHAPE:",shape_dict)
-                    room_make(shape_dict, coord)
-                    secret_doors(shape_dict)                    
+                    rm = room_make(shape_dict, coord)
+                    if rm == "GOOD"
+                        secret_doors(shape_dict)                    
 
                 
         else:  #final branch ahead
@@ -369,8 +371,9 @@ def check_action(pc_dict, coord, room_stack):
                         shape_dict = room(coord, room_stack, size="10") #10 is special case to mandate 1 roll for size
 
                         print("ROOM SHAPE:",shape_dict)
-                        room_make(shape_dict, coord)
-                        secret_doors(shape_dict)                    
+                        rm = room_make(shape_dict, coord)
+                        if rm == "GOOD"
+                            secret_doors(shape_dict)                    
 
                 ### previously not in missing problem
                 if e_dict['beyond'] == 'A':              
@@ -463,8 +466,9 @@ def check_action(pc_dict, coord, room_stack):
 
                     print("ROOM SHAPE:",shape_dict)
                     ## do simple version first of x directions and y directions of rectangular
-                    room_make(shape_dict, coord)
-                    secret_doors(shape_dict)                    
+                    rm = room_make(shape_dict, coord)
+                    if rm == "GOOD"
+                        secret_doors(shape_dict)                    
 
 
 
@@ -749,8 +753,9 @@ def check_action(pc_dict, coord, room_stack):
         #each room part check for inside
 
         print("ROOM SHAPE:",shape_dict)
-        room_make(shape_dict, coord)
-        secret_doors(shape_dict)                    
+        rm = room_make(shape_dict, coord)
+        if rm == "GOOD"
+            secret_doors(shape_dict)                    
 
     elif pc_dict['direction'] == 'level':
         new_coord = coord
@@ -777,8 +782,9 @@ def check_action(pc_dict, coord, room_stack):
             shape_dict = room(coord, room_stack) #if another room pass not C="R"        
 
             print("ROOM SHAPE:",shape_dict)
-            room_make(shape_dict, coord)
-            secret_doors(shape_dict)                    
+            rm = room_make(shape_dict, coord)
+            if rm == "GOOD"
+                secret_doors(shape_dict)                    
 
 
         return new_coord
@@ -1398,7 +1404,7 @@ def room_make(shape_dict, coord):
             #delete from room dictionary the stub?
             del room_stack[room_stack['key_count']]
             room_stack['key_count'] -= 1
-            return
+            return "BAD"
 
         #check for water to put a pool or lake in
         
@@ -1925,7 +1931,7 @@ def room_make(shape_dict, coord):
             #exists need coloring for output so door/exit stack
         print("adding ROOM:",room_stack['key_count'],"to stack")
         room_stack['shape_dict'][room_stack['key_count']] = copy.deepcopy(shape_dict)
-        
+        return "GOOD"
     else:
         pass   #do we want a return
 
@@ -2504,8 +2510,9 @@ def bad_things(coord, size="C"):
                 #each room part check for inside
 
                 print("ROOM SHAPE:",shape_dict)
-                room_make(shape_dict, coord) 
-                secret_doors(shape_dict)                    
+                rm = room_make(shape_dict, coord)
+                if rm == "GOOD"
+                    secret_doors(shape_dict)                    
 
 
         if t == 20:        
@@ -2716,6 +2723,8 @@ def stinky():
 
 def secret_doors(shape_dict):
     print("calling SD", room_stack)
+    if room_stack['shape_dict'][room_stack['key_count']]['contents']
+
     if 'secret_door_count' in room_stack['shape_dict'][room_stack['key_count']]['contents']:
         secret_door_count = room_stack['shape_dict'][room_stack['key_count']]['contents']['secret_door_count']
         secret_door_dict = room_stack['shape_dict'][room_stack['key_count']]['contents']['secret_door_dict']
