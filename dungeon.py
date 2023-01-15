@@ -1460,7 +1460,7 @@ def room_make(shape_dict, coord):
                             #print("treasureindex",r)
                             if index + 1 == w:
                                 room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + treasure_string
-                                print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + treasure_string)
+                                print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'])
                                 dungeon[r]['fill'] = dungeon[r]['fill'] + treasure_string
                         #need to output guards and hidden in room_stack or put shape_dict in room_stack
 
