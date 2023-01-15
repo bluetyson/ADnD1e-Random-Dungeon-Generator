@@ -1434,7 +1434,7 @@ def room_make(shape_dict, coord):
                         w = roll_dice(1,rand_length)
                         print("MONSTER ROOM ROLL CHECK:",w)
                         for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
-                            print("monsterindex",r)
+                            #print("treasureindex",r)print("monsterindex",r)
                             if index + 1 == w:
                                 room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + monster_string
                                 print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + monster_string)
@@ -1455,7 +1455,7 @@ def room_make(shape_dict, coord):
                         w = roll_dice(1,rand_length)
                         print("TREASURE ROOM ROLL CHECK:",w)
                         for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
-                            print("treasureindex",r)
+                            #print("treasureindex",r)
                             if index + 1 == w:
                                 room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + treasure_string
                                 print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + treasure_string)
