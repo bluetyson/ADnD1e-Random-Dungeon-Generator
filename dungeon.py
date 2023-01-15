@@ -1549,7 +1549,7 @@ def room_make(shape_dict, coord):
                                 print(nosdfillE)
                                 print("DUNGEONERRORCHECK:",dungeon, "xmin sd")
                                 print("ROOMSTACKCHECK:",room_stack)
-                                raise("coordinate fail error")
+                                continue
 
                             #exit check is one left of above
                             #e_dict = exit((rxmin-1,y,rzmin))
@@ -1571,7 +1571,8 @@ def room_make(shape_dict, coord):
                                 print(nosdfillE)
                                 print("DUNGEONERRORCHECK:",dungeon, "xmax sd")
                                 print("ROOMSTACKCHECK:",room_stack)
-                                raise("coordinate fail error")
+                                #raise("coordinate fail error")
+                                continue
 
                             #exit check is one left of above
                             #e_dict = exit((rxmax+1,y,rzmin))
@@ -1592,7 +1593,7 @@ def room_make(shape_dict, coord):
                                 print(nosdfillE)
                                 print("DUNGEONERRORCHECK:",dungeon, "ymin sd")
                                 print("ROOMSTACKCHECK:",room_stack)
-                                raise("coordinate fail error")
+                                continue
                             #exit check is one up min from above
                             #e_dict = exit((x,rymin-1,rzmin))
                             #exit_result(e_dict,(x,rymin-1,rzmin))
@@ -1612,7 +1613,7 @@ def room_make(shape_dict, coord):
                                 print(nosdfillE)
                                 print("DUNGEONERRORCHECK:",dungeon, "ymax sd")
                                 print("ROOMSTACKCHECK:",room_stack)
-                                raise("coordinate fail error")
+                                continue
 
                                 
 
