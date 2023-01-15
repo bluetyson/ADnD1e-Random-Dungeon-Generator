@@ -3030,6 +3030,16 @@ for down in range(zwidth-1):
                 elif 'C' in downlist[down][i,j,0]:  #could have door markers etc                    
                     strdata = '<td>' + downlist[down][i,j,0] + '</td>'
                 elif 'R' in downlist[down][i,j,0]:  #could have numbering
+                    sdstr = ''
+                    if 'sd' in downlist[down][i,j,0]:
+                        usestr = copy.deepcopy(downlist[down][i,j,0])
+                        usestr = usestr.replace('R','')
+                        usestr = usestr.replace('sd','')
+                        secret_door_dict = room_stack['shape_dict'][int(usestr)]['contents']['secret_door_dict']
+                        for s in secret_door_dict:
+                            if s == (i,j,0 - down -1)
+                            print("found a secret door!")
+
                     color = colorcheck(downlist[down][i,j,0])
                     if color == 'notreasure':
                         strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
