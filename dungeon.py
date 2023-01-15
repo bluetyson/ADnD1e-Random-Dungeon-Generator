@@ -2195,34 +2195,6 @@ def bad_things(coord):
                 print("ROOM SHAPE:",shape_dict)
                 room_make(shape_dict, coord) 
 
-                ## do simple version first of x directions and y directions of rectangular
-                if 1 == 2:
-                    if shape_dict['shape'] == 'R':
-                        print("rectangular")
-                        #H x W
-                        #position based on size
-                        adjust = 0
-                        if shape_dict['size'][1] % 2 == 0:
-                            lr = roll_dice(1,2)
-                            if lr == 1:
-                                adjust = -1
-                            else:
-                                adjust = 1
-
-                        #if shape_dict['size'][1] == 2:
-                        for j in range(shape_dict['size'][1]):
-                            for i in range(shape_dict['size'][0]):
-                                will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
-                                if not will_fit:                
-                                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
-                                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R'
-                                else:
-                                    break
-                        
-                    else:
-                        pass
-                
-
 
         if t == 20:        
             dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
