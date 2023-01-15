@@ -1432,60 +1432,87 @@ def room_make(shape_dict, coord):
                         s = roll_dice(1,20)
                         if s <= 5:
                             secret_door_count +=1 
-                            secret_door_dict[(rxmin,y,rzmin)] = 'xmin'
+                            secret_door_dict[secret_door_count] = {}
+                            secret_door_dict[secret_door_count][(rxmin,y,rzmin)] = 'xmin'
                             dungeon[(rxmin,y,rzmin)]['fill'] = dungeon[(rxmin,y,rzmin)]['fill'] + 'sd'
 
                             #exit check is one left of above
                             #e_dict = exit((rxmin-1,y,rzmin))
                             #exit_result(e_dict,(rxmin-1,y,rzmin))
                             e_dict = exit_beyond()
-                            secret_door_dict[(rxmin-1,y,rzmin)] = ['xminloc',e_dict]
+                            e_dict['loc'] = 'xminloc'
+                            secret_door_dict[secret_door_count][(rxmin-1,y,rzmin)] = e_dict
 
 
                     for y in range(rymin,rymax+1):
                         s = roll_dice(1,20)
                         if s <= 5:
                             secret_door_count +=1 
-                            secret_door_dict[(rxmax,y,rzmin)] = 'xmax'
+                            secret_door_dict[secret_door_count] = {}
+                            secret_door_dict[secret_door_count][(rxmax,y,rzmin)] = 'xmax'
                             dungeon[(rxmax,y,rzmin)]['fill'] = dungeon[(rxmax,y,rzmin)]['fill'] + 'sd'
 
                             #exit check is one left of above
                             #e_dict = exit((rxmax+1,y,rzmin))
                             #exit_result(e_dict,(rxmax+1,y,rzmin))
                             e_dict = exit_beyond()
-                            secret_door_dict[(rxmax+1,y,rzmin)] = ['xmaxloc',e_dict]
+                            e_dict['loc'] = 'xmaxloc'
+                            secret_door_dict[secret_door_count][(rxmax+1,y,rzmin)] = e_dict
 
                     for x in range(rxmin,rxmax+1):
                         s = roll_dice(1,20)
                         if s <= 5:
                             secret_door_count +=1 
-                            secret_door_dict[(x,rymin,rzmin)] = 'ymin'
+                            secret_door_dict[secret_door_count] = {}
+                            secret_door_dict[secret_door_count][(x,rymin,rzmin)] = 'ymin'
                             dungeon[(x,rymin,rzmin)]['fill'] = dungeon[(x,rymin,rzmin)]['fill'] + 'sd'
 
                             #exit check is one up min from above
                             #e_dict = exit((x,rymin-1,rzmin))
                             #exit_result(e_dict,(x,rymin-1,rzmin))
                             e_dict = exit_beyond()
-                            secret_door_dict[(x,rymin-1,rzmin)] = ['yminloc',e_dict]
+                            e_dict['loc'] = 'yminloc'
+                            secret_door_dict[secret_door_count][(x,rymin-1,rzmin)] = e_dict
 
                     for x in range(rxmin,rxmax+1):
                         s = roll_dice(1,20)
                         if s <= 5:
                             secret_door_count +=1 
-                            secret_door_dict[(x,rymax,rzmin)] = 'ymax'
+                            secret_door_dict[secret_door_count] = {}
+                            secret_door_dict[secret_door_count][(x,rymax,rzmin)] = 'ymax'
                             dungeon[(x,rymax,rzmin)]['fill'] = dungeon[(x,rymax,rzmin)]['fill'] + 'sd'
 
                             #exit check is one down max from above
                             #e_dict = exit((x,rymax+1,rzmin))
                             #exit_result(e_dict,(x,rymax+1,rzmin))
                             e_dict = exit_beyond()
-                            secret_door_dict[(x,rymax+1,rzmin)] = ['ymaxloc',e_dict]
+                            e_dict['loc'] = 'ymaxloc'
+                            secret_door_dict[secret_door_count][(x,rymax+1,rzmin)] = e_dict
 
 
                     print("SECRET DOOR COUNT:",secret_door_count)
                     print("SECRET DOOR DICT:",secret_door_dict)
                     shape_dict['contents']['secret_door_dict'] = secret_door_dict
                     shape_dict['contents']['secret_door_count'] = secret_door_count
+
+                    #loop through the secret doors  #just rest rooms first
+                    for s in range(secret_door_count):
+                        for key in secret_door_dict[secret_door_count]:
+                            if 'loc' in secret_door_dict[secret_door_count][key]:
+                                #key is the location
+                                #want a reduced exit_result
+                                if secret_door_dict[secret_door_count][key]['beyond'] == 'Room':
+                                #want those we randomly position lr
+                                    new_coord = secret_door_dict[secret_door_count][key]
+                                    shape_dict = room(secret_door_dict[secret_door_count][key], room_stack, size='R' )  ## different type to get slightly different table
+                                    #room_stack = shape_dict['room_stack']
+                                    #each room part check for inside
+
+                                    print("ROOM SHAPE ROOM SD:",shape_dict)
+                                    ## do simple version first of x directions and y directions of rectangular
+                                    room_make(shape_dict, secret_door_dict[secret_door_count][key])
+
+
 
                 else:
                     take_exit = roll_dice(1,shape_dict['exits'])
