@@ -2636,6 +2636,10 @@ for down in range(zwidth-1):
     </body>
     </html>
     '''
+    strend = '''
+    </body>
+    </html>
+    '''
 
     legend_dict =  {}
     legend_dict['O'] = "Outside Entrance"
@@ -2728,7 +2732,6 @@ for down in range(zwidth-1):
 
                 f.write(strdata)
             f.write('</TR>')
-            #f.write('</table>')
 
         
         #f.write(strlegendhead)
@@ -2737,7 +2740,7 @@ for down in range(zwidth-1):
             #f.write('<td>' + key + '</td>')
             #f.write('<td>' + legend_dict[key] + '</td>')
             #f.write('</TR>')
-        #f.write('</table>')
+        f.write('</table>')
 
         f.write(strend)
 
