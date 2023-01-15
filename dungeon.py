@@ -996,9 +996,9 @@ def fancy_shape(shape_dict):
             shape_dict['water'] = 'P'
             shape_dict = wet_small(shape_dict, coord)
         if p >=6 and p <= 7:
-            shape_dict['water'] = 'W'
+            shape_dict['water'] = 'W' #well #make this descend
         if p >=8 and p <= 10:
-            shape_dict['water'] = 'S'
+            shape_dict['water'] = 'S' #shaft #make this descend
             
         usesize = shape_dict['size'] / PI
         radius = int(math.sqrt(usesize))
@@ -1935,7 +1935,7 @@ def level(coord):
             level_dict['type'] = 'chimney'       
             level_dict['new_coord'] = new_coord
     if s == 13:
-        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing #need all the level well fits eventually
+        will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]-1))  #down 1#facing #need all the level will fits eventually
         if not will_fit:                            
             new_coord = (coord[0],coord[1],coord[2]-2)
             dungeon[(coord[0],coord[1],coord[2]-1)] = {}

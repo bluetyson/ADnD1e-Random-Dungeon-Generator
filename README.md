@@ -1,5 +1,5 @@
-# # Advanced Dungeons & Dragons style random dungeon generator
-Attempt to convert DMG tables to code to do something by wandering around and down to make a dungeon.
+## Advanced Dungeons & Dragons style random dungeon generator
+Convert DMG tables to code to do for wandering around and down to make a dungeon.
 
 # Environment
 - Only non-standard type library used is numpy
