@@ -2762,5 +2762,5 @@ with open('downlist.pkl','rb') as fd:
         #print("picklecheck",df)
         pass
 
-   
+print("FINAL ROOM STACK",room_stack)   
     
