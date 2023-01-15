@@ -990,6 +990,7 @@ def fancy_shape(shape_dict):
 
     if s <= 5:
         shape_dict['shape'] = 'C'  #circle
+        shape_dict['fancy_shape'] = 'C'
         p = roll_dice(1,20)
 
         if p <= 5:
@@ -1004,14 +1005,18 @@ def fancy_shape(shape_dict):
         radius = int(math.sqrt(usesize))
         shape_dict['size'] = [radius, radius]
 
+        mid_room = [int(radius/2)+1,int(radius/2)+1]
+
 
     if s >= 6 and s <=8:
         shape_dict['shape'] = 'T'
+        shape_dict['fancy_shape'] = 'T'
         width = math.sqrt(shape_dict['size'] * 4/math.sqrt(3))
         height = width * math.sqrt(3)/2
         shape_dict['size'] = [width, height]
     if s >= 9 and s <=11:
         shape_dict['shape'] = 'Z'
+        shape_dict['fancy_shape'] = 'Z'
         #trapezoid make height 2 and top = bottom-2 and area +2 = 2* base
         b = int((shape_dict['size'] + 2)/2)
         shape_dict['size'] = [b,2]
@@ -1020,15 +1025,18 @@ def fancy_shape(shape_dict):
     if s >= 14 and s <=15:
         #hack a circle
         shape_dict['shape'] = 'V'
+        shape_dict['fancy_shape'] = 'V'
         usesize = shape_dict['size'] / PI
         radius = int(math.sqrt(usesize))
         shape_dict['size'] = [max(1,radius-2), radius+2]
     if s >= 16 and s <=17:
         shape_dict['shape'] = 'H'
+        shape_dict['fancy_shape'] = 'H'
         usesize = math.sqrt(shape_dict['size'] * 2.0/3.0*math.sqrt(3))
         shape_dict['size'] = [int(usesize),int(usesize)]
     if s >= 18 and s <=19:
         shape_dict['shape'] = 'O'
+        shape_dict['fancy_shape'] = 'H'
         #A=2(1+2)*a^2
         usesize = math.sqrt(shape_dict['size'] / 2*(1+math.sqrt(2)) )
         #side - now get radius
@@ -1036,6 +1044,7 @@ def fancy_shape(shape_dict):
         shape_dict['size'] = [int(radius),int(radius)]
     else:
         shape_dict['shape'] = 'CV'
+        shape_dict['fancy_shape'] = 'H'
         c = roll_dice(1,20)
         if c <= 5:
             shape_dict['size'] = [4,6]
