@@ -1228,6 +1228,12 @@ def room_make(shape_dict, coord):
         
         for key in shape_dict:
             #print(key, shape_dict[key])
+            #test to implement other things
+            if key == 'water':
+                print("HAS WATER",shape_dict[key])
+            if key == 'wet_magic':
+                print("HAS WATER AND MAGIC",shape_dict[key])
+
             if key == 'contents':
                 for c in shape_dict['contents']:
                     if c == 'monster':   
