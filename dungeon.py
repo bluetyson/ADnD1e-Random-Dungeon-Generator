@@ -1599,7 +1599,7 @@ def room_make(shape_dict, coord):
                     for s in range(secret_door_count):
                         print("s for secret door count", s)
                         for key in secret_door_dict[s + 1]: #room integers 1 onwards
-                            print("key for secret_door_dict[s + 1]", secret_door_dict[s + 1])
+                            print("key for secret_door_dict[s + 1]", key)
                             if 'loc' in secret_door_dict[s + 1][key]:
                                 #key is the location
                                 #want a reduced exit_result
@@ -2429,7 +2429,8 @@ def bad_things(coord, size="C"):
             if size == "C":
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'sp'
             else:
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'sp'
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'sp'  #### got to make these more useful later
+                #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'sp'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 17:
