@@ -1297,7 +1297,9 @@ def room_make(shape_dict, coord):
                             #print( "CONTENTS TRAP TYPE:", trtype)
                             print( "CONTENTS TRAP TYPE:", shape_dict['contents']['trap'][tr])
                             if tr == 'secretdoor':
-                                print("secretdoor info:",shape_dict['contents']['trap'][trtype])
+                                print("secretdoor info:",shape_dict['contents']['trap'][tr])
+                                #for this need secret door procedure like exits
+
 
                     #if c is wet or other things in contents need to go above exits probably but null rooms should not have
 
