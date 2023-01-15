@@ -1291,6 +1291,7 @@ def room_make(shape_dict, coord):
 
                     if c == 'trap':
                         ##need to check for secret doors
+                        ##need random location
                         for sh in shape_dict['contents']:
                             print("TRAP SHAPE DICT CONTENTS:",shape_dict['contents'][sh])
                         for tr in shape_dict['contents']['trap']:
