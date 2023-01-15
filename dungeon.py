@@ -2950,6 +2950,7 @@ for down in range(zwidth-1):
     legend_dict['C'] = "Corridor/Passage"
     legend_dict['R'] = "Chamber/Room"
     legend_dict['D'] = "Dead End"
+    legend_dict['d'] = "door"
     legend_dict['wm'] = "Wandering Monster"
     legend_dict['sd'] = "Secret Door"
     legend_dict['st'] = "Stairs"
@@ -3019,7 +3020,7 @@ for down in range(zwidth-1):
             for i in range(downlist[down].shape[0]):                
                 if downlist[down][i,j,0] == 'B':
                     strdata = '<td class="black_background">' + downlist[down][i,j,0] + '</td>'
-                elif downlist[down][i,j,0] == 'C':
+                elif 'C' in downlist[down][i,j,0]:  #could have door markers etc                    
                     strdata = '<td>' + downlist[down][i,j,0] + '</td>'
                 elif 'R' in downlist[down][i,j,0]:  #could have numbering
                     color = colorcheck(downlist[down][i,j,0])
