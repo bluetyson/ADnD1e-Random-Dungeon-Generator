@@ -5,7 +5,7 @@ import numpy as np
 import random
 import time
 import datetime
-#import copy
+import copy
 import json
 import pickle
 import math
@@ -1369,8 +1369,8 @@ def room_make(shape_dict, coord):
                             dungeon[(rxmin,y,rzmin)]['fill'] = dungeon[(rxmin,y,rzmin)]['fill'] + 'sd'
 
                             #exit check is one left of above
-                            e_dict = exit((rxmin-1,y,rzmin))
-                            exit_result(e_dict,(rxmin-1,y,rzmin))
+                            #e_dict = exit((rxmin-1,y,rzmin))
+                            #exit_result(e_dict,(rxmin-1,y,rzmin))
 
                     for y in range(rymin,rymax+1):
                         s = roll_dice(1,20)
@@ -1380,8 +1380,8 @@ def room_make(shape_dict, coord):
                             dungeon[(rxmax,y,rzmin)]['fill'] = dungeon[(rxmax,y,rzmin)]['fill'] + 'sd'
 
                             #exit check is one left of above
-                            e_dict = exit((rxmax+1,y,rzmin))
-                            exit_result(e_dict,(rxmax+1,y,rzmin))
+                            #e_dict = exit((rxmax+1,y,rzmin))
+                            #exit_result(e_dict,(rxmax+1,y,rzmin))
 
                     for x in range(rxmin,rxmax+1):
                         s = roll_dice(1,20)
@@ -1391,8 +1391,8 @@ def room_make(shape_dict, coord):
                             dungeon[(x,rymin,rzmin)]['fill'] = dungeon[(x,rymin,rzmin)]['fill'] + 'sd'
 
                             #exit check is one up min from above
-                            e_dict = exit((x,rymin-1,rzmin))
-                            exit_result(e_dict,(x,rymin-1,rzmin))
+                            #e_dict = exit((x,rymin-1,rzmin))
+                            #exit_result(e_dict,(x,rymin-1,rzmin))
 
                     for x in range(rxmin,rxmax+1):
                         s = roll_dice(1,20)
@@ -1402,8 +1402,8 @@ def room_make(shape_dict, coord):
                             dungeon[(x,rymax,rzmin)]['fill'] = dungeon[(x,rymax,rzmin)]['fill'] + 'sd'
 
                             #exit check is one down max from above
-                            e_dict = exit((x,rymax+1,rzmin))
-                            exit_result(e_dict,(x,rymax+1,rzmin))
+                            #e_dict = exit((x,rymax+1,rzmin))
+                            #exit_result(e_dict,(x,rymax+1,rzmin))
 
 
                     print("SECRET DOOR COUNT:",secret_door_count)
@@ -1709,7 +1709,8 @@ def room_make(shape_dict, coord):
 
             #check treasure, monsters, exits and place these
             #exists need coloring for output so door/exit stack
-        room_stack['shape_dict'][room_stack['key_count']] = shape_dict            
+        print("adding ROOM:",room_stack['key_count'],"to stack")
+        room_stack['shape_dict'][room_stack['key_count']] = copy.deepcopy(shape_dict)
         
     else:
         pass   #do we want a return
