@@ -1599,20 +1599,21 @@ def room_make(shape_dict, coord):
                     for s in range(secret_door_count):
                         print("s for secret door count", s)
                         for key in secret_door_dict[s + 1]: #room integers 1 onwards
-                            print("key for secret_door_dict[s + 1]", key)
+                            print("key for secret_door_dict[s + 1]", key, "value:", secret_door_dict[s + 1][key])
                             if 'loc' in secret_door_dict[s + 1][key]:
                                 #key is the location
                                 #want a reduced exit_result
                                 if secret_door_dict[s + 1][key]['beyond'] == 'Room':
+                                    print("in secret door room and rolling")
                                 #want those we randomly position lr
                                     getkey = secret_door_dict[s + 1][key]['loc']
                                     getkey = getkey.replace('loc','')
 
-
-
                                     new_coord = secret_door_dict[s + 1][key]
                                     #shape_dict = room(secret_door_dict[s + 1][key], room_stack, size='R' )  ## different type to get slightly different table
+                                    print("room stack before", room stack)
                                     shape_dict = room(key, room_stack, size='R' )  ## different type to get slightly different table
+                                    print("room stack after", room stack)
 
                                     print("SECRETDOORDICT",secret_door_dict)
                                     print("NEW_COORD",new_coord, "KEY:",key)
@@ -1620,6 +1621,7 @@ def room_make(shape_dict, coord):
 
                                     print("ROOM SHAPE ROOM SD:",shape_dict)
                                     ## do simple version first of x directions and y directions of rectangular
+                                    print("params for room_make call", shape_dict, key)
                                     room_make(shape_dict, key)
 
                     shape_dict['contents']['secret_door_dict'] = secret_door_dict
