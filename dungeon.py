@@ -1935,6 +1935,9 @@ def loot(shape_dict,coord,monster="N"):
     if 'contents' not in shape_dict:
         shape_dict['contents'] = {}
 
+    if 'treasure' not in shape_dict['contents']:
+        shape_dict['contents']['treasure'] = {}
+
     shape_dict['contents']['treasure']['type'] = {}
     shape_dict['contents']['treasure']['type']['copper'] = 0
     shape_dict['contents']['treasure']['type']['silver'] = 0
