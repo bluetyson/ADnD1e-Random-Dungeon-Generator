@@ -1005,9 +1005,6 @@ def fancy_shape(shape_dict):
         radius = int(math.sqrt(usesize))
         shape_dict['size'] = [radius, radius]
 
-        mid_room = [int(radius/2)+1,int(radius/2)+1]
-
-
     if s >= 6 and s <=8:
         shape_dict['shape'] = 'T'
         shape_dict['fancy_shape'] = 'T'
@@ -1230,8 +1227,9 @@ def room_make(shape_dict, coord):
             #no coords above to reduce these numbers to room limits
             #must make sure everything else in contents comes out here
             print("NULL ROOM: no need to progress further with this one")
+            #delete from room dictionary the stub?
+            del room_stack[room_stack['key_count']]
             return
-
 
         #check for water to put a pool or lake in
         
