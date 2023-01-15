@@ -3032,11 +3032,13 @@ for down in range(zwidth-1):
                 elif 'R' in downlist[down][i,j,0]:  #could have numbering
                     sdstr = ''
                     if 'sd' in downlist[down][i,j,0]:
+                        print("HAVE SD HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                         usestr = copy.deepcopy(downlist[down][i,j,0])
                         usestr = usestr.replace('R','')
                         usestr = usestr.replace('sd','')
                         secret_door_dict = room_stack['shape_dict'][int(usestr)]['contents']['secret_door_dict']
                         for s in secret_door_dict:
+                            print("secret door",s)
                             if s == (i,j,0 - down -1):
                                 print("found a secret door!")
 
