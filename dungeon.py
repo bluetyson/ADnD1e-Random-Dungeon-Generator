@@ -1534,7 +1534,7 @@ def room_make(shape_dict, coord):
                                 dungeon[(rxmin,y,rzmin)]['fill'] = dungeon[(rxmin,y,rzmin)]['fill'] + 'sd'
                             except Exception as nosdfillE:
                                 print(nosdfillE)
-                                print("DUNGEONERRORCHECK:",dungeon)
+                                print("DUNGEONERRORCHECK:",dungeon, "xmin sd")
                                 print("ROOMSTACKCHECK:",room_stack)
                                 raise("coordinate fail error")
 
@@ -1567,8 +1567,13 @@ def room_make(shape_dict, coord):
                             secret_door_count +=1 
                             secret_door_dict[secret_door_count] = {}
                             secret_door_dict[secret_door_count][(x,rymin,rzmin)] = 'ymin'
-                            dungeon[(x,rymin,rzmin)]['fill'] = dungeon[(x,rymin,rzmin)]['fill'] + 'sd'
-
+                            try:
+                                dungeon[(x,rymin,rzmin)]['fill'] = dungeon[(x,rymin,rzmin)]['fill'] + 'sd'
+                            except Exception as nosdfillE:
+                                print(nosdfillE)
+                                print("DUNGEONERRORCHECK:",dungeon, "ymin sd")
+                                print("ROOMSTACKCHECK:",room_stack)
+                                raise("coordinate fail error")
                             #exit check is one up min from above
                             #e_dict = exit((x,rymin-1,rzmin))
                             #exit_result(e_dict,(x,rymin-1,rzmin))
