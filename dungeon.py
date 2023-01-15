@@ -2725,11 +2725,11 @@ def secret_doors(shape_dict):
 
                         print("SECRETDOORDICT",secret_door_dict)
                         print("NEW_COORD",new_coord, "KEY:",key)
-                        print("SHAPEDICTSD",shape_dicts)
+                        print("SHAPEDICTSD",shape_dict)
 
                         print("ROOM SHAPE ROOM SD:",shape_dict)
                         ## do simple version first of x directions and y directions of rectangular
-                        print("params for room_make call", shape_dicts, key)
+                        print("params for room_make call", shape_dict, key)
                         room_make(shape_dict, key)
 
 
