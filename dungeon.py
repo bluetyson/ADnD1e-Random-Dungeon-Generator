@@ -2816,6 +2816,7 @@ dungeon[(0,0,0)]['go'] = -1
 facing = 'A'
 ## got to implement for all here eventually, complicates things
 
+print("SETUP: roll_first", roll_first)
 START_COORD = (0,0,-1)
 coord = START_COORD
 
@@ -2824,7 +2825,7 @@ roll_first = random_check()
 while roll_first == 18:
     roll_first = random_check()
 
-print("SETUP: roll_first", roll_first)
+
 first_action = check_action(roll_first, coord, room_stack)    
 
 i = 0
@@ -2832,10 +2833,10 @@ result_coord = first_action
 print("END SETUP:\n",)
 
 while i < PERIODIC_CHECKS:
-    print("\nROLL:",i,"\n")
+    print("\n--- ROLL:",i," ---\n")
     roll_first = random_check()
     result_coord = check_action(roll_first, result_coord, room_stack)
-    print("END ROLL:",i,"\n")
+    print("--- END ROLL:",i," ---\n")
     i +=1
     
 
