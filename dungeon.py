@@ -2731,7 +2731,7 @@ def secret_doors(shape_dict):
         secret_door_count = room_stack['shape_dict'][room_stack['key_count']]['contents']['secret_door_count']
         secret_door_dict = room_stack['shape_dict'][room_stack['key_count']]['contents']['secret_door_dict']
 
-        print("calling SD", room_stack)
+        print("\ncalling SD", room_stack, "\n")
     
         #loop through the secret doors  #just rest rooms first
         #somewhere in this loop is a problem
