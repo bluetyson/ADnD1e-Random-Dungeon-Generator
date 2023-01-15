@@ -1509,7 +1509,8 @@ def room_make(shape_dict, coord):
 
 
                                     new_coord = secret_door_dict[s + 1][key]
-                                    shape_dict = room(secret_door_dict[s + 1][key], room_stack, size='R' )  ## different type to get slightly different table
+                                    #shape_dict = room(secret_door_dict[s + 1][key], room_stack, size='R' )  ## different type to get slightly different table
+                                    shape_dict = room(key, room_stack, size='R' )  ## different type to get slightly different table
                                     #room_stack = shape_dict['room_stack']
                                     #each room part check for inside
                                     print("SECRETDOORDICT",secret_door_dict)
@@ -1518,7 +1519,7 @@ def room_make(shape_dict, coord):
 
                                     print("ROOM SHAPE ROOM SD:",shape_dict)
                                     ## do simple version first of x directions and y directions of rectangular
-                                    room_make(shape_dict, secret_door_dict[s + 1][key])
+                                    room_make(shape_dict, key)
 
 
 
