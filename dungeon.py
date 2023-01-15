@@ -2701,9 +2701,10 @@ def stinky():
 
 
 def secret_doors(shape_dict):
-    if 'secret_door_count' in shape_dict:
-        secret_door_count = shape_dict['secret_door_count']
-        secret_door_dict = shape_dict['secret_door_dict']
+    print("calling SD, room_stack")
+    if 'secret_door_count' in room_stack['shape_dict']:
+        secret_door_count = room_stack['shape_dict']['secret_door_count']
+        secret_door_dict = room_stack['shape_dict']['secret_door_dict']
     
         #loop through the secret doors  #just rest rooms first
         #somewhere in this loop is a problem
