@@ -82,6 +82,13 @@ legend_dict['M'] = "Treasure: Magic"
 ## Level 4
 ![image](https://user-images.githubusercontent.com/17399794/212469478-a6210c6b-66b6-4636-98f2-b827189c54d3.png)
 
+###
+Dungeon level html now include a basic key output dictionary
+e.g. basically using this while I work on things:
+#### Key: 1
+```python
+{'shape': 'R', 'size': [4, 6], 'contents': {'empty': 'Y'}, 'exits': 3, 'exitlocations': {1: 'L', 2: 'R', 3: 'R'}, 'exitdirections': {1: 'A', 2: '45BA', 3: '45BA'}}
+```python
 
 
 ### Level 1 html example
