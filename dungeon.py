@@ -3479,6 +3479,7 @@ for down in range(zwidth-1):
                     else:
                         strdata = '<td>' + downlist[down][i,j,0] + '</td>'
                 elif 'R' in downlist[down][i,j,0]:  #could have numbering
+                    usestr = copy.deepcopy(downlist[down][i,j,0])
                     sdstr = ''
                     if 'sd' in downlist[down][i,j,0]:
                         print("HAVE SD HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
