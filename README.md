@@ -85,10 +85,12 @@ legend_dict['M'] = "Treasure: Magic"
 ###
 Dungeon level html now include a basic key output dictionary
 e.g. basically using this while I work on things:
+Below is an example unrelated to above plots.
+
 #### Key: 1
 ```python
 {'shape': 'R', 'size': [4, 6], 'contents': {'empty': 'Y'}, 'exits': 3, 'exitlocations': {1: 'L', 2: 'R', 3: 'R'}, 'exitdirections': {1: 'A', 2: '45BA', 3: '45BA'}}
-```python
+```
 
 
 ### Level 1 html example
