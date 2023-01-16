@@ -224,7 +224,7 @@ def check_action(pc_dict, coord, room_stack):
                     #new part!
                     #if coming from here pass door to room function?
                     #dungeon[coord]['fill'] = dungeon[coord]['fill'] + 'd'  #add door indicator
-
+                    #not Rd room??
                     shape_dict = room(coord, room_stack, size='Rd' )  ## different type to get slightly different table pass Rd to indicate from door
                     #room_stack = shape_dict['room_stack']
                     #each room part check for inside
@@ -361,8 +361,8 @@ def check_action(pc_dict, coord, room_stack):
                 if e_dict['beyond'] == 'P':
                     will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
                     if not will_fit:
-                        dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                        dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Rd'
+                        #dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+                        dungeon[(coord[0],coord[1],coord[2])]['fill'] = 'Cd'
                         new_coord = (coord[0],coord[1]+1,coord[2])
                         # 10 x 10 room need to check contents!
 
@@ -371,7 +371,10 @@ def check_action(pc_dict, coord, room_stack):
                         shape_dict = room(coord, room_stack, size="10") #10 is special case to mandate 1 roll for size
 
                         print("ROOM SHAPE:",shape_dict)
+                        #rm = room_make(shape_dict, coord)
+                        # set Cd above for doors to indicate door to room ahead
                         rm = room_make(shape_dict, coord)
+                        
                         if rm == "GOOD":
                             secret_doors(shape_dict)                    
 
