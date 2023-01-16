@@ -885,7 +885,7 @@ def check_action(pc_dict, coord, room_stack):
 
     elif pc_dict['direction'] == 'bad_things':
         new_coord = coord
-        t_dict = bad_things(coord)
+        t_dict = bad_things(coord, room_stack)
         print("TRAP:",t_dict)
         
         if 'chute' in t_dict['trap']['type'] or 'elevator' in t_dict['trap']['type']:
