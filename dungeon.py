@@ -797,7 +797,6 @@ def check_action(pc_dict, coord, room_stack):
 
         dead_end = True
         dead_end_count = 0
-        dead_end_dict = {}
 
         if check_coord_L not in dungeon:
             ## need to check if in dungeons where putting Ds
@@ -3234,7 +3233,7 @@ trap_stack = {}
 
 ##add room key as identifier
 monster_stack = {}
-
+dead_end_dict = {}
 
 dungeon = {}
 dungeon[(0,0,0)] = {}
@@ -3546,7 +3545,30 @@ for down in range(zwidth-1):
                         strdata = '<td class="gray_background" style="color:' + color + '">' + borderdir  + downlist[down][i,j,0] + borderdire + '</td>'
 
                 elif 'D' in downlist[down][i,j,0]:  #could have numbering:
-                    strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
+                    usestr = copy.deepcopy(downlist[down][i,j,0])
+                    usestr = usestr.replace('C','')
+
+
+                    if 'sd' in usestr:  #number and d
+                        dead_end = dead_end_dict(i+xmin,j+ymin,0 - down -1)
+
+                        print("found Dead End Secret door")
+                        if dead_end = 'ymax'"
+                            borderdir = '<divb>'
+                            borderdire = '</divb>'
+                        elif dead_end = 'xmax'"
+                            borderdir = '<divr>'
+                            borderdire = '</divr>'
+                        else:
+                            borderdir = '<divl>'
+                            borderdire = '</divl>'                            
+
+                        strdata = '<td class="brown_background">' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
+                        borderdir = '<divt>'
+                        borderdire = '</divt>'
+                    else:
+                        strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
+
                 elif downlist[down][i,j,0] == 'O':
                     strdata = '<td class="green_background">' + downlist[down][i,j,0] + '</td>'
                 else:
