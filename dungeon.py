@@ -2819,6 +2819,8 @@ def secret_doors(shape_dict):
             print("\nSECRET DOOR CHECK", s)
             for key in secret_door_dict[s + 1]: #room integers 1 onwards
                 print("key for secret_door_dict[s + 1]", key, "value:", secret_door_dict[s + 1][key])
+                usedir = secret_door_dict[s + 1][key]['loc']
+
                 if 'loc' in secret_door_dict[s + 1][key]:
                     #key is the location
                     #want a reduced exit_result
@@ -2844,14 +2846,157 @@ def secret_doors(shape_dict):
                         if rm == "GOOD":
                             secret_doors(shape_dict)                    
 
-                    elif secret_door_dict[s + 1][key]['beyond'] == '45AB':
-                        print("in secret door passage 45 ahead")
+                    elif secret_door_dict[s + 1][key]['beyond'] == '45AB' or secret_door_dict[s + 1][key]['beyond'] == '45BA':
+                        print("in secret door passage 45 ahead - only want to go one direction")
 
-                    elif secret_door_dict[s + 1][key]['beyond'] == '45BA':                    
-                        print("in secret door passage 45 behind")
+                        if usedir == 'xminloc':
+                            which_way = roll_dice(1,2)           
+                            if which_way == 1:  #corridor left
+                                for x in range(3):
+                                    will_fit = in_dungeon((key[0]-x-1,key[1]+x+1,key[2]))
+                                    if not will_fit:                
+                                        dungeon[(key[0]-x-1,key[1]+x+1,key[2])] = {}
+                                        dungeon[(key[0]-x-1,key[1]+x+1,key[2])]['fill'] = 'C'
+                                    else:
+                                        break
+                            else:
+                                for x in range(3):
+                                    will_fit = in_dungeon((key[0]-x-1,key[1]-x-1,key[2]))
+                                    if not will_fit:                
+                                        dungeon[(key[0]-x-1,key[1]-x-1,key[2])] = {}
+                                        dungeon[(key[0]-x-1,key[1]-x-1,key[2])]['fill'] = 'C'
+                                    else:
+                                        break
+
+                        elif usedir == 'xmaxloc': 
+                            which_way = roll_dice(1,2)           
+                            if which_way == 1:  #corridor right
+                                for x in range(3):
+                                    will_fit = in_dungeon((key[0]+x+1,key[1]+x+1,key[2]))
+                                    if not will_fit:                
+                                        dungeon[(key[0]+x+1,key[1]+x+1,key[2])] = {}
+                                        dungeon[(key[0]+x+1,key[1]+x+1,key[2])]['fill'] = 'C'
+                                    else:
+                                        break
+                            else: #corridor left
+                                for x in range(3):
+                                    will_fit = in_dungeon((key[0]+x+1,key[1]-x-1,key[2]))
+                                    if not will_fit:                
+                                        dungeon[(key[0]+x+1,key[1]-x-1,key[2])] = {}
+                                        dungeon[(key[0]+x+1,key[1]-x-1,key[2])]['fill'] = 'C'
+                                    else:
+                                        break
+
+                        elif usedir == 'yminloc':                             
+                            which_way = roll_dice(1,2)           
+                            if which_way == 1:  #corridor left
+                                for x in range(3):
+                                    will_fit = in_dungeon((key[0]-x-1,key[1]-x-1,key[2]))
+                                    if not will_fit:                
+                                        dungeon[(key[0]-x-1,key[1]-x-1,key[2])] = {}
+                                        dungeon[(key[0]-x-1,key[1]-x-1,key[2])]['fill'] = 'C'
+                                    else:
+                                        break
+                            else: #corridor right
+                                for x in range(3):
+                                    will_fit = in_dungeon((key[0]+x+1,key[1]-x-1,key[2]))
+                                    if not will_fit:                
+                                        dungeon[(key[0]+x+1,key[1]-x-1,key[2])] = {}
+                                        dungeon[(key[0]+x+1,key[1]-x-1,key[2])]['fill'] = 'C'
+                                    else:
+                                        break
+
+                        else: #ymaxloc
+                            which_way = roll_dice(1,2)           
+                            if which_way == 1:  #corridor right
+                                for x in range(3):
+                                    will_fit = in_dungeon((key[0]-x-1,key[1]+x+1,key[2]))
+                                    if not will_fit:                
+                                        dungeon[(key[0]-x-1,key[1]+x+1,key[2])] = {}
+                                        dungeon[(key[0]-x-1,key[1]+x+1,key[2])]['fill'] = 'C'
+                                    else:
+                                        break
+                            else: #corridor left
+                                for x in range(3):
+                                    will_fit = in_dungeon((key[0]+x+1,key[1]+x+1,key[2]))
+                                    if not will_fit:                
+                                        dungeon[(key[0]+x+1,key[1]+x+1,key[2])] = {}
+                                        dungeon[(key[0]+x+1,key[1]+x+1,key[2])]['fill'] = 'C'
+                                    else:
+                                        break
+
+                    elif secret_door_dict[s + 1][key]['beyond'] == 'A':                    
+                        print("in secret door passage ahead")
+                        if usedir == 'xminloc':
+                            for x in range(3):
+                                will_fit = in_dungeon((key[0]-x-1,key[1],key[2]))
+                                if not will_fit:                
+                                    dungeon[(key[0]-x-1,key[1],key[2])] = {}
+                                    dungeon[(key[0]-x-1,key[1],key[2])]['fill'] = 'C'
+                                else:
+                                    break
+                        elif usedir == 'xmaxloc':                             
+                            for x in range(3):
+                                will_fit = in_dungeon((key[0]+x+1,key[1],key[2]))
+                                if not will_fit:                
+                                    dungeon[(key[0]+x+1,key[1],key[2])] = {}
+                                    dungeon[(key[0]+x+1,key[1],key[2])]['fill'] = 'C'
+                                else:
+                                    break
+                        elif usedir == 'yminloc':                             
+                            for x in range(3):
+                                will_fit = in_dungeon((key[0],key[1]-x-1,key[2]))
+                                if not will_fit:                
+                                    dungeon[(key[0],key[1]-x-1,key[2])] = {}
+                                    dungeon[(key[0],key[1]-x-1,key[2])]['fill'] = 'C'
+                                else:
+                                    break
+                        else: #ymaxloc
+                            for x in range(3):
+                                will_fit = in_dungeon((key[0],key[1]+x+1,key[2]))
+                                if not will_fit:                
+                                    dungeon[(key[0],key[1]+x+1,key[2])] = {}
+                                    dungeon[(key[0],key[1]+x+1,key[2])]['fill'] = 'C'
+                                else:
+                                    break
+
                     else: #'P'                                        
                         print("in secret door parallel passage")
 
+                        ##need to make square straight in front as well
+                        if usedir == 'xminloc' or usedir = 'xmaxloc':
+                            will_fit = in_dungeon(key)  #original located
+                            if not will_fit:
+                                dungeon[key] = {}
+                                dungeon[key]['fill'] = 'C'
+
+                            for x in range(3):
+                                will_fit = in_dungeon((key[0],key[1]-x-1,key[2]))
+                                if not will_fit:
+                                    dungeon[(key[0],key[1]-x-1,key[2])] = {}
+                                    dungeon[(key[0],key[1]-x-1,key[2])]['fill'] = 'C'
+                            for x in range(3):
+                                will_fit = in_dungeon((key[0],key[1]+x+1,key[2]))
+                                if not will_fit:
+                                    dungeon[(key[0],key[1]+x+1,key[2])] = {}
+                                    dungeon[(key[0],key[1]+x+1,key[2])]['fill'] = 'C'
+
+                        else: #y
+                            will_fit = in_dungeon(key)  #original located
+                            if not will_fit:
+                                dungeon[key] = {}
+                                dungeon[key]['fill'] = 'C'
+
+                            for x in range(3):
+                                will_fit = in_dungeon((key[0]-x-1,key[1],key[2]))
+                                if not will_fit:
+                                    dungeon[(key[0]-x-1,key[1],key[2])] = {}
+                                    dungeon[(key[0]-x-1,key[1],key[2])]['fill'] = 'C'
+                            for x in range(3):
+                                will_fit = in_dungeon((key[0]+x+1,key[1],key[2]))
+                                if not will_fit:
+                                    dungeon[(key[0]+x+1,key[1],key[2])] = {}
+                                    dungeon[(key[0]+x+1,key[1],key[2])]['fill'] = 'C'
 
 
 def exit_direction_full(coord, e_dict):
