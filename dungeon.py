@@ -3043,6 +3043,9 @@ for down in range(zwidth-1):
                         usestr = copy.deepcopy(downlist[down][i,j,0])
                         usestr = usestr.replace('R','')
                         usestr = usestr.replace('sd','')
+                        usestr = usestr.replace('c','')
+                        ## get anything but number eventually regex
+                        #usestr = usestr[0]
                         secret_door_dict = room_stack['shape_dict'][int(usestr)]['contents']['secret_door_dict']
                         for s in secret_door_dict:
                             print("secret door",s,secret_door_dict[s],"ijk:",i+xmin,j+ymin,0 - down -1)
