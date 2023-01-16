@@ -2348,7 +2348,7 @@ def level(coord):
     #level_dict['new_coord'] = new_coord
     return level_dict
 
-def bad_things(coord, size="C"):
+def bad_things(coord, size="C",room_stack=room_stack):
     '''
     option to have it concatenate to fill by passing other than size="C"
     still need to work out bad things for rooms in random spot
@@ -2576,7 +2576,7 @@ def bad_things(coord, size="C"):
             else:
                 #pass put room here
                 shape_dict = room(coord, room_stack, content="MT") #if another room pass not C="R"  
-                room_stack = shape_dict['room_stack']     
+                #room_stack = shape_dict['room_stack']     
                 
                 #pass MT for monster and treasure
                 #each room part check for inside
