@@ -3061,7 +3061,7 @@ for down in range(zwidth-1):
                                 else:
                                     borderdir = 'top'
 
-                                sdstr = 'border-' + borderdir + '-style: double'
+                                sdstr = 'border-' + borderdir + '-style: dashed'
 
                     color = colorcheck(downlist[down][i,j,0])
                     if color == 'notreasure':
