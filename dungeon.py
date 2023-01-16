@@ -1941,6 +1941,7 @@ def room_make(shape_dict, coord, size="C"):
                                                 pass
                                             break
                                 else:
+                                    #secret doors here need to use the other sd procedures eventually
                                     for x in range(3): #corridor right
                                         will_fit = in_dungeon((el[0]+1+x,el[1]-1-x,rzmin))
                                         if not will_fit:                
@@ -1952,10 +1953,10 @@ def room_make(shape_dict, coord, size="C"):
                                             sd = roll_dice(1,20)
                                             if sd <= 5:
                                                 secret_door_count +=1 
-                                                secret_door_dict[(el[0]+1+x-1,el[1]-1-x,rzmin)+1] = 'Y'
+                                                secret_door_dict[(el[0]+1+x-1,el[1]-1-x+1,rzmin)] = 'Y'
                                             elif sd >=6 and sd <=10:
                                                 secret_door_count +=1 
-                                                secret_door_dict[(el[0]+1+x-1,el[1]-1-x,rzmin)+1] = 'OW'
+                                                secret_door_dict[(el[0]+1+x-1,el[1]-1-x+1,rzmin)+1] = 'OW'
                                             else:
                                                 pass
                                             break
