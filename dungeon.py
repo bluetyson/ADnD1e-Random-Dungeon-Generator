@@ -2964,7 +2964,7 @@ def secret_doors(shape_dict):
                         print("in secret door parallel passage")
 
                         ##need to make square straight in front as well
-                        if usedir == 'xminloc' or usedir = 'xmaxloc':
+                        if usedir == 'xminloc' or usedir == 'xmaxloc':
                             will_fit = in_dungeon(key)  #original located
                             if not will_fit:
                                 dungeon[key] = {}
