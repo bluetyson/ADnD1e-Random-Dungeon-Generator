@@ -3086,8 +3086,10 @@ for down in range(zwidth-1):
                 if downlist[down][i,j,0] == 'B':
                     strdata = '<td class="black_background">' + downlist[down][i,j,0] + '</td>'
                 elif 'C' in downlist[down][i,j,0]:  #could have door markers etc                    
+                    usestr = copy.deepcopy(downlist[down][i,j,0])
                     usestr = usestr.replace('C','')
-                    if 'd' in usestr and len(usestr) == 1:
+
+                    if 'd' in usestr and len(usestr) == 2:  #number and d
                         borderdir = '<divb>'
                         borderdire = '</divb>'
                         strdata = '<td">' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
