@@ -3089,7 +3089,7 @@ for down in range(zwidth-1):
                     usestr = copy.deepcopy(downlist[down][i,j,0])
                     usestr = usestr.replace('C','')
 
-                    if 'd' in usestr and len(usestr) == 2:  #number and d
+                    if 'd' in usestr and len(usestr) == 1:  #number and d
                         borderdir = '<divb>'
                         borderdire = '</divb>'
                         strdata = '<td">' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
