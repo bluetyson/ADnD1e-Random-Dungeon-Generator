@@ -829,17 +829,27 @@ def check_action(pc_dict, coord, room_stack):
 
         #this will also need checking for facing etc.
         if dead_end == True:
-            dungeon[new_coord[0],new_coord[1]+1,new_coord[2]] = {}
-            dungeon[new_coord[0],new_coord[1]+1,new_coord[2]]['fill'] = 'D'
-            dungeon[new_coord[0]-1,new_coord[1],new_coord[2]] = {}
-            dungeon[new_coord[0]-1,new_coord[1],new_coord[2]]['fill'] = 'D'
-            dungeon[new_coord[0]+1,new_coord[1],new_coord[2]] = {}
-            dungeon[new_coord[0]+1,new_coord[1],new_coord[2]]['fill'] = 'D'
+            will_fit = in_dungeon((new_coord[0],new_coord[1]+1,new_coord[2]))
+            if not will_fit:
+                dungeon[new_coord[0],new_coord[1]+1,new_coord[2]] = {}
+                dungeon[new_coord[0],new_coord[1]+1,new_coord[2]]['fill'] = 'D'
+            will_fit = in_dungeon((new_coord[0]-1,new_coord[1],new_coord[2]))
+            if not will_fit:
+                dungeon[new_coord[0]-1,new_coord[1],new_coord[2]] = {}
+                dungeon[new_coord[0]-1,new_coord[1],new_coord[2]]['fill'] = 'D'
+            will_fit = in_dungeon((new_coord[0]+1,new_coord[1],new_coord[2]))
+            if not will_fit:
+                dungeon[new_coord[0]+1,new_coord[1],new_coord[2]] = {}
+                dungeon[new_coord[0]+1,new_coord[1],new_coord[2]]['fill'] = 'D'
             ## add angle parts
-            dungeon[new_coord[0]-1,new_coord[1]+1,new_coord[2]] = {}
-            dungeon[new_coord[0]-1,new_coord[1]+1,new_coord[2]]['fill'] = 'D'
-            dungeon[new_coord[0]+1,new_coord[1]+1,new_coord[2]] = {}
-            dungeon[new_coord[0]+1,new_coord[1]+1,new_coord[2]]['fill'] = 'D'
+            will_fit = in_dungeon(new_coord[0]-1,new_coord[1]+1,new_coord[2])
+            if not will_fit:
+                dungeon[new_coord[0]-1,new_coord[1]+1,new_coord[2]] = {}
+                dungeon[new_coord[0]-1,new_coord[1]+1,new_coord[2]]['fill'] = 'D'
+            will_fit = in_dungeon((new_coord[0]+1,new_coord[1]+1,new_coord[2]))
+            if not will_fit:
+                dungeon[new_coord[0]+1,new_coord[1]+1,new_coord[2]] = {}
+                dungeon[new_coord[0]+1,new_coord[1]+1,new_coord[2]]['fill'] = 'D'
 
             #need to retrace to last on exit stack?
             print("DEAD END")
