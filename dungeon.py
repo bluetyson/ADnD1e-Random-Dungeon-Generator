@@ -2844,13 +2844,13 @@ def secret_doors(shape_dict):
                         if rm == "GOOD":
                             secret_doors(shape_dict)                    
 
-                elif secret_door_dict[s + 1][key]['beyond'] == '45AB':
-                    print("in secret door passage 45 ahead")
+                    elif secret_door_dict[s + 1][key]['beyond'] == '45AB':
+                        print("in secret door passage 45 ahead")
 
-                elif secret_door_dict[s + 1][key]['beyond'] == '45BA':                    
-                    print("in secret door passage 45 behind")
-                else: #'P'                                        
-                    print("in secret door parallel passage")
+                    elif secret_door_dict[s + 1][key]['beyond'] == '45BA':                    
+                        print("in secret door passage 45 behind")
+                    else: #'P'                                        
+                        print("in secret door parallel passage")
 
 
 
