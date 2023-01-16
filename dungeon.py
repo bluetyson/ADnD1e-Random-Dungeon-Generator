@@ -3103,6 +3103,7 @@ for down in range(zwidth-1):
                         usestr = usestr.replace('R','')
                         usestr = usestr.replace('sd','')
                         usestr = usestr.replace('c','')
+                        usestr = usestr.replace('e','')
                         usestr = usestr.replace('g','')
                         usestr = usestr.replace('j','')
                         usestr = usestr.replace('G','')
