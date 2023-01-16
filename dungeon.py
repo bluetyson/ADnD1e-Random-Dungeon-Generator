@@ -2907,7 +2907,10 @@ for down in range(zwidth-1):
     #need a multi-level maker, this is just doing first for now
     #Each side can be set individually using border-top-color, border-right-color, border-bottom-color, and border-left-color; or using the writing mode-aware border-block-start-color, border-block-end-color, border-inline-start-color, and border-inline-end-color.
     #make dungeon html
+    #            border: 1px solid black;
+
     strhead = '''
+
     <html>
     <head>
     <title>DUNGEON</title>
@@ -2916,7 +2919,6 @@ for down in range(zwidth-1):
         th,
         td {
             padding: 10px;
-            border: 1px solid black;
             border-collapse: collapse;
             width:auto
         }
