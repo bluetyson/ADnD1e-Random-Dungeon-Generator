@@ -2920,7 +2920,6 @@ for down in range(zwidth-1):
         td {
             padding: 10px;
             border: 1px solid black;
-            border-style: dotted solid double dashed;
             border-collapse: collapse;
             width:auto
         }
