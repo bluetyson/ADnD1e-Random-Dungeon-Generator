@@ -1544,7 +1544,7 @@ def room_make(shape_dict, coord, size="C"):
                                 #so this disabled for now
                                 #if use this take it out of shape_dict['trap'] and just use this for indicator
                                 if index + 1 == w:
-                                    t_dict = bad_things(r, size="R")
+                                    t_dict = bad_things(r, room_stack, size="R")
                                     
                                     ##got to find from t_dict what to put in string
                                     ##room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + trap_string
