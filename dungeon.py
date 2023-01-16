@@ -2467,7 +2467,8 @@ def bad_things(coord, room_stack, size="C"):
             if size == "C":
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'bw'
             else:
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'bw'
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'bw' #fill only bw fix later
+                #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'bw'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 13:
@@ -2479,7 +2480,8 @@ def bad_things(coord, room_stack, size="C"):
             if size == "C":
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ol'
             else:
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ol'
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ol' #fill only ol fix later
+                #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ol'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 14:
@@ -2503,7 +2505,8 @@ def bad_things(coord, room_stack, size="C"):
             if size == "C":
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ar'
             else:
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ar'
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'ar' #fill only ar fix later
+                #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ar'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 16:
@@ -2526,7 +2529,8 @@ def bad_things(coord, room_stack, size="C"):
             if size == "C":
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'gs'
             else:
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'gs'
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'gs'  #fill only gs
+                #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'gs'
             new_coord = (coord[0],coord[1]+1,coord[2])
             t_dict['new_coord'] = new_coord            
         if t == 18:
@@ -2539,7 +2543,8 @@ def bad_things(coord, room_stack, size="C"):
                 if size == "C":
                     dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'df'
                 else:
-                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'df'
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'df' #fill only df fix later
+                    #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'df'
                 new_coord = (coord[0],coord[1]+1,coord[2])
                 t_dict['new_coord'] = new_coord                            
             else:
@@ -2550,7 +2555,8 @@ def bad_things(coord, room_stack, size="C"):
                 if size == "C":
                     dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'sf'
                 else:
-                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'sf'
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'sf' #fill only sf fix later
+                    #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'sf'
                 new_coord = (coord[0],coord[1]+1,coord[2])
                 t_dict['new_coord'] = new_coord                            
         if t == 19:
@@ -2563,7 +2569,8 @@ def bad_things(coord, room_stack, size="C"):
                 if size == "C":
                     dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pi'
                 else:
-                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pi'
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pi' #fill only pi fix later
+                    #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pi'
                 new_coord = (coord[0],coord[1]+1,coord[2])
                 t_dict['new_coord'] = new_coord
             elif w>=7 and w<=10:
