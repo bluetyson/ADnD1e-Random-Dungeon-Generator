@@ -3553,10 +3553,10 @@ for down in range(zwidth-1):
                         dead_end = dead_end_dict(i+xmin,j+ymin,0 - down -1)
 
                         print("found Dead End Secret door")
-                        if dead_end == 'ymax'"
+                        if dead_end = 'ymax':
                             borderdir = '<divb>'
                             borderdire = '</divb>'
-                        elif dead_end == 'xmax'"
+                        elif dead_end == 'xmax':
                             borderdir = '<divr>'
                             borderdire = '</divr>'
                         else:
