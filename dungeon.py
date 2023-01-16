@@ -2950,7 +2950,6 @@ for down in range(zwidth-1):
             border-left-style: dotted
             padding: 10px;
             border-collapse: collapse;
-            width:auto            
         }            
         divr {
             border-right-style: dotted
