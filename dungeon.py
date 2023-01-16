@@ -2819,9 +2819,9 @@ def secret_doors(shape_dict):
             print("\nSECRET DOOR CHECK", s)
             for key in secret_door_dict[s + 1]: #room integers 1 onwards
                 print("key for secret_door_dict[s + 1]", key, "value:", secret_door_dict[s + 1][key])
-                usedir = secret_door_dict[s + 1][key]['loc']
 
                 if 'loc' in secret_door_dict[s + 1][key]:
+                    usedir = secret_door_dict[s + 1][key]['loc']
                     #key is the location
                     #want a reduced exit_result
                     #exit dir full won't work here as does not have a facing as for dead end corridor
