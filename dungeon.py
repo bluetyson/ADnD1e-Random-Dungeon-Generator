@@ -2931,35 +2931,35 @@ def secret_doors(shape_dict):
                     elif secret_door_dict[s + 1][key]['beyond'] == 'A':                    
                         print("in secret door passage ahead")
                         if usedir == 'xminloc':
-                            for x in range(3):
-                                will_fit = in_dungeon((key[0]-x-1,key[1],key[2]))
+                            for x in range(3): #here 0 is already 1 past
+                                will_fit = in_dungeon((key[0]-x,key[1],key[2]))
                                 if not will_fit:                
-                                    dungeon[(key[0]-x-1,key[1],key[2])] = {}
-                                    dungeon[(key[0]-x-1,key[1],key[2])]['fill'] = 'C'
+                                    dungeon[(key[0]-x,key[1],key[2])] = {}
+                                    dungeon[(key[0]-x,key[1],key[2])]['fill'] = 'C'
                                 else:
                                     break
                         elif usedir == 'xmaxloc':                             
                             for x in range(3):
-                                will_fit = in_dungeon((key[0]+x+1,key[1],key[2]))
+                                will_fit = in_dungeon((key[0]+x,key[1],key[2]))
                                 if not will_fit:                
-                                    dungeon[(key[0]+x+1,key[1],key[2])] = {}
-                                    dungeon[(key[0]+x+1,key[1],key[2])]['fill'] = 'C'
+                                    dungeon[(key[0]+x,key[1],key[2])] = {}
+                                    dungeon[(key[0]+x,key[1],key[2])]['fill'] = 'C'
                                 else:
                                     break
                         elif usedir == 'yminloc':                             
                             for x in range(3):
-                                will_fit = in_dungeon((key[0],key[1]-x-1,key[2]))
+                                will_fit = in_dungeon((key[0],key[1]-x,key[2]))
                                 if not will_fit:                
-                                    dungeon[(key[0],key[1]-x-1,key[2])] = {}
-                                    dungeon[(key[0],key[1]-x-1,key[2])]['fill'] = 'C'
+                                    dungeon[(key[0],key[1]-x,key[2])] = {}
+                                    dungeon[(key[0],key[1]-x,key[2])]['fill'] = 'C'
                                 else:
                                     break
                         else: #ymaxloc
                             for x in range(3):
-                                will_fit = in_dungeon((key[0],key[1]+x+1,key[2]))
+                                will_fit = in_dungeon((key[0],key[1]+x,key[2]))
                                 if not will_fit:                
-                                    dungeon[(key[0],key[1]+x+1,key[2])] = {}
-                                    dungeon[(key[0],key[1]+x+1,key[2])]['fill'] = 'C'
+                                    dungeon[(key[0],key[1]+x,key[2])] = {}
+                                    dungeon[(key[0],key[1]+x,key[2])]['fill'] = 'C'
                                 else:
                                     break
 
