@@ -842,7 +842,7 @@ def check_action(pc_dict, coord, room_stack):
                 dungeon[new_coord[0]+1,new_coord[1],new_coord[2]] = {}
                 dungeon[new_coord[0]+1,new_coord[1],new_coord[2]]['fill'] = 'D'
             ## add angle parts
-            will_fit = in_dungeon(new_coord[0]-1,new_coord[1]+1,new_coord[2])
+            will_fit = in_dungeon((new_coord[0]-1,new_coord[1]+1,new_coord[2]))
             if not will_fit:
                 dungeon[new_coord[0]-1,new_coord[1]+1,new_coord[2]] = {}
                 dungeon[new_coord[0]-1,new_coord[1]+1,new_coord[2]]['fill'] = 'D'
