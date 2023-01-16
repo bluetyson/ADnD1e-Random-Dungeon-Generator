@@ -838,10 +838,10 @@ def check_action(pc_dict, coord, room_stack):
             will_fit = in_dungeon((new_coord[0],new_coord[1]+1,new_coord[2]))
             if not will_fit:
                 dungeon[new_coord[0],new_coord[1]+1,new_coord[2]] = {}
-                dungeon[new_coord[0],new_coord[1]+1,new_coord[2]]['fill'] = 'Dsd'
+                dungeon[new_coord[0],new_coord[1]+1,new_coord[2]]['fill'] = 'D'
                 s = roll_dice(1,20)
                 if s <= 5:
-                    dungeon[new_coord[0],new_coord[1]+1,new_coord[2]]['fill'] = 'Ds'
+                    dungeon[new_coord[0],new_coord[1]+1,new_coord[2]]['fill'] = 'Dsd'
                     e_dict = exit((new_coord[0],new_coord[1]+1,new_coord[2]))
                     exit_direction_full((new_coord[0],new_coord[1]+1,new_coord[2]), e_dict)
 
@@ -3537,7 +3537,7 @@ for down in range(zwidth-1):
                         #strdata = '<td>' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
                         strdata = '<td class="gray_background" style="color:' + color + '">' + borderdir  + downlist[down][i,j,0] + borderdire + '</td>'
 
-                elif downlist[down][i,j,0] == 'D':
+                elif 'D' in downlist[down][i,j,0]:  #could have numbering:
                     strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
                 elif downlist[down][i,j,0] == 'O':
                     strdata = '<td class="green_background">' + downlist[down][i,j,0] + '</td>'
