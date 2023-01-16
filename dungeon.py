@@ -2856,18 +2856,18 @@ def secret_doors(shape_dict):
                             which_way = roll_dice(1,2)           
                             if which_way == 1:  #corridor left
                                 for x in range(3):
-                                    will_fit = in_dungeon((key[0]-x-1,key[1]+x+1,key[2]))
+                                    will_fit = in_dungeon((key[0]-x,key[1]+x,key[2]))
                                     if not will_fit:                
-                                        dungeon[(key[0]-x-1,key[1]+x+1,key[2])] = {}
-                                        dungeon[(key[0]-x-1,key[1]+x+1,key[2])]['fill'] = 'C'
+                                        dungeon[(key[0]-x,key[1]+x,key[2])] = {}
+                                        dungeon[(key[0]-x,key[1]+x,key[2])]['fill'] = 'C'
                                     else:
                                         break
                             else:
                                 for x in range(3):
-                                    will_fit = in_dungeon((key[0]-x-1,key[1]-x-1,key[2]))
+                                    will_fit = in_dungeon((key[0]-x,key[1]-x,key[2]))
                                     if not will_fit:                
-                                        dungeon[(key[0]-x-1,key[1]-x-1,key[2])] = {}
-                                        dungeon[(key[0]-x-1,key[1]-x-1,key[2])]['fill'] = 'C'
+                                        dungeon[(key[0]-x,key[1]-x,key[2])] = {}
+                                        dungeon[(key[0]-x,key[1]-x,key[2])]['fill'] = 'C'
                                     else:
                                         break
 
@@ -2875,18 +2875,18 @@ def secret_doors(shape_dict):
                             which_way = roll_dice(1,2)           
                             if which_way == 1:  #corridor right
                                 for x in range(3):
-                                    will_fit = in_dungeon((key[0]+x+1,key[1]+x+1,key[2]))
+                                    will_fit = in_dungeon((key[0]+x,key[1]+x,key[2]))
                                     if not will_fit:                
-                                        dungeon[(key[0]+x+1,key[1]+x+1,key[2])] = {}
-                                        dungeon[(key[0]+x+1,key[1]+x+1,key[2])]['fill'] = 'C'
+                                        dungeon[(key[0]+x,key[1]+x,key[2])] = {}
+                                        dungeon[(key[0]+x,key[1]+x,key[2])]['fill'] = 'C'
                                     else:
                                         break
                             else: #corridor left
                                 for x in range(3):
-                                    will_fit = in_dungeon((key[0]+x+1,key[1]-x-1,key[2]))
+                                    will_fit = in_dungeon((key[0]+x,key[1]-x,key[2]))
                                     if not will_fit:                
-                                        dungeon[(key[0]+x+1,key[1]-x-1,key[2])] = {}
-                                        dungeon[(key[0]+x+1,key[1]-x-1,key[2])]['fill'] = 'C'
+                                        dungeon[(key[0]+x,key[1]-x,key[2])] = {}
+                                        dungeon[(key[0]+x,key[1]-x,key[2])]['fill'] = 'C'
                                     else:
                                         break
 
@@ -2894,18 +2894,18 @@ def secret_doors(shape_dict):
                             which_way = roll_dice(1,2)           
                             if which_way == 1:  #corridor left
                                 for x in range(3):
-                                    will_fit = in_dungeon((key[0]-x-1,key[1]-x-1,key[2]))
+                                    will_fit = in_dungeon((key[0]-x,key[1]-x,key[2]))
                                     if not will_fit:                
-                                        dungeon[(key[0]-x-1,key[1]-x-1,key[2])] = {}
-                                        dungeon[(key[0]-x-1,key[1]-x-1,key[2])]['fill'] = 'C'
+                                        dungeon[(key[0]-x,key[1]-x,key[2])] = {}
+                                        dungeon[(key[0]-x,key[1]-x,key[2])]['fill'] = 'C'
                                     else:
                                         break
                             else: #corridor right
                                 for x in range(3):
-                                    will_fit = in_dungeon((key[0]+x+1,key[1]-x-1,key[2]))
+                                    will_fit = in_dungeon((key[0]+x,key[1]-x,key[2]))
                                     if not will_fit:                
-                                        dungeon[(key[0]+x+1,key[1]-x-1,key[2])] = {}
-                                        dungeon[(key[0]+x+1,key[1]-x-1,key[2])]['fill'] = 'C'
+                                        dungeon[(key[0]+x,key[1]-x,key[2])] = {}
+                                        dungeon[(key[0]+x,key[1]-x,key[2])]['fill'] = 'C'
                                     else:
                                         break
 
@@ -2913,18 +2913,18 @@ def secret_doors(shape_dict):
                             which_way = roll_dice(1,2)           
                             if which_way == 1:  #corridor right
                                 for x in range(3):
-                                    will_fit = in_dungeon((key[0]-x-1,key[1]+x+1,key[2]))
+                                    will_fit = in_dungeon((key[0]-x,key[1]+x,key[2]))
                                     if not will_fit:                
-                                        dungeon[(key[0]-x-1,key[1]+x+1,key[2])] = {}
-                                        dungeon[(key[0]-x-1,key[1]+x+1,key[2])]['fill'] = 'C'
+                                        dungeon[(key[0]-x,key[1]+x,key[2])] = {}
+                                        dungeon[(key[0]-x,key[1]+x,key[2])]['fill'] = 'C'
                                     else:
                                         break
                             else: #corridor left
                                 for x in range(3):
-                                    will_fit = in_dungeon((key[0]+x+1,key[1]+x+1,key[2]))
+                                    will_fit = in_dungeon((key[0]+x,key[1]+x,key[2]))
                                     if not will_fit:                
-                                        dungeon[(key[0]+x+1,key[1]+x+1,key[2])] = {}
-                                        dungeon[(key[0]+x+1,key[1]+x+1,key[2])]['fill'] = 'C'
+                                        dungeon[(key[0]+x,key[1]+x,key[2])] = {}
+                                        dungeon[(key[0]+x,key[1]+x,key[2])]['fill'] = 'C'
                                     else:
                                         break
 
