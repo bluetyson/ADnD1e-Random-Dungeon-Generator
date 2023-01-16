@@ -3072,13 +3072,17 @@ for down in range(zwidth-1):
                             if keylist[0] == (i+xmin,j+ymin,0 - down -1):  ##try and match real coords
                                 print("found a secret door!")
                                 if secret_door_dict[s][keylist[1]]['loc'] == 'xminloc':
-                                    borderdir = 'left'
+                                    borderdir = '<divl>'
+                                    borderdire = '</divl>'
                                 elif secret_door_dict[s][keylist[1]] == 'xmaxloc':
-                                    borderdir = 'right'
+                                    borderdir = '<divr>'
+                                    borderdire = '</divr>'
                                 elif secret_door_dict[s][keylist[1]] == 'yminloc':                                    
-                                    borderdir = 'bottom'
+                                    borderdir = '<divb>'
+                                    borderdire = '</divb>'
                                 else:
-                                    borderdir = 'top'
+                                    borderdir = '<divt>'
+                                    borderdire = '</divt>'
 
                                 sdstr = 'border-' + borderdir + '-style: dashed'
 
@@ -3087,12 +3091,12 @@ for down in range(zwidth-1):
                         if sdstr == '':
                             strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
                         else:
-                            strdata = '<td class="gray_background"><divl>' + downlist[down][i,j,0] + '</divl></td>'
+                            strdata = '<td class="gray_background">' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
                     else:
                         if sdstr == "":
                             strdata = '<td class="gray_background" style="color:' + color + '">'  + downlist[down][i,j,0] + '</td>'
                         else:
-                            strdata = '<td class="gray_background" style="color:' + color + '"><divl>'  + downlist[down][i,j,0] + '</divl></td>'
+                            strdata = '<td class="gray_background" style="color:' + color + '">' + borderdir  + downlist[down][i,j,0] + borderdire + '</td>'
 
                 elif downlist[down][i,j,0] == 'D':
                     strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
