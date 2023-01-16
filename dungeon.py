@@ -2921,6 +2921,7 @@ for down in range(zwidth-1):
             padding: 10px;
             border: 1px solid black;
             border-collapse: collapse;
+            border-left-style: dotted
             width:auto
         }
         .red_background {
