@@ -2816,7 +2816,7 @@ def secret_doors(shape_dict):
         #loop through the secret doors  #just rest rooms first
         #somewhere in this loop is a problem
         for s in range(secret_door_count):
-            print("s for secret door count", s)
+            print("SECRET DOOR CHECK", s)
             for key in secret_door_dict[s + 1]: #room integers 1 onwards
                 print("key for secret_door_dict[s + 1]", key, "value:", secret_door_dict[s + 1][key])
                 if 'loc' in secret_door_dict[s + 1][key]:
@@ -2844,7 +2844,8 @@ def secret_doors(shape_dict):
                             if rm == "GOOD":
                                 secret_doors(shape_dict)                    
 
-                    #try full secret doors
+                else:
+                    #try full secret doors first key loc is bypassed as for exit full it checks the direction
                     e_dict = exit(key)
                     exit_direction_full(key, e_dict)
                     #e_dict = exit(coord)
@@ -3334,6 +3335,7 @@ for down in range(zwidth-1):
     #only for first level        
     if down == 0:
         #print("START CHECK")
+        #possible bug here
         chararray[0+xmin*-1,0+ymin*-1,0+zmax*-1] = 'O'        
         #print("START CHECK",chararray[0+xmin*-1,0+ymin*-1,0+zmin],0+xmin*-1,0+ymin*-1,-1)
     #print(chararray)
