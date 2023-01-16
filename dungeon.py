@@ -3150,6 +3150,13 @@ for down in range(zwidth-1):
                         else:
                             strdata = '<td class="gray_background" style="color:' + color + '">' + borderdir  + downlist[down][i,j,0] + borderdire + '</td>'
 
+                    if 'd' in usestr and 's' not in usestr:  #number and d
+                        print("found door")
+                        borderdir = '<divb>'
+                        borderdire = '</divb>'
+                        #strdata = '<td>' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
+                        strdata = '<td class="gray_background" style="color:' + color + '">' + borderdir  + downlist[down][i,j,0] + borderdire + '</td>'
+
                 elif downlist[down][i,j,0] == 'D':
                     strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
                 elif downlist[down][i,j,0] == 'O':
