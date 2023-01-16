@@ -1350,7 +1350,7 @@ def room_contents(shape_dict, coord, content):
         else:
             shape_dict = loot_hide(shape_dict)
 
-def room_make(shape_dict, coord):
+def room_make(shape_dict, coord, size="C"):
     newcoord = coord
 
     if shape_dict['shape'] == 'R':
@@ -1359,31 +1359,48 @@ def room_make(shape_dict, coord):
         #H x W
         #position based on size
         adjust = 0
-        if shape_dict['size'][1] % 2 == 0:
-            lr = roll_dice(1,2)
-            if lr == 1:
-                adjust = -1
-            else:
-                adjust = 1
-            adjust = 0
-            #don't adjust back rooms into not fitting for secret doors
-
-        #if shape_dict['size'][1] == 2:
-        for j in range(shape_dict['size'][1]):
-            for i in range(shape_dict['size'][0]):
-                will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
-                if not will_fit:                
-                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
-                    dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R' +  str(room_stack['key_count'])
-                    #add to room stack dictionary for key printing
-                    room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
-                    if i == 0 and j == 0 and 'fromdoor' in shape_dict:
-                        room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'Rd' + str(room_stack['key_count'])
-                    else:
-                        room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R' + str(room_stack['key_count'])
-
+        if size == "C":
+            if shape_dict['size'][1] % 2 == 0:
+                lr = roll_dice(1,2)
+                if lr == 1:
+                    adjust = -1
                 else:
-                    break
+                    adjust = 1
+                #don't adjust back rooms into not fitting for secret doors
+
+            #if shape_dict['size'][1] == 2:
+            for j in range(shape_dict['size'][1]):
+                for i in range(shape_dict['size'][0]):
+                    will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j+1,coord[2]))
+                    if not will_fit:                
+                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
+                        dungeon[(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R' +  str(room_stack['key_count'])
+                        #add to room stack dictionary for key printing
+                        room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j+1,coord[2])] = {}
+                        if i == 0 and j == 0 and 'fromdoor' in shape_dict:
+                            room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'Rd' + str(room_stack['key_count'])
+                        else:
+                            room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j+1,coord[2])]['fill'] = 'R' + str(room_stack['key_count'])
+
+                    else:
+                        break
+        else:  ## branch for from inside rooms and secret doors
+            for j in range(shape_dict['size'][1]):
+                for i in range(shape_dict['size'][0]):
+                    will_fit = in_dungeon((coord[0] + i + adjust,coord[1]+j,coord[2]))
+                    if not will_fit:                
+                        dungeon[(coord[0] + i + adjust,coord[1]+j,coord[2])] = {}
+                        dungeon[(coord[0] + i + adjust,coord[1]+j,coord[2])]['fill'] = 'R' +  str(room_stack['key_count'])
+                        #add to room stack dictionary for key printing
+                        room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j,coord[2])] = {}
+                        if i == 0 and j == 0 and 'fromdoor' in shape_dict:
+                            room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j,coord[2])]['fill'] = 'Rd' + str(room_stack['key_count'])
+                        else:
+                            room_stack[room_stack['key_count']][(coord[0] + i + adjust,coord[1]+j,coord[2])]['fill'] = 'R' + str(room_stack['key_count'])
+
+                    else:
+                        break
+
 
         #loop the shape_dict contents for exists etc
         print("ROOM SHAPE DICT CONTENTS")
@@ -2768,7 +2785,7 @@ def secret_doors(shape_dict):
                         print("params for room_make call", shape_dict, key)
                         ##room_make(shape_dict, key)
                         
-                        rm = room_make(shape_dict, key)  ##right value here
+                        rm = room_make(shape_dict, key, size="R")  ##right value here - pass R for room to get it to not adjust y plot
                         if rm == "GOOD":
                             secret_doors(shape_dict)                    
 
