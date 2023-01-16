@@ -3550,7 +3550,7 @@ for down in range(zwidth-1):
 
 
                     if 'sd' in usestr:  #number and d
-                        dead_end = dead_end_dict(i+xmin,j+ymin,0 - down -1)
+                        dead_end = dead_end_dict[(i+xmin,j+ymin,0 - down -1)]
 
                         print("found Dead End Secret door")
                         if dead_end == 'ymax':
