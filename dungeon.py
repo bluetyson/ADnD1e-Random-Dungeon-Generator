@@ -3016,6 +3016,7 @@ for down in range(zwidth-1):
     legend_dict['R'] = "Chamber/Room"
     legend_dict['D'] = "Dead End"
     legend_dict['d'] = "door"
+    legend_dict[':'] = "direction of Door"
     legend_dict['wm'] = "Wandering Monster"
     legend_dict['sd'] = "Secret Door"
     legend_dict['st'] = "Stairs"
