@@ -2948,7 +2948,6 @@ for down in range(zwidth-1):
 
         divl {
             border-left-style: dotted
-            padding: 10px;
         }            
         divr {
             border-right-style: dotted
