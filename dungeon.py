@@ -3084,8 +3084,14 @@ for down in range(zwidth-1):
                         usestr = usestr.replace('R','')
                         usestr = usestr.replace('sd','')
                         usestr = usestr.replace('c','')
+                        usestr = usestr.replace('g','')
+                        usestr = usestr.replace('j','')
+                        usestr = usestr.replace('G','')
                         usestr = usestr.replace('m','')
+                        usestr = usestr.replace('p','')
+                        usestr = usestr.replace('s','')
                         usestr = usestr.replace('t','')
+                        
                         ## get anything but number eventually regex
                         #usestr = usestr[0]
                         secret_door_dict = room_stack['shape_dict'][int(usestr)]['contents']['secret_door_dict']
