@@ -3089,12 +3089,15 @@ for down in range(zwidth-1):
                     usestr = copy.deepcopy(downlist[down][i,j,0])
                     usestr = usestr.replace('C','')
 
-                    if 'd' in usestr and len(usestr) == 1:  #number and d
+                    if 'd' in usestr and 's' not in usestr:  #number and d
+                        print("found door")
                         borderdir = '<divb>'
                         borderdire = '</divb>'
                         strdata = '<td">' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
-
-                    strdata = '<td>' + downlist[down][i,j,0] + '</td>'
+                        borderdir = '<divt>'
+                        borderdire = '</divt>'
+                    else:
+                        strdata = '<td>' + downlist[down][i,j,0] + '</td>'
                 elif 'R' in downlist[down][i,j,0]:  #could have numbering
                     sdstr = ''
                     if 'sd' in downlist[down][i,j,0]:
