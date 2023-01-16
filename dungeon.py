@@ -3078,11 +3078,11 @@ for down in range(zwidth-1):
                                     borderdir = '<divr>'
                                     borderdire = '</divr>'
                                 elif secret_door_dict[s][keylist[1]] == 'yminloc':                                    
-                                    borderdir = '<divb>'
-                                    borderdire = '</divb>'
-                                else:
                                     borderdir = '<divt>'
                                     borderdire = '</divt>'
+                                else:
+                                    borderdir = '<divb>'
+                                    borderdire = '</divb>'
 
                                 sdstr = 'border-' + borderdir + '-style: dashed'
 
