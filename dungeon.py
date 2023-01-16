@@ -2948,6 +2948,9 @@ for down in range(zwidth-1):
 
         divl {
             border-left-style: dotted
+            padding: 10px;
+            border-collapse: collapse;
+            width:auto            
         }            
         divr {
             border-right-style: dotted
@@ -3087,12 +3090,12 @@ for down in range(zwidth-1):
                         if sdstr == '':
                             strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
                         else:
-                            strdata = '<divl><td class="gray_background">' + downlist[down][i,j,0] + '</td></divl>'
+                            strdata = '<td class="gray_background"><divl>' + downlist[down][i,j,0] + '</divl></td>'
                     else:
                         if sdstr == "":
                             strdata = '<td class="gray_background" style="color:' + color + '">'  + downlist[down][i,j,0] + '</td>'
                         else:
-                            strdata = '<divl><td class="gray_background" style="color:' + color + '">'  + downlist[down][i,j,0] + '</td></divl>'
+                            strdata = '<td class="gray_background" style="color:' + color + '"><divl>'  + downlist[down][i,j,0] + '</divl></td>'
 
                 elif downlist[down][i,j,0] == 'D':
                     strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
