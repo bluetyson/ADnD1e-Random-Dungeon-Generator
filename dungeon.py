@@ -796,8 +796,8 @@ def check_action(pc_dict, coord, room_stack):
         check_coord_A = (new_coord[0],new_coord[1]+1,new_coord[2])
 
         dead_end = True
-        secret_door_count = 0
-        secret_door_dict = {}
+        dead_end_count = 0
+        dead_end_dict = {}
 
         if check_coord_L not in dungeon:
             ## need to check if in dungeons where putting Ds
@@ -835,6 +835,7 @@ def check_action(pc_dict, coord, room_stack):
             #need to check for secret doors here
             #only in left, right and ahead
             #put SD dict in to handle the directions, or a dict that can be read out?  
+            #or make a dead end dict as no rooms here
             will_fit = in_dungeon((new_coord[0],new_coord[1]+1,new_coord[2]))
             if not will_fit:
                 dungeon[new_coord[0],new_coord[1]+1,new_coord[2]] = {}
