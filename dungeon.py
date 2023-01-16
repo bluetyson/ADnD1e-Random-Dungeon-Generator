@@ -2348,7 +2348,7 @@ def level(coord):
     #level_dict['new_coord'] = new_coord
     return level_dict
 
-def bad_things(coord, size="C",room_stack):
+def bad_things(coord, room_stack, size="C"):
     '''
     option to have it concatenate to fill by passing other than size="C"
     still need to work out bad things for rooms in random spot
