@@ -2822,26 +2822,33 @@ def secret_doors(shape_dict):
                 if 'loc' in secret_door_dict[s + 1][key]:
                     #key is the location
                     #want a reduced exit_result
-                    if secret_door_dict[s + 1][key]['beyond'] == 'Room':
-                        print("in secret door room and rolling")
-                        new_coord = secret_door_dict[s + 1][key]
-                        #shape_dict = room(secret_door_dict[s + 1][key], room_stack, size='R' )  ## different type to get slightly different table
-                        print("room stack before", room_stack)
-                        shape_dict = room(key, room_stack, size='R' )  ## different type to get slightly different table
-                        print("room stack after", room_stack)
+                    if 1 == 2:
+                        if secret_door_dict[s + 1][key]['beyond'] == 'Room':
+                            print("in secret door room and rolling")
+                            new_coord = secret_door_dict[s + 1][key]
+                            #shape_dict = room(secret_door_dict[s + 1][key], room_stack, size='R' )  ## different type to get slightly different table
+                            print("room stack before", room_stack)
+                            shape_dict = room(key, room_stack, size='R' )  ## different type to get slightly different table
+                            print("room stack after", room_stack)
 
-                        print("SECRETDOORDICT",secret_door_dict)
-                        print("NEW_COORD",new_coord, "KEY:",key)
-                        print("SHAPEDICTSD",shape_dict)
+                            print("SECRETDOORDICT",secret_door_dict)
+                            print("NEW_COORD",new_coord, "KEY:",key)
+                            print("SHAPEDICTSD",shape_dict)
 
-                        print("ROOM SHAPE ROOM SD:",shape_dict)
-                        ## do simple version first of x directions and y directions of rectangular
-                        print("params for room_make call", shape_dict, key)
-                        ##room_make(shape_dict, key)
-                        
-                        rm = room_make(shape_dict, key, size="R")  ##right value here - pass R for room to get it to not adjust y plot
-                        if rm == "GOOD":
-                            secret_doors(shape_dict)                    
+                            print("ROOM SHAPE ROOM SD:",shape_dict)
+                            ## do simple version first of x directions and y directions of rectangular
+                            print("params for room_make call", shape_dict, key)
+                            ##room_make(shape_dict, key)
+                            
+                            rm = room_make(shape_dict, key, size="R")  ##right value here - pass R for room to get it to not adjust y plot
+                            if rm == "GOOD":
+                                secret_doors(shape_dict)                    
+
+                    #try full secret doors
+                    e_dict = exit(key)
+                    exit_direction_full(key, e_dict)
+                    #e_dict = exit(coord)
+
 
 
 def exit_direction_full(coord, e_dict):
