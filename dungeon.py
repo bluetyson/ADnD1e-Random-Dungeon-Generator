@@ -849,6 +849,7 @@ def check_action(pc_dict, coord, room_stack):
             if not will_fit:
                 dungeon[new_coord[0]-1,new_coord[1],new_coord[2]] = {}
                 dungeon[new_coord[0]-1,new_coord[1],new_coord[2]]['fill'] = 'D'
+                s = roll_dice(1,20)
                 if s <= 5:
                     dungeon[new_coord[0]-1,new_coord[1],new_coord[2]]['fill'] = 'Dsd'
                     e_dict = exit((new_coord[0]-1,new_coord[1],new_coord[2]))
@@ -858,6 +859,7 @@ def check_action(pc_dict, coord, room_stack):
             if not will_fit:
                 dungeon[new_coord[0]+1,new_coord[1],new_coord[2]] = {}
                 dungeon[new_coord[0]+1,new_coord[1],new_coord[2]]['fill'] = 'D'
+                s = roll_dice(1,20)
                 if s <= 5:
                     dungeon[new_coord[0]-1,new_coord[1],new_coord[2]]['fill'] = 'Dsd'
                     e_dict = exit((new_coord[0]+1,new_coord[1],new_coord[2]))
