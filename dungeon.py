@@ -3047,15 +3047,13 @@ for down in range(zwidth-1):
                         for s in secret_door_dict:
                             print("secret door",s,secret_door_dict[s],"ijk:",i+xmin,j+ymin,0 - down -1)
                             keylist = list(secret_door_dict[s].keys())
-                            for key in keylist:
-                                print(key, secret_door_dict[s][key])
                             if keylist[0] == (i+xmin,j+ymin,0 - down -1):  ##try and match real coords
                                 print("found a secret door!")
-                                if keylist[1]['loc'] == 'xminloc':
+                                if secret_door_dict[s][keylist[1]]['loc'] == 'xminloc':
                                     borderdir = 'left'
-                                elif keylist[1]['loc'] == 'xmaxloc':
+                                elif secret_door_dict[s][keylist[1]] == 'xmaxloc':
                                     borderdir = 'right'
-                                elif keylist[1]['loc'] == 'yminloc':                                    
+                                elif secret_door_dict[s][keylist[1]] == 'yminloc':                                    
                                     borderdir = 'bottom'
                                 else:
                                     borderdir = 'top'
