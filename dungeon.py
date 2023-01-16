@@ -2907,7 +2907,7 @@ for down in range(zwidth-1):
     #need a multi-level maker, this is just doing first for now
     #Each side can be set individually using border-top-color, border-right-color, border-bottom-color, and border-left-color; or using the writing mode-aware border-block-start-color, border-block-end-color, border-inline-start-color, and border-inline-end-color.
     #make dungeon html
-    #            border: 1px solid black;
+    #            
 
     strhead = '''
 
@@ -2919,6 +2919,7 @@ for down in range(zwidth-1):
         th,
         td {
             padding: 10px;
+            border: 1px solid black;
             border-collapse: collapse;
             width:auto
         }
@@ -2944,6 +2945,20 @@ for down in range(zwidth-1):
         .black_background {
                 background-color: black;
             }
+
+        divl {
+            border-left-style: dotted
+        }            
+        divr {
+            border-right-style: dotted
+        }            
+        divt {
+            border-top-style: dotted
+        }            
+        divb {
+            border-bottom-style: dotted
+        }            
+
 
         </style>
     </head>
@@ -3072,12 +3087,12 @@ for down in range(zwidth-1):
                         if sdstr == '':
                             strdata = '<td class="gray_background">' + downlist[down][i,j,0] + '</td>'
                         else:
-                            strdata = '<td class="gray_background style="' + sdstr + '">' + downlist[down][i,j,0] + '</td>'
+                            strdata = '<td class="gray_background"><divl>' + downlist[down][i,j,0] + '</divl></td>'
                     else:
                         if sdstr == "":
                             strdata = '<td class="gray_background" style="color:' + color + '">'  + downlist[down][i,j,0] + '</td>'
                         else:
-                            strdata = '<td class="gray_background" style="color:' + color + " " + sdstr + '">'  + downlist[down][i,j,0] + '</td>'
+                            strdata = '<td class="gray_background" style="color:' + color + '"><divl>'  + downlist[down][i,j,0] + '</divl></td>'
 
                 elif downlist[down][i,j,0] == 'D':
                     strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
