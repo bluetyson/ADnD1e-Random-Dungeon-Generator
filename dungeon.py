@@ -1545,7 +1545,7 @@ def room_make(shape_dict, coord, size="C"):
                         print("TRAP ROOM ROLL CHECK:",w)
                         trap_string = ''
                         for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
-                            print("trapindex",r)
+                            #print("trapindex",r)
                             if 1 == 1:  #work out if shape_dict bad things initial doing what it needs - not putting in ranom place though?
                                 #so this disabled for now
                                 #if use this take it out of shape_dict['trap'] and just use this for indicator
