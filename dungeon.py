@@ -3091,10 +3091,10 @@ for down in range(zwidth-1):
                                 if secret_door_dict[s][keylist[1]]['loc'] == 'xminloc':
                                     borderdir = '<divl>'
                                     borderdire = '</divl>'
-                                elif secret_door_dict[s][keylist[1]] == 'xmaxloc':
+                                elif secret_door_dict[s][keylist[1]]['loc'] == 'xmaxloc':
                                     borderdir = '<divr>'
                                     borderdire = '</divr>'
-                                elif secret_door_dict[s][keylist[1]] == 'yminloc':                                    
+                                elif secret_door_dict[s][keylist[1]]['loc'] == 'yminloc':                                    
                                     borderdir = '<divt>'
                                     borderdire = '</divt>'
                                 else:
