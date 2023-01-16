@@ -3093,7 +3093,7 @@ for down in range(zwidth-1):
                         print("found door")
                         borderdir = '<divb>'
                         borderdire = '</divb>'
-                        strdata = '<td">' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
+                        strdata = '<td>' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
                         borderdir = '<divt>'
                         borderdire = '</divt>'
                     else:
