@@ -1,3 +1,5 @@
+from dungeon import roll_dice
+
 def testmonster():
     return "No monsters yet!"
 
