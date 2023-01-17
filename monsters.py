@@ -1,4 +1,6 @@
-from dungeon import roll_dice
+def roll_dice(number, sides):
+    roll = random.randint(number,sides)
+    return roll
 
 def testmonster():
     return "No monsters yet!"
