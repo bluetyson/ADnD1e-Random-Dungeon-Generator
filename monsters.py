@@ -51,7 +51,7 @@ def level_matrix(level):
     return monster_level
 
 if len(ARGV) > 1:
-    monster_level = level_matrix(ARGV[1])
+    monster_level = level_matrix(int(ARGV[1]))
 else:
     monster_level = level_matrix(3)
 print("MONSTER LEVEL:",monster_level)
