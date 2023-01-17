@@ -2734,16 +2734,17 @@ def wet_small(shape_dict, coord):
         wet_dict['magic'] = 'Y'
         shape_dict = wet_magic(shape_dict)
 
-    if not in shape_dict:
+    if 'pool' not in shape_dict:
         shape_dict['pool'] = ''
         shape_dict['pool'] = wet_dict
-        
+
     return shape_dict
 
 
 def wet_large(shape_dict, coord):
     #not implemented yet
     w = roll_dice(1,20)
+    print("WET LARGE ROLL:",w)
     wet_dict = {}
     wet_dict['wet'] = 'N'
     wet_dict['monster'] = 'N'
@@ -2779,6 +2780,8 @@ def wet_large(shape_dict, coord):
             wet_dict['portal'] = 'another world/dungeon23/other place'
             #otherwise can be monster, but above is more fun unless solo or could random
 
+    if 'lake' not in shape_dict:
+        shape_dict['lake'] = ''
         shape_dict['lake'] = wet_dict
 
     return shape_dict
