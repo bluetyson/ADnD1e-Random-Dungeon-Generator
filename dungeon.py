@@ -3744,8 +3744,8 @@ for down in range(zwidth-1):
 
                                     sdstr = 'border-' + borderdir + '-style: dashed'
                         except Exception as secretdoorE:
-                            error_dict[error_dict['keycount_count']] = deadendE
-                            error_dict['keycount_count'] += 1                            
+                            error_dict[error_dict['key_count']] = secretdoorE
+                            error_dict['key_count'] += 1                            
 
                     color = colorcheck(downlist[down][i,j,0])
                     if color == 'notreasure':
