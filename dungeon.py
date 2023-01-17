@@ -1505,10 +1505,9 @@ def room_make(shape_dict, coord, size="C"):
                 #mid_coord = (trxmin + mid_room[0],trymin + mid_room[1], trzmin)
                 #now picking a random coord from list that exists to do this
                 mid_coord = coord_random(room_stack[room_stack['key_count']])
-                print(mid_room, mid_coord)
-                
+                #print(mid_room, mid_coord)
+                print(mid_coord)
 
-                #for water - fails then just pick a random coord for the room for pool 
                 #for lake - remove any edge coords
 
                 ##need to put in dict - maybe replace R with P in the fill
