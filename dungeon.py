@@ -3625,8 +3625,6 @@ for down in range(zwidth-1):
 
         if 'c' in dungeonstr:
             return '#B87333'
-        elif 's' in dungeonstr:
-            return '#C0C0C0'
         elif 'g' in dungeonstr:
             return '#FFD700'
         elif 'p' in dungeonstr:
@@ -3639,6 +3637,11 @@ for down in range(zwidth-1):
             return '#E0115F '
         elif 'M' in dungeonstr: 
             return '#FF1493'
+        elif 's' in dungeonstr:
+            if 'sd' not in dungeonstr:
+                return '#C0C0C0'
+            else:
+                return '#FFFFFF'
         else:
             return 'notreasure'
 
