@@ -993,7 +993,7 @@ def check_action(pc_dict, coord, room_stack):
         wandering_monster_stack[wandering_monster_stack['key_count']] = {}
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord] = {}
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'] = level_matrix(abs(coord[2]))
-        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['monster'] = 'NA'
+        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = 'NA'
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 0
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = 0
 
@@ -1439,14 +1439,14 @@ def room_contents(shape_dict, coord, content):
     elif r >13 and r <=14:
         shape_dict['contents']['monster'] = {}
         shape_dict['contents']['monster']['level'] = level_matrix(abs(coord[2]))
-        shape_dict['contents']['monster']['type'] =  = 'NA'
+        shape_dict['contents']['monster']['type'] = 'NA'
         shape_dict['contents']['monster']['No'] = 0
         shape_dict['contents']['monster'] = 0
     elif r >15 and r <=17:
         shape_dict['contents']['monster'] = {}
         shape_dict['contents']['treasure'] = {}
         shape_dict['contents']['monster']['level'] = level_matrix(abs(coord[2]))
-        shape_dict['contents']['monster']['type'] =  = 'NA'
+        shape_dict['contents']['monster']['type'] = 'NA'
         shape_dict['contents']['monster']['No'] = 0
         shape_dict['contents']['monster'] = 0
 
