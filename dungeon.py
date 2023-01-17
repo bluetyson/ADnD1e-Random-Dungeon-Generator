@@ -1503,14 +1503,14 @@ def room_make(shape_dict, coord, size="C"):
                         print("fitting mid_coord", mid_coord)
                         dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'P'
                     else:
-                        print("fit fail",room_stack[room_stack['key_count'])
+                        print("fit fail",room_stack[room_stack['key_count']])
                 elif shape_dict[key] == 'L':
                     print("has Lake")
                     if mid_coord in dungeon:
                         print("fitting mid_coord", mid_coord)
                         dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'L'
                     else:
-                        print("fit fail",room_stack[room_stack['key_count'])
+                        print("fit fail",room_stack[room_stack['key_count']])
 
                 elif shape_dict[key] == 'W':
                     print("has Well")
@@ -1518,7 +1518,7 @@ def room_make(shape_dict, coord, size="C"):
                         print("fitting mid_coord", mid_coord)
                         dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'W'
                     else:
-                        print("fit fail",room_stack[room_stack['key_count'])
+                        print("fit fail",room_stack[room_stack['key_count']])
 
                 elif shape_dict[key] == 'S':
                     print("has Shaft")
@@ -1526,7 +1526,7 @@ def room_make(shape_dict, coord, size="C"):
                         print("fitting mid_coord", mid_coord)
                         dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'S'
                     else:
-                        print("fit fail",room_stack[room_stack['key_count'])
+                        print("fit fail",room_stack[room_stack['key_count']])
 
                 else:
                     pass #not wet
