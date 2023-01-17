@@ -3472,7 +3472,7 @@ error_dict = {}
 error_dict['key_count'] = 0
 error_dict['type'] = {}
 
-water_check = {}
+water_dict = {}
 #make water log as need to run a lot to get one and can't scroll that far
 
 dungeon = {}
