@@ -1495,6 +1495,7 @@ def room_make(shape_dict, coord, size="C"):
                 mid_room = [int(trxmax-trxmin)/2+1,int(trymax-trymin)/2+1]  ## got to get from coords
                 #for pool, shaft, well
                 mid_coord = (mid_room[0],mid_room[1], trzmin)
+                print(mid_room, mid_coord)
 
                 #for water - fails then just pick a random coord for the room for pool 
                 #for lake - remove any edge coords
