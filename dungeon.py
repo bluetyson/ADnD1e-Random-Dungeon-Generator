@@ -3733,18 +3733,22 @@ for down in range(zwidth-1):
 
 
                     if 'sd' in usestr:  #number and d
-                        dead_end = dead_end_dict[(i+xmin,j+ymin,0 - down -1)]
+                        try:
+                            dead_end = dead_end_dict[(i+xmin,j+ymin,0 - down -1)]
 
-                        print("found Dead End Secret door")
-                        if dead_end == 'ymax':
-                            borderdir = '<divb>'
-                            borderdire = '</divb>'
-                        elif dead_end == 'xmax':
-                            borderdir = '<divr>'
-                            borderdire = '</divr>'
-                        else:
-                            borderdir = '<divl>'
-                            borderdire = '</divl>'                            
+                            print("found Dead End Secret door")
+                            if dead_end == 'ymax':
+                                borderdir = '<divb>'
+                                borderdire = '</divb>'
+                            elif dead_end == 'xmax':
+                                borderdir = '<divr>'
+                                borderdire = '</divr>'
+                            else:
+                                borderdir = '<divl>'
+                                borderdire = '</divl>'                            
+                        except Exception as deadendE:
+                            print("ERROR",deadendE)
+                            #make an error log?
 
                         strdata = '<td class="brown_background">' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
                         borderdir = '<divt>'
