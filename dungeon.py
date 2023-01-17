@@ -974,7 +974,7 @@ def check_action(pc_dict, coord, room_stack):
         print("WANDERING MONSTER")
         new_coord = coord
         roll_first = random_check()
-        "+1 like trap - wm"
+        #"+1 like trap - wm"
         result_coord = check_action(roll_first, new_coord, room_stack)
         new_coord = result_coord
 
@@ -982,6 +982,13 @@ def check_action(pc_dict, coord, room_stack):
         if not will_fit:                                                
             dungeon[(coord[0],coord[1]+1,coord[2])] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'wm'
+            wandering_monster_stack['key_count'] +=1
+            wandering_monster_stack[wandering_monster_stack['key_count']][coord] = {}
+            wandering_monster_stack[wandering_monster_stack['key_count']][coord]['level'] = level_matrix(abs(coord[2]))
+            wandering_monster_stack[wandering_monster_stack['key_count']][coord]['monster'] = 'NA'
+            wandering_monster_stack[wandering_monster_stack['key_count']][coord]['NA'] = 'NA'
+            wandering_monster_stack[wandering_monster_stack['key_count']][coord]['XP'] = 'NA'
+
         else:
             print('wm filled up check:',dungeon[(coord[0],coord[1]+1,coord[2])])
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'wm' #get this to work
@@ -3493,6 +3500,45 @@ def exit_direction_full(coord, e_dict):
                 if rm == "GOOD":
                     secret_doors(shape_dict)                    
 
+def monster_check(level, monster):
+    lst = monster[level]
+    r = roll_dice(1,20)
+    for index, l in enumerate(lst):
+        if index == 0:
+            if r <= lst[index]:
+                return(index+1)
+        else:
+            if r <= lst[index] and r > lst[index-1]:
+                return(index+1)
+
+def level_matrix(level):
+    '''
+    level is level of the dungeon
+    '''
+    monster = {}
+    monster[1] = [16,19,20]
+    monster[2] = [12,16,18,19,20]
+    monster[3] = [12,16,18,19,20]
+    monster[4] = [5,6,16,18,19,20]
+    monster[5] = [3,6,12,16,18,19,20]
+    monster[6] = [2,4,6,12,16,18,19,20]
+    monster[7] = [1,3,5,10,14,16,18,19,20]
+    monster[8] = [1,2,4,7,10,14,16,18,19,20]
+    monster[9] = [1,2,3,5,8,12,15,17,19,20]
+    monster[10] = [1,2,3,4,6,9,12,16,19,20]
+    monster[11] = [1,2,3,4,6,9,12,16,19,20]
+    monster[12] = [1,2,3,4,5,7,9,12,18,20]
+    monster[13] = [1,2,3,4,5,7,9,12,18,20]
+    monster[14] = [1,2,3,4,5,6,8,11,17,20]
+    monster[15] = [1,2,3,4,5,6,8,11,17,20]
+    monster[16] = [1,2,3,4,5,6,7,10,16,20]
+
+    if level <=16:                        
+        monster_level = monster_check(level, monster)
+    else:
+        monster_level = monster_check(16, monster)
+
+    return monster_level
 
 
 #need data structure
@@ -3509,7 +3555,8 @@ def exit_direction_full(coord, e_dict):
 from monsters import testmonster
 from treasure import testtreasure
 print (testmonster() + ' ' + testtreasure())
-#testtreasure()
+#print(testtreasure())
+
 
 PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't count first one down
 
@@ -3536,6 +3583,9 @@ room_stack['shape_dict'] = {}
 trap_stack = {}
 
 ##add room key as identifier
+wandering_monster_stack = {}
+wandering_monster_stack['key_count'] = 0
+
 monster_stack = {}
 dead_end_dict = {}
 
@@ -3938,6 +3988,15 @@ for down in range(zwidth-1):
                 if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                     print("HAS WATER TO DO")
                     water_dict[room] = room_stack['shape_dict']
+
+        if len(wandering_monster_stack) > 0:
+            for wm in range(wandering_monster_stack['key_count']):
+                f.write('<h3>Wandering Monster: ' + str(room) + '</h3>')
+                f.write(str(room_stack['shape_dict'][room]) + '<br>')
+                if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
+                    print("HAS WATER TO DO")
+                    water_dict[room] = room_stack['shape_dict']
+
 
 
         f.write(strend)

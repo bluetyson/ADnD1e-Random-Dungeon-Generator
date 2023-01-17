@@ -8,7 +8,7 @@ def roll_dice(number, sides):
     return roll
 
 def testmonster():
-    return "No monsters yet!"
+    return "On level of monsters so far!"
 
 def monster_check(level, monster):
     lst = monster[level]
