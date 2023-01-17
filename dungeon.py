@@ -1664,6 +1664,7 @@ def room_make(shape_dict, coord, size="C"):
                                 dungeon[(rxmin,y,rzmin)]['fill'] = dungeon[(rxmin,y,rzmin)]['fill'] + 'sd'
                             except Exception as nosdfillE:
                                 error_dict[error_dict['key_count']] = nosdfillE
+                                error_dict['type']['key_count'] = "secret door fill 1667"
                                 error_dict['key_count'] += 1
                                 print(nosdfillE)
                                 print("DUNGEONERRORCHECK:",dungeon, "xmin sd")
@@ -1689,6 +1690,7 @@ def room_make(shape_dict, coord, size="C"):
                             except Exception as nosdfillE:
                                 print(nosdfillE)
                                 error_dict[error_dict['key_count']] = nosdfillE
+                                error_dict['type']['key_count'] = "secret door fill 1693"
                                 error_dict['key_count'] += 1
                                 print("DUNGEONERRORCHECK:",dungeon, "xmax sd")
                                 print("ROOMSTACKCHECK:",room_stack)
@@ -1712,6 +1714,7 @@ def room_make(shape_dict, coord, size="C"):
                                 dungeon[(x,rymin,rzmin)]['fill'] = dungeon[(x,rymin,rzmin)]['fill'] + 'sd'
                             except Exception as nosdfillE:
                                 error_dict[error_dict['key_count']] = nosdfillE
+                                error_dict['type']['key_count'] = "secret door fill 1717"
                                 error_dict['key_count'] += 1
                                 print(nosdfillE)
                                 print("DUNGEONERRORCHECK:",dungeon, "ymin sd")
@@ -1734,6 +1737,7 @@ def room_make(shape_dict, coord, size="C"):
                                 dungeon[(x,rymax,rzmin)]['fill'] = dungeon[(x,rymax,rzmin)]['fill'] + 'sd'
                             except Exception as nosdfillE:
                                 error_dict[error_dict['key_count']] = nosdfillE
+                                error_dict['type']['key_count'] = "secret door fill 1740"
                                 error_dict['key_count'] += 1
                                 print(nosdfillE)
                                 print("DUNGEONERRORCHECK:",dungeon, "ymax sd")
@@ -1849,6 +1853,7 @@ def room_make(shape_dict, coord, size="C"):
                                 el = [rxmin,rymin + es -1]
                             except Exception as roomsizeE:
                                 error_dict[error_dict['key_count']] = roomsizeE
+                                error_dict['type']['key_count'] = "room size 1855"
                                 error_dict['key_count'] += 1
 
                                 #try and work out if null room - might go away if now has no coords
@@ -3465,6 +3470,7 @@ dead_end_dict = {}
 
 error_dict = {}
 error_dict['key_count'] = 0
+error_dict['type'] = {}
 
 dungeon = {}
 dungeon[(0,0,0)] = {}
@@ -3764,6 +3770,7 @@ for down in range(zwidth-1):
                                     sdstr = 'border-' + borderdir + '-style: dashed'
                         except Exception as secretdoorE:
                             error_dict[error_dict['key_count']] = secretdoorE
+                            error_dict['type']['key_count'] = "secret door output 3772"
                             error_dict['key_count'] += 1                            
 
                     color = colorcheck(downlist[down][i,j,0])
@@ -3807,6 +3814,7 @@ for down in range(zwidth-1):
                                 strdata = '<td class="brown_background">' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
                         except Exception as deadendE:
                             error_dict[error_dict['key_count']] = deadendE
+                            error_dict['type']['key_count'] = "dead end output 3816"
                             error_dict['key_count'] += 1
 
                             print("ERROR",deadendE)
