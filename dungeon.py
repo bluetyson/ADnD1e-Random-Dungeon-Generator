@@ -3991,14 +3991,10 @@ for down in range(zwidth-1):
 
         if len(wandering_monster_stack) > 0:
             for wm in range(wandering_monster_stack['key_count']):
-                f.write('<h3>Wandering Monster: ' + str(room) + '</h3>')
-                f.write(str(room_stack['shape_dict'][room]) + '<br>')
-                if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
-                    print("HAS WATER TO DO")
-                    water_dict[room] = room_stack['shape_dict']
+                f.write('<h4>Wandering Monster: ' + str(w,) + '</h4>')
+                f.write(wandering_monster_stack[wm]) + '<br>')
 
-
-
+        #end of page
         f.write(strend)
 
 
