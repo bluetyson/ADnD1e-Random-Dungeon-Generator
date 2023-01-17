@@ -1625,6 +1625,8 @@ def room_make(shape_dict, coord, size="C"):
                             try:
                                 dungeon[(rxmin,y,rzmin)]['fill'] = dungeon[(rxmin,y,rzmin)]['fill'] + 'sd'
                             except Exception as nosdfillE:
+                                error_dict[error_dict['keycount_count']] = nosdfillE
+                                error_dict['keycount_count'] += 1
                                 print(nosdfillE)
                                 print("DUNGEONERRORCHECK:",dungeon, "xmin sd")
                                 print("ROOMSTACKCHECK:",room_stack)
@@ -1648,6 +1650,8 @@ def room_make(shape_dict, coord, size="C"):
                                 dungeon[(rxmax,y,rzmin)]['fill'] = dungeon[(rxmax,y,rzmin)]['fill'] + 'sd'
                             except Exception as nosdfillE:
                                 print(nosdfillE)
+                                error_dict[error_dict['keycount_count']] = nosdfillE
+                                error_dict['keycount_count'] += 1
                                 print("DUNGEONERRORCHECK:",dungeon, "xmax sd")
                                 print("ROOMSTACKCHECK:",room_stack)
                                 #raise("coordinate fail error")
@@ -1669,6 +1673,8 @@ def room_make(shape_dict, coord, size="C"):
                             try:
                                 dungeon[(x,rymin,rzmin)]['fill'] = dungeon[(x,rymin,rzmin)]['fill'] + 'sd'
                             except Exception as nosdfillE:
+                                error_dict[error_dict['keycount_count']] = nosdfillE
+                                error_dict['keycount_count'] += 1
                                 print(nosdfillE)
                                 print("DUNGEONERRORCHECK:",dungeon, "ymin sd")
                                 print("ROOMSTACKCHECK:",room_stack)
@@ -1689,6 +1695,8 @@ def room_make(shape_dict, coord, size="C"):
                             try:
                                 dungeon[(x,rymax,rzmin)]['fill'] = dungeon[(x,rymax,rzmin)]['fill'] + 'sd'
                             except Exception as nosdfillE:
+                                error_dict[error_dict['keycount_count']] = nosdfillE
+                                error_dict['keycount_count'] += 1
                                 print(nosdfillE)
                                 print("DUNGEONERRORCHECK:",dungeon, "ymax sd")
                                 print("ROOMSTACKCHECK:",room_stack)
@@ -1802,6 +1810,9 @@ def room_make(shape_dict, coord, size="C"):
                                 es = roll_dice(1,rymax-rymin + 1)
                                 el = [rxmin,rymin + es -1]
                             except Exception as roomsizeE:
+                                error_dict[error_dict['keycount_count']] = roomsizeE
+                                error_dict['keycount_count'] += 1
+
                                 #try and work out if null room - might go away if now has no coords
                                 print("error is:",roomsizeE)
                                 print(shape_dict)
@@ -3414,6 +3425,9 @@ trap_stack = {}
 monster_stack = {}
 dead_end_dict = {}
 
+error_dict = {}
+error_dict['key_count'] = 0
+
 dungeon = {}
 dungeon[(0,0,0)] = {}
 dungeon[(0,0,0)]['direction'] = 'level'
@@ -3687,26 +3701,30 @@ for down in range(zwidth-1):
                         
                         ## get anything but number eventually regex
                         #usestr = usestr[0]
-                        secret_door_dict = room_stack['shape_dict'][int(usestr)]['contents']['secret_door_dict']
-                        for s in secret_door_dict:
-                            print("secret door",s,secret_door_dict[s],"ijk:",i+xmin,j+ymin,0 - down -1)
-                            keylist = list(secret_door_dict[s].keys())
-                            if keylist[0] == (i+xmin,j+ymin,0 - down -1):  ##try and match real coords
-                                print("found a secret door!")
-                                if secret_door_dict[s][keylist[1]]['loc'] == 'xminloc':
-                                    borderdir = '<divl>'
-                                    borderdire = '</divl>'
-                                elif secret_door_dict[s][keylist[1]]['loc'] == 'xmaxloc':
-                                    borderdir = '<divr>'
-                                    borderdire = '</divr>'
-                                elif secret_door_dict[s][keylist[1]]['loc'] == 'yminloc':                                    
-                                    borderdir = '<divt>'
-                                    borderdire = '</divt>'
-                                else:
-                                    borderdir = '<divb>'
-                                    borderdire = '</divb>'
+                        try:
+                            secret_door_dict = room_stack['shape_dict'][int(usestr)]['contents']['secret_door_dict']
+                            for s in secret_door_dict:
+                                print("secret door",s,secret_door_dict[s],"ijk:",i+xmin,j+ymin,0 - down -1)
+                                keylist = list(secret_door_dict[s].keys())
+                                if keylist[0] == (i+xmin,j+ymin,0 - down -1):  ##try and match real coords
+                                    print("found a secret door!")
+                                    if secret_door_dict[s][keylist[1]]['loc'] == 'xminloc':
+                                        borderdir = '<divl>'
+                                        borderdire = '</divl>'
+                                    elif secret_door_dict[s][keylist[1]]['loc'] == 'xmaxloc':
+                                        borderdir = '<divr>'
+                                        borderdire = '</divr>'
+                                    elif secret_door_dict[s][keylist[1]]['loc'] == 'yminloc':                                    
+                                        borderdir = '<divt>'
+                                        borderdire = '</divt>'
+                                    else:
+                                        borderdir = '<divb>'
+                                        borderdire = '</divb>'
 
-                                sdstr = 'border-' + borderdir + '-style: dashed'
+                                    sdstr = 'border-' + borderdir + '-style: dashed'
+                        except Exception as secretdoorE:
+                            error_dict[error_dict['keycount_count']] = deadendE
+                            error_dict['keycount_count'] += 1                            
 
                     color = colorcheck(downlist[down][i,j,0])
                     if color == 'notreasure':
@@ -3747,6 +3765,9 @@ for down in range(zwidth-1):
                                 borderdir = '<divl>'
                                 borderdire = '</divl>'                            
                         except Exception as deadendE:
+                            error_dict[error_dict['keycount_count']] = deadendE
+                            error_dict['keycount_count'] += 1
+
                             print("ERROR",deadendE)
                             #make an error log?
 
@@ -3805,3 +3826,4 @@ with open('downlist.pkl','rb') as fd:
 
 print("\nFINAL ROOM STACK",room_stack)   
     
+print("\nERROR LOG",error_dict)
