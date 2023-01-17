@@ -3746,6 +3746,14 @@ for down in range(zwidth-1):
     legend_dict['j'] = "Treasure: Jewellery"
     legend_dict['M'] = "Treasure: Magic"
 
+    background_dict = {}
+    background_dict['black'] = 'nothing'
+    background_dict['green'] = 'outside entrance'
+    background_dict['blue'] = 'water'
+    background_dict['red'] = 'bad_things'
+    background_dict['white'] = 'corridor/passage'
+    background_dict['brown'] = 'dead end'
+
     strlegendhead = '''
     <table>
     <th>Key</th>
