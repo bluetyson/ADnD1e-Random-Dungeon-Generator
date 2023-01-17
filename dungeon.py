@@ -2530,7 +2530,7 @@ def bad_things(coord, room_stack, size="C"):
             t_dict['trap']['chance'] = 0.15
             t_dict['trap']['chance_elf'] = 0.25
             t_dict['trap']['damage'] = roll_dice(1,6)
-            t_dict['trap']['type'] = 'pd'
+            t_dict['trap']['type'] = 'secret door pit'
             t_dict['trap']['abv'] = 'pd'
             if size == "C":
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pd'
