@@ -3994,7 +3994,7 @@ for down in range(zwidth-1):
         if len(wandering_monster_stack) > 0:
             for wm in range(wandering_monster_stack['key_count']):
                 f.write('<h4>Wandering Monster: ' + str(wm) + '</h4>')
-                f.write(wandering_monster_stack[wm] + '<br>')
+                f.write(wandering_monster_stack[wm+1] + '<br>')
 
         #end of page
         f.write(strend)
