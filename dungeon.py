@@ -1625,8 +1625,8 @@ def room_make(shape_dict, coord, size="C"):
                             try:
                                 dungeon[(rxmin,y,rzmin)]['fill'] = dungeon[(rxmin,y,rzmin)]['fill'] + 'sd'
                             except Exception as nosdfillE:
-                                error_dict[error_dict['keycount_count']] = nosdfillE
-                                error_dict['keycount_count'] += 1
+                                error_dict[error_dict['key_count']] = nosdfillE
+                                error_dict['key_count'] += 1
                                 print(nosdfillE)
                                 print("DUNGEONERRORCHECK:",dungeon, "xmin sd")
                                 print("ROOMSTACKCHECK:",room_stack)
@@ -1650,8 +1650,8 @@ def room_make(shape_dict, coord, size="C"):
                                 dungeon[(rxmax,y,rzmin)]['fill'] = dungeon[(rxmax,y,rzmin)]['fill'] + 'sd'
                             except Exception as nosdfillE:
                                 print(nosdfillE)
-                                error_dict[error_dict['keycount_count']] = nosdfillE
-                                error_dict['keycount_count'] += 1
+                                error_dict[error_dict['key_count']] = nosdfillE
+                                error_dict['key_count'] += 1
                                 print("DUNGEONERRORCHECK:",dungeon, "xmax sd")
                                 print("ROOMSTACKCHECK:",room_stack)
                                 #raise("coordinate fail error")
@@ -1673,8 +1673,8 @@ def room_make(shape_dict, coord, size="C"):
                             try:
                                 dungeon[(x,rymin,rzmin)]['fill'] = dungeon[(x,rymin,rzmin)]['fill'] + 'sd'
                             except Exception as nosdfillE:
-                                error_dict[error_dict['keycount_count']] = nosdfillE
-                                error_dict['keycount_count'] += 1
+                                error_dict[error_dict['key_count']] = nosdfillE
+                                error_dict['key_count'] += 1
                                 print(nosdfillE)
                                 print("DUNGEONERRORCHECK:",dungeon, "ymin sd")
                                 print("ROOMSTACKCHECK:",room_stack)
@@ -1695,8 +1695,8 @@ def room_make(shape_dict, coord, size="C"):
                             try:
                                 dungeon[(x,rymax,rzmin)]['fill'] = dungeon[(x,rymax,rzmin)]['fill'] + 'sd'
                             except Exception as nosdfillE:
-                                error_dict[error_dict['keycount_count']] = nosdfillE
-                                error_dict['keycount_count'] += 1
+                                error_dict[error_dict['key_count']] = nosdfillE
+                                error_dict['key_count'] += 1
                                 print(nosdfillE)
                                 print("DUNGEONERRORCHECK:",dungeon, "ymax sd")
                                 print("ROOMSTACKCHECK:",room_stack)
@@ -1810,8 +1810,8 @@ def room_make(shape_dict, coord, size="C"):
                                 es = roll_dice(1,rymax-rymin + 1)
                                 el = [rxmin,rymin + es -1]
                             except Exception as roomsizeE:
-                                error_dict[error_dict['keycount_count']] = roomsizeE
-                                error_dict['keycount_count'] += 1
+                                error_dict[error_dict['key_count']] = roomsizeE
+                                error_dict['key_count'] += 1
 
                                 #try and work out if null room - might go away if now has no coords
                                 print("error is:",roomsizeE)
@@ -3765,8 +3765,8 @@ for down in range(zwidth-1):
                                 borderdir = '<divl>'
                                 borderdire = '</divl>'                            
                         except Exception as deadendE:
-                            error_dict[error_dict['keycount_count']] = deadendE
-                            error_dict['keycount_count'] += 1
+                            error_dict[error_dict['key_count']] = deadendE
+                            error_dict['keycount'] += 1
 
                             print("ERROR",deadendE)
                             #make an error log?
