@@ -59,6 +59,14 @@ def coord_limits(dungeon):
 
     return [coord_min, coord_max]
 
+def coord_random(dungeon):
+    coordlist = list(dungeon.keys())
+    c = roll_dice(1,len(coordlist))
+
+    for index, key in enumerate(dungeon):
+        if index + 1 == c:
+            return dungeon[key]
+
     ##make arrrays for each level
 
 def random_check():
@@ -1492,10 +1500,13 @@ def room_make(shape_dict, coord, size="C"):
             #test to implement other things - need fills for these
             if key == 'water':
                 print("HAS WATER",shape_dict[key])
-                mid_room = [int(trxmax-trxmin)/2+1,int(trymax-trymin)/2+1]  ## got to get from coords actually found
+                #mid_room = [int(trxmax-trxmin)/2+1,int(trymax-trymin)/2+1]  ## got to get from coords actually found
                 #for pool, shaft, well
-                mid_coord = (trxmin + mid_room[0],trymin + mid_room[1], trzmin)
+                #mid_coord = (trxmin + mid_room[0],trymin + mid_room[1], trzmin)
+                #now picking a random coord from list that exists to do this
+                mid_coord = coord_random(room_stack[room_stack['key_count']])
                 print(mid_room, mid_coord)
+                
 
                 #for water - fails then just pick a random coord for the room for pool 
                 #for lake - remove any edge coords
