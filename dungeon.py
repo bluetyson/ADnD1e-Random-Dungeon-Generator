@@ -994,8 +994,8 @@ def check_action(pc_dict, coord, room_stack):
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord] = {}
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'] = level_matrix(abs(coord[2]))
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['monster'] = 'NA'
-        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['NA'] = 'NA'
-        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = 'NA'
+        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 0
+        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = 0
 
     return new_coord
 
@@ -1438,9 +1438,17 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['empty'] = 'Y'
     elif r >13 and r <=14:
         shape_dict['contents']['monster'] = {}
+        shape_dict['contents']['monster']['level'] = level_matrix(abs(coord[2]))
+        shape_dict['contents']['monster']['type'] =  = 'NA'
+        shape_dict['contents']['monster']['No'] = 0
+        shape_dict['contents']['monster'] = 0
     elif r >15 and r <=17:
         shape_dict['contents']['monster'] = {}
         shape_dict['contents']['treasure'] = {}
+        shape_dict['contents']['monster']['level'] = level_matrix(abs(coord[2]))
+        shape_dict['contents']['monster']['type'] =  = 'NA'
+        shape_dict['contents']['monster']['No'] = 0
+        shape_dict['contents']['monster'] = 0
 
         shape_dict = loot(shape_dict,coord,monster="Y")
         shape_dict = loot_store(shape_dict)
@@ -2135,7 +2143,7 @@ def room_make(shape_dict, coord, size="C"):
                     #pass
 
             #check treasure, monsters, exits and place these
-        #shape_dict['contents']['secret_door_dict'] = secret_door_dict if wnat to implement
+        #shape_dict['contents']['secret_door_dict'] = secret_door_dict if want to implement
         #shape_dict['contents']['secret_door_count'] = secret_door_count  #to place won't fit exits
 
             #exists need coloring for output so door/exit stack
@@ -2788,9 +2796,21 @@ def wet_small(shape_dict, coord):
     elif w >= 11 and w <=12:
         wet_dict['wet'] = 'Y'
         wet_dict['monster'] = 'Y'
+        wet_dict['monster_details'] = {}
+        wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
+        wet_dict['monster_details']['type'] =  = 'NA'
+        wet_dict['monster_details']['No'] = 0
+        wet_dict['monster_details'] = 0
+
     elif w >= 13 and w <=18:
         wet_dict['wet'] = 'Y'
         wet_dict['monster'] = 'Y'
+        wet_dict['monster_details'] = {}
+        wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
+        wet_dict['monster_details']['type'] =  = 'NA'
+        wet_dict['monster_details']['No'] = 0
+        wet_dict['monster_details'] = 0
+
         wet_dict['treasure'] = 'Y'
 
         shape_dict = loot(shape_dict,coord,monster="Y")
@@ -2832,6 +2852,12 @@ def wet_large(shape_dict, coord):
         shape_dict['water'] = 'L'
         wet_dict['wet'] = 'Y'
         wet_dict['monster'] = 'Y' #as per encounter
+        wet_dict['monster_details'] = {}
+        wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
+        wet_dict['monster_details']['type'] =  = 'NA'
+        wet_dict['monster_details']['No'] = 0
+        wet_dict['monster_details'] = 0
+
         shape_dict['lake'] = wet_dict
     else:
         shape_dict['water'] = 'L'
@@ -2841,6 +2867,12 @@ def wet_large(shape_dict, coord):
         m = roll_dice(1,20)
         if m <= 18:
             wet_dict['monster'] = 'Y'
+            wet_dict['monster_details'] = {}
+            wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
+            wet_dict['monster_details']['type'] =  = 'NA'
+            wet_dict['monster_details']['No'] = 0
+            wet_dict['monster_details'] = 0
+
             ##need to monster generate
 
             shape_dict = loot(shape_dict,coord,monster="Y")
