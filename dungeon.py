@@ -1492,9 +1492,13 @@ def room_make(shape_dict, coord, size="C"):
             #test to implement other things - need fills for these
             if key == 'water':
                 print("HAS WATER",shape_dict[key])
-                mid_room = [int(shape_dict['size'][0]/2),int(shape_dict['size'][1]/2)]  ## got to get from coords
+                mid_room = [int(trxmax-trxmin)/2,int(trymax-trxymin)/2]  ## got to get from coords
                 #for pool, shaft, well
-                mid_coord = (trxmin + mid_room[0],trymin + mid_room[1], coord[2])
+                mid_coord = (mid_room[0],mid_room[1], coord[2])
+
+                #for water - fails then just pick a random coord for the room for pool 
+                #for lake - remove any edge coords
+
                 ##need to put in dict - maybe replace R with P in the fill
                 #this is where a pool goes
                 if shape_dict[key] == 'P':
@@ -3648,6 +3652,10 @@ for down in range(zwidth-1):
     legend_dict['C'] = "Corridor/Passage"
     legend_dict['R'] = "Chamber/Room"
     legend_dict['D'] = "Dead End"
+    legend_dict['L'] = "Lake"
+    legend_dict['P'] = "Pool"
+    legend_dict['W'] = "Well"
+    legend_dict['S'] = "Shaft"
     legend_dict['d'] = "door"
     legend_dict[':'] = "direction of Door"
     legend_dict['wm'] = "Wandering Monster"
