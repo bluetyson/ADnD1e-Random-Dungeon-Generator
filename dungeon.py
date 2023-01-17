@@ -2772,14 +2772,17 @@ def wet_large(shape_dict, coord):
     elif w >= 11 and w <=15:
         shape_dict['water'] = 'L' #lake
         wet_dict['wet'] = 'Y'
+        shape_dict['lake'] = wet_dict
     elif w >= 16 and w <=18:
         shape_dict['water'] = 'L'
         wet_dict['wet'] = 'Y'
         wet_dict['monster'] = 'Y' #as per encounter
+        shape_dict['lake'] = wet_dict
     else:
         shape_dict['water'] = 'L'
         wet_dict['magic'] = 'Y'  #portal to another realm/world/dungeon23
         shape_dict['wet_magic'] = wet_dict
+        shape_dict['lake'] = wet_dict
         m = roll_dice(1,20)
         if m <= 18:
             wet_dict['monster'] = 'Y'
@@ -2796,8 +2799,6 @@ def wet_large(shape_dict, coord):
             wet_dict['portal'] = 'another world/dungeon23/other place'
             #otherwise can be monster, but above is more fun unless solo or could random
 
-    if 'lake' not in shape_dict:
-        shape_dict['lake'] = ''
         shape_dict['lake'] = wet_dict
 
     return shape_dict
@@ -2866,7 +2867,7 @@ def wet_magic(shape_dict):
     
     shape_dict['wet_magic'] = wet_magic_dict
     return shape_dict
-    
+
 def stinky():
     s = roll_dice(1,20)
     stinky_dict = {}
