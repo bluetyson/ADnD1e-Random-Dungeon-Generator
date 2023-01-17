@@ -1441,14 +1441,14 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['monster']['level'] = level_matrix(abs(coord[2]))
         shape_dict['contents']['monster']['type'] = 'NA'
         shape_dict['contents']['monster']['No'] = 0
-        shape_dict['contents']['monster'] = 0
+        shape_dict['contents']['monster']['XP'] = 0
     elif r >15 and r <=17:
         shape_dict['contents']['monster'] = {}
         shape_dict['contents']['treasure'] = {}
         shape_dict['contents']['monster']['level'] = level_matrix(abs(coord[2]))
         shape_dict['contents']['monster']['type'] = 'NA'
         shape_dict['contents']['monster']['No'] = 0
-        shape_dict['contents']['monster'] = 0
+        shape_dict['contents']['monster']['XP'] = 0
 
         shape_dict = loot(shape_dict,coord,monster="Y")
         shape_dict = loot_store(shape_dict)
