@@ -3573,7 +3573,8 @@ for down in range(zwidth-1):
     if down == 0:
         #print("START CHECK")
         #possible bug here
-        chararray[0+xmin*-1,0+ymin*-1,0+zmax*-1] = 'O'        
+        #chararray[0+xmin*-1,0+ymin*-1,0+zmax*-1] = 'O'        
+        chararray[0+xmin*-1,0+ymin*-1,0] = 'O'          ##first thing and has only one z level
         #print("START CHECK",chararray[0+xmin*-1,0+ymin*-1,0+zmin],0+xmin*-1,0+ymin*-1,-1)
     #print(chararray)
     #need a multi-level maker, this is just doing first for now
