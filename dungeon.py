@@ -15,7 +15,7 @@ ARGV = sys.argv
 
 #standard algorithm
 LEVEL = "Y"
-if len(ARG) > 2:
+if len(ARGV) > 2:
     LEVEL = ARGV[2]
     #stub to handle making a dungeon of just one level
     #this would be checked to disable level descent in periodi check
