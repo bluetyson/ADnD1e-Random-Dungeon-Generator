@@ -1692,8 +1692,6 @@ def room_make(shape_dict, coord, size="C"):
                                     dungeon[r]['fill'] = dungeon[r]['fill'] + trap_string
 
 
-
-
                     #if c is wet or other things in contents need to go above exits probably but null rooms should not have
 
             if key == 'exits':
@@ -2532,6 +2530,8 @@ def bad_things(coord, room_stack, size="C"):
             t_dict['trap']['chance'] = 0.15
             t_dict['trap']['chance_elf'] = 0.25
             t_dict['trap']['damage'] = roll_dice(1,6)
+            t_dict['trap']['type'] = 'pd'
+            t_dict['trap']['abv'] = 'pd'
             if size == "C":
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pd'
             else:
