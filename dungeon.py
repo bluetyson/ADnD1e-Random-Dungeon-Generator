@@ -2780,7 +2780,7 @@ def wet_large(shape_dict, coord):
     return shape_dict
 
 
-def wet_magic():
+def wet_magic(shape_dict):
     #not implemented yet
     w = roll_dice(1,20)
     wet_magic_dict = {}
