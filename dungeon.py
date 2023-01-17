@@ -2798,7 +2798,7 @@ def wet_small(shape_dict, coord):
         wet_dict['monster'] = 'Y'
         wet_dict['monster_details'] = {}
         wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
-        wet_dict['monster_details']['type'] =  = 'NA'
+        wet_dict['monster_details']['type'] = 'NA'
         wet_dict['monster_details']['No'] = 0
         wet_dict['monster_details'] = 0
 
@@ -2807,7 +2807,7 @@ def wet_small(shape_dict, coord):
         wet_dict['monster'] = 'Y'
         wet_dict['monster_details'] = {}
         wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
-        wet_dict['monster_details']['type'] =  = 'NA'
+        wet_dict['monster_details']['type'] = 'NA'
         wet_dict['monster_details']['No'] = 0
         wet_dict['monster_details'] = 0
 
