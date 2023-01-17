@@ -1495,9 +1495,22 @@ def room_make(shape_dict, coord, size="C"):
                 mid_room = [int(shape_dict['size'][0]/2),int(shape_dict['size'][1]/2)]  ## got to get from coords
                 ##need to put in dict - maybe replace R with P in the fill
                 #this is where a pool goes
+                if shape_dict['key'] == 'P':
+                    print("has Pool")
+                elif shape_dict['key'] == 'L':
+                    print("has Lake")
+                elif shape_dict['key'] == 'W':
+                    print("has Well")
+                elif shape_dict['key'] == 'S':
+                    print("has Shaft")
+                else:
+                    pass #not wet
+
                 #what about lake
             if key == 'wet_magic':
                 print("HAS WATER AND MAGIC",shape_dict[key])
+                
+
 
             if key == 'contents':
                 for c in shape_dict['contents']:
