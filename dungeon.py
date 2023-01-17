@@ -982,19 +982,21 @@ def check_action(pc_dict, coord, room_stack):
         if not will_fit:                                                
             dungeon[(coord[0],coord[1]+1,coord[2])] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'wm'
-            wandering_monster_stack['key_count'] +=1
-            wandering_monster_stack[wandering_monster_stack['key_count']] = {}
-            wandering_monster_stack[wandering_monster_stack['key_count']][coord] = {}
-            wandering_monster_stack[wandering_monster_stack['key_count']][coord]['level'] = level_matrix(abs(coord[2]))
-            wandering_monster_stack[wandering_monster_stack['key_count']][coord]['monster'] = 'NA'
-            wandering_monster_stack[wandering_monster_stack['key_count']][coord]['NA'] = 'NA'
-            wandering_monster_stack[wandering_monster_stack['key_count']][coord]['XP'] = 'NA'
+            wm_coord = (coord[0],coord[1]+1,coord[2])
 
         else:
             print('wm filled up check:',dungeon[(coord[0],coord[1]+1,coord[2])])
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'wm' #get this to work
             #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'wm'
             print('wm key check',dungeon[(coord[0],coord[1]+1,coord[2])])
+
+        wandering_monster_stack['key_count'] +=1
+        wandering_monster_stack[wandering_monster_stack['key_count']] = {}
+        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord] = {}
+        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'] = level_matrix(abs(coord[2]))
+        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['monster'] = 'NA'
+        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['NA'] = 'NA'
+        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = 'NA'
 
     return new_coord
 
