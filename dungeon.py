@@ -1499,16 +1499,35 @@ def room_make(shape_dict, coord, size="C"):
                 #this is where a pool goes
                 if shape_dict[key] == 'P':
                     print("has Pool")
-                    dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'P'
+                    if mid_coord in dungeon:
+                        print("fitting mid_coord", mid_coord)
+                        dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'P'
+                    else:
+                        print("fit fail",room_stack[room_stack['key_count'])
                 elif shape_dict[key] == 'L':
                     print("has Lake")
-                    dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'L'
+                    if mid_coord in dungeon:
+                        print("fitting mid_coord", mid_coord)
+                        dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'L'
+                    else:
+                        print("fit fail",room_stack[room_stack['key_count'])
+
                 elif shape_dict[key] == 'W':
                     print("has Well")
-                    dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'W'
+                    if mid_coord in dungeon:
+                        print("fitting mid_coord", mid_coord)
+                        dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'W'
+                    else:
+                        print("fit fail",room_stack[room_stack['key_count'])
+
                 elif shape_dict[key] == 'S':
                     print("has Shaft")
-                    dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'S'
+                    if mid_coord in dungeon:
+                        print("fitting mid_coord", mid_coord)
+                        dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'S'
+                    else:
+                        print("fit fail",room_stack[room_stack['key_count'])
+
                 else:
                     pass #not wet
 
