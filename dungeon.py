@@ -3804,14 +3804,16 @@ for down in range(zwidth-1):
                             else:
                                 borderdir = '<divl>'
                                 borderdire = '</divl>'                            
+                                strdata = '<td class="brown_background">' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
                         except Exception as deadendE:
                             error_dict[error_dict['key_count']] = deadendE
                             error_dict['key_count'] += 1
 
                             print("ERROR",deadendE)
+                            strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
                             #make an error log?
 
-                        strdata = '<td class="brown_background">' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
+                        
                         borderdir = '<divt>'
                         borderdire = '</divt>'
                     else:
