@@ -421,7 +421,7 @@ def check_action(pc_dict, coord, room_stack):
                         #dungeon[(coord[0],coord[1]+1,coord[2])] = {}
                         #handle very first cool being cooridor door creation
                         if (coord[0],coord[1],coord[2]) not in dungeon:
-                            dungeon[(coord[0],coord[1],coord[2])] = {}}
+                            dungeon[(coord[0],coord[1],coord[2])] = {}
                         dungeon[(coord[0],coord[1],coord[2])]['fill'] = 'Cd'
                         new_coord = (coord[0],coord[1]+1,coord[2])
                         # 10 x 10 room need to check contents!
