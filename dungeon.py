@@ -1683,12 +1683,13 @@ def room_make(shape_dict, coord, size="C"):
                                 #if use this take it out of shape_dict['trap'] and just use this for indicator
                                 if index + 1 == w:
                                     t_dict = bad_things(r, room_stack, size="R")
+                                    trap_string = t_dict['abv']
                                     print("TRAP DICT:",t_dict)
                                     
                                     ##got to find from t_dict what to put in string
-                                    ##room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + trap_string
-                                    ##print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'] + trap_string)
-                                    ##dungeon[r]['fill'] = dungeon[r]['fill'] + trap_string
+                                    room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + trap_string
+                                    print("newtrapfill",room_stack[room_stack['key_count']][r]['fill'] + trap_string)
+                                    dungeon[r]['fill'] = dungeon[r]['fill'] + trap_string
 
 
 
