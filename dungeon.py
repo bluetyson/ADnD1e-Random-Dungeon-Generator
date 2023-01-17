@@ -3848,6 +3848,8 @@ for down in range(zwidth-1):
             for room in room_stack['shape_dict']:
                 f.write('<h3>Key: ' + str(room) + '</h3>')
                 f.write(str(room_stack['shape_dict'][room]) + '<br>')
+                if 'water' in room_stack['shape_dict'] and room_stack['shape_dict']['water'] != 'N':
+                    print("HAS WATER TO DO")
 
         f.write(strend)
 
