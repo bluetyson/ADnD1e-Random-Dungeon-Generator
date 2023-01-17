@@ -983,6 +983,7 @@ def check_action(pc_dict, coord, room_stack):
             dungeon[(coord[0],coord[1]+1,coord[2])] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'wm'
             wandering_monster_stack['key_count'] +=1
+            wandering_monster_stack[wandering_monster_stack['key_count']] = {}
             wandering_monster_stack[wandering_monster_stack['key_count']][coord] = {}
             wandering_monster_stack[wandering_monster_stack['key_count']][coord]['level'] = level_matrix(abs(coord[2]))
             wandering_monster_stack[wandering_monster_stack['key_count']][coord]['monster'] = 'NA'
