@@ -42,6 +42,6 @@ def level_matrix(level):
     return monster_level
 
 
-monster_level = level_matrix(level)
+monster_level = level_matrix(3)
 print("MONSTER LEVEL:",monster_level)
 
