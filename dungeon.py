@@ -1492,9 +1492,9 @@ def room_make(shape_dict, coord, size="C"):
             #test to implement other things - need fills for these
             if key == 'water':
                 print("HAS WATER",shape_dict[key])
-                mid_room = [int(trxmax-trxmin)/2,int(trymax-trymin)/2]  ## got to get from coords
+                mid_room = [int(trxmax-trxmin)/2+1,int(trymax-trymin)/2+1]  ## got to get from coords
                 #for pool, shaft, well
-                mid_coord = (mid_room[0],mid_room[1], coord[2])
+                mid_coord = (mid_room[0],mid_room[1], trzmin)
 
                 #for water - fails then just pick a random coord for the room for pool 
                 #for lake - remove any edge coords
