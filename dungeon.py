@@ -2703,6 +2703,7 @@ def fancy_cave(coord):
 def wet_small(shape_dict, coord):
     #not implemented yet
     w = roll_dice(1,20)
+    print("WET SMALL ROLL:",w)
     wet_dict = {}
     wet_dict['wet'] = 'N'
     wet_dict['monster'] = 'N'
@@ -2733,7 +2734,10 @@ def wet_small(shape_dict, coord):
         wet_dict['magic'] = 'Y'
         shape_dict = wet_magic(shape_dict)
 
-    shape_dict['pool'] = wet_dict
+    if not in shape_dict:
+        shape_dict['pool'] = ''
+        shape_dict['pool'] = wet_dict
+        
     return shape_dict
 
 
