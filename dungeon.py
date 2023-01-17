@@ -2030,7 +2030,7 @@ def room_make(shape_dict, coord, size="C"):
                                                 secret_door_dict[(el[0]+1+x-1,el[1]-1-x+1,rzmin)] = 'Y'
                                             elif sd >=6 and sd <=10:
                                                 secret_door_count +=1 
-                                                secret_door_dict[(el[0]+1+x-1,el[1]-1-x+1,rzmin)+1] = 'OW'
+                                                secret_door_dict[(el[0]+1+x-1,el[1]-1-x+1,rzmin)] = 'OW'
                                             else:
                                                 pass
                                             break
