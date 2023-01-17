@@ -1,5 +1,5 @@
 import random
-import sys.argv
+import sys
 
 ARGV = sys.argv
 
