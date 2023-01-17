@@ -6,7 +6,7 @@ def testmonster():
 def monster_check(level, monster):
     lst = monster[level]
     r = roll_dice(1,20)
-    for index, l in lst:
+    for index, l in enumerate(lst):
         if index == 0:
             if r <= lst[index]:
                 return(index+1)
