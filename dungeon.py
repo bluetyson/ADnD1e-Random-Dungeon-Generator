@@ -1493,16 +1493,22 @@ def room_make(shape_dict, coord, size="C"):
             if key == 'water':
                 print("HAS WATER",shape_dict[key])
                 mid_room = [int(shape_dict['size'][0]/2),int(shape_dict['size'][1]/2)]  ## got to get from coords
+                #for pool, shaft, well
+                mid_coord = (trxmin + mid_room[0],trymin + mid_room[1], coord[2])
                 ##need to put in dict - maybe replace R with P in the fill
                 #this is where a pool goes
                 if shape_dict['key'] == 'P':
                     print("has Pool")
+                    dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'P'
                 elif shape_dict['key'] == 'L':
                     print("has Lake")
+                    dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'L'
                 elif shape_dict['key'] == 'W':
                     print("has Well")
+                    dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'W'
                 elif shape_dict['key'] == 'S':
                     print("has Shaft")
+                    dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'S'
                 else:
                     pass #not wet
 
@@ -3681,6 +3687,8 @@ for down in range(zwidth-1):
             for i in range(downlist[down].shape[0]):                
                 if downlist[down][i,j,0] == 'B':
                     strdata = '<td class="black_background">' + downlist[down][i,j,0] + '</td>'
+                elif 'P' in downlist[down][i,j,0] or 'L' in downlist[down][i,j,0] or 'W' in downlist[down][i,j,0] or 'S' in downlist[down][i,j,0]  :
+                    strdata = '<td class="blue_background">' + downlist[down][i,j,0] + '</td>'
                 elif 'C' in downlist[down][i,j,0]:  #could have door markers etc                    
                     usestr = copy.deepcopy(downlist[down][i,j,0])
                     usestr = usestr.replace('C','')
