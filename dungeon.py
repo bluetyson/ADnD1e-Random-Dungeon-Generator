@@ -1683,6 +1683,7 @@ def room_make(shape_dict, coord, size="C"):
                                 #if use this take it out of shape_dict['trap'] and just use this for indicator
                                 if index + 1 == w:
                                     t_dict = bad_things(r, room_stack, size="R")
+                                    print("TRAP DICT:",t_dict)
                                     
                                     ##got to find from t_dict what to put in string
                                     ##room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + trap_string
@@ -2541,6 +2542,7 @@ def bad_things(coord, room_stack, size="C"):
             ## do stuff for exits!!
         if t >= 6 and t <= 7:
             t_dict['trap']['type'] = 'pit'
+            t_dict['trap']['abv'] = 'pi'
             t_dict['trap']['chance'] = 3.0/6.0
             t_dict['trap']['damage'] = roll_dice(1,6)
             if size == "C":
@@ -2552,6 +2554,7 @@ def bad_things(coord, room_stack, size="C"):
             t_dict['new_coord'] = new_coord            
         if t == 8:
             t_dict['trap']['type'] = 'pit'
+            t_dict['trap']['abv'] = 'ps'
             t_dict['trap']['chance'] = 3.0/6.0
             t_dict['trap']['effect'] = 'spikes'
             t_dict['trap']['damage'] = roll_dice(2,6)
@@ -2574,6 +2577,7 @@ def bad_things(coord, room_stack, size="C"):
                 d = 1
                 # loop this for level descent -put in descent will fit checks
                 t_dict['trap']['type'] = 'elevator'
+                t_dict['trap']['abv'] = 'el'
                 t_dict['trap']['duration'] = 30
                 
             elif t == 10:
@@ -2612,6 +2616,7 @@ def bad_things(coord, room_stack, size="C"):
             t_dict['trap']['type'] = 'slidingwall'
             t_dict['trap']['chance'] = roll_dice(1,20) + 40
             t_dict['trap']['effect'] = 'blocked'
+            t_dict['trap']['abv'] = 'bw'
             if size == "C":
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'bw'
             else:
@@ -2621,6 +2626,7 @@ def bad_things(coord, room_stack, size="C"):
             t_dict['new_coord'] = new_coord            
         if t == 13:
             t_dict['trap']['type'] = 'oil'
+            t_dict['trap']['abv'] = 'ol'
             t_dict['trap']['chance'] = roll_dice(1,20) + 40
             t_dict['trap']['effect'] = 'random person'
             t_dict['trap']['damage'] = roll_dice(2,6)
@@ -2634,6 +2640,7 @@ def bad_things(coord, room_stack, size="C"):
             t_dict['new_coord'] = new_coord            
         if t == 14:
             t_dict['trap']['type'] = 'pit'
+            t_dict['trap']['abv'] = 'pc'
             t_dict['trap']['chance'] = 3.0/6.0
             t_dict['trap']['effect'] = 'crush death'
             t_dict['trap']['damage'] = roll_dice(2,6)
@@ -2647,6 +2654,7 @@ def bad_things(coord, room_stack, size="C"):
             t_dict['new_coord'] = new_coord            
         if t == 15:
             t_dict['trap']['type'] = 'arrow'
+            t_dict['trap']['abv'] = 'ar'
             t_dict['trap']['chance'] = 0.05
             t_dict['trap']['damage'] = roll_dice(1,3)  * roll_dice(1,6)
             t_dict['trap']['save'] = 'poison'
@@ -2659,6 +2667,7 @@ def bad_things(coord, room_stack, size="C"):
             t_dict['new_coord'] = new_coord            
         if t == 16:
             t_dict['trap']['type'] = 'spear'
+            t_dict['trap']['abv'] = 'sp'
             t_dict['trap']['chance'] = 0.05
             t_dict['trap']['damage'] = roll_dice(1,3)  * roll_dice(1,8)
             t_dict['trap']['save'] = 'poison'
@@ -2671,6 +2680,7 @@ def bad_things(coord, room_stack, size="C"):
             t_dict['new_coord'] = new_coord            
         if t == 17:
             t_dict['trap']['type'] = 'gas'
+            t_dict['trap']['abv'] = 'gs'
             t_dict['trap']['details'] = stinky()
             for key in t_dict['trap']['details']:
                 t_dict[key] = t_dict['trap']['details'][key]
@@ -2685,6 +2695,7 @@ def bad_things(coord, room_stack, size="C"):
             what_fall = roll_dice(1,2)
             if what_fall == 1:
                 t_dict['trap']['type'] = 'doorfalls'
+                t_dict['trap']['abv'] = 'df'
                 t_dict['trap']['chance'] = 0.05
                 t_dict['trap']['damage'] = roll_dice(1,10)
                 t_dict['trap']['save'] = 'petrification'
@@ -2697,6 +2708,7 @@ def bad_things(coord, room_stack, size="C"):
                 t_dict['new_coord'] = new_coord                            
             else:
                 t_dict['trap']['type'] = 'stonefalls'
+                t_dict['trap']['abv'] = 'sf'
                 t_dict['trap']['chance'] = 0.05
                 t_dict['trap']['damage'] = roll_dice(2,10)
                 t_dict['trap']['save'] = 'petrification'
@@ -2712,6 +2724,7 @@ def bad_things(coord, room_stack, size="C"):
             w = roll_dice(1,20)
             if w <= 6:
                 t_dict['trap']['type'] = t_dict['trap']['type'] + 'pit'
+                t_dict['trap']['abv'] = 'pi'
                 t_dict['trap']['chance'] = 3.0/6.0
                 t_dict['trap']['damage'] = roll_dice(1,6)
                 if size == "C":
@@ -2723,6 +2736,7 @@ def bad_things(coord, room_stack, size="C"):
                 t_dict['new_coord'] = new_coord
             elif w>=7 and w<=10:
                 t_dict['trap']['type'] = t_dict['trap']['type'] + 'chute'
+                t_dict['trap']['abv'] = 'ch'
                 t_dict['trap']['effect'] = 'one way'
                 dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
                 if size == "C":
