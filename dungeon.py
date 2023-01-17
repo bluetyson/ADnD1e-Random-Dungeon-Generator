@@ -1497,16 +1497,16 @@ def room_make(shape_dict, coord, size="C"):
                 mid_coord = (trxmin + mid_room[0],trymin + mid_room[1], coord[2])
                 ##need to put in dict - maybe replace R with P in the fill
                 #this is where a pool goes
-                if shape_dict['key'] == 'P':
+                if shape_dict[key] == 'P':
                     print("has Pool")
                     dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'P'
-                elif shape_dict['key'] == 'L':
+                elif shape_dict[key] == 'L':
                     print("has Lake")
                     dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'L'
-                elif shape_dict['key'] == 'W':
+                elif shape_dict[key] == 'W':
                     print("has Well")
                     dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'W'
-                elif shape_dict['key'] == 'S':
+                elif shape_dict[key] == 'S':
                     print("has Shaft")
                     dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'S'
                 else:
