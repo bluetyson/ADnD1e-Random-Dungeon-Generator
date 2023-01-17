@@ -3787,7 +3787,7 @@ for down in range(zwidth-1):
                                 borderdire = '</divl>'                            
                         except Exception as deadendE:
                             error_dict[error_dict['key_count']] = deadendE
-                            error_dict['keycount'] += 1
+                            error_dict['key_count'] += 1
 
                             print("ERROR",deadendE)
                             #make an error log?
