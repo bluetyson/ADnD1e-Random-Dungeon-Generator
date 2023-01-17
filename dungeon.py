@@ -3851,7 +3851,7 @@ for down in range(zwidth-1):
             for room in room_stack['shape_dict']:
                 f.write('<h3>Key: ' + str(room) + '</h3>')
                 f.write(str(room_stack['shape_dict'][room]) + '<br>')
-                if 'water' in room_stack['shape_dict'] and room_stack['shape_dict']['water'] != 'N':
+                if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                     #print("HAS WATER TO DO")
                     water_dict[room] = room_stack['shape_dict']
 
@@ -3883,6 +3883,6 @@ with open('downlist.pkl','rb') as fd:
 
 print("\nFINAL ROOM STACK",room_stack)   
     
-print("\nERROR LOG",error_dict)
+print("\nERROR LOG",error_dict,water_check))
 
-print("\nWATER LOG",water_check)
+#print("\nWATER LOG",
