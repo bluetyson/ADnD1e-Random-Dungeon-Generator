@@ -3641,7 +3641,7 @@ for down in range(zwidth-1):
             if 'sd' not in dungeonstr:
                 return '#C0C0C0'
             else:
-                return '#FFFFFF'
+                return '#EAEAEA'
         else:
             return 'notreasure'
 
