@@ -3472,6 +3472,9 @@ error_dict = {}
 error_dict['key_count'] = 0
 error_dict['type'] = {}
 
+water_check = {}
+#make water log as need to run a lot to get one and can't scroll that far
+
 dungeon = {}
 dungeon[(0,0,0)] = {}
 dungeon[(0,0,0)]['direction'] = 'level'
@@ -3849,7 +3852,9 @@ for down in range(zwidth-1):
                 f.write('<h3>Key: ' + str(room) + '</h3>')
                 f.write(str(room_stack['shape_dict'][room]) + '<br>')
                 if 'water' in room_stack['shape_dict'] and room_stack['shape_dict']['water'] != 'N':
-                    print("HAS WATER TO DO")
+                    #print("HAS WATER TO DO")
+                    water_dict[room] = room_stack['shape_dict']
+
 
         f.write(strend)
 
@@ -3879,3 +3884,5 @@ with open('downlist.pkl','rb') as fd:
 print("\nFINAL ROOM STACK",room_stack)   
     
 print("\nERROR LOG",error_dict)
+
+print("\nWATER LOG",water_check)
