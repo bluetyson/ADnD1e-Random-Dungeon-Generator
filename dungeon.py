@@ -3883,6 +3883,6 @@ with open('downlist.pkl','rb') as fd:
 
 print("\nFINAL ROOM STACK",room_stack)   
     
-print("\nERROR LOG",error_dict,water_check)
+print("\nERROR LOG",error_dict,water_dict)
 
 #print("\nWATER LOG",
