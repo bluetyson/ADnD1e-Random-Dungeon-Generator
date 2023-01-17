@@ -60,6 +60,7 @@ def coord_limits(dungeon):
     return [coord_min, coord_max]
 
 def coord_random(dungeon):
+    
     coordlist = list(dungeon.keys())
     c = roll_dice(1,len(coordlist))
 
@@ -69,6 +70,41 @@ def coord_random(dungeon):
             return (key[0],key[1],key[2])
 
     ##make arrrays for each level
+def coord_edge(dungeon):
+    minx = 9999
+    maxx = -9999
+    miny = 9999
+    maxy = -9999
+    minz = 9999
+    maxz = -9999
+
+    for key in dungeon:
+        if key[0] > maxx:
+            maxx = key[0]
+        if key[0] < minx:
+            minx = key[0]
+        if key[1] > maxy:
+            maxy = key[1]
+        if key[1] < miny:
+            miny = key[1]
+        if key[2] > maxz:
+            maxz = key[2]
+        if key[2] < minz:
+            minz = key[2]
+
+    coord_min = (minx,miny,minz)
+    coord_max = (maxx,maxy,maxz)
+
+    coordlist = list(dungeon.keys())
+    c = roll_dice(1,len(coordlist))
+
+    non_edge = []
+    for index, key in enumerate(dungeon):
+        if key[0] != minx and key[1] != miny and key[0] != maxx and key[1] != maxy:
+            non_edge.append((key[0],key[1],key[2]))
+    
+    return non_edge
+
 
 def random_check():
     pc_dict = {}
@@ -1522,9 +1558,16 @@ def room_make(shape_dict, coord, size="C"):
                         print("fit fail",room_stack[room_stack['key_count']])
                 elif shape_dict[key] == 'L':
                     print("has Lake")
+                    ##double LL could be location of treasure and monster?
+                    ## make sure at least tiny one pixel lake
                     if mid_coord in dungeon:
                         print("fitting mid_coord", mid_coord)
                         dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'L'
+
+                        non_edge = coord_edge(room_stack[room_stack['key_count']])
+                        for c in non_edge:
+                            dungeon[c]['fill'] = dungeon[c]['fill'] + 'L'
+
                     else:
                         print("fit fail",room_stack[room_stack['key_count']])
 
