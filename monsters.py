@@ -1,8 +1,6 @@
 import random
 import sys
 
-ARGV = sys.argv
-
 def roll_dice(number, sides):
     roll = random.randint(number,sides)
     return roll
@@ -50,9 +48,12 @@ def level_matrix(level):
 
     return monster_level
 
-if len(ARGV) > 1:
-    monster_level = level_matrix(int(ARGV[1]))
-else:
-    monster_level = level_matrix(3)
-print("MONSTER LEVEL:",monster_level)
+if __name__ == "__main__":
+    ARGV = sys.argv
+
+    if len(ARGV) > 1:
+        monster_level = level_matrix(int(ARGV[1]))
+    else:
+        monster_level = level_matrix(3)
+    print("MONSTER LEVEL:",monster_level)
 
