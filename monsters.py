@@ -12,7 +12,7 @@ def monster_check(level, monster):
             if r <= lst[index] and r > lst[index-1]:
                 return(index+1)
 
-def level_matrix(level)
+def level_matrix(level):
     '''
     level is level of the dungeon
     '''
