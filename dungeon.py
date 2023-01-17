@@ -2865,7 +2865,8 @@ def wet_magic(shape_dict):
             new_coord = (0,0,0)
     
     shape_dict['wet_magic'] = wet_magic_dict
-
+    return shape_dict
+    
 def stinky():
     s = roll_dice(1,20)
     stinky_dict = {}
