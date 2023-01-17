@@ -65,7 +65,8 @@ def coord_random(dungeon):
 
     for index, key in enumerate(dungeon):
         if index + 1 == c:
-            return dungeon[key]
+            #return dungeon[key]
+            return (key[0],key[1],key[2])
 
     ##make arrrays for each level
 
