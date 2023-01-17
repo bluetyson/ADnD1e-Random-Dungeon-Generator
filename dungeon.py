@@ -13,6 +13,14 @@ import math
 PI = math.pi
 ARGV = sys.argv
 
+#standard algorithm
+LEVEL = "Y"
+if len(ARG) > 2:
+    LEVEL = ARGV[2]
+    #stub to handle making a dungeon of just one level
+    #this would be checked to disable level descent in periodi check
+    #also in traps that go down, substitute
+
 #pass location?
 def roll_dice(number, sides):
     roll = random.randint(number,sides)
@@ -56,6 +64,7 @@ def coord_limits(dungeon):
 def random_check():
     pc_dict = {}
     pc = roll_dice(1,20)
+    
     if pc <= 2:
         pc_dict['direction'] = 'ahead'
         pc_dict['check'] = 6
@@ -74,6 +83,9 @@ def random_check():
     elif pc == 17:
         pc_dict['direction'] = 'level'
         pc_dict['check'] = 'up_down'
+        if LEVEL == "N": #make this what you like or could be config
+            pc_dict['direction'] = 'room'
+            pc_dict['check'] = 3
     elif pc == 18:
         pc_dict['direction'] = 'stop'
         pc_dict['check'] = 'spy_things'
@@ -3379,6 +3391,8 @@ PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't 
 if len(ARGV) > 1:
     if int(ARGV[1]) > 1:
         PERIODIC_CHECKS = int(ARGV[1])
+
+    
 #make this a script argument
 START_LEVEL = 0
 
