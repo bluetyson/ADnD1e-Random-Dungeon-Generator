@@ -157,14 +157,17 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
         #for y in range(pc_dict['check']):
         for y in range(loop):                
             #will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+1+y,coord[2]))
-            checkcoord = (coord[0]+xmod+xloop*loop,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*loop)
-            #will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
-            will_fit = in_dungeon(checkcoord)
+            #checkcoord = (coord[0]+xmod+xloop*loop,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*loop)
+            will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
+            #will_fit = in_dungeon(checkcoord)
             if not will_fit:
-                dungeon[checkcoord] = {}
-                dungeon[checkcoord]['fill'] = 'C'
+                #dungeon[checkcoord] = {}
+                dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)] = {}
+                #dungeon[checkcoord]['fill'] = 'C'
+                dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)]['fill'] = 'C'
                 #handle not fitting
-                new_coord = checkcoord
+                #new_coord = checkcoord
+                new_coord = (coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)
             else:
                 break
     else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
@@ -173,21 +176,26 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
             
             new_coord = coord
             for y in range(loop):
-                checkcoord = (coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)
-                will_fit = in_dungeon(checkcoord)
+                #checkcoord = (coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)
+                will_fit = in_dungeon((coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop))
                 if not will_fit:
                     dungeon[checkcoord] = {}
                     if y == 1: #approx midpoint fill - could random 3/4 it but for 3s will be in middle anyway wrong for 6 ok for 3
-                        dungeon[checkcoord]['fill'] = 'C' + p_dict['fill']
+                        #dungeon[checkcoord]['fill'] = 'C' + p_dict['fill']
+                        dungeon[(coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)]['fill'] = 'C' + p_dict['fill']
                     else:
-                        dungeon[checkcoord]['fill'] = 'C'
+                        #dungeon[checkcoord]['fill'] = 'C'
+                        dungeon[(coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)]['fill'] = 'C'
+
+                        
 
                     #check for columns
                     #check for river or stream - blue in output
                         #check for bridge/boat
 
                     #handle not fitting
-                    new_coord = checkcoord #can change if want to reposition over
+                    #new_coord = checkcoord #can change if want to reposition over
+                    new_coord = (coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)
                 else:
                     break
     
