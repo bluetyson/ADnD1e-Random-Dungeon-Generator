@@ -297,11 +297,11 @@ def monster_tables(level):
     34-40 Mold, brown 1
     41-50 Mold, yellow 1
     51-52 Nycadaemon 1
-    53-64 Purple worm 1
-    65-67 Rust monster 1
+    53-64 Purple-worm 1
+    65-67 Rust-monster 1
     68-69 Titan, lesser 1
     70-73 Titan, minor 1
-    74-80 Umber Hulk 1-4
+    74-80 Umber-Hulk 1-4
     81-83 Vampire* 1
     84-93 Will-o-wisp 2-5
     94-00 Xorn 2-9'''
