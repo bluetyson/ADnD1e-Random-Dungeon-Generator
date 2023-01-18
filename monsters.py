@@ -115,6 +115,17 @@ def monster_tables(level):
     31-45 Brigand* 5-15
     46-00 Character — see Character Subtable 1'''
 
+    CharacterSubtable = '''01-17 CLERIC 3
+    18-20 Druid 2
+    21-60 FIGHTER 5
+    61-62 Paladin 2
+    63-65 Ranger 2
+    66-86 MAGIC-USER 3
+    87-88 Illusionist 1
+    89-98 THIEF 4
+    99 Assassin 2
+    00 MONK-OR-BARD 1'''    
+
     level_02='''01 Badger, giant* 1-4
     02-16 Centipede, giant 3-13
     17-27 Character — see Character Subtable 1
@@ -315,7 +326,7 @@ def monster_tables(level):
     51-60 Lich 1
     61-70 Titan, elder 1
     71-80 Vampire** 1
-    81-00 NO ENCOUNTER'''    
+    81-00 NO ENCOUNTER 1'''    
 
     levels[1]['data'] = level_01
     levels[2]['data'] = level_02
