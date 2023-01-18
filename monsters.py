@@ -331,6 +331,7 @@ def monster_tables(level):
     levels['HumanSubtable']['data'] = HumanSubtable
 
     for ld in range(10):
+        print("levels:",ld)
         uselevel = levels[ld+1]['data'].split("\n")
         for l in uselevel:
             usestr = l.replace(', ','-')
