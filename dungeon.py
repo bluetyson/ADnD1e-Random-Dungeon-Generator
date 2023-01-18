@@ -1214,38 +1214,62 @@ def width():
         could have cosmetic width markers as html CCC, CC to start then grid squares later
     '''
     w = roll_dice(1,20)
-    pw = '10'
+    p_dict = {}
+    p_dict['width'] = 1
+    p_dict['type'] = 'N'
+
     if w >=13 and w <=16:
-        pw = '20'
+        p_dict['width'] = 2
     elif w ==17:
-        pw = '30'
+        p_dict['width'] = 3
     elif w ==18:
-        pw = '5'
+        p_dict['width'] = 0.5
     else:
         pw = fancy_width()
-    return pw
+    return p_dict
 
 def fancy_width():
+    '''
+    CL = columns
+    CLCR = double columns
+    GA = galley
+    ST = stream
+    RI = river
+    CH = chasm
+    '''
+    p_dict = {}
+    p_dict['width'] = 0
+    p_dict['type'] = ''
+
     w = roll_dice(1,20)
     if w <=4:
-        pw = '40CL'
+        p_dict['width'] = 4
+        p_dict['type'] = 'CL'
     elif w >=5 and w <=7:
-        pw = '40CLCR'
+        p_dict['width'] = 4
+        p_dict['type'] = 'CLCR'
     elif w >=8 and w <=10:
-        pw = '50CLCR'
+        p_dict['width'] = 5
+        p_dict['type'] = 'CLCR'
     if w >=11 and w <=12:
-        pw = '50CLCRGA'
+        p_dict['width'] = 5
+        p_dict['type'] = 'CLCRGA'
     if w >=13 and w <=15:
-        pw = '10S'
+        p_dict['width'] = 1
+        p_dict['type'] = 'ST'
     if w >=16 and w <=17:
-        pw = '20R'
+        p_dict['width'] = 2
+        p_dict['type'] = 'RI'
     elif w ==18:
-        pw = '40R'
+        p_dict['width'] = 4
+        p_dict['type'] = 'RI'       
     elif w ==19:
-        pw = '60R'
+        p_dict['width'] = 6
+        p_dict['type'] = 'RI'       
     else:
-        pw = '20C'
-    return pw
+        p_dict['width'] = 2
+        p_dict['type'] = 'CH'       
+    return p_dict
 
 def fancy_shape(shape_dict):
     s = roll_dice(1,20)
