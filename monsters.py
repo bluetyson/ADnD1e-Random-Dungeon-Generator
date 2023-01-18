@@ -78,7 +78,7 @@ def monster_tables(level):
     dice_lookup['9-16'] = [1,8,8]
 
     levels = {}
-    for i in in range(10):
+    for i in range(10):
         levels[i+1] = {}
         for r in range(100):
             levels[0+i][r+1] = {}
@@ -142,4 +142,6 @@ if __name__ == "__main__":
     else:
         monster_level = level_matrix(3)
     print("MONSTER LEVEL:",monster_level)
+
+    print(monster_tables)
 
