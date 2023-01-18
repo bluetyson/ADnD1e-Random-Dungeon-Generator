@@ -221,7 +221,7 @@ def check_action(pc_dict, coord, room_stack):
         if p_dict['width'] <= 1: #0.5 width do cosmetically later
 
             new_coord = coord
-            for y in range(pc_dict['check']):
+            for y in range(6):
                 will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
                 #print("Y",y, "WILLFIT:",will_fit)
                 if not will_fit:
@@ -235,7 +235,7 @@ def check_action(pc_dict, coord, room_stack):
             print("FANCY WIDTH:",p_dict)
             for w in range(p_dict['width']):
                 new_coord = coord
-                for y in range(pc_dict['check']):
+                for y in range(6):
                     will_fit = in_dungeon((coord[0]+w,coord[1]+1+y,coord[2]))
                     print("width:",w,"loop:","willfit:",will_fit,(coord[0]+w,coord[1]+1+y,coord[2]))
                     if not will_fit:
