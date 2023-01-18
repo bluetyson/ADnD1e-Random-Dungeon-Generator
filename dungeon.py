@@ -175,7 +175,7 @@ def check_action(pc_dict, coord, room_stack):
                     will_fit = in_dungeon((coord[0]+w,coord[1]+1+y,coord[2]))
                     if not will_fit:
                         dungeon[(coord[0]+w,coord[1]+1+y,coord[2])] = {}
-                        if y == 2: #approx midpoint fill
+                        if y == 2: #approx midpoint fill - could random 3/4 it but for 3s will be in middle anyway
                             dungeon[(coord[0]+w,coord[1]+1+y,coord[2])]['fill'] = 'C' + p_dict['fill']
 
                         #check for columns
