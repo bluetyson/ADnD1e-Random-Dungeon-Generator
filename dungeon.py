@@ -172,7 +172,7 @@ def check_action(pc_dict, coord, room_stack):
             for w in range(p_dict['width']):
                 new_coord = coord
                 for y in range(pc_dict['check']):
-                    will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
+                    will_fit = in_dungeon((coord[0]+w,coord[1]+1+y,coord[2]))
                     if not will_fit:
                         dungeon[(coord[0]+w,coord[1]+1+y,coord[2])] = {}
                         dungeon[(coord[0]+w,coord[1]+1+y,coord[2])]['fill'] = 'C'
