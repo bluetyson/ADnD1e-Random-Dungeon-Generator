@@ -159,7 +159,7 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
             #will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+1+y,coord[2]))
             #checkcoord = (coord[0]+xmod+xloop*loop,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*loop)
             will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
-            print("loop:","willfit:",will_fit)
+            print("loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
             #will_fit = in_dungeon(checkcoord)
             if not will_fit:
                 #dungeon[checkcoord] = {}
@@ -180,7 +180,7 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
                 
                 #checkcoord = (coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)
                 will_fit = in_dungeon((coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop))
-                print("width:",w,"loop:","willfit:",will_fit)
+                print("width:",w,"loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
                 if not will_fit:
                     #dungeon[checkcoord] = {}
                     dungeon[(coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)] = {}
