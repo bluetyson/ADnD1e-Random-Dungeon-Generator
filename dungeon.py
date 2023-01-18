@@ -1779,10 +1779,8 @@ def room_make(shape_dict, coord, size="C"):
                                 #so this disabled for now
                                 #if use this take it out of shape_dict['trap'] and just use this for indicator
                                 if index + 1 == w:
-                                    t_dict = bad_things(r, room_stack, size="R")
                                     print("TRAP DICT:",t_dict)
-                                    trap_string = t_dict['trap']['abv']
-                                    
+                                    trap_string = shape_dict['contents']['trap']['abv']
                                     
                                     ##got to find from t_dict what to put in string
                                     room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + trap_string
@@ -2715,9 +2713,9 @@ def bad_things(coord, room_stack, size="C"):
             if t == 12:
                 #12 Wall 10’ behind slides across passage blocking it for from 40-60 turns.
                 t_dict['trap']['type'] = 'slidingwall'
+                t_dict['trap']['abv'] = 'bw'
                 t_dict['trap']['chance'] = roll_dice(1,20) + 40
                 t_dict['trap']['effect'] = 'blocked'
-                t_dict['trap']['abv'] = 'bw'
                 if size == "C":
                     dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'bw'
                 else:
