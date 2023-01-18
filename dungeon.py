@@ -177,7 +177,7 @@ def check_action(pc_dict, coord, room_stack):
                         dungeon[(coord[0]+w,coord[1]+1+y,coord[2])] = {}
                         dungeon[(coord[0]+w,coord[1]+1+y,coord[2])]['fill'] = 'C'
                         #handle not fitting
-                        new_coord = (coord[0],coord[1]+1+y,coord[2])
+                        new_coord = (coord[0],coord[1]+1+y,coord[2]) #can change if want to reposition over
                     else:
                         break
 
@@ -1256,6 +1256,9 @@ def fancy_width():
     ST = stream
     RI = river
     CH = chasm
+    BR = bridge
+    BN = boat same side
+    BO = boat opp side
     '''
     p_dict = {}
     p_dict['width'] = 0
@@ -1276,19 +1279,33 @@ def fancy_width():
         p_dict['type'] = 'CLCRGA'
     if w >=13 and w <=15:
         p_dict['width'] = 1
-        p_dict['type'] = 'ST'
+        p_dict['type'] = 'STBR'
+        st = roll_dice(1,20)
+        if st >=16:
+            p_dict['type'] = 'ST'
     if w >=16 and w <=17:
         p_dict['width'] = 2
-        p_dict['type'] = 'RI'
+        p_dict['type'] = 'RIBR'
     elif w ==18:
         p_dict['width'] = 4
-        p_dict['type'] = 'RI'       
+        p_dict['type'] = 'RIBR'       
     elif w ==19:
         p_dict['width'] = 6
-        p_dict['type'] = 'RI'       
+        p_dict['type'] = 'RIBR'       
     else:
         p_dict['width'] = 2
         p_dict['type'] = 'CH'       
+
+    if p_dict['type'] == 'RIBR'
+        st = roll_dice(1,20)
+        if st >=11 and st <= 15:
+            p_dict['type'] = 'RIBN'
+            opp = roll_dice(1,2):
+            if opp == 2:
+                p_dict['type'] = 'RIBO'
+        else:
+            p_dict['type'] == 'RI'
+
     return p_dict
 
 def fancy_shape(shape_dict):
