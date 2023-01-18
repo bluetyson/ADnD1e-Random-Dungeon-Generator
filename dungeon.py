@@ -4343,6 +4343,9 @@ for down in range(zwidth-1):
 
                 elif downlist[down][i,j,0] == 'O':
                     strdata = '<td class="green_background">' + downlist[down][i,j,0] + '</td>'
+                elif 'CH' in downlist[down][i,j,0]:
+                    #differentiate from blue bridges
+                    strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
                 else:
                     strdata = '<td class="red_background">' + downlist[down][i,j,0] + '</td>'
 
