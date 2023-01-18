@@ -176,6 +176,11 @@ def check_action(pc_dict, coord, room_stack):
                     if not will_fit:
                         dungeon[(coord[0]+w,coord[1]+1+y,coord[2])] = {}
                         dungeon[(coord[0]+w,coord[1]+1+y,coord[2])]['fill'] = 'C'
+
+                        #check for columns
+                        #check for river or stream - blue in output
+                            #check for bridge/boat
+
                         #handle not fitting
                         new_coord = (coord[0],coord[1]+1+y,coord[2]) #can change if want to reposition over
                     else:
@@ -1236,6 +1241,7 @@ def width():
     p_dict = {}
     p_dict['width'] = 1
     p_dict['type'] = 'N'
+    p_dict['fill'] = ''
 
     #hack width for test here
     if w >=1 and w <=16:
@@ -1263,26 +1269,33 @@ def fancy_width():
     p_dict = {}
     p_dict['width'] = 0
     p_dict['type'] = ''
+    p_dict['fill'] = ''
 
     w = roll_dice(1,20)
     if w <=4:
         p_dict['width'] = 4
         p_dict['type'] = 'CL'
+        p_dict['fill'] = 'I'
     elif w >=5 and w <=7:
         p_dict['width'] = 4
         p_dict['type'] = 'CLCR'
+        p_dict['fill'] = 'I'
     elif w >=8 and w <=10:
         p_dict['width'] = 5
         p_dict['type'] = 'CLCR'
+        p_dict['fill'] = 'I'
     if w >=11 and w <=12:
         p_dict['width'] = 5
         p_dict['type'] = 'CLCRGA'
+        p_dict['fill'] = 'I'
     if w >=13 and w <=15:
         p_dict['width'] = 1
         p_dict['type'] = 'STBR'
+        p_dict['fill'] = 'B'
         st = roll_dice(1,20)
         if st >=16:
             p_dict['type'] = 'ST'
+            p_dict['fill'] = ''
     if w >=16 and w <=17:
         p_dict['width'] = 2
         p_dict['type'] = 'RIBR'
@@ -1294,17 +1307,22 @@ def fancy_width():
         p_dict['type'] = 'RIBR'       
     else:
         p_dict['width'] = 2
-        p_dict['type'] = 'CH'       
+        p_dict['type'] = 'H'
+        p_dict['fill'] = 'H'       
 
     if p_dict['type'] == 'RIBR':
+        p_dict['fill'] = 'B'
         st = roll_dice(1,20)
         if st >=11 and st <= 15:
             p_dict['type'] = 'RIBN'
+            p_dict['fill'] = 'bn'
             opp = roll_dice(1,2)
             if opp == 2:
                 p_dict['type'] = 'RIBO'
+                p_dict['fill'] = 'bo'
         else:
             p_dict['type'] == 'RI'
+            p_dict['fill'] = ''
 
     return p_dict
 
