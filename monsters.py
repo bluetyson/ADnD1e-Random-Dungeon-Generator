@@ -83,6 +83,10 @@ def monster_tables(level):
         for r in range(100):
             levels[i+1][r+1] = {}
 
+    levels['HumanSubtable'] = {}            
+    levels['CharacterSubtable'] = {}            
+    levels['DragonSubtable'] = {}            
+
     #need to do stars for substitutions for levels
 
     level_01 ='''01-02 Ant, giant 1-4
@@ -323,6 +327,7 @@ def monster_tables(level):
     levels[8]['data'] = level_08
     levels[9]['data'] = level_09
     levels[10]['data'] = level_10
+
     levels['HumanSubtable']['data'] = HumanSubtable
 
     uselevel = levels[1]['data'].split("\n")
