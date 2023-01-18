@@ -81,7 +81,7 @@ def monster_tables(level):
     for i in range(10):
         levels[i+1] = {}
         for r in range(100):
-            levels[0+i][r+1] = {}
+            levels[i+1][r+1] = {}
 
     level_01 ='''01-02 Ant, giant 1-4
     03-04 Badger* 1-4
