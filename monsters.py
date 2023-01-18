@@ -143,5 +143,5 @@ if __name__ == "__main__":
         monster_level = level_matrix(3)
     print("MONSTER LEVEL:",monster_level)
 
-    print(monster_tables)
+    print(monster_tables())
 
