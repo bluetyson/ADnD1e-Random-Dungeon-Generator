@@ -148,7 +148,7 @@ def random_check():
 
     return pc_dict
 
-def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwidth=0,ywidth=0):
+def passage_make(coord, dungeon, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwidth=0,ywidth=0):
     p_dict = width()
 
     if p_dict['width'] <= 1: #0.5 width do cosmetically later
@@ -207,7 +207,7 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
 def check_action(pc_dict, coord, room_stack):
     ## need a current 'orientation' 'L R A B
     if pc_dict['direction'] == 'ahead':
-        new_coord = passage_make(coord,loop=6,ymod=1,yloop=1,xwidth=1)
+        new_coord = passage_make(coord,dungeon,loop=6,ymod=1,yloop=1,xwidth=1)
 
     elif pc_dict['direction'] == 'exit':
         '''
