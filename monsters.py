@@ -88,13 +88,13 @@ def monster_tables(level):
     05-14 Beetle, fire 1-4
     15 Demon, manes 1-4
     16-17 Dwarf 4-14
-    18 Ear seeker 1
+    18 Ear-seeker 1
     19 Elf 3-11
     20-21 Gnome 5-15
     22-26 Goblin 6-15
     27-28 Halfling** 9-16
     29-33 Hobgoblin 2-8
-    34-48 Human — see Human Subtable below
+    34-48 Human — see Human Subtable below 1
     49-54 Kobold 6-18
     55-66 Orc 7-12
     67-70 Piercer 1-3
@@ -102,7 +102,7 @@ def monster_tables(level):
     84-85 Rot grub 1-3
     86-96 Shrieker 1-2
     97-98 Skeleton 1-4
-    99-00 Zombie 1-3'''
+    99-100 Zombie 1-3'''
 
     levels[1]['data'] = level_01
 
@@ -134,6 +134,23 @@ def monster_tables(level):
         monster_list = usestr.split()
         print(monster_list)
 
+        number_range = monster_list[0].split('-')
+        dice_roll = monster_list[2]
+        monster = monster_list[1]
+
+        if '-' in monster_list[0]:
+            lo = int(number_range[0])
+            hi = int(number_range[1]) 
+            print(hi, lo)
+            for i in range(lo,hi+1,1):
+                print(i)
+                levels[1][i]['name'] = monster
+                levels[1][i]['roll'] = dice_lookup[dice_roll]
+        else:
+            levels[1][int(number_range[0])]['name'] = monster
+            levels[1][int(number_range[0])]['roll'] = dice_lookup[dice_roll]
+
+    return True
 
 if __name__ == "__main__":
     ARGV = sys.argv
