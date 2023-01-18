@@ -1298,7 +1298,7 @@ def width():
         could have cosmetic width markers as html CCC, CC to start then grid squares later
     '''
     w = roll_dice(1,20)
-    w = 18 #test
+    w = 17 #test
     print("WIDTH ROLL:",w)
     p_dict = {}
     p_dict['width'] = 1
