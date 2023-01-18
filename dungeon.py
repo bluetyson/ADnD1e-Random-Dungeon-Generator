@@ -177,6 +177,8 @@ def check_action(pc_dict, coord, room_stack):
                         dungeon[(coord[0]+w,coord[1]+1+y,coord[2])] = {}
                         if y == 2: #approx midpoint fill - could random 3/4 it but for 3s will be in middle anyway
                             dungeon[(coord[0]+w,coord[1]+1+y,coord[2])]['fill'] = 'C' + p_dict['fill']
+                        else:
+                            dungeon[(coord[0]+w,coord[1]+1+y,coord[2])]['fill'] = 'C'
 
                         #check for columns
                         #check for river or stream - blue in output
