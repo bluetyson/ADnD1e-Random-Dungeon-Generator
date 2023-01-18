@@ -115,6 +115,15 @@ def monster_tables(level):
     31-45 Brigand* 5-15
     46-00 Character — see Character Subtable 1'''
 
+    #character level max of dungeon level or monster level up to 4th
+    #after that character_level = roll_dice(1,6) + 6
+    #if roll > level of dungeon, character_level = character_level -1
+    #if roll < level of dungeon, character_level = character_level +1
+    #if level of dungeon < 16, character_level = min(12, character_level)
+
+    CharacterNumbers = roll_dice(1,4) + 1
+    HenchNumbers = 9 - CharacterNumbers
+
     CharacterSubtable = '''01-17 CLERIC 3
     18-20 Druid 2
     21-60 FIGHTER 5
