@@ -191,12 +191,12 @@ def monster_tables(level):
     87-00 Spider, giant 1-2'''
 
     level_06='''01-03 Basilisk 1
-    04-10 Carrion crawler 1-2
+    04-10 Carrion-crawler 1-2
     11-16 Character — see Character Subtable 1
     17 Devil, erinyes 1-2
     18-19 Djinni 1
     20-21 Dragon — see Dragon Subtable below 1
-    22-25 Green slime 1
+    22-25 Green-slime 1
     26-28 Hydra, 8-9-heads 1
     29-32 Jackalwere 1-2
     33-36 Lammasu 1-3
@@ -206,7 +206,7 @@ def monster_tables(level):
     51-55 Medusa 1
     56 Mold, brown 1
     57-58 Mold, yellow 1
-    59-60 Ogre magi 1-2
+    59-60 Ogre-magi 1-2
     61-68 Otyugh 1
     69-70 Rakshasa 1
     71-73 Salamander 1-2
