@@ -150,10 +150,11 @@ def random_check():
 
 def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwidth=0,ywidth=0):
     p_dict = width()
-    print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop)
+    print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop,"COORD:",coord)
     if p_dict['width'] <= 1: #0.5 width do cosmetically later
 
         new_coord = coord
+        print()
         #for y in range(pc_dict['check']):
         for y in range(loop):                
             #will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+1+y,coord[2]))
