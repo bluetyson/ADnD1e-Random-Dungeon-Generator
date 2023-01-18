@@ -337,7 +337,7 @@ def monster_tables(level):
             usestr = l.replace(', ','-')
             usestr = usestr.replace('see Human Subtable below','HumanSubtable')
             usestr = usestr.replace('see Dragon Subtable below','DragonSubtable')
-            usestr = usestr.replace('see Character Subtable below','CharacterSubtable')
+            usestr = usestr.replace('see Character Subtable','CharacterSubtable')
             usestr = usestr.replace(' — ','-')
             monster_list = usestr.split()
             print(monster_list)
