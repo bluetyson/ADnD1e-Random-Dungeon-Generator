@@ -1571,9 +1571,12 @@ def room_make(shape_dict, coord, size="C"):
                 #this is where a pool goes
                 if shape_dict[key] == 'P':
                     print("has Pool")
+                    #check for wet_magic
                     if mid_coord in dungeon:
                         print("fitting mid_coord", mid_coord)
                         dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'P'
+                        if 'wet_magic' in shape_dict['pool']:
+                            dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'M'
                     else:
                         print("fit fail",room_stack[room_stack['key_count']])
                 elif shape_dict[key] == 'L':
@@ -1583,11 +1586,14 @@ def room_make(shape_dict, coord, size="C"):
                     if mid_coord in dungeon:
                         print("fitting mid_coord", mid_coord)
                         dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'L'
+                        if 'wet_magic' in shape_dict['lake']:
+                            dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'M'
 
                         non_edge = coord_edge(room_stack[room_stack['key_count']])
                         for c in non_edge:
                             dungeon[c]['fill'] = dungeon[c]['fill'] + 'L'
-
+                            if 'wet_magic' in shape_dict['lake']:
+                                dungeon[c]['fill'] = dungeon[c]['fill'] + 'M'
                     else:
                         print("fit fail",room_stack[room_stack['key_count']])
 
@@ -1613,7 +1619,7 @@ def room_make(shape_dict, coord, size="C"):
                 #what about lake
             if key == 'wet_magic':
                 print("HAS WATER AND MAGIC",shape_dict[key])
-                
+                wet_magic_str = 'M'  #in building pools and lakes check for this
 
 
             if key == 'contents':
