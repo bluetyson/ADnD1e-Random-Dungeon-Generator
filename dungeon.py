@@ -3650,6 +3650,7 @@ def exit_direction_full(coord, e_dict):
 def monster_check(level, monster):
     lst = monster[level]
     r = roll_dice(1,20)
+    print("MONSTER LEVEL ROLL:",r)
     for index, l in enumerate(lst):
         if index == 0:
             if r <= lst[index]:
