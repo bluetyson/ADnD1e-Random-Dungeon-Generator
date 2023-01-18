@@ -428,6 +428,16 @@ def monster_tables(level):
     levels[9]['data'] = level_09
     levels[10]['data'] = level_10
 
+    dragon_levels = {}
+    dragon_levels[3]['data'] = dragon_level_03
+    dragon_levels[4]['data'] = dragon_level_04
+    dragon_levels[5]['data'] = dragon_level_05
+    dragon_levels[6]['data'] = dragon_level_06
+    dragon_levels[7]['data'] = dragon_level_07
+    dragon_levels[8]['data'] = dragon_level_08
+    dragon_levels[9]['data'] = dragon_level_09
+    dragon_levels[10]['data'] = dragon_level_10
+
     levels['HumanSubtable']['data'] = HumanSubtable
     levels['CharacterSubtable']['data'] = CharacterSubtable
 
