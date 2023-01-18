@@ -170,13 +170,14 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
     else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
         print("FANCY WIDTH:",p_dict)
         for w in range(p_dict['width']):
-            checkcoord = (coord[0]+xmod+xloop*loop+xwidth*loop,coord[1]+ymod+yloop*loop+ywidth*loop,coord[2]+zmod+zloop*loop)
+            
             new_coord = coord
-            for loop in range(pc_dict['check']):
+            for y in range(loop):
+                checkcoord = (coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)
                 will_fit = in_dungeon(checkcoord)
                 if not will_fit:
                     dungeon[checkcoord] = {}
-                    if loop == 1: #approx midpoint fill - could random 3/4 it but for 3s will be in middle anyway wrong for 6 ok for 3
+                    if y == 1: #approx midpoint fill - could random 3/4 it but for 3s will be in middle anyway wrong for 6 ok for 3
                         dungeon[checkcoord]['fill'] = 'C' + p_dict['fill']
                     else:
                         dungeon[checkcoord]['fill'] = 'C'
@@ -197,7 +198,7 @@ def check_action(pc_dict, coord, room_stack):
     ## need a current 'orientation' 'L R A B
     if pc_dict['direction'] == 'ahead':
 
-        new_coord = passage_make(coord,loop=6,ymod=1,yloop=1)    
+        new_coord = passage_make(coord,loop=6,ymod=1,yloop=1,xwidth=1)    
 
     elif pc_dict['direction'] == 'exit':
         '''
