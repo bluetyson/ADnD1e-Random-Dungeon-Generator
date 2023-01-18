@@ -1237,7 +1237,8 @@ def width():
     p_dict['width'] = 1
     p_dict['type'] = 'N'
 
-    if w >=13 and w <=16:
+    #hack width for test here
+    if w >=1 and w <=16:
         p_dict['width'] = 2
     elif w ==17:
         p_dict['width'] = 3
@@ -3720,7 +3721,7 @@ first_action = check_action(roll_first, coord, room_stack)
 
 i = 0
 result_coord = first_action
-print("END SETUP:\n",)
+print("END SETUP:",)
 
 while i < PERIODIC_CHECKS:
     print("\n--- ROLL:",i," ---\n")
