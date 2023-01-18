@@ -1313,7 +1313,7 @@ def width():
     elif w ==18:
         p_dict['width'] = 0.5
     else:
-        pw = fancy_width()
+        p_dict = fancy_width()
     return p_dict
 
 def fancy_width():
