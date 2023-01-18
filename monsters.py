@@ -166,8 +166,12 @@ def monster_tables(level):
     78-84 Spider, huge 1-3
     85-93 Spider, large 2-5
     94-95 Tick, giant 1-3
-    96-00 Weasel, giant 1-4'''    
+    96-00 Weasel, giant 1-4''' 
 
+    dragon_level_03 = '''01-28 Black:very-young (1)
+    29-62 Brass:very-young (1)
+    63-00 White:very-young (1)'''
+    
     level_04 = '''01-08 Ape, carnivorous 1-3
     09-14 Blink-dog 2-5
     15-22 Character — see Character Subtable 1
@@ -187,6 +191,17 @@ def monster_tables(level):
     91-94 Su-monster 1-2
     95-96 Toad, ice 1
     97-00 Toad, poisonous 1-3'''
+
+    dragon_level_04 = '''01-09 Black:young/sub-adult (2/3)
+    10-20 Blue:very young/young (1/2)
+    21-30 Brass:young/sub-adult (2/3)
+    31-37 Bronze:very-young/young (1/2)
+    38-50 Copper:very-young/young (1/2)
+    51-54 Gold:very-young/young (1/2)
+    55-70 Green:very-young/young (1/2)
+    71-80 Red:very-young/young (1/2)
+    81-88 Silver:very-young/young (1/2)
+    89-00 White:young/sub-adult (2/3)
 
     level_05='''01-08 Character — see Character Subtable 1
     09-15 Cockatrice 1-2
@@ -209,6 +224,17 @@ def monster_tables(level):
     75-82 Snake, giant-poisonous 1
     83-86 Snake, giant-spitting 1
     87-00 Spider, giant 1-2'''
+
+    dragon_level_05='''01-08 Black:young-adult/adult (4/5)
+    09-20 Blue:sub-adult/young-adult (3/4)
+    21-30 Brass:young-adult/adult (4/5)
+    31-37 Bronze:sub-adult/young-adult (3/4)
+    38-50 Copper:sub-adult/young-adult (3/4)
+    51-54 Gold:sub-adult/young-adult (3/4)
+    55-70 Green:sub-adult/young-adult (3/4)
+    71-80 Red:sub-adult/young-adult (3/4)
+    81-88 Silver:sub-adult/young-adult (3/4)
+    89-00 White:young-adult/adult (4/5)'''    
 
     level_06='''01-03 Basilisk 1
     04-10 Carrion-crawler 1-2
@@ -349,6 +375,7 @@ def monster_tables(level):
     levels[10]['data'] = level_10
 
     levels['HumanSubtable']['data'] = HumanSubtable
+    levels['CharacterSubtable']['data'] = CharacterSubtable
 
     for ld in range(10):
         print("levels:",ld)
