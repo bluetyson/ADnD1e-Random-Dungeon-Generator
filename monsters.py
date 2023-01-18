@@ -260,7 +260,7 @@ def monster_tables(level):
     96-97 Will-o-wisp 1-3
     98-00 Xorn 1-3'''
 
-    level_08='''01 Aerial servant 1
+    level_08='''01 Aerial-servant 1
     02-06 Character — see Character Subtable 1
     07 Demon, type-IV 1
     08 Demon, type-V 1
