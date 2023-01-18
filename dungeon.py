@@ -1245,7 +1245,7 @@ def width():
     p_dict['fill'] = ''
 
     #hack width for test here
-    if w >=1 and w <=16:
+    if w >=13 and w <=16:
         p_dict['width'] = 2
     elif w ==17:
         p_dict['width'] = 3
