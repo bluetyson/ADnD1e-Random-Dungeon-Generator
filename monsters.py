@@ -134,7 +134,7 @@ def monster_tables(level):
     21-30 Character — see Character Subtable 1
     31-32 Dragon — see Dragon Subtable below 1
     33-34 Fungi, violet 1-3
-    35-40 Gelatinous cube 1
+    35-40 Gelatinous-cube 1
     41-45 Ghoul 1-4
     46-50 Lizard, giant 1-3
     51-54 Lycanthrope, wererat 2-5
