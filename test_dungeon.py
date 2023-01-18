@@ -237,7 +237,7 @@ def check_action(pc_dict, coord, room_stack):
                 new_coord = coord
                 for y in range(pc_dict['check']):
                     will_fit = in_dungeon((coord[0]+w,coord[1]+1+y,coord[2]))
-                    print("width:",w,"loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
+                    print("width:",w,"loop:","willfit:",will_fit,(coord[0]+w,coord[1]+1+y,coord[2]))
                     if not will_fit:
                         dungeon[(coord[0]+w,coord[1]+1+y,coord[2])] = {}
                         if y == 2: #approx midpoint fill - could random 3/4 it but for 3s will be in middle anyway
