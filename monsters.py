@@ -149,19 +149,19 @@ def monster_tables(level):
     96-00 Weasel, giant 1-4'''    
 
     level_04 = '''01-08 Ape, carnivorous 1-3
-    09-14 Blink dog 2-5
+    09-14 Blink-dog 2-5
     15-22 Character — see Character Subtable 1
     23-24 Dragon — see Dragon Subtable below 1
     25-30 Gargoyle 1-2
     31-36 Ghast 1-4
-    37-40 Gray ooze 1
+    37-40 Gray-ooze 1
     41-44 Hell-hound 1-2
     45-47 Hydra, 5-or-6heads 1
     48 Hydra, pyro-5-heads 1
     49-62 Lycanthrope, werewolf 1-2
     63-75 Mold, yellow 1
     76-78 Owlbear 1-2
-    79 Rust monster 1
+    79 Rust-monster 1
     80-82 Shadow 1-3
     83-90 Snake, giant, constrictor 1
     91-94 Su-monster 1-2
