@@ -588,7 +588,6 @@ def check_action(pc_dict, coord, room_stack):
         s_dict = side(coord)
         print("S_DICT:",s_dict)
         if s_dict['direction'] == 'L90':
-            new_coord = passage_make(coord,xmod=-1,xloop=-1)    
             for x in range(3):
                 will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
                 if not will_fit:
