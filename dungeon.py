@@ -4229,7 +4229,7 @@ for down in range(zwidth-1):
                 elif 'CH' in downlist[down][i,j,0]:
                     #differentiate from blue bridges
                     strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
-                elif 'P' in downlist[down][i,j,0] or 'L' in downlist[down][i,j,0] or 'W' in downlist[down][i,j,0] or 'S' in downlist[down][i,j,0] or 'br' in downlist[down][i,j,0] or 'bn' in downlist[down][i,j,0] or 'bo' in downlist[down][i,j,0]:
+                elif 'P' in downlist[down][i,j,0] or 'L' in downlist[down][i,j,0] or 'W' in downlist[down][i,j,0] or 'S' in downlist[down][i,j,0] or 'br' in downlist[down][i,j,0] or 'bn' in downlist[down][i,j,0] or 'bo' in downlist[down][i,j,0] or 'ri' in downlist[down][i,j,0]:
                     strdata = '<td class="blue_background">' + downlist[down][i,j,0] + '</td>'
                 elif 'C' in downlist[down][i,j,0]:  #could have door markers etc                    
                     usestr = copy.deepcopy(downlist[down][i,j,0])
