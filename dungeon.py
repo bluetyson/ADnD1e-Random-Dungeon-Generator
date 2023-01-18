@@ -1311,7 +1311,8 @@ def fancy_width():
         p_dict['type'] = 'HBR'
         p_dict['fill'] = 'Hbr'       
         st = roll_dice(1,20)
-        if st <=10:
+        if st <= 10:
+            pass #as above
         elif st >=11 and st <= 15:
             p_dict['fill'] = 'HL'  #can leap across
         else:
@@ -1320,7 +1321,9 @@ def fancy_width():
     if p_dict['type'] == 'RIBR':
         p_dict['fill'] = 'br'
         st = roll_dice(1,20)
-        if st >=11 and st <= 15:
+        if st <=10:
+            pass
+        elif st >=11 and st <= 15:
             p_dict['type'] = 'RIBN'
             p_dict['fill'] = 'bn'
             opp = roll_dice(1,2)
