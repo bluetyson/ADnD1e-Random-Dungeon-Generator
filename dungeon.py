@@ -152,18 +152,35 @@ def check_action(pc_dict, coord, room_stack):
     ## need a current 'orientation' 'L R A B
     if pc_dict['direction'] == 'ahead':
         will_fit = True
-        new_coord = coord
-        for y in range(pc_dict['check']):
+        p_dict = width()
 
-            will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
-            #print("Y",y, "WILLFIT:",will_fit)
-            if not will_fit:
-                dungeon[(coord[0],coord[1]+1+y,coord[2])] = {}
-                dungeon[(coord[0],coord[1]+1+y,coord[2])]['fill'] = 'C'
-                #handle not fitting
-                new_coord = (coord[0],coord[1]+1+y,coord[2])
-            else:
-                break
+        if p_dict['width'] <= 1: #0.5 width do cosmetically later
+
+            new_coord = coord
+            for y in range(pc_dict['check']):
+                will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
+                #print("Y",y, "WILLFIT:",will_fit)
+                if not will_fit:
+                    dungeon[(coord[0],coord[1]+1+y,coord[2])] = {}
+                    dungeon[(coord[0],coord[1]+1+y,coord[2])]['fill'] = 'C'
+                    #handle not fitting
+                    new_coord = (coord[0],coord[1]+1+y,coord[2])
+                else:
+                    break
+        else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
+            for w in range(p_dict['width']):
+                new_coord = coord
+                for y in range(pc_dict['check']):
+                    will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
+                    if not will_fit:
+                        dungeon[(coord[0]+w,coord[1]+1+y,coord[2])] = {}
+                        dungeon[(coord[0]+w,coord[1]+1+y,coord[2])]['fill'] = 'C'
+                        #handle not fitting
+                        new_coord = (coord[0],coord[1]+1+y,coord[2])
+                    else:
+                        break
+
+
     elif pc_dict['direction'] == 'exit':
         '''
             e_dict['beyond'] = 'P'
