@@ -2628,13 +2628,13 @@ def bad_things(coord, room_stack, size="C"):
                 t_dict['trap']['chance_elf'] = 0.25
                 t_dict['trap']['damage'] = roll_dice(1,6)
                 t_dict['trap']['type'] = 'secret door pit'
-                t_dict['trap']['abv'] = 'pd'
+                t_dict['trap']['abv'] = 'pt'
                 if size == "C":
-                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pd'
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pt'
                 else:
                     ## maybe below is not necessary?
-                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pd'
-                    #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pd'
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'pt'
+                    #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'pt'
                 new_coord = (coord[0],coord[1]+1,coord[2])
                 t_dict['new_coord'] = new_coord
                 ## do stuff for exits!!
@@ -2887,7 +2887,7 @@ def bad_things(coord, room_stack, size="C"):
             t_dict['trap']['chance_elf'] = 0.25
             t_dict['trap']['damage'] = roll_dice(1,6)
             t_dict['trap']['type'] = 'secret door pit'
-            t_dict['trap']['abv'] = 'pd'
+            t_dict['trap']['abv'] = 'pt'
         if t >= 6 and t <= 7:
             t_dict['trap']['type'] = 'pit'
             t_dict['trap']['abv'] = 'pi'
@@ -4093,7 +4093,7 @@ for down in range(zwidth-1):
     legend_dict['cm'] = "Chimney"
     legend_dict['td'] = "Trapdoor"
     legend_dict['pi'] = "Pit Trap"
-    legend_dict['pd'] = "Pit Trap: Secret Door"
+    legend_dict['pt'] = "Pit Trap: Secret Door"
     legend_dict['ps'] = "Pit Trap: Spikes"
     legend_dict['pc'] = "Pit Trap: Crushing Walls"
     legend_dict['el'] = "Elevator Trap"
