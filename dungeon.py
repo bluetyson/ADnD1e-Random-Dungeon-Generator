@@ -1781,7 +1781,7 @@ def room_make(shape_dict, coord, size="C"):
                                 if index + 1 == w:
                                     t_dict = bad_things(r, room_stack, size="R")
                                     print("TRAP DICT:",t_dict)
-                                    trap_string = t_dict['abv']
+                                    trap_string = t_dict['trap']['abv']
                                     
                                     
                                     ##got to find from t_dict what to put in string
