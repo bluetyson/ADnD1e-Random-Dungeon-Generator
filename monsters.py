@@ -217,7 +217,7 @@ def monster_tables(level):
     96-98 Wraith 1-2
     99-00 Wyvern 1'''
 
-    level_07='''01-05 Black pudding 1
+    level_07='''01-05 Black-pudding 1
     06-10 Character — see Character Subtable 1
     11-14 Chimera 1-2
     15 Demon, succubus 1
