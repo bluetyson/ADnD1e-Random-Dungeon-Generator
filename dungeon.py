@@ -1551,7 +1551,7 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['level'] = {}
     elif r == 19:        
         shape_dict['contents']['trap'] = {}
-        shape_dict['contents']['trap'] = bad_things(coord, size="R") #or should all traps be on room entry and this is ok?
+        shape_dict['contents']['trap'] = bad_things(coord, room_stack, size="R") #or should all traps be on room entry and this is ok?
         #trying this again
     else:
         shape_dict['contents']['treasure'] = {}
