@@ -1,3 +1,7 @@
+if pc_dict['direction'] == 'ahead':
+
+        new_coord = passage_make(coord,loop=6,ymod=1,yloop=1,xwidth=1)
+
 elif pc_dict['direction'] == 'side':
     new_coord = coord
     s_dict = side(coord)
@@ -69,3 +73,6 @@ elif pc_dict['direction'] == 'side':
             new_coord = new_coord_left_back
         else:
             new_coord = new_coord_right_back
+
+else:
+    pass
