@@ -168,6 +168,7 @@ def check_action(pc_dict, coord, room_stack):
                 else:
                     break
         else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
+            print("FANCY WIDTH:",p_dict)
             for w in range(p_dict['width']):
                 new_coord = coord
                 for y in range(pc_dict['check']):
@@ -1231,6 +1232,7 @@ def width():
         could have cosmetic width markers as html CCC, CC to start then grid squares later
     '''
     w = roll_dice(1,20)
+    print("WIDTH ROLL:",w)
     p_dict = {}
     p_dict['width'] = 1
     p_dict['type'] = 'N'
