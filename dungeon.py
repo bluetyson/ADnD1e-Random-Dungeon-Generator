@@ -1551,8 +1551,8 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['level'] = {}
     elif r == 19:        
         shape_dict['contents']['trap'] = {}
-        #shape_dict['contents']['trap']  = bad_things(coord, size="R") #or should all traps be on room entry and this is ok?
-        #take out for now won't have write coord
+        shape_dict['contents']['trap'] = bad_things(coord, size="R") #or should all traps be on room entry and this is ok?
+        #trying this again
     else:
         shape_dict['contents']['treasure'] = {}
         shape_dict = loot(shape_dict,coord,monster="N")
@@ -1778,8 +1778,9 @@ def room_make(shape_dict, coord, size="C"):
                                 #if use this take it out of shape_dict['trap'] and just use this for indicator
                                 if index + 1 == w:
                                     t_dict = bad_things(r, room_stack, size="R")
-                                    trap_string = t_dict['abv']
                                     print("TRAP DICT:",t_dict)
+                                    trap_string = t_dict['abv']
+                                    
                                     
                                     ##got to find from t_dict what to put in string
                                     room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + trap_string
