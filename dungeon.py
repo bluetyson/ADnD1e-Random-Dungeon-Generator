@@ -2616,6 +2616,7 @@ def bad_things(coord, room_stack, size="C"):
     t_dict['trap']['type'] = 'secretdoor'
     t_dict['trap']['chance'] = 1.0
     t_dict['trap']['fits'] = 'N'
+    t_dict['trap']['abv'] = ''  #default not fill with #will fit is for bad things
 
     will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #down 1#facing
     if not will_fit:                                                
