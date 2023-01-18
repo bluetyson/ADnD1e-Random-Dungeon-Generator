@@ -144,7 +144,7 @@ def random_check():
     print("RANDOM_CHECK",pc, pc_dict['direction'])
 
     #test purposes
-    #pc_dict['direction'] = 'ahead'
+    pc_dict['direction'] = 'ahead'
 
     return pc_dict
 
