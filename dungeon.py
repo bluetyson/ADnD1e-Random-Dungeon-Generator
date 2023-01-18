@@ -640,7 +640,7 @@ def check_action(pc_dict, coord, room_stack):
         else:
         #s_dict['direction'] == 'X': 45 and 135
             which_way = roll_dice(1,4) ##got to move this up
-            newcoord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
+            new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
             new_coord_right = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1) 
             
             new_coord_left_back = passage_make(coord,xmod=-1,xloop=-1,ymod=-1,yloop=-1,xwidth=1)    
