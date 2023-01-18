@@ -182,9 +182,9 @@ def monster_tables(level):
     53-60 Minotaur 1-3
     61-64 Mold, yellow 1
     65 Quasit 1
-    66-67 Rust Monster 1
+    66-67 Rust-Monster 1
     68-70 Shrieker 2-5
-    71-72 Slithering Tracker 1
+    71-72 Slithering-Tracker 1
     73-74 Snake, giant-amphisbaena 1
     75-82 Snake, giant-poisonous 1
     83-86 Snake, giant-spitting 1
@@ -213,7 +213,7 @@ def monster_tables(level):
     74-77 Spider, phase 1-3
     78-88 Troll 1-3
     89-93 Wight 1-4
-    94-95 Wind walker 1-2
+    94-95 Wind-walker 1-2
     96-98 Wraith 1-2
     99-00 Wyvern 1'''
 
@@ -238,14 +238,14 @@ def monster_tables(level):
     42-43 Groaning-spirit 1
     44-46 Hydra, 10-12-heads 1
     47 Hydra, pyro-7-9-heads 1
-    48-49 Intellect devourer 1
-    50 Invisible stalker 1
+    48-49 Intellect-devourer 1
+    50 Invisible-stalker 1
     51-52 Lamia 1-2
     53-56 Lizard, fire 1-3
     57-59 Lurker-above 1
     60 Mezzodaemon 1
     61-63 Mimic 1
-    64-65 Mind flayer 1-2
+    64-65 Mind-flayer 1-2
     66-69 Mummy 1-2
     70 Naga, spirit 1-2
     71-73 Neo-otyugh 1
