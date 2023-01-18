@@ -99,7 +99,7 @@ def monster_tables(level):
     55-66 Orc 7-12
     67-70 Piercer 1-3
     71-83 Rat, giant 5-20
-    84-85 Rot grub 1-3
+    84-85 Rot-grub 1-3
     86-96 Shrieker 1-2
     97-98 Skeleton 1-4
     99-100 Zombie 1-3'''
