@@ -175,7 +175,8 @@ def check_action(pc_dict, coord, room_stack):
                     will_fit = in_dungeon((coord[0]+w,coord[1]+1+y,coord[2]))
                     if not will_fit:
                         dungeon[(coord[0]+w,coord[1]+1+y,coord[2])] = {}
-                        dungeon[(coord[0]+w,coord[1]+1+y,coord[2])]['fill'] = 'C'
+                        if y == 2: #approx midpoint fill
+                            dungeon[(coord[0]+w,coord[1]+1+y,coord[2])]['fill'] = 'C' + p_dict['fill']
 
                         #check for columns
                         #check for river or stream - blue in output
@@ -1291,11 +1292,11 @@ def fancy_width():
     if w >=13 and w <=15:
         p_dict['width'] = 1
         p_dict['type'] = 'STBR'
-        p_dict['fill'] = 'B'
+        p_dict['fill'] = 'br'
         st = roll_dice(1,20)
         if st >=16:
             p_dict['type'] = 'ST'
-            p_dict['fill'] = ''
+            p_dict['fill'] = 'ri'
     if w >=16 and w <=17:
         p_dict['width'] = 2
         p_dict['type'] = 'RIBR'
@@ -1307,11 +1308,17 @@ def fancy_width():
         p_dict['type'] = 'RIBR'       
     else:
         p_dict['width'] = 2
-        p_dict['type'] = 'H'
-        p_dict['fill'] = 'H'       
+        p_dict['type'] = 'HBR'
+        p_dict['fill'] = 'Hbr'       
+        st = roll_dice(1,20)
+        if st <=10:
+        elif st >=11 and st <= 15:
+            p_dict['fill'] = 'HL'  #can leap across
+        else:
+            p_dict['fill'] = 'Hl'
 
     if p_dict['type'] == 'RIBR':
-        p_dict['fill'] = 'B'
+        p_dict['fill'] = 'br'
         st = roll_dice(1,20)
         if st >=11 and st <= 15:
             p_dict['type'] = 'RIBN'
@@ -1322,7 +1329,7 @@ def fancy_width():
                 p_dict['fill'] = 'bo'
         else:
             p_dict['type'] == 'RI'
-            p_dict['fill'] = ''
+            p_dict['fill'] = 'ri'
 
     return p_dict
 
@@ -3985,7 +3992,8 @@ for down in range(zwidth-1):
             for i in range(downlist[down].shape[0]):                
                 if downlist[down][i,j,0] == 'B':
                     strdata = '<td class="black_background">' + downlist[down][i,j,0] + '</td>'
-                elif 'P' in downlist[down][i,j,0] or 'L' in downlist[down][i,j,0] or 'W' in downlist[down][i,j,0] or 'S' in downlist[down][i,j,0]  :
+                #water [boats/bridges]
+                elif 'P' in downlist[down][i,j,0] or 'L' in downlist[down][i,j,0] or 'W' in downlist[down][i,j,0] or 'S' in downlist[down][i,j,0] or 'br' in downlist[down][i,j,0] or 'bn' in downlist[down][i,j,0] or 'bo' in downlist[down][i,j,0]:
                     strdata = '<td class="blue_background">' + downlist[down][i,j,0] + '</td>'
                 elif 'C' in downlist[down][i,j,0]:  #could have door markers etc                    
                     usestr = copy.deepcopy(downlist[down][i,j,0])
