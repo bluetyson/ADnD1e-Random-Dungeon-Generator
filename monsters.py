@@ -201,7 +201,7 @@ def monster_tables(level):
     55-70 Green:very-young/young (1/2)
     71-80 Red:very-young/young (1/2)
     81-88 Silver:very-young/young (1/2)
-    89-00 White:young/sub-adult (2/3)
+    89-00 White:young/sub-adult (2/3)'''
 
     level_05='''01-08 Character — see Character Subtable 1
     09-15 Cockatrice 1-2
