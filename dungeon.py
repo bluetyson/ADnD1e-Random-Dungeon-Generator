@@ -3217,7 +3217,7 @@ def wet_magic(shape_dict):
         else:
             wet_magic_dict['characteristic'] = 'CHA'
         e = roll_dice(1,2)
-        s = roll_dict(1,3)
+        s = roll_dice(1,3)
         if e == 1:
             wet_magic_dict['sign'] = 1            
         else:
