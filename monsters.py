@@ -263,6 +263,17 @@ def monster_tables(level):
     96-98 Wraith 1-2
     99-00 Wyvern 1'''
 
+    dragon_level_06='''01-08 Black:old (6)
+    09-19 Blue:adult (5)
+    20-29 Brass:old (6)
+    30-36 Bronze:adult (5)
+    37-48 Copper:adult (5)
+    49-52 Gold:adult (5)
+    53-65 Green:adult (5)
+    66-78 Red:adult (5)
+    79-87 Silver:adult (5)
+    88-00 White:old (6)'''   
+
     level_07='''01-05 Black-pudding 1
     06-10 Character — see Character Subtable 1
     11-14 Chimera 1-2
@@ -306,6 +317,17 @@ def monster_tables(level):
     96-97 Will-o-wisp 1-3
     98-00 Xorn 1-3'''
 
+    dragon_level_07='''01-10 Black:very-old (7)
+    11-21 Blue:old (6)
+    22-29 Brass:very-old (7)
+    30-36 Bronze:old (6)
+    37-48 Copper:old (6)
+    49-52 Gold:old (6)
+    53-66 Green:old (6)
+    67-80 Red:old (6)
+    81-87 Silver:old (6)
+    88-00 White:very-old (7)'''    
+
     level_08='''01 Aerial-servant 1
     02-06 Character — see Character Subtable 1
     07 Demon, type-IV 1
@@ -333,6 +355,17 @@ def monster_tables(level):
     87-92 Will-o-wisp 2-5
     93-00 Xorn 2-5'''
 
+    dragon_level_08='''01-13 Black:ancient (8)
+    14-24 Blue:very-old (7)
+    25-31 Brass:ancient (8)
+    32-35 Bronze:very-old (7)
+    36-43 Copper:very-old (7)
+    44-47 Gold:very-old (7)
+    48-62 Green:very-old (7)
+    63-78 Red:very-old (7)
+    79-82 Silver:very-old (7)
+    83-00 White:ancient (8)'''
+
     level_09='''01-09 Character — see Character Subtable 1
     10-12 Devil, pit-fiend 1
     13-15 Dragon — see Dragon Subtable below 1-2
@@ -352,6 +385,17 @@ def monster_tables(level):
     84-93 Will-o-wisp 2-5
     94-00 Xorn 2-9'''
 
+    dragon_level_09='''01-10 Black:2-ancient-&-old (8&6)
+    11-22 Blue:ancient (8)
+    23-31 Brass:2-ancient-&-old (8&6)
+    32-34 Bronze:ancient (8)
+    35-42 Copper:ancient (8)
+    43-46 Gold:ancient (8)
+    47-62 Green:ancient (8)
+    63-78 Red:ancient (8)
+    79-82 Silver:ancient (8)
+    83-00 White:2-ancient-&-very-old (8&7)'''    
+
     level_10 ='''01-12 Beholder 1
     13-20 Character — see Character Subtable 1
     21-28 Demon, prince* 1
@@ -362,6 +406,16 @@ def monster_tables(level):
     61-70 Titan, elder 1
     71-80 Vampire** 1
     81-00 NO ENCOUNTER 1'''    
+
+    dragon_level_10='''01-20 Blue:2-ancient-&-very-old (8&7)
+    21-26 Bronze:2 ancient-&-very-old (8&7)
+    27-33 Copper:2 ancient-&-very-old (8&7)
+    34-35 Chromatic-(Tiamat) (8)
+    36-40 Gold:2-ancient-&-old (8&6)
+    41-60 Green:2-ancient-&-very old (8&7)
+    61-63 Platinum-(Bahamut) (8)
+    64-94 Red:2-ancient-&-old (8&6)
+    95-00 Silver:2-ancient-&-old (8&-6)'''
 
     levels[1]['data'] = level_01
     levels[2]['data'] = level_02
