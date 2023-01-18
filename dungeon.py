@@ -172,7 +172,7 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
         for w in range(p_dict['width']):
             checkcoord = (coord[0]+xmod+xloop*loop+xwidth*loop,coord[1]+ymod+yloop*loop+ywidth*loop,coord[2]+zmod+zloop*loop)
             new_coord = coord
-            for y in range(pc_dict['check']):
+            for loop in range(pc_dict['check']):
                 will_fit = in_dungeon(checkcoord)
                 if not will_fit:
                     dungeon[checkcoord] = {}
