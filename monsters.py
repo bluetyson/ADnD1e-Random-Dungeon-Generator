@@ -288,7 +288,7 @@ def monster_tables(level):
     93-00 Xorn 2-5'''
 
     level_09='''01-09 Character — see Character Subtable 1
-    10-12 Devil, pit fiend 1
+    10-12 Devil, pit-fiend 1
     13-15 Dragon — see Dragon Subtable below 1-2
     16-21 Giant, storm 1-2
     22-23 Golem, stone 1
