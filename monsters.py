@@ -79,30 +79,59 @@ def monster_tables(level):
 
     levels = {}
     for i in in range(10):
-        levels[0+i] = {}
+        levels[i+1] = {}
         for r in range(100):
-            levels[i+1] = {}
+            levels[0+i][r+1] = {}
 
-level_01 ='''01-02 Ant, giant 1-4
-03-04 Badger* 1-4
-05-14 Beetle, fire 1-4
-15 Demon, manes 1-4
-16-17 Dwarf 4-14
-18 Ear seeker 1
-19 Elf 3-11
-20-21 Gnome 5-15
-22-26 Goblin 6-15
-27-28 Halfling** 9-16
-29-33 Hobgoblin 2-8
-34-48 Human — see Human Subtable below
-49-54 Kobold 6-18
-55-66 Orc 7-12
-67-70 Piercer 1-3
-71-83 Rat, giant 5-20
-84-85 Rot grub 1-3
-86-96 Shrieker 1-2
-97-98 Skeleton 1-4
-99-00 Zombie 1-3'''
+    level_01 ='''01-02 Ant, giant 1-4
+    03-04 Badger* 1-4
+    05-14 Beetle, fire 1-4
+    15 Demon, manes 1-4
+    16-17 Dwarf 4-14
+    18 Ear seeker 1
+    19 Elf 3-11
+    20-21 Gnome 5-15
+    22-26 Goblin 6-15
+    27-28 Halfling** 9-16
+    29-33 Hobgoblin 2-8
+    34-48 Human — see Human Subtable below
+    49-54 Kobold 6-18
+    55-66 Orc 7-12
+    67-70 Piercer 1-3
+    71-83 Rat, giant 5-20
+    84-85 Rot grub 1-3
+    86-96 Shrieker 1-2
+    97-98 Skeleton 1-4
+    99-00 Zombie 1-3'''
+
+    levels[1]['data'] = level_01
+
+    level_02 = ''
+    level_03 = ''
+    level_04 = ''
+    level_05 = ''
+    level_06 = ''
+    level_07 = ''
+    level_08 = ''
+    level_09 = ''
+    level_10 = ''
+
+    levels[2]['data'] = level_02
+    levels[3]['data'] = level_03
+    levels[4]['data'] = level_04
+    levels[5]['data'] = level_05
+    levels[6]['data'] = level_06
+    levels[7]['data'] = level_07
+    levels[8]['data'] = level_08
+    levels[9]['data'] = level_09
+    levels[10]['data'] = level_10
+
+    for l in level_01:
+        usestr = l.replace(', ','-')
+        usestr = usestr.replace('see Human Subtable below','HumanSubtable')
+        usestr = usestr.replace(' — ','-')
+        monster_list = usestr.split()
+        print(monster_list)
 
 
 if __name__ == "__main__":
