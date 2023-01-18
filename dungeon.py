@@ -157,7 +157,7 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
         #for y in range(pc_dict['check']):
         for y in range(loop):                
             #will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+1+y,coord[2]))
-            checkcoord = (coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)
+            checkcoord = (coord[0]+xmod+xloop*loop,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*loop)
             #will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
             will_fit = in_dungeon(checkcoord)
             if not will_fit:
@@ -170,7 +170,7 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
     else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
         print("FANCY WIDTH:",p_dict)
         for w in range(p_dict['width']):
-            checkcoord = (coord[0]+xmod+xloop*y+xwidth*y,coord[1]+ymod+yloop*y+ywidth*y,coord[2]+zmod+zloop*y)
+            checkcoord = (coord[0]+xmod+xloop*loop+xwidth*loop,coord[1]+ymod+yloop*loop+ywidth*loop,coord[2]+zmod+zloop*loop)
             new_coord = coord
             for y in range(pc_dict['check']):
                 will_fit = in_dungeon(checkcoord)
