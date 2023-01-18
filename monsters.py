@@ -330,32 +330,34 @@ def monster_tables(level):
 
     levels['HumanSubtable']['data'] = HumanSubtable
 
-    uselevel = levels[1]['data'].split("\n")
-    for l in uselevel:
-        usestr = l.replace(', ','-')
-        usestr = usestr.replace('see Human Subtable below','HumanSubtable')
-        usestr = usestr.replace('see Dragon Subtable below','DragonSubtable')
-        usestr = usestr.replace(' — ','-')
-        monster_list = usestr.split()
-        print(monster_list)
+    for ld in range(10):
+        uselevel = levels[ld+1]['data'].split("\n")
+        for l in uselevel:
+            usestr = l.replace(', ','-')
+            usestr = usestr.replace('see Human Subtable below','HumanSubtable')
+            usestr = usestr.replace('see Dragon Subtable below','DragonSubtable')
+            usestr = usestr.replace('see Character Subtable below','CharacterSubtable')
+            usestr = usestr.replace(' — ','-')
+            monster_list = usestr.split()
+            print(monster_list)
 
-        number_range = monster_list[0].split('-')
-        dice_roll = monster_list[2]
-        monster = monster_list[1]
+            number_range = monster_list[0].split('-')
+            dice_roll = monster_list[2]
+            monster = monster_list[1]
 
-        if '-' in monster_list[0]:
-            lo = int(number_range[0])
-            hi = int(number_range[1]) 
-            #print(hi, lo)
-            for i in range(lo,hi+1,1):
-                #print(i)
-                levels[1][i]['name'] = monster
-                levels[1][i]['roll'] = dice_lookup[dice_roll]
-        else:
-            levels[1][int(number_range[0])]['name'] = monster
-            levels[1][int(number_range[0])]['roll'] = dice_lookup[dice_roll]
+            if '-' in monster_list[0]:
+                lo = int(number_range[0])
+                hi = int(number_range[1]) 
+                #print(hi, lo)
+                for i in range(lo,hi+1,1):
+                    #print(i)
+                    levels[1][i]['name'] = monster
+                    levels[1][i]['roll'] = dice_lookup[dice_roll]
+            else:
+                levels[1][int(number_range[0])]['name'] = monster
+                levels[1][int(number_range[0])]['roll'] = dice_lookup[dice_roll]
 
-    return True
+    return levels
 
 if __name__ == "__main__":
     ARGV = sys.argv
