@@ -1375,7 +1375,7 @@ def fancy_width():
         if st <= 10:
             pass #as above
         elif st >=11 and st <= 15:
-            p_dict['fill'] = 'HL'  #can leap across
+            p_dict['fill'] = 'HA'  #can leap across
         else:
             p_dict['fill'] = 'Hl'
 
