@@ -1296,7 +1296,7 @@ def fancy_width():
         p_dict['width'] = 2
         p_dict['type'] = 'CH'       
 
-    if p_dict['type'] == 'RIBR'
+    if p_dict['type'] == 'RIBR':
         st = roll_dice(1,20)
         if st >=11 and st <= 15:
             p_dict['type'] = 'RIBN'
