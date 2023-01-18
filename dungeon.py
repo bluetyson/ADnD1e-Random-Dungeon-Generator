@@ -3848,7 +3848,10 @@ def level_matrix(level):
     monster[15] = [1,2,3,4,5,6,8,11,17,20]
     monster[16] = [1,2,3,4,5,6,7,10,16,20]
 
-    if level <=16:                        
+    if level < 1:
+        #edge case of adventuring up on 0 level
+        monster_level = monster_check(1, monster)
+    if level >= 1 and level <=16:                        
         monster_level = monster_check(level, monster)
     else:
         monster_level = monster_check(16, monster)
