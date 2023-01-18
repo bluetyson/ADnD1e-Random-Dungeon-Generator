@@ -617,12 +617,12 @@ def check_action(pc_dict, coord, room_stack):
 
         elif s_dict['direction'] == 'Y':
             which_way = roll_dice(1,2)  #got to move this up
-            newcoord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
+            new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
             new_coord_right = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)    
             if which_way == 1:
-                new_coord = newcoord_left
+                new_coord = new_coord_left
             else:
-                new_coord = newcoord_right
+                new_coord = new_coord_right
 
         elif s_dict['direction'] == 'P': #plus
             which_way = roll_dice(1,3)
@@ -633,7 +633,7 @@ def check_action(pc_dict, coord, room_stack):
             if which_way == 1:
                 new_coord = new_coord_left
             elif which_way == 2:
-                new_coord = newcoord_right
+                new_coord = new_coord_right
             else:
                 new_coord = new_coord_ahead
 
