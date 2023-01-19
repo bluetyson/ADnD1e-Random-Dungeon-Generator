@@ -1096,7 +1096,7 @@ def width():
         could have cosmetic width markers as html CCC, CC to start then grid squares later
     '''
     w = roll_dice(1,20)
-    w = 20 #test
+    #w = 20 #test
     print("WIDTH ROLL:",w)
     p_dict = {}
     p_dict['width'] = 1
@@ -3939,6 +3939,11 @@ for down in range(zwidth-1):
     legend_dict['C'] = "Corridor/Passage"
     legend_dict['R'] = "Chamber/Room"
     legend_dict['D'] = "Dead End"
+    legend_dict['CH'] = "Chasm"
+    legend_dict['ri'] = "river"
+    legend_dict['br'] = "bridge"
+    legend_dict['bo'] = "boat - opposide side"
+    legend_dict['bn'] = "boat - near side"
     legend_dict['L'] = "Lake"
     legend_dict['P'] = "Pool"
     legend_dict['W'] = "Well"
