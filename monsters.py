@@ -479,7 +479,10 @@ def monster_tables(level):
         
     mcheck = levels[level][m]
 
-    mno = roll_dice(mcheck['roll'][0],mcheck['roll'][1]) + mcheck['roll'][2]
+    if int(mcheck['roll'][0]) != 1 and int(mcheck['roll'][1]) != 1:
+        mno = roll_dice(mcheck['roll'][0],mcheck['roll'][1]) + mcheck['roll'][2]
+    else:
+        mno = 1
     print("choose monster", mcheck)
 
     mdict = {}
@@ -508,5 +511,5 @@ if __name__ == "__main__":
         monster_level = level_matrix(3)
     print("MONSTER LEVEL:",monster_level)
 
-    print(monster_tables(monster_level))
+    #print(monster_tables(monster_level))
 
