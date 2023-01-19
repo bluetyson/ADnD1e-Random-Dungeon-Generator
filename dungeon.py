@@ -3316,6 +3316,42 @@ def secret_doors(shape_dict):
                                     dungeon[(key[0]+x+1,key[1],key[2])] = {}
                                     dungeon[(key[0]+x+1,key[1],key[2])]['fill'] = 'C'
 
+def passage_make_full(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0,xwidth=0,ywidth=0):
+    p_dict = width()
+    if p_dict['width'] <= 1: #0.5 width do cosmetically later
+
+        new_coord = coord
+        for y in range(loop):                
+            will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
+            print("loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
+            if not will_fit:
+                dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)] = {}
+                if y != 0:
+                    dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)]['fill'] = 'C'
+                else:
+                    dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)]['fill'] = 'Cd'
+                new_coord = (coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)
+            else:
+                break
+    else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
+        print("FANCY WIDTH:",p_dict)
+        for w in range(p_dict['width']):
+            
+            new_coord = coord
+            for y in range(loop):
+                will_fit = in_dungeon((coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
+                if not will_fit:
+                    dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)] = {}
+                    
+                    if y == 1: #approx midpoint fill - could random 3/4 it but for 3s will be in middle anyway wrong for 6 ok for 3
+                        dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)]['fill'] = 'C' + p_dict['fill']
+                    else:
+                        dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)]['fill'] = 'C'
+                    new_coord = (coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)
+                else:
+                    break
+
+    return new_coord
 
 def exit_direction_full(coord, e_dict):
     print("EDF EDICT:",e_dict)
