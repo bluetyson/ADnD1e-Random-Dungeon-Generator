@@ -86,6 +86,9 @@ def monster_tables(level):
         for r in range(100):
             dragon_levels[i+1][r+1] = {}
 
+    print("TESTLEVELS",levels)
+
+
 
     levels['HumanSubtable'] = {}            
     levels['CharacterSubtable'] = {}            
