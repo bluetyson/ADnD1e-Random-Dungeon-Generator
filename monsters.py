@@ -518,7 +518,7 @@ def monster_tables(level):
 
 if __name__ == "__main__":
     ARGV = sys.argv
-
+    print("lenARGV",len(ARGV))
     if len(ARGV) > 1:
         monster_level = level_matrix(int(ARGV[1]))
     else:
