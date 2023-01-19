@@ -3021,14 +3021,14 @@ def secret_doors(shape_dict):
                             if which_way == 1:  #corridor left
                                 new_coord = passage_make(coord, xloop=-1,yloop=1,xwidth=1)
                             else:
-                                new_coord = passage_make(coord, xloop=1,yloop-1,xwidth=1)
+                                new_coord = passage_make(coord, xloop=1,yloop=-1,xwidth=1)
 
                         else: #ymaxloc
                             which_way = roll_dice(1,2)         
                             if which_way == 1:  #corridor left
                                 new_coord = passage_make(coord, xloop=-1,yloop=1,xwidth=1)
                             else:
-                                new_coord = passage_make(coord, xloop=1,yloop1,xwidth=1)
+                                new_coord = passage_make(coord, xloop=1,yloop=1,xwidth=1)
 
                     elif secret_door_dict[s + 1][key]['beyond'] == 'A':                    
                         print("in secret door passage ahead")
