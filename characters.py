@@ -128,7 +128,7 @@ if __name__ == "__main__":
         character_level = 1
 
     classes =["CLERIC","DRUID","FIGHTER","PALADIN","RANGER","MAGIC-USER", "ILLUSIONIST", "THIEF","ASSASSIN","MONK","BARD"]
-]   party = {}  
+    party = {}  
     for cl in classes:
         party[cl] = {}  
     
