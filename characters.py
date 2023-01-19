@@ -130,10 +130,10 @@ if __name__ == "__main__":
     classes =["CLERIC","DRUID","FIGHTER","PALADIN","RANGER","MAGIC-USER", "ILLUSIONIST", "THIEF","ASSASSIN","MONK","BARD"]
     party = {}  
     for cl in classes:
-        party[cl] = {}  
+        party[cl] = 0  
     
     print(party)
-    
+
     characters = roll_dice(1,4) + 1
     for c in range(characters):
         character_class = select_character_type()
