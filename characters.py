@@ -150,8 +150,8 @@ def create_party(level):
 
         print(characters, "Character Party:")
 
-        for key in party_members:            
-            print(key, ":", party_members[key])
+    for key in party_members:            
+        print(key, ":", party_members[key])
 
     return party_members
 
