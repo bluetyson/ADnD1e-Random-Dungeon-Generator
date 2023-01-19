@@ -287,7 +287,7 @@ def check_action(pc_dict, coord, room_stack):
                     #new_coord = passage_make(coord, xmod=-1,ymod=-1,yloop=-1,xwidth=1)
                     #new_coord = passage_make(coord, xmod=-1,ymod=1,yloop=1,xwidth=1)
 
-                    new_coord = passage_make(coord, xmod=1,ymod=-1,yloop=1,xwidth=1)
+                    new_coord = passage_make(coord, xmod=1,ymod=-1,yloop=-1,xwidth=1)
                     new_coord = passage_make(coord, xmod=1,ymod=1,yloop=1,xwidth=1)
 
                 if e_dict['beyond'] == 'A':              
