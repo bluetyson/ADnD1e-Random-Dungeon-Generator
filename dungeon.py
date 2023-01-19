@@ -148,7 +148,8 @@ def random_check():
 
     return pc_dict
 
-def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwidth=0,ywidth=0):
+#def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwidth=0,ywidth=0):
+def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwidth=0,ywidth=0):    #check this
     p_dict = width()
     #print("PDICTBEFORE:",p_dict)
     #print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop,"COORD:",coord)
@@ -3393,7 +3394,7 @@ def exit_direction_full(coord, e_dict):
                 which_way = roll_dice(1,2)  #work out random direction         
                 if which_way == 1:  #corridor left
                     for x in range(3):
-                        will_fit = in_dungeon((coord[0]+1+-x,coord[1]-1-x,coord[2]))
+                        will_fit = in_dungeon((coord[0]-1-x,coord[1]-1-x,coord[2]))
                         if not will_fit:                
                             dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
                             if x != 0:
