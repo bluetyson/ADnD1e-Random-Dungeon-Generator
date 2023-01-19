@@ -1392,6 +1392,9 @@ def width():
         p_dict['width'] = 0.5
     else:
         p_dict = fancy_width()
+
+    print("PDICT END WIDTH:",p_dict)    
+    
     return p_dict
 
 def fancy_width():
