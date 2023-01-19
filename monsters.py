@@ -494,6 +494,9 @@ def monster_tables(level):
     if mdict['name'] == 'CharacterSubtable':
         mdict['details'] = create_party(level)
 
+    if mdict['name'] == 'DragonSubtable':
+        mdict['details'] = 'NOT IMPLEMENTED YET'
+
     return mdict
 
 if __name__ == "__main__":
