@@ -47,7 +47,6 @@ def update_gemstone(base_value):
         return select_gemstone(next_base_value)
 
 
-after_upgrade = upgrade_gemstone()
 if __name__ == "__main__":
     ARGV = sys.argv
 
@@ -59,6 +58,6 @@ if __name__ == "__main__":
 base_value, description = select_gemstone()
 print(f"The selected gemstone has a base value of {base_value} gold pieces and is described as {description}")
 
-new_base_value = select_gemstone(base_value)
+new_base_value = update_gemstone(base_value)
 print(f"The upgrade value of the gemstone is {new_base_value} gold pieces.")
 
