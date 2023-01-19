@@ -3622,8 +3622,8 @@ for down in range(zwidth-1):
                 f.write(str(room_stack['shape_dict'][room]) + '<br>')
 
                 f.write('<h4>Key: ' + str(room) + '</h4>')
-                if room_stack['shape_dict'][room]['contents']['empty'] == 'Y':
-                        f.write(str(key) + ":" + 'Empty<br>')
+                if 'empty' in room_stack['shape_dict'][room]['contents']:
+                        f.write("Room" + ":" + 'Empty<br>')
 
                 else:
                     for key in room_stack['shape_dict'][room]['contents']:
