@@ -696,9 +696,6 @@ def check_action(pc_dict, coord, room_stack):
             else:
                 new_coord = new_coord_right_back
 
-    else:
-        pass        
-
         if 1 == 2:
             if s_dict['direction'] == 'L90':
                 for x in range(3):
