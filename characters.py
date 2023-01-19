@@ -1,3 +1,6 @@
+import sys
+import random
+
 def roll_dice(number, sides):
     roll = random.randint(number,sides)
     return roll
