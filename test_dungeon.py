@@ -148,6 +148,8 @@ def random_check():
     #pc_dict['direction'] = 'side'
     pc_dict['direction'] = 'exit'
 
+    print("RANDOM_CHECK TEST",pc, pc_dict['direction'])
+
     return pc_dict
 
 def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwidth=0,ywidth=0):
