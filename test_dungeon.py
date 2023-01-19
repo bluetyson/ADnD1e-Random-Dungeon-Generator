@@ -650,65 +650,24 @@ def check_action(pc_dict, coord, room_stack):
         print("T_DICT:",t_dict)
 
         t = roll_dice(1,20)
+
         if t_dict['direction'] == 'L90':
-            for x in range(3):
-                will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
-                if not will_fit:
-                    dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
-                    dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
-                    new_coord = (coord[0]-1-x,coord[1],coord[2])
-                else:
-                    break
-
-        elif t_dict['direction'] == 'L45':
-            for x in range(3):
-                will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
-                if not will_fit:
-                    dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
-                    dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
-                    new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
-                else:
-                    break
-
-        elif t_dict['direction'] == 'L135':
-            for x in range(3):
-                will_fit = in_dungeon((coord[0]-1-x,coord[1]-1-x,coord[2]))
-                if not will_fit:
-                    dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
-                    dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
-                    new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
-                else:
-                    break
+            new_coord = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
 
         elif t_dict['direction'] == 'R90':
-            for x in range(3):
-                will_fit = in_dungeon((coord[0]+1+x,coord[1],coord[2]))
-                if not will_fit:
-                    dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
-                    dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
-                    new_coord = (coord[0]+1+x,coord[1],coord[2])
-                else:
-                    break
+            new_coord = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
+
+        elif t_dict['direction'] == 'L45':
+            new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
 
         elif t_dict['direction'] == 'R45':
-            for x in range(3):
-                will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
-                if not will_fit:
-                    dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
-                    dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
-                    new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
-                else:
-                    break
+            new_coord = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)    
 
-        else: # 'R135'
-            for x in range(3):
-                will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
-                if not will_fit:
-                    dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
-                    dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
-                    new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
-                else:
-                    break
+        elif t_dict['direction'] == 'L135':
+            new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=-1,yloop=-1,xwidth=1)    
+
+        else:  #t_dict['direction'] == 'R135'
+            new_coord = passage_make(coord,xmod=1,xloop=1,ymod=-1,yloop=-1,xwidth=1)    
 
         
     elif pc_dict['direction'] == 'room':
