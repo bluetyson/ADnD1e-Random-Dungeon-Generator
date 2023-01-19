@@ -117,7 +117,7 @@ def magic_item_chance(level):
         if m3 <= 20:
             magic_items.extend(random.choices(table_IV, k=1))
 
-        return magic_items
+    return magic_items
 
 def create_party(level):
     classes =["CLERIC","DRUID","FIGHTER","PALADIN","RANGER","MAGIC-USER", "ILLUSIONIST", "THIEF","ASSASSIN","MONK","BARD"]
