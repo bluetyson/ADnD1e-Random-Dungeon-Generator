@@ -2662,7 +2662,10 @@ def wet_small(shape_dict, coord):
         wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
         wet_dict['monster_details']['type'] = 'NA'
         wet_dict['monster_details']['No'] = 0
-        wet_dict['monster_details'] = 0
+
+        m_dict = monster_tables(wet_dict['monster_details']['level'])
+        wet_dict['monster_details']['type']  = m_dict['name']
+        wet_dict['monster_details']['No'] = m_dict['no']
 
     elif w >= 13 and w <=18:
         wet_dict['wet'] = 'Y'
@@ -2671,7 +2674,9 @@ def wet_small(shape_dict, coord):
         wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
         wet_dict['monster_details']['type'] = 'NA'
         wet_dict['monster_details']['No'] = 0
-        wet_dict['monster_details'] = 0
+        m_dict = monster_tables(wet_dict['monster_details']['level'])
+        wet_dict['monster_details']['type']  = m_dict['name']
+        wet_dict['monster_details']['No'] = m_dict['no']
 
         wet_dict['treasure'] = 'Y'
 
@@ -2718,7 +2723,10 @@ def wet_large(shape_dict, coord):
         wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
         wet_dict['monster_details']['type'] = 'NA'
         wet_dict['monster_details']['No'] = 0
-        wet_dict['monster_details'] = 0
+
+        m_dict = monster_tables(wet_dict['monster_details']['level'])
+        wet_dict['monster_details']['type']  = m_dict['name']
+        wet_dict['monster_details']['No'] = m_dict['no']
 
         shape_dict['lake'] = wet_dict
     else:
@@ -2733,7 +2741,10 @@ def wet_large(shape_dict, coord):
             wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
             wet_dict['monster_details']['type'] = 'NA'
             wet_dict['monster_details']['No'] = 0
-            wet_dict['monster_details'] = 0
+
+            m_dict = monster_tables(wet_dict['monster_details']['level'])
+            wet_dict['monster_details']['type']  = m_dict['name']
+            wet_dict['monster_details']['No'] = m_dict['no']
 
             ##need to monster generate
 
