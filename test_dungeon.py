@@ -212,7 +212,9 @@ def check_action(pc_dict, coord, room_stack):
         e_dict = exit(coord)
         #test L parallel
         e_dict['beyond'] = 'P'
+        e_dict['beyond'] = 'A'
         e_dict['direction'] = 'L'
+
         print("EDICT:",e_dict)
         if 1 == 2:
             if e_dict['direction'] == 'L':
@@ -257,15 +259,6 @@ def check_action(pc_dict, coord, room_stack):
 
                     new_coord = passage_make(coord, xmod=-1,ymod=-1,yloop=-1,xwidth=1)
                     new_coord = passage_make(coord, xmod=-1,ymod=1,yloop=1,xwidth=1)
-                    #new_coord = passage_make(coord, xmod=-1,ymod=0,yloop=-1,xwidth=1)
-                    #new_coord = passage_make(coord, xmod=-1,ymod=0,yloop=1,xwidth=1)
-                    #will_fit = in_dungeon((coord[0]-1,coord[1]+x-1,coord[2]))
-                    #if not will_fit:
-                        #dungeon[(coord[0]-1,coord[1]+x-1,coord[2])] = {}
-                        #if x != 0:
-                            #dungeon[(coord[0]-1,coord[1]+x-1,coord[2])]['fill'] = 'C'
-                        #else:
-                            #dungeon[(coord[0]-1,coord[1]+x-1,coord[2])]['fill'] = 'Cd'
 
                 if e_dict['beyond'] == 'A':              
                     d = roll_dice(1,20)              
@@ -275,16 +268,7 @@ def check_action(pc_dict, coord, room_stack):
                             exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
                     else:
                         #30m passage that direction
-                        for x in range(3):
-                            will_fit = in_dungeon((coord[0]-x-1,coord[1],coord[2]))
-                            if not will_fit:
-                                dungeon[(coord[0]-x-1,coord[1],coord[2])] = {}
-                                if x != 0:
-                                    dungeon[(coord[0]-x-1,coord[1],coord[2])]['fill'] = 'C'
-                                else:
-                                    dungeon[(coord[0]-x-1,coord[1],coord[2])]['fill'] = 'Cd'
-                                new_coord = ((coord[0]-x-1,coord[1],coord[2]))                        
-
+                            new_coord = passage_make_full(coord, xmod=-1,xloop=-1, ywidth=1)
 
                 if e_dict['beyond'] == '4AB':   ##45 A
                     which_way = roll_dice(1,2)           
