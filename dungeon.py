@@ -2440,6 +2440,9 @@ def bad_things(coord, room_stack, size="C"):
                 else:
                     #dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] + 'ch'  #fill down for chute
                     #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ch'
+                    if (coord[0],coord[1]+1,coord[2]-1) not in dungeon:
+                        dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
+                        
                     dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'Rch'  #fill down for chute
                     dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Rch'
 
