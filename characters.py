@@ -132,6 +132,8 @@ if __name__ == "__main__":
     for cl in classes:
         party[cl] = {}  
     
+    print(party)
+    
     characters = roll_dice(1,4) + 1
     for c in range(characters):
         character_class = select_character_type()
