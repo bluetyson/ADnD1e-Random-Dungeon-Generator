@@ -100,13 +100,13 @@ def monster_tables(level):
     05-14 Beetle, fire 1-4
     15 Demon, manes 1-4
     16-17 Dwarf 4-14
-    18 Ear-seeker 1
+    18 Ear-seeker 1-1
     19 Elf 3-11
     20-21 Gnome 5-15
     22-26 Goblin 6-15
     27-28 Halfling** 9-16
     29-33 Hobgoblin 2-8
-    34-48 Human — see Human Subtable below 1
+    34-48 Human — see Human Subtable below 1-1
     49-54 Kobold 6-18
     55-66 Orc 7-12
     67-70 Piercer 1-3
@@ -143,7 +143,7 @@ def monster_tables(level):
 
     level_02='''01 Badger, giant* 1-4
     02-16 Centipede, giant 3-13
-    17-27 Character — see Character Subtable 1
+    17-27 Character — see Character Subtable 1-1
     28-29 Devil, lemure 2-5
     30-31 Gas-spore 1-2
     32-38 Gnoll 4-10
@@ -157,14 +157,14 @@ def monster_tables(level):
 
     level_03='''01-10 Beetle, boring 1-3
     11-20 Bugbear 2-7
-    21-30 Character — see Character Subtable 1
-    31-32 Dragon — see Dragon Subtable below 1
+    21-30 Character — see Character Subtable 1-1
+    31-32 Dragon — see Dragon Subtable below 1-1
     33-34 Fungi, violet 1-3
-    35-40 Gelatinous-cube 1
+    35-40 Gelatinous-cube 1-1
     41-45 Ghoul 1-4
     46-50 Lizard, giant 1-3
     51-54 Lycanthrope, wererat 2-5
-    55-60 Ochre-jelly 1
+    55-60 Ochre-jelly 1-1
     61-72 Ogre 1-3
     73-74 Piercer 2-5
     75 Rot-grub 1-4
@@ -180,22 +180,22 @@ def monster_tables(level):
     
     level_04 = '''01-08 Ape, carnivorous 1-3
     09-14 Blink-dog 2-5
-    15-22 Character — see Character Subtable 1
-    23-24 Dragon — see Dragon Subtable below 1
+    15-22 Character — see Character Subtable 1-1
+    23-24 Dragon — see Dragon Subtable below 1-1
     25-30 Gargoyle 1-2
     31-36 Ghast 1-4
-    37-40 Gray-ooze 1
+    37-40 Gray-ooze 1-1
     41-44 Hell-hound 1-2
-    45-47 Hydra, 5-or-6heads 1
-    48 Hydra, pyro-5-heads 1
+    45-47 Hydra, 5-or-6heads 1-1
+    48 Hydra, pyro-5-heads 1-1
     49-62 Lycanthrope, werewolf 1-2
-    63-75 Mold, yellow 1
+    63-75 Mold, yellow 1-1
     76-78 Owlbear 1-2
-    79 Rust-monster 1
+    79 Rust-monster 1-1
     80-82 Shadow 1-3
-    83-90 Snake, giant, constrictor 1
+    83-90 Snake, giant, constrictor 1-1
     91-94 Su-monster 1-2
-    95-96 Toad, ice 1
+    95-96 Toad, ice 1-1
     97-00 Toad, poisonous 1-3'''
 
     dragon_level_04 = '''01-09 Black:young/sub-adult (2/3)
@@ -213,22 +213,22 @@ def monster_tables(level):
     09-15 Cockatrice 1-2
     16-18 Displacer-beast 1-2
     19-22 Doppleganger 1-3
-    23-24 Dragon — see Dragon Subtable below 1
-    25-26 Hydra, 7-heads 1
-    27 Hydra, pyro-6-heads 1
+    23-24 Dragon — see Dragon Subtable below 1-1
+    25-26 Hydra, 7-heads 1-1
+    27 Hydra, pyro-6-heads 1-1
     28 Imp 1-2
     29-31 Leucrotta 1-2
     32-50 Lizard, subterranean 1-3
     51-52 Lycanthrope, wereboar 1-3
     53-60 Minotaur 1-3
-    61-64 Mold, yellow 1
-    65 Quasit 1
-    66-67 Rust-Monster 1
+    61-64 Mold, yellow 1-1
+    65 Quasit 1-1
+    66-67 Rust-Monster 1-1
     68-70 Shrieker 2-5
-    71-72 Slithering-Tracker 1
-    73-74 Snake, giant-amphisbaena 1
-    75-82 Snake, giant-poisonous 1
-    83-86 Snake, giant-spitting 1
+    71-72 Slithering-Tracker 1-1
+    73-74 Snake, giant-amphisbaena 1-1
+    75-82 Snake, giant-poisonous 1-1
+    83-86 Snake, giant-spitting 1-1
     87-00 Spider, giant 1-2'''
 
     dragon_level_05='''01-08 Black:young-adult/adult (4/5)
@@ -242,32 +242,32 @@ def monster_tables(level):
     81-88 Silver:sub-adult/young-adult (3/4)
     89-00 White:young-adult/adult (4/5)'''    
 
-    level_06='''01-03 Basilisk 1
+    level_06='''01-03 Basilisk 1-1
     04-10 Carrion-crawler 1-2
-    11-16 Character — see Character Subtable 1
+    11-16 Character — see Character Subtable 1-1
     17 Devil, erinyes 1-2
-    18-19 Djinni 1
-    20-21 Dragon — see Dragon Subtable below 1
-    22-25 Green-slime 1
-    26-28 Hydra, 8-9-heads 1
+    18-19 Djinni 1-1
+    20-21 Dragon — see Dragon Subtable below 1-1
+    22-25 Green-slime 1-1
+    26-28 Hydra, 8-9-heads 1-1
     29-32 Jackalwere 1-2
     33-36 Lammasu 1-3
-    37-38 Lycanthrope, werebear 1
+    37-38 Lycanthrope, werebear 1-1
     39-41 Lycanthrope, weretiger 1-2
     42-50 Manticore 1-2
-    51-55 Medusa 1
-    56 Mold, brown 1
-    57-58 Mold, yellow 1
+    51-55 Medusa 1-1
+    56 Mold, brown 1-1
+    57-58 Mold, yellow 1-1
     59-60 Ogre-magi 1-2
-    61-68 Otyugh 1
-    69-70 Rakshasa 1
+    61-68 Otyugh 1-1
+    69-70 Rakshasa 1-1
     71-73 Salamander 1-2
     74-77 Spider, phase 1-3
     78-88 Troll 1-3
     89-93 Wight 1-4
     94-95 Wind-walker 1-2
     96-98 Wraith 1-2
-    99-00 Wyvern 1'''
+    99-00 Wyvern 1-1'''
 
     dragon_level_06='''01-08 Black:old (6)
     09-19 Blue:adult (5)
@@ -280,46 +280,46 @@ def monster_tables(level):
     79-87 Silver:adult (5)
     88-00 White:old (6)'''   
 
-    level_07='''01-05 Black-pudding 1
-    06-10 Character — see Character Subtable 1
+    level_07='''01-05 Black-pudding 1-1
+    06-10 Character — see Character Subtable 1-1
     11-14 Chimera 1-2
-    15 Demon, succubus 1
-    16 Demon, type-I 1
-    17 Demon, type-II 1
-    18 Demon, type-III 1
-    19 Devil, barbed 1
-    20 Devil, bone 1
-    21 Devil, horned 1
-    22-23 Dragon — see Dragon Subtable below 1
-    24 Efreeti 1
-    25-26 Elemental* 1
+    15 Demon, succubus 1-1
+    16 Demon, type-I 1-1
+    17 Demon, type-II 1-1
+    18 Demon, type-III 1-1
+    19 Devil, barbed 1-1
+    20 Devil, bone 1-1
+    21 Devil, horned 1-1
+    22-23 Dragon — see Dragon Subtable below 1-1
+    24 Efreeti 1-1
+    25-26 Elemental* 1-1
     27-30 Ettin 1-2
     31-35 Giant, hill-or-stone 1-3
     36-38 Giant, fire-or-frost 1-2
-    39 Golem, flesh 1
-    40-41 Gorgon 1
-    42-43 Groaning-spirit 1
-    44-46 Hydra, 10-12-heads 1
-    47 Hydra, pyro-7-9-heads 1
-    48-49 Intellect-devourer 1
-    50 Invisible-stalker 1
+    39 Golem, flesh 1-1
+    40-41 Gorgon 1-1
+    42-43 Groaning-spirit 1-1
+    44-46 Hydra, 10-12-heads 1-1
+    47 Hydra, pyro-7-9-heads 1-1
+    48-49 Intellect-devourer 1-1
+    50 Invisible-stalker 1-1
     51-52 Lamia 1-2
     53-56 Lizard, fire 1-3
-    57-59 Lurker-above 1
-    60 Mezzodaemon 1
-    61-63 Mimic 1
+    57-59 Lurker-above 1-1
+    60 Mezzodaemon 1-1
+    61-63 Mimic 1-1
     64-65 Mind-flayer 1-2
     66-69 Mummy 1-2
     70 Naga, spirit 1-2
-    71-73 Neo-otyugh 1
+    71-73 Neo-otyugh 1-1
     74 Night-hag 1-2
     75-78 Roper 1-2
     79-82 Shambling-mound 1-2
     83-86 Shedu 1-2
-    87 Slug, giant 1
-    88-91 Spectre 1
-    92-93 Trapper 1
-    94-95 Umber-hulk 1
+    87 Slug, giant 1-1
+    88-91 Spectre 1-1
+    92-93 Trapper 1-1
+    94-95 Umber-hulk 1-1
     96-97 Will-o-wisp 1-3
     98-00 Xorn 1-3'''
 
@@ -334,30 +334,30 @@ def monster_tables(level):
     81-87 Silver:old (6)
     88-00 White:very-old (7)'''    
 
-    level_08='''01 Aerial-servant 1
-    02-06 Character — see Character Subtable 1
-    07 Demon, type-IV 1
-    08 Demon, type-V 1
-    09 Demon, type-VI 1
-    10 Devil, ice 1
-    11-12 Dragon — see Dragon Subtable below 1
-    13-17 Ghost 1
+    level_08='''01 Aerial-servant 1-1
+    02-06 Character — see Character Subtable 1-1
+    07 Demon, type-IV 1-1
+    08 Demon, type-V 1-1
+    09 Demon, type-VI 1-1
+    10 Devil, ice 1-1
+    11-12 Dragon — see Dragon Subtable below 1-1
+    13-17 Ghost 1-1
     18-21 Giant, cloud 1-2
-    22-23 Golem, clay 1
-    24-26 Hydra, 13-16-heads 1
-    27 Hydra, pyro-12-heads 1
+    22-23 Golem, clay 1-1
+    24-26 Hydra, 13-16-heads 1-1
+    27 Hydra, pyro-12-heads 1-1
     28-29 Intellect-devourer 1-2
-    30-35 Lurker-above 1
-    36-41 Mold, brown 1
-    42-43 Mold, yellow 1
+    30-35 Lurker-above 1-1
+    36-41 Mold, brown 1-1
+    42-43 Mold, yellow 1-1
     44-47 Mind-flayer 1-4
     48-50 Naga, guardian 1-2
-    51-56 Neo-otyugh 1
-    57-64 Purple-worm 1
-    65-69 Rust-monster 1
-    70-73 Slug, giant 1
-    74-78 Trapper 1
-    79-86 Vampire 1
+    51-56 Neo-otyugh 1-1
+    57-64 Purple-worm 1-1
+    65-69 Rust-monster 1-1
+    70-73 Slug, giant 1-1
+    74-78 Trapper 1-1
+    79-86 Vampire 1-1
     87-92 Will-o-wisp 2-5
     93-00 Xorn 2-5'''
 
@@ -372,22 +372,22 @@ def monster_tables(level):
     79-82 Silver:very-old (7)
     83-00 White:ancient (8)'''
 
-    level_09='''01-09 Character — see Character Subtable 1
-    10-12 Devil, pit-fiend 1
+    level_09='''01-09 Character — see Character Subtable 1-1
+    10-12 Devil, pit-fiend 1-1
     13-15 Dragon — see Dragon Subtable below 1-2
     16-21 Giant, storm 1-2
-    22-23 Golem, stone 1
-    24-30 Hydra, 17-20-heads 1
-    31-33 Hydra, pyro-12-heads 1
-    34-40 Mold, brown 1
-    41-50 Mold, yellow 1
-    51-52 Nycadaemon 1
-    53-64 Purple-worm 1
-    65-67 Rust-monster 1
-    68-69 Titan, lesser 1
-    70-73 Titan, minor 1
+    22-23 Golem, stone 1-1
+    24-30 Hydra, 17-20-heads 1-1
+    31-33 Hydra, pyro-12-heads 1-1
+    34-40 Mold, brown 1-1
+    41-50 Mold, yellow 1-1
+    51-52 Nycadaemon 1-1
+    53-64 Purple-worm 1-1
+    65-67 Rust-monster 1-1
+    68-69 Titan, lesser 1-1
+    70-73 Titan, minor 1-1
     74-80 Umber-Hulk 1-4
-    81-83 Vampire* 1
+    81-83 Vampire* 1-1
     84-93 Will-o-wisp 2-5
     94-00 Xorn 2-9'''
 
@@ -402,15 +402,15 @@ def monster_tables(level):
     79-82 Silver:ancient (8)
     83-00 White:2-ancient-&-very-old (8&7)'''    
 
-    level_10 ='''01-12 Beholder 1
-    13-20 Character — see Character Subtable 1
-    21-28 Demon, prince* 1
-    29-30 Devil, arch-* 1
+    level_10 ='''01-12 Beholder 1-1
+    13-20 Character — see Character Subtable 1-1
+    21-28 Demon, prince* 1-1
+    29-30 Devil, arch-* 1-1
     31-40 Dragon — see Dragon Subtable below 1-2
-    41-50 Golem, iron 1
-    51-60 Lich 1
-    61-70 Titan, elder 1
-    71-80 Vampire** 1
+    41-50 Golem, iron 1-1
+    51-60 Lich 1-1
+    61-70 Titan, elder 1-1
+    71-80 Vampire** 1-1
     81-00 NO ENCOUNTER 1'''    
 
     dragon_level_10='''01-20 Blue:2-ancient-&-very-old (8&7)
