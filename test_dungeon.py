@@ -283,8 +283,12 @@ def check_action(pc_dict, coord, room_stack):
                         dungeon[(coord[0]+1,coord[1],coord[2])] = {}
                         dungeon[(coord[0]+1,coord[1],coord[2])]['fill'] = 'Cd'
 
+                    #L
+                    #new_coord = passage_make(coord, xmod=-1,ymod=-1,yloop=-1,xwidth=1)
+                    #new_coord = passage_make(coord, xmod=-1,ymod=1,yloop=1,xwidth=1)
+
                     new_coord = passage_make(coord, xmod=1,ymod=-1,yloop=1,xwidth=1)
-                    new_coord = passage_make(coord, xmod=-1,ymod=1,yloop=1,xwidth=1)
+                    new_coord = passage_make(coord, xmod=1,ymod=1,yloop=1,xwidth=1)
 
                 if e_dict['beyond'] == 'A':              
                     d = roll_dice(1,20)              
