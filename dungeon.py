@@ -11,6 +11,7 @@ import pickle
 import math
 
 from monsters import monster_tables
+from treasure import select_gemstone, update_gemstone
 
 PI = math.pi
 ARGV = sys.argv
@@ -1870,6 +1871,14 @@ def loot(shape_dict,coord,monster="N"):
             shape_dict['contents']['treasure']['type']['platinum'] = shape_dict['contents']['treasure']['type']['silver'] + int(abs(coord[2]) * 100* multi ) 
         elif l >= 91 and l <= 94:
             shape_dict['contents']['treasure']['type']['gems'] = shape_dict['contents']['treasure']['type']['gems'] + int(abs(coord[2]) * roll_dice(1,4)* multi ) 
+
+            gems_list = []
+            for g in range(shape_dict['contents']['treasure']['type']['gems']):
+                base_value, description = select_gemstone()
+                new_base_value = update_gemstone(base_value)
+                gems_list.append(new_base_value)
+            shape_dict['contents']['treasure']['type']['gems_values'] = glist
+
         elif l >= 95 and l <= 97:
             shape_dict['contents']['treasure']['type']['jewellery'] = shape_dict['contents']['treasure']['type']['jewellery'] + int(abs(coord[2])* multi ) 
         else:
