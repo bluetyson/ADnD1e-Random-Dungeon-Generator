@@ -486,6 +486,14 @@ def monster_tables(level):
     mdict['name'] = mcheck['name']
     mdict['no'] = mno
 
+    from characters import select_human, create_party
+
+    if mdict['name'] == 'HumanSubtable':
+        mdict['details'] = select_human(level)
+
+    if mdict['name'] == 'CharacterSubtable':
+        mdict['details'] = create_party(level)
+
     return mdict
 
 if __name__ == "__main__":

@@ -157,7 +157,7 @@ def create_party(level):
 
     return party_members
 
-def select_human():
+def select_human(level):
     h = roll_dice(1,100)
     if h <= 25:
         return ["Bandit", roll_dice(2,6) + 3]
@@ -166,8 +166,7 @@ def select_human():
     if h >= 31 and h <= 45:
         return ["Brigand", roll_dice(2,6) + 3]
     else:
-        return ["Character"]
-
+        return ["Character", create_party(level)]
 
 if __name__ == "__main__":
     ARGV = sys.argv
