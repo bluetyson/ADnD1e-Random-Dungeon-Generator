@@ -1212,6 +1212,63 @@ def exit_dir(shape_dict):
             shape_dict['exitdirections'][i+1] = '45BA'
 
     return shape_dict            
+def passage_make_sd(coord, secret_door_count, secret_door_dict, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0,sdx=0,sdy=0,xwidth=0,ywidth=0):
+    p_dict = width()
+    #print("PDICTBEFORE:",p_dict)
+    print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop,"COORD:",coord)
+    #print("PDICT:",p_dict)
+    if p_dict['width'] <= 1: #0.5 width do cosmetically later
+
+        new_coord = coord
+        #print()
+        for y in range(loop):                
+            will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
+            print("loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
+            if not will_fit:
+                dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)] = {}
+                dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)]['fill'] = 'C'
+                new_coord = (coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)
+            else:
+                sd = roll_dice(1,20)
+                if sd <= 5:
+                    secret_door_count +=1 
+                    secret_door_dict[(coord[0]+xmod+xloop*y +sdx,coord[1]+ymod+yloop*y +sdy,coord[2]+zmod+zloop*y)] = 'Y'
+                elif sd >=6 and sd <=10:
+                    secret_door_count +=1 
+                    secret_door_dict[(coord[0]+xmod+xloop*y +sdx,coord[1]+ymod+yloop*y +sdy,coord[2]+zmod+zloop*y)] = 'OW'
+                else:
+                    pass
+                break                
+
+    else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
+        print("FANCY WIDTH:",p_dict)
+        for w in range(p_dict['width']):
+            new_coord = coord
+            for y in range(loop):
+                #print("COORD BEFORE:",(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
+                will_fit = in_dungeon((coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
+                #print("width:",w,"loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
+                if not will_fit:
+                    dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)] = {}
+                    
+                    if y == 1: #approx midpoint fill - could random 3/4 it but for 3s will be in middle anyway wrong for 6 ok for 3
+                        dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)]['fill'] = 'C' + p_dict['fill']
+                    else:
+                        dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)]['fill'] = 'C'
+                    new_coord = (coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)
+                else:
+                    sd = roll_dice(1,20)
+                    if sd <= 5:
+                        secret_door_count +=1 
+                        secret_door_dict[(coord[0]+xmod+xloop*y+xwidth*w +sdx,coord[1]+ymod+yloop*y+ywidth*w +sdy,coord[2]+zmod+zloop*y)] = 'Y'
+                    elif sd >=6 and sd <=10:
+                        secret_door_count +=1 
+                        secret_door_dict[(coord[0]+xmod+xloop*y+xwidth*w +sdx,coord[1]+ymod+yloop*y+ywidth*w +sdy,coord[2]+zmod+zloop*y)] = 'OW'
+                    else:
+                        pass
+                    break                
+
+    return new_coord
 
 def room_contents(shape_dict, coord, content):
     shape_dict['contents'] = {}
