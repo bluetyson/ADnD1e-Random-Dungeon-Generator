@@ -1652,6 +1652,7 @@ def room_make(shape_dict, coord, size="C"):
                         #also check which random exit to follow
 
                         #the below need checks to be secret doors if will fit fails
+                        #need to check for passage width
                         if shape_dict['exitlocations'][e+1] == 'O':
                             #check for possible positions at ymax range from xmin to xmax
                             #find random location in opp wall and add to door
