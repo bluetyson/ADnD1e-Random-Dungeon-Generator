@@ -119,6 +119,54 @@ def magic_item_chance(level):
 
         return magic_items
 
+    def create_party(level):
+        classes =["CLERIC","DRUID","FIGHTER","PALADIN","RANGER","MAGIC-USER", "ILLUSIONIST", "THIEF","ASSASSIN","MONK","BARD"]
+        party = {}  
+        for cl in classes:
+            party[cl] = 0  
+
+        characters = roll_dice(1,4) + 1
+        party_members = {}
+
+        for c in range(characters):
+            character_class = select_character_type()
+            #print(character_class, type(character_class[0]), type(character_class[1]))
+            while(party[character_class[0]] + 1 > character_class[1]):
+                character_class = select_character_type()
+
+            party[character_class[0]] += 1
+
+            magic_items = magic_item_chance(character_level)
+
+            print("CHARACTER LEVEL:",character_level)
+            print("CHARACTER CLASS:",character_class)
+            print("MAGIC ITEMS:", magic_items)
+
+            party_members[c+1] = {}
+            party_members[c+1]['class'] = character_class[0]
+            party_members[c+1]['level'] = character_level
+            party_members[c+1]['magic_items'] = magic_items
+
+
+            print(characters, "Character Party:")
+
+            for key in party_members:            
+                print(key, ":", party_members[key])
+
+        return party_members
+
+def select_human()
+    h = roll_dice(1,100)
+    if h <= 25:
+        return ["Bandit", roll_dice(2,6) + 3]
+    if h >= 26 and h <= 30:
+        return ["Berserker", roll_dice(2,4) + 1]
+    if h >= 31 and h <= 45:
+        return ["Brigand", roll_dice(2,6) + 3]
+    else:
+        return ["Character"]
+
+
 if __name__ == "__main__":
     ARGV = sys.argv
 
@@ -127,39 +175,5 @@ if __name__ == "__main__":
     else:
         character_level = 1
 
-    classes =["CLERIC","DRUID","FIGHTER","PALADIN","RANGER","MAGIC-USER", "ILLUSIONIST", "THIEF","ASSASSIN","MONK","BARD"]
-    party = {}  
-    for cl in classes:
-        party[cl] = 0  
-
-    characters = roll_dice(1,4) + 1
-    party_members = {}
-
-    for c in range(characters):
-        character_class = select_character_type()
-        #print(character_class, type(character_class[0]), type(character_class[1]))
-        while(party[character_class[0]] + 1 > character_class[1]):
-            character_class = select_character_type()
-
-        party[character_class[0]] += 1
-
-        magic_items = magic_item_chance(character_level)
-
-        print("CHARACTER LEVEL:",character_level)
-        print("CHARACTER CLASS:",character_class)
-        print("MAGIC ITEMS:", magic_items)
-
-        party_members[c+1] = {}
-        party_members[c+1]['class'] = character_class[0]
-        party_members[c+1]['level'] = character_level
-        party_members[c+1]['magic_items'] = magic_items
-
-
-    print(characters, "Character Party:")
-    for key in party:
-        if party[key] > 0:
-            print(key, ":", party[key])
-
-    for key in party_members:            
-        print(key, ":", party_members[key])
+    party_members = create_party(level)
 
