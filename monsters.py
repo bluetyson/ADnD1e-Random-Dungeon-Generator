@@ -78,10 +78,14 @@ def monster_tables(level):
     dice_lookup['9-16'] = [1,8,8]
 
     levels = {}
+    dragon_levels = {}
+
     for i in range(10):
         levels[i+1] = {}
+        dragon_levels[i+1] = {}        
         for r in range(100):
-            levels[i+1][r+1] = {}
+            dragon_levels[i+1][r+1] = {}
+
 
     levels['HumanSubtable'] = {}            
     levels['CharacterSubtable'] = {}            
@@ -428,7 +432,6 @@ def monster_tables(level):
     levels[9]['data'] = level_09
     levels[10]['data'] = level_10
 
-    dragon_levels = {}
     dragon_levels[3]['data'] = dragon_level_03
     dragon_levels[4]['data'] = dragon_level_04
     dragon_levels[5]['data'] = dragon_level_05
@@ -442,7 +445,7 @@ def monster_tables(level):
     levels['CharacterSubtable']['data'] = CharacterSubtable
 
     for ld in range(10):
-        print("levels:",ld)
+        #print("levels:",ld)
         uselevel = levels[ld+1]['data'].split("\n")
         for l in uselevel:
             usestr = l.replace(', ','-')
@@ -451,7 +454,7 @@ def monster_tables(level):
             usestr = usestr.replace('see Character Subtable','CharacterSubtable')
             usestr = usestr.replace(' — ','-')
             monster_list = usestr.split()
-            print(monster_list)
+            #print(monster_list)
 
             number_range = monster_list[0].split('-')
             dice_roll = monster_list[2]
@@ -466,8 +469,12 @@ def monster_tables(level):
                     levels[1][i]['name'] = monster
                     levels[1][i]['roll'] = dice_lookup[dice_roll]
             else:
-                levels[1][int(number_range[0])]['name'] = monster
-                levels[1][int(number_range[0])]['roll'] = dice_lookup[dice_roll]
+                levels[ld+1][int(number_range[0])]['name'] = monster
+                levels[ld+1][int(number_range[0])]['roll'] = dice_lookup[dice_roll]
+
+        m = roll_dice(1,100)
+        mcheck = levels[level][m]
+        print("choose monster", mcheck)
 
     return levels
 
