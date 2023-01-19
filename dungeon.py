@@ -3678,7 +3678,7 @@ for down in range(zwidth-1):
                             f.write(str(key) + ":" + str(room_stack['shape_dict'][room]['contents'][key]) + '<br>')
                             if key == 'treasure':
                                 for tkey in total_treasure:
-                                    total_treasure[tkey] = total_treasure[tkey] + treasure['type'][tkey]
+                                    total_treasure[tkey] = total_treasure[tkey] + room_stack['shape_dict'][room]['contents'][key]['type'][tkey]
 
 
                 if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
