@@ -211,48 +211,49 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
 def check_action(pc_dict, coord, room_stack):
     ## need a current 'orientation' 'L R A B
     if pc_dict['direction'] == 'ahead':
-        if 1 == 2:
-            new_coord = coord
+        if 1 == 1:
+            #new_coord = coord
             new_coord = passage_make(coord,loop=6,ymod=1,yloop=1,xwidth=1)
 
-        will_fit = True
-        p_dict = width()
+        if 1 == 2:
+            will_fit = True
+            p_dict = width()
 
-        if p_dict['width'] <= 1: #0.5 width do cosmetically later
+            if p_dict['width'] <= 1: #0.5 width do cosmetically later
 
-            new_coord = coord
-            for y in range(6):
-                will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
-                #print("Y",y, "WILLFIT:",will_fit)
-                if not will_fit:
-                    dungeon[(coord[0],coord[1]+1+y,coord[2])] = {}
-                    dungeon[(coord[0],coord[1]+1+y,coord[2])]['fill'] = 'C'
-                    #handle not fitting
-                    new_coord = (coord[0],coord[1]+1+y,coord[2])
-                else:
-                    break
-        else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
-            print("FANCY WIDTH:",p_dict)
-            for w in range(p_dict['width']):
                 new_coord = coord
                 for y in range(6):
-                    will_fit = in_dungeon((coord[0]+w,coord[1]+1+y,coord[2]))
-                    print("width:",w,"loop:","willfit:",will_fit,(coord[0]+w,coord[1]+1+y,coord[2]))
+                    will_fit = in_dungeon((coord[0],coord[1]+1+y,coord[2]))
+                    #print("Y",y, "WILLFIT:",will_fit)
                     if not will_fit:
-                        dungeon[(coord[0]+w,coord[1]+1+y,coord[2])] = {}
-                        if y == 2: #approx midpoint fill - could random 3/4 it but for 3s will be in middle anyway
-                            dungeon[(coord[0]+w,coord[1]+1+y,coord[2])]['fill'] = 'C' + p_dict['fill']
-                        else:
-                            dungeon[(coord[0]+w,coord[1]+1+y,coord[2])]['fill'] = 'C'
-
-                        #check for columns
-                        #check for river or stream - blue in output
-                            #check for bridge/boat
-
+                        dungeon[(coord[0],coord[1]+1+y,coord[2])] = {}
+                        dungeon[(coord[0],coord[1]+1+y,coord[2])]['fill'] = 'C'
                         #handle not fitting
-                        new_coord = (coord[0],coord[1]+1+y,coord[2]) #can change if want to reposition over
+                        new_coord = (coord[0],coord[1]+1+y,coord[2])
                     else:
                         break
+            else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
+                print("FANCY WIDTH:",p_dict)
+                for w in range(p_dict['width']):
+                    new_coord = coord
+                    for y in range(6):
+                        will_fit = in_dungeon((coord[0]+w,coord[1]+1+y,coord[2]))
+                        print("width:",w,"loop:","willfit:",will_fit,(coord[0]+w,coord[1]+1+y,coord[2]))
+                        if not will_fit:
+                            dungeon[(coord[0]+w,coord[1]+1+y,coord[2])] = {}
+                            if y == 2: #approx midpoint fill - could random 3/4 it but for 3s will be in middle anyway
+                                dungeon[(coord[0]+w,coord[1]+1+y,coord[2])]['fill'] = 'C' + p_dict['fill']
+                            else:
+                                dungeon[(coord[0]+w,coord[1]+1+y,coord[2])]['fill'] = 'C'
+
+                            #check for columns
+                            #check for river or stream - blue in output
+                                #check for bridge/boat
+
+                            #handle not fitting
+                            new_coord = (coord[0],coord[1]+1+y,coord[2]) #can change if want to reposition over
+                        else:
+                            break
 
 
     elif pc_dict['direction'] == 'exit':
