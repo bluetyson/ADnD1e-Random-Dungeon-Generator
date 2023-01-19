@@ -143,12 +143,14 @@ def random_check():
 
     print("RANDOM_CHECK",pc, pc_dict['direction'])
 
-    #test purposes
-    #pc_dict['direction'] = 'ahead'
-    #pc_dict['direction'] = 'side'
-    pc_dict['direction'] = 'exit'
 
-    print("RANDOM_CHECK TEST",pc, pc_dict['direction'])
+    #test purposes
+    #if 1 == 2:
+        #pc_dict['direction'] = 'ahead'
+        #pc_dict['direction'] = 'side'
+        #pc_dict['direction'] = 'exit'
+
+    #print("RANDOM_CHECK TEST",pc, pc_dict['direction'])
 
     return pc_dict
 
@@ -210,13 +212,14 @@ def check_action(pc_dict, coord, room_stack):
         new_coord = coord
         e_dict = exit(coord)
         #test L parallel
-        e_dict['beyond'] = 'P'
-        #e_dict['beyond'] = '4BA'
-        #e_dict['beyond'] = '4AB'
-        e_dict['beyond'] = 'A'
-        #e_dict['direction'] = 'L'
-        #e_dict['direction'] = 'R'
-        e_dict['direction'] = 'A'
+        if 1 == 2: #disable tests
+            e_dict['beyond'] = 'P'
+            #e_dict['beyond'] = '4BA'
+            #e_dict['beyond'] = '4AB'
+            e_dict['beyond'] = 'A'
+            #e_dict['direction'] = 'L'
+            #e_dict['direction'] = 'R'
+            e_dict['direction'] = 'A'
 
         print("EDICT:",e_dict)
 
