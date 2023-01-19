@@ -135,7 +135,7 @@ if __name__ == "__main__":
     characters = roll_dice(1,4) + 1
     for c in range(characters):
         character_class = select_character_type()
-        print(character_class, type(character_class[0]))
+        print(character_class, type(character_class[0]), type(character_class[1]))
         while(party[character_class[0]] + 1 > character_class[1]):
             character_class = select_character_type()
 
