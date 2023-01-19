@@ -1386,7 +1386,7 @@ def width():
     #hack width for test here
     if w <= 12:
         p_dict['width'] = 1    
-    if w >=13 and w <=16:
+    elif w >=13 and w <=16:
         p_dict['width'] = 2
     elif w ==17:
         p_dict['width'] = 3
