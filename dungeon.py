@@ -3662,6 +3662,7 @@ for down in range(zwidth-1):
         f.write('</table>')
 
         if 'shape_dict' in room_stack:
+            total_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 275, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
             for room in room_stack['shape_dict']:
                 f.write('<h4>Data: ' + str(room) + '</h4>')
                 f.write(str(room_stack['shape_dict'][room]) + '<br>')
@@ -3673,7 +3674,12 @@ for down in range(zwidth-1):
                     f.write('Empty<br>')
                 else:
                     for key in room_stack['shape_dict'][room]['contents']:
-                        f.write(str(key) + ":" + str(room_stack['shape_dict'][room]['contents'][key]) + '<br>')
+                        if key == 'monster' or key == 'treasure' or key == 'trap':
+                            f.write(str(key) + ":" + str(room_stack['shape_dict'][room]['contents'][key]) + '<br>')
+                            if key == 'treasure':
+                                for tkey in total_treasure:
+                                    total_treasure[tkey] = total_treasure[tkey] + treasure['type'][tkey]
+
 
                 if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                     print("HAS WATER TO DO")
@@ -3683,6 +3689,9 @@ for down in range(zwidth-1):
             for wm in range(wandering_monster_stack['key_count']):
                 f.write('<h4>Wandering Monster: ' + str(wm) + '</h4>')
                 f.write(str(wandering_monster_stack[wm+1]) + '<br>')
+
+
+        f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
 
         #end of page
         f.write(strend)
