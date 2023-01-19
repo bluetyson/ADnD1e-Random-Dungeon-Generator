@@ -133,6 +133,7 @@ def create_party(level):
     for c in range(characters):
         character_class = select_character_type()
         #print(character_class, type(character_class[0]), type(character_class[1]))
+
         while(party[character_class[0]] + 1 > character_class[1]):
             character_class = select_character_type()
 
@@ -140,17 +141,15 @@ def create_party(level):
         magic_items = []
         magic_items = magic_item_chance(level)
 
-        print("CHARACTER LEVEL:",level)
-        print("CHARACTER CLASS:",character_class)
-        print("MAGIC ITEMS:", magic_items)
+        #print("CHARACTER LEVEL:",level)
+        #print("CHARACTER CLASS:",character_class)
+        #print("MAGIC ITEMS:", magic_items)
 
         party_members[c+1] = {}
         party_members[c+1]['class'] = character_class[0]
         party_members[c+1]['level'] = level
         party_members[c+1]['magic_items'] = magic_items
-
-
-        print(characters, "Character Party:")
+        #print(characters, "Character Party:")
 
     for key in party_members:            
         print(key, ":", party_members[key])
