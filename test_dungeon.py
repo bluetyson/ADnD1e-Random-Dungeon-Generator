@@ -155,7 +155,7 @@ def random_check():
 def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwidth=0,ywidth=0):
     p_dict = width()
     #print("PDICTBEFORE:",p_dict)
-    #print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop,"COORD:",coord)
+    print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop,"COORD:",coord)
     #print("PDICT:",p_dict)
     if p_dict['width'] <= 1: #0.5 width do cosmetically later
 
@@ -173,7 +173,6 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
     else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
         print("FANCY WIDTH:",p_dict)
         for w in range(p_dict['width']):
-            
             new_coord = coord
             for y in range(loop):
                 #print("COORD BEFORE:",(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
