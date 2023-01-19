@@ -210,7 +210,7 @@ def monster_tables(level):
     81-88 Silver:very-young/young (1/2)
     89-00 White:young/sub-adult (2/3)'''
 
-    level_05='''01-08 Character — see Character Subtable 1
+    level_05='''01-08 Character — see Character Subtable 1-1
     09-15 Cockatrice 1-2
     16-18 Displacer-beast 1-2
     19-22 Doppleganger 1-3
