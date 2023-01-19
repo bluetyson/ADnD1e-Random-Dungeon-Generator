@@ -250,10 +250,22 @@ def check_action(pc_dict, coord, room_stack):
             if e_dict['type'] == 'N':
                 exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
                 if e_dict['beyond'] == 'P':
-                    #new_coord = passage_make(coord, xmod=-1,ymod=-1,yloop=-1,xwidth=1)
-                    #new_coord = passage_make(coord, xmod=-1,ymod=1,yloop=1,xwidth=1)
-                    new_coord = passage_make(coord, xmod=-1,ymod=0,yloop=-1,xwidth=1)
-                    new_coord = passage_make(coord, xmod=-1,ymod=0,yloop=1,xwidth=1)
+                    will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                    if not will_fit: #fit the zero door site
+                        dungeon[(coord[0]-1,coord[1],coord[2])] = {}
+                        dungeon[(coord[0]-1,coord[1],coord[2])]['fill'] = 'Cd'
+
+                    new_coord = passage_make(coord, xmod=-1,ymod=-1,yloop=-1,xwidth=1)
+                    new_coord = passage_make(coord, xmod=-1,ymod=1,yloop=1,xwidth=1)
+                    #new_coord = passage_make(coord, xmod=-1,ymod=0,yloop=-1,xwidth=1)
+                    #new_coord = passage_make(coord, xmod=-1,ymod=0,yloop=1,xwidth=1)
+                    #will_fit = in_dungeon((coord[0]-1,coord[1]+x-1,coord[2]))
+                    #if not will_fit:
+                        #dungeon[(coord[0]-1,coord[1]+x-1,coord[2])] = {}
+                        #if x != 0:
+                            #dungeon[(coord[0]-1,coord[1]+x-1,coord[2])]['fill'] = 'C'
+                        #else:
+                            #dungeon[(coord[0]-1,coord[1]+x-1,coord[2])]['fill'] = 'Cd'
 
                 if e_dict['beyond'] == 'A':              
                     d = roll_dice(1,20)              
