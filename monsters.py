@@ -84,6 +84,7 @@ def monster_tables(level):
         levels[i+1] = {}
         dragon_levels[i+1] = {}        
         for r in range(100):
+            levels[i+1][r+1] = {}
             dragon_levels[i+1][r+1] = {}
 
     print("TESTLEVELS",levels)
