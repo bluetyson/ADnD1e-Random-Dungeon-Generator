@@ -133,6 +133,8 @@ if __name__ == "__main__":
         party[cl] = 0  
 
     characters = roll_dice(1,4) + 1
+    party_members = {}
+
     for c in range(characters):
         character_class = select_character_type()
         #print(character_class, type(character_class[0]), type(character_class[1]))
@@ -147,8 +149,16 @@ if __name__ == "__main__":
         print("CHARACTER CLASS:",character_class)
         print("MAGIC ITEMS:", magic_items)
 
+        party_members[c+1]['class'] = character_class[0]
+        party_members[c+1]['level'] = character_level
+        party_members[c+1]['magic_items'] = magic_items
+
 
     print(characters, "Character Party:")
     for key in party:
         if party[key] > 0:
             print(key, ":", party[key])
+
+    for key in party_members:            
+        print(key, ":", party_members[key])
+
