@@ -119,8 +119,6 @@ def magic_item_chance(level):
         if m3 <= 20:
             magic_items.extend(random.choices(table_IV, k=1))
 
-        print("in else")
-
     return magic_items
 
 def create_party(level):
@@ -179,6 +177,5 @@ if __name__ == "__main__":
     else:
         character_level = 1
 
-    #party_members = create_party(character_level)
-    print(magic_item_chance(character_level))
+    party_members = create_party(character_level)
 
