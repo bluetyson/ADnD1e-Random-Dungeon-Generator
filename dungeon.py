@@ -706,7 +706,7 @@ def check_action(pc_dict, coord, room_stack):
             print('wm filled up check:',dungeon[(coord[0],coord[1]+1,coord[2])])
             #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'wm' #get this to work
             # do fill test to not write over other fills like 'monsters
-            if ['fill'] in dungeon[(coord[0],coord[1]+1,coord[2])]:
+            if 'fill' in dungeon[(coord[0],coord[1]+1,coord[2])]:
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'wm' #get this to work'wm' #get this to work
             else:
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'wm'
