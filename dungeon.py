@@ -3662,7 +3662,7 @@ for down in range(zwidth-1):
         f.write('</table>')
 
         if 'shape_dict' in room_stack:
-            total_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 275, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
+            total_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
             for room in room_stack['shape_dict']:
                 f.write('<h4>Data: ' + str(room) + '</h4>')
                 f.write(str(room_stack['shape_dict'][room]) + '<br>')
