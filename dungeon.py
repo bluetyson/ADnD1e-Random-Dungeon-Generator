@@ -10,6 +10,8 @@ import json
 import pickle
 import math
 
+from monsters import monster_tables
+
 PI = math.pi
 ARGV = sys.argv
 
@@ -716,7 +718,7 @@ def check_action(pc_dict, coord, room_stack):
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = 0
 
         wm_dict = monster_tables(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
-        
+
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['name']
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
 
