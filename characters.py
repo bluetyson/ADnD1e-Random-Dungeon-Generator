@@ -53,7 +53,6 @@ def magic_item_chance(level):
     if level == 1:
         if m1 <= 10:
             magic_items.extend(random.choices(table_I, k=1))
-        print("magic 1:", magic_items)
     elif level == 2:
         if m1 <= 20:
             magic_items.extend(random.choices(table_I, k=1))
