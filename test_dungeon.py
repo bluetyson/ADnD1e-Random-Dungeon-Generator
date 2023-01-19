@@ -250,8 +250,10 @@ def check_action(pc_dict, coord, room_stack):
             if e_dict['type'] == 'N':
                 exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
                 if e_dict['beyond'] == 'P':
-                    new_coord = passage_make(coord, xmod=-1,ymod=-1,yloop=-1,xwidth=1)
-                    new_coord = passage_make(coord, xmod=-1,ymod=1,yloop=1,xwidth=1)
+                    #new_coord = passage_make(coord, xmod=-1,ymod=-1,yloop=-1,xwidth=1)
+                    #new_coord = passage_make(coord, xmod=-1,ymod=1,yloop=1,xwidth=1)
+                    new_coord = passage_make(coord, xmod=-1,ymod=0,yloop=-1,xwidth=1)
+                    new_coord = passage_make(coord, xmod=-1,ymod=0,yloop=1,xwidth=1)
 
                 if e_dict['beyond'] == 'A':              
                     d = roll_dice(1,20)              
