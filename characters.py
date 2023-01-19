@@ -126,11 +126,26 @@ if __name__ == "__main__":
         character_level = ARGV[1]
     else:
         character_level = 1
-    character_class = select_character_type()
-    magic_items = magic_item_chance(character_level)
 
-    print("CHARACTER LEVEL:",character_level)
-    print("CHARACTER CLASS:",character_class)
-    print("MAGIC ITEMS:", magic_items)
+    classes =["CLERIC","DRUID","FIGHTER","PALADIN","RANGER","MAGIC-USER", "ILLUSIONIST", "THIEF","ASSASSIN","MONK","BARD"]
+]   party = {}  
+    for cl in classes:
+        party[cl] = {}  
+    
+    characters = roll_dice(1,4) + 1
+    for c in range(characters):
+        character_class = select_character_type()
+        while(party[character_class[0]] + 1) > character_class[1]
+            character_class = select_character_type()
 
-    #print(monster_tables(monster_level))
+        party[character_class[0]] += 1
+
+        magic_items = magic_item_chance(character_level)
+
+        print("CHARACTER LEVEL:",character_level)
+        print("CHARACTER CLASS:",character_class)
+        print("MAGIC ITEMS:", magic_items)
+
+
+    print(party)
+        #print(monster_tables(monster_level))
