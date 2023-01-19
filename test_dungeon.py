@@ -180,20 +180,20 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
             for y in range(loop):
                 
                 #checkcoord = (coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)
-                print("COORD BEFORE:",(coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop))
-                will_fit = in_dungeon((coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop))
-                print("width:",w,"loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
+                print("COORD BEFORE:",(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
+                will_fit = in_dungeon((coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
+                print("width:",w,"loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
                 if not will_fit:
                     #dungeon[checkcoord] = {}
-                    dungeon[(coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)] = {}
+                    dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)] = {}
                     
                     if y == 1: #approx midpoint fill - could random 3/4 it but for 3s will be in middle anyway wrong for 6 ok for 3
                         #dungeon[checkcoord]['fill'] = 'C' + p_dict['fill']
-                        dungeon[(coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)]['fill'] = 'C' + p_dict['fill']
+                        dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)]['fill'] = 'C' + p_dict['fill']
                     else:
                         #dungeon[checkcoord]['fill'] = 'C'
-                        dungeon[(coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)]['fill'] = 'C'
-                    new_coord = (coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)
+                        dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)]['fill'] = 'C'
+                    new_coord = (coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)
                 else:
                     break
     
