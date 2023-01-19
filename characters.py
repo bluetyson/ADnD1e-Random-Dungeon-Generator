@@ -47,6 +47,8 @@ def magic_item_chance(level):
     m3 = roll_dice(1,100)
     m4 = roll_dice(1,100)
 
+    print(level)
+    
     if level == 1:
         if m1 <= 10:
             magic_items.extend(random.choices(table_I, k=1))
