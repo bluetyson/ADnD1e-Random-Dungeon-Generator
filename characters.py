@@ -148,5 +148,7 @@ if __name__ == "__main__":
         print("MAGIC ITEMS:", magic_items)
 
 
-    print(characters, "Character Party:", party)
-        #print(monster_tables(monster_level))
+    print(characters, "Character Party:")
+    for key in party:
+        if party[key] > 0:
+            print(KEY, ":", party[key])
