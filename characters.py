@@ -47,7 +47,7 @@ def magic_item_chance(level):
     m3 = roll_dice(1,100)
     m4 = roll_dice(1,100)
 
-    print(level)
+    level = int(level)
 
     if level == 1:
         if m1 <= 10:
