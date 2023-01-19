@@ -3380,36 +3380,9 @@ def exit_direction_full(coord, e_dict):
             if e_dict['beyond'] == '4BA':   ##45 A
                 which_way = roll_dice(1,2)           
                 if which_way == 1:  #corridor left
-                    new_coord = passage_make_full(coord, xmod=-1,xloop=-1,ymod=1,yloop=1,ywidth=1)
+                    new_coord = passage_make_full(coord, xmod=-1,xloop=-1,ymod=-1,yloop=-1,ywidth=1)
                 else:
-                    new_coord = passage_make_full(coord, xmod=1,xloop=1,ymod=1,yloop=1,ywidth=1)
-
-                if which_way == 1:  #corridor left
-                    for x in range(3):
-                        will_fit = in_dungeon((coord[0]-1-x,coord[1]-1-x,coord[2]))
-                        if not will_fit:                
-                            dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
-                            if x != 0:
-                                dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
-                            else:
-                                dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'Cd'
-                            if which_way == 1:
-                                new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
-                        else:
-                            break
-                else:
-                    for x in range(3): #corridor right
-                        will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
-                        if not will_fit:                
-                            dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
-                            if x != 0:
-                                dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
-                            else:
-                                dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'Cd'
-                            if which_way == 2:
-                                new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
-                        else:
-                            break
+                    new_coord = passage_make_full(coord, xmod=1,xloop=1,ymod=-1,yloop=-1,ywidth=1)
 
             if e_dict['beyond'] == 'Room':
                 #want those we randomly position lr
@@ -3433,8 +3406,11 @@ def exit_direction_full(coord, e_dict):
         if e_dict['type'] == 'N':
             exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
             if e_dict['beyond'] == 'P':
+                new_coord = passage_make_full(coord, xmod=1,ymod=-1,yloop=1,xwidth=1)
+                new_coord = passage_make_full(coord, xmod=1,ymod=1,yloop=1,xwidth=1)
+
                 for x in range(3):
-                    will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
+                    will_fit = in_dungeon((coord[0]+1,coord[1]+x-1,coord[2]))
                     if not will_fit:
                         dungeon[(coord[0]+1,coord[1]+x-1,coord[2])] = {}
                         if x != 0:

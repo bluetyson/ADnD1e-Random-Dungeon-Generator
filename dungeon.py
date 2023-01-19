@@ -3442,7 +3442,7 @@ def exit_direction_full(coord, e_dict):
             exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
             if e_dict['beyond'] == 'P':
                 for x in range(3):
-                    will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
+                    will_fit = in_dungeon((coord[0]+x-1,coord[1],coord[2]))
                     if not will_fit:
                         dungeon[(coord[0]+1,coord[1]+x-1,coord[2])] = {}
                         if x != 0:
