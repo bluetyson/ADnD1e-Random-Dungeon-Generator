@@ -175,5 +175,5 @@ if __name__ == "__main__":
     else:
         character_level = 1
 
-    party_members = create_party(level)
+    party_members = create_party(character_level)
 
