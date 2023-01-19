@@ -1381,6 +1381,8 @@ def width():
     p_dict['type'] = 'N'
     p_dict['fill'] = ''
 
+    print("PDICT START WIDTH:",p_dict)    
+
     #hack width for test here
     if w <= 12:
         p_dict['width'] = 1    
@@ -1394,7 +1396,7 @@ def width():
         p_dict = fancy_width()
 
     print("PDICT END WIDTH:",p_dict)    
-    
+
     return p_dict
 
 def fancy_width():
