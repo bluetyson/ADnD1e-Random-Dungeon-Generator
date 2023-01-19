@@ -3618,8 +3618,16 @@ for down in range(zwidth-1):
 
         if 'shape_dict' in room_stack:
             for room in room_stack['shape_dict']:
-                f.write('<h3>Key: ' + str(room) + '</h3>')
+                f.write('<h4>Data: ' + str(room) + '</h4>')
                 f.write(str(room_stack['shape_dict'][room]) + '<br>')
+
+                f.write('<h4>Key: ' + str(room) + '</h4>')
+                for key in room_stack['shape_dict'][room]['contents']:
+                    f.write(str(key) + ":" + room_stack['shape_dict'][room]['contents'][key] + '<br>')
+                    
+                    
+                    f.write(str(room_stack['shape_dict'][room]) + '<br>')
+
                 if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                     print("HAS WATER TO DO")
                     water_dict[room] = room_stack['shape_dict']
