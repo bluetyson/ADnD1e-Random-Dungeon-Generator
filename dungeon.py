@@ -1292,6 +1292,11 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['monster']['type'] = 'NA'
         shape_dict['contents']['monster']['No'] = 0
         shape_dict['contents']['monster']['XP'] = 0
+
+        m_dict = monster_tables(shape_dict['contents']['monster']['level'])
+        shape_dict['contents']['monster']['type']  = m_dict['name']
+        shape_dict['contents']['monster']['No'] = m_dict['no']
+
     elif r >15 and r <=17:
         shape_dict['contents']['monster'] = {}
         shape_dict['contents']['treasure'] = {}
@@ -1299,6 +1304,10 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['monster']['type'] = 'NA'
         shape_dict['contents']['monster']['No'] = 0
         shape_dict['contents']['monster']['XP'] = 0
+
+        m_dict = monster_tables(shape_dict['contents']['monster']['level'])
+        shape_dict['contents']['monster']['type']  = m_dict['name']
+        shape_dict['contents']['monster']['No'] = m_dict['no']
 
         shape_dict = loot(shape_dict,coord,monster="Y")
         shape_dict = loot_store(shape_dict)
