@@ -149,6 +149,7 @@ if __name__ == "__main__":
         print("CHARACTER CLASS:",character_class)
         print("MAGIC ITEMS:", magic_items)
 
+        party_members[c+1] = {}
         party_members[c+1]['class'] = character_class[0]
         party_members[c+1]['level'] = character_level
         party_members[c+1]['magic_items'] = magic_items
