@@ -1071,7 +1071,6 @@ def fancy_shape(shape_dict):
         shape_dict['shape'] = 'C'  #circle
         shape_dict['fancy_shape'] = 'C'
         p = roll_dice(1,20)
-
         if p <= 5:
             shape_dict['water'] = 'P'
             shape_dict = wet_small(shape_dict, coord)
