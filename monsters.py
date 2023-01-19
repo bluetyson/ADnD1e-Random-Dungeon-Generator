@@ -477,9 +477,15 @@ def monster_tables(level):
         m = roll_dice(1,100)
         
     mcheck = levels[level][m]
+
+    mno = roll_dice(mcheck['roll'][0],mcheck['roll'][1]) + mcheck['roll'][2]
     print("choose monster", mcheck)
 
-    return mcheck
+    mdict = {}
+    mdict['name'] = mcheck['name']
+    mdict['no'] = mno
+
+    return mdict
 
 if __name__ == "__main__":
     ARGV = sys.argv
