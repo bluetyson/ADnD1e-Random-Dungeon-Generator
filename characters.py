@@ -131,13 +131,11 @@ if __name__ == "__main__":
     party = {}  
     for cl in classes:
         party[cl] = 0  
-    
-    print(party)
 
     characters = roll_dice(1,4) + 1
     for c in range(characters):
         character_class = select_character_type()
-        print(character_class, type(character_class[0]), type(character_class[1]))
+        #print(character_class, type(character_class[0]), type(character_class[1]))
         while(party[character_class[0]] + 1 > character_class[1]):
             character_class = select_character_type()
 
@@ -150,5 +148,5 @@ if __name__ == "__main__":
         print("MAGIC ITEMS:", magic_items)
 
 
-    print(party)
+    print(characters, "Character Party:", party)
         #print(monster_tables(monster_level))
