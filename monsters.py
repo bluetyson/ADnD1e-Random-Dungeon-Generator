@@ -503,6 +503,8 @@ def monster_tables(level):
     if mdict['name'] == 'Dragon-DragonSubtable':
         mdict['details'] = 'NOT IMPLEMENTED YET'
 
+    print("MDICT:",mict)
+    
     return mdict
 
 if __name__ == "__main__":
