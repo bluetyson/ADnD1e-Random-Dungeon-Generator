@@ -211,8 +211,9 @@ def check_action(pc_dict, coord, room_stack):
         e_dict = exit(coord)
         #test L parallel
         e_dict['beyond'] = 'P'
-        #e_dict['beyond'] = '4BA'
-        #e_dict['beyond'] = '4AB'
+        e_dict['beyond'] = '4BA'
+        e_dict['beyond'] = '4AB'
+        e_dict['beyond'] = 'A'
         e_dict['direction'] = 'R'
 
         print("EDICT:",e_dict)
@@ -233,7 +234,6 @@ def check_action(pc_dict, coord, room_stack):
                 if e_dict['beyond'] == 'A':       
                     print("IN BRANCH")       
                     d = roll_dice(1,20)              
-                    d = 20 #test number
                     if d >=3 and d <= 5:
                         will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
                         if not will_fit:
@@ -291,7 +291,8 @@ def check_action(pc_dict, coord, room_stack):
                     new_coord = passage_make(coord, xmod=1,ymod=1,yloop=1,xwidth=1)
 
                 if e_dict['beyond'] == 'A':              
-                    d = roll_dice(1,20)              
+                    d = roll_dice(1,20)         
+                    d = 20 #test number
                     if d >=3 and d <= 5:
                         will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
                         if not will_fit:
