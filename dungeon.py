@@ -727,7 +727,7 @@ def check_action(pc_dict, coord, room_stack):
         except Exception as wmE:
             #bound to be parsing problems in the monster tables until vetted dragons and characters etc.
             print(wmE)
-            error_dict[error_dict['key_count']] = wME
+            error_dict[error_dict['key_count']] = wmE
             error_dict['type']['key_count'] = "wm roll error for level: " + str(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
             error_dict['key_count'] += 1            
 
