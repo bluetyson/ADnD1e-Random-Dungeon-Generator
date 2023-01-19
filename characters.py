@@ -127,7 +127,7 @@ if __name__ == "__main__":
     else:
         character_level = 1
     character_class = select_character_type()
-    magic_items = magic_item_chance()
+    magic_items = magic_item_chance(level)
 
     print("CHARACTER LEVEL:",character_level)
     print("CHARACTER CLASS:",character_class)
