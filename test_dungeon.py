@@ -212,8 +212,8 @@ def check_action(pc_dict, coord, room_stack):
         #test L parallel
         e_dict['beyond'] = 'P'
         #e_dict['beyond'] = '4BA'
-        e_dict['beyond'] = '4AB'
-        #e_dict['beyond'] = 'A'
+        #e_dict['beyond'] = '4AB'
+        e_dict['beyond'] = 'A'
         #e_dict['direction'] = 'L'
         #e_dict['direction'] = 'R'
         e_dict['direction'] = 'A'
