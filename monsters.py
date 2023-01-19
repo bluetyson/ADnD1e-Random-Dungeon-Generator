@@ -160,7 +160,7 @@ def monster_tables(level):
     61-72 Shrieker 1-3
     73-77 Stirge 5-15
     78-87 Toad, giant 1-4
-    88-00 Troglodyte 2-8'''
+    88-100 Troglodyte 2-8'''
 
     level_03='''01-10 Beetle, boring 1-3
     11-20 Bugbear 2-7
@@ -179,11 +179,11 @@ def monster_tables(level):
     78-84 Spider, huge 1-3
     85-93 Spider, large 2-5
     94-95 Tick, giant 1-3
-    96-00 Weasel, giant 1-4''' 
+    96-100 Weasel, giant 1-4''' 
 
     dragon_level_03 = '''01-28 Black:very-young (1)
     29-62 Brass:very-young (1)
-    63-00 White:very-young (1)'''
+    63-100 White:very-young (1)'''
     
     level_04 = '''01-08 Ape, carnivorous 1-3
     09-14 Blink-dog 2-5
@@ -203,7 +203,7 @@ def monster_tables(level):
     83-90 Snake, giant, constrictor 1-1
     91-94 Su-monster 1-2
     95-96 Toad, ice 1-1
-    97-00 Toad, poisonous 1-3'''
+    97-100 Toad, poisonous 1-3'''
 
     dragon_level_04 = '''01-09 Black:young/sub-adult (2/3)
     10-20 Blue:very young/young (1/2)
@@ -214,7 +214,7 @@ def monster_tables(level):
     55-70 Green:very-young/young (1/2)
     71-80 Red:very-young/young (1/2)
     81-88 Silver:very-young/young (1/2)
-    89-00 White:young/sub-adult (2/3)'''
+    89-100 White:young/sub-adult (2/3)'''
 
     level_05='''01-08 Character — see Character Subtable 1-1
     09-15 Cockatrice 1-2
@@ -236,7 +236,7 @@ def monster_tables(level):
     73-74 Snake, giant-amphisbaena 1-1
     75-82 Snake, giant-poisonous 1-1
     83-86 Snake, giant-spitting 1-1
-    87-00 Spider, giant 1-2'''
+    87-100 Spider, giant 1-2'''
 
     dragon_level_05='''01-08 Black:young-adult/adult (4/5)
     09-20 Blue:sub-adult/young-adult (3/4)
@@ -247,7 +247,7 @@ def monster_tables(level):
     55-70 Green:sub-adult/young-adult (3/4)
     71-80 Red:sub-adult/young-adult (3/4)
     81-88 Silver:sub-adult/young-adult (3/4)
-    89-00 White:young-adult/adult (4/5)'''    
+    89-100 White:young-adult/adult (4/5)'''    
 
     level_06='''01-03 Basilisk 1-1
     04-10 Carrion-crawler 1-2
@@ -274,7 +274,7 @@ def monster_tables(level):
     89-93 Wight 1-4
     94-95 Wind-walker 1-2
     96-98 Wraith 1-2
-    99-00 Wyvern 1-1'''
+    99-100 Wyvern 1-1'''
 
     dragon_level_06='''01-08 Black:old (6)
     09-19 Blue:adult (5)
@@ -285,7 +285,7 @@ def monster_tables(level):
     53-65 Green:adult (5)
     66-78 Red:adult (5)
     79-87 Silver:adult (5)
-    88-00 White:old (6)'''   
+    88-100 White:old (6)'''   
 
     level_07='''01-05 Black-pudding 1-1
     06-10 Character — see Character Subtable 1-1
@@ -328,7 +328,7 @@ def monster_tables(level):
     92-93 Trapper 1-1
     94-95 Umber-hulk 1-1
     96-97 Will-o-wisp 1-3
-    98-00 Xorn 1-3'''
+    98-100 Xorn 1-3'''
 
     dragon_level_07='''01-10 Black:very-old (7)
     11-21 Blue:old (6)
@@ -339,7 +339,7 @@ def monster_tables(level):
     53-66 Green:old (6)
     67-80 Red:old (6)
     81-87 Silver:old (6)
-    88-00 White:very-old (7)'''    
+    88-100 White:very-old (7)'''    
 
     level_08='''01 Aerial-servant 1-1
     02-06 Character — see Character Subtable 1-1
@@ -366,7 +366,7 @@ def monster_tables(level):
     74-78 Trapper 1-1
     79-86 Vampire 1-1
     87-92 Will-o-wisp 2-5
-    93-00 Xorn 2-5'''
+    93-100 Xorn 2-5'''
 
     dragon_level_08='''01-13 Black:ancient (8)
     14-24 Blue:very-old (7)
@@ -377,7 +377,7 @@ def monster_tables(level):
     48-62 Green:very-old (7)
     63-78 Red:very-old (7)
     79-82 Silver:very-old (7)
-    83-00 White:ancient (8)'''
+    83-100 White:ancient (8)'''
 
     level_09='''01-09 Character — see Character Subtable 1-1
     10-12 Devil, pit-fiend 1-1
@@ -396,7 +396,7 @@ def monster_tables(level):
     74-80 Umber-Hulk 1-4
     81-83 Vampire* 1-1
     84-93 Will-o-wisp 2-5
-    94-00 Xorn 2-9'''
+    94-100 Xorn 2-9'''
 
     dragon_level_09='''01-10 Black:2-ancient-&-old (8&6)
     11-22 Blue:ancient (8)
@@ -407,7 +407,7 @@ def monster_tables(level):
     47-62 Green:ancient (8)
     63-78 Red:ancient (8)
     79-82 Silver:ancient (8)
-    83-00 White:2-ancient-&-very-old (8&7)'''    
+    83-100 White:2-ancient-&-very-old (8&7)'''    
 
     level_10 ='''01-12 Beholder 1-1
     13-20 Character — see Character Subtable 1-1
@@ -418,7 +418,7 @@ def monster_tables(level):
     51-60 Lich 1-1
     61-70 Titan, elder 1-1
     71-80 Vampire** 1-1
-    81-00 NO-ENCOUNTER 1-1'''    
+    81-100 NO-ENCOUNTER 1-1'''    
 
     dragon_level_10='''01-20 Blue:2-ancient-&-very-old (8&7)
     21-26 Bronze:2 ancient-&-very-old (8&7)
@@ -428,7 +428,7 @@ def monster_tables(level):
     41-60 Green:2-ancient-&-very old (8&7)
     61-63 Platinum-(Bahamut) (8)
     64-94 Red:2-ancient-&-old (8&6)
-    95-00 Silver:2-ancient-&-old (8&-6)'''
+    95-100 Silver:2-ancient-&-old (8&-6)'''
 
     levels[1]['data'] = level_01
     levels[2]['data'] = level_02
