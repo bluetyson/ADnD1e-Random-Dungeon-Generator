@@ -135,7 +135,7 @@ def create_party(level):
             character_class = select_character_type()
 
         party[character_class[0]] += 1
-
+        magic_items = []
         magic_items = magic_item_chance(level)
 
         print("CHARACTER LEVEL:",level)
