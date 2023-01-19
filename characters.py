@@ -41,8 +41,7 @@ magic_tables = {}
 
 def magic_item_chance(level):
     magic_items = []
-    # Use if-elif statements to determine the chance of getting magic items
-    # from each table based on the level
+
     m1 = roll_dice(1,100)
     m2 = roll_dice(1,100)
     m3 = roll_dice(1,100)
@@ -176,5 +175,6 @@ if __name__ == "__main__":
     else:
         character_level = 1
 
-    party_members = create_party(character_level)
+    #party_members = create_party(character_level)
+    print(magic_item_chance(character_level))
 
