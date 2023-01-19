@@ -475,8 +475,9 @@ def monster_tables(level):
                 levels[ld+1][int(number_range[0])]['roll'] = dice_lookup[dice_roll]
 
         m = roll_dice(1,100)
-        mcheck = levels[level][m]
-        print("choose monster", mcheck)
+        
+    mcheck = levels[level][m]
+    print("choose monster", mcheck)
 
     return mcheck
 
