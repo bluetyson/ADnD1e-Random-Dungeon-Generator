@@ -717,10 +717,18 @@ def check_action(pc_dict, coord, room_stack):
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 0
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = 0
 
-        wm_dict = monster_tables(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
+        try:
+            wm_dict = monster_tables(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
 
-        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['name']
-        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
+            wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['name']
+            wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
+        except Exception as wmE:
+            #bound to be parsing problems in the monster tables until vetted dragons and characters etc.
+            print(wmE)
+            error_dict[error_dict['key_count']] = wME
+            error_dict['type']['key_count'] = "wm roll error for level: " + str(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
+            error_dict['key_count'] += 1            
+
 
     return new_coord
 
@@ -2442,7 +2450,7 @@ def bad_things(coord, room_stack, size="C"):
                     #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ch'
                     if (coord[0],coord[1]+1,coord[2]-1) not in dungeon:
                         dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
-                        
+
                     dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'Rch'  #fill down for chute
                     dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Rch'
 
