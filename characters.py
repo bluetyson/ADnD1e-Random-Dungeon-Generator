@@ -151,4 +151,4 @@ if __name__ == "__main__":
     print(characters, "Character Party:")
     for key in party:
         if party[key] > 0:
-            print(KEY, ":", party[key])
+            print(key, ":", party[key])
