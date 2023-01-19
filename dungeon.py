@@ -401,7 +401,7 @@ def check_action(pc_dict, coord, room_stack):
                     which_way = roll_dice(1,2)  #work out random direction         
                     if which_way == 1:  #corridor left
                         for x in range(3):
-                            will_fit = in_dungeon((coord[0]+1+-x,coord[1]-1-x,coord[2]))
+                            will_fit = in_dungeon((coord[0]-1-x,coord[1]-1-x,coord[2]))
                             if not will_fit:                
                                 dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
                                 if x!= 0:
