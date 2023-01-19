@@ -32,6 +32,7 @@ def select_character_type():
         else:
             return "BARD", 1
 
+#dummy tables until get proper ones in
 table_I = ["Ring of Protection", "Amulet of Health", "Staff of Power", "Boots of Speed", "Cloak of Invisibility", "Sword of Sharpness"]
 table_II = ["Ring of Invisibility", "Amulet of Life Preservation", "Staff of Striking", "Boots of Levitation", "Cloak of Displacement", "Sword of Dancing"]
 table_III = ["Ring of Spell Turning", "Amulet of the Planes", "Staff of the Magi", "Boots of Teleportation", "Cloak of the Bat", "Sword of Sharpness +3"]
@@ -128,6 +129,9 @@ def create_party(level):
         party[cl] = 0  
 
     characters = roll_dice(1,4) + 1
+
+    henchmen = 9 - characters
+
     party_members = {}
 
     for c in range(characters):
@@ -150,6 +154,10 @@ def create_party(level):
         party_members[c+1]['level'] = level
         party_members[c+1]['magic_items'] = magic_items
         #print(characters, "Character Party:")
+
+    for h in range(henchmen):
+        party_members[c+1+h+1] = {}
+        party_members[c+1+h+1]['class'] = 'man-at-arms/hench'
 
     for key in party_members:            
         print(key, ":", party_members[key])
