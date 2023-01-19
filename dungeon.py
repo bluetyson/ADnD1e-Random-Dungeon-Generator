@@ -150,23 +150,19 @@ def random_check():
 
 def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwidth=0,ywidth=0):
     p_dict = width()
-
+    #print("PDICTBEFORE:",p_dict)
+    #print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop,"COORD:",coord)
+    #print("PDICT:",p_dict)
     if p_dict['width'] <= 1: #0.5 width do cosmetically later
 
         new_coord = coord
-        #for y in range(pc_dict['check']):
+        print()
         for y in range(loop):                
-            #will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+1+y,coord[2]))
-            #checkcoord = (coord[0]+xmod+xloop*loop,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*loop)
             will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
-            #will_fit = in_dungeon(checkcoord)
+            print("loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
             if not will_fit:
-                #dungeon[checkcoord] = {}
                 dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)] = {}
-                #dungeon[checkcoord]['fill'] = 'C'
                 dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)]['fill'] = 'C'
-                #handle not fitting
-                #new_coord = checkcoord
                 new_coord = (coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)
             else:
                 break
@@ -176,33 +172,22 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
             
             new_coord = coord
             for y in range(loop):
-                #checkcoord = (coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)
-                will_fit = in_dungeon((coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop))
+                #print("COORD BEFORE:",(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
+                will_fit = in_dungeon((coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
+                #print("width:",w,"loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
                 if not will_fit:
-                    #dungeon[checkcoord] = {}
-                    dungeon[(coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)] = {}
+                    dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)] = {}
                     
                     if y == 1: #approx midpoint fill - could random 3/4 it but for 3s will be in middle anyway wrong for 6 ok for 3
-                        #dungeon[checkcoord]['fill'] = 'C' + p_dict['fill']
-                        dungeon[(coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)]['fill'] = 'C' + p_dict['fill']
+                        dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)]['fill'] = 'C' + p_dict['fill']
                     else:
-                        #dungeon[checkcoord]['fill'] = 'C'
-                        dungeon[(coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)]['fill'] = 'C'
-
-                        
-
-                    #check for columns
-                    #check for river or stream - blue in output
-                        #check for bridge/boat
-
-                    #handle not fitting
-                    #new_coord = checkcoord #can change if want to reposition over
-                    new_coord = (coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)
+                        dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)]['fill'] = 'C'
+                    new_coord = (coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)
                 else:
                     break
-    
 
     return new_coord
+
 
 def check_action(pc_dict, coord, room_stack):
     ## need a current 'orientation' 'L R A B
