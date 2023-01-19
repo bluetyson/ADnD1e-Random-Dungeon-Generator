@@ -144,34 +144,26 @@ def random_check():
     print("RANDOM_CHECK",pc, pc_dict['direction'])
 
     #test purposes
-    pc_dict['direction'] = 'ahead'
-    pc_dict['direction'] = 'side'
+    #pc_dict['direction'] = 'ahead'
+    #pc_dict['direction'] = 'side'
 
     return pc_dict
 
 def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwidth=0,ywidth=0):
     p_dict = width()
-    print("PDICTBEFORE:",p_dict)
-    print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop,"COORD:",coord)
-    print("PDICT:",p_dict)
+    #print("PDICTBEFORE:",p_dict)
+    #print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop,"COORD:",coord)
+    #print("PDICT:",p_dict)
     if p_dict['width'] <= 1: #0.5 width do cosmetically later
 
         new_coord = coord
         print()
-        #for y in range(pc_dict['check']):
         for y in range(loop):                
-            #will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+1+y,coord[2]))
-            #checkcoord = (coord[0]+xmod+xloop*loop,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*loop)
             will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
             print("loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
-            #will_fit = in_dungeon(checkcoord)
             if not will_fit:
-                #dungeon[checkcoord] = {}
                 dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)] = {}
-                #dungeon[checkcoord]['fill'] = 'C'
                 dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)]['fill'] = 'C'
-                #handle not fitting
-                #new_coord = checkcoord
                 new_coord = (coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)
             else:
                 break
@@ -181,25 +173,19 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=1,zloop=0,xwid
             
             new_coord = coord
             for y in range(loop):
-                
-                #checkcoord = (coord[0]+xmod+xloop*loop+xwidth*w,coord[1]+ymod+yloop*loop+ywidth*w,coord[2]+zmod+zloop*loop)
-                print("COORD BEFORE:",(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
+                #print("COORD BEFORE:",(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
                 will_fit = in_dungeon((coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
-                print("width:",w,"loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
+                #print("width:",w,"loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
                 if not will_fit:
-                    #dungeon[checkcoord] = {}
                     dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)] = {}
                     
                     if y == 1: #approx midpoint fill - could random 3/4 it but for 3s will be in middle anyway wrong for 6 ok for 3
-                        #dungeon[checkcoord]['fill'] = 'C' + p_dict['fill']
                         dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)]['fill'] = 'C' + p_dict['fill']
                     else:
-                        #dungeon[checkcoord]['fill'] = 'C'
                         dungeon[(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)]['fill'] = 'C'
                     new_coord = (coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*y)
                 else:
                     break
-    
 
     return new_coord
 
@@ -698,190 +684,6 @@ def check_action(pc_dict, coord, room_stack):
             else:
                 new_coord = new_coord_right_back
 
-        if 1 == 2:
-            if s_dict['direction'] == 'L90':
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
-                    if not will_fit:
-                        dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
-                        dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
-                        new_coord = (coord[0]-1-x,coord[1],coord[2])
-                    else:
-                        break
-
-            elif s_dict['direction'] == 'R90':
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]+1+x,coord[1],coord[2]))
-                    if not will_fit:
-                        dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
-                        dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
-                        new_coord = (coord[0]+1+x,coord[1],coord[2])
-                    else:
-                        break
-
-            elif s_dict['direction'] == 'L45':
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
-                    if not will_fit:
-                        dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
-                        dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
-                        new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
-                    else:
-                        break
-
-            elif s_dict['direction'] == 'R45':
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
-                    if not will_fit:
-                        dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
-                        dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
-                        new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
-                    else:
-                        break
-
-            elif s_dict['direction'] == 'L135':
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]-1-x,coord[1]-1-x,coord[2]))
-                    if not will_fit:
-                        dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
-                        dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
-                        new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
-                    else:
-                        break
-
-            elif s_dict['direction'] == 'R135':
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
-                    if not will_fit:
-                        dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
-                        dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
-                        new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
-                    else:
-                        break
-
-            elif s_dict['direction'] == 'T':
-                which_way = roll_dice(1,2)
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
-                    if not will_fit:
-                        dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
-                        dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
-                        if which_way == 1:
-                            new_coord = (coord[0]-1-x,coord[1],coord[2])
-                    else:
-                        break
-
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]+1+x,coord[1],coord[2]))
-                    if not will_fit:                
-                        dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
-                        dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
-                        if which_way == 2:
-                            new_coord = (coord[0]+1+x,coord[1],coord[2])
-                    else:
-                        break
-
-                if which_way == 1:
-                    new_coord = (coord[0]-3,coord[1],coord[2])  ### got to move these up
-                else:
-                    new_coord = (coord[0]+3,coord[1],coord[2])
-
-            elif s_dict['direction'] == 'Y':
-                which_way = roll_dice(1,2)  #got to move this up
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
-                    if not will_fit:                
-                        dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
-                        dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
-                        if which_way == 1:
-                            new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
-                    else:
-                        break
-
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
-                    if not will_fit:                
-                        dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
-                        dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
-                        if which_way == 2:
-                            new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
-                    else:
-                        break
-
-            elif s_dict['direction'] == 'P': #plus
-                which_way = roll_dice(1,3)
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]-1-x,coord[1],coord[2]))
-                    if not will_fit:
-                        dungeon[(coord[0]-1-x,coord[1],coord[2])] = {}
-                        dungeon[(coord[0]-1-x,coord[1],coord[2])]['fill'] = 'C'
-                        if which_way == 1:
-                            new_coord = (coord[0]-1-x,coord[1],coord[2])
-                    else:
-                        break
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]+1+x,coord[1],coord[2]))
-                    if not will_fit:
-                        dungeon[(coord[0]+1+x,coord[1],coord[2])] = {}
-                        dungeon[(coord[0]+1+x,coord[1],coord[2])]['fill'] = 'C'
-                        if which_way == 2:
-                            new_coord = (coord[0]+1+x,coord[1],coord[2])
-                    else:
-                        break
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0],coord[1]+1+x,coord[2]))
-                    if not will_fit:
-                        dungeon[(coord[0],coord[1]+1+x,coord[2])] = {}
-                        dungeon[(coord[0],coord[1]+1+x,coord[2])]['fill'] = 'C'
-                        if which_way == 3:
-                            new_coord = (coord[0],coord[1]+1+x,coord[2])
-                    else:
-                        break
-
-            else:
-            #s_dict['direction'] == 'X': 45 and 135
-                which_way = roll_dice(1,4) ##got to move this up
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]-1-x,coord[1]+1+x,coord[2]))
-                    if not will_fit:
-                        dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])] = {}
-                        dungeon[(coord[0]-1-x,coord[1]+1+x,coord[2])]['fill'] = 'C'
-                        if which_way == 1:
-                            new_coord = (coord[0]-1-x,coord[1]+1+x,coord[2])
-                    else:
-                        break
-
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]+1+x,coord[1]+1+x,coord[2]))
-                    if not will_fit:
-                        dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])] = {}
-                        dungeon[(coord[0]+1+x,coord[1]+1+x,coord[2])]['fill'] = 'C'
-                        if which_way == 2:
-                            new_coord = (coord[0]+1+x,coord[1]+1+x,coord[2])
-                    else:
-                        break
-
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]-1-x,coord[1]-1-x,coord[2]))
-                    if not will_fit:
-                        dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])] = {}
-                        dungeon[(coord[0]-1-x,coord[1]-1-x,coord[2])]['fill'] = 'C'
-                        if which_way == 3:
-                            new_coord = (coord[0]-1-x,coord[1]-1-x,coord[2])
-                    else:
-                        break
-
-                for x in range(3):
-                    will_fit = in_dungeon((coord[0]+1+x,coord[1]-1-x,coord[2]))
-                    if not will_fit:                
-                        dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])] = {}
-                        dungeon[(coord[0]+1+x,coord[1]-1-x,coord[2])]['fill'] = 'C'
-                        if which_way == 4:
-                            new_coord = (coord[0]+1+x,coord[1]-1-x,coord[2])
-                    else:
-                        break
-                        
-
 
     elif pc_dict['direction'] == 'turn':
         new_coord = coord
@@ -1374,7 +1176,7 @@ def width():
         could have cosmetic width markers as html CCC, CC to start then grid squares later
     '''
     w = roll_dice(1,20)
-    w = 1 #test
+    #w = 1 #test
     print("WIDTH ROLL:",w)
     p_dict = {}
     p_dict['width'] = 1
