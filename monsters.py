@@ -87,9 +87,7 @@ def monster_tables(level):
             levels[i+1][r+1] = {}
             dragon_levels[i+1][r+1] = {}
 
-    print("TESTLEVELS",levels)
-
-
+    #print("TESTLEVELS",levels)
 
     levels['HumanSubtable'] = {}            
     levels['CharacterSubtable'] = {}            
@@ -480,7 +478,7 @@ def monster_tables(level):
         mcheck = levels[level][m]
         print("choose monster", mcheck)
 
-    return levels
+    return mcheck
 
 if __name__ == "__main__":
     ARGV = sys.argv
