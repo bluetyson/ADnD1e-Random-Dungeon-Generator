@@ -494,13 +494,13 @@ def monster_tables(level):
 
     from characters import select_human, create_party
 
-    if mdict['name'] == 'HumanSubtable':
+    if mdict['name'] == 'Human-HumanSubtable':
         mdict['details'] = select_human(level)
 
-    if mdict['name'] == 'CharacterSubtable':
+    if mdict['name'] == 'Character-CharacterSubtable':
         mdict['details'] = create_party(level)
 
-    if mdict['name'] == 'DragonSubtable':
+    if mdict['name'] == 'Dragon-DragonSubtable':
         mdict['details'] = 'NOT IMPLEMENTED YET'
 
     return mdict
