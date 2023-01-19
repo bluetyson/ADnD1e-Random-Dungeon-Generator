@@ -412,7 +412,7 @@ def monster_tables(level):
     51-60 Lich 1-1
     61-70 Titan, elder 1-1
     71-80 Vampire** 1-1
-    81-00 NO-ENCOUNTER 1-1'''    
+    81-00 NO-ENCOUNTER 1-2'''    
 
     dragon_level_10='''01-20 Blue:2-ancient-&-very-old (8&7)
     21-26 Bronze:2 ancient-&-very-old (8&7)
