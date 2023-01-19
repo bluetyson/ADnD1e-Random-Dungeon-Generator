@@ -156,7 +156,12 @@ def create_party(level):
 
     for h in range(henchmen):
         party_members[c+1+h+1] = {}
-        party_members[c+1+h+1]['class'] = 'man-at-arms/hench'
+        s = roll_dice(1,2)
+        if s == 1:
+            party_members[c+1+h+1]['class'] = 'man-at-arms/henchman'
+        else:
+            party_members[c+1+h+1]['class'] = 'woman-at-arms/henchwoman'
+
 
     for key in party_members:            
         print(key, ":", party_members[key])
