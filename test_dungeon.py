@@ -226,7 +226,7 @@ def check_action(pc_dict, coord, room_stack):
 
                     if e_dict['beyond'] == 'A':              
                         d = roll_dice(1,20)              
-                        if d >=3 and d >= 5:
+                        if d >=3 and d <= 5:
                             will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
                             if not will_fit:
                                 exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
@@ -264,7 +264,7 @@ def check_action(pc_dict, coord, room_stack):
                     print("IN BRANCH")       
                     d = roll_dice(1,20)              
                     d = 20 #test number
-                    if d >=3 and d >= 5:
+                    if d >=3 and d <= 5:
                         will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
                         if not will_fit:
                             exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
@@ -374,7 +374,7 @@ def check_action(pc_dict, coord, room_stack):
 
                 if e_dict['beyond'] == 'A':              
                     d = roll_dice(1,20)              
-                    if d >=3 and d >= 5:
+                    if d >=3 and d <= 5:
                         will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
                         if not will_fit:
                             exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
@@ -497,7 +497,7 @@ def check_action(pc_dict, coord, room_stack):
                 ### previously not in missing problem
                 if e_dict['beyond'] == 'A':              
                     d = roll_dice(1,20)              
-                    if d >=3 and d >= 5:
+                    if d >=3 and d <= 5:
                         will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
                         if not will_fit:
                             exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
@@ -3386,7 +3386,7 @@ def exit_direction_full(coord, e_dict):
 
             if e_dict['beyond'] == 'A':              
                 d = roll_dice(1,20)              
-                if d >=3 and d >= 5:
+                if d >=3 and d <= 5:
                     will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
                     if not will_fit:
                         exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
@@ -3435,7 +3435,7 @@ def exit_direction_full(coord, e_dict):
 
             if e_dict['beyond'] == 'A':              
                 d = roll_dice(1,20)              
-                if d >=3 and d >= 5:
+                if d >=3 and d <= 5:
                     will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
                     if not will_fit:
                         exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
@@ -3499,7 +3499,7 @@ def exit_direction_full(coord, e_dict):
             ### previously not in missing problem
             if e_dict['beyond'] == 'A':              
                 d = roll_dice(1,20)              
-                if d >=3 and d >= 5:
+                if d >=3 and d <= 5:
                     will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
                     if not will_fit:
                         exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
