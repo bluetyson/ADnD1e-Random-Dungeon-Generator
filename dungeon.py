@@ -3620,12 +3620,12 @@ for down in range(zwidth-1):
             for room in room_stack['shape_dict']:
                 f.write('<h4>Data: ' + str(room) + '</h4>')
                 f.write(str(room_stack['shape_dict'][room]) + '<br>')
-                f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
+                #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
 
                 f.write('<h4>Key: ' + str(room) + '</h4>')
                 if 'empty' in room_stack['shape_dict'][room]['contents']:
                     print(str(room_stack['shape_dict'][room]['contents']))
-                    f.write("Room" + ":" + 'Empty<br>')
+                    f.write('Empty<br>')
                 else:
                     for key in room_stack['shape_dict'][room]['contents']:
                         f.write(str(key) + ":" + str(room_stack['shape_dict'][room]['contents'][key]) + '<br>')
