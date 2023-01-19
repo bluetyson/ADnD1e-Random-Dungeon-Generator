@@ -155,7 +155,7 @@ def magic_item_chance(level):
 
         return party_members
 
-def select_human()
+def select_human():
     h = roll_dice(1,100)
     if h <= 25:
         return ["Bandit", roll_dice(2,6) + 3]
