@@ -270,6 +270,7 @@ def check_action(pc_dict, coord, room_stack):
                             exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
                     else:
                         #30m passage that direction
+                        print("making 30")"
                         new_coord = passage_make(coord, xmod=-1,xloop=-1, ywidth=1)
 
                 if e_dict['beyond'] == '4AB':   ##45 A
