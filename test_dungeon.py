@@ -3463,7 +3463,6 @@ def exit_direction_full(coord, e_dict):
                     dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Rd'
                     new_coord = (coord[0],coord[1]+1,coord[2])
                     # 10 x 10 room need to check contents!
-
                     #need to implement for set type room
                     new_coord = coord
                     shape_dict = room(coord, room_stack, size="10") #10 is special case to mandate 1 roll for size
@@ -3482,21 +3481,21 @@ def exit_direction_full(coord, e_dict):
                         exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
                 else:
                     #30m passage that direction
-                    new_coord = passage_make_full(coord, ymod=1,yloop=1,ywidth=1)
+                    new_coord = passage_make_full(coord, ymod=1,yloop=1,xwidth=1)
 
             if e_dict['beyond'] == '4AB':   ##45 A
                 which_way = roll_dice(1,2)           
                 if which_way == 1:  #corridor left
-                    new_coord = passage_make_full(coord, xmod=-1,xloop=-1,ymod=1,yloop=1,ywidth=1)
+                    new_coord = passage_make_full(coord, xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)
                 else:
-                    new_coord = passage_make_full(coord, xmod=1,xloop=1,ymod=1,yloop=1,ywidth=1)
+                    new_coord = passage_make_full(coord, xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)
 
             if e_dict['beyond'] == '4BA':   ##45 A
                 which_way = roll_dice(1,2)           
                 if which_way == 1:  #corridor left
-                    new_coord = passage_make_full(coord, xmod=-1,xloop=-1,ymod=1,yloop=1,ywidth=1)
+                    new_coord = passage_make_full(coord, xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)
                 else:
-                    new_coord = passage_make_full(coord, xmod=1,xloop=1,ymod=1,yloop=1,ywidth=1)
+                    new_coord = passage_make_full(coord, xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)
 
             if e_dict['beyond'] == 'Room':
                 #want those we randomly position lr
