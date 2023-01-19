@@ -1712,65 +1712,17 @@ def room_make(shape_dict, coord, size="C"):
 
                             #30m passage that direction - ahead y+
                             if shape_dict['exitdirections'][e+1] == 'A': #AHEAD
-                                for x in range(3):
-                                    will_fit = in_dungeon((el[0],el[1]+1+x,rzmin))
-                                    if not will_fit:
-                                        dungeon[(el[0],el[1]+1+x,rzmin)] = {}
-                                        dungeon[(el[0],el[1]+1+x,rzmin)]['fill'] = 'C'
-                                        if take_exit == e+1: #dice 1, loop 0
-                                            new_coord = (el[0],el[1]+1+x,rzmin)
-                                    else:
-                                        sd = roll_dice(1,20)
-                                        if sd <= 5:
-                                            secret_door_count +=1 
-                                            secret_door_dict[(el[0],el[1]+1+x-1,rzmin)] = 'Y'
-                                        elif sd >=6 and sd <=10:
-                                            secret_door_count +=1 
-                                            secret_door_dict[(el[0],el[1]+1+x-1,rzmin)] = 'OW'
-                                        else:
-                                            pass
-                                        break
+                                new_coord = passage_make_sd((el[0],el[1],rzmin), secret_door_count, secret_door_dict, ymod=1,yloop=1,sdy=-1,xwidth=1)
 
                             else: #shape_dict['exitdirections'][e+1]: #AB or BA if opp wall back 45 no good
+                                new_coord_left = passage_make_sd((el[0],el[1],rzmin), secret_door_count, secret_door_dict, xmod=-1,xloop=-1,ymod=1,yloop=1,sdx=1,sdy=-1,xwidth=1)
+                                new_coord_right = passage_make_sd((el[0],el[1],rzmin), secret_door_count, secret_door_dict, xmod=1,xloop=1,ymod=1,yloop=1,sdx=-1,sdy=-1,xwidth=1)
+
                                 which_way = roll_dice(1,2)           
                                 if which_way == 1:  #corridor left
-                                    for x in range(3):
-                                        will_fit = in_dungeon((el[0]-1-x,el[1]+1+x,rzmin))
-                                        if not will_fit:                
-                                            dungeon[(el[0]-1-x,el[1]+1+x,rzmin)] = {}
-                                            dungeon[(el[0]-1-x,el[1]+1+x,rzmin)]['fill'] = 'C'
-                                            if which_way == 1 and take_exit == e+1:
-                                                new_coord = (el[0]-1-x,el[1]+1+x,rzmin)
-                                        else:
-                                            sd = roll_dice(1,20)
-                                            if sd <= 5:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]-1-x+1,el[1]+1+x-1,rzmin)] = 'Y'
-                                            elif sd >=6 and sd <=10:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]-1-x+1,el[1]+1+x-1,rzmin)] = 'OW'
-                                            else:
-                                                pass
-                                            break
+                                    new_coord = new_coord_left
                                 else:
-                                    for x in range(3): #corridor right
-                                        will_fit = in_dungeon((el[0]+1+x,el[1]+1+x,rzmin))
-                                        if not will_fit:                
-                                            dungeon[(el[0]+1+x,el[1]+1+x,rzmin)] = {}
-                                            dungeon[(el[0]+1+x,el[1]+1+x,rzmin)]['fill'] = 'C'
-                                            if which_way == 2 and take_exit == e+1:
-                                                new_coord = (el[0]+1+x,el[1]+1+x,rzmin)
-                                        else:
-                                            sd = roll_dice(1,20)
-                                            if sd <= 5:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]+1+x-1,el[1]+1+x-1,rzmin)] = 'Y'
-                                            elif sd >=6 and sd <=10:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]+1+x-1,el[1]+1+x-1,rzmin)] = 'OW'
-                                            else:
-                                                pass
-                                            break
+                                    new_coord = new_coord_right
 
                         elif shape_dict['exitlocations'][e+1] == 'L': #LEFT
                             #check for possible positions at xmin range from ymin to ymax
@@ -1788,66 +1740,19 @@ def room_make(shape_dict, coord, size="C"):
                                 print(room_stack)
 
                             if shape_dict['exitdirections'][e+1] == 'A':
-                                for x in range(3):
-                                    will_fit = in_dungeon((el[0]-1-x,el[1],rzmin))
-                                    if not will_fit:
-                                        dungeon[(el[0]-1-x,el[1],rzmin)] = {}
-                                        dungeon[(el[0]-1-x,el[1],rzmin)]['fill'] = 'C'
-                                        if take_exit == e+1: #dice 1, loop 0
-                                            new_coord = (el[0]-1-x,el[1],rzmin)  
-
-                                    else:
-                                        sd = roll_dice(1,20)
-                                        if sd <= 5:
-                                            secret_door_count +=1 
-                                            secret_door_dict[(el[0]-1-x+1,el[1],rzmin)  ] = 'Y'
-                                        elif sd >=6 and sd <=10:
-                                            secret_door_count +=1 
-                                            secret_door_dict[(el[0]-1-x+1,el[1],rzmin)  ] = 'OW'
-                                        else:
-                                            pass
-                                        break
+                                new_coord = passage_make_sd((el[0],el[1],rzmin), secret_door_count, secret_door_dict, xmod=-1,xloop=-1,sdx=1,ywidth=1)
 
                             else: #shape_dict['exitdirections'][e+1]: #AB or BA if opp wall back 45 no good
+
+                                new_coord_left = passage_make_sd((el[0],el[1],rzmin), secret_door_count, secret_door_dict, xmod=-1,xloop=-1,ymod=1,yloop=1,sdx=1,sdy=-1,ywidth=1)
+                                new_coord_right = passage_make_sd((el[0],el[1],rzmin), secret_door_count, secret_door_dict, xmod=1,xloop=1,ymod=-1,yloop=-1,sdx=-1,sdy=-1,ywidth=1)
+
                                 which_way = roll_dice(1,2)           
-                                if which_way == 1:  #corridor opp
-                                    for x in range(3):
-                                        will_fit = in_dungeon((el[0]-1-x,el[1]+1+x,rzmin))
-                                        if not will_fit:                
-                                            dungeon[(el[0]-1-x,el[1]+1+x,rzmin)] = {}
-                                            dungeon[(el[0]-1-x,el[1]+1+x,rzmin)]['fill'] = 'C'
-                                            if which_way == 1 and take_exit == e+1:
-                                                new_coord = (el[0]-1-x,el[1]+1+x,rzmin)
-                                        else:
-                                            sd = roll_dice(1,20)
-                                            if sd <= 5:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]-1-x+1,el[1]+1+x-1,rzmin)] = 'Y'
-                                            elif sd >=6 and sd <=10:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]-1-x-1,el[1]+1+x-1,rzmin)] = 'OW'
-                                            else:
-                                                pass
-                                            break
+                                if which_way == 1:  #corridor left
+                                    new_coord = new_coord_left
                                 else:
-                                    for x in range(3): #same
-                                        will_fit = in_dungeon((el[0]-1-x,el[1]-1-x,rzmin))
-                                        if not will_fit:                
-                                            dungeon[(el[0]-1-x,el[1]-1-x,rzmin)] = {}
-                                            dungeon[(el[0]-1-x,el[1]-1-x,rzmin)]['fill'] = 'C'
-                                            if which_way == 2 and take_exit == e+1:
-                                                new_coord = (el[0]-1-x,el[1]-1-x,rzmin)
-                                        else:
-                                            sd = roll_dice(1,20)
-                                            if sd <= 5:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]-1-x+1,el[1]-1-x+1,rzmin)] = 'Y'
-                                            elif sd >=6 and sd <=10:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]-1-x-1+1,el[1]+1+x-1,rzmin)] = 'OW'
-                                            else:
-                                                pass
-                                            break
+                                    new_coord = new_coord_right
+
 
                         elif shape_dict['exitlocations'][e+1] == 'R':                    
                             #check for possible positions at xmax range from ymin to ymax    
@@ -1855,137 +1760,36 @@ def room_make(shape_dict, coord, size="C"):
                             el = [rxmax,rymin + es -1]
 
                             if shape_dict['exitdirections'][e+1] == 'A':
-                                for x in range(3):
-                                    will_fit = in_dungeon((el[0]+1+x,el[1],rzmin))
-                                    if not will_fit:
-                                        dungeon[(el[0]+1+x,el[1],rzmin)] = {}
-                                        dungeon[(el[0]+1+x,el[1],rzmin)]['fill'] = 'C'
-                                        if take_exit == e+1: #dice 1, loop 0
-                                            new_coord = (el[0]+1+x,el[1],rzmin)
-                                    else:
-                                        sd = roll_dice(1,20)
-                                        if sd <= 5:
-                                            secret_door_count +=1 
-                                            secret_door_dict[(el[0]+1+x-1,el[1],rzmin)] = 'Y'
-                                        elif sd >=6 and sd <=10:
-                                            secret_door_count +=1 
-                                            secret_door_dict[(el[0]+1+x-1,el[1],rzmin)] = 'OW'
-                                        else:
-                                            pass
-                                        break
-
+                                new_coord = passage_make_sd((el[0],el[1],rzmin), secret_door_count, secret_door_dict, xmod=1,xloop=1,sdx=-1,ywidth=1)
 
                             else: #shape_dict['exitdirections'][e+1]: #AB or BA if opp wall back 45 no good
-                                which_way = roll_dice(1,2)           
-                                if which_way == 1:  #corridor opp
-                                    for x in range(3):
-                                        will_fit = in_dungeon((el[0]+1+x,el[1]+1+x,rzmin))
-                                        if not will_fit:                
-                                            dungeon[(el[0]+1+x,el[1]+1+x,rzmin)] = {}
-                                            dungeon[(el[0]+1+x,el[1]+1+x,rzmin)]['fill'] = 'C'
-                                            if which_way == 1:
-                                                new_coord = (el[0]+1+x,el[1]+1+x,rzmin)
-                                        else:
-                                            sd = roll_dice(1,20)
-                                            if sd <= 5:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]+1+x-1,el[1]+1+x-1,rzmin)] = 'Y'
-                                            elif sd >=6 and sd <=10:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]+1+x-1,el[1]+1+x-1,rzmin)] = 'OW'
-                                            else:
-                                                pass
-                                            break
-                                else:
-                                    for x in range(3): #same
-                                        will_fit = in_dungeon((el[0]+1+x,el[1]-1-x,rzmin))
-                                        if not will_fit:                
-                                            dungeon[(el[0]+1+x,el[1]-1-x,rzmin)] = {}
-                                            dungeon[(el[0]+1+x,el[1]-1-x,rzmin)]['fill'] = 'C'
-                                            if which_way == 2:
-                                                new_coord = (el[0]+1+x,el[1]-1-x,rzmin)
-                                        else:
-                                            sd = roll_dice(1,20)
-                                            if sd <= 5:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]+1+x,el[1]-1-x,rzmin)] = 'Y'
-                                            elif sd >=6 and sd <=10:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]+1+x,el[1]-1-x,rzmin)] = 'OW'
-                                            else:
-                                                pass
-                                            break
 
+                                new_coord_left = passage_make_sd((el[0],el[1],rzmin), secret_door_count, secret_door_dict, xmod=1,xloop=1,ymod=1,yloop=1,sdx=-1,sdy=-1,ywidth=1)
+                                new_coord_right = passage_make_sd((el[0],el[1],rzmin), secret_door_count, secret_door_dict, xmod=1,xloop=1,ymod=-1,yloop=-1,sdx=1,sdy=-1,ywidth=1)
+
+                                which_way = roll_dice(1,2)           
+                                if which_way == 1:  #corridor left
+                                    new_coord = new_coord_left
+                                else:
+                                    new_coord = new_coord_right
 
                         else: #S wall
                             #check for possible positions at ymin range from xmin to xmax
                             es = roll_dice(1,rxmax-rxmin + 1)
                             el = [rxmin + es -1,rymin]
 
-                            if shape_dict['exitdirections'][e+1] == 'A':
-                                for x in range(3):
-                                    will_fit = in_dungeon((el[0],el[1]-1-x,rzmin))
-                                    if not will_fit:
-                                        dungeon[(el[0],el[1]-1-x,rzmin)] = {}
-                                        dungeon[(el[0],el[1]-1-x,rzmin)]['fill'] = 'C'
-                                        if take_exit == e+1: #dice 1, loop 0
-                                            new_coord = ((el[0],el[1]-1-x,rzmin))       
-                                    else:
-                                        sd = roll_dice(1,20)
-                                        if sd <= 5:
-                                            secret_door_count +=1 
-                                            secret_door_dict[(el[0],el[1]-1-x+1,rzmin)] = 'Y'
-                                        elif sd >=6 and sd <=10:
-                                            secret_door_count +=1 
-                                            secret_door_dict[(el[0],el[1]-1-x+1,rzmin)] = 'OW'
-                                        else:
-                                            pass
-                                        break
-
+                            if shape_dict['exitdirections'][e+1] == 'A': #AHEAD
+                                new_coord = passage_make_sd((el[0],el[1],rzmin), secret_door_count, secret_door_dict, ymod=-1,yloop=-1,sdy=1,xwidth=1)
 
                             else: #shape_dict['exitdirections'][e+1]: #angled either way
+                                new_coord_left = passage_make_sd((el[0],el[1],rzmin), secret_door_count, secret_door_dict, xmod=-1,xloop=-1,ymod=-1,yloop=-1,sdx=1,sdy=-1,xwidth=1)
+                                new_coord_right = passage_make_sd((el[0],el[1],rzmin), secret_door_count, secret_door_dict, xmod=1,xloop=1,ymod=-1,yloop=-1,sdx=-1,sdy=1,xwidth=1)
+
                                 which_way = roll_dice(1,2)           
                                 if which_way == 1:  #corridor left
-                                    for x in range(3):
-                                        will_fit = in_dungeon((el[0]-1-x,el[1]-1-x,rzmin))
-                                        if not will_fit:                
-                                            dungeon[(el[0]-1-x,el[1]-1-x,rzmin)] = {}
-                                            dungeon[(el[0]-1-x,el[1]-1-x,rzmin)]['fill'] = 'C'
-                                            if which_way == 1:
-                                                new_coord = (el[0]-1-x,el[1]+1+x,rzmin)
-                                        else:
-                                            sd = roll_dice(1,20)
-                                            if sd <= 5:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]-1-x+1,el[1]+1+x-1,rzmin)] = 'Y'
-                                            elif sd >=6 and sd <=10:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]-1-x+1,el[1]+1+x-1,rzmin)] = 'OW'
-                                            else:
-                                                pass
-                                            break
+                                    new_coord = new_coord_left
                                 else:
-                                    #secret doors here need to use the other sd procedures eventually
-                                    for x in range(3): #corridor right
-                                        will_fit = in_dungeon((el[0]+1+x,el[1]-1-x,rzmin))
-                                        if not will_fit:                
-                                            dungeon[(el[0]+1+x,el[1]-1-x,rzmin)] = {}
-                                            dungeon[(el[0]+1+x,el[1]-1-x,rzmin)]['fill'] = 'C'
-                                            if which_way == 2:
-                                                new_coord = (el[0]+1+x,el[1]-1-x,rzmin)
-                                        else:
-                                            sd = roll_dice(1,20)
-                                            if sd <= 5:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]+1+x-1,el[1]-1-x+1,rzmin)] = 'Y'
-                                            elif sd >=6 and sd <=10:
-                                                secret_door_count +=1 
-                                                secret_door_dict[(el[0]+1+x-1,el[1]-1-x+1,rzmin)] = 'OW'
-                                            else:
-                                                pass
-                                            break
-
-
+                                    new_coord = new_coord_right
 
                     #pass
 
