@@ -52,7 +52,8 @@ def monster_tables(level):
 
     dice_lookup = {}
     #make lists of what for roll_dice
-    dice_lookup['1'] = [1,1,0]
+    #dice_lookup['1'] = [1,1,0]
+    dice_lookup['1-1'] = [1,1,0]
     dice_lookup['1-2'] = [1,2,0]
     dice_lookup['1-3'] = [1,3,0]
     dice_lookup['1-4'] = [1,4,0]
