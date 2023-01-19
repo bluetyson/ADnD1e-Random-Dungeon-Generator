@@ -1,6 +1,12 @@
 import random
 import sys
 
+multi_roll(rolls, sides):
+    total = 0
+    for i in range(rolls):
+        total = total + roll_dice(1,sides)
+    return total
+
 def roll_dice(number, sides):
     roll = random.randint(number,sides)
     return roll
@@ -484,7 +490,10 @@ def monster_tables(level):
     if int(mcheck['roll'][0]) == 1 and int(mcheck['roll'][1]) == 1:
         mno = 1
     else:
-        mno = roll_dice(mcheck['roll'][0],mcheck['roll'][1]) + mcheck['roll'][2]
+        if mcheck['roll'][0] == 1:
+            mno = roll_dice(mcheck['roll'][0],mcheck['roll'][1]) + mcheck['roll'][2]
+        else:
+            mno = multi_roll(mcheck['roll'][0],mcheck['roll'][1]) + mcheck['roll'][2]
 
     print("choose monster", mcheck)
 
