@@ -1218,7 +1218,7 @@ def exit_dir(shape_dict):
 
     return shape_dict            
 
-def passage_make_sd(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0,sdx=0,sdy=0,xwidth=0,ywidth=0):
+def passage_make_sd(coord, secret_door_count, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0,sdx=0,sdy=0,xwidth=0,ywidth=0):
     p_dict = width()
     #print("PDICTBEFORE:",p_dict)
     print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop,"COORD:",coord)
@@ -1713,11 +1713,11 @@ def room_make(shape_dict, coord, size="C"):
 
                             #30m passage that direction - ahead y+
                             if shape_dict['exitdirections'][e+1] == 'A': #AHEAD
-                                new_coord = passage_make_sd((el[0],el[1],rzmin), ymod=1,yloop=1,sdy=-1,xwidth=1)
+                                new_coord = passage_make_sd((el[0],el[1],rzmin), secret_door_count, ymod=1,yloop=1,sdy=-1,xwidth=1)
 
                             else: #shape_dict['exitdirections'][e+1]: #AB or BA if opp wall back 45 no good
-                                new_coord_left = passage_make_sd((el[0],el[1],rzmin), xmod=-1,xloop=-1,ymod=1,yloop=1,sdx=1,sdy=-1,xwidth=1)
-                                new_coord_right = passage_make_sd((el[0],el[1],rzmin), xmod=1,xloop=1,ymod=1,yloop=1,sdx=-1,sdy=-1,xwidth=1)
+                                new_coord_left = passage_make_sd((el[0],el[1],rzmin), secret_door_count, xmod=-1,xloop=-1,ymod=1,yloop=1,sdx=1,sdy=-1,xwidth=1)
+                                new_coord_right = passage_make_sd((el[0],el[1],rzmin), secret_door_count, xmod=1,xloop=1,ymod=1,yloop=1,sdx=-1,sdy=-1,xwidth=1)
 
                                 which_way = roll_dice(1,2)           
                                 if which_way == 1:  #corridor left
@@ -1741,12 +1741,12 @@ def room_make(shape_dict, coord, size="C"):
                                 print(room_stack)
 
                             if shape_dict['exitdirections'][e+1] == 'A':
-                                new_coord = passage_make_sd((el[0],el[1],rzmin), xmod=-1,xloop=-1,sdx=1,ywidth=1)
+                                new_coord = passage_make_sd((el[0],el[1],rzmin), secret_door_count, xmod=-1,xloop=-1,sdx=1,ywidth=1)
 
                             else: #shape_dict['exitdirections'][e+1]: #AB or BA if opp wall back 45 no good
 
-                                new_coord_left = passage_make_sd((el[0],el[1],rzmin), xmod=-1,xloop=-1,ymod=1,yloop=1,sdx=1,sdy=-1,ywidth=1)
-                                new_coord_right = passage_make_sd((el[0],el[1],rzmin), xmod=1,xloop=1,ymod=-1,yloop=-1,sdx=-1,sdy=-1,ywidth=1)
+                                new_coord_left = passage_make_sd((el[0],el[1],rzmin), secret_door_count, xmod=-1,xloop=-1,ymod=1,yloop=1,sdx=1,sdy=-1,ywidth=1)
+                                new_coord_right = passage_make_sd((el[0],el[1],rzmin), secret_door_count, xmod=1,xloop=1,ymod=-1,yloop=-1,sdx=-1,sdy=-1,ywidth=1)
 
                                 which_way = roll_dice(1,2)           
                                 if which_way == 1:  #corridor left
@@ -1761,12 +1761,12 @@ def room_make(shape_dict, coord, size="C"):
                             el = [rxmax,rymin + es -1]
 
                             if shape_dict['exitdirections'][e+1] == 'A':
-                                new_coord = passage_make_sd((el[0],el[1],rzmin), xmod=1,xloop=1,sdx=-1,ywidth=1)
+                                new_coord = passage_make_sd((el[0],el[1],rzmin), secret_door_count, xmod=1,xloop=1,sdx=-1,ywidth=1)
 
                             else: #shape_dict['exitdirections'][e+1]: #AB or BA if opp wall back 45 no good
 
-                                new_coord_left = passage_make_sd((el[0],el[1],rzmin), xmod=1,xloop=1,ymod=1,yloop=1,sdx=-1,sdy=-1,ywidth=1)
-                                new_coord_right = passage_make_sd((el[0],el[1],rzmin), xmod=1,xloop=1,ymod=-1,yloop=-1,sdx=1,sdy=-1,ywidth=1)
+                                new_coord_left = passage_make_sd((el[0],el[1],rzmin), secret_door_count, xmod=1,xloop=1,ymod=1,yloop=1,sdx=-1,sdy=-1,ywidth=1)
+                                new_coord_right = passage_make_sd((el[0],el[1],rzmin), secret_door_count, xmod=1,xloop=1,ymod=-1,yloop=-1,sdx=1,sdy=-1,ywidth=1)
 
                                 which_way = roll_dice(1,2)           
                                 if which_way == 1:  #corridor left
@@ -1780,11 +1780,11 @@ def room_make(shape_dict, coord, size="C"):
                             el = [rxmin + es -1,rymin]
 
                             if shape_dict['exitdirections'][e+1] == 'A': #AHEAD
-                                new_coord = passage_make_sd((el[0],el[1],rzmin), ymod=-1,yloop=-1,sdy=1,xwidth=1)
+                                new_coord = passage_make_sd((el[0],el[1],rzmin), secret_door_count, ymod=-1,yloop=-1,sdy=1,xwidth=1)
 
                             else: #shape_dict['exitdirections'][e+1]: #angled either way
-                                new_coord_left = passage_make_sd((el[0],el[1],rzmin), xmod=-1,xloop=-1,ymod=-1,yloop=-1,sdx=1,sdy=-1,xwidth=1)
-                                new_coord_right = passage_make_sd((el[0],el[1],rzmin), xmod=1,xloop=1,ymod=-1,yloop=-1,sdx=-1,sdy=1,xwidth=1)
+                                new_coord_left = passage_make_sd((el[0],el[1],rzmin), secret_door_count, xmod=-1,xloop=-1,ymod=-1,yloop=-1,sdx=1,sdy=-1,xwidth=1)
+                                new_coord_right = passage_make_sd((el[0],el[1],rzmin), secret_door_count, xmod=1,xloop=1,ymod=-1,yloop=-1,sdx=-1,sdy=1,xwidth=1)
 
                                 which_way = roll_dice(1,2)           
                                 if which_way == 1:  #corridor left
