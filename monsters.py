@@ -481,11 +481,11 @@ def monster_tables(level):
                 levels[ld+1][int(number_range[0])]['name'] = monster
                 levels[ld+1][int(number_range[0])]['roll'] = dice_lookup[dice_roll]
 
-        m = roll_dice(1,100)
+    m = roll_dice(1,100)
         
     mcheck = levels[level][m]
 
-    print("CHECKINGM",mcheck)
+    print("CHECKINGM",mcheck,"LEVEL:",level,"ROLL:",m)
 
     if int(mcheck['roll'][0]) == 1 and int(mcheck['roll'][1]) == 1:
         mno = 1
