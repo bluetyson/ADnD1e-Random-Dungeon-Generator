@@ -466,8 +466,8 @@ def monster_tables(level):
                 #print(hi, lo)
                 for i in range(lo,hi+1,1):
                     #print(i)
-                    levels[1][i]['name'] = monster
-                    levels[1][i]['roll'] = dice_lookup[dice_roll]
+                    levels[ld+1][i]['name'] = monster
+                    levels[ld+1][i]['roll'] = dice_lookup[dice_roll]
             else:
                 levels[ld+1][int(number_range[0])]['name'] = monster
                 levels[ld+1][int(number_range[0])]['roll'] = dice_lookup[dice_roll]
