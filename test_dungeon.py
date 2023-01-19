@@ -268,7 +268,7 @@ def check_action(pc_dict, coord, room_stack):
                             exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
                     else:
                         #30m passage that direction
-                            new_coord = passage_make_full(coord, xmod=-1,xloop=-1, ywidth=1)
+                        new_coord = passage_make_full(coord, xmod=-1,xloop=-1, ywidth=1)
 
                 if e_dict['beyond'] == '4AB':   ##45 A
                     which_way = roll_dice(1,2)           
