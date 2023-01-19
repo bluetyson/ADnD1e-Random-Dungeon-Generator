@@ -1,7 +1,7 @@
 import random
 import sys
 
-multi_roll(rolls, sides):
+def multi_roll(rolls, sides):
     total = 0
     for i in range(rolls):
         total = total + roll_dice(1,sides)
