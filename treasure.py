@@ -1043,4 +1043,4 @@ if __name__ == "__main__":
 
     for a in alphabet_capitalised:
         choice = treasure_choice(a)
-        print(f"Treasure:{a}, Choice:{choice}, Length:{len(choice)"})
+        print(f"Treasure:{a}, Choice:{choice}, Length:{len(choice)}"})
