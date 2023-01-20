@@ -1329,6 +1329,10 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['monster']['type']  = m_dict['name']
         shape_dict['contents']['monster']['No'] = m_dict['no']
 
+        print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
+        print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['type'])
+
+
         quit()
         
     elif r >15 and r <=17:
