@@ -189,6 +189,28 @@ def magic_item_chance(level):
 
     return magic_items
 
+def get_race_and_class(dice_score):
+    if dice_score >= 1 and dice_score <= 25:
+        race = "Dwarf"
+        multi_class_percentage = 15
+    elif dice_score >= 26 and dice_score <= 50:
+        race = "Elf"
+        multi_class_percentage = 85
+    elif dice_score >= 51 and dice_score <= 60:
+        race = "Gnome"
+        multi_class_percentage = 25
+    elif dice_score >= 61 and dice_score <= 85:
+        race = "Half-elf"
+        multi_class_percentage = 85
+    elif dice_score >= 86 and dice_score <= 95:
+        race = "Halfling"
+        multi_class_percentage = 10
+    else:
+        race = "Half-Orc"
+        multi_class_percentage = 50
+    return (race, multi_class_percentage)
+
+
 def create_party(level):
     classes =["CLERIC","DRUID","FIGHTER","PALADIN","RANGER","MAGIC-USER", "ILLUSIONIST", "THIEF","ASSASSIN","MONK","BARD"]
     party = {}  
@@ -219,8 +241,28 @@ def create_party(level):
         party_members[c+1] = {}
         party_members[c+1]['class'] = character_class[0]
         party_members[c+1]['level'] = level
+        party_members[c+1]['race'] = 'Human'
         party_members[c+1]['magic_items'] = magic_items
+        party_members[c+1]['multi'] = 'N'
         #print(characters, "Character Party:")
+
+        non_human = roll_dice(1,100)
+        if non_human <= 20:
+            dice_score = random.randint(1,100)
+            race, multi_class_percentage = get_race_and_class(dice_score)        
+            party_members[c+1]['race'] = race
+
+            multi = roll_dice(1,100)
+            if multi <= multi_class_percentage:
+                party_members[c+1]['multi'] = 'Y'
+                party_members[c+1]['multi_no'] = 2
+                #check 2 or 3
+                multino = 2
+                multi_classes = roll_dice(1,3)
+                if multi_classes == 3:
+                    multino = 3
+                    party_members[c+1]['multi_no'] = 3
+
 
     for h in range(henchmen):
         party_members[c+1+h+1] = {}
