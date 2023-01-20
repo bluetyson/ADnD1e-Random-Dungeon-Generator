@@ -884,59 +884,401 @@ def misc_5_choice():
     else:
         return ("Wings of Flying", 750, 7500)        
 
-def treasure_choice(treasure_type):
+def treasure_choice(treasure_type, no):
+    treasure = {}
+    treasure['copper'] = 0
+    treasure['silver'] = 0
+    treasure['electrum'] = 0
+    treasure['gold'] = 0
+    treasure['platinum'] = 0
+    treasure['gems'] = 0
+    treasure['jewellery'] = 0
+    treasure['magic'] = 0
+
     if treasure_type == "A":
-        return (random.randint(1, 6) * 250, random.randint(1, 6) * 300, random.randint(1, 6) * 350, random.randint(1, 10) * 400, random.randint(1, 4) * 500, random.randint(4, 40) * 10, random.randint(3, 30) * 10, random.choice(["Sword", "Armor", "Misc. Weapon"]))
+        r = roll_dice(1,100)
+        if r <= 25:
+            treasure['copper'] = roll_dice(1,6) * 1000
+        r = roll_dice(1,100)
+        if r <= 30:
+            treasure['silver'] = roll_dice(1,6) * 1000
+        r = roll_dice(1,100)
+        if r <= 35:
+            treasure['electrum'] = roll_dice(1,6) * 1000
+        r = roll_dice(1,100)            
+        if r <= 40:
+            treasure['gold'] = roll_dice(1,6) * 1000
+        r = roll_dice(1,100)            
+        if r <= 25:
+            treasure['platinum'] = roll_dice(1,4) * 1000
+        r = roll_dice(1,100)            
+        if r <= 60:
+            treasure['gems'] = roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) 
+        r = roll_dice(1,100)            
+        if r <= 50:
+            treasure['jewellery'] = roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) 
+        r = roll_dice(1,100)            
+        if r <= 30:
+            magic_list = []
+            for c in range(3):
+                magic_list.append(random.choice(["Sword", "Armor", "Misc. Weapon"]))
+            treasure['magic'] = magic_list
+
     elif treasure_type == "B":
-        return (random.randint(1, 8) * 100, random.randint(1, 6) * 250, random.randint(1, 4) * 250, random.randint(1, 3) * 250, 0, random.randint(1, 8) * 10, random.randint(1, 4) * 20, random.choice(["Sword", "Armor", "Misc. Weapon"]))
+        r = roll_dice(1,100)
+        if r <= 50:
+            treasure['copper'] = roll_dice(1,8) * 1000
+        r = roll_dice(1,100)
+        if r <= 25:
+            treasure['silver'] = roll_dice(1,6) * 1000
+        r = roll_dice(1,100)
+        if r <= 25:
+            treasure['electrum'] = roll_dice(1,4) * 1000
+        r = roll_dice(1,100)            
+        if r <= 25:
+            treasure['gold'] = roll_dice(1,3) * 1000
+        r = roll_dice(1,100)            
+        if r <= 30:
+            treasure['gems'] = roll_dice(1,8)
+        r = roll_dice(1,100)            
+        if r <= 20:
+            treasure['jewellery'] = roll_dice(1,4)
+        r = roll_dice(1,100)            
+        if r <= 10:
+            magic_list = []
+            for c in range(1):
+                magic_list.append(random.choice(["Sword", "Armor", "Misc. Weapon"]))
+            treasure['magic'] = magic_list
+
     elif treasure_type == "C":
-        return (random.randint(1, 12) * 20, random.randint(1, 6) * 30, random.randint(1, 4) * 10, 0, 0, random.randint(1, 6) * 25, random.randint(1, 3) * 20, random.choice(["Sword", "Armor", "Misc. Weapon"]))
+        r = roll_dice(1,100)
+        if r <= 20:
+            treasure['copper'] = roll_dice(1,12) * 1000
+        r = roll_dice(1,100)
+        if r <= 30:
+            treasure['silver'] = roll_dice(1,6) * 1000
+        r = roll_dice(1,100)
+        if r <= 10:
+            treasure['electrum'] = roll_dice(1,4) * 1000
+        r = roll_dice(1,100)            
+        if r <= 25:
+            treasure['gems'] = roll_dice(1,6)
+        r = roll_dice(1,100)            
+        if r <= 20:
+            treasure['jewellery'] = roll_dice(1,3)
+        r = roll_dice(1,100)            
+        if r <= 10:
+            magic_list = []
+            for c in range(2):
+                magic_list.append(random.choice(["Any"]))
+            treasure['magic'] = magic_list
+
     elif treasure_type == "D":
-        return (random.randint(1, 8) * 10, random.randint(1, 12) * 15, random.randint(1, 8) * 15, random.randint(1, 6) * 50, 0, random.randint(1, 10) * 30, random.randint(1, 6) * 25, random.choice(["Sword", "Armor", "Misc. Weapon"]))
+        r = roll_dice(1,100)
+        if r <= 10:
+            treasure['copper'] = roll_dice(1,8) * 1000
+        r = roll_dice(1,100)
+        if r <= 15:
+            treasure['silver'] = roll_dice(1,12) * 1000
+        r = roll_dice(1,100)
+        if r <= 15:
+            treasure['electrum'] = roll_dice(1,8) * 1000
+        r = roll_dice(1,100)            
+        if r <= 50:
+            treasure['gold'] = roll_dice(1,6) * 1000
+        r = roll_dice(1,100)            
+        if r <= 30:
+            treasure['gems'] = roll_dice(1,10)
+        r = roll_dice(1,100)            
+        if r <= 25:
+            treasure['jewellery'] = roll_dice(1,6)
+        r = roll_dice(1,100)            
+        if r <= 15:
+            magic_list = []
+            for c in range(2):
+                magic_list.append(random.choice(["Any"]))
+            for c in range(1):
+                magic_list.append(random.choice(["Potion"]))
+            treasure['magic'] = magic_list
+
     elif treasure_type == "E":
-        return (random.randint(1, 10) * 5, random.randint(1, 12) * 25, random.randint(1, 6) * 25, random.randint(1, 8) * 25, 0, random.randint(1, 12) * 15, random.randint(1, 8) * 10, random.choice(["Sword", "Armor", "Misc. Weapon"]))
+        r = roll_dice(1,100)
+        if r <= 5:
+            treasure['copper'] = roll_dice(1,10) * 1000
+        r = roll_dice(1,100)
+        if r <= 25:
+            treasure['silver'] = roll_dice(1,12) * 1000
+        r = roll_dice(1,100)
+        if r <= 25:
+            treasure['electrum'] = roll_dice(1,6) * 1000
+        r = roll_dice(1,100)            
+        if r <= 25:
+            treasure['gold'] = roll_dice(1,8) * 1000
+        r = roll_dice(1,100)            
+        if r <= 15:
+            treasure['gems'] = roll_dice(1,12)
+        r = roll_dice(1,100)            
+        if r <= 10:
+            treasure['jewellery'] = roll_dice(1,8)
+        r = roll_dice(1,100)            
+        if r <= 25:
+            magic_list = []
+            for c in range(3):
+                magic_list.append(random.choice(["Any"]))
+            for c in range(1):
+                magic_list.append(random.choice(["Scroll"]))
+            treasure['magic'] = magic_list
+
     elif treasure_type == "F":
-        return (0, random.randint(1, 20) * 10, random.randint(1, 12) * 15, random.randint(1, 10) * 40, random.randint(1, 8) * 35, random.randint(3, 30) * 10, random.randint(1, 10) * 10, random.choice(["Sword", "Armor", "Misc. Weapon"]))
+        r = roll_dice(1,100)
+        if r <= 10:
+            treasure['silver'] = roll_dice(1,20) * 1000
+        r = roll_dice(1,100)
+        if r <= 15:
+            treasure['electrum'] = roll_dice(1,12) * 1000
+        r = roll_dice(1,100)            
+        if r <= 40:
+            treasure['gold'] = roll_dice(1,10) * 1000
+        r = roll_dice(1,100)            
+        if r <= 35:
+            treasure['platinum'] = roll_dice(1,8) * 1000
+        r = roll_dice(1,100)            
+        if r <= 20:
+            treasure['gems'] = roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10)
+        r = roll_dice(1,100)            
+        if r <= 10:
+            treasure['jewellery'] = roll_dice(1,10)
+        r = roll_dice(1,100)            
+        if r <= 30:
+            magic_list = []
+            for c in range(3):
+                magic_list.append(random.choice(["Potion","Scroll","Ring","Wand","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"]))
+            for c in range(1):
+                magic_list.append(random.choice(["Potion"]))
+            for c in range(1):
+                magic_list.append(random.choice(["Scroll"]))
+            treasure['magic'] = magic_list
+
     elif treasure_type == "G":
-        return (0, 0, 0, random.randint(10, 40) * 400, random.randint(1, 20) * 500, random.randint(5, 20) * 10, random.randint(1, 10) * 25, random.choices(["Sword", "Armor", "Misc. Weapon", "Potion", "Scroll", "Map", "Ring", "Amulet", "Wand", "Staff", "Rod"], k=4) + ["Scroll"])
+        r = roll_dice(1,100)            
+        if r <= 50:
+            treasure['gold'] = roll_dice(1,4) * 10 * 1000
+        r = roll_dice(1,100)            
+        if r <= 50:
+            treasure['platinum'] = roll_dice(1,20) * 1000
+        r = roll_dice(1,100)            
+        if r <= 30:
+            treasure['gems'] = roll_dice(1,4) + roll_dice(1,4) + roll_dice(1,4) + roll_dice(1,4) + roll_dice(1,4)
+        r = roll_dice(1,100)            
+        if r <= 25:
+            treasure['jewellery'] = roll_dice(1,10)
+        r = roll_dice(1,100)            
+        if r <= 30:
+            magic_list = []
+            for c in range(3):
+                magic_list.append(random.choice(["Potion","Scroll","Ring","Wand","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"]))
+            for c in range(1):
+                magic_list.append(random.choice(["Potion"]))
+            for c in range(1):
+                magic_list.append(random.choice(["Scroll"]))
+            treasure['magic'] = magic_list
+
     elif treasure_type == "H":
-        return (random.randint(5, 30) * 25, random.randint(1, 100) * 40, random.randint(10, 40) * 40, random.randint(10, 60) * 55, random.randint(5, 25) * 25, random.randint(1, 100) * 50, random.randint(10, 40) * 50, random.choices(["Sword", "Armor", "Misc. Weapon", "Potion", "Scroll", "Map", "Ring", "Amulet", "Wand", "Staff", "Rod"], k=4) + ["Potion", "Scroll"])
+        r = roll_dice(1,100)
+        if r <= 25:
+            treasure['copper'] = (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6)) * 1000
+        r = roll_dice(1,100)
+        if r <= 40:
+            treasure['silver'] = roll_dice(1,100) * 1000
+        r = roll_dice(1,100)
+        if r <= 40:
+            treasure['electrum'] = roll_dice(1,4) * 10 * 1000
+        r = roll_dice(1,100)            
+        if r <= 55:
+            treasure['gold'] = roll_dice(1,6) * 10 * 1000
+        r = roll_dice(1,100)            
+        if r <= 25:
+            treasure['platinum'] = (roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10)) * 1000
+        r = roll_dice(1,100)            
+        if r <= 50:
+            treasure['gems'] = roll_dice(1,100)
+        r = roll_dice(1,100)            
+        if r <= 50:
+            treasure['jewellery'] = roll_dice(1,10) * 4
+        r = roll_dice(1,100)            
+        if r <= 15:
+            magic_list = []
+            for c in range(4):
+                magic_list.append(random.choice(["Sword", "Armor", "Misc. Weapon"]))
+            for c in range(1):
+                magic_list.append(random.choice(["Potion"]))
+            for c in range(1):
+                magic_list.append(random.choice(["Scroll"]))
+            treasure['magic'] = magic_list
+
     elif treasure_type == "I":
-        return (0, 0, 0, 0, random.randint(3, 18) * 30, random.randint(20, 40) * 55, random.randint(12, 30) * 50, random.choice(["Sword", "Armor", "Misc. Weapon", "Potion", "Scroll", "Map", "Ring", "Amulet", "Wand", "Staff", "Rod"]))
+        r = roll_dice(1,100)            
+        if r <= 30:
+            treasure['platinum'] = (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6)) * 1000
+        r = roll_dice(1,100)            
+        if r <= 55:
+            treasure['gems'] = roll_dice(1,10) + roll_dice(1,10)
+        r = roll_dice(1,100)            
+        if r <= 50:
+            treasure['jewellery'] = roll_dice(1,12)
+        r = roll_dice(1,100)            
+        if r <= 15:
+            magic_list = []
+            for c in range(1):
+                magic_list.append(random.choice(["Any"]))
+            treasure['magic'] = magic_list
+
     elif treasure_type == "J":
-        return (random.randint(3, 24) * 8, 0, 0, 0, 0, 0, 0, 0)
+        if n in range(no):
+            treasure['copper'] = treasure['copper'] + (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6))
+        
     elif treasure_type == "K":
-        return (0, random.randint(3, 18) * 6, 0, 0, 0, 0, 0, 0)
+        if n in range(no):
+            treasure['silver'] = treasure['silver'] + (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6))
+
     elif treasure_type == "L":
-        return (0, 0, random.randint(2, 12) * 6, 0, 0, 0, 0, 0)    
+        if n in range(no):
+            treasure['electrum'] = treasure['electrum'] + (roll_dice(1,6) + roll_dice(1,6))
+
     elif treasure_type == "M":
-        return (0, 0, 0, random.randint(2, 8) * 250, 0, 0, 0, None)
+        if n in range(no):
+            treasure['gold'] = treasure['gold'] + (roll_dice(1,4) + roll_dice(1,4))
+
     elif treasure_type == "N":
-        return (0, 0, 0, 0, random.randint(1, 6) * 500, 0, 0, None)
+        if n in range(no):
+            treasure['platinum'] = treasure['platinum'] + roll_dice(1,6)
+
     elif treasure_type == "O":
-        return (random.randint(1, 4) * 250, random.randint(1, 3) * 200, 0, 0, 0, 0, 0, None)
+        r = roll_dice(1,100)
+        if r <= 25:
+            treasure['copper'] = roll_dice(1,4) * 1000
+        r = roll_dice(1,100)
+        if r <= 20:
+            treasure['silver'] = roll_dice(1,3) * 1000
+
     elif treasure_type == "P":
-        return (0, random.randint(1, 6) * 300, random.randint(1, 2) * 250, 0, 0, 0, 0, None)
+        r = roll_dice(1,100)
+        if r <= 25:
+            treasure['silver'] = roll_dice(1,4) * 1000
+        r = roll_dice(1,100)
+        if r <= 20:
+            treasure['electrum'] = roll_dice(1,2) * 1000
+
     elif treasure_type == "Q":
-        return (0, 0, 0, 0, 0, random.randint(1, 4) * 50, 0, None)
+        r = roll_dice(1,100)            
+        if r <= 5-:
+            treasure['gems'] = roll_dice(1,4)
+
     elif treasure_type == "R":
-        return (0, 0, 0, random.randint(2, 8) * 250, random.randint(10, 60) * 50, random.randint(4, 40) * 55, random.randint(1, 12) * 45, None)
+        r = roll_dice(1,100)            
+        if r <= 40:
+            treasure['gold'] = (roll_dice(1,4)+roll_dice(1,4)) * 1000
+        r = roll_dice(1,100)            
+        if r <= 50:
+            treasure['platinum'] = roll_dice(1,6) * 10 * 1000
+        r = roll_dice(1,100)            
+        if r <= 55:
+            treasure['gems'] = roll_dice(1,8) + roll_dice(1,8) + roll_dice(1,8) + roll_dice(1,8)
+        r = roll_dice(1,100)            
+        if r <= 45:
+            treasure['jewellery'] = roll_dice(1,12)
+
     elif treasure_type == "S":
-        return (0, 0, 0, 0, 0, 0, 0, random.randint(2, 8))
+        r = roll_dice(1,100)            
+        if r <= 45:
+            magic_list = []
+            for c in range(roll_dice(1,4) + roll_dice(1,4)):
+                magic_list.append(random.choice(["Potion"]))
+            treasure['magic'] = magic_list
+
     elif treasure_type == "T":
-        return (0, 0, 0, 0, 0, 0, 0, random.randint(1, 4))
+        r = roll_dice(1,100)            
+        if r <= 50:
+            magic_list = []
+            for c in range(roll_dice(1,4)):
+                magic_list.append(random.choice(["Scroll"]))
+            treasure['magic'] = magic_list
+
     elif treasure_type == "U":
+        r = roll_dice(1,100)            
+        if r <= 90:
+            treasure['gems'] = roll_dice(1,8) * 10
+        r = roll_dice(1,100)            
+        if r <= 80:
+            treasure['jewellery'] = (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6))
+        r = roll_dice(1,100)            
+        if r <= 70:
+            magic_list = []
+            magic_list.append ["Ring","Wand","Sword","Weapon","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"]
+            treasure['magic'] = magic_list
         return (0, 0, 0, 0, 0, random.randint(10, 80) * 90, random.randint(5, 30) * 80, None)
+
     elif treasure_type == "V":
-        return (0, 0, 0, 0, 0, 0, 0, 2)
+        if r <= 70:
+            magic_list = []
+            magic_list.append ["Ring","Wand","Sword","Weapon","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"]
+            magic_list.append ["Ring","Wand","Sword","Weapon","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"]
+            treasure['magic'] = magic_list
+
     elif treasure_type == "W":
-        return (0, 0, 0, random.randint(5, 30) * 60, random.randint(1, 8) * 15, 0, random.randint(10, 80) * 60, random.randint(5, 25) * 50, 1)
+        r = roll_dice(1,100)            
+        if r <= 60:
+            treasure['gold'] = (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6)) * 1000
+        r = roll_dice(1,100)            
+        if r <= 15:
+            treasure['platinum'] = roll_dice(1,8) * 1000
+        r = roll_dice(1,100)            
+        if r <= 60:
+            treasure['gems'] = roll_dice(1,8) * 10
+        r = roll_dice(1,100)            
+        if r <= 50:
+            treasure['jewellery'] = (roll_dice(1,8) + roll_dice(1,8) + roll_dice(1,8) + roll_dice(1,8) + roll_dice(1,8))
+
     elif treasure_type == "X":
-        return (0, 0, 0, 0, 0, 0, 0, (1, random.choice(["misc. magic", "potion"])))
+        if r <= 70:
+            magic_list = []
+            magic_list.append(random.choice(["Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"]))
+            magic_list.append ["Potion"]
+            treasure['magic'] = magic_list
+
     elif treasure_type == "Y":
-        return (0, 0, 0, random.randint(2, 12) * 70, 0, 0, 0, 0, 0)
+        r = roll_dice(1,100)            
+        if r <= 70:
+            treasure['gold'] = (roll_dice(1,6) + roll_dice(1,6)) * 1000
+
     else: #treasure_type == "Z":
-        return (random.randint(1, 3) * 20, random.randint(1, 4) * 25, random.randint(1, 4) * 25, random.randint(1, 4) * 30, random.randint(1, 6) * 30, random.randint(10, 55) * 6, random.randint(5, 25) * 50, 3)        
+        r = roll_dice(1,100)
+        if r <= 20:
+            treasure['copper'] = roll_dice(1,3) * 1000
+        r = roll_dice(1,100)
+        if r <= 25:
+            treasure['silver'] = roll_dice(1,4) * 1000
+        r = roll_dice(1,100)
+        if r <= 25:
+            treasure['electrum'] = roll_dice(1,4) * 1000
+        r = roll_dice(1,100)            
+        if r <= 30:
+            treasure['gold'] = roll_dice(1,4) * 1000
+        r = roll_dice(1,100)            
+        if r <= 30:
+            treasure['platinum'] = roll_dice(1,6) * 1000
+        r = roll_dice(1,100)            
+        if r <= 55:
+            treasure['gems'] = roll_dice(1,10) * 60
+        r = roll_dice(1,100)            
+        if r <= 50:
+            treasure['jewellery'] = roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6)  
+        r = roll_dice(1,100)            
+        if r <= 30:
+            magic_list = []
+            for c in range(3):
+                magic_list.append(random.choice(["Any"]))
+            treasure['magic'] = magic_list
 
 # Example usage
 def select_magic_item():
