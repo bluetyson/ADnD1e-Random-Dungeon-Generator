@@ -1245,7 +1245,7 @@ def treasure_choice(treasure_type, no):
         if r <= 70:
             magic_list = []
             magic_list.append(random.choice(["Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"]))
-            magic_list.append ["Potion"]
+            magic_list.append(["Potion"])
             treasure['magic'] = magic_list
 
     elif treasure_type == "Y":
