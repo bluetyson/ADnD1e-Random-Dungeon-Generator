@@ -911,7 +911,9 @@ def treasure_choice(treasure_type):
         elif treasure_type == "K":
             return (0, random.randint(3, 18) * 6, 0, 0, 0, 0, 0, 0)
         elif treasure_type == "L":
-            return (0, 0, random.randint(2, 12) * 6, 0, 0, 0, 0, 0)        
+            return (0, 0, random.randint(2, 12) * 6, 0, 0, 0, 0, 0)    
+        else:
+            return "TBC"    
 
 # Example usage
 def select_magic_item():
