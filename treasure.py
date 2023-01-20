@@ -25,6 +25,7 @@ def select_gemstone():
 
 def update_gemstone(base_value):
     dice_roll = roll_dice(1, 10)
+    print(dice_roll)
     if dice_roll == 1:
         next_base_value = base_value * 2
         if next_base_value > 1000000:
