@@ -10,6 +10,9 @@ import json
 import pickle
 import math
 
+from monsters import monster_tables
+from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item
+
 PI = math.pi
 ARGV = sys.argv
 
@@ -143,26 +146,20 @@ def random_check():
 
     print("RANDOM_CHECK",pc, pc_dict['direction'])
 
-
     #test purposes
-    #if 1 == 2:
-        #pc_dict['direction'] = 'ahead'
-        #pc_dict['direction'] = 'side'
-        #pc_dict['direction'] = 'exit'
-
-    #print("RANDOM_CHECK TEST",pc, pc_dict['direction'])
+    #pc_dict['direction'] = 'ahead'
 
     return pc_dict
 
-def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0,xwidth=0,ywidth=0):
+def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0,xwidth=0,ywidth=0):    #check this
     p_dict = width()
     #print("PDICTBEFORE:",p_dict)
-    print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop,"COORD:",coord)
+    #print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop,"COORD:",coord)
     #print("PDICT:",p_dict)
     if p_dict['width'] <= 1: #0.5 width do cosmetically later
 
         new_coord = coord
-        #print()
+        print()
         for y in range(loop):                
             will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
             print("loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
@@ -175,6 +172,7 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0,xwid
     else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
         print("FANCY WIDTH:",p_dict)
         for w in range(p_dict['width']):
+            
             new_coord = coord
             for y in range(loop):
                 #print("COORD BEFORE:",(coord[0]+xmod+xloop*y+xwidth*w,coord[1]+ymod+yloop*y+ywidth*w,coord[2]+zmod+zloop*loop))
@@ -193,12 +191,14 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0,xwid
 
     return new_coord
 
+
 def check_action(pc_dict, coord, room_stack):
     ## need a current 'orientation' 'L R A B
     if pc_dict['direction'] == 'ahead':
         if 1 == 1:
             #new_coord = coord
             new_coord = passage_make(coord,loop=6,ymod=1,yloop=1,xwidth=1)
+
 
     elif pc_dict['direction'] == 'exit':
         '''
@@ -407,9 +407,6 @@ def check_action(pc_dict, coord, room_stack):
                     rm = room_make(shape_dict, coord)
                     if rm == "GOOD":
                         secret_doors(shape_dict)                    
-
-
-
         ## got to proceed with direction/type of exit
 
     elif pc_dict['direction'] == 'side':
@@ -486,6 +483,7 @@ def check_action(pc_dict, coord, room_stack):
             else:
                 new_coord = new_coord_right_back
 
+					
 
     elif pc_dict['direction'] == 'turn':
         new_coord = coord
@@ -707,8 +705,12 @@ def check_action(pc_dict, coord, room_stack):
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'wm'
         else:
             print('wm filled up check:',dungeon[(coord[0],coord[1]+1,coord[2])])
-            dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'wm' #get this to work
-            #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'wm'
+            #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'wm' #get this to work
+            # do fill test to not write over other fills like 'monsters
+            if 'fill' in dungeon[(coord[0],coord[1]+1,coord[2])]:
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'wm' #get this to work'wm' #get this to work
+            else:
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'wm'
             print('wm key check',dungeon[(coord[0],coord[1]+1,coord[2])])
 
         wm_coord = (coord[0],coord[1]+1,coord[2])
@@ -719,6 +721,34 @@ def check_action(pc_dict, coord, room_stack):
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = 'NA'
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 0
         wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = 0
+
+        try:
+            wm_dict = monster_tables(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
+
+            wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['name']
+            wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
+
+            if 'HumanSubtable' in wm_dict['name']:
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details'][0]
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['details'][1]
+                if 'Character' in wm_dict['details']:
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9                
+            if 'CharacterSubtable' in wm_dict['name']:
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
+
+            if 'DragonSubtable' in wm_dict['name']:
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']['name']
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['roll'][0]
+
+        except Exception as wmE:
+            #bound to be parsing problems in the monster tables until vetted dragons and characters etc.
+            print(wmE)
+            error_dict[error_dict['key_count']] = wmE
+            error_dict['type']['key_count'] = "wm roll error for level: " + str(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
+            error_dict['key_count'] += 1            
+
 
     return new_coord
 
@@ -937,7 +967,7 @@ def width():
         could have cosmetic width markers as html CCC, CC to start then grid squares later
     '''
     w = roll_dice(1,20)
-    #w = 1 #test
+    #w = 20 #test
     print("WIDTH ROLL:",w)
     p_dict = {}
     p_dict['width'] = 1
@@ -955,7 +985,6 @@ def width():
         p_dict['width'] = 0.5
     else:
         p_dict = fancy_width()
-
     return p_dict
 
 def fancy_width():
@@ -1071,6 +1100,7 @@ def fancy_shape(shape_dict):
         shape_dict['shape'] = 'C'  #circle
         shape_dict['fancy_shape'] = 'C'
         p = roll_dice(1,20)
+
         if p <= 5:
             shape_dict['water'] = 'P'
             shape_dict = wet_small(shape_dict, coord)
@@ -1217,7 +1247,6 @@ def exit_dir(shape_dict):
             shape_dict['exitdirections'][i+1] = '45BA'
 
     return shape_dict            
-
 def passage_make_sd(coord, secret_door_count, secret_door_dict, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0,sdx=0,sdy=0,xwidth=0,ywidth=0):
     p_dict = width()
     #print("PDICTBEFORE:",p_dict)
@@ -1276,7 +1305,6 @@ def passage_make_sd(coord, secret_door_count, secret_door_dict, loop=3,xmod=0,ym
 
     return new_coord
 
-
 def room_contents(shape_dict, coord, content):
     shape_dict['contents'] = {}
     r = roll_dice(1,20)
@@ -1292,6 +1320,15 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['monster']['type'] = 'NA'
         shape_dict['contents']['monster']['No'] = 0
         shape_dict['contents']['monster']['XP'] = 0
+
+        print("CHECKSD FOR MONSTER CHARACTERS:",shape_dict['contents']['monster']['level'])
+        print("CHECKSD FOR MONSTER CHARACTERS:",shape_dict['contents']['monster']['type'])
+
+        m_dict = monster_tables(shape_dict['contents']['monster']['level'])
+        print("CHECKM_DICT FOR MONSTER CHARACTERS:",shape_dict['contents']['monster']['type'])
+        shape_dict['contents']['monster']['type']  = m_dict['name']
+        shape_dict['contents']['monster']['No'] = m_dict['no']
+        
     elif r >15 and r <=17:
         shape_dict['contents']['monster'] = {}
         shape_dict['contents']['treasure'] = {}
@@ -1299,6 +1336,10 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['monster']['type'] = 'NA'
         shape_dict['contents']['monster']['No'] = 0
         shape_dict['contents']['monster']['XP'] = 0
+
+        m_dict = monster_tables(shape_dict['contents']['monster']['level'])
+        shape_dict['contents']['monster']['type']  = m_dict['name']
+        shape_dict['contents']['monster']['No'] = m_dict['no']
 
         shape_dict = loot(shape_dict,coord,monster="Y")
         shape_dict = loot_store(shape_dict)
@@ -1677,6 +1718,8 @@ def room_make(shape_dict, coord, size="C"):
                                 print("ROOMSTACKCHECK:",room_stack)
                                 continue
 
+                                
+
                             #exit check is one down max from above
                             #e_dict = exit((x,rymax+1,rzmin))
                             #exit_result(e_dict,(x,rymax+1,rzmin))
@@ -1684,11 +1727,14 @@ def room_make(shape_dict, coord, size="C"):
                             e_dict['loc'] = 'ymaxloc'
                             secret_door_dict[secret_door_count][(x,rymax+1,rzmin)] = e_dict
 
+
                     print("SECRET DOOR COUNT:",secret_door_count)
                     print("SECRET DOOR DICT:",secret_door_dict)
 
+
                     shape_dict['contents']['secret_door_dict'] = secret_door_dict
                     shape_dict['contents']['secret_door_count'] = secret_door_count
+
 
                 else:
                     take_exit = roll_dice(1,shape_dict['exits'])
@@ -1698,13 +1744,14 @@ def room_make(shape_dict, coord, size="C"):
                         print("EXIT CHECK",e)
                         print("exit location:",shape_dict['exitlocations'][e+1])
                         print("exit direction:",shape_dict['exitdirections'][e+1])
+                        
+                        
                         #putting in place
                         #need the maximum L/R/B/A back and ahead coordinates - so max and min X/Y for the room to place things
                         #work out which exit to take - currently will take the most recent one
                         #also check which random exit to follow
 
                         #the below need checks to be secret doors if will fit fails
-                        #need to check for passage width
                         if shape_dict['exitlocations'][e+1] == 'O':
                             #check for possible positions at ymax range from xmin to xmax
                             #find random location in opp wall and add to door
@@ -1822,6 +1869,11 @@ def loot(shape_dict,coord,monster="N"):
     shape_dict['contents']['treasure']['type']['gems'] = 0
     shape_dict['contents']['treasure']['type']['jewellery'] = 0
     shape_dict['contents']['treasure']['type']['magic'] = 0
+    shape_dict['contents']['treasure']['gems_list'] = []
+    shape_dict['contents']['treasure']['jewellery_list'] = []
+    shape_dict['contents']['treasure']['magic_list'] = []
+    shape_dict['contents']['treasure']['magic_xp'] = [] 
+    shape_dict['contents']['treasure']['magic_values'] = []
 
     if monster == 'N':
         multi = 1
@@ -1843,10 +1895,37 @@ def loot(shape_dict,coord,monster="N"):
             shape_dict['contents']['treasure']['type']['platinum'] = shape_dict['contents']['treasure']['type']['silver'] + int(abs(coord[2]) * 100* multi ) 
         elif l >= 91 and l <= 94:
             shape_dict['contents']['treasure']['type']['gems'] = shape_dict['contents']['treasure']['type']['gems'] + int(abs(coord[2]) * roll_dice(1,4)* multi ) 
+
+            gems_list = []
+            for g in range(shape_dict['contents']['treasure']['type']['gems']):
+                base_value, description = select_gemstone()
+                new_base_value = update_gemstone(base_value)
+                gems_list.append(new_base_value)
+            shape_dict['contents']['treasure']['gems_values'] = gems_list
+
         elif l >= 95 and l <= 97:
             shape_dict['contents']['treasure']['type']['jewellery'] = shape_dict['contents']['treasure']['type']['jewellery'] + int(abs(coord[2])* multi ) 
+
+            jewellery_list = []
+            for g in range(shape_dict['contents']['treasure']['type']['jewellery']):
+                base_value, description = select_jewellery()
+                jewellery_list.append(base_value)
+            shape_dict['contents']['treasure']['jewellery_values'] = jewellery_list
         else:
             shape_dict['contents']['treasure']['type']['magic']  += 1
+            magic_list = []
+            for g in range(shape_dict['contents']['treasure']['type']['magic']):
+                item, choice = select_magic_item()
+                magic_list.append([item, choice])
+            shape_dict['contents']['treasure']['magic_list'] = magic_list
+            print("MAGIC LIST:",shape_dict['contents']['treasure']['magic_list'])
+            
+            for m in shape_dict['contents']['treasure']['magic_list']:
+                shape_dict['contents']['treasure']['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
+                shape_dict['contents']['treasure']['magic_values'].append(m[1][2]) #NOT IMPLEMENTED YET
+                #shape_dict['contents']['treasure']['magic_xp'].append(m[1][0]) #NOT IMPLEMENTED YET
+                #shape_dict['contents']['treasure']['magic_values'].append(m[1][1]) #NOT IMPLEMENTED YET
+                pass
 
         return shape_dict
 
@@ -2425,6 +2504,12 @@ def bad_things(coord, room_stack, size="C"):
                 else:
                     #dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] + 'ch'  #fill down for chute
                     #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ch'
+                    if (coord[0],coord[1]+1,coord[2]) not in dungeon:
+                        dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+
+                    if (coord[0],coord[1]+1,coord[2]-1) not in dungeon:
+                        dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
+
                     dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'Rch'  #fill down for chute
                     dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Rch'
 
@@ -2590,6 +2675,12 @@ def bad_things(coord, room_stack, size="C"):
             else:
                 #dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] + 'ch'  #fill down for chute
                 #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'ch'
+                if (coord[0],coord[1]+1,coord[2]) not in dungeon:
+                    dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+
+                if (coord[0],coord[1]+1,coord[2]-1) not in dungeon:
+                    dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
+
                 dungeon[(coord[0],coord[1]+1,coord[2]-1)]['fill'] = 'Rch'  #fill down for chute
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Rch'
 
@@ -2634,7 +2725,10 @@ def wet_small(shape_dict, coord):
         wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
         wet_dict['monster_details']['type'] = 'NA'
         wet_dict['monster_details']['No'] = 0
-        wet_dict['monster_details'] = 0
+
+        m_dict = monster_tables(wet_dict['monster_details']['level'])
+        wet_dict['monster_details']['type']  = m_dict['name']
+        wet_dict['monster_details']['No'] = m_dict['no']
 
     elif w >= 13 and w <=18:
         wet_dict['wet'] = 'Y'
@@ -2643,7 +2737,9 @@ def wet_small(shape_dict, coord):
         wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
         wet_dict['monster_details']['type'] = 'NA'
         wet_dict['monster_details']['No'] = 0
-        wet_dict['monster_details'] = 0
+        m_dict = monster_tables(wet_dict['monster_details']['level'])
+        wet_dict['monster_details']['type']  = m_dict['name']
+        wet_dict['monster_details']['No'] = m_dict['no']
 
         wet_dict['treasure'] = 'Y'
 
@@ -2690,7 +2786,10 @@ def wet_large(shape_dict, coord):
         wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
         wet_dict['monster_details']['type'] = 'NA'
         wet_dict['monster_details']['No'] = 0
-        wet_dict['monster_details'] = 0
+
+        m_dict = monster_tables(wet_dict['monster_details']['level'])
+        wet_dict['monster_details']['type']  = m_dict['name']
+        wet_dict['monster_details']['No'] = m_dict['no']
 
         shape_dict['lake'] = wet_dict
     else:
@@ -2705,7 +2804,10 @@ def wet_large(shape_dict, coord):
             wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
             wet_dict['monster_details']['type'] = 'NA'
             wet_dict['monster_details']['No'] = 0
-            wet_dict['monster_details'] = 0
+
+            m_dict = monster_tables(wet_dict['monster_details']['level'])
+            wet_dict['monster_details']['type']  = m_dict['name']
+            wet_dict['monster_details']['No'] = m_dict['no']
 
             ##need to monster generate
 
@@ -2771,7 +2873,7 @@ def wet_magic(shape_dict):
         else:
             wet_magic_dict['alignment'] = 'N'
     if w >=18:
-        l = roll_dice
+        l = roll_dice(1,20)
         wet_magic_dict['effect'] = 'Teleport'
         if l <= 7:
             #back to surface
@@ -3188,7 +3290,7 @@ print (testmonster() + ' ' + testtreasure())
 PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't count first one down
 
 if len(ARGV) > 1:
-    if int(ARGV[1]) != 1:
+    if int(ARGV[1]) > 1:
         PERIODIC_CHECKS = int(ARGV[1])
 
     
@@ -3390,6 +3492,11 @@ for down in range(zwidth-1):
     legend_dict['C'] = "Corridor/Passage"
     legend_dict['R'] = "Chamber/Room"
     legend_dict['D'] = "Dead End"
+    legend_dict['CH'] = "Chasm"
+    legend_dict['ri'] = "river"
+    legend_dict['br'] = "bridge"
+    legend_dict['bo'] = "boat - opposide side"
+    legend_dict['bn'] = "boat - near side"
     legend_dict['L'] = "Lake"
     legend_dict['P'] = "Pool"
     legend_dict['W'] = "Well"
@@ -3613,9 +3720,32 @@ for down in range(zwidth-1):
         f.write('</table>')
 
         if 'shape_dict' in room_stack:
+            total_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
+            valuations = {'gems':[],'jewellery':[], 'magic':[]}
+
             for room in room_stack['shape_dict']:
-                f.write('<h3>Key: ' + str(room) + '</h3>')
+                f.write('<h4>Data: ' + str(room) + '</h4>')
                 f.write(str(room_stack['shape_dict'][room]) + '<br>')
+                #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
+
+                f.write('<h4>Key: ' + str(room) + '</h4>')
+                if 'empty' in room_stack['shape_dict'][room]['contents']:
+                    print(str(room_stack['shape_dict'][room]['contents']))
+                    f.write('Empty<br>')
+                else:
+                    for key in room_stack['shape_dict'][room]['contents']:
+                        if key == 'monster' or key == 'treasure' or key == 'trap':
+                            f.write(str(key) + ":" + str(room_stack['shape_dict'][room]['contents'][key]) + '<br>')
+                            if key == 'treasure':
+                                for tkey in total_treasure:
+                                    total_treasure[tkey] = total_treasure[tkey] + room_stack['shape_dict'][room]['contents'][key]['type'][tkey]
+                                    if tkey == 'gems' and room_stack['shape_dict'][room]['contents'][key]['type'][tkey] > 0:
+                                        valuations['gems'] = valuations['gems'] + room_stack['shape_dict'][room]['contents'][key]['gems_values']
+                                    if tkey == 'jewellery' and room_stack['shape_dict'][room]['contents'][key]['type'][tkey] > 0:
+                                        valuations['jewellery'] = valuations['jewellery'] + room_stack['shape_dict'][room]['contents'][key]['jewellery_values']
+                                    if tkey == 'magic' and room_stack['shape_dict'][room]['contents'][key]['type'][tkey] > 0:
+                                        valuations['magic'] = valuations['magic'] + room_stack['shape_dict'][room]['contents']['treasure']['magic_values']
+
                 if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                     print("HAS WATER TO DO")
                     water_dict[room] = room_stack['shape_dict']
@@ -3624,6 +3754,28 @@ for down in range(zwidth-1):
             for wm in range(wandering_monster_stack['key_count']):
                 f.write('<h4>Wandering Monster: ' + str(wm) + '</h4>')
                 f.write(str(wandering_monster_stack[wm+1]) + '<br>')
+
+
+        f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
+        gold = total_treasure['copper'] / 100.0 + total_treasure['silver'] / 10.0 + total_treasure['electrum']/2.0 + total_treasure['gold'] + total_treasure['platinum'] * 10
+        gem_total = 0
+        jewellery_total = 0
+        magic_total = 0
+        if total_treasure['gems'] > 0:
+            for g in valuations['gems']:
+                gem_total = gem_total + g
+        if total_treasure['jewellery'] > 0:
+            for j in valuations['jewellery']:
+                jewellery_total = jewellery_total + j
+        if total_treasure['magic'] > 0:
+            for m in valuations['magic']:
+                magic_total = magic_total + m
+
+        f.write('Coins: ' + str(gold) + '<br>')
+        f.write('Gems: ' + str(gem_total) + '<br>')
+        f.write('Jewellery: ' + str(jewellery_total) + '<br>')
+        f.write('Magic: ' + str(magic_total) + '<br>')
+        f.write('Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total + magic_total))
 
         #end of page
         f.write(strend)
