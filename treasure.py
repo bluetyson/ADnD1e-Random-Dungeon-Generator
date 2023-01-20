@@ -269,4 +269,4 @@ if __name__ == "__main__":
     no, range, xp, class_use = scroll_choice()
     if xp == -1:
         xp = 100 * no * range
-    print(no, range, xp, class_use)
+    print(f"Spells:{no}, Level:{range}, XP:{xp}, Class:{class_use}")
