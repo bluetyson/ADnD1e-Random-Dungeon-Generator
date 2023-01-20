@@ -862,5 +862,8 @@ if __name__ == "__main__":
     no, xp, val = misc_3_choice()
     print(f"Misc 3:{no}, XP:{xp}, Gold:{val}")
 
+    no, xp, val = misc_4_choice()
+    print(f"Misc 4:{no}, XP:{xp}, Gold:{val}")
+
     item, choice = select_magic_item()
     print(f"Magic:{item}, Choice:{choice}")
