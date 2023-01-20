@@ -395,15 +395,15 @@ def sword_choice():
     if dice_roll <= 25:
         return ("Sword +1", 400, 2000)
     elif dice_roll <= 30:
-        return ("Sword +1, +2 vs. magic-using & enchanted creatures", 600, 3000)
+        return ("Sword +1 +2 vs magic-using & enchanted creatures", 600, 3000)
     elif dice_roll <= 35:
-        return ("Sword +1, +3 vs. lycanthropes & shape changers", 700, 3500)
+        return ("Sword +1 +3 vs lycanthropes & shape changers", 700, 3500)
     elif dice_roll <= 40:
-        return ("Sword +1, +3 vs. regenerating creatures", 800, 4000)
+        return ("Sword +1 +3 vs regenerating creatures", 800, 4000)
     elif dice_roll <= 45:
-        return ("Sword +1 +4 vs. reptiles", 800, 4000)
+        return ("Sword +1 +4 vs reptiles", 800, 4000)
     elif dice_roll <= 49:
-        return ("Sword +1 Flame Tongue: +2 vs. regenerating creatures +3 vs. cold-using inflammable or avian creatures +4 vs. undead", 900, 4500)
+        return ("Sword +1 Flame Tongue: +2 vs. regenerating creatures +3 vs cold-using inflammable or avian creatures +4 vs. undead", 900, 4500)
     elif dice_roll <= 50:
         return ("Sword +1 Luck Blade", 1000, 5000)
     elif dice_roll <= 58:
@@ -414,12 +414,10 @@ def sword_choice():
         return ("Sword +2 Dragon Slayer", 900, 4500)
     elif dice_roll <= 67:
         return ("Sword +2 Nine Lives Stealer", 1600, 8000)
-    elif dice_roll <= 71:
-        return ("Sword +3", 1400)    
     if dice_roll <= 71:
         return ('Sword +3', 1400, 7000)
     elif dice_roll <= 74:
-        return ('Sword +3 Frost Brand: +6 vs. fire using/dwelling creatures', 1600, 8000)
+        return ('Sword +3 Frost Brand: +6 vs fire using or dwelling creatures', 1600, 8000)
     elif dice_roll <= 76:
         return ('Sword +4', 2000, 10000)
     elif dice_roll <= 77:
@@ -443,7 +441,7 @@ def sword_choice():
     elif dice_roll <= 90:
         return ('Sword +1 Cursed', 400, 0)
     elif dice_roll <= 95:
-        return ('Sword −2 Cursed', 600, 0)
+        return ('Sword -2 Cursed', 600, 0)
     else:
         return ('Sword Cursed Berserking', 900, 0)        
 
@@ -509,19 +507,19 @@ def weapon_choice():
     elif roll <= 80:
         return ("Military Pick +1", 350, 2500)
     elif roll <= 83:
-        return ("Morning Star +1", 400, 3_000)
+        return ("Morning Star +1", 400, 3000)
     elif roll <= 88:
-        return ("Scimitar +2", 750, 6_000)
+        return ("Scimitar +2", 750, 6000)
     elif roll == 89:
-        return ("Sling of Seeking +2", 700, 7_000)
+        return ("Sling of Seeking +2", 700, 7000)
     elif roll <= 94:
-        return ("Spear +1", 500, 3_000)
+        return ("Spear +1", 500, 3000)
     elif roll <= 96:
-        return ("Spear +2", 1_000, 6_500)
+        return ("Spear +2", 1000, 6500)
     elif roll == 97:
-        return ("Spear +3", 1_750, 15_000)
+        return ("Spear +3", 1750, 15000)
     elif roll <= 99:
-        return ("Spear Cursed Backbiter", 0, 1_000)
+        return ("Spear Cursed Backbiter", 0, 1000)
     else:
         return ("Trident-Military Fork +3", 1500, 12500)
 
