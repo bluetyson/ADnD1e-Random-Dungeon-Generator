@@ -11,7 +11,7 @@ import pickle
 import math
 
 from monsters import monster_tables
-from treasure import select_gemstone, update_gemstone
+from treasure import select_gemstone, update_gemstone, select_jewellery
 
 PI = math.pi
 ARGV = sys.argv
