@@ -1378,12 +1378,16 @@ def select_magic_item():
         choice = misc_1_choice()
     elif roll <= 51:
         item = "Miscellaneous Magic (E.2.)"
+        choice = misc_2_choice()
     elif roll <= 54:
         item = "Miscellaneous Magic (E.3.)"
+        choice = misc_3_choice()
     elif roll <= 57:
         item = "Miscellaneous Magic (E.4.)"
+        choice = misc_4_choice()
     elif roll <= 60:
         item = "Miscellaneous Magic (E.5.)"
+        choice = misc_5_choice()
     elif roll <= 75:
         item = "Armor & Shields (F.)"
         choice = armour_choice()
