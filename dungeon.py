@@ -3717,12 +3717,14 @@ for down in range(zwidth-1):
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
         gold = total_treasure['copper'] / 100.0 + total_treasure['silver'] / 10.0 + total_treasure['electrum']/2.0 + total_treasure['gold'] + total_treasure['platinum'] * 10
+        gem_total = 0
+        jewellery_total = 0
         if total_treasure['gems'] > 0:
-            gem_total = 0
+            
             for g in valuations['gems']:
                 gem_total = gem_total + g
         if total_treasure['jewellery'] > 0:
-            jewellery_total = 0
+            
             for j in valuations['jewellery']:
                 jewellery_total = jewellery_total + j
 
