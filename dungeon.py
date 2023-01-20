@@ -1910,7 +1910,7 @@ def loot(shape_dict,coord,monster="N"):
                 item, choice = select_magic_item()
                 magic_list.append([item, choice])
             shape_dict['contents']['treasure']['magic_list'] = magic_list
-            print("MAGIC LIST:",shape_dict['contents']['treasure']['magic_list'] = magic_list)
+            print("MAGIC LIST:",shape_dict['contents']['treasure']['magic_list'])
             
             for m in shape_dict['contents']['treasure']['magic_list']:
                 shape_dict['contents']['treasure']['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
