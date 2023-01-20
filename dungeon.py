@@ -1882,7 +1882,11 @@ def loot(shape_dict,coord,monster="N"):
         elif l >= 95 and l <= 97:
             shape_dict['contents']['treasure']['type']['jewellery'] = shape_dict['contents']['treasure']['type']['jewellery'] + int(abs(coord[2])* multi ) 
 
-            #shape_dict['contents']['treasure']['gems_values'] = jewellery_list
+            jewellery_list = []
+            for g in range(shape_dict['contents']['treasure']['type']['jewellery']):
+                base_value, description = select_jewellery()
+                jewellery_list.append(base_value)
+            shape_dict['contents']['treasure']['gems_values'] = jewellery_list
         else:
             shape_dict['contents']['treasure']['type']['magic']  += 1
 
