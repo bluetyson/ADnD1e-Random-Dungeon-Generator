@@ -516,6 +516,49 @@ def monster_tables(level):
     if mdict['name'] == 'Dragon-DragonSubtable':
         mdict['details'] = 'NOT IMPLEMENTED YET'
 
+        for ld in range(10):
+            if ld < 3:
+                continue
+            #print("dragon_levels:",ld)
+            uselevel = dragon_levels[ld+1]['data'].split("\n")
+            for l in uselevel:
+                usestr = l.replace(', ','-')
+                usestr = usestr.replace('see Human Subtable below','HumanSubtable')
+                usestr = usestr.replace('see Dragon Subtable below','DragonSubtable')
+                usestr = usestr.replace('see Character Subtable','CharacterSubtable')
+                usestr = usestr.replace(' — ','-')
+                monster_list = usestr.split()
+                #print(monster_list)
+
+                number_range = monster_list[0].split('-')
+                dice_roll = monster_list[2]
+                monster = monster_list[1]
+                
+                print(number_range, dice_roll, monster)
+
+                if '-' in monster_list[0]:
+                    lo = int(number_range[0])
+                    hi = int(number_range[1]) 
+                    #print(hi, lo)
+                    for i in range(lo,hi+1,1):
+                        print(lo,hi,i)
+                        #print(i)
+                        dragon_levels[ld+1][stri]['name'] = monster
+                        #dragon_levels[ld+1][i]['roll'] = dice_lookup[dice_roll]
+                        dragon_levels[ld+1][i]['roll'] = '1-1'
+                        if '2' in monster:
+                            dragon_levels[ld+1][i]['roll'] = '2-2'
+                else:
+                    dragon_levels[ld+1][int(number_range[0])]['name'] = monster
+                    #dragon_levels[ld+1][int(number_range[0])]['roll'] = dice_lookup[dice_roll]
+                    dragon_levels[ld+1][int(number_range[0])]['roll'] = '1-1'
+                    if '2' in monster:
+                        dragon_levels[ld+1][i]['roll'] = '2-2'
+
+        dcheck = dragon_levels[level][m]
+        mdict['details'] = dcheck
+        
+
     print("MDICT:",mdict)
 
     if 1 == 2:
@@ -523,7 +566,7 @@ def monster_tables(level):
             json.dump(levels, f)
         return mdict
 
-    if 1 == 1:
+    if 1 == 2:
         with open('dragons.json','w') as f:
             json.dump(dragon_levels, f)
         return mdict
