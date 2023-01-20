@@ -523,7 +523,7 @@ def weapon_choice():
     elif roll <= 99:
         return ("Spear Cursed Backbiter", 0, 1_000)
     else:
-        return ("Trident -Military Fork +3", 1_500, 12_500)
+        return ("Trident-Military Fork +3", 1500, 12500)
 
 def misc_1_choice():
     roll = roll_dice(1, 100)
