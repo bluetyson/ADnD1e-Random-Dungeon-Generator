@@ -33,10 +33,78 @@ def select_character_type():
             return "BARD", 1
 
 #dummy tables until get proper ones in
-table_I = ["Ring of Protection", "Amulet of Health", "Staff of Power", "Boots of Speed", "Cloak of Invisibility", "Sword of Sharpness"]
-table_II = ["Ring of Invisibility", "Amulet of Life Preservation", "Staff of Striking", "Boots of Levitation", "Cloak of Displacement", "Sword of Dancing"]
-table_III = ["Ring of Spell Turning", "Amulet of the Planes", "Staff of the Magi", "Boots of Teleportation", "Cloak of the Bat", "Sword of Sharpness +3"]
-table_IV = ["Ring of Regeneration", "Amulet of Proof against Detection and Location", "Staff of the Woodlands", "Boots of Speed +5", "Cloak of Arachnida", "Sword of Life Stealing"]
+table_I = table_I = [
+    ["2 POTIONS: climbing, flying"],
+    ["2 POTIONS: extra-healing, polymorph (self)"],
+    ["2 POTIONS: fire resistance, speed"],
+    ["2 POTIONS: healing, giant strength"],
+    ["2 POTIONS: heroism, invulnerability"],
+    ["2 POTIONS: human control, levitation"],
+    ["2 POTIONS: super-heroism, animal control"],
+    ["1 SCROLL: 1 Spell, level 1-6"],
+    ["1 SCROLL: 2 Spells, level 1-4"],
+    ["1 SCROLL: protection from magic"],
+    ["1 RING: mammal control"],
+    ["1 RING: protection +1"],
+    ["1 ARMOR: leather +1"],
+    ["1 SHIELD: +1"],
+    ["1 SWORD: +1 (no special abilities)"],
+    ["10 ARROWS: +1"],
+    ["4 BOLTS: +2"],
+    ["1 DAGGER: +1 (or +2) et al."],
+    ["1 JAVELIN +2"],
+    ["1 MACE +1"]
+]
+table_II = [
+    ["1 SCROLL: 3 Spells, level 2-9 or 2-7"],
+    ["2 RINGS: fire resistance, invisibility"],
+    ["1 RING: protection +3"],
+    ["1 STAFF: striking"],
+    ["1 WAND: illusion"],
+    ["1 WAND: negation"],
+    ["1 bracers of defense, armor class 4"],
+    ["1 brooch of shielding"],
+    ["1 cloak of elvenkind"],
+    ["1 dust of appearance"],
+    ["1 FIGURINE OF WONDROUS POWER: serpentine owl"],
+    ["3 javelins of lightning"],
+    ["1 set: chainmail +1, shield +2"],
+    ["1 ARMOR: splint mail +4"],
+    ["1 SWORD: +3 (no special abilities)"],
+    ["2 WEAPONS: crossbow of speed, hammer +2"]
+]
+table_III = [
+    ["1 RING: spell storing"],
+    ["1 ROD: cancellation"],
+    ["1 STAFF: serpent - python or adder"],
+    ["1 bag of tricks"],
+    ["1 boots of speed"],
+    ["1 boots of striding and leaping"],
+    ["1 cloak of displacement"],
+    ["1 gauntlets of ogre power"],
+    ["1 pipe of the sewers"],
+    ["1 robe of blending"],
+    ["2 ROPES: climbing, entanglement"],
+    ["1 set: plate mail +3, shield +2"],
+    ["1 SHIELD: +5"],
+    ["1 SWORD: +4, defender"],
+    ["1 mace +3"],
+    ["1 spear +3"]
+]
+table_IV = [
+    ["1 RING: djinni summoning"],
+    ["1 RING: spell turning"],
+    ["1 ROD: smiting"],
+    ["1 WAND: fire"],
+    ["1 cube of force"],
+    ["1 eyes of charming"],
+    ["1 horn of valhalla"],
+    ["1 robe of scintillating colors"],
+    ["1 talisman of either ultimate evil or pure good"],
+    ["1 set: plate mail +4, shield +3"],
+    ["1 SWORD: wounding"],
+    ["1 arrow of slaying (select character type)"]
+]
 
 magic_tables = {}
 
