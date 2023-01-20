@@ -1333,7 +1333,8 @@ def room_contents(shape_dict, coord, content):
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['type'])
 
 
-        quit()
+        if 'Subtable' in shape_dict['contents']['monster']['type']:
+            quit()
         
     elif r >15 and r <=17:
         shape_dict['contents']['monster'] = {}
