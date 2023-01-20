@@ -278,7 +278,7 @@ def select_magic_item():
     choice = ""
     if roll <= 20:
         item = "Potions (A.)"
-        choice = potions_choice()
+        choice = potion_choice()
     elif roll <= 35:
         item = "Scrolls (B.)"
         choice = scroll_choice()
