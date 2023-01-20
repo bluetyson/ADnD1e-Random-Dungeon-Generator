@@ -106,7 +106,12 @@ Below is an example unrelated to above plots.
 
 #### Key: 1
 ```python
-{'shape': 'R', 'size': [4, 6], 'contents': {'empty': 'Y'}, 'exits': 3, 'exitlocations': {1: 'L', 2: 'R', 3: 'R'}, 'exitdirections': {1: 'A', 2: '45BA', 3: '45BA'}}
+Data: 23
+{'shape': 'R', 'size': [1, 2], 'contents': {'monster': {'level': 8, 'type': 'Xorn', 'No': 5, 'XP': 0}, 'treasure': {'type': {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 2200, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}, 'gems_list': [], 'jewellery_list': [], 'store': 'Sacks', 'protection': 'hide', 'hide': 'Secret: Loose stone - in wall'}, 'secret_door_dict': {}, 'secret_door_count': 0}, 'exits': 0, 'secretdoors': 'check', 'exitlocations': {}, 'exitdirections': {}}
+
+Key: 23
+monster:{'level': 8, 'type': 'Xorn', 'No': 5, 'XP': 0}
+treasure:{'type': {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 2200, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}, 'gems_list': [], 'jewellery_list': [], 'store': 'Sacks', 'protection': 'hide', 'hide': 'Secret: Loose stone - in wall'}
 ```
 
 
