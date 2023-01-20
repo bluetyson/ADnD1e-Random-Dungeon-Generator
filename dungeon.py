@@ -1913,7 +1913,7 @@ def loot(shape_dict,coord,monster="N"):
             print("MAGIC LIST:",shape_dict['contents']['treasure']['magic_list'])
             
             for m in shape_dict['contents']['treasure']['magic_list']:
-                shape_dict['contents']['treasure']['magic_xp'].append(m[0][1][1]) #NOT IMPLEMENTED YET
+                shape_dict['contents']['treasure']['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
                 shape_dict['contents']['treasure']['magic_values'].append(m[1][2]) #NOT IMPLEMENTED YET
                 #shape_dict['contents']['treasure']['magic_xp'].append(m[1][0]) #NOT IMPLEMENTED YET
                 #shape_dict['contents']['treasure']['magic_values'].append(m[1][1]) #NOT IMPLEMENTED YET
