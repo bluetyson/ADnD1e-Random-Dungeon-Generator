@@ -511,10 +511,10 @@ def sword_choice():
 def weapon_choice():
     roll = roll_dice(1,100)
     if roll <= 8:
-        return ("Arrow +1", 20, 120)
+        return ("Arrow +1", 20, 120) #random number of these if want fancier
         #, random.randint(2,24)
     elif roll <= 12:
-        return ("Arrow +2", 50, 300)
+        return ("Arrow +2", 50, 300) #random number of these if want fancier
         #, random.randint(2,16)
     elif roll == 13:
         return ("Arrow +3", 75, 450)
@@ -532,7 +532,7 @@ def weapon_choice():
     elif roll <= 27:
         return ("Battle Axe +1", 400, 2500)
     elif roll <= 32:
-        return ("Bolt +2", 50, 300, random.randint(2,20))
+        return ("Bolt +2", 50, 300)  #random number of these if want fancier
     elif roll == 33:
         return ("Bow +1", 500, 3500)
     elif roll == 34:
