@@ -8,22 +8,6 @@ def roll_dice(number, sides):
     roll = roll_dice(number,sides)
     return roll
 
-def select_gemstone():
-    dice_roll = roll_dice(1, 100)
-    print(dice_roll)
-    if dice_roll <= 25:
-        return 10, "Ornamental Stones"
-    elif dice_roll <= 50:
-        return 50, "Semi-precious Stones"
-    elif dice_roll <= 70:
-        return 100, "Fancy Stones"
-    elif dice_roll <= 90:
-        return 500, "Fancy Stones (Precious)"
-    elif dice_roll <= 99:
-        return 1000, "Gem Stones"
-    else:
-        return 5000, "Gem Stones (Jewels)"
-
 def update_gemstone(base_value):
     dice_roll = roll_dice(1, 10)
     print(dice_roll)
@@ -95,10 +79,27 @@ def select_jewellery():
 
     return base_value, description
 
+def select_gemstone():
+    dice_roll = roll_dice(1, 100)
+    print(dice_roll)
+    if dice_roll <= 25:
+        return 10, "Ornamental Stones"
+    elif dice_roll <= 50:
+        return 50, "Semi-precious Stones"
+    elif dice_roll <= 70:
+        return 100, "Fancy Stones"
+    elif dice_roll <= 90:
+        return 500, "Fancy Stones (Precious)"
+    elif dice_roll <= 99:
+        return 1000, "Gem Stones"
+    else:
+        return 5000, "Gem Stones (Jewels)"
+
 
 def select_gemstone():
-    print("NOTHING")
-    
+    dice_roll = roll_dice(1, 100)
+    print(dice_roll)
+
 if __name__ == "__main__":
     ARGV = sys.argv
 
