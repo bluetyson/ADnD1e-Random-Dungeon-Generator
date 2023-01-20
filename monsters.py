@@ -545,7 +545,7 @@ def monster_tables(level):
                         for i in range(lo,hi+1,1):
                             print(lo,hi,i)
                             #print(i)
-                            dragon_levels[ld+1][stri]['name'] = monster
+                            dragon_levels[ld+1][i]['name'] = monster
                             #dragon_levels[ld+1][i]['roll'] = dice_lookup[dice_roll]
                             dragon_levels[ld+1][i]['roll'] = '1-1'
                             if '2' in monster:
