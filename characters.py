@@ -280,7 +280,7 @@ def create_party(level):
                 magic_items = magic_item_chance(hench_level)
 
                 party_members[c+1+h+1]['class'] = hench_class[0]
-                party_members[c+1+h+1]['level'] = hench_level
+                party_members[c+1+h+1]['level'] = int(hench_level)
                 party_members[c+1+h+1]['race'] = 'Human'
                 party_members[c+1+h+1]['multi'] = 'N'
 
@@ -317,7 +317,7 @@ def create_party(level):
                 magic_items = magic_item_chance(hench_level)
 
                 party_members[c+1+h+1]['class'] = hench_class[0]
-                party_members[c+1+h+1]['level'] = hench_level
+                party_members[c+1+h+1]['level'] = int(hench_level)
                 party_members[c+1+h+1]['race'] = 'Human'
                 party_members[c+1+h+1]['multi'] = 'N'
 
