@@ -808,10 +808,81 @@ def misc_4_choice():
         return ("Pipes of the Sewers", 1750, 8500)
     elif roll == 85:
         return ("Portable Hole", 5000, 50000)
-    elif roll <= 90:
-        return ("Quaal’s Feather Token", 500, 2000)
     else:
-        return ("Quaal’s Feather Token", 1000, 7000)
+        return ("Quaal’s Feather Token", 500, 2000)
+
+def misc_5_choice():
+    roll = roll_dice(1, 100)
+    if roll <= 1:
+        return ("Robe of the Archmagi", 6000, 65000)
+    elif roll <= 8:
+        return ("Robe of Blending", 3500, 35000)
+    elif roll == 9:
+        return ("Robe of Eyes", 4500, 50000)
+    elif roll == 10:
+        return ("Robe of Powerlessness", 0, 1000)
+    elif roll == 11:
+        return ("Robe of Scintillating Colors", 2750, 25000)
+    elif roll <= 19:
+        return ("Robe of Useful Items", 1500, 15000)
+    elif roll <= 25:
+        return ("Rope of Climbing", 1000, 10000)
+    elif roll <= 27:
+        return ("Rope of Constriction", 0, 1000)
+    elif roll <= 31:
+        return ("Rope of Entanglement", 1250, 12000)
+    elif roll == 32:
+        return ("Rug of Smothering", 0, 1500)
+    elif roll == 33:
+        return ("Rug of Welcome", 6500, 45000)
+    elif roll == 34:
+        return ("Saw of Mighty Cutting", 1750, 12500)
+    elif roll == 35:
+        return ("Scarab of Death", 0, 2500)
+    elif roll <= 38:
+        return ("Scarab of Enraging Enemies", 1000, 8000)
+    elif roll <= 40:
+        return ("Scarab of Insanity", 1500, 11000)
+    elif roll <= 46:
+        return ("Scarab of Protection", 2500, 25000)
+    elif roll == 47:
+        return ("Spade of Colossal Excavation", 1000, 6500)
+    elif roll == 48:
+        return ("Sphere of Annihilation", 3750, 30000)
+    elif roll <= 50:
+        return ("Stone of Controlling Earth Elementals", 1500, 12500)
+    elif roll <= 52:
+        return ("Stone of Good Luck (Luckstone)", 3000, 25000)
+    elif roll <= 54:
+        return ("Stone of Weight (Loadstone)", 0, 1000)
+    elif roll <= 57:
+        return ("Talisman of Pure Good", 3500, 27500)
+    elif roll == 58:
+        return ("Talisman of the Sphere", 100, 10000)
+    elif roll <= 60:
+        return ("Talisman of Ultimate Evil", 3500, 32500)        
+    elif roll <= 66:
+        return ("Talisman of Zagy", 1000, 10000)
+    elif roll == 67:
+        return ("Tome of Clear Thought", 8000, 48000)
+    elif roll == 68:
+        return ("Tome of Leadership and Influence", 7500, 40000)
+    elif roll == 69:
+        return ("Tome of Understanding", 8000, 43500)
+    elif roll <= 76:
+        return ("Trident of Fish Command (C, F, T)", 500, 4000)
+    elif roll <= 78:
+        return ("Trident of Submission (F)", 1250, 12500)
+    elif roll <= 83:
+        return ("Trident of Warning (C, F, T)", 1000, 10000)
+    elif roll <= 85:
+        return ("Trident of Yearning", 0, 1000)
+    elif roll <= 87:
+        return ("Vacuous Grimoire", 0, 1000)
+    elif roll <= 90:
+        return ("Well of Many Worlds", 6000, 12000)
+    else:
+        return ("Wings of Flying", 750, 7500)        
 
 # Example usage
 def select_magic_item():
@@ -907,6 +978,9 @@ if __name__ == "__main__":
 
     no, xp, val = misc_4_choice()
     print(f"Misc 4:{no}, XP:{xp}, Gold:{val}")
+
+    no, xp, val = misc_5_choice()
+    print(f"Misc 5:{no}, XP:{xp}, Gold:{val}")
 
     item, choice = select_magic_item()
     print(f"Magic:{item}, Choice:{choice}")
