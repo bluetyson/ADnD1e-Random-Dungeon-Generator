@@ -478,6 +478,7 @@ def select_magic_item():
         choice = armour_choice()
     elif roll <= 86:
         item = "Swords (G.)"
+        choice = sword_choice()
     else:
         item = "Miscellaneous Weapons (H.)"
     return item, choice
@@ -513,6 +514,9 @@ if __name__ == "__main__":
 
     no, xp, val = wand_choice()
     print(f"Wands:{no}, XP:{xp}, Gold:{val}")
+
+    no, xp, val = sword_choice()
+    print(f"Sword:{no}, XP:{xp}, Gold:{val}")
 
     no, xp, val = armour_choice()
     print(f"Armour:{no}, XP:{xp}, Gold:{val}")
