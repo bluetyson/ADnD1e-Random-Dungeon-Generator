@@ -267,4 +267,6 @@ if __name__ == "__main__":
     print(f"Experience Value: {exp_val}, Gold Piece Sale Value: {gold_val}, Potion: {potion_name}")
 
     no, range, xp, class_use = scroll_choice()
+    if xp == -1:
+        xp = 100 * no * range
     print(no, range, xp, class_use)
