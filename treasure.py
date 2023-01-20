@@ -576,13 +576,17 @@ if __name__ == "__main__":
     base_value, description = select_jewellery()
     print(f"The selected jewelry has a base value of {base_value} gold pieces and is described as {description}")
 
-    xp, val, potion_name = potion_choice()
+    potion_name, xp, val,  = potion_choice()
     print(f"Potion: {potion_name}, XP: {xp}, Gold: {val}")
 
     no, range, xp, class_use = scroll_choice()
     if xp == -1:
         xp = 100 * no * range
-    print(f"Spells:{no}, Level:{range}, XP:{xp}, Class:{class_use}")
+        val = 3 * xp
+    else:
+        val = 3 * xp
+
+    print(f"Spells:{no}, Level:{range}, XP:{xp}, Gold:{val}, Class:{class_use}")
 
     no, xp, val = ring_choice()
     print(f"Rings:{no}, XP:{xp}, Gold:{val}")
