@@ -3720,14 +3720,14 @@ for down in range(zwidth-1):
         gem_total = 0
         jewellery_total = 0
         if total_treasure['gems'] > 0:
-            
             for g in valuations['gems']:
                 gem_total = gem_total + g
         if total_treasure['jewellery'] > 0:
-            
             for j in valuations['jewellery']:
                 jewellery_total = jewellery_total + j
-
+        f.write('Coins: ' + str(gold))
+        f.write('Gems: ' + str(gem_total))
+        f.write('Jewellery: ' + str(jewellery_total))
         f.write('Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total))
 
         #end of page
