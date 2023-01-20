@@ -3692,7 +3692,7 @@ for down in range(zwidth-1):
 
         if 'shape_dict' in room_stack:
             total_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
-            valuations = {'gems':[],'jewellery':[]}
+            valuations = {'gems':[],'jewellery':[], 'magic':[]}
 
             for room in room_stack['shape_dict']:
                 f.write('<h4>Data: ' + str(room) + '</h4>')
@@ -3714,6 +3714,8 @@ for down in range(zwidth-1):
                                         valuations['gems'] = valuations['gems'] + room_stack['shape_dict'][room]['contents'][key]['gems_values']
                                     if tkey == 'jewellery' and room_stack['shape_dict'][room]['contents'][key]['type'][tkey] > 0:
                                         valuations['jewellery'] = valuations['jewellery'] + room_stack['shape_dict'][room]['contents'][key]['jewellery_values']
+                                    if tkey == 'magic' and room_stack['shape_dict'][room]['contents'][key]['type'][tkey] > 0:
+                                        valuations['magic'] = valuations['magic'] + room_stack['shape_dict'][room]['contents']['treasure']['magic_values']
 
                 if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                     print("HAS WATER TO DO")
@@ -3729,16 +3731,22 @@ for down in range(zwidth-1):
         gold = total_treasure['copper'] / 100.0 + total_treasure['silver'] / 10.0 + total_treasure['electrum']/2.0 + total_treasure['gold'] + total_treasure['platinum'] * 10
         gem_total = 0
         jewellery_total = 0
+        magic_total = 0
         if total_treasure['gems'] > 0:
             for g in valuations['gems']:
                 gem_total = gem_total + g
         if total_treasure['jewellery'] > 0:
             for j in valuations['jewellery']:
                 jewellery_total = jewellery_total + j
+        if total_treasure['magic'] > 0:
+            for m in valuations['magic']:
+                magic_total = magic_total + m
+
         f.write('Coins: ' + str(gold) + '<br>')
         f.write('Gems: ' + str(gem_total) + '<br>')
         f.write('Jewellery: ' + str(jewellery_total) + '<br>')
-        f.write('Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total))
+        f.write('Magic: ' + str(magic_total) + '<br>')
+        f.write('Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total + magic_total))
 
         #end of page
         f.write(strend)
