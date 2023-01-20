@@ -268,9 +268,15 @@ def create_party(level):
         party_members[c+1+h+1] = {}
         s = roll_dice(1,2)
         if s == 1:
-            party_members[c+1+h+1]['class'] = 'man-at-arms/henchman'
+            if level <= 3:
+                party_members[c+1+h+1]['class'] = 'man-at-arms/henchman'
+            else:
+                party_members[c+1+h+1]['class'] = 'henchman' #need to roll as per character details
         else:
-            party_members[c+1+h+1]['class'] = 'woman-at-arms/henchwoman'
+            if level <= 3:
+                party_members[c+1+h+1]['class'] = 'woman-at-arms'
+            else:
+                party_members[c+1+h+1]['class'] = 'henchwoman' #need to roll as per character details
 
 
     for key in party_members:            
