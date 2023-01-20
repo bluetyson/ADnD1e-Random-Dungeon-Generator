@@ -95,7 +95,155 @@ def select_jewellery():
 
     return base_value, description
 
+def random_potion():
+    potion_table = [
+            ('Animal Control', 250, 400), 
+            ('Clairaudience', 250, 400), 
+            ('Clairvoyance', 300, 500), 
+            ('Climbing', 300, 500),
+            ('Delusion', 0, 150), 
+            ('Diminution', 300, 500), 
+            ('Dragon Control', 500, 9000), ('ESP', 500, 850),
+            ('Extra-Healing', 400, 800), 
+            ('Fire Resistance', 250, 400), 
+            ('Flying', 500, 750), 
+            ('Gaseous Form', 300, 400),
+            ('Giant Control', 400, 9000), 
+            ('Giant Strength', 500, 1400), 
+            ('Growth', 250, 300), 
+            ('Healing', 200, 400),
+            ('Heroism', 300, 500), 
+            ('Human Control', 500, 900), 
+            ('Invisibility', 250, 500), 
+            ('Invulnerability', 350, 500),
+            ('Levitation', 250, 400), 
+            ('Longevity', 500, 1000), 
+            ('Oil of Etherealness', 600, 1500),
+            ('Oil of Slipperiness', 400, 750), 
+            ('Philter of Love', 200, 300), 
+            ('Philter of Persuasiveness', 400, 850),
+            ('Plant Control', 250, 300), 
+            ('Polymorph (self)', 200, 350), 
+            ('Poison', 0, 0), 
+            ('Speed', 200, 450),
+            ('Super-Heroism', 450, 750), 
+            ('Sweet Water', 200, 250), 
+            ('Treasure Finding', 600, 2000),
+            ('Undead Control', 700, 2500), 
+            ('Water Breathing', 400, 900)
+        ]
+        
+    potion = random.choice(potion_table)
+    return potion
 
+def random_potion2():
+    roll = random.randint(1, 100)
+    if roll <= 3:
+        return (250, 400, "Animal Control")
+    elif roll <= 6:
+        return (250, 400, "Clairaudience")
+    elif roll <= 9:
+        return (300, 500, "Clairvoyance")
+    # continue adding elif statements for the rest of the items in the table
+    else:
+        return (0, 0, "Invalid Roll")
+
+def scroll_choice():
+    s = roll_dice(1,100)
+    st =1
+    if s <=70:
+        sc = "MAGIC-USER"
+        mu = roll_dice(1,100)
+        if mu >= 91:
+            sc = "ILLUSIONIST"
+    else:
+        st = 2
+        sc = "CLERIC"
+        mu = roll_dice(1,100)
+        if mu >= 76:
+            sc = "DRUID"
+
+    roll = roll_dice(1,100)
+    if roll <= 10:
+        return 1, random.randint(1,4)
+    elif roll <= 16:
+        return 1, random.randint(1,6)
+    elif roll <= 19:
+        return 1, random.randint(2,9) if st==1 else random.randint(2,7)
+    elif roll <= 24:
+        return 2, random.randint(1,4)
+    elif roll <= 27:
+        return 2, random.randint(1,8) if st==1 else random.randint(1,6)
+    elif roll <= 32:
+        return 3, random.randint(1,4)
+    elif roll <= 35:
+        return 3, random.randint(2,9) if st==1 else random.randint(2,7)
+    elif roll <= 39:
+        return 4, random.randint(1,6)
+    elif roll <= 42:
+        return 4, random.randint(1,8) if st==1 else random.randint(1,6)
+    elif roll <= 46:
+        return 5, random.randint(1,6)
+    elif roll <= 49:
+        return 5, random.randint(1,8) if st==1 else random.randint(1,6)
+    elif roll <= 52:
+        return 6, random.randint(1,6)
+    elif roll <= 54:
+        return 6, random.randint(3,8) if st==1 else random.randint(3,6)
+    elif roll <= 57:
+        return 7, random.randint(1,8)
+    elif roll <= 59:
+        return 7, random.randint(2,9)
+    elif roll <= 60:
+        return 7, random.randint(4,0) if st==1 else random.randint(4,7)
+    elif roll <= 62:        
+        return 'Protection - Demons', 2500
+    elif roll <= 64:        
+        return 'Protection - Devils', 2500
+    elif roll <= 70:        
+        return 'Protection - Elementals', 1500
+    elif roll <= 76:        
+        return 'Protection - Lycanthropes', 1000
+    elif roll <= 82:        
+        return 'Protection - Magic', 2500
+    elif roll <= 87:        
+        return 'Protection - Petrification', 2000
+    elif roll <= 92:        
+        return 'Protection - Possession', 2000
+    elif roll <= 97:        
+        return 'Protection - Undead', 1500
+    elif roll <= 00:        
+        return 'Curse', 0
+
+
+# Example usage
+def select_magic_item():
+    roll = roll_dice(1, 100)
+    if roll <= 20:
+        item = "Potions (A.)"
+    elif roll <= 35:
+        item = "Scrolls (B.)"
+    elif roll <= 40:
+        item = "Rings (C.)"
+    elif roll <= 45:
+        item = "Rods, Staves & Wands (D.)"
+    elif roll <= 48:
+        item = "Miscellaneous Magic (E.1.)"
+    elif roll <= 51:
+        item = "Miscellaneous Magic (E.2.)"
+    elif roll <= 54:
+        item = "Miscellaneous Magic (E.3.)"
+    elif roll <= 57:
+        item = "Miscellaneous Magic (E.4.)"
+    elif roll <= 60:
+        item = "Miscellaneous Magic (E.5.)"
+    elif roll <= 75:
+        item = "Armor & Shields (F.)"
+    elif roll <= 86:
+        item = "Swords (G.)"
+    else:
+        item = "Miscellaneous Weapons (H.)"
+    return item
 
 if __name__ == "__main__":
     ARGV = sys.argv
@@ -114,3 +262,6 @@ if __name__ == "__main__":
 
     base_value, description = select_jewellery()
     print(f"The selected jewelry has a base value of {base_value} gold pieces and is described as {description}")
+
+    exp_val, gold_val, potion_name = random_potion()
+    print(f"Experience Value: {exp_val}, Gold Piece Sale Value: {gold_val}, Potion: {potion_name}")
