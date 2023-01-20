@@ -19,6 +19,9 @@ Building things as I go - just using a one roll test for now to see how it goes.
 - Generates treasures in rooms
 - Rolls for gems and jewellery
 - Have not checked wandering monsters for treasure or implemented treasure tables
+- Does basic Human and Character subtables (for running into adventuring parties)
+    - No details for henchpeople
+- Dragon subtable not done yet
 - No retracing steps logic as yet for dead ends to block etc.
 - See issues for things to do [lots of minor things]
 
