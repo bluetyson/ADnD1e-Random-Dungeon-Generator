@@ -909,8 +909,34 @@ def treasure_choice(treasure_type):
         return (0, random.randint(3, 18) * 6, 0, 0, 0, 0, 0, 0)
     elif treasure_type == "L":
         return (0, 0, random.randint(2, 12) * 6, 0, 0, 0, 0, 0)    
-    else:
-        return "TBC"    
+    elif treasure_type == "M":
+        return (0, 0, 0, random.randint(2, 8) * 250, 0, 0, 0, None)
+    elif treasure_type == "N":
+        return (0, 0, 0, 0, random.randint(1, 6) * 500, 0, 0, None)
+    elif treasure_type == "O":
+        return (random.randint(1, 4) * 250, random.randint(1, 3) * 200, 0, 0, 0, 0, 0, None)
+    elif treasure_type == "P":
+        return (0, random.randint(1, 6) * 300, random.randint(1, 2) * 250, 0, 0, 0, 0, None)
+    elif treasure_type == "Q":
+        return (0, 0, 0, 0, 0, random.randint(1, 4) * 50, 0, None)
+    elif treasure_type == "R":
+        return (0, 0, 0, random.randint(2, 8) * 250, random.randint(10, 60) * 50, random.randint(4, 40) * 55, random.randint(1, 12) * 45, None)
+    elif treasure_type == "S":
+        return (0, 0, 0, 0, 0, 0, 0, random.randint(2, 8))
+    elif treasure_type == "T":
+        return (0, 0, 0, 0, 0, 0, 0, random.randint(1, 4))
+    elif treasure_type == "U":
+        return (0, 0, 0, 0, 0, random.randint(10, 80) * 90, random.randint(5, 30) * 80, None)
+    elif treasure_type == "V":
+        return (0, 0, 0, 0, 0, 0, 0, 2)
+    elif treasure_type == "W":
+        return (0, 0, 0, random.randint(5, 30) * 60, random.randint(1, 8) * 15, 0, random.randint(10, 80) * 60, random.randint(5, 25) * 50, 1)
+    elif treasure_type == "X":
+        return (0, 0, 0, 0, 0, 0, 0, (1, random.choice(["misc. magic", "potion"])))
+    elif treasure_type == "Y":
+        return (0, 0, 0, random.randint(2, 12) * 70, 0, 0, 0, 0, 0)
+    else: #treasure_type == "Z":
+        return (random.randint(1, 3) * 20, random.randint(1, 4) * 25, random.randint(1, 4) * 25, random.randint(1, 4) * 30, random.randint(1, 6) * 30, random.randint(10, 55) * 6, random.randint(5, 25) * 50, 3)        
 
 # Example usage
 def select_magic_item():
@@ -1012,3 +1038,9 @@ if __name__ == "__main__":
 
     item, choice = select_magic_item()
     print(f"Magic:{item}, Choice:{choice}")
+
+    alphabet_capitalized = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+    for a in alphabet_capitalised:
+        choice = treasure_choice(a)
+        print(f"Treasure:{A}, Choice:{choice}")
