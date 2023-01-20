@@ -1874,7 +1874,7 @@ def loot(shape_dict,coord,monster="N"):
         elif l >= 91 and l <= 94:
             shape_dict['contents']['treasure']['type']['gems'] = shape_dict['contents']['treasure']['type']['gems'] + int(abs(coord[2]) * roll_dice(1,4)* multi ) 
 
-            if 1 == 2:
+            if 1 == 1:
                 gems_list = []
                 for g in range(shape_dict['contents']['treasure']['type']['gems']):
                     base_value, description = select_gemstone()
