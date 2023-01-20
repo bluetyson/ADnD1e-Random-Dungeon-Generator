@@ -1468,6 +1468,75 @@ def misc_5_choice_test(roll):
     else:
         return ("Wings of Flying", 750, 7500)        
 
+def misc_3_choice_test(roll):
+    #roll = random.randint(1, 100)
+    if roll <= 15:
+        return ("Figurine of Wondrous Power", 100, 1000)
+    elif roll <= 16:
+        return ("Flask of Curses", 0, 1000)
+    elif roll <= 18:
+        return ("Gauntlets of Dexterity", 1000, 10000)
+    elif roll <= 20:
+        return ("Gauntlets of Fumbling", 0, 1000)
+    elif roll <= 22:
+        return ("Gauntlets of Ogre Power", 1000, 15000)
+    elif roll <= 25:
+        return ("Gauntlets of Swimming and Climbing", 1000, 10000)
+    elif roll <= 26:
+        return ("Gem of Brightness", 2000, 17500)
+    elif roll <= 27:
+        return ("Gem of Seeing", 2000, 25000)
+    elif roll <= 28:
+        return ("Girdle of Femininity-Masculinity", 0, 1000)
+    elif roll <= 29:
+        return ("Girdle of Giant Strength", 200, 2500)
+    elif roll <= 30:
+        return ("Helm of Brilliance", 2500, 60000)
+    elif roll <= 35:
+        return ("Helm of Comprehending Languages and Reading Magic", 1000, 12500)
+    elif roll <= 37:
+        return ("Helm of Opposite Alignment", 0, 1000)
+    elif roll <= 39:
+        return ("Helm of Telepathy", 3000, 35000)
+    elif roll <= 40:
+        return ("Helm of Teleportation", 2500, 30000)
+    elif roll <= 45:
+        return ("Helm of Underwater Action", 1000, 10000)
+    elif roll <= 46:
+        return ("Horn of Blasting", 5000, 55000)
+    elif roll <= 48:
+        return ("Horn of Bubbles", 0, 0)
+    elif roll <= 49:
+        return ("Horn of Collapsing", 1500, 25000)
+    elif roll <= 53:
+        return ("Horn of the Tritons", 2000, 17500)
+    elif roll <= 60:
+        return ("Horn of Valhalla", 1000, 15000)
+    elif roll <= 63:
+        return ("Horseshoes of Speed", 2000, 10000)
+    elif roll <= 65:
+        return ("Horseshoes of a Zephyr", 1500, 7500)
+    elif roll <= 70:
+        return ("Incense of Meditation", 500, 7500)
+    elif roll <= 71:
+        return ("Incense of Obsession", 0, 500)    
+    elif roll <= 72:
+        return ("Ioun Stones", 300, 5000)
+    elif roll <= 78:
+        return ("Instrument of the Bards", 1000, 5000)
+    elif roll <= 80:
+        return ("Iron Flask", 0, 0)
+    elif roll <= 85:
+        return ("Javelin of Lightning (F)", 250, 3000)
+    elif roll <= 90:
+        return ("Javelin of Piercing (F)", 250, 3000)
+    elif roll <= 91:
+        return ("Jewel of Attacks", 0, 1000)
+    elif roll <= 92:
+        return ("Jewel of Flawlessness", 0, "1000")
+    else:
+        return ("Keoghtom’s Ointment", 500, 10000)        
+
 
 if __name__ == "__main__":
     ARGV = sys.argv
@@ -1545,3 +1614,9 @@ if __name__ == "__main__":
             print("BAD:", test)
         print(test)
 
+    for d in range(100):
+        print(d+1)
+        test = misc_3_choice_test(d+1) 
+        if len(test) < 3:
+            print("BAD:", test)
+        print(test)
