@@ -272,6 +272,69 @@ def ring_choice():
     else:
         return ("Wizardry", 4000, 50000)
 
+def wand_choice():
+    roll = roll_dice(1, 100)
+    if roll <= 3:
+        return ('Rod of Absorption', 7500, 40000)
+    elif roll <= 4:
+        return ('Rod of Beguiling', 5000, 30000)
+    elif roll <= 14:
+        return ('Rod of Cancellation', 10000, 15000)
+    elif roll <= 16:
+        return ('Rod of Lordly Might', 6000, 20000)
+    elif roll <= 17:
+        return ('Rod of Resurrection', 10000, 35000)
+    elif roll <= 18:
+        return ('Rod of Rulership', 8000, 35000)
+    elif roll <= 19:
+        return ('Rod of Smiting', 4000, 15000)
+    elif roll <= 20:
+        return ('Staff of Command', 5000, 25000)
+    elif roll <= 22:
+        return ('Staff of Curing', 6000, 25000)
+    elif roll <= 23:
+        return ('Staff of the Magi', 15000, 75000)
+    elif roll <= 24:
+        return ('Staff of Power', 12000, 60000)
+    elif roll <= 27:
+        return ('Staff of the Serpent', 7000, 35000)
+    elif roll <= 31:
+        return ('Staff of Striking', 6000, 15000)
+    elif roll <= 33:
+        return ('Staff of Withering', 8000, 35000)
+    elif roll <= 34:
+        return ('Wand of Conjuration', 7000, 35000)
+    elif roll <= 38:
+        return ('Wand of Enemy Detection', 2000, 10000)
+    elif roll <= 41:
+        return ('Wand of Fear', 3000, 15000)
+    elif roll <= 44:
+        return ('Wand of Fire', 4500, 25000)
+    elif roll <= 47:
+        return ('Wand of Frost', 6000, 50000)
+    elif roll <= 52:
+        return ('Wand of Illumination', 2000, 10000)
+    elif roll <= 56:
+        return "Wand of Illusion", 3000, 20000
+    elif roll <= 59:
+        return "Wand of Lightning", 4000, 30000
+    elif roll <= 68:
+        return "Wand of Magic Detection", 2500, 25000
+    elif roll <= 73:
+        return "Wand of Metal & Mineral Detection", 1500, 7500
+    elif roll <= 78:
+        return "Wand of Magic Missiles", 4000, 35000
+    elif roll <= 86:
+        return "Wand of Negation", 3500, 15000
+    elif roll <= 89:
+        return "Wand of Paralyzation", 3500, 25000
+    elif roll <= 92:
+        return "Wand of Polymorphing", 3500, 25000
+    elif roll <= 94:
+        return "Wand of Secret Door & Trap Location", 5000, 40000
+    else:
+        return "Wand of Wonder", 6000, 10000
+
 # Example usage
 def select_magic_item():
     roll = roll_dice(1, 100)
@@ -287,6 +350,7 @@ def select_magic_item():
         choice = ring_choice()
     elif roll <= 45:
         item = "Rods, Staves & Wands (D.)"
+        choice = wand_choice()
     elif roll <= 48:
         item = "Miscellaneous Magic (E.1.)"
     elif roll <= 51:
@@ -333,6 +397,9 @@ if __name__ == "__main__":
 
     no, xp, val = ring_choice()
     print(f"Rings:{no}, XP:{xp}, Gold:{val}")
+
+    no, xp, val = wand_choice()
+    print(f"Wands:{no}, XP:{xp}, Gold:{val}")
 
     item, choice = select_magic_item()
     print(f"Magic:{item}, Choice:{choice}")
