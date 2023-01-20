@@ -1321,6 +1321,9 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['monster']['No'] = 0
         shape_dict['contents']['monster']['XP'] = 0
 
+        print("CHECKSD FOR MONSTER CHARACTERS:",shape_dict['contents']['monster']['level'])
+        print("CHECKSD FOR MONSTER CHARACTERS:",shape_dict['contents']['monster']['type'])
+
         m_dict = monster_tables(shape_dict['contents']['monster']['level'])
         shape_dict['contents']['monster']['type']  = m_dict['name']
         shape_dict['contents']['monster']['No'] = m_dict['no']
