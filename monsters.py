@@ -15,6 +15,9 @@ def roll_dice(number, sides):
 def testmonster():
     return "On level of monsters so far!"
 
+def create_dragon(level):
+    pass
+
 def monster_check(level, monster):
     lst = monster[level]
     r = roll_dice(1,20)
@@ -518,6 +521,11 @@ def monster_tables(level):
     if 1 == 2:
         with open('levels.json','w') as f:
             json.dump(levels, f)
+        return mdict
+
+    if 1 == 1:
+        with open('dragons.json','w') as f:
+            json.dumpdragon_(levels, f)
         return mdict
 
 if __name__ == "__main__":
