@@ -5,8 +5,24 @@ def testtreasure():
     return "Basic treasure goes in shape_dict for room! Not done random gems, jewellery, magic."
 
 def roll_dice(number, sides):
-    roll = roll_dice(number,sides)
+    roll = random.randint(number,sides)
     return roll
+
+def select_gemstone():
+    dice_roll = roll_dice(1, 100)
+    print(dice_roll)
+    if dice_roll <= 25:
+        return 10, "Ornamental Stones"
+    elif dice_roll <= 50:
+        return 50, "Semi-precious Stones"
+    elif dice_roll <= 70:
+        return 100, "Fancy Stones"
+    elif dice_roll <= 90:
+        return 500, "Fancy Stones (Precious)"
+    elif dice_roll <= 99:
+        return 1000, "Gem Stones"
+    else:
+        return 5000, "Gem Stones (Jewels)"
 
 def update_gemstone(base_value):
     dice_roll = roll_dice(1, 10)
@@ -79,26 +95,7 @@ def select_jewellery():
 
     return base_value, description
 
-def select_gemstone():
-    dice_roll = roll_dice(1, 100)
-    print(dice_roll)
-    if dice_roll <= 25:
-        return 10, "Ornamental Stones"
-    elif dice_roll <= 50:
-        return 50, "Semi-precious Stones"
-    elif dice_roll <= 70:
-        return 100, "Fancy Stones"
-    elif dice_roll <= 90:
-        return 500, "Fancy Stones (Precious)"
-    elif dice_roll <= 99:
-        return 1000, "Gem Stones"
-    else:
-        return 5000, "Gem Stones (Jewels)"
 
-
-def select_gemstone():
-    dice_roll = roll_dice(1, 100)
-    print(dice_roll)
 
 if __name__ == "__main__":
     ARGV = sys.argv
@@ -109,11 +106,11 @@ if __name__ == "__main__":
         character_level = 1
 
     print(select_gemstone())
-    #base_value, description = select_gemstone()
-    #print(f"The selected gemstone has a base value of {base_value} gold pieces and is described as {description}")
+    base_value, description = select_gemstone()
+    print(f"The selected gemstone has a base value of {base_value} gold pieces and is described as {description}")
 
-    #new_base_value = update_gemstone(base_value)
-    #print(f"The upgrade value of the gemstone is {new_base_value} gold pieces.")
+    new_base_value = update_gemstone(base_value)
+    print(f"The upgrade value of the gemstone is {new_base_value} gold pieces.")
 
-    #base_value, description = select_jewelry()
-    #print(f"The selected jewelry has a base value of {base_value} gold pieces and is described as {description}")
+    base_value, description = select_jewelry()
+    print(f"The selected jewelry has a base value of {base_value} gold pieces and is described as {description}")
