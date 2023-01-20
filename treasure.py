@@ -401,35 +401,35 @@ def sword_choice():
     elif dice_roll <= 40:
         return ("Sword +1, +3 vs. regenerating creatures", 800, 4000)
     elif dice_roll <= 45:
-        return ("Sword +1, +4 vs. reptiles", 800, 4000)
+        return ("Sword +1 +4 vs. reptiles", 800, 4000)
     elif dice_roll <= 49:
-        return ("Sword +1, Flame Tongue: +2 vs. regenerating creatures +3 vs. cold-using, inflammable, or avian creatures +4 vs. undead", 900, 4500)
+        return ("Sword +1 Flame Tongue: +2 vs. regenerating creatures +3 vs. cold-using inflammable or avian creatures +4 vs. undead", 900, 4500)
     elif dice_roll <= 50:
-        return ("Sword +1, Luck Blade", 1000, 5000)
+        return ("Sword +1 Luck Blade", 1000, 5000)
     elif dice_roll <= 58:
         return ("Sword +2", 800, 4000)
     elif dice_roll <= 62:
-        return ("Sword +2, Giant Slayer", 900, 4500)
+        return ("Sword +2 Giant Slayer", 900, 4500)
     elif dice_roll <= 66:
-        return ("Sword +2, Dragon Slayer", 900, 4500)
+        return ("Sword +2 Dragon Slayer", 900, 4500)
     elif dice_roll <= 67:
-        return ("Sword +2, Nine Lives Stealer", 1600, 8000)
+        return ("Sword +2 Nine Lives Stealer", 1600, 8000)
     elif dice_roll <= 71:
         return ("Sword +3", 1400)    
     if dice_roll <= 71:
         return ('Sword +3', 1400, 7000)
     elif dice_roll <= 74:
-        return ('Sword +3, Frost Brand: +6 vs. fire using/dwelling creatures', 1600, 8000)
+        return ('Sword +3 Frost Brand: +6 vs. fire using/dwelling creatures', 1600, 8000)
     elif dice_roll <= 76:
         return ('Sword +4', 2000, 10000)
     elif dice_roll <= 77:
-        return ('Sword +4, Defender', 3000, 15000)
+        return ('Sword +4 Defender', 3000, 15000)
     elif dice_roll <= 78:
         return ('Sword +5', 3000, 15000)
     elif dice_roll <= 79:
-        return ('Sword +5, Defender', 3600, 18000)
+        return ('Sword +5 Defender', 3600, 18000)
     elif dice_roll <= 80:
-        return ('Sword +5, Holy Avenger', 4000, 20000)
+        return ('Sword +5 Holy Avenger', 4000, 20000)
     elif dice_roll <= 81:
         return ('Sword of Dancing', 4400, 22000)
     elif dice_roll <= 82:
@@ -439,13 +439,13 @@ def sword_choice():
     elif dice_roll <= 84:
         return ('Sword of Sharpness', 7000, 35000)
     elif dice_roll <= 85:
-        return ('Sword, Vorpal Weapon', 10000, 50000)
+        return ('Sword Vorpal Weapon', 10000, 50000)
     elif dice_roll <= 90:
-        return ('Sword +1, Cursed', 400, 0)
+        return ('Sword +1 Cursed', 400, 0)
     elif dice_roll <= 95:
-        return ('Sword −2, Cursed', 600, 0)
+        return ('Sword −2 Cursed', 600, 0)
     else:
-        return ('Sword, Cursed Berserking', 900, 0)        
+        return ('Sword Cursed Berserking', 900, 0)        
 
 def weapon_choice():
     roll = roll_dice(1,100)
