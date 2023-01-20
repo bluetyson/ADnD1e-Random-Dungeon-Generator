@@ -1334,6 +1334,7 @@ def room_contents(shape_dict, coord, content):
 
 
         if 'Subtable' in shape_dict['contents']['monster']['type']:
+            print("QUITTING MDICT:")
             quit()
         
     elif r >15 and r <=17:
@@ -1349,7 +1350,7 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['monster']['No'] = m_dict['no']
 
         if 'Subtable' in shape_dict['contents']['monster']['type']:
-            print("QUITTING: m_dict")
+            print("QUITTING MDICT:")
             quit()
 
         shape_dict = loot(shape_dict,coord,monster="Y")
