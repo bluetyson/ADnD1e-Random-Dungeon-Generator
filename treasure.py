@@ -315,25 +315,25 @@ def wand_choice():
     elif roll <= 52:
         return ('Wand of Illumination', 2000, 10000)
     elif roll <= 56:
-        return "Wand of Illusion", 3000, 20000
+        return ("Wand of Illusion", 3000, 20000)
     elif roll <= 59:
-        return "Wand of Lightning", 4000, 30000
+        return ("Wand of Lightning", 4000, 30000)
     elif roll <= 68:
-        return "Wand of Magic Detection", 2500, 25000
+        return ("Wand of Magic Detection", 2500, 25000)
     elif roll <= 73:
-        return "Wand of Metal & Mineral Detection", 1500, 7500
+        return ("Wand of Metal & Mineral Detection", 1500, 7500)
     elif roll <= 78:
-        return "Wand of Magic Missiles", 4000, 35000
+        return ("Wand of Magic Missiles", 4000, 35000)
     elif roll <= 86:
-        return "Wand of Negation", 3500, 15000
+        return ("Wand of Negation", 3500, 15000)
     elif roll <= 89:
-        return "Wand of Paralyzation", 3500, 25000
+        return ("Wand of Paralyzation", 3500, 25000)
     elif roll <= 92:
-        return "Wand of Polymorphing", 3500, 25000
+        return ("Wand of Polymorphing", 3500, 25000)
     elif roll <= 94:
-        return "Wand of Secret Door & Trap Location", 5000, 40000
+        return ("Wand of Secret Door & Trap Location", 5000, 40000)
     else:
-        return "Wand of Wonder", 6000, 10000
+        return ("Wand of Wonder", 6000, 10000)
 
 def armour_choice():
     dice_roll = roll_dice(1, 100)
@@ -390,6 +390,62 @@ def armour_choice():
     else:
         return ('Shield -1 Missile attractor', 0, 750)
 
+def sword_choice():
+    dice_roll = roll_dice(1,100)
+    if dice_roll <= 25:
+        return ("Sword +1", 400, 2000)
+    elif dice_roll <= 30:
+        return ("Sword +1, +2 vs. magic-using & enchanted creatures", 600, 3000)
+    elif dice_roll <= 35:
+        return ("Sword +1, +3 vs. lycanthropes & shape changers", 700, 3500)
+    elif dice_roll <= 40:
+        return ("Sword +1, +3 vs. regenerating creatures", 800, 4000)
+    elif dice_roll <= 45:
+        return ("Sword +1, +4 vs. reptiles", 800, 4000)
+    elif dice_roll <= 49:
+        return ("Sword +1, Flame Tongue: +2 vs. regenerating creatures +3 vs. cold-using, inflammable, or avian creatures +4 vs. undead", 900, 4500)
+    elif dice_roll <= 50:
+        return ("Sword +1, Luck Blade", 1000, 5000)
+    elif dice_roll <= 58:
+        return ("Sword +2", 800, 4000)
+    elif dice_roll <= 62:
+        return ("Sword +2, Giant Slayer", 900, 4500)
+    elif dice_roll <= 66:
+        return ("Sword +2, Dragon Slayer", 900, 4500)
+    elif dice_roll <= 67:
+        return ("Sword +2, Nine Lives Stealer", 1600, 8000)
+    elif dice_roll <= 71:
+        return ("Sword +3", 1400)    
+    if dice_roll <= 71:
+        return ('Sword +3', 1400, 7000)
+    elif dice_roll <= 74:
+        return ('Sword +3, Frost Brand: +6 vs. fire using/dwelling creatures', 1600, 8000)
+    elif dice_roll <= 76:
+        return ('Sword +4', 2000, 10000)
+    elif dice_roll <= 77:
+        return ('Sword +4, Defender', 3000, 15000)
+    elif dice_roll <= 78:
+        return ('Sword +5', 3000, 15000)
+    elif dice_roll <= 79:
+        return ('Sword +5, Defender', 3600, 18000)
+    elif dice_roll <= 80:
+        return ('Sword +5, Holy Avenger', 4000, 20000)
+    elif dice_roll <= 81:
+        return ('Sword of Dancing', 4400, 22000)
+    elif dice_roll <= 82:
+        return ('Sword of Wounding', 4400, 22000)
+    elif dice_roll <= 83:
+        return ('Sword of Life Stealing', 5000, 25000)
+    elif dice_roll <= 84:
+        return ('Sword of Sharpness', 7000, 35000)
+    elif dice_roll <= 85:
+        return ('Sword, Vorpal Weapon', 10000, 50000)
+    elif dice_roll <= 90:
+        return ('Sword +1, Cursed', 400, 0)
+    elif dice_roll <= 95:
+        return ('Sword −2, Cursed', 600, 0)
+    else:
+        return ('Sword, Cursed Berserking', 900, 0)        
 
 # Example usage
 def select_magic_item():
