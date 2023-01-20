@@ -898,8 +898,6 @@ def treasure_choice(treasure_type):
     elif treasure_type == "F":
         return (0, random.randint(1, 20) * 10, random.randint(1, 12) * 15, random.randint(1, 10) * 40, random.randint(1, 8) * 35, random.randint(3, 30) * 10, random.randint(1, 10) * 10, random.choice(["Sword", "Armor", "Misc. Weapon"]))
     elif treasure_type == "G":
-        return (0, 0, 0, random.randint(10, 40) * 50, random.randint(1, 20) * 50, random.randint(5, 20) * 30, random.randint(1, 10) * 25, random.choice(["Sword", "Armor", "
-    elif treasure_type == "G":
         return (0, 0, 0, random.randint(10, 40) * 400, random.randint(1, 20) * 500, random.randint(5, 20) * 10, random.randint(1, 10) * 25, random.choices(["Sword", "Armor", "Misc. Weapon", "Potion", "Scroll", "Map", "Ring", "Amulet", "Wand", "Staff", "Rod"], k=4) + ["Scroll"])
     elif treasure_type == "H":
         return (random.randint(5, 30) * 25, random.randint(1, 100) * 40, random.randint(10, 40) * 40, random.randint(10, 60) * 55, random.randint(5, 25) * 25, random.randint(1, 100) * 50, random.randint(10, 40) * 50, random.choices(["Sword", "Armor", "Misc. Weapon", "Potion", "Scroll", "Map", "Ring", "Amulet", "Wand", "Staff", "Rod"], k=4) + ["Potion", "Scroll"])
