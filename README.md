@@ -20,7 +20,19 @@ Building things as I go - just using a one roll test for now to see how it goes.
 - Rolls for gems and jewellery
 - Have not checked wandering monsters for treasure or implemented treasure tables
 - Does basic Human and Character subtables (for running into adventuring parties)
+```python
+1 : {'class': 'THIEF', 'level': '1', 'race': 'Human', 'multi': 'N', 'magic_items': []}
+2 : {'class': 'FIGHTER', 'level': '1', 'race': 'Gnome', 'multi': 'N', 'magic_items': []}
+3 : {'class': 'woman-at-arms/henchwoman'}
+4 : {'class': 'woman-at-arms/henchwoman'}
+5 : {'class': 'man-at-arms/henchman'}
+6 : {'class': 'man-at-arms/henchman'}
+7 : {'class': 'woman-at-arms/henchwoman'}
+8 : {'class': 'woman-at-arms/henchwoman'}
+9 : {'class': 'man-at-arms/henchman'}
+```
     - No details for henchpeople
+
 - Dragon subtable not done yet
 - No retracing steps logic as yet for dead ends to block etc.
 - See issues for things to do [lots of minor things]
