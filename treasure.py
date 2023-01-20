@@ -1136,23 +1136,23 @@ def treasure_choice(treasure_type, no):
             treasure['magic'] = magic_list
 
     elif treasure_type == "J":
-        if n in range(no):
+        for n in range(no):
             treasure['copper'] = treasure['copper'] + (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6))
         
     elif treasure_type == "K":
-        if n in range(no):
+        for n in range(no):
             treasure['silver'] = treasure['silver'] + (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6))
 
     elif treasure_type == "L":
-        if n in range(no):
+        for n in range(no):
             treasure['electrum'] = treasure['electrum'] + (roll_dice(1,6) + roll_dice(1,6))
 
     elif treasure_type == "M":
-        if n in range(no):
+        for n in range(no):
             treasure['gold'] = treasure['gold'] + (roll_dice(1,4) + roll_dice(1,4))
 
     elif treasure_type == "N":
-        if n in range(no):
+        for n in range(no):
             treasure['platinum'] = treasure['platinum'] + roll_dice(1,6)
 
     elif treasure_type == "O":
