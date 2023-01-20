@@ -632,6 +632,7 @@ def select_magic_item():
         choice = sword_choice()
     else:
         item = "Miscellaneous Weapons (H.)"
+        choice = weapon_choice()
     return item, choice
 
 if __name__ == "__main__":
