@@ -44,7 +44,7 @@ def update_gemstone(base_value):
         next_base_value = base_value / 2
         if next_base_value < 5:
             return 5
-        return select_gemstone(next_base_value)
+        return next_base_value
 
 
 if __name__ == "__main__":
