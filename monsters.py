@@ -516,7 +516,7 @@ def monster_tables(level):
     if mdict['name'] == 'Dragon-DragonSubtable':
         mdict['details'] = 'NOT IMPLEMENTED YET'
 
-        if 1 == 2:
+        if 1 == 1:
 
             for ld in range(10):
                 if ld < 3:
@@ -571,7 +571,7 @@ def monster_tables(level):
     if 1 == 2:
         with open('dragons.json','w') as f:
             json.dump(dragon_levels, f)
-            
+
     return mdict
 
 if __name__ == "__main__":
