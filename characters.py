@@ -243,7 +243,6 @@ def create_party(level):
         party_members[c+1]['level'] = level
         party_members[c+1]['race'] = 'Human'
         party_members[c+1]['multi'] = 'N'
-        party_members[c+1]['magic_items'] = magic_items
         #print(characters, "Character Party:")
 
         non_human = roll_dice(1,100)
@@ -263,6 +262,7 @@ def create_party(level):
                     multino = 3
                     party_members[c+1]['multi_no'] = 3
 
+        party_members[c+1]['magic_items'] = magic_items
 
     for h in range(henchmen):
         party_members[c+1+h+1] = {}
