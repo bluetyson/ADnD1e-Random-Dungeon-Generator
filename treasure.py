@@ -1538,4 +1538,7 @@ if __name__ == "__main__":
         print(f"Treasure:{a}, Choice:{choice}, Length:{len(choice)}")
 
     for d in range(100) + 1:
-        print(misc_5_choice_test(d))
+        print("d")
+        test = misc_5_choice_test(d) 
+        print(test)
+
