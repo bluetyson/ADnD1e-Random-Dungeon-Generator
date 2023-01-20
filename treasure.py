@@ -29,7 +29,7 @@ def update_gemstone(base_value):
         next_base_value = base_value * 2
         if next_base_value > 1000000:
             return 1000000
-        return select_gemstone(next_base_value)
+        return next_base_value
     elif dice_roll == 2:
         return base_value * 2
     elif dice_roll == 3:
