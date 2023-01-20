@@ -5,7 +5,7 @@ def testtreasure():
     return "Basic treasure goes in shape_dict for room! Not done random gems, jewellery, magic."
 
 def roll_dice(number, sides):
-    roll = random.randint(number,sides)
+    roll = roll_dice(number,sides)
     return roll
 
 def select_gemstone():
@@ -46,6 +46,46 @@ def update_gemstone(base_value):
             return 5
         return next_base_value
 
+def select_jewellery():
+    dice_roll = roll_dice(1, 100)
+    if dice_roll <= 10:
+        base_value = roll_dice(1, 10) * 100
+        description = "Ivory or wrought silver"
+    elif dice_roll <= 20:
+        base_value = (roll_dice(1, 6) + roll_dice(1, 6)) * 100
+        description = "Wrought silver and gold"
+    elif dice_roll <= 40:
+        base_value = (roll_dice(1, 6) + roll_dice(1, 6)+ roll_dice(1, 6)) * 100
+        description = "Wrought gold"
+    elif dice_roll <= 50:
+        base_value = (roll_dice(1, 6) + roll_dice(1, 6)+ roll_dice(1, 6)+ roll_dice(1, 6)+ roll_dice(1, 6)) * 100
+        description = "Jade, coral or wrought platinum"
+    elif dice_roll <= 70:
+        base_value = roll_dice(1, 10) * 1000
+        description = "Silver with gems"
+    elif dice_roll <= 90:
+        base_value = roll_dice(1, 4) * 1000 + roll_dice(1, 4) * 1000
+        description = "Gold with gems"
+    else:
+        base_value = (roll_dice(1, 6) + roll_dice(1, 6)) * 1000
+        description = "Platinum with gems"
+    # Check for exceptional value
+    if roll_dice(1, 10) == 1:
+        base_value = min(base_value * 2, 120000)
+        description = "Exceptional Workmanship " + description
+    if roll_dice(1, 10) == 1:
+        base_value = min(base_value * 2, 120000)
+        description = "Exceptional Design " + description
+    # Check for exceptional gems
+    if "gems" in description:
+        if roll_dice(1, 8) == 1:
+            gem_bonus = 5000
+            while roll_dice(1, 6) == 1:
+                gem_bonus *= 2
+                gem_bonus = min(gem_bonus, 640000)
+            base_value += gem_bonus
+    return base_value, description
+
 
 if __name__ == "__main__":
     ARGV = sys.argv
@@ -61,3 +101,5 @@ print(f"The selected gemstone has a base value of {base_value} gold pieces and i
 new_base_value = update_gemstone(base_value)
 print(f"The upgrade value of the gemstone is {new_base_value} gold pieces.")
 
+base_value, description = select_jewelry()
+print(f"The selected jewelry has a base value of {base_value} gold pieces and is described as {description}")
