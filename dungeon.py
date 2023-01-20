@@ -3682,6 +3682,8 @@ for down in range(zwidth-1):
 
         if 'shape_dict' in room_stack:
             total_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
+            valuations = {'gems':[],'jewellery':[]}
+
             for room in room_stack['shape_dict']:
                 f.write('<h4>Data: ' + str(room) + '</h4>')
                 f.write(str(room_stack['shape_dict'][room]) + '<br>')
@@ -3698,7 +3700,10 @@ for down in range(zwidth-1):
                             if key == 'treasure':
                                 for tkey in total_treasure:
                                     total_treasure[tkey] = total_treasure[tkey] + room_stack['shape_dict'][room]['contents'][key]['type'][tkey]
-
+                                    if tkey = 'gems':
+                                        valuations['gems'] = valuations['gems'] + room_stack['shape_dict'][room]['contents'][key]['gems_values']
+                                    if tkey = 'jewellery':
+                                        valuations['jewellery'] = valuations['jewellery'] + room_stack['shape_dict'][room]['contents'][key]['jewellery_values']
 
                 if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                     print("HAS WATER TO DO")
@@ -3712,7 +3717,16 @@ for down in range(zwidth-1):
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
         gold = total_treasure['copper'] / 100.0 + total_treasure['silver'] / 10.0 + total_treasure['electrum']/2.0 + total_treasure['gold'] + total_treasure['platinum'] * 10
-        f.write('In Gold: ' + str(gold))
+        if total_treasure['gems'] > 0:
+            gem_total = 0
+            for g in valuations['gems']:
+                gem_total = gem_total + g
+        if total_treasure['jewellery'] > 0:
+            jewellery_total = 0
+            for j in valuations['jewellery']:
+                jewellery_total = jewellery_total + j
+
+        f.write('Total Gold Equivalent: ' + str(gold + gem_total + jewellery total))
 
         #end of page
         f.write(strend)
