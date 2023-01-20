@@ -1039,7 +1039,7 @@ if __name__ == "__main__":
     item, choice = select_magic_item()
     print(f"Magic:{item}, Choice:{choice}")
 
-    alphabet_capitalized = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    alphabet_capitalised = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
     for a in alphabet_capitalised:
         choice = treasure_choice(a)
