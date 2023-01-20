@@ -95,7 +95,7 @@ def select_jewellery():
 
     return base_value, description
 
-def random_potion():
+def potion_choice():
     potion_table = [
             ('Animal Control', 250, 400), 
             ('Clairaudience', 250, 400), 
@@ -275,12 +275,16 @@ def ring_choice():
 # Example usage
 def select_magic_item():
     roll = roll_dice(1, 100)
+    choice = ""
     if roll <= 20:
         item = "Potions (A.)"
+        choice = potions_choice()
     elif roll <= 35:
         item = "Scrolls (B.)"
+        choice = scroll_choice()
     elif roll <= 40:
         item = "Rings (C.)"
+        choice = ring_choice()
     elif roll <= 45:
         item = "Rods, Staves & Wands (D.)"
     elif roll <= 48:
@@ -299,7 +303,7 @@ def select_magic_item():
         item = "Swords (G.)"
     else:
         item = "Miscellaneous Weapons (H.)"
-    return item
+    return item, choice
 
 if __name__ == "__main__":
     ARGV = sys.argv
@@ -329,3 +333,6 @@ if __name__ == "__main__":
 
     no, xp, val = ring_choice()
     print(f"Rings:{no}, XP:{xp}, Gold:{val}")
+
+    item, choice = select_magic_item()
+    print(f"Magic:{item}, Choice:{choice})
