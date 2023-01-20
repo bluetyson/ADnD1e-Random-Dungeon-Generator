@@ -242,8 +242,8 @@ def create_party(level):
         party_members[c+1]['class'] = character_class[0]
         party_members[c+1]['level'] = level
         party_members[c+1]['race'] = 'Human'
-        party_members[c+1]['magic_items'] = magic_items
         party_members[c+1]['multi'] = 'N'
+        party_members[c+1]['magic_items'] = magic_items
         #print(characters, "Character Party:")
 
         non_human = roll_dice(1,100)
