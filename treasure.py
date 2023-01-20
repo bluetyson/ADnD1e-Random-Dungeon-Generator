@@ -597,6 +597,75 @@ def misc_1_choice():
         else:
             return ("Bucknard's Everfull Purse", 4000, 40000)
 
+def misc_2_choice():
+    roll = roll_dice(1, 100)
+    if roll <= 6:
+        return ("Candle of Invocation", 1000, 5000)
+    elif roll <= 8:
+        return ("Carpet of Flying", 7500, 25000)
+    elif roll == 9:
+        return ("Censer Controlling Air Elementals", 4000, 25000)
+    elif roll == 10:
+        return ("Censer of Summoning Hostile Air Elementals", 0, 1000)
+    elif roll <= 13:
+        return ("Chime of Opening", 3500, 20000)
+    elif roll == 14:
+        return ("Chime of Hunger", 0, 0)
+    elif roll <= 17:
+        return ("Cloak of Displacement", 3000, 17500)
+    elif roll <= 27:
+        return ("Cloak of Elvenkind", 1000, 6000)
+    elif roll <= 30:
+        return ("Cloak of Manta Ray", 2000, 12500)
+    elif roll <= 32:
+        return ("Cloak of Poisonousness", 0, 2500)    
+    elif roll <= 55:
+        return ("Cloak of Protection", 1000, 10000)
+    elif roll <= 60:
+        return ("Crystal Ball", 1000, 5000)
+    elif roll == 61:
+        return ("Crystal Hypnosis Ball", 0, 3000)
+    elif roll <= 63:
+        return ("Cube of Force", 3000, 20000)
+    elif roll <= 65:
+        return ("Cube of Frost Resistance", 2000, 14000)
+    elif roll <= 67:
+        return ("Cubic Gate", 5000, 17500)
+    elif roll <= 69:
+        return ("Daern's Instant Fortress", 7000, 27500)
+    elif roll <= 72:
+        return ("Decanter of Endless Water", 1000, 3000)
+    elif roll <= 76:
+        return ("Deck of Many Things", 0, 10000)
+    elif roll == 77:
+        return ("Drums of Deafening", 0, 500)
+    elif roll <= 79:
+        return ("Drums of Panic", 6500, 35000)
+    elif roll <= 85:
+        return ("Dust of Appearance", 1000, 4000)
+    elif roll <= 91:
+        return ("Dust of Disappearance", 2000, 8000)
+    elif roll == 92:
+        return ("Dust of Sneezing and Choking", 0, 1000)
+    elif roll == 93:
+        return ("Efreeti Bottle", 9000, 45000)
+    elif roll == 94:
+        return ("Eversmoking Bottle", 500, 2500)
+    elif roll == 95:
+        return ("Eyes of Charming (M)", 4000, 24000)
+    elif roll <= 97:
+        return ("Eyes of the Eagle", 3500, 18000)
+    elif roll <= 99:
+        return ("Eyes of Minute Seeing", 2000, 12500)
+    else:
+        p = roll_dice(1,2)
+        if p == 1:
+            return ("Eyes of Reverse Petrification", 12500, 50000)        
+        else:
+            return ("Eyes of Reverse Petrification", 0, 0)        
+
+
+
 # Example usage
 def select_magic_item():
     roll = roll_dice(1, 100)
@@ -682,6 +751,9 @@ if __name__ == "__main__":
 
     no, xp, val = misc_1_choice()
     print(f"Misc 1:{no}, XP:{xp}, Gold:{val}")
+
+    no, xp, val = misc_2_choice()
+    print(f"Misc 2:{no}, XP:{xp}, Gold:{val}")
 
     item, choice = select_magic_item()
     print(f"Magic:{item}, Choice:{choice}")
