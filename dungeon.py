@@ -2834,7 +2834,7 @@ def wet_magic(shape_dict):
         else:
             wet_magic_dict['alignment'] = 'N'
     if w >=18:
-        l = roll_dice
+        l = roll_dice(1,20)
         wet_magic_dict['effect'] = 'Teleport'
         if l <= 7:
             #back to surface
