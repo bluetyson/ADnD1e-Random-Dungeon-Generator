@@ -885,6 +885,7 @@ def misc_5_choice():
         return ("Wings of Flying", 750, 7500)        
 
 def treasure_choice(treasure_type, no):
+    print(treasure_type, no)
     treasure = {}
     treasure['copper'] = 0
     treasure['silver'] = 0
