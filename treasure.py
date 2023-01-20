@@ -1171,7 +1171,7 @@ def treasure_choice(treasure_type, no):
 
     elif treasure_type == "Q":
         r = roll_dice(1,100)            
-        if r <= 5-:
+        if r <= 50:
             treasure['gems'] = roll_dice(1,4)
 
     elif treasure_type == "R":
