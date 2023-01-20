@@ -559,6 +559,8 @@ def monster_tables(level):
 
             dcheck = dragon_levels[level][m]
             mdict['details'] = dcheck
+            mdict['name'] = dcheck['name']
+            mdict['no'] = dcheck['roll']
         
 
     print("MDICT:",mdict)
