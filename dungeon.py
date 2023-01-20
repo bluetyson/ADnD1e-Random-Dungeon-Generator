@@ -3707,7 +3707,7 @@ for down in range(zwidth-1):
 
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
-        gold = total_treasure['copper'] / 100.0 + total_treasure['silver'] / 10.0 + total_treasure['gold'] + total_treasure['platinum'] * 10
+        gold = total_treasure['copper'] / 100.0 + total_treasure['silver'] / 10.0 + total_treasure['electrum']/2.0 + total_treasure['gold'] + total_treasure['platinum'] * 10
         f.write('In Gold: ' + str(gold))
 
         #end of page
