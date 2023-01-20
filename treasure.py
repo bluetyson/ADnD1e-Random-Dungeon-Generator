@@ -617,7 +617,7 @@ def misc_1_choice():
     elif roll <= 31:
         return ("Beaker of Plentiful Potions", 1500, 12500)
     elif roll == 32:
-        return ("Boat, Folding", 10000, 25000)
+        return ("Boat-Folding", 10000, 25000)
     elif roll == 33:
         return ("Book of Exalted Deeds (C)", 8000, 40000)
     elif roll == 34:
@@ -655,11 +655,11 @@ def misc_1_choice():
     else:
         p = roll_dice(1,3)
         if p == 1:
-            return ("Bucknard's Everfull Purse", 1500, 15000)
+            return ("Bucknards Everfull Purse", 1500, 15000)
         elif p == 2:
-            return ("Bucknard's Everfull Purse", 2500, 25000)
+            return ("Bucknards Everfull Purse", 2500, 25000)
         else:
-            return ("Bucknard's Everfull Purse", 4000, 40000)
+            return ("Bucknards Everfull Purse", 4000, 40000)
 
 def misc_2_choice():
     roll = roll_dice(1, 100)
@@ -696,7 +696,7 @@ def misc_2_choice():
     elif roll <= 67:
         return ("Cubic Gate", 5000, 17500)
     elif roll <= 69:
-        return ("Daern's Instant Fortress", 7000, 27500)
+        return ("Daerns Instant Fortress", 7000, 27500)
     elif roll <= 72:
         return ("Decanter of Endless Water", 1000, 3000)
     elif roll <= 76:
@@ -747,13 +747,13 @@ def misc_3_choice():
     elif roll <= 27:
         return ("Gem of Seeing", 2000, 25000)
     elif roll <= 29:
-        return ("Girdle of Femininity/Masculinity", 0, 1000)
+        return ("Girdle of Femininity-Masculinity", 0, 1000)
     elif roll <= 30:
         return ("Girdle of Giant Strength", 200, 2500)
     elif roll <= 30:
         return ("Helm of Brilliance", 2500, 60000)
     elif roll <= 35:
-        return ("Helm of Comprehending Languages & Reading Magic", 1000, 12500)
+        return ("Helm of Comprehending Languages and Reading Magic", 1000, 12500)
     elif roll <= 37:
         return ("Helm of Opposite Alignment", 0, 1000)
     elif roll <= 39:
@@ -846,7 +846,7 @@ def misc_4_choice():
     elif roll <= 42:
         return ("Net of Snaring", 1000, 6000)
     elif roll <= 44:
-        return ("Nolzurs’ Marvelous Pigments", 500, 3000)
+        return ("Nolzurs Marvelous Pigments", 500, 3000)
     elif roll <= 46:
         return ("Pearl of Power", 200, 2000)
     elif roll <= 48:
