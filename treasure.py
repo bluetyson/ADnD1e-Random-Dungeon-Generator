@@ -522,6 +522,81 @@ def weapon_choice():
     else:
         return ("Trident (Military Fork) +3", 1_500, 12_500)
 
+def miscellaneous_1():
+    roll = roll_dice(1, 100)
+    if roll <= 2:
+        return ("Alchemy Jug", 3000, 12000)
+    elif roll <= 4:
+        return ("Amulet of Inescapable Location", 0, 1000)
+    elif roll == 5:
+        return ("Amulet of Life Protection", 5000, 20000)
+    elif roll <= 7:
+        return ("Amulet of the Planes", 6000, 30000)
+    elif roll <= 11:
+        return ("Amulet of Proof Against Detection and Location", 4000, 15000)
+    elif roll <= 13:
+        return ("Apparatus of Kwalish", 8000, 35000)
+    elif roll <= 16:
+        return ("Arrow of Direction", 2500, 17500)
+    elif roll == 17:
+        return ("Artifact or Relic (see Special table)", 0, 0)
+    elif roll <= 20:
+        return ("Bag of Beans", 1000, 5000)
+    elif roll == 21:
+        return ("Bag of Devouring", 0, 1500)
+    elif roll <= 26:
+        return ("Bag of Holding", 5000, 25000)
+    elif roll == 27:
+        return ("Bag of Transmuting", 0, 500)
+    elif roll <= 29:
+        return ("Bag of Tricks", 2500, 15000)
+    elif roll <= 31:
+        return ("Beaker of Plentiful Potions", 1500, 12500)
+    elif roll == 32:
+        return ("Boat, Folding", 10000, 25000)
+    elif roll == 33:
+        return ("Book of Exalted Deeds (C)", 8000, 40000)
+    elif roll == 34:
+        return ("Book of Infinite Spells", 9000, 50000)
+    elif roll == 35:
+        return ("Book of Vile Darkness (C)", 8000, 40000)
+    elif roll == 36:
+        return ("Boots of Dancing", 0, 5000)
+    elif roll <= 42:
+        return ("Boots of Elvenkind", 1000, 5000)
+    elif roll <= 47:
+        return ("Boots of Levitation", 2000, 15000)
+    elif roll <= 51:
+        return ("Boots of Speed", 2500, 20000)
+    elif roll <= 55:
+        return ("Boots of Striding and Springing", 2500, 20000)
+    elif roll <= 58:
+        return ("Bowl Commanding Water Elementals (M)", 4000, 25000)
+    elif roll == 59:
+        return ("Bowl of Watery Death (M)", None, 1000)
+    elif roll <= 79:
+        return ("Bracers of Defense", 500, 3000)
+    elif roll <= 81:
+        return ("Bracers of Defenselessness", None, 2000)
+    elif roll <= 84:
+        return ("Brazier Commanding Fire Elementals (M)", 4000, 25000)
+    elif roll == 85:
+        return ("Brazier of Sleep Smoke (M)", None, 1000)
+    elif roll <= 92:
+        return ("Brooch of Shielding", 1000, 10000)
+    elif roll == 93:
+        return ("Broom of Animated Attack", 0, 3000)
+    elif roll == 93:
+        return ("Broom of Flying", 2000, 10000)
+    else:
+        p = roll_dice(1,3)
+        if p == 1:
+            return ("Bucknard's Everfull Purse", 1500, 15000)
+        elif p == 2:
+            return ("Bucknard's Everfull Purse", 2500, 25000)
+        else:
+            return ("Bucknard's Everfull Purse", 4000, 40000)
+
 # Example usage
 def select_magic_item():
     roll = roll_dice(1, 100)
@@ -586,7 +661,7 @@ if __name__ == "__main__":
     else:
         val = 3 * xp
 
-    print(f"Spells:{no}, Level:{range}, XP:{xp}, Gold:{val}, Class:{class_use}")
+    print(f"Scroll Spells:{no}, Level:{range}, XP:{xp}, Gold:{val}, Class:{class_use}")
 
     no, xp, val = ring_choice()
     print(f"Rings:{no}, XP:{xp}, Gold:{val}")
