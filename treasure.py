@@ -1537,8 +1537,8 @@ if __name__ == "__main__":
         choice = treasure_choice(a, roll_dice(1,6))  #random no appearing
         print(f"Treasure:{a}, Choice:{choice}, Length:{len(choice)}")
 
-    for d in range(100) + 1:
-        print("d")
-        test = misc_5_choice_test(d) 
+    for d in range(100):
+        print(d+1)
+        test = misc_5_choice_test(d+1) 
         print(test)
 
