@@ -730,7 +730,9 @@ def check_action(pc_dict, coord, room_stack):
 
             if 'HumanSubtable' in wm_dict['name']:
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details'][0]
-                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details'][1]
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['details'][1]
+            if 'CharacterSubtable' in wm_dict['name']:
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
 
         except Exception as wmE:
             #bound to be parsing problems in the monster tables until vetted dragons and characters etc.
