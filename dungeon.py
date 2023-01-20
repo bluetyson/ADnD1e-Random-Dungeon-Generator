@@ -1877,10 +1877,12 @@ def loot(shape_dict,coord,monster="N"):
                 base_value, description = select_gemstone()
                 new_base_value = update_gemstone(base_value)
                 gems_list.append(new_base_value)
-            shape_dict['contents']['treasure']['type']['gems_values'] = gems_list
+            shape_dict['contents']['treasure']['gems_values'] = gems_list
 
         elif l >= 95 and l <= 97:
             shape_dict['contents']['treasure']['type']['jewellery'] = shape_dict['contents']['treasure']['type']['jewellery'] + int(abs(coord[2])* multi ) 
+
+            #shape_dict['contents']['treasure']['gems_values'] = jewellery_list
         else:
             shape_dict['contents']['treasure']['type']['magic']  += 1
 
