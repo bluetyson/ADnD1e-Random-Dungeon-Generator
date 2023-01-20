@@ -736,6 +736,40 @@ def misc_3_choice():
     else:
         return ("Keoghtom’s Ointment", 500, 10000)        
 
+def misc_4_choice():
+    roll = roll_dice(1, 100)
+    if roll <= 4:
+        return ("Libram of Gainful Conjuration", 8000, 40000)
+    elif roll <= 8:
+        return ("Libram of Ineffable Damnation", 8000, 40000)
+    elif roll <= 12:
+        return ("Libram of Silver Magic", 8000, 40000)
+    elif roll == 5:
+        return ("Lyre of Building", 5000, 30000)
+    elif roll <= 6:
+        return ("Manual of Bodily Health", 5000, 50000)
+    elif roll <= 7:
+        return ("Manual of Gainful Exercise", 5000, 50000)
+    elif roll <= 8:
+        return ("Manual of Golems", 3000, 30000)
+    elif roll <= 9:
+        return ("Manual of Puissant Skill at Arms", 8000, 40000)
+    elif roll <= 10:
+        return ("Manual of Quickness of Action", 5000, 50000)
+    elif roll <= 11:
+        return ("Manual of Stealthy Pilfering", 8000, 40000)
+    elif roll == 12:
+        return ("Mattock of the Titans", 3500, 7000)
+    elif roll == 13:
+        return ("Maul of the Titans", 4000, 12000)
+    elif roll <= 15:
+        return ("Medallion of ESP", 1000, 10000)
+    elif roll <= 17:
+        return ("Medallion of Thought Projection", 0, 1000)
+    else:
+        return ("Medallion of Thought Projection", 0, 1000)  #TBC
+
+
 # Example usage
 def select_magic_item():
     roll = roll_dice(1, 100)
