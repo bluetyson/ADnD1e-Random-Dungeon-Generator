@@ -573,15 +573,15 @@ def miscellaneous_1():
     elif roll <= 58:
         return ("Bowl Commanding Water Elementals (M)", 4000, 25000)
     elif roll == 59:
-        return ("Bowl of Watery Death (M)", None, 1000)
+        return ("Bowl of Watery Death (M)", 0, 1000)
     elif roll <= 79:
         return ("Bracers of Defense", 500, 3000)
     elif roll <= 81:
-        return ("Bracers of Defenselessness", None, 2000)
+        return ("Bracers of Defenselessness", 0, 2000)
     elif roll <= 84:
         return ("Brazier Commanding Fire Elementals (M)", 4000, 25000)
     elif roll == 85:
-        return ("Brazier of Sleep Smoke (M)", None, 1000)
+        return ("Brazier of Sleep Smoke (M)", 0, 1000)
     elif roll <= 92:
         return ("Brooch of Shielding", 1000, 10000)
     elif roll == 93:
