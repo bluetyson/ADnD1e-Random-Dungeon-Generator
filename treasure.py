@@ -218,9 +218,9 @@ def scroll_choice():
 def ring_choice():
     dice_roll = roll_dice(1, 100)
     if dice_roll <= 6:
-        return ("Contrariness", None, 1000)
+        return ("Contrariness", 0, 1000)
     elif dice_roll <= 12:
-        return ("Delusion", None, 2000)
+        return ("Delusion", 0, 2000)
     elif dice_roll <= 14:
         return ("Djinni Summoning", 3000, 20000)
     elif dice_roll <= 15:
@@ -268,7 +268,7 @@ def ring_choice():
     elif dice_roll <= 98:
         return ("Water Walking", 1000, 5000)
     elif dice_roll <= 99:
-        return ("Weakness", None, 1000)
+        return ("Weakness", 0, 1000)
     else:
         return ("Wizardry", 4000, 50000)
 
