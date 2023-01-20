@@ -465,7 +465,7 @@ def weapon_choice():
     elif roll <= 22:
         return ("Axe +2", 600, 3750)
     elif roll == 23:
-        return ("Axe +2, Throwing", 750, 4500)
+        return ("Axe +2 Throwing", 750, 4500)
     elif roll == 24:
         return ("Axe +3", 1000, 7000)
     elif roll <= 27:
@@ -475,7 +475,7 @@ def weapon_choice():
     elif roll == 33:
         return ("Bow +1", 500, 3500)
     elif roll == 34:
-        return ("Crossbow of Accuracy, +3", 2000, 12000)
+        return ("Crossbow of Accuracy +3", 2000, 12000)
     elif roll == 35:
         return ("Crossbow of Distance", 1500, 7500)
     elif roll == 36:
@@ -493,7 +493,7 @@ def weapon_choice():
     elif roll <= 62:
         return ("Hammer +2", 650, 6000)
     elif roll == 63:
-        return ("Hammer +3, Dwarven Thrower", 1500, 15000)
+        return ("Hammer +3 Dwarven Thrower", 1500, 15000)
     elif roll == 64:
         return ("Hammer of Thunderbolts", 2500, 25000)
     elif roll <= 67:
@@ -521,9 +521,9 @@ def weapon_choice():
     elif roll == 97:
         return ("Spear +3", 1_750, 15_000)
     elif roll <= 99:
-        return ("Spear, Cursed Backbiter", 0, 1_000)
+        return ("Spear Cursed Backbiter", 0, 1_000)
     else:
-        return ("Trident (Military Fork) +3", 1_500, 12_500)
+        return ("Trident -Military Fork +3", 1_500, 12_500)
 
 def misc_1_choice():
     roll = roll_dice(1, 100)
