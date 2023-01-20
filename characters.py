@@ -272,11 +272,74 @@ def create_party(level):
                 party_members[c+1+h+1]['class'] = 'man-at-arms/henchman'
             else:
                 party_members[c+1+h+1]['class'] = 'henchman' #need to roll as per character details
+                hench_level = round(level/3,0)
+                if level > 9:
+                    hench_level = hench_level + 3
+                hench_class = select_character_type()                    
+                magic_items = []
+                magic_items = magic_item_chance(hench_level)
+
+                party_members[c+1+h+1]['class'] = hench_class[0]
+                party_members[c+1+h+1]['level'] = hench_level
+                party_members[c+1+h+1]['race'] = 'Human'
+                party_members[c+1+h+1]['multi'] = 'N'
+
+                non_human = roll_dice(1,100)
+                if non_human <= 20:
+                    dice_score = random.randint(1,100)
+                    race, multi_class_percentage = get_race_and_class(dice_score)        
+                    party_members[c+1+h+1]['race'] = race
+
+                    multi = roll_dice(1,100)
+                    if multi <= multi_class_percentage:
+                        party_members[c+1+h+1]['multi'] = 'Y'
+                        party_members[c+1+h+1]['multi_no'] = 2
+                        #check 2 or 3
+                        multino = 2
+                        multi_classes = roll_dice(1,3)
+                        if multi_classes == 3:
+                            multino = 3
+                            party_members[c+1+h+1]['multi_no'] = 3
+
+                party_members[c+1+h+1]['magic_items'] = magic_items
+
         else:
             if level <= 3:
                 party_members[c+1+h+1]['class'] = 'woman-at-arms'
             else:
                 party_members[c+1+h+1]['class'] = 'henchwoman' #need to roll as per character details
+
+                hench_level = round(level/3,0)
+                if level > 9:
+                    hench_level = hench_level + 3
+                hench_class = select_character_type()                    
+                magic_items = []
+                magic_items = magic_item_chance(hench_level)
+
+                party_members[c+1+h+1]['class'] = hench_class[0]
+                party_members[c+1+h+1]['level'] = hench_level
+                party_members[c+1+h+1]['race'] = 'Human'
+                party_members[c+1+h+1]['multi'] = 'N'
+
+                non_human = roll_dice(1,100)
+                if non_human <= 20:
+                    dice_score = random.randint(1,100)
+                    race, multi_class_percentage = get_race_and_class(dice_score)        
+                    party_members[c+1+h+1]['race'] = race
+
+                    multi = roll_dice(1,100)
+                    if multi <= multi_class_percentage:
+                        party_members[c+1+h+1]['multi'] = 'Y'
+                        party_members[c+1+h+1]['multi_no'] = 2
+                        #check 2 or 3
+                        multino = 2
+                        multi_classes = roll_dice(1,3)
+                        if multi_classes == 3:
+                            multino = 3
+                            party_members[c+1+h+1]['multi_no'] = 3
+
+                party_members[c+1+h+1]['magic_items'] = magic_items
+
 
 
     for key in party_members:            
