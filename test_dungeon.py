@@ -1364,8 +1364,27 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['monster']['type']  = m_dict['name']
         shape_dict['contents']['monster']['No'] = m_dict['no']
 
+        if 'HumanSubtable' in m_dict['name']:
+            shape_dict['contents']['monster']['type'] = m_dict['details'][0]
+            shape_dict['contents']['monster']['No'] = m_dict['details'][1]
+
+            if 'Character' in m_dict['details']:
+                shape_dict['contents']['monster']['type']  = m_dict['details']
+                shape_dict['contents']['monster']['No'] = 9
+        if 'CharacterSubtable' in m_dict['name']:
+            shape_dict['contents']['monster']['type']  = m_dict['details']
+            shape_dict['contents']['monster']['No'] = 9
+
+        if 'DragonSubtable' in m_dict['name']:
+            shape_dict['contents']['monster']['type']  = m_dict['details']['name']
+            shape_dict['contents']['monster']['No'] = m_dict['roll'][0]
+
+        print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
+        print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['type'])
+
+
         if 'Subtable' in shape_dict['contents']['monster']['type']:
-            print("QUITTING MDICT 15:")
+            print("QUITTING MDICT 15:",mdict)
             quit()
 
         shape_dict = loot(shape_dict,coord,monster="Y")
