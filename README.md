@@ -15,13 +15,15 @@ Convert DMG tables to code to do for wandering around and down to make a dungeon
 
 # Work in progress
 Building things as I go - just using a one roll test for now to see how it goes.
+- Generates some monsters now
+- Generates treasures in rooms
+- Rolls for gems and jewellery
+- Have not checked wandering monsters for treasure or implemented treasure tables
 - No retracing steps logic as yet for dead ends to block etc.
-- See issues for things to do [lots]
-- No random monster, treasure, magic item tables as yet, hence no stocking output keys printed
+- See issues for things to do [lots of minor things]
 
 # Bugs
 - Will be quite a few I imagine
-- Basically output stops currently if it 'won't fit' and above comments are still valid
 
 # Output to screen for checking purposes
 - Makes a basic html map for a level in dungeon_1.html
@@ -31,6 +33,9 @@ Building things as I go - just using a one roll test for now to see how it goes.
 - the current legend, in code
 - these get concatenated to the base type, C, R, D
 - treasure gets some color coding
+- outputs room data 
+- outputs relevant room key
+- gives a treasure total accounting at the end
 
 ```python
 legend_dict['O'] = "Outside Entrance"
