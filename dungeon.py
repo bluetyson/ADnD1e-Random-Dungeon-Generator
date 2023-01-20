@@ -1853,6 +1853,7 @@ def loot(shape_dict,coord,monster="N"):
     shape_dict['contents']['treasure']['gems_list'] = []
     shape_dict['contents']['treasure']['jewellery_list'] = []
     shape_dict['contents']['treasure']['magic_list'] = []
+    shape_dict['contents']['treasure']['magic_xp'] = [] #NOT IMPLEMENTED YET
 
     if monster == 'N':
         multi = 1
@@ -1897,7 +1898,7 @@ def loot(shape_dict,coord,monster="N"):
                 magic_item = select_magic_item()
                 magic_list.append(magic_item)
             shape_dict['contents']['treasure']['magic_list'] = magic_list
-            shape_dict['contents']['treasure']['magic_values'] = "NOT IMPLEMENTED YET"
+            shape_dict['contents']['treasure']['magic_values'] = [] #NOT IMPLEMENTED YET
 
 
         return shape_dict

@@ -215,6 +215,62 @@ def scroll_choice():
     elif roll <= 100:        
         return 1, 'Curse', 0, sc
 
+def ring_choice():
+    dice_roll = roll_dice(1, 100)
+    if dice_roll <= 6:
+        return ("Contrariness", None, 1000)
+    elif dice_roll <= 12:
+        return ("Delusion", None, 2000)
+    elif dice_roll <= 14:
+        return ("Djinni Summoning", 3000, 20000)
+    elif dice_roll <= 15:
+        return ("Elemental Command", 5000, 25000)
+    elif dice_roll <= 21:
+        return ("Feather Falling", 1000, 5000)
+    elif dice_roll <= 27:
+        return ("Fire Resistance", 1000, 5000)
+    elif dice_roll <= 30:
+        return ("Free Action", 1000, 5000)
+    elif dice_roll <= 33:
+        return ("Human Influence", 2000, 10000)
+    elif dice_roll <= 40:
+        return ("Invisibility", 1500, 7500)
+    elif dice_roll <= 43:
+        return ("Mammal Control", 1000, 5000)
+    elif dice_roll <= 44:
+        return ("Multiple Wishes", 5000, 25000)
+    elif dice_roll <= 60:
+        dice_roll_2 = random.randint(1, 20)
+        if dice_roll_2 <= 10:
+            return ("Protection", 2000, 10000)
+        elif dice_roll_2 <= 20:
+            return ("Protection", 2500, 12500)
+        elif dice_roll_2 <= 30:
+            return ("Protection", 3000, 15000)
+        else:
+            return ("Protection", 4000, 20000)
+    elif dice_roll <= 63:
+        return ("Regeneration", 5000, 40000)
+    elif dice_roll <= 65:
+        return ("Shooting Stars", 3000, 15000)
+    elif dice_roll <= 69:
+        return ("Spell Storing", 2500, 22500)
+    elif dice_roll <= 75:
+        return ("Spell Turning", 2000, 17500)
+    elif dice_roll <= 77:
+        return ("Swimming", 1000, 5000)
+    elif dice_roll <= 79:
+        return ("Telekinesis", 2000, 10000)
+    elif dice_roll <= 85:
+        return ("Three Wishes", 3000, 15000)
+    elif dice_roll <= 90:
+        return ("Warmth", 1000, 5000)
+    elif dice_roll <= 98:
+        return ("Water Walking", 1000, 5000)
+    elif dice_roll <= 99:
+        return ("Weakness", None, 1000)
+    else:
+        return ("Wizardry", 4000, 50000)
 
 # Example usage
 def select_magic_item():
@@ -270,3 +326,6 @@ if __name__ == "__main__":
     if xp == -1:
         xp = 100 * no * range
     print(f"Spells:{no}, Level:{range}, XP:{xp}, Class:{class_use}")
+
+    no, xp, val = ring_choice()
+    print(f"Rings:{no}, XP:{x[]}, Gold:{val}")
