@@ -1468,6 +1468,7 @@ def misc_5_choice_test(roll):
     else:
         return ("Wings of Flying", 750, 7500)        
 
+
 if __name__ == "__main__":
     ARGV = sys.argv
 
@@ -1540,5 +1541,7 @@ if __name__ == "__main__":
     for d in range(100):
         print(d+1)
         test = misc_5_choice_test(d+1) 
+        if len(test) < 3:
+            print("BAD:", test)
         print(test)
 
