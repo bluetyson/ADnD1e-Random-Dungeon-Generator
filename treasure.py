@@ -150,7 +150,7 @@ def random_potion2():
 
 def scroll_choice():
     s = roll_dice(1,100)
-    st =1
+    st = 1
     if s <=70:
         sc = "MAGIC-USER"
         mu = roll_dice(1,100)
@@ -165,55 +165,55 @@ def scroll_choice():
 
     roll = roll_dice(1,100)
     if roll <= 10:
-        return 1, random.randint(1,4)
+        return 1, random.randint(1,4), -1, sc
     elif roll <= 16:
-        return 1, random.randint(1,6)
+        return 1, random.randint(1,6), -1, sc
     elif roll <= 19:
-        return 1, random.randint(2,9) if st==1 else random.randint(2,7)
+        return 1, random.randint(2,9) if st==1 else random.randint(2,7), -1, sc
     elif roll <= 24:
-        return 2, random.randint(1,4)
+        return 2, random.randint(1,4), -1, sc
     elif roll <= 27:
-        return 2, random.randint(1,8) if st==1 else random.randint(1,6)
+        return 2, random.randint(1,8) if st==1 else random.randint(1,6), -1, sc
     elif roll <= 32:
-        return 3, random.randint(1,4)
+        return 3, random.randint(1,4), -1, sc
     elif roll <= 35:
-        return 3, random.randint(2,9) if st==1 else random.randint(2,7)
+        return 3, random.randint(2,9) if st==1 else random.randint(2,7), -1, sc
     elif roll <= 39:
-        return 4, random.randint(1,6)
+        return 4, random.randint(1,6), -1, sc
     elif roll <= 42:
-        return 4, random.randint(1,8) if st==1 else random.randint(1,6)
+        return 4, random.randint(1,8) if st==1 else random.randint(1,6), -1, sc
     elif roll <= 46:
-        return 5, random.randint(1,6)
+        return 5, random.randint(1,6), -1, sc
     elif roll <= 49:
-        return 5, random.randint(1,8) if st==1 else random.randint(1,6)
+        return 5, random.randint(1,8) if st==1 else random.randint(1,6), -1, sc
     elif roll <= 52:
-        return 6, random.randint(1,6)
+        return 6, random.randint(1,6), -1, sc
     elif roll <= 54:
-        return 6, random.randint(3,8) if st==1 else random.randint(3,6)
+        return 6, random.randint(3,8) if st==1 else random.randint(3,6), -1, sc
     elif roll <= 57:
-        return 7, random.randint(1,8)
+        return 7, random.randint(1,8), -1, sc
     elif roll <= 59:
-        return 7, random.randint(2,9)
+        return 7, random.randint(2,9), -1, sc
     elif roll <= 60:
-        return 7, random.randint(4,0) if st==1 else random.randint(4,7)
+        return 7, random.randint(4,0) if st==1 else random.randint(4,7), -1, sc
     elif roll <= 62:        
-        return 'Protection - Demons', 2500
+        return 1, 'Protection - Demons', 2500, sc
     elif roll <= 64:        
-        return 'Protection - Devils', 2500
+        return 1, 'Protection - Devils', 2500, sc
     elif roll <= 70:        
-        return 'Protection - Elementals', 1500
+        return 1, 'Protection - Elementals', 1500, sc
     elif roll <= 76:        
-        return 'Protection - Lycanthropes', 1000
+        return 1, 'Protection - Lycanthropes', 1000, sc
     elif roll <= 82:        
-        return 'Protection - Magic', 2500
+        return 1, 'Protection - Magic', 2500, sc
     elif roll <= 87:        
-        return 'Protection - Petrification', 2000
+        return 1, 'Protection - Petrification', 2000, sc
     elif roll <= 92:        
-        return 'Protection - Possession', 2000
+        return 1, 'Protection - Possession', 2000, sc
     elif roll <= 97:        
-        return 'Protection - Undead', 1500
-    elif roll <= 00:        
-        return 'Curse', 0
+        return 1, 'Protection - Undead', 1500, sc
+    elif roll <= 100:        
+        return 1, 'Curse', 0, sc
 
 
 # Example usage
@@ -265,3 +265,6 @@ if __name__ == "__main__":
 
     exp_val, gold_val, potion_name = random_potion()
     print(f"Experience Value: {exp_val}, Gold Piece Sale Value: {gold_val}, Potion: {potion_name}")
+
+    no, range, xp, class_use = scroll_choice()
+    print(no, range, xp, class_use)
