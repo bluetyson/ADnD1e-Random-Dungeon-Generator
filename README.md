@@ -30,10 +30,16 @@ Building things as I go - just using a one roll test for now to see how it goes.
 7 : {'class': 'woman-at-arms/henchwoman'}
 8 : {'class': 'woman-at-arms/henchwoman'}
 9 : {'class': 'man-at-arms/henchman'}
+ ```
+- Dragons
+```python
+monster:{'level': 10, 'type': 'Dragon-Copper:2', 'No': '2-2', 'XP': 0}
+treasure:{'type': {'copper': 23100, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}, 'gems_list': [], 'jewellery_list': [], 'magic_list': [], 'magic_xp': [], 'magic_values': [], 'store': 'Bloody Great Chests', 'protection': 'guard', 'guard': 'Blade: across inside'}
 ```
-    - No details for henchpeople
-
-- Dragon subtable not done yet
+- Adventuring parties at lower levels with henchpeople
+monster:{'level': 9, 'type': {1: {'class': 'CLERIC', 'level': 9, 'race': 'Human', 'multi': 'N', 'magic_items': [['1 JAVELIN +2'], ['1 MACE +1'], ['1 SCROLL: protection from magic'], ['1 SWORD: +3 (no special abilities)'], ['1 FIGURINE OF WONDROUS POWER: serpentine owl']]}, 2: {'class': 'BARD', 'level': 9, 'race': 'Elf', 'multi': 'Y', 'multi_no': 3, 'magic_items': [['1 SCROLL: protection from magic'], ['2 POTIONS: super-heroism, animal control'], ['2 POTIONS: extra-healing, polymorph (self)'], ['1 SCROLL: 3 Spells, level 2-9 or 2-7'], ['1 bracers of defense, armor class 4']]}, 3: {'class': 'CLERIC', 'level': 9, 'race': 'Human', 'multi': 'N', 'magic_items': [['1 MACE +1'], ['1 RING: protection +1'], ['4 BOLTS: +2'], ['1 WAND: illusion'], ['1 RING: protection +3']]}, 4: {'class': 'FIGHTER', 'level': 9, 'race': 'Human', 'multi': 'N', 'magic_items': [['1 SWORD: +4, defender']]}, 5: {'class': 'MAGIC-USER', 'level': 9, 'race': 'Human', 'multi': 'N', 'magic_items': [['1 JAVELIN +2'], ['1 RING: protection +1'], ['10 ARROWS: +1'], ['2 WEAPONS: crossbow of speed, hammer +2'], ['1 bracers of defense, armor class 4'], ['1 pipe of the sewers']]}, 6: {'class': 'CLERIC', 'level': 3, 'race': 'Human', 'multi': 'N', 'magic_items': [['3 javelins of lightning']]}, 7: {'class': 'FIGHTER', 'level': 3, 'race': 'Human', 'multi': 'N', 'magic_items': []}, 8: {'class': 'MAGIC-USER', 'level': 3, 'race': 'Human', 'multi': 'N', 'magic_items': []}, 9: {'class': 'FIGHTER', 'level': 3, 'race': 'Human', 'multi': 'N', 'magic_items': [['1 SCROLL: 1 Spell, level 1-6'], ['2 POTIONS: human control, levitation']]}}, 'No': 9, 'XP': 0}
+treasure:{'type': {'copper': 25300, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}, 'gems_list': [], 'jewellery_list': [], 'magic_list': [], 'magic_xp': [], 'magic_values': [], 'store': 'Sacks', 'protection': 'hide', 'hide': 'Secret: Disguised as other'}
+```
 - No retracing steps logic as yet for dead ends to block etc.
 - See issues for things to do [lots of minor things]
 
