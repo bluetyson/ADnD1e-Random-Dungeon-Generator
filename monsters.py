@@ -514,7 +514,7 @@ def monster_tables(level):
         mdict['details'] = create_party(level)
 
     #dragont test
-    mdict['name'] == 'Dragon-DragonSubtable'
+    #mdict['name'] == 'Dragon-DragonSubtable'
     if mdict['name'] == 'Dragon-DragonSubtable':
         mdict['details'] = 'NOT IMPLEMENTED YET'
 
