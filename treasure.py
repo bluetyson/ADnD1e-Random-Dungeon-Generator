@@ -112,5 +112,5 @@ if __name__ == "__main__":
     new_base_value = update_gemstone(base_value)
     print(f"The upgrade value of the gemstone is {new_base_value} gold pieces.")
 
-    base_value, description = select_jewelry()
+    base_value, description = select_jewellery()
     print(f"The selected jewelry has a base value of {base_value} gold pieces and is described as {description}")
