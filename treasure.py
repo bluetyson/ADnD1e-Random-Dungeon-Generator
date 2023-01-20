@@ -1214,15 +1214,15 @@ def treasure_choice(treasure_type, no):
         r = roll_dice(1,100)            
         if r <= 70:
             magic_list = []
-            magic_list.append ["Ring","Wand","Sword","Weapon","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"]
+            magic_list.append(["Ring","Wand","Sword","Weapon","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"])
             treasure['magic'] = magic_list
         return (0, 0, 0, 0, 0, random.randint(10, 80) * 90, random.randint(5, 30) * 80, None)
 
     elif treasure_type == "V":
         if r <= 70:
             magic_list = []
-            magic_list.append ["Ring","Wand","Sword","Weapon","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"]
-            magic_list.append ["Ring","Wand","Sword","Weapon","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"]
+            magic_list.append(["Ring","Wand","Sword","Weapon","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"])
+            magic_list.append(["Ring","Wand","Sword","Weapon","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"])
             treasure['magic'] = magic_list
 
     elif treasure_type == "W":
