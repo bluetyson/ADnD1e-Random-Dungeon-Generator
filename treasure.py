@@ -931,11 +931,11 @@ def misc_5_choice():
     elif roll == 69:
         return ("Tome of Understanding", 8000, 43500)
     elif roll <= 76:
-        return ("Trident of Fish Command (C, F, T)", 500, 4000)
+        return ("Trident of Fish Command (C F T)", 500, 4000)
     elif roll <= 78:
         return ("Trident of Submission (F)", 1250, 12500)
     elif roll <= 83:
-        return ("Trident of Warning (C, F, T)", 1000, 10000)
+        return ("Trident of Warning (C F T)", 1000, 10000)
     elif roll <= 85:
         return ("Trident of Yearning", 0, 1000)
     elif roll <= 87:
