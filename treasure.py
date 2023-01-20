@@ -522,7 +522,7 @@ def weapon_choice():
     else:
         return ("Trident (Military Fork) +3", 1_500, 12_500)
 
-def miscellaneous_1():
+def misc_1_choice():
     roll = roll_dice(1, 100)
     if roll <= 2:
         return ("Alchemy Jug", 3000, 12000)
@@ -615,6 +615,7 @@ def select_magic_item():
         choice = wand_choice()
     elif roll <= 48:
         item = "Miscellaneous Magic (E.1.)"
+        choice = misc_1_choice()
     elif roll <= 51:
         item = "Miscellaneous Magic (E.2.)"
     elif roll <= 54:
@@ -677,6 +678,9 @@ if __name__ == "__main__":
 
     no, xp, val = weapon_choice()
     print(f"Weapon:{no}, XP:{xp}, Gold:{val}")
+
+    no, xp, val = misc_1_choice()
+    print(f"Misc 1:{no}, XP:{xp}, Gold:{val}")
 
     item, choice = select_magic_item()
     print(f"Magic:{item}, Choice:{choice}")
