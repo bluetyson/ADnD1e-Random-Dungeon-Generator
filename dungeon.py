@@ -1884,7 +1884,7 @@ def loot(shape_dict,coord,monster="N"):
 
         elif l >= 95 and l <= 97:
             shape_dict['contents']['treasure']['type']['jewellery'] = shape_dict['contents']['treasure']['type']['jewellery'] + int(abs(coord[2])* multi ) 
-            if 1 == 2:
+            if 1 == 1:
 
                 jewellery_list = []
                 for g in range(shape_dict['contents']['treasure']['type']['jewellery']):
