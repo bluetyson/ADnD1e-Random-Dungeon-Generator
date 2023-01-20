@@ -561,7 +561,7 @@ def monster_tables(level):
 
             dcheck = dragon_levels[level][m]
             mdict['details'] = dcheck
-            mdict['name'] = dcheck['name']
+            mdict['name'] = 'Dragon-' + dcheck['name']
             mdict['no'] = dcheck['roll']
         
 
