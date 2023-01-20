@@ -884,6 +884,35 @@ def misc_5_choice():
     else:
         return ("Wings of Flying", 750, 7500)        
 
+def treasure_choice(treasure_type):
+    def random_treasure(treasure_type):
+        if treasure_type == "A":
+            return (random.randint(1, 6) * 250, random.randint(1, 6) * 300, random.randint(1, 6) * 350, random.randint(1, 10) * 400, random.randint(1, 4) * 500, random.randint(4, 40) * 10, random.randint(3, 30) * 10, random.choice(["Sword", "Armor", "Misc. Weapon"]))
+        elif treasure_type == "B":
+            return (random.randint(1, 8) * 100, random.randint(1, 6) * 250, random.randint(1, 4) * 250, random.randint(1, 3) * 250, 0, random.randint(1, 8) * 10, random.randint(1, 4) * 20, random.choice(["Sword", "Armor", "Misc. Weapon"]))
+        elif treasure_type == "C":
+            return (random.randint(1, 12) * 20, random.randint(1, 6) * 30, random.randint(1, 4) * 10, 0, 0, random.randint(1, 6) * 25, random.randint(1, 3) * 20, random.choice(["Sword", "Armor", "Misc. Weapon"]))
+        elif treasure_type == "D":
+            return (random.randint(1, 8) * 10, random.randint(1, 12) * 15, random.randint(1, 8) * 15, random.randint(1, 6) * 50, 0, random.randint(1, 10) * 30, random.randint(1, 6) * 25, random.choice(["Sword", "Armor", "Misc. Weapon"]))
+        elif treasure_type == "E":
+            return (random.randint(1, 10) * 5, random.randint(1, 12) * 25, random.randint(1, 6) * 25, random.randint(1, 8) * 25, 0, random.randint(1, 12) * 15, random.randint(1, 8) * 10, random.choice(["Sword", "Armor", "Misc. Weapon"]))
+        elif treasure_type == "F":
+            return (0, random.randint(1, 20) * 10, random.randint(1, 12) * 15, random.randint(1, 10) * 40, random.randint(1, 8) * 35, random.randint(3, 30) * 10, random.randint(1, 10) * 10, random.choice(["Sword", "Armor", "Misc. Weapon"]))
+        elif treasure_type == "G":
+            return (0, 0, 0, random.randint(10, 40) * 50, random.randint(1, 20) * 50, random.randint(5, 20) * 30, random.randint(1, 10) * 25, random.choice(["Sword", "Armor", "
+        elif treasure_type == "G":
+            return (0, 0, 0, random.randint(10, 40) * 400, random.randint(1, 20) * 500, random.randint(5, 20) * 10, random.randint(1, 10) * 25, random.choices(["Sword", "Armor", "Misc. Weapon", "Potion", "Scroll", "Map", "Ring", "Amulet", "Wand", "Staff", "Rod"], k=4) + ["Scroll"])
+        elif treasure_type == "H":
+            return (random.randint(5, 30) * 25, random.randint(1, 100) * 40, random.randint(10, 40) * 40, random.randint(10, 60) * 55, random.randint(5, 25) * 25, random.randint(1, 100) * 50, random.randint(10, 40) * 50, random.choices(["Sword", "Armor", "Misc. Weapon", "Potion", "Scroll", "Map", "Ring", "Amulet", "Wand", "Staff", "Rod"], k=4) + ["Potion", "Scroll"])
+        elif treasure_type == "I":
+            return (0, 0, 0, 0, random.randint(3, 18) * 30, random.randint(20, 40) * 55, random.randint(12, 30) * 50, random.choice(["Sword", "Armor", "Misc. Weapon", "Potion", "Scroll", "Map", "Ring", "Amulet", "Wand", "Staff", "Rod"]))
+        elif treasure_type == "J":
+            return (random.randint(3, 24) * 8, 0, 0, 0, 0, 0, 0, 0)
+        elif treasure_type == "K":
+            return (0, random.randint(3, 18) * 6, 0, 0, 0, 0, 0, 0)
+        elif treasure_type == "L":
+            return (0, 0, random.randint(2, 12) * 6, 0, 0, 0, 0, 0)        
+
 # Example usage
 def select_magic_item():
     roll = roll_dice(1, 100)
