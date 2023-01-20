@@ -1850,6 +1850,8 @@ def loot(shape_dict,coord,monster="N"):
     shape_dict['contents']['treasure']['type']['gems'] = 0
     shape_dict['contents']['treasure']['type']['jewellery'] = 0
     shape_dict['contents']['treasure']['type']['magic'] = 0
+    shape_dict['contents']['treasure']['gems_list'] = []
+    shape_dict['contents']['treasure']['jewellery_list'] = []
 
     if monster == 'N':
         multi = 1
