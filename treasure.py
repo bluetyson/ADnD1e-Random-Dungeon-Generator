@@ -921,7 +921,7 @@ def treasure_choice(treasure_type, no):
         r = roll_dice(1,100)            
         if r <= 30:
             magic_list = []
-            for chad in range(3):
+            for c in range(3):
                 magic_list.append(random.choice(["Sword", "Armor", "Misc. Weapon"]))
             treasure['magic'] = magic_list
 
