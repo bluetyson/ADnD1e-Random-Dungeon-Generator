@@ -1343,14 +1343,14 @@ if __name__ == "__main__":
     potion_name, xp, val,  = potion_choice()
     print(f"Potion: {potion_name}, XP: {xp}, Gold: {val}")
 
-    no, range, xp, class_use = scroll_choice()
+    no, rnge, xp, class_use = scroll_choice()
     if xp == -1:
-        xp = 100 * no * range
+        xp = 100 * no * rnge
         val = 3 * xp
     else:
         val = 3 * xp
 
-    print(f"Scroll Spells:{no}, Level:{range}, XP:{xp}, Gold:{val}, Class:{class_use}")
+    print(f"Scroll Spells:{no}, Level:{rnge}, XP:{xp}, Gold:{val}, Class:{class_use}")
 
     no, xp, val = ring_choice()
     print(f"Rings:{no}, XP:{xp}, Gold:{val}")
