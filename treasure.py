@@ -70,20 +70,27 @@ def select_jewellery():
         base_value = (roll_dice(1, 6) + roll_dice(1, 6)) * 1000
         description = "Platinum with gems"
     # Check for exceptional value
-    if roll_dice(1, 10) == 1:
+    w = roll_dice(1,10)
+    v = roll_dice(1,10)
+    if w == 1:
         base_value = min(base_value * 2, 120000)
         description = "Exceptional Workmanship " + description
-    if roll_dice(1, 10) == 1:
+    if v == 1:
         base_value = min(base_value * 2, 120000)
         description = "Exceptional Design " + description
     # Check for exceptional gems
     if "gems" in description:
-        if roll_dice(1, 8) == 1:
+        e = roll_dice(1,8)
+        if e == 1:
             gem_bonus = 5000
-            while roll_dice(1, 6) == 1:
-                gem_bonus *= 2
-                gem_bonus = min(gem_bonus, 640000)
-            base_value += gem_bonus
+            ec = roll_dice(1,6)
+            while ec == 1:
+                if ec == 1:
+                    gem_bonus *= 2
+                    gem_bonus = min(gem_bonus, 640000)
+                base_value += gem_bonus
+                ec = roll_dice(1,6)
+
     return base_value, description
 
 
@@ -95,11 +102,11 @@ if __name__ == "__main__":
     else:
         character_level = 1
 
-base_value, description = select_gemstone()
-print(f"The selected gemstone has a base value of {base_value} gold pieces and is described as {description}")
+    base_value, description = select_gemstone()
+    print(f"The selected gemstone has a base value of {base_value} gold pieces and is described as {description}")
 
-new_base_value = update_gemstone(base_value)
-print(f"The upgrade value of the gemstone is {new_base_value} gold pieces.")
+    new_base_value = update_gemstone(base_value)
+    print(f"The upgrade value of the gemstone is {new_base_value} gold pieces.")
 
-base_value, description = select_jewelry()
-print(f"The selected jewelry has a base value of {base_value} gold pieces and is described as {description}")
+    base_value, description = select_jewelry()
+    print(f"The selected jewelry has a base value of {base_value} gold pieces and is described as {description}")
