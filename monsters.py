@@ -519,7 +519,7 @@ def monster_tables(level):
         if 1 == 1:
 
             for ld in range(10):
-                if ld < 3:
+                if ld < 2:
                     continue
                 #print("dragon_levels:",ld)
                 uselevel = dragon_levels[ld+1]['data'].split("\n")
