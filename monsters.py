@@ -525,7 +525,7 @@ def monster_tables(level):
 
     if 1 == 1:
         with open('dragons.json','w') as f:
-            json.dumpdragon_(levels, f)
+            json.dump(dragon_levels, f)
         return mdict
 
 if __name__ == "__main__":
