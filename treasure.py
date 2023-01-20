@@ -597,7 +597,7 @@ if __name__ == "__main__":
     print(f"Sword:{no}, XP:{xp}, Gold:{val}")
 
     no, xp, val = weapon_choice()
-    print(f"Wea[pm]:{no}, XP:{xp}, Gold:{val}")
+    print(f"Weapon:{no}, XP:{xp}, Gold:{val}")
 
     item, choice = select_magic_item()
     print(f"Magic:{item}, Choice:{choice}")
