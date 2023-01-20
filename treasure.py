@@ -166,6 +166,7 @@ def potion_choice():
         g = roll_dice(1,6)
         return ('Giant Control', 300 +g*100, g*1000)
     elif roll <= 39:
+        g = roll_dice(1,6)
         return ('Giant Strength', 450 +g*50, 800+g*100)
     elif roll <= 41:
         return ('Growth', 250, 300)
