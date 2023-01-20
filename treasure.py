@@ -447,6 +447,81 @@ def sword_choice():
     else:
         return ('Sword, Cursed Berserking', 900, 0)        
 
+def weapon_choice():
+    roll = roll_dice(1,100)
+    if roll <= 8:
+        return ("Arrow +1", 20, 120, random.randint(2,24))
+    elif roll <= 12:
+        return ("Arrow +2", 50, 300, random.randint(2,16))
+    elif roll == 13:
+        return ("Arrow +3", 75, 450, random.randint(2,12))
+    elif roll == 14:
+        return ("Arrow of Slaying", 250, 2500)
+    elif roll <= 20:
+        return ("Axe +1", 300, 1750)
+    elif roll <= 22:
+        return ("Axe +2", 600, 3750)
+    elif roll == 23:
+        return ("Axe +2, Throwing", 750, 4500)
+    elif roll == 24:
+        return ("Axe +3", 1000, 7000)
+    elif roll <= 27:
+        return ("Battle Axe +1", 400, 2500)
+    elif roll <= 32:
+        return ("Bolt +2", 50, 300, random.randint(2,20))
+    elif roll == 33:
+        return ("Bow +1", 500, 3500)
+    elif roll == 34:
+        return ("Crossbow of Accuracy, +3", 2000, 12000)
+    elif roll == 35:
+        return ("Crossbow of Distance", 1500, 7500)
+    elif roll == 36:
+        return ("Crossbow of Speed", 1500, 7500)
+    elif roll <= 46:
+        return ("Dagger +1", 100, 750)
+    elif roll <= 50:
+        return ("Dagger +2", 250, 2000)
+    elif roll == 51:
+        return ("Dagger of Venom", 350, 3000)
+    elif roll <= 56:
+        return ("Flail +1", 450, 4000)
+    elif roll <= 60:
+        return ("Hammer +2", 300, 2500)
+    elif roll <= 62:
+        return ("Hammer +2", 650, 6000)
+    elif roll == 63:
+        return ("Hammer +3, Dwarven Thrower", 1500, 15000)
+    elif roll == 64:
+        return ("Hammer of Thunderbolts", 2500, 25000)
+    elif roll <= 67:
+        return ("Javelin +2", 750, 5000)
+    elif roll <= 72:
+        return ("Mace +1", 350, 3000)
+    elif roll <= 75:
+        return ("Mace +2", 700, 4500)
+    elif roll == 76:
+        return ("Mace of Disruption", 1750, 17500)
+    elif roll == 77:
+        return ("Mace +4", 1500, 15000)
+    elif roll <= 80:
+        return ("Military Pick +1", 350, 2500)
+    elif roll <= 83:
+        return ("Morning Star +1", 400, 3_000)
+    elif roll <= 88:
+        return ("Scimitar +2", 750, 6_000)
+    elif roll == 89:
+        return ("Sling of Seeking +2", 700, 7_000)
+    elif roll <= 94:
+        return ("Spear +1", 500, 3_000)
+    elif roll <= 96:
+        return ("Spear +2", 1_000, 6_500)
+    elif roll == 97:
+        return ("Spear +3", 1_750, 15_000)
+    elif roll <= 99:
+        return ("Spear, Cursed Backbiter", 0, 1_000)
+    else:
+        return ("Trident (Military Fork) +3", 1_500, 12_500)
+
 # Example usage
 def select_magic_item():
     roll = roll_dice(1, 100)
@@ -515,11 +590,14 @@ if __name__ == "__main__":
     no, xp, val = wand_choice()
     print(f"Wands:{no}, XP:{xp}, Gold:{val}")
 
+    no, xp, val = armour_choice()
+    print(f"Armour:{no}, XP:{xp}, Gold:{val}")
+
     no, xp, val = sword_choice()
     print(f"Sword:{no}, XP:{xp}, Gold:{val}")
 
-    no, xp, val = armour_choice()
-    print(f"Armour:{no}, XP:{xp}, Gold:{val}")
+    no, xp, val = weapon_choice()
+    print(f"Wea[pm]:{no}, XP:{xp}, Gold:{val}")
 
     item, choice = select_magic_item()
     print(f"Magic:{item}, Choice:{choice}")
