@@ -136,17 +136,79 @@ def potion_choice():
     potion = random.choice(potion_table)
     return potion
 
-def random_potion2():
-    roll = random.randint(1, 100)
+def potion_choice():
+    roll = roll_dice(1,100)
     if roll <= 3:
-        return (250, 400, "Animal Control")
+        return ("Animal Control*", 250, 400)
     elif roll <= 6:
-        return (250, 400, "Clairaudience")
+        return ("Clairaudience", 250, 400)
     elif roll <= 9:
-        return (300, 500, "Clairvoyance")
-    # continue adding elif statements for the rest of the items in the table
-    else:
-        return (0, 0, "Invalid Roll")
+        return ("Clairvoyance", 300, 500)
+    elif roll <= 12:
+        return ("Climbing", 300, 500)
+    elif roll <= 15:
+        return ("Delusion**", 0, 150)
+    elif roll <= 18:
+        return ("Diminution", 300, 500)
+    elif roll <= 20:
+        return ("Dragon Control*", 5000, 9000) #random this
+    elif roll <= 23:
+        return ("ESP", 500, 850)
+    elif roll <= 26:
+        return ("Extra-Healing", 400, 800)
+    elif roll <= 29:
+        return ("Fire Resistance", 250, 400)    
+    elif roll <= 32:
+        return ('Flying', 500, 750)
+    elif roll <= 34:
+        return ('Gaseous Form', 300, 400)
+    elif roll <= 36:
+        g = roll_dice(1,6)
+        return ('Giant Control', 300 +g*100, g*1000)
+    elif roll <= 39:
+        return ('Giant Strength', 450 +g*50, 800+g*100)
+    elif roll <= 41:
+        return ('Growth', 250, 300)
+    elif roll <= 47:
+        return ('Healing', 200, 400)
+    elif roll <= 49:
+        return ('Heroism', 300, 500)
+    elif roll <= 51:
+        return ('Human Control', 500, 900)
+    elif roll <= 54:
+        return ('Invisibility', 250, 500)
+    elif roll <= 57:
+        return ('Invulnerability', 350, 500)
+    elif roll <= 60:
+        return ('Levitation', 250, 400)
+    elif roll <= 63:
+        return ('Longevity', 500, 1000)
+    elif roll <= 66:
+        return ('Oil of Etherealness', 600, 1500)
+    elif roll <= 69:
+        return ('Oil of Slipperiness', 400, 750)
+    elif roll <= 72:
+        return ('Philter of Love', 200, 300)
+    elif roll <= 75:
+        return ('Philter of Persuasiveness', 400, 850)
+    elif roll <= 78:
+        return ('Plant Control', 250, 300)
+    elif roll <= 81:
+        return ('Polymorph (self)', 200, 350)
+    elif roll <= 84:
+        return ('Poison', 0, 0)
+    elif roll <= 87:
+        return ('Speed', 200, 450)
+    elif roll <= 90:
+        return ('Super-Heroism', 450, 750)
+    elif roll <= 93:
+        return ('Sweet Water', 200, 250)
+    elif roll <= 96:
+        return ('Treasure Finding', 600, 2000)
+    elif roll <= 97:
+        return ('Undead Control*', 700, 2500)
+    else: #Water Breathing
+        return ('Water Breathing', 400, 900)
 
 def scroll_choice():
     s = roll_dice(1,100)
