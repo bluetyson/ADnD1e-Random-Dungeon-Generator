@@ -1535,7 +1535,7 @@ def misc_3_choice_test(roll):
     elif roll <= 92:
         return ("Jewel of Flawlessness", 0, "1000")
     else:
-        return ("Keoghtom’s Ointment", 500, 10000)        
+        return ("Keoghtoms Ointment", 500, 10000)        
 
 
 if __name__ == "__main__":
