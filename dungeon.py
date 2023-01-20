@@ -1895,8 +1895,8 @@ def loot(shape_dict,coord,monster="N"):
             shape_dict['contents']['treasure']['type']['magic']  += 1
             magic_list = []
             for g in range(shape_dict['contents']['treasure']['type']['magic']):
-                magic_item = select_magic_item()
-                magic_list.append(magic_item)
+                item, choice = select_magic_item()
+                magic_list.append([item, choice])
             shape_dict['contents']['treasure']['magic_list'] = magic_list
             shape_dict['contents']['treasure']['magic_values'] = [] #NOT IMPLEMENTED YET
 
