@@ -269,7 +269,7 @@ def create_party(level):
         s = roll_dice(1,2)
         if s == 1:
             if level <= 3:
-                party_members[c+1+h+1]['class'] = 'man-at-arms/henchman'
+                party_members[c+1+h+1]['class'] = 'man-at-arms'
             else:
                 party_members[c+1+h+1]['class'] = 'henchman' #need to roll as per character details
                 hench_level = round(level/3,0)
