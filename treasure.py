@@ -1384,5 +1384,5 @@ if __name__ == "__main__":
     alphabet_capitalised = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
     for a in alphabet_capitalised:
-        choice = treasure_choice(a)
+        choice = treasure_choice(a, roll_dice(1,6))  #random no appearing
         print(f"Treasure:{a}, Choice:{choice}, Length:{len(choice)}")
