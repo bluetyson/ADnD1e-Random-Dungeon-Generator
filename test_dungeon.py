@@ -1328,6 +1328,8 @@ def room_contents(shape_dict, coord, content):
         print("CHECKM_DICT FOR MONSTER CHARACTERS:",shape_dict['contents']['monster']['type'])
         shape_dict['contents']['monster']['type']  = m_dict['name']
         shape_dict['contents']['monster']['No'] = m_dict['no']
+
+        quit()
         
     elif r >15 and r <=17:
         shape_dict['contents']['monster'] = {}
