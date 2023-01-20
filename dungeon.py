@@ -11,7 +11,7 @@ import pickle
 import math
 
 from monsters import monster_tables
-from treasure import select_gemstone, update_gemstone, select_jewellery
+from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item
 
 PI = math.pi
 ARGV = sys.argv
@@ -1852,6 +1852,7 @@ def loot(shape_dict,coord,monster="N"):
     shape_dict['contents']['treasure']['type']['magic'] = 0
     shape_dict['contents']['treasure']['gems_list'] = []
     shape_dict['contents']['treasure']['jewellery_list'] = []
+    shape_dict['contents']['treasure']['magic_list'] = []
 
     if monster == 'N':
         multi = 1
@@ -1874,25 +1875,30 @@ def loot(shape_dict,coord,monster="N"):
         elif l >= 91 and l <= 94:
             shape_dict['contents']['treasure']['type']['gems'] = shape_dict['contents']['treasure']['type']['gems'] + int(abs(coord[2]) * roll_dice(1,4)* multi ) 
 
-            if 1 == 1:
-                gems_list = []
-                for g in range(shape_dict['contents']['treasure']['type']['gems']):
-                    base_value, description = select_gemstone()
-                    new_base_value = update_gemstone(base_value)
-                    gems_list.append(new_base_value)
-                shape_dict['contents']['treasure']['gems_values'] = gems_list
+            gems_list = []
+            for g in range(shape_dict['contents']['treasure']['type']['gems']):
+                base_value, description = select_gemstone()
+                new_base_value = update_gemstone(base_value)
+                gems_list.append(new_base_value)
+            shape_dict['contents']['treasure']['gems_values'] = gems_list
 
         elif l >= 95 and l <= 97:
             shape_dict['contents']['treasure']['type']['jewellery'] = shape_dict['contents']['treasure']['type']['jewellery'] + int(abs(coord[2])* multi ) 
-            if 1 == 1:
 
-                jewellery_list = []
-                for g in range(shape_dict['contents']['treasure']['type']['jewellery']):
-                    base_value, description = select_jewellery()
-                    jewellery_list.append(base_value)
-                shape_dict['contents']['treasure']['jewellery_values'] = jewellery_list
+            jewellery_list = []
+            for g in range(shape_dict['contents']['treasure']['type']['jewellery']):
+                base_value, description = select_jewellery()
+                jewellery_list.append(base_value)
+            shape_dict['contents']['treasure']['jewellery_values'] = jewellery_list
         else:
             shape_dict['contents']['treasure']['type']['magic']  += 1
+            magic_list = []
+            for g in range(shape_dict['contents']['treasure']['type']['magic']):
+                magic_item = select_magic_item()
+                magic_list.append(magic_item)
+            shape_dict['contents']['treasure']['magic_list'] = magic_list
+            shape_dict['contents']['treasure']['magic_values'] = "NOT IMPLEMENTED YET"
+
 
         return shape_dict
 
