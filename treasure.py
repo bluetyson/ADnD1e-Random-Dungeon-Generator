@@ -1358,7 +1358,7 @@ def select_magic_item():
         item = "Scrolls (B.)"
 
         no, rnge, xp, class_use = scroll_choice()
-        details = no + '-' + rnge + '-' + class_use
+        details = str(no) + '-' + str(rnge) + '-' + class_use
         if xp == -1:
             xp = 100 * no * rnge
             val = 3 * xp
