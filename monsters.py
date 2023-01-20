@@ -1,5 +1,6 @@
 import random
 import sys
+import json
 
 def multi_roll(rolls, sides):
     total = 0
@@ -514,6 +515,8 @@ def monster_tables(level):
 
     print("MDICT:",mdict)
 
+    with open('levels.json','w') as f:
+        json.dump(levels, f)
     return mdict
 
 if __name__ == "__main__":
