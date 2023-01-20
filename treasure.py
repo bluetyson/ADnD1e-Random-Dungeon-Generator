@@ -335,4 +335,4 @@ if __name__ == "__main__":
     print(f"Rings:{no}, XP:{xp}, Gold:{val}")
 
     item, choice = select_magic_item()
-    print(f"Magic:{item}, Choice:{choice})
+    print(f"Magic:{item}, Choice:{choice}")
