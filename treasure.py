@@ -328,4 +328,4 @@ if __name__ == "__main__":
     print(f"Spells:{no}, Level:{range}, XP:{xp}, Class:{class_use}")
 
     no, xp, val = ring_choice()
-    print(f"Rings:{no}, XP:{x[]}, Gold:{val}")
+    print(f"Rings:{no}, XP:{xp}, Gold:{val}")
