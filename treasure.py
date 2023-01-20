@@ -1281,6 +1281,8 @@ def treasure_choice(treasure_type, no):
                 magic_list.append(random.choice(["Any"]))
             treasure['magic'] = magic_list
 
+    return treasure
+
 # Example usage
 def select_magic_item():
     roll = roll_dice(1, 100)
