@@ -766,9 +766,52 @@ def misc_4_choice():
         return ("Medallion of ESP", 1000, 10000)
     elif roll <= 17:
         return ("Medallion of Thought Projection", 0, 1000)
+    if roll <= 18:
+        return ("Mirror of Life Trapping", 2500, 25000)
+    elif roll <= 19:
+        return ("Mirror of Mental Prowess", 5000, 50000)
+    elif roll == 20:
+        return ("Mirror of Opposition", 0, 2000)
+    elif roll <= 23:
+        return ("Necklace of Adaptation", 1000, 10000)
+    elif roll <= 27:
+        return ("Necklace of Missiles", 50, 200)
+    elif roll <= 33:
+        return ("Necklace of Prayer Beads", 500, 3000)
+    elif roll <= 35:
+        return ("Necklace of Strangulation", 0, 1000)
+    elif roll <= 38:
+        return ("Net of Entrapment", 1000, 7500)
+    elif roll <= 42:
+        return ("Net of Snaring", 1000, 6000)
+    elif roll <= 44:
+        return ("Nolzurs’ Marvelous Pigments", 500, 3000)
+    elif roll <= 46:
+        return ("Pearl of Power", 200, 2000)
+    elif roll <= 48:
+        return ("Pearl of Wisdom", 500, 5000)
+    elif roll <= 50:
+        return ("Periapt of Foul Rotting", 0, 1000)
+    elif roll <= 53:
+        return ("Periapt of Health", 1000, 10000)
+    elif roll <= 60:
+        return ("Periapt of Proof Against Poison", 1500, 12500)
+    elif roll <= 64:
+        return ("Periapt of Wound Closure", 1000, 10000)
+    elif roll <= 70:
+        return ("Phylactery of Faithfulness", 1000, 7500)
+    elif roll <= 74:
+        return ("Phylactery of Long Years", 3000, 25000)
+    elif roll <= 76:
+        return ("Phylactery of Monstrous Attention", 0, 2000)
+    elif roll <= 84:
+        return ("Pipes of the Sewers", 1750, 8500)
+    elif roll == 85:
+        return ("Portable Hole", 5000, 50000)
+    elif roll <= 90:
+        return ("Quaal’s Feather Token", 500, 2000)
     else:
-        return ("Medallion of Thought Projection", 0, 1000)  #TBC
-
+        return ("Quaal’s Feather Token", 1000, 7000)
 
 # Example usage
 def select_magic_item():
