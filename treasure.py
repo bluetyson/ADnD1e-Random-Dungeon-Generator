@@ -335,6 +335,62 @@ def wand_choice():
     else:
         return "Wand of Wonder", 6000, 10000
 
+def armour_choice():
+    dice_roll = roll_dice(1, 100)
+    if dice_roll <= 5:
+        return ('Chain Mail +1', 600, 3500)
+    elif dice_roll <= 9:
+        return ('Chain Mail +2', 1200, 7500)
+    elif dice_roll <= 11:
+        return ('Chain Mail +3', 2000, 12500)
+    elif dice_roll <= 19:
+        return ('Leather Armor +1', 300, 2000)
+    elif dice_roll <= 26:
+        return ('Plate Mail +1', 800, 5000)
+    elif dice_roll <= 32:
+        return ('Plate Mail +2', 1750, 10500)
+    elif dice_roll <= 35:
+        return ('Plate Mail +3', 2750, 15500)
+    elif dice_roll <= 37:
+        return ('Plate Mail +4', 3500, 20500)
+    elif dice_roll == 38:
+        return ('Plate Mail +5', 4500, 27500)
+    elif dice_roll == 39:
+        return ('Plate Mail of Etherealness', 5000, 30000)
+    elif dice_roll <= 44:
+        return ('Plate Mail of Vulnerability', 0, 1500)
+    elif dice_roll <= 50:
+        return ('Ring Mail +1', 400, 2500)
+    elif dice_roll <= 55:
+        return ('Scale Mail +1', 500, 3000)
+    elif dice_roll <= 59:
+        return ('Scale Mail +2', 1100, 6750)
+    elif dice_roll <= 63:
+        return ('Splint Mail +1', 700, 4000)
+    elif dice_roll <= 66:
+        return ('Splint Mail +2', 1500, 8500)
+    elif dice_roll <= 68:
+        return ('Splint Mail +3', 2250, 14500)
+    elif dice_roll == 69:
+        return ('Splint Mail +4', 3000, 19000)
+    elif dice_roll <= 75:
+        return ('Studded Leather +1', 400, 2500)
+    elif dice_roll <= 84:
+        return ('Shield +1', 250, 2500)
+    elif dice_roll <= 89:
+        return ('Shield +2', 500, 5000)
+    elif dice_roll <= 93:
+        return ('Shield +3', 800, 8000)
+    elif dice_roll <= 95:
+        return ('Shield +4', 1200, 12000)   
+    elif dice_roll <= 96:
+        return ('Shield +5', 1200, 17500)   
+    elif dice_roll <= 97:
+        return ('Shield large +1 +4 vs missiles', 400, 4000)
+    else:
+        return ('Shield -1 Missile attractor', 0, 750)
+
+
 # Example usage
 def select_magic_item():
     roll = roll_dice(1, 100)
@@ -363,6 +419,7 @@ def select_magic_item():
         item = "Miscellaneous Magic (E.5.)"
     elif roll <= 75:
         item = "Armor & Shields (F.)"
+        choice = armour_choice()
     elif roll <= 86:
         item = "Swords (G.)"
     else:
@@ -400,6 +457,9 @@ if __name__ == "__main__":
 
     no, xp, val = wand_choice()
     print(f"Wands:{no}, XP:{xp}, Gold:{val}")
+
+    no, xp, val = armour_choice()
+    print(f"Armour:{no}, XP:{xp}, Gold:{val}")
 
     item, choice = select_magic_item()
     print(f"Magic:{item}, Choice:{choice}")
