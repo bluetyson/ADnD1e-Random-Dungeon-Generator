@@ -3700,9 +3700,9 @@ for down in range(zwidth-1):
                             if key == 'treasure':
                                 for tkey in total_treasure:
                                     total_treasure[tkey] = total_treasure[tkey] + room_stack['shape_dict'][room]['contents'][key]['type'][tkey]
-                                    if tkey = 'gems':
+                                    if tkey == 'gems':
                                         valuations['gems'] = valuations['gems'] + room_stack['shape_dict'][room]['contents'][key]['gems_values']
-                                    if tkey = 'jewellery':
+                                    if tkey == 'jewellery':
                                         valuations['jewellery'] = valuations['jewellery'] + room_stack['shape_dict'][room]['contents'][key]['jewellery_values']
 
                 if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
