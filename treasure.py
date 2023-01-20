@@ -10,6 +10,7 @@ def roll_dice(number, sides):
 
 def select_gemstone():
     dice_roll = roll_dice(1, 100)
+    print(dice_roll)
     if dice_roll <= 25:
         return 10, "Ornamental Stones"
     elif dice_roll <= 50:
