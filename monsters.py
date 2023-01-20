@@ -571,7 +571,8 @@ def monster_tables(level):
     if 1 == 2:
         with open('dragons.json','w') as f:
             json.dump(dragon_levels, f)
-        return mdict
+            
+    return mdict
 
 if __name__ == "__main__":
     ARGV = sys.argv
