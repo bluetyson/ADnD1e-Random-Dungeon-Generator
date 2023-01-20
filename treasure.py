@@ -1356,7 +1356,17 @@ def select_magic_item():
         choice = potion_choice()
     elif roll <= 35:
         item = "Scrolls (B.)"
-        choice = scroll_choice()
+
+        no, rnge, xp, class_use = scroll_choice()
+        details = no + '-' + rnge + '-' + class_use
+        if xp == -1:
+            xp = 100 * no * rnge
+            val = 3 * xp
+        else:
+            val = 3 * xp
+        
+        choice = (details, xp, val)
+
     elif roll <= 40:
         item = "Rings (C.)"
         choice = ring_choice()
