@@ -726,7 +726,7 @@ def misc_2_choice():
         if p == 1:
             return ("Eyes of Reverse Petrification", 12500, 50000)        
         else:
-            return ("Eyes of Reverse Petrification", 0, 0)        
+            return ("Eyes of Petrification", 0, 0)        
 
 def misc_3_choice():
     roll = random.randint(1, 100)
