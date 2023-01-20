@@ -1077,6 +1077,7 @@ def treasure_choice(treasure_type, no):
         if r <= 30:
             magic_list = []
             for c in range(3):
+                print(c)
                 magic_list.append(random.choice(["Potion","Scroll","Ring","Wand","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"]))
             for c in range(1):
                 magic_list.append(random.choice(["Potion"]))
