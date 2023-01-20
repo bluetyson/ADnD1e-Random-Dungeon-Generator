@@ -3726,7 +3726,7 @@ for down in range(zwidth-1):
             for j in valuations['jewellery']:
                 jewellery_total = jewellery_total + j
 
-        f.write('Total Gold Equivalent: ' + str(gold + gem_total + jewellery total))
+        f.write('Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total))
 
         #end of page
         f.write(strend)
