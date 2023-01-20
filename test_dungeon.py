@@ -1348,6 +1348,9 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['monster']['type']  = m_dict['name']
         shape_dict['contents']['monster']['No'] = m_dict['no']
 
+        if 'Subtable' in shape_dict['contents']['monster']['type']:
+            quit()
+
         shape_dict = loot(shape_dict,coord,monster="Y")
         shape_dict = loot_store(shape_dict)
         
