@@ -200,7 +200,7 @@ def monster_tables(level):
     41-44 Hell-hound 1-2
     45-46 Hydra-5-heads 1-1
     47 Hydra-6-heads 1-1
-    48 Hydra-pyro-5-heads
+    48 Hydra-pyro-5-heads 1-1
     49-62 Lycanthrope, werewolf 1-2
     63-75 Mold, yellow 1-1
     76-78 Owlbear 1-2
