@@ -604,7 +604,7 @@ def monster_tables(level):
 
     print("MDICT:",mdict)
 
-    if 1 == 1:
+    if 1 == 2:
         print("DUMPING LEVELS")
         with open('levels.json','w') as f:
             json.dump(levels, f)
