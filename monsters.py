@@ -200,7 +200,10 @@ def monster_tables(level):
     25-30 Gargoyle 1-2
     31-36 Ghast 1-4
     37-40 Gray-ooze 1-1
-    41-44 Hell-hound 1-2
+    41 Hell-hound-4HD 1-2
+    42 Hell-hound-5HD 1-2
+    43 Hell-hound-6HD 1-2
+    44 Hell-hound-7HD 1-2
     45-46 Hydra-5-heads 1-1
     47 Hydra-6-heads 1-1
     48 Hydra-pyro-5-heads 1-1
