@@ -505,9 +505,9 @@ def monster_tables(level):
             if '-' in monster_list[0]:
                 lo = int(number_range[0])
                 hi = int(number_range[1]) 
-                #print(hi, lo)
+                print(hi, lo)
                 for i in range(lo,hi+1,1):
-                    #print(i)
+                    print(i)
                     levels[ld+1][i]['name'] = monster
                     levels[ld+1][i]['roll'] = dice_lookup[dice_roll]
             else:
