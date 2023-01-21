@@ -282,7 +282,9 @@ def monster_tables(level):
     56 Mold, brown 1-1
     57-58 Mold, yellow 1-1
     59-60 Ogre-magi 1-2
-    61-68 Otyugh 1-1
+    61-63 Otyugh-6HD 1-1
+    64-66 Otyugh-7HD 1-1
+    67-68 Otyugh-8HD 1-1
     69-70 Rakshasa 1-1
     71-73 Salamander 1-2
     74-77 Spider, phase 1-3
