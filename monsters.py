@@ -424,10 +424,10 @@ def monster_tables(level):
     23-24 Demon, prince-Juiblex 1-1
     25-26 Demon, prince-Orcus 1-1
     27-28 Demon, prince-Yeenoghu 1-1
-    29 Devil, arch-* 1-1
-    30 Devil, arch-* 1-1
-    31 Devil, arch-* 1-1
-    32 Devil, arch-* 1-1
+    29 Devil, arch-Asmodeus 1-1
+    30 Devil, arch-Baalzebul 1-1
+    31 Devil, arch-Dispater 1-1
+    32 Devil, arch-Geryon 1-1
     33-42 Dragon — see Dragon Subtable below 1-2
     43-52 Golem, iron 1-1
     53-62 Lich 1-1
