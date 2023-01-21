@@ -199,7 +199,7 @@ def monster_tables(level):
     37-40 Gray-ooze 1-1
     41-44 Hell-hound 1-2
     45-47 Hydra 1-1
-    48 Hydra 1-1
+    48 Hydra-pyrohydra 1-1
     49-62 Lycanthrope, werewolf 1-2
     63-75 Mold, yellow 1-1
     76-78 Owlbear 1-2
@@ -228,7 +228,7 @@ def monster_tables(level):
     19-22 Doppleganger 1-3
     23-24 Dragon — see Dragon Subtable below 1-1
     25-26 Hydra 1-1
-    27 Hydra 1-1
+    27 Hydra-pyrohydra 1-1
     28 Imp 1-2
     29-31 Leucrotta 1-2
     32-50 Lizard, subterranean 1-3
@@ -320,7 +320,7 @@ def monster_tables(level):
     40-41 Gorgon 1-1
     42-43 Groaning-spirit 1-1
     44-46 Hydra 1-1
-    47 Hydra 1-1
+    47 Hydra-pyrohydra 1-1
     48-49 Intellect-devourer 1-1
     50 Invisible-stalker 1-1
     51-52 Lamia 1-2
@@ -366,7 +366,7 @@ def monster_tables(level):
     18-21 Giant, cloud 1-2
     22-23 Golem, clay 1-1
     24-26 Hydra 1-1
-    27 Hydra 1-1
+    27 Hydra-pyrohydra 1-1
     28-29 Intellect-devourer 1-2
     30-35 Lurker-above 1-1
     36-41 Mold, brown 1-1
@@ -401,7 +401,7 @@ def monster_tables(level):
     16-21 Giant, storm 1-2
     22-23 Golem, stone 1-1
     24-30 Hydra 1-1
-    31-33 Hydra 1-1
+    31-33 Hydra-pyrohydra 1-1
     34-40 Mold, brown 1-1
     41-50 Mold, yellow 1-1
     51-52 Nycadaemon 1-1
@@ -586,7 +586,7 @@ def monster_tables(level):
 
     print("MDICT:",mdict)
 
-    if 1 == 2:
+    if 1 == 1:
         print("DUMPING LEVELS")
         with open('levels.json','w') as f:
             json.dump(levels, f)
