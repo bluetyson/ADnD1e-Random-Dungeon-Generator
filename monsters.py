@@ -394,6 +394,7 @@ def monster_tables(level):
     83-100 White:ancient (8)'''
 
     #17-20heads and, pyro-12heads
+    #Titan lesser minor
     level_09='''01-09 Character — see Character Subtable 1-1
     10-12 Devil, pit-fiend 1-1
     13-15 Dragon — see Dragon Subtable below 1-2
@@ -406,8 +407,8 @@ def monster_tables(level):
     51-52 Nycadaemon 1-1
     53-64 Purple-worm 1-1
     65-67 Rust-monster 1-1
-    68-69 Titan, lesser 1-1
-    70-73 Titan, minor 1-1
+    68-69 Titan 1-1
+    70-73 Titan 1-1
     74-80 Umber-Hulk 1-4
     81-83 Vampire* 1-1
     84-93 Will-o-wisp 2-5
@@ -424,6 +425,7 @@ def monster_tables(level):
     79-82 Silver:ancient (8)
     83-100 White:2-ancient-&-very-old (8&7)'''    
 
+    #Titan elder
     level_10 ='''01-12 Beholder 1-1
     13-20 Character — see Character Subtable 1-1
     21-22 Demon, prince-Demogorgon 1-1
@@ -437,7 +439,7 @@ def monster_tables(level):
     33-42 Dragon — see Dragon Subtable below 1-2
     43-52 Golem, iron 1-1
     53-62 Lich 1-1
-    63-72 Titan, elder 1-1
+    63-72 Titan 1-1
     73-82 Vampire** 1-1
     83-100 NO-ENCOUNTER 1-1'''    
 
