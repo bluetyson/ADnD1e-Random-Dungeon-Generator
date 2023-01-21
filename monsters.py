@@ -303,9 +303,12 @@ def monster_tables(level):
     21 Devil, horned 1-1
     22-23 Dragon — see Dragon Subtable below 1-1
     24 Efreeti 1-1
-    25-26 Elemental* 1-1
-    27-30 Ettin 1-2
-    31-33 Giant, hill 1-3
+    25 Elemental-air 1-1
+    26 Elemental-earth 1-1
+    27 Elemental-fire 1-1
+    28 Elemental-water 1-1
+    29-31 Ettin 1-2
+    32-33 Giant, hill 1-3
     34-35 Giant, stone 1-3
     36-37 Giant, fire 1-2
     38 Giant, frost 1-2
@@ -417,14 +420,20 @@ def monster_tables(level):
 
     level_10 ='''01-12 Beholder 1-1
     13-20 Character — see Character Subtable 1-1
-    21-28 Demon, prince* 1-1
-    29-30 Devil, arch-* 1-1
-    31-40 Dragon — see Dragon Subtable below 1-2
-    41-50 Golem, iron 1-1
-    51-60 Lich 1-1
-    61-70 Titan, elder 1-1
-    71-80 Vampire** 1-1
-    81-100 NO-ENCOUNTER 1-1'''    
+    21-22 Demon, prince-Demogorgon 1-1
+    23-24 Demon, prince-Juiblex 1-1
+    25-26 Demon, prince-Orcus 1-1
+    27-28 Demon, prince-Yeenoghu 1-1
+    29 Devil, arch-* 1-1
+    30 Devil, arch-* 1-1
+    31 Devil, arch-* 1-1
+    32 Devil, arch-* 1-1
+    33-42 Dragon — see Dragon Subtable below 1-2
+    43-52 Golem, iron 1-1
+    53-62 Lich 1-1
+    63-72 Titan, elder 1-1
+    73-82 Vampire** 1-1
+    83-100 NO-ENCOUNTER 1-1'''    
 
     dragon_level_10='''01-20 Blue:2-ancient-&-very-old (8&7)
     21-26 Bronze:2 ancient-&-very-old (8&7)
@@ -569,7 +578,7 @@ def monster_tables(level):
 
     print("MDICT:",mdict)
 
-    if 1 == 2:
+    if 1 == 1:
         print("DUMPING LEVELS")
         with open('levels.json','w') as f:
             json.dump(levels, f)
