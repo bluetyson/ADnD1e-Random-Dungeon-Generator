@@ -229,7 +229,7 @@ def monster_tables(level):
     19-22 Doppleganger 1-3
     23-24 Dragon — see Dragon Subtable below 1-1
     25-26 Hydra-7-heads 1-1
-    27 Hydra-pyro-6-heads
+    27 Hydra-pyro-6-heads 1-1
     28 Imp 1-2
     29-31 Leucrotta 1-2
     32-50 Lizard, subterranean 1-3
