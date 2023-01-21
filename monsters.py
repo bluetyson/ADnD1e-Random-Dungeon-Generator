@@ -561,7 +561,7 @@ def monster_tables(level):
                     usestr = usestr.replace('see Character Subtable','CharacterSubtable')
                     usestr = usestr.replace(' — ','-')
                     monster_list = usestr.split()
-                    #print(monster_list)
+                    print(monster_list)
 
                     number_range = monster_list[0].split('-')
                     dice_roll = monster_list[2]
