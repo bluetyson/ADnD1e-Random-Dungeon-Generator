@@ -189,6 +189,7 @@ def monster_tables(level):
     29-62 Brass:very-young (1)
     63-100 White:very-young (1)'''
     
+    #, 5-or-6heads and, pyro-5-heads
     level_04 = '''01-08 Ape, carnivorous 1-3
     09-14 Blink-dog 2-5
     15-22 Character — see Character Subtable 1-1
@@ -197,8 +198,8 @@ def monster_tables(level):
     31-36 Ghast 1-4
     37-40 Gray-ooze 1-1
     41-44 Hell-hound 1-2
-    45-47 Hydra, 5-or-6heads 1-1
-    48 Hydra, pyro-5-heads 1-1
+    45-47 Hydra 1-1
+    48 Hydra 1-1
     49-62 Lycanthrope, werewolf 1-2
     63-75 Mold, yellow 1-1
     76-78 Owlbear 1-2
@@ -220,13 +221,14 @@ def monster_tables(level):
     81-88 Silver:very-young/young (1/2)
     89-100 White:young/sub-adult (2/3)'''
 
+    #, 7heads and, pyro-6-heads
     level_05='''01-08 Character — see Character Subtable 1-1
     09-15 Cockatrice 1-2
     16-18 Displacer-beast 1-2
     19-22 Doppleganger 1-3
     23-24 Dragon — see Dragon Subtable below 1-1
-    25-26 Hydra, 7-heads 1-1
-    27 Hydra, pyro-6-heads 1-1
+    25-26 Hydra 1-1
+    27 Hydra 1-1
     28 Imp 1-2
     29-31 Leucrotta 1-2
     32-50 Lizard, subterranean 1-3
@@ -253,6 +255,7 @@ def monster_tables(level):
     81-88 Silver:sub-adult/young-adult (3/4)
     89-100 White:young-adult/adult (4/5)'''    
 
+    #8-9heads
     level_06='''01-03 Basilisk 1-1
     04-10 Carrion-crawler 1-2
     11-16 Character — see Character Subtable 1-1
@@ -260,7 +263,7 @@ def monster_tables(level):
     18-19 Djinni 1-1
     20-21 Dragon — see Dragon Subtable below 1-1
     22-25 Green-slime 1-1
-    26-28 Hydra, 8-9-heads 1-1
+    26-28 Hydra 1-1
     29-32 Jackalwere 1-2
     33-36 Lammasu 1-3
     37-38 Lycanthrope, werebear 1-1
@@ -291,6 +294,7 @@ def monster_tables(level):
     79-87 Silver:adult (5)
     88-100 White:old (6)'''   
 
+    #10-12heads and, pyro-7-9-heads
     level_07='''01-05 Black-pudding 1-1
     06-10 Character — see Character Subtable 1-1
     11-14 Chimera 1-2
@@ -315,8 +319,8 @@ def monster_tables(level):
     39 Golem, flesh 1-1
     40-41 Gorgon 1-1
     42-43 Groaning-spirit 1-1
-    44-46 Hydra, 10-12-heads 1-1
-    47 Hydra, pyro-7-9-heads 1-1
+    44-46 Hydra 1-1
+    47 Hydra 1-1
     48-49 Intellect-devourer 1-1
     50 Invisible-stalker 1-1
     51-52 Lamia 1-2
@@ -350,6 +354,7 @@ def monster_tables(level):
     81-87 Silver:old (6)
     88-100 White:very-old (7)'''    
 
+    #13-16heads and, pyro-12heads
     level_08='''01 Aerial-servant 1-1
     02-06 Character — see Character Subtable 1-1
     07 Demon, type-IV 1-1
@@ -360,8 +365,8 @@ def monster_tables(level):
     13-17 Ghost 1-1
     18-21 Giant, cloud 1-2
     22-23 Golem, clay 1-1
-    24-26 Hydra, 13-16-heads 1-1
-    27 Hydra, pyro-12-heads 1-1
+    24-26 Hydra 1-1
+    27 Hydra 1-1
     28-29 Intellect-devourer 1-2
     30-35 Lurker-above 1-1
     36-41 Mold, brown 1-1
@@ -388,13 +393,14 @@ def monster_tables(level):
     79-82 Silver:very-old (7)
     83-100 White:ancient (8)'''
 
+    #17-20heads and, pyro-12heads
     level_09='''01-09 Character — see Character Subtable 1-1
     10-12 Devil, pit-fiend 1-1
     13-15 Dragon — see Dragon Subtable below 1-2
     16-21 Giant, storm 1-2
     22-23 Golem, stone 1-1
-    24-30 Hydra, 17-20-heads 1-1
-    31-33 Hydra, pyro-12-heads 1-1
+    24-30 Hydra 1-1
+    31-33 Hydra 1-1
     34-40 Mold, brown 1-1
     41-50 Mold, yellow 1-1
     51-52 Nycadaemon 1-1
