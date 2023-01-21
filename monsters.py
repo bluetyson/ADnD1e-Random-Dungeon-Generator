@@ -198,8 +198,9 @@ def monster_tables(level):
     31-36 Ghast 1-4
     37-40 Gray-ooze 1-1
     41-44 Hell-hound 1-2
-    45-47 Hydra 1-1
-    48 Hydra-pyrohydra 1-1
+    45-46 Hydra-5-heads 1-1
+    47 Hydra-6-heads 1-1
+    48 Hydra-pyro-5-heads
     49-62 Lycanthrope, werewolf 1-2
     63-75 Mold, yellow 1-1
     76-78 Owlbear 1-2
@@ -227,8 +228,8 @@ def monster_tables(level):
     16-18 Displacer-beast 1-2
     19-22 Doppleganger 1-3
     23-24 Dragon — see Dragon Subtable below 1-1
-    25-26 Hydra 1-1
-    27 Hydra-pyrohydra 1-1
+    25-26 Hydra-7-heads 1-1
+    27 Hydra-pyro-6-heads
     28 Imp 1-2
     29-31 Leucrotta 1-2
     32-50 Lizard, subterranean 1-3
@@ -263,7 +264,9 @@ def monster_tables(level):
     18-19 Djinni 1-1
     20-21 Dragon — see Dragon Subtable below 1-1
     22-25 Green-slime 1-1
-    26-28 Hydra 1-1
+    26 Hydra-8-heads 1-1
+    27 Hydra-8-heads 1-1
+    28 Hydra-9-heads 1-1
     29-32 Jackalwere 1-2
     33-36 Lammasu 1-3
     37-38 Lycanthrope, werebear 1-1
@@ -319,8 +322,10 @@ def monster_tables(level):
     39 Golem, flesh 1-1
     40-41 Gorgon 1-1
     42-43 Groaning-spirit 1-1
-    44-46 Hydra 1-1
-    47 Hydra-pyrohydra 1-1
+    44 Hydra-10-heads 1-1
+    45 Hydra-11-heads 1-1
+    46 Hydra-12-heads 1-1
+    47 Hydra-pyrohydra-8-heads 1-1
     48-49 Intellect-devourer 1-1
     50 Invisible-stalker 1-1
     51-52 Lamia 1-2
@@ -365,8 +370,10 @@ def monster_tables(level):
     13-17 Ghost 1-1
     18-21 Giant, cloud 1-2
     22-23 Golem, clay 1-1
-    24-26 Hydra 1-1
-    27 Hydra-pyrohydra 1-1
+    24 Hydra-13-heads 1-1
+    25 Hydra-14-heads 1-1
+    26 Hydra-15-heads 1-1
+    27 Hydra-pyrohydra-12-heads 1-1
     28-29 Intellect-devourer 1-2
     30-35 Lurker-above 1-1
     36-41 Mold, brown 1-1
@@ -400,15 +407,17 @@ def monster_tables(level):
     13-15 Dragon — see Dragon Subtable below 1-2
     16-21 Giant, storm 1-2
     22-23 Golem, stone 1-1
-    24-30 Hydra 1-1
-    31-33 Hydra-pyrohydra 1-1
+    24-30 Hydra-16-heads 1-1
+    31-33 Hydra-pyrohydra-12-heads 1-1
     34-40 Mold, brown 1-1
     41-50 Mold, yellow 1-1
     51-52 Nycadaemon 1-1
     53-64 Purple-worm 1-1
     65-67 Rust-monster 1-1
-    68-69 Titan 1-1
-    70-73 Titan 1-1
+    68 Titan-17HD 1-1
+    69 Titan-18HD 1-1
+    70-71 Titan-19HD 1-1
+    72-73 Titan-20HD 1-1
     74-80 Umber-Hulk 1-4
     81-83 Vampire* 1-1
     84-93 Will-o-wisp 2-5
@@ -439,7 +448,8 @@ def monster_tables(level):
     33-42 Dragon — see Dragon Subtable below 1-2
     43-52 Golem, iron 1-1
     53-62 Lich 1-1
-    63-72 Titan 1-1
+    63-67 Titan-21HD 1-1
+    68-72 Titan-22HD 1-1 
     73-82 Vampire** 1-1
     83-100 NO-ENCOUNTER 1-1'''    
 
@@ -586,7 +596,7 @@ def monster_tables(level):
 
     print("MDICT:",mdict)
 
-    if 1 == 2:
+    if 1 == 1:
         print("DUMPING LEVELS")
         with open('levels.json','w') as f:
             json.dump(levels, f)
