@@ -183,8 +183,10 @@ def monster_tables(level):
     76-77 Shrieker 2-5
     78-84 Spider, huge 1-3
     85-93 Spider, large 2-5
-    94-95 Tick, giant 1-3
-    96-100 Weasel, giant 1-4''' 
+    94 Tick, giant-2HD 1-3
+    95 Tick, giant-3HD 1-3
+    96 Tick, giant-4HD 1-3
+    97-100 Weasel, giant 1-4''' 
 
     dragon_level_03 = '''01-28 Black:very-young (1)
     29-62 Brass:very-young (1)
@@ -326,7 +328,7 @@ def monster_tables(level):
     44 Hydra-10-heads 1-1
     45 Hydra-11-heads 1-1
     46 Hydra-12-heads 1-1
-    47 Hydra-pyrohydra-8-heads 1-1
+    47 Hydra-pyro-8-heads 1-1
     48-49 Intellect-devourer 1-1
     50 Invisible-stalker 1-1
     51-52 Lamia 1-2
@@ -374,7 +376,7 @@ def monster_tables(level):
     24 Hydra-13-heads 1-1
     25 Hydra-14-heads 1-1
     26 Hydra-15-heads 1-1
-    27 Hydra-pyrohydra-12-heads 1-1
+    27 Hydra-pyro-12-heads 1-1
     28-29 Intellect-devourer 1-2
     30-35 Lurker-above 1-1
     36-41 Mold, brown 1-1
@@ -409,7 +411,7 @@ def monster_tables(level):
     16-21 Giant, storm 1-2
     22-23 Golem, stone 1-1
     24-30 Hydra-16-heads 1-1
-    31-33 Hydra-pyrohydra-12-heads 1-1
+    31-33 Hydra-pyro-12-heads 1-1
     34-40 Mold, brown 1-1
     41-50 Mold, yellow 1-1
     51-52 Nycadaemon 1-1
