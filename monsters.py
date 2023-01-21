@@ -120,7 +120,7 @@ def monster_tables(level):
     34-48 Human — see Human Subtable below 1-1
     49-54 Kobold 6-18
     55-66 Orc 7-12
-    67-70 Piercer 1-3
+    67-70 Piercer-1HD 1-3
     71-83 Rat, giant 5-20
     84-85 Rot-grub 1-3
     86-96 Shrieker 1-2
@@ -158,7 +158,7 @@ def monster_tables(level):
     28-29 Devil, lemure 2-5
     30-31 Gas-spore 1-2
     32-38 Gnoll 4-10
-    39-46 Piercer 1-4
+    39-46 Piercer-2HD 1-4
     47-58 Rat, giant 6-24
     59-60 Rot-grub 1-4
     61-72 Shrieker 1-3
@@ -177,7 +177,8 @@ def monster_tables(level):
     51-54 Lycanthrope, wererat 2-5
     55-60 Ochre-jelly 1-1
     61-72 Ogre 1-3
-    73-74 Piercer 2-5
+    73 Piercer-3HD 2-5
+    74 Piercer-4HD 2-5
     75 Rot-grub 1-4
     76-77 Shrieker 2-5
     78-84 Spider, huge 1-3
