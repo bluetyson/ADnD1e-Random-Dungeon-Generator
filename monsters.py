@@ -305,8 +305,10 @@ def monster_tables(level):
     24 Efreeti 1-1
     25-26 Elemental* 1-1
     27-30 Ettin 1-2
-    31-35 Giant, hill-or-stone 1-3
-    36-38 Giant, fire-or-frost 1-2
+    31-33 Giant, hill 1-3
+    34-35 Giant, stone 1-3
+    36-37 Giant, fire 1-2
+    38 Giant, frost 1-2
     39 Golem, flesh 1-1
     40-41 Gorgon 1-1
     42-43 Groaning-spirit 1-1
@@ -567,7 +569,7 @@ def monster_tables(level):
 
     print("MDICT:",mdict)
 
-    if 1 == 2:
+    if 1 == 1:
         with open('levels.json','w') as f:
             json.dump(levels, f)
         return mdict
