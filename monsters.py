@@ -344,7 +344,8 @@ def monster_tables(level):
     64-65 Mind-flayer 1-2
     66-69 Mummy 1-2
     70 Naga, spirit 1-2
-    71-73 Neo-otyugh 1-1
+    71-72 Neo-otyugh-9HD 1-1
+    73 Neo-otyugh-109HD 1-1
     74 Night-hag 1-2
     75-78 Roper 1-2
     79-82 Shambling-mound 1-2
@@ -388,7 +389,8 @@ def monster_tables(level):
     42-43 Mold, yellow 1-1
     44-47 Mind-flayer 1-4
     48-50 Naga, guardian 1-2
-    51-56 Neo-otyugh 1-1
+    51-53 Neo-otyugh-11HD 1-1
+    54-56 Neo-otyugh-12HD 1-1
     57-64 Purple-worm 1-1
     65-69 Rust-monster 1-1
     70-73 Slug, giant 1-1
