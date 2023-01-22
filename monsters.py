@@ -61,12 +61,8 @@ def level_matrix(level):
 #def all_dict():
 #    pass
 #    return ad
-
-​
-def human_data():
+def test2():
     pass
-    hd = 't'
-    return hd
 
 def monster_tables(level):
 
