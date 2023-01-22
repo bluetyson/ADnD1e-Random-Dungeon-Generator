@@ -3847,7 +3847,7 @@ for down in range(zwidth-1):
                     #for subkey in wandering_monster_stack[wm+1]:
                     wmno = wandering_monster_stack[wm+1][key]['No']
                     wmxp = wandering_monster_stack[wm+1][key]['XP']
-                    print("WMNO:",wno,"WNXP",wnxp)
+                    print("WMNO:",wmno,"WNXP",wnxp)
                     wm_xp_total = wm_xp_total + wmxp * wmno
                     #treasures
                     if 'NO-ENCOUNTER' not in wandering_monster_stack[wm+1][key]['type']:
