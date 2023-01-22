@@ -767,7 +767,7 @@ def check_action(pc_dict, coord, room_stack):
                     quit()
 
             if 'CharacterSubtable' in wm_dict['name']:
-                print("CharacterSubtable")
+                print("CharacterSubtable") #this works
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
                 
@@ -775,9 +775,9 @@ def check_action(pc_dict, coord, room_stack):
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = [] #have to work out
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = [] #have to work out
 
-                print("character quitting")
-                print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
-                quit()
+                #print("character quitting")
+                print("CharacterSubtableWM:", wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                #quit()
 
             if 'DragonSubtable' in wm_dict['name']:
                 print("DragonSubtable")
@@ -793,8 +793,8 @@ def check_action(pc_dict, coord, room_stack):
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
 
-                print("dragon quit")
-                print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                print("dragon quitting")
+                print("DragonSubtableWM:",wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                 quit()
 
         except Exception as wmE:
