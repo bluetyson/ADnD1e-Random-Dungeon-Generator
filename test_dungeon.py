@@ -745,7 +745,7 @@ def check_action(pc_dict, coord, room_stack):
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['details'][1]
                 #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_dict['details'][1]
 
-                wm_data = human_d[wm_dict['details'][0].lower()]
+                wm_data = human_d['human-' + wm_dict['details'][0].lower()]
                 print("WM_DATA",wm_data)
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_data['XPtotal']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
