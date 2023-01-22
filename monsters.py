@@ -110,7 +110,8 @@ def monster_tables(level):
     03-04 Badger* 1-4
     05-14 Beetle, fire 1-4
     15 Demon, manes 1-4
-    16-17 Dwarf 4-14
+    16 Dwarf-hill 4-14
+    17 Dwarf-mountain 4-14
     18 Ear-seeker 1-1
     19 Elf 3-11
     20-21 Gnome 5-15
