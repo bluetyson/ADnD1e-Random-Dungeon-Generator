@@ -345,7 +345,7 @@ def monster_tables(level):
     63 Mimic-10HD 1-1
     64-65 Mind-flayer 1-2
     66-69 Mummy 1-2
-    70 Naga, spirit 1-2
+    70 Naga, spirit-10HD 1-2
     71-72 Neo-otyugh-9HD 1-1
     73 Neo-otyugh-10HD 1-1
     74 Night-hag 1-2
