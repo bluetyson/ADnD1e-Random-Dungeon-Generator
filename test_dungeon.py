@@ -762,7 +762,8 @@ def check_action(pc_dict, coord, room_stack):
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = [] #have to work out
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = [] #have to work out
                     print("WM_DATA",wm_data)
-                    print("quitting")
+                    print("human character quitting")
+                    print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                     quit()
 
             if 'CharacterSubtable' in wm_dict['name']:
@@ -773,6 +774,10 @@ def check_action(pc_dict, coord, room_stack):
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = '0%'
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = [] #have to work out
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = [] #have to work out
+
+                print("character quitting")
+                print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                quit()
 
             if 'DragonSubtable' in wm_dict['name']:
                 print("DragonSubtable")
