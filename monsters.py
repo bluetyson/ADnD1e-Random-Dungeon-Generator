@@ -306,6 +306,7 @@ def monster_tables(level):
     88-100 White:old (6)'''   
 
     #10-12heads and, pyro-7-9-heads
+    #modified a few to have HD
     level_07='''01-05 Black-pudding 1-1
     06-10 Character — see Character Subtable 1-1
     11-14 Chimera 1-2
