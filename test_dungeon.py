@@ -779,7 +779,9 @@ def check_action(pc_dict, coord, room_stack):
 
                 dname = wm_dict['details']['name'].split(':')[0]
                 dname = dname.split('-')[1]
+                print("Dragon dname", dname)
                 wm_data = dragon_d[dname]
+                print("Dragon WM Data", wm_data)
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
