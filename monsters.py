@@ -220,7 +220,7 @@ def all_data():
     'treasure_individual': [],
     'treasure_lair': []},
     'demon-manes': {'usename': 'demon-manes',
-    'lair': nan,
+    'lair': '0%',
     'Treasure': 'Nil',
     'HD': '1',
     'XP': 'I/14+1/hp',
