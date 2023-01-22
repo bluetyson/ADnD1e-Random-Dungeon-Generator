@@ -888,7 +888,7 @@ def all_data():
     'treasure_individual': [],
     'treasure_lair': ['B']},
     'hydra-pyro-5-heads': {'usename': 'hydra-pyro-5-heads',
-    'lair': nan,
+    'lair': '0%',
     'Treasure': 'Nil',
     'HD': '7',
     'XP': 'IV/245+5/hp',
