@@ -3853,7 +3853,7 @@ for down in range(zwidth-1):
                     if len(wmti) > 0:
                         for t in wmti:
                             #do treasure check
-                            treasure = treasure_choice(t)
+                            treasure = treasure_choice(t, wmno)
                             f.write("XP:" + str(wmxp*wmno) + '<br>')
                             f.write("Treasure:" + str(treasure) + '<br>')
 
