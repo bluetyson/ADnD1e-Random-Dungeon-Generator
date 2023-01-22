@@ -105,7 +105,7 @@ def monster_tables(level):
     levels['DragonSubtable'] = {}            
 
     #need to do stars for substitutions for levels
-
+    #human variable need to do for dwarves etc.
     level_01 ='''01-02 Ant, giant 1-4
     03-04 Badger* 1-4
     05-14 Beetle, fire 1-4
