@@ -63,41 +63,6 @@ def level_matrix(level):
 #    return ad
 
 ​   
-def human_dict():
-    hd = {'human-bandit': {'usename': 'human-bandit',
-    'lair': '20%',
-    'Treasure': 'M (A)',
-    'HD': '1-2',
-    'XP': 'I/5+1/hp',
-    'XPbase': '5',
-    'XPhp': '1',
-    'HP': 6,
-    'XPtotal': 11,
-    'treasure_individual': ['M'],
-    'treasure_lair': ['A']},
-    'human-berserker': {'usename': 'human-berserker',
-    'lair': '10%',
-    'Treasure': 'K (B)',
-    'HD': '1-1',
-    'XP': 'I/10+1/hp',
-    'XPbase': '10',
-    'XPhp': '1',
-    'HP': 5,
-    'XPtotal': 15,
-    'treasure_individual': ['K'],
-    'treasure_lair': ['B']},
-    'human-brigand': {'usename': 'human-brigand',
-    'lair': '20%',
-    'Treasure': 'M (A)',
-    'HD': '1-2',
-    'XP': 'I/5+1/hp',
-    'XPbase': '5',
-    'XPhp': '1',
-    'HP': 6,
-    'XPtotal': 11,
-    'treasure_individual': ['M'],
-    'treasure_lair': ['A']}}
-    return hd
 
 def dragon_dict():
     dd = {'Black': {'usename': 'dragon-black',
