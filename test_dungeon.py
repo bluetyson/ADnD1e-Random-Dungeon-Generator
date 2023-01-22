@@ -736,7 +736,7 @@ def check_action(pc_dict, coord, room_stack):
                 #wm_data = all_d[wm_dict['name']]
                 #print("WM_DATA no sub")
                 #print("WM_DATA",wm_data)
-                [ass]
+                pass
                 
 
             if 'HumanSubtable' in wm_dict['name']:
