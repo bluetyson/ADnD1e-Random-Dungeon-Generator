@@ -728,9 +728,10 @@ def check_action(pc_dict, coord, room_stack):
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['name']
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
 
-            if 'Subtable' not in wm_dict['name']:
-                wm_data = all_data[wm_dict['name']]
-                print(wm_data)
+            #if 'Subtable' in wm_dict['name']:
+                #wm_data = all_data[wm_dict['name']]
+                #print(wm_data)
+                [ass]
 
             if 'HumanSubtable' in wm_dict['name']:
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details'][0]
