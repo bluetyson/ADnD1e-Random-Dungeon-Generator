@@ -58,6 +58,20 @@ def level_matrix(level):
 
     return monster_level
 
+def xp_hack():
+    dragon_xp = {}
+    dragon_xp[1] = 10
+    dragon_xp[2] = 50
+    dragon_xp[3] = 150
+    dragon_xp[4] = 250
+    dragon_xp[5] = 500
+    dragon_xp[6] = 1000
+    dragon_xp[7] = 1000
+    dragon_xp[8] = 1000
+    dragon_xp[9] = 10000
+    dragon_xp[10] = 20000
+    return dragon_xp
+
 #def all_dict():
 #    pass
 #    return ad
