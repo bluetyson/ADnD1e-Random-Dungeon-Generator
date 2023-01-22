@@ -755,7 +755,8 @@ def check_action(pc_dict, coord, room_stack):
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
 
-                if 'Character' in wm_dict['details']:
+                #if 'Character' in wm_dict['details']:
+                if 'Character' in wm_dict['type']:   #character human subtyp type                    
                     print("HumanSubtable-Character - not implemented yet won't work")
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9                
@@ -3874,7 +3875,7 @@ for down in range(zwidth-1):
                     wmxp = wandering_monster_stack[wm+1][key]['XP']
 
                     #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
-                    print("WMKEY:",wandering_monster_stack[wm+1])
+                    print("LOOP:",wm,WMKEY:",wandering_monster_stack[wm+1])
                     if isinstance(wandering_monster_stack[wm+1][key]['type'], dict):
                         print("CHARACTER PARTY!")
                         print("WMSUBTABLE:",len(wandering_monster_subtable),wandering_monster_subtable,"KEYCOUNT:",wandering_monster_stack['key_count'])
