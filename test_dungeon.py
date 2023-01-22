@@ -738,6 +738,7 @@ def check_action(pc_dict, coord, room_stack):
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
 
                 print("WM_DATA",wm_data)
+                wandering_monster_subtable.append('monster')
 
             if 'HumanSubtable' in wm_dict['name']:
                 print("HumanSubtable")
@@ -764,7 +765,10 @@ def check_action(pc_dict, coord, room_stack):
                     print("WM_DATA",wm_data)
                     print("human character quitting")
                     print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                    wandering_monster_subtable.append('human-character')
                     quit()
+                else:
+                    wandering_monster_subtable.append('human')
 
             if 'CharacterSubtable' in wm_dict['name']:
                 print("CharacterSubtable") #this works
@@ -777,6 +781,7 @@ def check_action(pc_dict, coord, room_stack):
 
                 #print("character quitting")
                 print("CharacterSubtableWM:", wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                wandering_monster_subtable.append('character')
                 #quit()
 
             if 'DragonSubtable' in wm_dict['name']:
@@ -3429,6 +3434,7 @@ dungeon[(0,0,0)]['check'] = 'up_down'
 dungeon[(0,0,0)]['go'] = -1
 
 facing = 'A'
+wandering_monster_subtable = []
 ## got to implement for all here eventually, complicates things
 
 
@@ -3864,7 +3870,7 @@ for down in range(zwidth-1):
                     if isinstance(wandering_monster_stack[wm+1][key]['type'], dict):
                         print("CHARACTER PARTY!")
                         for c in wandering_monster_stack[wm+1][key]['type']:
-                            if 'level' in wandering_monster_stack[wm+1][key]['type'][c]:
+                            if 'level' in wandering_monster_stack[wm+1][key]['type'][c]: #hack for a base xp points based on DMG table
                                 cxp = xp_d(wandering_monster_stack[wm+1][key]['type'][c]['level'])
                             else:
                                 cxp = 20
