@@ -758,12 +758,15 @@ def check_action(pc_dict, coord, room_stack):
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9                
 
                     wm_data = human_d[wm_dict['details'].lower()]
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = '0%'
                     print("WM_DATA",wm_data)
 
             if 'CharacterSubtable' in wm_dict['name']:
                 print("CharacterSubtable")
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
+                
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = '0%'
 
             if 'DragonSubtable' in wm_dict['name']:
                 print("DragonSubtable")
@@ -3853,7 +3856,7 @@ for down in range(zwidth-1):
                             f.write("XP:" + str(wmxp*wmno) + '<br>')
                             f.write("Treasure:" + str(treasure) + '<br>')
 
-            f.write("Wandering Monster Total XP:" + str(wm_xp_total) + '<br>')                            
+            f.write('<br>' + "Wandering Monster Total XP:" + str(wm_xp_total) + '<br>')                            
             
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
