@@ -11,7 +11,7 @@ import pickle
 import math
 
 from monsters import monster_tables
-from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item
+from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item, treasure_choice
 
 PI = math.pi
 ARGV = sys.argv
@@ -3829,12 +3829,12 @@ for down in range(zwidth-1):
 
         if len(wandering_monster_stack) > 0:
             wm_xp_total = 0
-            wm_treasure_total = {}
+            wm_total_treasure = {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
             for wm in range(wandering_monster_stack['key_count']):
                 f.write('<h4>Wandering Monster: ' + str(wm) + '</h4>')
                 f.write(str(wandering_monster_stack[wm+1]) + '<br>')
                 for key in wandering_monster_stack[wm+1]:
-                    f.write("key" + str(key) + '<br>')
+                    #f.write("key" + str(key) + '<br>')
                     #for subkey in wandering_monster_stack[wm+1]:
                     wmno = wandering_monster_stack[wm+1][key]['No']
                     wmxp = wandering_monster_stack[wm+1][key]['XP']
@@ -3852,9 +3852,9 @@ for down in range(zwidth-1):
                             treasure = treasure_choice(t)
                             f.write("XP:" + str(wmxp*wmno) + '<br>')
                             f.write("Treasure:" + str(treasure) + '<br>')
-                            
 
-
+            f.write("Wandering Monster Total XP:" + str(wm_xp_total) + '<br>')                            
+            
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
         gold = total_treasure['copper'] / 100.0 + total_treasure['silver'] / 10.0 + total_treasure['electrum']/2.0 + total_treasure['gold'] + total_treasure['platinum'] * 10
