@@ -3019,7 +3019,7 @@ def monster_tables(level):
     70-71 Titan-19HD 1-1
     72-73 Titan-20HD 1-1
     74-80 Umber-Hulk 1-4
-    81-83 Vampire* 1-1
+    81-83 Vampire 1-1
     84-93 Will-o-wisp 2-5
     94-100 Xorn 2-9'''
 
@@ -3050,7 +3050,7 @@ def monster_tables(level):
     53-62 Lich 1-1
     63-67 Titan-21HD 1-1
     68-72 Titan-22HD 1-1 
-    73-82 Vampire** 1-1
+    73-82 Vampire 1-1
     83-100 NO-ENCOUNTER 1-1'''    
 
     dragon_level_10='''01-20 Blue:2-ancient-&-very-old (8&7)
