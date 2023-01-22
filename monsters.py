@@ -2480,7 +2480,7 @@ def all_dict():
     'R']}}
     return ad
 
-​    
+​   
 def human_dict():
     hd = {'human-bandit': {'usename': 'human-bandit',
     'lair': '20%',
@@ -3201,3 +3201,6 @@ if __name__ == "__main__":
 
     print(monster_tables(monster_level))
 
+    print(human_dict)
+    print(dragon_dict)
+    print(all_dict)
