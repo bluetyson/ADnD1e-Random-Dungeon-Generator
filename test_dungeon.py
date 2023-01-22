@@ -3849,7 +3849,7 @@ for down in range(zwidth-1):
                     wmxp = wandering_monster_stack[wm+1][key]['XP']
                     wm_xp_total = wm_xp_total + wmxp
                     #treasures
-                    if 'NO-ENCOUNTER' not in wmlair = wandering_monster_stack[wm+1][key]['type']:
+                    if 'NO-ENCOUNTER' not in wandering_monster_stack[wm+1][key]['type']:
                         print("wm treasure checking",str(wandering_monster_stack[wm+1]))
                         wmlair = wandering_monster_stack[wm+1][key]['lair']
                         wmlair = wmlair.replace('%','')
