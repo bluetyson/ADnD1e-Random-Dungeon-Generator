@@ -729,22 +729,21 @@ def check_action(pc_dict, coord, room_stack):
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
 
             if 'Subtable' in wm_dict['name']:
-                wm_data = all_data[wm_dict['name']]
+                wm_data = all_d[wm_dict['name']]
                 print(wm_data)
-                pass
 
             if 'HumanSubtable' in wm_dict['name']:
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details'][0]
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['details'][1]
 
-                wm_data = all_data[wm_dict['details'][0]]
+                wm_data = human_d[wm_dict['details'][0]]
                 print(wm_data)
 
                 if 'Character' in wm_dict['details']:
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9                
 
-                    wm_data = all_data[wm_dict['details']]
+                    wm_data = human_d[wm_dict['details']]
                     print(wm_data)
 
             if 'CharacterSubtable' in wm_dict['name']:
@@ -3375,6 +3374,9 @@ error_dict['type'] = {}
 water_dict = {}
 #make water log as need to run a lot to get one and can't scroll that far
 from monsters import all_data, dragon_data, human_data
+all_d = all_data()
+dragon_d = dragon_data()
+human_d = human_data()
 
 dungeon = {}
 dungeon[(0,0,0)] = {}
