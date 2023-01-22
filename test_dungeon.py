@@ -3861,8 +3861,11 @@ for down in range(zwidth-1):
 
                     #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
                     print("WMKEY:",wandering_monster_stack[wm+1])
-                    print("key:",key,"WMNO:",wmno,"WNXP",wmxp)
-                    wm_xp_total = wm_xp_total + wmxp * wmno
+                    if len(wandering_monster_stack[wm+1][key]['type']) > 1:
+                        print("CHARACTER PARTY!")
+                    else:
+                        print("key:",key,"WMNO:",wmno,"WNXP",wmxp)
+                        wm_xp_total = wm_xp_total + wmxp * wmno
                     #treasures
                     if 'NO-ENCOUNTER' not in wandering_monster_stack[wm+1][key]['type']:
                         print("wm treasure checking",str(wandering_monster_stack[wm+1]))
