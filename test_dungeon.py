@@ -3847,6 +3847,9 @@ for down in range(zwidth-1):
                     #for subkey in wandering_monster_stack[wm+1]:
                     wmno = wandering_monster_stack[wm+1][key]['No']
                     wmxp = wandering_monster_stack[wm+1][key]['XP']
+
+                    #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
+                    print("WMKEY:",wandering_monster_stack[wm+1])
                     print("key:",key,"WMNO:",wmno,"WNXP",wmxp)
                     wm_xp_total = wm_xp_total + wmxp * wmno
                     #treasures
