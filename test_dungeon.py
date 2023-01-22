@@ -759,6 +759,8 @@ def check_action(pc_dict, coord, room_stack):
 
                     wm_data = human_d[wm_dict['details'].lower()]
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = '0%'
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = [] #have to work out
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = [] #have to work out
                     print("WM_DATA",wm_data)
 
             if 'CharacterSubtable' in wm_dict['name']:
@@ -767,6 +769,8 @@ def check_action(pc_dict, coord, room_stack):
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
                 
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = '0%'
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = [] #have to work out
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = [] #have to work out
 
             if 'DragonSubtable' in wm_dict['name']:
                 print("DragonSubtable")
