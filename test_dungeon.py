@@ -731,7 +731,9 @@ def check_action(pc_dict, coord, room_stack):
             if 'Subtable' not in wm_dict['name']:
                 #print(all_d)
                 wm_data = all_d[wm_dict['name']]
-                print("WM_DATA",wm_data)
+                print("WM_DATA")
+                #print("WM_DATA",wm_data)
+                
 
             if 'HumanSubtable' in wm_dict['name']:
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details'][0]
