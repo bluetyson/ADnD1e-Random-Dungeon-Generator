@@ -3861,7 +3861,7 @@ for down in range(zwidth-1):
 
                     #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
                     print("WMKEY:",wandering_monster_stack[wm+1])
-                    if len(list(wandering_monster_stack[wm+1][key]['type'].keys())) > 1:
+                    if isinstance(wandering_monster_stack[wm+1][key]['type'], dict)
                         print("CHARACTER PARTY!")
                         for c in wandering_monster_stack[wm+1][key]['type']:
                             if 'level' in wandering_monster_stack[wm+1][key]['type'][c]:
