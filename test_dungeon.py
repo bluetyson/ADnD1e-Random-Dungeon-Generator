@@ -3875,7 +3875,7 @@ for down in range(zwidth-1):
                     wmxp = wandering_monster_stack[wm+1][key]['XP']
 
                     #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
-                    print("LOOP:",wm,WMKEY:",wandering_monster_stack[wm+1])
+                    print("LOOP:",wm,"WMKEY:",wandering_monster_stack[wm+1])
                     if isinstance(wandering_monster_stack[wm+1][key]['type'], dict):
                         print("CHARACTER PARTY!")
                         print("WMSUBTABLE:",len(wandering_monster_subtable),wandering_monster_subtable,"KEYCOUNT:",wandering_monster_stack['key_count'])
