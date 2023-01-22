@@ -576,7 +576,8 @@ def monster_tables(level):
         dragon_xp[7] = 1000
         dragon_xp[8] = 1000
         dragon_xp[9] = 10000
-        dragon_xp[10] = 25000
+        dragon_xp[10] = 20000
+        #630580/58080
 
         mdict['details'] = 'NOT IMPLEMENTED YET'
 
@@ -625,6 +626,7 @@ def monster_tables(level):
             mdict['details'] = dcheck
             mdict['name'] = 'Dragon-' + dcheck['name']
             mdict['no'] = dcheck['roll']
+            #mdict['XP'] = dragon_xp[level]  NOT IMPLEMENTED YET
         
 
     print("MDICT:",mdict)
