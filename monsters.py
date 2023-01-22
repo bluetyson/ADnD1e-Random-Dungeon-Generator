@@ -349,7 +349,9 @@ def monster_tables(level):
     71-72 Neo-otyugh-9HD 1-1
     73 Neo-otyugh-10HD 1-1
     74 Night-hag 1-2
-    75-78 Roper 1-2
+    75-76 Roper-10HD 1-2
+    77 Roper-11HD 1-2
+    78 Roper-12HD 1-2
     79-82 Shambling-mound 1-2
     83-86 Shedu 1-2
     87 Slug, giant 1-1
