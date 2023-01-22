@@ -61,7 +61,7 @@ def level_matrix(level):
 #def all_dict():
 #    pass
 #    return ad
-def test2():
+def human_data():
     hd = {'human-bandit': {'usename': 'human-bandit',
   'lair': '20%',
   'Treasure': 'M (A)',
