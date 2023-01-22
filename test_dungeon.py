@@ -3861,17 +3861,18 @@ for down in range(zwidth-1):
                     if len(wmti) > 0:
                         for t in wmti:
                             #do treasure check
-                            treasure = treasure_choice(t, wmno)
-                            wm_total_treasure['copper'] = wm_total_treasure['copper'] + treasure['copper']
-                            wm_total_treasure['silver'] = wm_total_treasure['silver'] + treasure['silver']
-                            wm_total_treasure['electrum'] = wm_total_treasure['electrum'] + treasure['electrum']
-                            wm_total_treasure['gold'] = wm_total_treasure['gold'] + treasure['gold']
-                            wm_total_treasure['platinum'] = wm_total_treasure['platinum'] + treasure['platinum']
-                            wm_total_treasure['gems'] = wm_total_treasure['gems'] + treasure['gems']
-                            wm_total_treasure['jewellery'] = wm_total_treasure['jewellery'] + treasure['jewellery']
-                            wm_total_treasure['magic'] = wm_total_treasure['magic'] + treasure['copper']
+                            if 'x' not in t:
+                                treasure = treasure_choice(t, wmno)
+                                wm_total_treasure['copper'] = wm_total_treasure['copper'] + treasure['copper']
+                                wm_total_treasure['silver'] = wm_total_treasure['silver'] + treasure['silver']
+                                wm_total_treasure['electrum'] = wm_total_treasure['electrum'] + treasure['electrum']
+                                wm_total_treasure['gold'] = wm_total_treasure['gold'] + treasure['gold']
+                                wm_total_treasure['platinum'] = wm_total_treasure['platinum'] + treasure['platinum']
+                                wm_total_treasure['gems'] = wm_total_treasure['gems'] + treasure['gems']
+                                wm_total_treasure['jewellery'] = wm_total_treasure['jewellery'] + treasure['jewellery']
+                                wm_total_treasure['magic'] = wm_total_treasure['magic'] + treasure['copper']
 
-                            f.write("Treasure:" + str(treasure) + '<br>')
+                                f.write("Treasure:" + str(treasure) + '<br>')
 
             #got to do valuations if there are any, but probably not
             f.write('<br>' + "Wandering Monster Total XP:" + str(wm_xp_total) + '<br>')                            
