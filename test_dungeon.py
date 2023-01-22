@@ -3840,8 +3840,20 @@ for down in range(zwidth-1):
                     wmxp = wandering_monster_stack[wm+1][key]['XP']
                     wm_xp_total = wm_xp_total + wm_xp
                     #treasures
+                    wmlair = wandering_monster_stack[wm+1][key]['lair']
+                    wmlair = wmlair.replace('%','')
+                    wmlair = int(wmlair)
                     wmti = wandering_monster_stack[wm+1][key]['treasure_individual']
-                    wmtl = wandering_monster_stack[wm+1][key]['treasure_lair']
+                    f.write("XP:" + str(wmxp*wmno) + '<br>')
+
+                    if len(wmti) > 0:
+                        for t in wmti:
+                            #do treasure check
+                            treasure = treasure_choice(t)
+                            f.write("XP:" + str(wmxp*wmno) + '<br>')
+                            f.write("Treasue":" + str(treasure) + '<br>')
+                            
+
 
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
