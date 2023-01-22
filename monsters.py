@@ -319,10 +319,10 @@ def monster_tables(level):
     21 Devil, horned 1-1
     22-23 Dragon — see Dragon Subtable below 1-1
     24 Efreeti 1-1
-    25 Elemental-air-12HD 1-1
-    26 Elemental-earth-12HD 1-1
-    27 Elemental-fire-12HD 1-1
-    28 Elemental-water-12HD 1-1
+    25 Elemental-air-8HD 1-1
+    26 Elemental-earth-8HD 1-1
+    27 Elemental-fire-8HD 1-1
+    28 Elemental-water-8HD 1-1
     29-31 Ettin 1-2
     32-33 Giant, hill 1-3
     34-35 Giant, stone 1-3
