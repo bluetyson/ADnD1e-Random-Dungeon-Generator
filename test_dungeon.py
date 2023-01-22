@@ -3851,7 +3851,7 @@ for down in range(zwidth-1):
                             #do treasure check
                             treasure = treasure_choice(t)
                             f.write("XP:" + str(wmxp*wmno) + '<br>')
-                            f.write("Treasue":" + str(treasure) + '<br>')
+                            f.write("Treasure:" + str(treasure) + '<br>')
                             
 
 
