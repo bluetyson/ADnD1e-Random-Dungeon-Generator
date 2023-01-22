@@ -3838,7 +3838,7 @@ for down in range(zwidth-1):
                     #for subkey in wandering_monster_stack[wm+1]:
                     wmno = wandering_monster_stack[wm+1][key]['No']
                     wmxp = wandering_monster_stack[wm+1][key]['XP']
-                    wm_xp_total = wm_xp_total + wm_xp
+                    wm_xp_total = wm_xp_total + wmxp
                     #treasures
                     wmlair = wandering_monster_stack[wm+1][key]['lair']
                     wmlair = wmlair.replace('%','')
