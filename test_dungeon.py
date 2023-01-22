@@ -3880,7 +3880,7 @@ for down in range(zwidth-1):
                         print("WMSUBTABLE:",len(wandering_monster_subtable),wandering_monster_subtable,"KEYCOUNT:",wandering_monster_stack['key_count'])
                         for c in wandering_monster_stack[wm+1][key]['type']:
                             if 'level' in wandering_monster_stack[wm+1][key]['type'][c]: #hack for a base xp points based on DMG table
-                                cxp = xp_d(wandering_monster_stack[wm+1][key]['type'][c]['level'])
+                                cxp = xp_d[wandering_monster_stack[wm+1][key]['type'][c]['level']]
                             else:
                                 cxp = 20
                             wm_xp_total = wm_xp_total + cxp
