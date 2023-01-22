@@ -58,9 +58,9 @@ def level_matrix(level):
 
     return monster_level
 
-def all_dict():
-    pass
-    return ad
+#def all_dict():
+#    pass
+#    return ad
 
 ​   
 def human_dict():
