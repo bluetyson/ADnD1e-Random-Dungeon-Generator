@@ -733,24 +733,25 @@ def check_action(pc_dict, coord, room_stack):
 
             if 'Subtable' not in wm_dict['name']:
                 #print(all_d)
-                wm_data = all_d[wm_dict['name']]
-                print("WM_DATA no sub")
+                #wm_data = all_d[wm_dict['name']]
+                #print("WM_DATA no sub")
                 #print("WM_DATA",wm_data)
+                [ass]
                 
 
             if 'HumanSubtable' in wm_dict['name']:
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details'][0]
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['details'][1]
 
-                wm_data = human_d[wm_dict['details'][0]]
-                print("WM_DATA",wm_data)
+                #wm_data = human_d[wm_dict['details'][0]]
+                #print("WM_DATA",wm_data)
 
                 if 'Character' in wm_dict['details']:
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9                
 
-                    wm_data = human_d[wm_dict['details']]
-                    print("WM_DATA",wm_data)
+                    #wm_data = human_d[wm_dict['details']]
+                    #print("WM_DATA",wm_data)
 
             if 'CharacterSubtable' in wm_dict['name']:
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
