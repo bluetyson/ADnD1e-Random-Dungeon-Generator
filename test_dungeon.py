@@ -3861,14 +3861,14 @@ for down in range(zwidth-1):
                         for t in wmti:
                             #do treasure check
                             treasure = treasure_choice(t, wmno)
-                            wm_total_treasure['copper'] = wm_total_treasure['copper'] + treasure_['copper']
-                            wm_total_treasure['silver'] = wm_total_treasure['silver'] + treasure_['silver']
-                            wm_total_treasure['electrum'] = wm_total_treasure['electrum'] + treasure_['electrum']
-                            wm_total_treasure['gold'] = wm_total_treasure['gold'] + treasure_['gold']
-                            wm_total_treasure['platinum'] = wm_total_treasure['platinum'] + treasure_['platinum']
-                            wm_total_treasure['gems'] = wm_total_treasure['gems'] + treasure_['gems']
-                            wm_total_treasure['jewellery'] = wm_total_treasure['jewellery'] + treasure_['jewellery']
-                            wm_total_treasure['magic'] = wm_total_treasure['magic'] + treasure_['copper']
+                            wm_total_treasure['copper'] = wm_total_treasure['copper'] + treasure['copper']
+                            wm_total_treasure['silver'] = wm_total_treasure['silver'] + treasure['silver']
+                            wm_total_treasure['electrum'] = wm_total_treasure['electrum'] + treasure['electrum']
+                            wm_total_treasure['gold'] = wm_total_treasure['gold'] + treasure['gold']
+                            wm_total_treasure['platinum'] = wm_total_treasure['platinum'] + treasure['platinum']
+                            wm_total_treasure['gems'] = wm_total_treasure['gems'] + treasure['gems']
+                            wm_total_treasure['jewellery'] = wm_total_treasure['jewellery'] + treasure['jewellery']
+                            wm_total_treasure['magic'] = wm_total_treasure['magic'] + treasure['copper']
 
                             f.write("Treasure:" + str(treasure) + '<br>')
 
