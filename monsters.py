@@ -352,7 +352,10 @@ def monster_tables(level):
     75-76 Roper-10HD 1-2
     77 Roper-11HD 1-2
     78 Roper-12HD 1-2
-    79-82 Shambling-mound 1-2
+    79 Shambling-mound-8HD 1-2
+    80 Shambling-mound-9HD 1-2
+    81 Shambling-mound-10HD 1-2
+    82 Shambling-mound-11HD 1-2
     83-86 Shedu 1-2
     87 Slug, giant 1-1
     88-91 Spectre 1-1
