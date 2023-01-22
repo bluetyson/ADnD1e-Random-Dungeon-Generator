@@ -729,7 +729,7 @@ def check_action(pc_dict, coord, room_stack):
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
 
             if 'Subtable' not in wm_dict['name']:
-                print("WM_DATA1st NoSubtable")
+                print("WM_DATA1st NoSubtable - monster")
                 #print(all_d)
                 wm_data = all_d[wm_dict['name'].lower()]
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_data['XPtotal']
@@ -743,7 +743,7 @@ def check_action(pc_dict, coord, room_stack):
 
             if 'HumanSubtable' in wm_dict['name']:
             #if 'HumanSubtable' in wm_dict['type']:                
-                print("HumanSubtable")
+                print("HumanSubtable from wm")
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details'][0]
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['details'][1]
                 #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_dict['details'][1]
@@ -770,6 +770,7 @@ def check_action(pc_dict, coord, room_stack):
                     wandering_monster_subtable.append('human-character')
                     quit()
                 else:
+                    print("HumanSubtable-second branch - not implemented yet won't work")
                     wandering_monster_subtable.append('human')
                     print("WM_DATA",wm_data)
                     print("human quitting")
