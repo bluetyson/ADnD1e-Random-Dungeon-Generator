@@ -3863,6 +3863,12 @@ for down in range(zwidth-1):
                     print("WMKEY:",wandering_monster_stack[wm+1])
                     if len(wandering_monster_stack[wm+1][key]['type']) > 1:
                         print("CHARACTER PARTY!")
+                        for c in wandering_monster_stack[wm+1][key]['type']:
+                            if 'level' in wandering_monster_stack[wm+1][key]['type'][c]:
+                                cxp = xp_hack(wandering_monster_stack[wm+1][key]['type'][c]['level'])
+                            else:
+                                cxp = 20
+                            wm_xp_total = wm_xp_total + cxp
                     else:
                         print("key:",key,"WMNO:",wmno,"WNXP",wmxp)
                         wm_xp_total = wm_xp_total + wmxp * wmno
