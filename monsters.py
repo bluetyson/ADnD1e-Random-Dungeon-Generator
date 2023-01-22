@@ -340,7 +340,9 @@ def monster_tables(level):
     53-56 Lizard, fire 1-3
     57-59 Lurker-above 1-1
     60 Mezzodaemon 1-1
-    61-63 Mimic 1-1
+    61 Mimic-8HD 1-1
+    62 Mimic-9HD 1-1
+    63 Mimic-10HD 1-1
     64-65 Mind-flayer 1-2
     66-69 Mummy 1-2
     70 Naga, spirit 1-2
