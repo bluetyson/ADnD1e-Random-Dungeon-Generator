@@ -3833,7 +3833,7 @@ for down in range(zwidth-1):
                 for key in wm:
                     f.write("key" + str(key) + '<br>')
                     for subkey in key:
-                        f.write("subkey" _ str(subkey) + '<br>')
+                        f.write("subkey" + str(subkey) + '<br>')
 
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
