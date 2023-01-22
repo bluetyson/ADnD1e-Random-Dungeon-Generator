@@ -3830,7 +3830,7 @@ for down in range(zwidth-1):
             for wm in range(wandering_monster_stack['key_count']):
                 f.write('<h4>Wandering Monster: ' + str(wm) + '</h4>')
                 f.write(str(wandering_monster_stack[wm+1]) + '<br>')
-                for key in wm:
+                for key in wandering_monster_stack[wm+1]:
                     f.write("key" + str(key) + '<br>')
                     for subkey in key:
                         f.write("subkey" + str(subkey) + '<br>')
