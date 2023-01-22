@@ -1347,10 +1347,6 @@ def room_contents(shape_dict, coord, content):
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['type'])
 
-
-        if 'Subtable' in shape_dict['contents']['monster']['type']:
-            print("QUITTING MDICT 12:",mdict)
-            quit()
         
     elif r >15 and r <=17:
         shape_dict['contents']['monster'] = {}
@@ -1381,11 +1377,6 @@ def room_contents(shape_dict, coord, content):
 
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['type'])
-
-
-        if 'Subtable' in shape_dict['contents']['monster']['type']:
-            print("QUITTING MDICT 15:",mdict)
-            quit()
 
         shape_dict = loot(shape_dict,coord,monster="Y")
         shape_dict = loot_store(shape_dict)
