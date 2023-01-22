@@ -3178,7 +3178,7 @@ def monster_tables(level):
             #mdict['XP'] = dragon_xp[level]  NOT IMPLEMENTED YET
         
 
-    print("MDICT:",mdict)
+    print("MONSTER TABLE MDICT:",mdict)
 
     if 1 == 2:
         print("DUMPING LEVELS")
