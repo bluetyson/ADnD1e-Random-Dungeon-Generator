@@ -3832,8 +3832,8 @@ for down in range(zwidth-1):
                 f.write(str(wandering_monster_stack[wm+1]) + '<br>')
                 for key in wm:
                     f.write("key" + str(key) + '<br>')
-                        for subkey in key:
-                            f.write("subkey" _ str(subkey) + '<br>')
+                    for subkey in key:
+                        f.write("subkey" _ str(subkey) + '<br>')
 
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
