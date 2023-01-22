@@ -3847,7 +3847,7 @@ for down in range(zwidth-1):
                     #for subkey in wandering_monster_stack[wm+1]:
                     wmno = wandering_monster_stack[wm+1][key]['No']
                     wmxp = wandering_monster_stack[wm+1][key]['XP']
-                    wm_xp_total = wm_xp_total + wmxp
+                    wm_xp_total = wm_xp_total + wmxp * wmno
                     #treasures
                     if 'NO-ENCOUNTER' not in wandering_monster_stack[wm+1][key]['type']:
                         print("wm treasure checking",str(wandering_monster_stack[wm+1]))
@@ -3857,11 +3857,11 @@ for down in range(zwidth-1):
                         wmti = wandering_monster_stack[wm+1][key]['treasure_individual']
                         f.write("XP:" + str(wmxp*wmno) + '<br>')
 
+                    f.write("XP:" + str(wmxp*wmno) + '<br>')
                     if len(wmti) > 0:
                         for t in wmti:
                             #do treasure check
                             treasure = treasure_choice(t, wmno)
-                            f.write("XP:" + str(wmxp*wmno) + '<br>')
                             f.write("Treasure:" + str(treasure) + '<br>')
 
             f.write('<br>' + "Wandering Monster Total XP:" + str(wm_xp_total) + '<br>')                            
