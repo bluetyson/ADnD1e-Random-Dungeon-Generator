@@ -396,7 +396,8 @@ def monster_tables(level):
     36-41 Mold, brown 1-1
     42-43 Mold, yellow 1-1
     44-47 Mind-flayer 1-4
-    48-50 Naga, guardian 1-2
+    48-49 Naga, guardian-11HD 1-2
+    50 Naga, guardian-12HD 1-2
     51-53 Neo-otyugh-11HD 1-1
     54-56 Neo-otyugh-12HD 1-1
     57-64 Purple-worm 1-1
