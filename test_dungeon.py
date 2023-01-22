@@ -734,7 +734,7 @@ def check_action(pc_dict, coord, room_stack):
             if 'Subtable' not in wm_dict['name']:
                 print("WM_DATA1st NoSubtable")
                 #print(all_d)
-                all_d[wm_dict['name']]
+                print(all_d[wm_dict['name'].lower()])
                 #print("WM_DATA no sub")
                 #print("WM_DATA",wm_data)
                 #pass
