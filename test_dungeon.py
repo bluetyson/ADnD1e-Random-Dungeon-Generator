@@ -3857,14 +3857,24 @@ for down in range(zwidth-1):
                         wmti = wandering_monster_stack[wm+1][key]['treasure_individual']
                         f.write("XP:" + str(wmxp*wmno) + '<br>')
 
-                    f.write("XP:" + str(wmxp*wmno) + '<br>')
                     if len(wmti) > 0:
                         for t in wmti:
                             #do treasure check
                             treasure = treasure_choice(t, wmno)
+                            wm_total_treasure['copper'] = wm_total_treasure['copper'] + treasure_['copper']
+                            wm_total_treasure['silver'] = wm_total_treasure['silver'] + treasure_['silver']
+                            wm_total_treasure['electrum'] = wm_total_treasure['electrum'] + treasure_['electrum']
+                            wm_total_treasure['gold'] = wm_total_treasure['gold'] + treasure_['gold']
+                            wm_total_treasure['platinum'] = wm_total_treasure['platinum'] + treasure_['platinum']
+                            wm_total_treasure['gems'] = wm_total_treasure['gems'] + treasure_['gems']
+                            wm_total_treasure['jewellery'] = wm_total_treasure['jewellery'] + treasure_['jewellery']
+                            wm_total_treasure['magic'] = wm_total_treasure['magic'] + treasure_['copper']
+
                             f.write("Treasure:" + str(treasure) + '<br>')
 
+            #got to do valuations if there are any, but probably not
             f.write('<br>' + "Wandering Monster Total XP:" + str(wm_xp_total) + '<br>')                            
+            f.write('<br>' + "Wandering Monster Total Treasure:" + str(wm_total_treasure) + '<br>')                            
             
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
