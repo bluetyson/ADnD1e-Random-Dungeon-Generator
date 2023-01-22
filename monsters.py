@@ -2687,7 +2687,7 @@ def monster_tables(level):
     #need to do stars for substitutions for levels
     #human variable need to do for dwarves etc.
     level_01 ='''01-02 Ant, giant 1-4
-    03-04 Badger* 1-4
+    03-04 Badger 1-4
     05-14 Beetle, fire 1-4
     15 Demon, manes 1-4
     16 Dwarf-hill 4-14
@@ -2733,7 +2733,7 @@ def monster_tables(level):
     99 Assassin 2
     00 MONK-OR-BARD 1'''    
 
-    level_02='''01 Badger, giant* 1-4
+    level_02='''01 Badger, giant 1-4
     02-16 Centipede, giant 3-13
     17-27 Character — see Character Subtable 1-1
     28-29 Devil, lemure 2-5
