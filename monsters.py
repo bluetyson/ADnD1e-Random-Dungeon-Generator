@@ -562,9 +562,22 @@ def monster_tables(level):
     if mdict['name'] == 'Character-CharacterSubtable':
         mdict['details'] = create_party(level)
 
-    #dragont test
+    #dragon test
     #mdict['name'] == 'Dragon-DragonSubtable'
     if mdict['name'] == 'Dragon-DragonSubtable':
+        #dragon hack to avoid calculating out every dragon * every age
+        #take max value of DMG page 175 table
+        #base value
+        dragon_xp = {}
+        dragon_xp[3] = 150
+        dragon_xp[4] = 250
+        dragon_xp[5] = 500
+        dragon_xp[6] = 1000
+        dragon_xp[7] = 1000
+        dragon_xp[8] = 1000
+        dragon_xp[9] = 10000
+        dragon_xp[10] = 25000
+
         mdict['details'] = 'NOT IMPLEMENTED YET'
 
         if 1 == 1:
