@@ -3825,9 +3825,15 @@ for down in range(zwidth-1):
                     water_dict[room] = room_stack['shape_dict']
 
         if len(wandering_monster_stack) > 0:
+            wm_xp = 0
+            wm_treasure = {}
             for wm in range(wandering_monster_stack['key_count']):
                 f.write('<h4>Wandering Monster: ' + str(wm) + '</h4>')
                 f.write(str(wandering_monster_stack[wm+1]) + '<br>')
+                for key in wm:
+                    f.write("key" + str(key) + '<br>')
+                        for subkey in key:
+                            f.write("subkey" _ str(subkey) + '<br>')
 
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
