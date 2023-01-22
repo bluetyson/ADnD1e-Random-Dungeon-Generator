@@ -62,6 +62,12 @@ def level_matrix(level):
 #    pass
 #    return ad
 
+​
+def human_data():
+    pass
+    hd = 't'
+    return hd
+
 def monster_tables(level):
 
     dice_lookup = {}
