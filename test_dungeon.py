@@ -3393,7 +3393,7 @@ error_dict['type'] = {}
 
 water_dict = {}
 #make water log as need to run a lot to get one and can't scroll that far
-from monsters import all_data, dragon_data, human_data
+from monsters import all_data, dragon_data, human_data, xp_hack
 all_d = all_data()
 dragon_d = dragon_data()
 human_d = human_data()
