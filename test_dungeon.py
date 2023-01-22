@@ -733,6 +733,7 @@ def check_action(pc_dict, coord, room_stack):
                 #print(all_d)
                 wm_data = all_d[wm_dict['name'].lower()]
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_data['XPtotal']
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
 
@@ -747,6 +748,7 @@ def check_action(pc_dict, coord, room_stack):
                 wm_data = human_d[wm_dict['details'][0].lower()]
                 print("WM_DATA",wm_data)
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_data['XPtotal']
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
 
@@ -771,6 +773,7 @@ def check_action(pc_dict, coord, room_stack):
                 dname = wm_dict['details']['name'].split(':')[0]
                 dname = dname.split('-')[1]
                 wm_data = dragon_d[dname]
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
 
@@ -3825,15 +3828,20 @@ for down in range(zwidth-1):
                     water_dict[room] = room_stack['shape_dict']
 
         if len(wandering_monster_stack) > 0:
-            wm_xp = 0
-            wm_treasure = {}
+            wm_xp_total = 0
+            wm_treasure_total = {}
             for wm in range(wandering_monster_stack['key_count']):
                 f.write('<h4>Wandering Monster: ' + str(wm) + '</h4>')
                 f.write(str(wandering_monster_stack[wm+1]) + '<br>')
                 for key in wandering_monster_stack[wm+1]:
                     f.write("key" + str(key) + '<br>')
-                    for subkey in key:
-                        f.write("subkey" + str(subkey) + '<br>')
+                    #for subkey in wandering_monster_stack[wm+1]:
+                    wmno = wandering_monster_stack[wm+1][key]['No']
+                    wmxp = wandering_monster_stack[wm+1][key]['XP']
+                    wm_xp_total = wm_xp_total + wm_xp
+                    #treasures
+                    wmti = wandering_monster_stack[wm+1][key]['treasure_individual']
+                    wmtl = wandering_monster_stack[wm+1][key]['treasure_lair']
 
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
