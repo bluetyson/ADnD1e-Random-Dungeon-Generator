@@ -724,6 +724,7 @@ def check_action(pc_dict, coord, room_stack):
 
         try:
             wm_dict = monster_tables(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
+            print("INITIAL WM",wm_dict)
 
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['name']
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
