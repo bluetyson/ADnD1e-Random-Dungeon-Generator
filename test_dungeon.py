@@ -794,7 +794,8 @@ def check_action(pc_dict, coord, room_stack):
                 wandering_monster_subtable.append('character')
                 #quit()
 
-            if 'DragonSubtable' in wm_dict['name']:
+            #if 'DragonSubtable' in wm_dict['name']:
+            if 'Dragon' in wm_dict['type']:                
                 print("DragonSubtable")
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']['name']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['roll'][0]
