@@ -143,7 +143,7 @@ def random_check():
     elif pc == 20:
         pc_dict['direction'] = 'random_encounter'
         pc_dict['check'] = 'roll_again'
-        wandering_monster_roll.append(i)
+        wandering_monster_rolls.append(i)
 
     print("RANDOM_CHECK",pc, pc_dict['direction'])
 
