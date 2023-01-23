@@ -3980,7 +3980,7 @@ for down in range(zwidth-1):
                                         monster_valutions['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
                                         monster_valutions['treasure']['magic_values'].append(m[1][2]) #NOT IMPLEMENTED YET
 
-                                    f.write('<h5>Monster Valuation: ' + str(wm) + '</h5>')
+                                    f.write('<h5>Monster Valuation: ' + str(monster_valuations) + '</h5>')
                                     f.write(str(monster_valuations) + '<br>')
                                 else:
                                     print("no monster treasure")
