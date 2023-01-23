@@ -1511,13 +1511,17 @@ def room_contents(shape_dict, coord, content):
 
         else:
             ##monsters
-            m_data = all_d[shape_dict['contents']['monster']['type'].lower()]
-            print(m_data)
-            shape_dict['contents']['monster']['XP'] = m_data['XPtotal']
-            shape_dict['contents']['monster']['lair'] = m_data['lair']
-            shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
-            shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
-
+            if 'NO-ENCOUNTER' not in shape_dict['contents']['monster']['type']:
+                m_data = all_d[shape_dict['contents']['monster']['type'].lower()]
+                print(m_data)
+                shape_dict['contents']['monster']['XP'] = m_data['XPtotal']
+                shape_dict['contents']['monster']['lair'] = m_data['lair']
+                shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
+                shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
+            else: #dummy, nothing of interest
+                shape_dict['contents']['monster']['lair'] = '0%'
+                shape_dict['contents']['monster']['treasure_individual'] = []
+                shape_dict['contents']['monster']['treasure_lair'] = []
 
 
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
