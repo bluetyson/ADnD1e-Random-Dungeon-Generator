@@ -956,7 +956,8 @@ def side(coord):
 def turn(coord):
     t_dict = {}
     t = roll_dice(1,20)
-    print("TURN CHECK",t)
+    if VERBOSITY:
+        print("TURN CHECK",t)
     if t <= 8:
         t_dict['direction'] = 'L90'
     if t == 9:
@@ -2929,7 +2930,8 @@ def fancy_cave(coord):
 def wet_small(shape_dict, coord):
     #not implemented yet
     w = roll_dice(1,20)
-    print("WET SMALL ROLL:",w)
+    if VERBOSITY:
+        print("WET SMALL ROLL:",w)
     wet_dict = {}
     wet_dict['wet'] = 'N'
     wet_dict['monster'] = 'N'
@@ -3856,7 +3858,8 @@ for down in range(zwidth-1):
                     usestr = copy.deepcopy(downlist[down][i,j,0])
                     sdstr = ''
                     if 'sd' in downlist[down][i,j,0]:
-                        print("HAVE SD HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                        if VERBOSITY:
+                            print("HAVE SD HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                         usestr = copy.deepcopy(downlist[down][i,j,0])
                         usestr = usestr.replace('R','')
                         usestr = usestr.replace('sd','')
@@ -3879,7 +3882,8 @@ for down in range(zwidth-1):
                                     print("secret door",s,secret_door_dict[s],"ijk:",i+xmin,j+ymin,0 - down -1)
                                 keylist = list(secret_door_dict[s].keys())
                                 if keylist[0] == (i+xmin,j+ymin,0 - down -1):  ##try and match real coords
-                                    print("found a secret door!")
+                                    if VERBOSITY:
+                                        print("found a secret door!")
                                     if secret_door_dict[s][keylist[1]]['loc'] == 'xminloc':
                                         borderdir = '<divl>'
                                         borderdire = '</divl>'
