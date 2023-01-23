@@ -3056,10 +3056,10 @@ def monster_tables(level):
     dragon_level_10='''01-20 Blue:2-ancient-&-very-old (8&7)
     21-26 Bronze:2-ancient-&-very-old (8&7)
     27-33 Copper:2-ancient-&-very-old (8&7)
-    34-35 Chromatic-(Tiamat) (8)
+    34-35 Chromatic:-(Tiamat) (8)
     36-40 Gold:2-ancient-&-old (8&6)
     41-60 Green:2-ancient-&-very old (8&7)
-    61-63 Platinum-(Bahamut) (8)
+    61-63 Platinum:-(Bahamut) (8)
     64-94 Red:2-ancient-&-old (8&6)
     95-100 Silver:2-ancient-&-old (8&-6)'''
 
