@@ -3917,7 +3917,7 @@ for down in range(zwidth-1):
             valuations = {'gems':[],'jewellery':[], 'magic':[]}
 
             total_treasure_monster =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
-            total_valuations_monster = {'gems':[],'jewellery':[], 'magic':[]}
+            total_valuations_monster = {'gems':[],'jewellery':[], 'magic':[], 'magic_xp':[],  'magic_values':[],   'magic_list':[]}
 
             for room in room_stack['shape_dict']:
                 f.write('<h4>Data: ' + str(room) + '</h4>')
