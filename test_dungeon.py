@@ -3936,7 +3936,7 @@ for down in range(zwidth-1):
                                     if tkey == 'magic' and room_stack['shape_dict'][room]['contents'][key]['type'][tkey] > 0:
                                         valuations['magic'] = valuations['magic'] + room_stack['shape_dict'][room]['contents']['treasure']['magic_values']
                                 ###make monster treasure
-                            if key == 'monster:'    
+                            if key == 'monster':    
                                 monster_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
                                 monster_valuations = {'gems':[],'jewellery':[], 'magic':[]}
                                 treasure_list = room_stack['shape_dict'][room]['contents']['monster']['treasure_individual'] + room_stack['shape_dict'][room]['contents']['monster']['treasure_lair']
