@@ -11,7 +11,7 @@ import pickle
 import math
 
 from monsters import monster_tables
-from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item
+from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item, treasure_choice
 
 PI = math.pi
 ARGV = sys.argv
@@ -143,6 +143,7 @@ def random_check():
     elif pc == 20:
         pc_dict['direction'] = 'random_encounter'
         pc_dict['check'] = 'roll_again'
+        
 
     print("RANDOM_CHECK",pc, pc_dict['direction'])
 
@@ -727,24 +728,96 @@ def check_action(pc_dict, coord, room_stack):
 
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['name']
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
+            #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['wm_dict'] = wm_dict
+
+            checkdragon = False
+            
+            for cd in [r':young',r':sub',r':adult',r':old',r':very',r':ancient','Tiamat','Bahamut',':2-']:
+                if cd in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:
+                    checkdragon = True
+            print("checking dragon", checkdragon)
+
+            #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['checkdrg'] = checkdragon
+
+            if 'Subtable' not in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:
+                if not checkdragon:
+                    print("WM_DATA1st NoSubtable - monster")
+                    #print(all_d)
+                    wm_data = all_d[wm_dict['name'].lower()]
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_data['XPtotal']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
+
+                    print("WM_DATA",wm_data)
+                    wandering_monster_subtable.append('monster')
+                    print("WM_DICTNAME",wm_dict['name'])
+                else:
+                    print(wm_dict)
+                    print("DragonSubtable")
+                    print("DRAGON WM_DICT:",wm_dict)
+                    #type ok above already
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = int(wm_dict['no'][0])
+
+                    dname = wm_dict['details']['name'].split(':')[0]
+                    print("Dragon dname", dname)
+                    wm_data = dragon_d[dname]
+                    print("Dragon WM Data", wm_data)
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
+
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = xp_d[wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level']]
+                    print("DragonSubtableWM:",wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                    wandering_monster_subtable.append('dragon')
 
             if 'HumanSubtable' in wm_dict['name']:
+                print("HumanSubtable from wm")
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details'][0]
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['details'][1]
+
+                if 'Character' not in wm_dict['details']:
+                    wm_data = human_d['human-' + wm_dict['details'][0].lower()]
+                    print("WM_DATA",wm_data)
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_data['XPtotal']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
+
+                    print("human subtable check wmdict details:",wm_dict['details'])
                 if 'Character' in wm_dict['details']:
+                    print("HumanSubtable-Character - implementing")
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9                
+
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = '0%'
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = [] #have to work out
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = [] #have to work out
+                    print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                    wandering_monster_subtable.append('human-character')
+                else:
+                    print("HumanSubtable-second branch basic human")
+                    print("WM_DATA",wm_data)
+                    print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                    wandering_monster_subtable.append('human')
+                print("IN HUMAN")
+
             if 'CharacterSubtable' in wm_dict['name']:
+                print("CharacterSubtable") #this works
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
+                
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = '0%'
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = [] #have to work out
+                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = [] #have to work out
 
-            if 'DragonSubtable' in wm_dict['name']:
-                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']['name']
-                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['roll'][0]
+                #print("character quitting")
+                print("CharacterSubtableWM:", wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                wandering_monster_subtable.append('character')
 
         except Exception as wmE:
             #bound to be parsing problems in the monster tables until vetted dragons and characters etc.
-            print(wmE)
+            print("error:",wmE)
             error_dict[error_dict['key_count']] = wmE
             error_dict['type']['key_count'] = "wm roll error for level: " + str(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
             error_dict['key_count'] += 1            
@@ -952,7 +1025,7 @@ def room(coord, room_stack, size="C", content=None ):
     ## check the room stack and exit functions here
     
     print("ROOM KEY COUNT:",room_stack['key_count'])
-    print("ROOM STACK CHECK in room function:", room_stack)
+    #####print("ROOM STACK CHECK in room function:", room_stack)
 
         
     return shape_dict
@@ -1336,13 +1409,52 @@ def room_contents(shape_dict, coord, content):
             if 'Character' in m_dict['details']:
                 shape_dict['contents']['monster']['type']  = m_dict['details']
                 shape_dict['contents']['monster']['No'] = 9
-        if 'CharacterSubtable' in m_dict['name']:
+                shape_dict['contents']['monster']['lair'] = '0%'
+                shape_dict['contents']['monster']['treasure_individual'] = []
+                shape_dict['contents']['monster']['treasure_lair'] = []
+            else:
+                m_data = human_d['human-' + m_dict['details'][0].lower()]                
+                shape_dict['contents']['monster']['XP'] = m_data['XPtotal']
+                shape_dict['contents']['monster']['lair'] = m_data['lair']
+                shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
+                shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
+
+        elif 'CharacterSubtable' in m_dict['name']:
             shape_dict['contents']['monster']['type']  = m_dict['details']
             shape_dict['contents']['monster']['No'] = 9
+            shape_dict['contents']['monster']['lair'] = '0%'
+            shape_dict['contents']['monster']['treasure_individual'] = []
+            shape_dict['contents']['monster']['treasure_lair'] = []
 
-        if 'DragonSubtable' in m_dict['name']:
+        #elif 'DragonSubtable' in m_dict['name']:
+        elif 'Dragon' in m_dict['name']:            
             shape_dict['contents']['monster']['type']  = m_dict['details']['name']
-            shape_dict['contents']['monster']['No'] = m_dict['roll'][0]
+            shape_dict['contents']['monster']['No'] = int(m_dict['no'][0])
+
+            dname = m_dict['name'].split(':')[0]
+            print("Dragon dname", dname)
+            m_data = dragon_d[dname.replace('Dragon-','')]
+            print("Dragon M Data", m_data)
+            shape_dict['contents']['monster']['lair'] = m_data['lair']
+            shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
+            shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
+            shape_dict['contents']['monster']['XP'] = xp_d[shape_dict['contents']['monster']['level']]
+
+        else:
+            ##monsters
+            if 'NO-ENCOUNTER' not in shape_dict['contents']['monster']['type']:
+                m_data = all_d[shape_dict['contents']['monster']['type'].lower()]
+                print(m_data)
+                shape_dict['contents']['monster']['XP'] = m_data['XPtotal']
+                shape_dict['contents']['monster']['lair'] = m_data['lair']
+                shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
+                shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
+            else: #dummy, nothing of interest
+                shape_dict['contents']['monster']['lair'] = '0%'
+                shape_dict['contents']['monster']['treasure_individual'] = []
+                shape_dict['contents']['monster']['treasure_lair'] = []
+
+
 
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['type'])
@@ -1367,13 +1479,50 @@ def room_contents(shape_dict, coord, content):
             if 'Character' in m_dict['details']:
                 shape_dict['contents']['monster']['type']  = m_dict['details']
                 shape_dict['contents']['monster']['No'] = 9
-        if 'CharacterSubtable' in m_dict['name']:
+                shape_dict['contents']['monster']['lair'] = '0%'
+                shape_dict['contents']['monster']['treasure_individual'] = []
+                shape_dict['contents']['monster']['treasure_lair'] = []
+            else:
+                m_data = human_d['human-' + m_dict['details'][0].lower()]                
+                shape_dict['contents']['monster']['XP'] = m_data['XPtotal']
+                shape_dict['contents']['monster']['lair'] = m_data['lair']
+                shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
+                shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
+
+        elif 'CharacterSubtable' in m_dict['name']:
             shape_dict['contents']['monster']['type']  = m_dict['details']
             shape_dict['contents']['monster']['No'] = 9
+            shape_dict['contents']['monster']['lair'] = '0%'
+            shape_dict['contents']['monster']['treasure_individual'] = []
+            shape_dict['contents']['monster']['treasure_lair'] = []
 
-        if 'DragonSubtable' in m_dict['name']:
+        elif 'Dragon' in m_dict['name']:            
             shape_dict['contents']['monster']['type']  = m_dict['details']['name']
-            shape_dict['contents']['monster']['No'] = m_dict['roll'][0]
+            shape_dict['contents']['monster']['No'] = int(m_dict['no'][0])
+
+            dname = m_dict['name'].split(':')[0]
+            print("Dragon dname", dname)
+            m_data = dragon_d[dname.replace('Dragon-','')]
+            print("Dragon M Data", m_data)
+            shape_dict['contents']['monster']['lair'] = m_data['lair']
+            shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
+            shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
+            shape_dict['contents']['monster']['XP'] = xp_d[shape_dict['contents']['monster']['level']]
+
+        else:
+            ##monsters
+            if 'NO-ENCOUNTER' not in shape_dict['contents']['monster']['type']:
+                m_data = all_d[shape_dict['contents']['monster']['type'].lower()]
+                print(m_data)
+                shape_dict['contents']['monster']['XP'] = m_data['XPtotal']
+                shape_dict['contents']['monster']['lair'] = m_data['lair']
+                shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
+                shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
+            else: #dummy, nothing of interest
+                shape_dict['contents']['monster']['lair'] = '0%'
+                shape_dict['contents']['monster']['treasure_individual'] = []
+                shape_dict['contents']['monster']['treasure_lair'] = []
+
 
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['type'])
@@ -2965,7 +3114,7 @@ def secret_doors(shape_dict):
         secret_door_count = room_stack['shape_dict'][room_stack['key_count']]['contents']['secret_door_count']
         secret_door_dict = room_stack['shape_dict'][room_stack['key_count']]['contents']['secret_door_dict']
 
-        print("\ncalling SD", room_stack, "\n")
+        #####print("\ncalling SD", room_stack, "\n")
     
         #loop through the secret doors  #just rest rooms first
         #somewhere in this loop is a problem
@@ -2983,9 +3132,9 @@ def secret_doors(shape_dict):
                         print("in secret door room and rolling")
                         new_coord = secret_door_dict[s + 1][key]
                         #shape_dict = room(secret_door_dict[s + 1][key], room_stack, size='R' )  ## different type to get slightly different table
-                        print("room stack before", room_stack)
+                        #####print("room stack before", room_stack)
                         shape_dict = room(key, room_stack, size='R' )  ## different type to get slightly different table
-                        print("room stack after", room_stack)
+                        #####print("room stack after", room_stack)
 
                         print("SECRETDOORDICT",secret_door_dict)
                         print("NEW_COORD",new_coord, "KEY:",key)
@@ -3361,6 +3510,11 @@ error_dict['type'] = {}
 
 water_dict = {}
 #make water log as need to run a lot to get one and can't scroll that far
+from monsters import all_data, dragon_data, human_data, xp_hack
+all_d = all_data()
+dragon_d = dragon_data()
+human_d = human_data()
+xp_d = xp_hack()
 
 dungeon = {}
 dungeon[(0,0,0)] = {}
@@ -3369,6 +3523,8 @@ dungeon[(0,0,0)]['check'] = 'up_down'
 dungeon[(0,0,0)]['go'] = -1
 
 facing = 'A'
+wandering_monster_subtable = []
+wandering_monster_rolls = []
 ## got to implement for all here eventually, complicates things
 
 
@@ -3760,6 +3916,11 @@ for down in range(zwidth-1):
             total_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
             valuations = {'gems':[],'jewellery':[], 'magic':[]}
 
+            total_treasure_monster =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
+            total_valuations_monster = {'gems':[],'jewellery':[], 'magic':[], 'magic_xp':[],  'magic_values':[],   'magic_list':[]}
+
+            m_xp_total = 0
+
             for room in room_stack['shape_dict']:
                 f.write('<h4>Data: ' + str(room) + '</h4>')
                 f.write(str(room_stack['shape_dict'][room]) + '<br>')
@@ -3782,16 +3943,209 @@ for down in range(zwidth-1):
                                         valuations['jewellery'] = valuations['jewellery'] + room_stack['shape_dict'][room]['contents'][key]['jewellery_values']
                                     if tkey == 'magic' and room_stack['shape_dict'][room]['contents'][key]['type'][tkey] > 0:
                                         valuations['magic'] = valuations['magic'] + room_stack['shape_dict'][room]['contents']['treasure']['magic_values']
+                                ###make monster treasure
+                            if key == 'monster':    
+                                ## work out XP then treasure
+                                mno = room_stack['shape_dict'][room]['contents'][key]['No']
+                                mxp = room_stack['shape_dict'][room]['contents'][key]['XP']
+
+                                if isinstance(room_stack['shape_dict'][room]['contents'][key]['type'], dict):
+                                    print("CHARACTER PARTY!")
+                                    for c in room_stack['shape_dict'][room]['contents']['key']['type']:
+                                        if 'level' in room_stack['shape_dict'][room]['contents']['key']['type'][c]: #hack for a base xp points based on DMG table
+                                            cxp = xp_d[room_stack['shape_dict'][room]['contents']['key']['type'][c]['level']]
+                                        else:
+                                            cxp = 20
+                                        m_xp_total = m_xp_total + cxp
+                                else:
+                                    print("key:",key,"MNO:",mno,"WNXP",mxp)
+                                    m_xp_total = m_xp_total + mxp * mno
+
+                                monster_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
+                                monster_valuations = {'gems':[],'jewellery':[], 'magic':[]}
+                                monster_valuations['magic_list'] = []
+                                monster_valuations['magic_xp'] = [] 
+                                monster_valuations['magic_values'] = []
+
+                                treasure_list = room_stack['shape_dict'][room]['contents']['monster']['treasure_individual'] + room_stack['shape_dict'][room]['contents']['monster']['treasure_lair']
+                                lairtry = int(room_stack['shape_dict'][room]['contents']['monster']['lair'].replace('%',''))
+
+                                inlair = False
+                                if lairtry > 0:
+                                    l = roll_dice(1,100)
+                                    individual = ['I','J','K','L','M','N']
+                                    f.write("LairTry:" + str(l) + ' from ' + str(lairtry))
+                                
+                                    if l <= lairtry:
+                                        inlair = True
+                                        f.write(' is in lair: ' + str(inlair)  + '<br>')
+                                        
+                                
+                                if inlair:
+                                    if len(treasure_list) > 0:
+                                        for t in room_stack['shape_dict'][room]['contents']['monster']['treasure_lair']:
+                                            if 'x' not in t:
+                                                treasure = treasure_choice(t, room_stack['shape_dict'][room]['contents']['monster']['No'])
+                                                print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
+                                                monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
+                                                monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
+                                                monster_treasure['electrum'] = monster_treasure['electrum'] + treasure['electrum']
+                                                monster_treasure['gold'] = monster_treasure['gold'] + treasure['gold']
+                                                monster_treasure['platinum'] = monster_treasure['platinum'] + treasure['platinum']
+                                                monster_treasure['gems'] = monster_treasure['gems'] + treasure['gems']
+                                                monster_treasure['jewellery'] = monster_treasure['jewellery'] + treasure['jewellery']
+                                                if isinstance(treasure['magic'], list): #if no data
+                                                    monster_treasure['magic'] = monster_treasure['magic'] + len(treasure['magic'])
+                                                else:
+                                                    monster_treasure['magic'] = monster_treasure['magic'] + treasure['magic']
+                                else:
+                                    for t in room_stack['shape_dict'][room]['contents']['monster']['treasure_individual']:
+                                        if 'x' not in t:
+                                            treasure = treasure_choice(t, room_stack['shape_dict'][room]['contents']['monster']['No'])
+                                            for n in range(room_stack['shape_dict'][room]['contents']['monster']['No']):
+                                                print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
+                                                monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
+                                                monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
+                                                monster_treasure['electrum'] = monster_treasure['electrum'] + treasure['electrum']
+                                                monster_treasure['gold'] = monster_treasure['gold'] + treasure['gold']
+                                                monster_treasure['platinum'] = monster_treasure['platinum'] + treasure['platinum']
+                                                monster_treasure['gems'] = monster_treasure['gems'] + treasure['gems']
+                                                monster_treasure['jewellery'] = monster_treasure['jewellery'] + treasure['jewellery']
+                                                if isinstance(treasure['magic'], list): #if no data
+                                                    monster_treasure['magic'] = monster_treasure['magic'] + len(treasure['magic'])
+                                                else:
+                                                    monster_treasure['magic'] = monster_treasure['magic'] + treasure['magic']
+
+                                #do valuations
+                                monster_gems_list = []
+                                for g in range(monster_treasure['gems']):
+                                    base_value, description = select_gemstone()
+                                    new_base_value = update_gemstone(base_value)
+                                    monster_gems_list.append(new_base_value)
+                                monster_valuations['gems'] = monster_gems_list                                            
+
+                                monster_jewellery_list = []
+                                for g in range(monster_treasure['jewellery']):
+                                    base_value, description = select_jewellery()
+                                    monster_jewellery_list.append(base_value)
+                                monster_valuations['jewellery'] = monster_jewellery_list
+
+                                monster_magic_list = []
+                                for g in range(monster_treasure['magic']):
+                                    item, choice = select_magic_item()
+                                    monster_magic_list.append([item, choice])
+                                monster_valuations['magic_list'] = monster_magic_list
+                                
+                                for m in monster_valuations['magic_list']:
+                                    monster_valuations['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
+                                    monster_valuations['magic_values'].append(m[1][2]) #NOT IMPLEMENTED YET
+
+                                if len(treasure_list) > 0:
+                                    if inlair:
+                                        f.write('<h5>Monster Lair Treasure:</h5>')
+                                        f.write(str(monster_treasure) + '<br>')
+                                        f.write(str(monster_valuations) + '<br>')
+                                        f.write('<br>')
+
+                                    total_treasure_monster['copper'] = total_treasure_monster['copper'] + monster_treasure['copper']
+                                    total_treasure_monster['silver'] = total_treasure_monster['copper'] + monster_treasure['silver']
+                                    total_treasure_monster['electrum'] = total_treasure_monster['electrum'] + monster_treasure['electrum']
+                                    total_treasure_monster['gold'] = total_treasure_monster['gold'] + monster_treasure['gold']
+                                    total_treasure_monster['platinum'] = total_treasure_monster['platinum'] + monster_treasure['platinum']
+                                    total_treasure_monster['gems'] = total_treasure_monster['gems'] + monster_treasure['gems']
+                                    total_treasure_monster['jewellery'] = total_treasure_monster['jewellery'] + monster_treasure['jewellery']
+                                    total_treasure_monster['magic'] = total_treasure_monster['magic'] + monster_treasure['magic']
+
+                                    total_valuations_monster['gems'] = total_valuations_monster['gems'] + monster_valuations['gems']
+                                    total_valuations_monster['jewellery'] = total_valuations_monster['jewellery'] + monster_valuations['jewellery']
+                                    total_valuations_monster['gems'] = total_valuations_monster['gems'] + monster_valuations['gems']
+                                    total_valuations_monster['magic_list'] = total_valuations_monster['magic_list'] + monster_valuations['magic_list']
+                                    total_valuations_monster['magic_xp'] = total_valuations_monster['magic_values'] + monster_valuations['magic_xp']
+                                    total_valuations_monster['magic_values'] = total_valuations_monster['magic_values'] + monster_valuations['magic_values']
+
+
+
 
                 if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                     print("HAS WATER TO DO")
                     water_dict[room] = room_stack['shape_dict']
 
         if len(wandering_monster_stack) > 0:
+            print("roll numbers:",wandering_monster_rolls)
+            wm_xp_total = 0
+            wm_total_treasure = {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
             for wm in range(wandering_monster_stack['key_count']):
                 f.write('<h4>Wandering Monster: ' + str(wm) + '</h4>')
                 f.write(str(wandering_monster_stack[wm+1]) + '<br>')
+                for key in wandering_monster_stack[wm+1]:
+                    #f.write("key" + str(key) + '<br>')
+                    #for subkey in wandering_monster_stack[wm+1]:
+                    wmno = wandering_monster_stack[wm+1][key]['No']
+                    wmxp = wandering_monster_stack[wm+1][key]['XP']
 
+                    #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
+                    print("LOOP:",wm,"WMKEY:",wandering_monster_stack[wm+1])
+                    if isinstance(wandering_monster_stack[wm+1][key]['type'], dict):
+                        print("CHARACTER PARTY!")
+                        print("WMSUBTABLE:",len(wandering_monster_subtable),wandering_monster_subtable,"KEYCOUNT:",wandering_monster_stack['key_count'])
+                        for c in wandering_monster_stack[wm+1][key]['type']:
+                            if 'level' in wandering_monster_stack[wm+1][key]['type'][c]: #hack for a base xp points based on DMG table
+                                cxp = xp_d[wandering_monster_stack[wm+1][key]['type'][c]['level']]
+                            else:
+                                cxp = 20
+                            wm_xp_total = wm_xp_total + cxp
+                    else:
+                        print("key:",key,"WMNO:",wmno,"WNXP",wmxp)
+                        wm_xp_total = wm_xp_total + wmxp * wmno
+                    #treasures
+                    wmti = []
+                    if 'NO-ENCOUNTER' not in wandering_monster_stack[wm+1][key]['type']:
+                        print("wm treasure checking",str(wandering_monster_stack[wm+1]))
+                        wmlair = wandering_monster_stack[wm+1][key]['lair']
+                        wmlair = wmlair.replace('%','')
+                        wmlair = int(wmlair)
+                        wmti = wandering_monster_stack[wm+1][key]['treasure_individual']
+                        f.write("XP:" + str(wmxp*wmno) + '<br>')
+
+                    if len(wmti) > 0:
+                        for t in wmti:
+                            #do treasure check
+                            if 'x' not in t:
+                                treasure = treasure_choice(t, wmno)
+                                wm_total_treasure['copper'] = wm_total_treasure['copper'] + treasure['copper']
+                                wm_total_treasure['silver'] = wm_total_treasure['silver'] + treasure['silver']
+                                wm_total_treasure['electrum'] = wm_total_treasure['electrum'] + treasure['electrum']
+                                wm_total_treasure['gold'] = wm_total_treasure['gold'] + treasure['gold']
+                                wm_total_treasure['platinum'] = wm_total_treasure['platinum'] + treasure['platinum']
+                                wm_total_treasure['gems'] = wm_total_treasure['gems'] + treasure['gems']
+                                wm_total_treasure['jewellery'] = wm_total_treasure['jewellery'] + treasure['jewellery']
+                                wm_total_treasure['magic'] = wm_total_treasure['magic'] + treasure['magic']
+
+                                f.write("Treasure:" + str(treasure) + '<br>')
+
+            #got to do valuations if there are any, but probably not
+            #have to get WM to carry magic if they have too
+            f.write('<br>' + "Monster Total XP:" + str(m_xp_total) + '<br>')                            
+            f.write('<br>' + "Monster Total Treasure:" + str(total_treasure_monster) + '<br>')                            
+            f.write('<br>' + "Monster Total Valuations:" + str(total_valuations_monster) + '<br>')                                        
+
+            f.write('<br>' + "Wandering Monster Total XP:" + str(wm_xp_total) + '<br>')                            
+            f.write('<br>' + "Wandering Monster Total Treasure:" + str(wm_total_treasure) + '<br>')                            
+            f.write('<br>' + "Wandering Monster Subtable:" + str(wandering_monster_subtable) + '<br>')  
+
+            f.write('<br>' + "Room Total Treasure:" + str(total_treasure) + '<br>')                            
+            f.write('<br>' + "Room Total Gems:" + str(sum([gem for gem in valuations['gems']])) + '<br>')                                        
+            f.write('<br>' + "Room Total Jewellery:" + str(sum([j for j in valuations['jewellery']])) + '<br>')                                        
+            f.write('<br>' + "Room Total Magic:" + str(sum([m for m in valuations['magic']])) + '<br>')                                                    
+
+            total_treasure['copper'] = total_treasure['copper'] + wm_total_treasure['copper'] + total_treasure_monster['copper']
+            total_treasure['silver'] = total_treasure['silver'] + wm_total_treasure['silver'] + total_treasure_monster['silver']
+            total_treasure['electrum'] = total_treasure['electrum'] + wm_total_treasure['electrum'] + total_treasure_monster['electrum']
+            total_treasure['gold'] = total_treasure['gold'] + wm_total_treasure['gold'] + total_treasure_monster['gold']
+            total_treasure['platinum'] = total_treasure['platinum'] + wm_total_treasure['platinum'] + total_treasure_monster['platinum']
+            total_treasure['gems'] = total_treasure['gems'] + wm_total_treasure['gems'] + total_treasure_monster['gems']
+            total_treasure['jewellery'] = total_treasure['jewellery'] + wm_total_treasure['jewellery'] + total_treasure_monster['jewellery']
+            total_treasure['magic'] = total_treasure['magic'] + wm_total_treasure['magic'] + total_treasure_monster['magic']
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
         gold = total_treasure['copper'] / 100.0 + total_treasure['silver'] / 10.0 + total_treasure['electrum']/2.0 + total_treasure['gold'] + total_treasure['platinum'] * 10
@@ -3799,13 +4153,13 @@ for down in range(zwidth-1):
         jewellery_total = 0
         magic_total = 0
         if total_treasure['gems'] > 0:
-            for g in valuations['gems']:
+            for g in valuations['gems'] + total_valuations_monster['gems']:
                 gem_total = gem_total + g
         if total_treasure['jewellery'] > 0:
-            for j in valuations['jewellery']:
+            for j in valuations['jewellery'] + total_valuations_monster['gems']:
                 jewellery_total = jewellery_total + j
         if total_treasure['magic'] > 0:
-            for m in valuations['magic']:
+            for m in valuations['magic'] + total_valuations_monster['magic_values']:
                 magic_total = magic_total + m
 
         f.write('Coins: ' + str(gold) + '<br>')
@@ -3816,7 +4170,6 @@ for down in range(zwidth-1):
 
         #end of page
         f.write(strend)
-
 
 
 with open('dungeon.pkl','wb') as fd:
@@ -3842,6 +4195,7 @@ with open('downlist.pkl','rb') as fd:
 
 print("\nFINAL ROOM STACK",room_stack)   
     
-print("\nERROR LOG",error_dict,"WATER_DICT:",water_dict, "WM_STACK:",wandering_monster_stack)
+#print("\nERROR LOG",error_dict,"WATER_DICT:",water_dict, "WM_STACK:",wandering_monster_stack)
+print("\nERROR LOG",error_dict, "WM_STACK:",wandering_monster_stack)
 
 #print("\nWATER LOG",
