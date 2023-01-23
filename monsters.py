@@ -3054,8 +3054,8 @@ def monster_tables(level):
     83-100 NO-ENCOUNTER 1-1'''    
 
     dragon_level_10='''01-20 Blue:2-ancient-&-very-old (8&7)
-    21-26 Bronze:2 ancient-&-very-old (8&7)
-    27-33 Copper:2 ancient-&-very-old (8&7)
+    21-26 Bronze:2-ancient-&-very-old (8&7)
+    27-33 Copper:2-ancient-&-very-old (8&7)
     34-35 Chromatic-(Tiamat) (8)
     36-40 Gold:2-ancient-&-old (8&6)
     41-60 Green:2-ancient-&-very old (8&7)

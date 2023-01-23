@@ -733,7 +733,7 @@ def check_action(pc_dict, coord, room_stack):
 
             checkdragon = False
             
-            for cd in [r':young',r':sub',r':adult',r':old',r':very',r':ancient','Tiamat','Bahamut']:
+            for cd in [r':young',r':sub',r':adult',r':old',r':very',r':ancient','Tiamat','Bahamut',':2-']:
                 if cd in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:
                     checkdragon = True
             print("checking dragon", checkdragon)
