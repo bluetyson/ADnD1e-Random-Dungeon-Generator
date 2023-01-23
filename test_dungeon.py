@@ -4004,6 +4004,7 @@ for down in range(zwidth-1):
                                         base_value, description = select_gemstone()
                                         new_base_value = update_gemstone(base_value)
                                         monster_gems_list.append(new_base_value)
+                                    monster_valuations['gems'] = monster_gems_list                                            
 
                                     monster_jewellery_list = []
                                     for g in range(monster_treasure['jewellery']):
