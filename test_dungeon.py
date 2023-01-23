@@ -2699,17 +2699,14 @@ def bad_things(coord, room_stack, size="C"):
                     t_dict['new_coord'] = new_coord
                 else:
                     #pass put room here
-                    shape_dict = room(coord, room_stack, content="MT") #if another room pass not C="R"  
-                    #room_stack = shape_dict['room_stack']     
-                    
+                    shape_dict = room(coord, room_stack, content="MT") #if another room pass not C="R"                    
                     #pass MT for monster and treasure
                     #each room part check for inside
-
-                    print("ROOM SHAPE:",shape_dict)
+                    if VERBOSITY:                                       
+                        print("ROOM SHAPE:",shape_dict)
                     rm = room_make(shape_dict, coord)
                     if rm == "GOOD":
                         secret_doors(shape_dict)                    
-
 
             if t == 20:        
                 dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
@@ -2870,17 +2867,14 @@ def bad_things(coord, room_stack, size="C"):
                 dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
             else:
                 #pass put room here
-                shape_dict = room(coord, room_stack, content="MT") #if another room pass not C="R"  
-                #room_stack = shape_dict['room_stack']     
-                
+                shape_dict = room(coord, room_stack, content="MT") #if another room pass not C="R"                 
                 #pass MT for monster and treasure
                 #each room part check for inside
-
-                print("ROOM SHAPE:",shape_dict)
+                if VERBOSITY:                              
+                    print("ROOM SHAPE:",shape_dict)
                 rm = room_make(shape_dict, coord)
                 if rm == "GOOD":
                     secret_doors(shape_dict)                    
-
 
         if t == 20:        
             dungeon[(coord[0],coord[1]+1,coord[2]-1)] = {}
@@ -3148,9 +3142,11 @@ def secret_doors(shape_dict):
         #loop through the secret doors  #just rest rooms first
         #somewhere in this loop is a problem
         for s in range(secret_door_count):
-            print("\nSECRET DOOR CHECK", s)
+            if VERBOSITY:                                          
+                print("\nSECRET DOOR CHECK", s)
             for key in secret_door_dict[s + 1]: #room integers 1 onwards
-                print("key for secret_door_dict[s + 1]", key, "value:", secret_door_dict[s + 1][key])
+                if VERBOSITY:                                          
+                    print("key for secret_door_dict[s + 1]", key, "value:", secret_door_dict[s + 1][key])
 
                 if 'loc' in secret_door_dict[s + 1][key]:
                     usedir = secret_door_dict[s + 1][key]['loc']
@@ -3158,28 +3154,28 @@ def secret_doors(shape_dict):
                     #want a reduced exit_result
                     #exit dir full won't work here as does not have a facing as for dead end corridor
                     if secret_door_dict[s + 1][key]['beyond'] == 'Room':
-                        print("in secret door room and rolling")
+                        #print("in secret door room and rolling")
                         new_coord = secret_door_dict[s + 1][key]
                         #shape_dict = room(secret_door_dict[s + 1][key], room_stack, size='R' )  ## different type to get slightly different table
                         #####print("room stack before", room_stack)
                         shape_dict = room(key, room_stack, size='R' )  ## different type to get slightly different table
                         #####print("room stack after", room_stack)
-
-                        print("SECRETDOORDICT",secret_door_dict)
-                        print("NEW_COORD",new_coord, "KEY:",key)
-                        print("SHAPEDICTSD",shape_dict)
-
-                        print("ROOM SHAPE ROOM SD:",shape_dict)
+                        if VERBOSITY:                              
+                            print("SECRETDOORDICT",secret_door_dict)
+                            print("NEW_COORD",new_coord, "KEY:",key)
+                            print("SHAPEDICTSD",shape_dict)
+                            print("ROOM SHAPE ROOM SD:",shape_dict)
                         ## do simple version first of x directions and y directions of rectangular
-                        print("params for room_make call", shape_dict, key)
+                            print("params for room_make call", shape_dict, key)
                         ##room_make(shape_dict, key)
                         
                         rm = room_make(shape_dict, key, size="R")  ##right value here - pass R for room to get it to not adjust y plot
                         if rm == "GOOD":
                             secret_doors(shape_dict)                    
 
-                    elif secret_door_dict[s + 1][key]['beyond'] == '45AB' or secret_door_dict[s + 1][key]['beyond'] == '45BA':
-                        print("in secret door passage 45 ahead - only want to go one direction")
+                    elif secret_door_dict[s + 1][key]['beyond'] == '45AB' or secret_door_dict[s + 1][key]['beyond'] == '45BA':                      
+                        if VERBOSITY:                                                      
+                            print("in secret door passage 45 ahead - only want to go one direction")
 
                         if usedir == 'xminloc':
                             which_way = roll_dice(1,2)           
@@ -3209,8 +3205,9 @@ def secret_doors(shape_dict):
                             else:
                                 new_coord = passage_make(coord, xloop=1,yloop=1,xwidth=1)
 
-                    elif secret_door_dict[s + 1][key]['beyond'] == 'A':                    
-                        print("in secret door passage ahead")
+                    elif secret_door_dict[s + 1][key]['beyond'] == 'A':   
+                        if VERBOSITY:                                                                       
+                            print("in secret door passage ahead")
                         if usedir == 'xminloc':
                             new_coord = passage_make(coord, xloop=-1,ywidth=1)
                         elif usedir == 'xmaxloc':                             
@@ -3220,8 +3217,9 @@ def secret_doors(shape_dict):
                         else: #ymaxloc
                             new_coord = passage_make(coord, yloop=1,xwidth=1)
 
-                    else: #'P'                                        
-                        print("in secret door parallel passage")
+                    else: #'P'          
+                        if VERBOSITY:                                                                                
+                            print("in secret door parallel passage")
 
                         ##need to make square straight in front as well
                         if usedir == 'xminloc' or usedir == 'xmaxloc':
@@ -3256,7 +3254,8 @@ def passage_make_full(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0
             else:
                 break
     else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
-        print("FANCY WIDTH:",p_dict)
+        if VERBOSITY:                                  
+            print("FANCY WIDTH:",p_dict)
         for w in range(p_dict['width']):
             
             new_coord = coord
@@ -3276,7 +3275,8 @@ def passage_make_full(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0
     return new_coord
 
 def exit_direction_full(coord, e_dict):
-    print("EDF EDICT:",e_dict)
+    if VERBOSITY:                                  
+        print("EDF EDICT:",e_dict)
     if e_dict['direction'] == 'L':
         if e_dict['type'] == 'N':
             exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
@@ -3318,8 +3318,8 @@ def exit_direction_full(coord, e_dict):
                 shape_dict = room(coord, room_stack, size='Rd' )  ## different type to get slightly different table pass Rd to indicate from door
                 #room_stack = shape_dict['room_stack']
                 #each room part check for inside
-
-                print("ROOM SHAPE:",shape_dict)
+                if VERBOSITY:                              
+                    print("ROOM SHAPE:",shape_dict)
                 ## do simple version first of x directions and y directions of rectangular
                 rm = room_make(shape_dict, coord)
                 if rm == "GOOD":
@@ -3370,8 +3370,8 @@ def exit_direction_full(coord, e_dict):
                     #chamber
                     shape_dict = room(coord, room_stack)
                 #each room part check for inside
-
-                print("ROOM SHAPE:",shape_dict)
+                if VERBOSITY:                              
+                    print("ROOM SHAPE:",shape_dict)
                 rm = room_make(shape_dict, coord)
                 if rm == "GOOD":
                     secret_doors(shape_dict)                    
@@ -3390,8 +3390,8 @@ def exit_direction_full(coord, e_dict):
                     #need to implement for set type room
                     new_coord = coord
                     shape_dict = room(coord, room_stack, size="10") #10 is special case to mandate 1 roll for size
-
-                    print("ROOM SHAPE:",shape_dict)
+                    if VERBOSITY:                              
+                        print("ROOM SHAPE:",shape_dict)
                     rm = room_make(shape_dict, coord)
                     if rm == "GOOD":
                         secret_doors(shape_dict)                    
@@ -3431,8 +3431,8 @@ def exit_direction_full(coord, e_dict):
                 shape_dict = room(coord, room_stack, size='Rd' )  ## different type to get slightly different table pass Rd to indicate from door
                 #room_stack = shape_dict['room_stack']
                 #each room part check for inside
-
-                print("ROOM SHAPE:",shape_dict)
+                if VERBOSITY:                              
+                    print("ROOM SHAPE:",shape_dict)
                 ## do simple version first of x directions and y directions of rectangular
                 rm = room_make(shape_dict, coord)
                 if rm == "GOOD":
@@ -3441,7 +3441,8 @@ def exit_direction_full(coord, e_dict):
 def monster_check(level, monster):
     lst = monster[level]
     r = roll_dice(1,20)
-    print("MONSTER LEVEL ROLL:",r)
+    if VERBOSITY:                                  
+        print("MONSTER LEVEL ROLL:",r)
     for index, l in enumerate(lst):
         if index == 0:
             if r <= lst[index]:
@@ -3454,7 +3455,8 @@ def level_matrix(level):
     '''
     level is level of the dungeon
     '''
-    print("MONSTER LEVEL MATRIX:", level)
+    if VERBOSITY:                                  
+        print("MONSTER LEVEL MATRIX:", level)
 
     monster = {}
     monster[1] = [16,19,20]
