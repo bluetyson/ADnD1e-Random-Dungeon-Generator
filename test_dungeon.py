@@ -3953,7 +3953,7 @@ for down in range(zwidth-1):
                                 lairtry = int(room_stack['shape_dict'][room]['contents']['monster']['lair'].replace('%',''))
 
                                 inlair = False
-                                if lairtry > 0
+                                if lairtry > 0:
                                     l = roll_dice(1,100)
                                     individual = ['I','J','K','L','M','N']
                                     f.write("LairTry:" + str(l) + ' from ' + str(lairtry) + '<br>')
