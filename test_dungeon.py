@@ -3967,7 +3967,7 @@ for down in range(zwidth-1):
                                     monster_jewellery_list = []
                                     for g in range(monster_treasure['jewellery']):
                                         base_value, description = select_jewellery()
-                                        monster)jewellery_list.append(base_value)
+                                        monster_jewellery_list.append(base_value)
                                     monster_valuations['jewellery'] = monster_jewellery_list
 
                                     monster_magic_list = []
