@@ -3965,7 +3965,7 @@ for down in range(zwidth-1):
                                             if isinstance(treasure['magic'], list): #if no data
                                                 monster_treasure['magic'] = monster_treasure['magic'] + len(treasure['magic'])
                                             else:
-                                                monster_treasure['magic'] = monster_treasure['magic'] + len(treasure['magic'])
+                                                monster_treasure['magic'] = monster_treasure['magic'] + treasure['magic']
 
                                     #do valuations
                                     monster_gems_list = []
