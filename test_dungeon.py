@@ -917,7 +917,8 @@ def fancy_exit(coord):
 def side(coord):
     s_dict = {}
     s = roll_dice(1,20)
-    print("SIDE CHECK",s)
+    if VERBOSITY:                                  
+        print("SIDE CHECK",s)
     if s <= 2:
         s_dict['direction'] = 'L90'
     if s >= 3 and s <= 4:
@@ -1338,7 +1339,8 @@ def passage_make_sd(coord, secret_door_count, secret_door_dict, loop=3,xmod=0,ym
         #print()
         for y in range(loop):                
             will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
-            print("loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
+            if VERBOSITY:                                          
+                print("loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
             if not will_fit:
                 dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)] = {}
                 dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)]['fill'] = 'C'
