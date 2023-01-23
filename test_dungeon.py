@@ -1817,8 +1817,9 @@ def room_make(shape_dict, coord, size="C"):
                 rxmax = room_lim[1][0]
                 rymax = room_lim[1][1]
                 rzmax = room_lim[1][2]
-                print("RMIN:",rxmin,rymin,rzmin)
-                print("RMAX:",rxmax,rymax,rzmax)
+                if VERBOSITY:                                              
+                    print("RMIN:",rxmin,rymin,rzmin)
+                    print("RMAX:",rxmax,rymax,rzmax)
 
                 secret_door_count = 0
                 secret_door_dict = {}
@@ -1858,8 +1859,9 @@ def room_make(shape_dict, coord, size="C"):
                                 error_dict['type']['key_count'] = "secret door fill 1667"
                                 error_dict['key_count'] += 1
                                 print(nosdfillE)
-                                print("DUNGEONERRORCHECK:",dungeon, "xmin sd")
-                                print("ROOMSTACKCHECK:",room_stack)
+                                if VERBOSITY:                                                              
+                                    print("DUNGEONERRORCHECK:",dungeon, "xmin sd")
+                                    print("ROOMSTACKCHECK:",room_stack)
                                 continue
 
                             #exit check is one left of above
@@ -1868,7 +1870,6 @@ def room_make(shape_dict, coord, size="C"):
                             e_dict = exit_beyond()
                             e_dict['loc'] = 'xminloc'
                             secret_door_dict[secret_door_count][(rxmin-1,y,rzmin)] = e_dict
-
 
                     for y in range(rymin,rymax+1):
                         s = roll_dice(1,20)
@@ -1883,8 +1884,9 @@ def room_make(shape_dict, coord, size="C"):
                                 error_dict[error_dict['key_count']] = nosdfillE
                                 error_dict['type']['key_count'] = "secret door fill 1693"
                                 error_dict['key_count'] += 1
-                                print("DUNGEONERRORCHECK:",dungeon, "xmax sd")
-                                print("ROOMSTACKCHECK:",room_stack)
+                                if VERBOSITY:                                                                       
+                                    print("DUNGEONERRORCHECK:",dungeon, "xmax sd")
+                                    print("ROOMSTACKCHECK:",room_stack)
                                 #raise("coordinate fail error")
                                 continue
 
@@ -1908,8 +1910,9 @@ def room_make(shape_dict, coord, size="C"):
                                 error_dict['type']['key_count'] = "secret door fill 1717"
                                 error_dict['key_count'] += 1
                                 print(nosdfillE)
-                                print("DUNGEONERRORCHECK:",dungeon, "ymin sd")
-                                print("ROOMSTACKCHECK:",room_stack)
+                                if VERBOSITY:                                                              
+                                    print("DUNGEONERRORCHECK:",dungeon, "ymin sd")
+                                    print("ROOMSTACKCHECK:",room_stack)
                                 continue
                             #exit check is one up min from above
                             #e_dict = exit((x,rymin-1,rzmin))
@@ -1930,13 +1933,12 @@ def room_make(shape_dict, coord, size="C"):
                                 error_dict[error_dict['key_count']] = nosdfillE
                                 error_dict['type']['key_count'] = "secret door fill 1740"
                                 error_dict['key_count'] += 1
-                                print(nosdfillE)
-                                print("DUNGEONERRORCHECK:",dungeon, "ymax sd")
-                                print("ROOMSTACKCHECK:",room_stack)
+                                if VERBOSITY:                                                              
+                                    print(nosdfillE)
+                                    print("DUNGEONERRORCHECK:",dungeon, "ymax sd")
+                                    print("ROOMSTACKCHECK:",room_stack)
                                 continue
-
-                                
-
+                               
                             #exit check is one down max from above
                             #e_dict = exit((x,rymax+1,rzmin))
                             #exit_result(e_dict,(x,rymax+1,rzmin))
@@ -1944,25 +1946,22 @@ def room_make(shape_dict, coord, size="C"):
                             e_dict['loc'] = 'ymaxloc'
                             secret_door_dict[secret_door_count][(x,rymax+1,rzmin)] = e_dict
 
-
-                    print("SECRET DOOR COUNT:",secret_door_count)
-                    print("SECRET DOOR DICT:",secret_door_dict)
-
+                    if VERBOSITY:                              
+                        print("SECRET DOOR COUNT:",secret_door_count)
+                        print("SECRET DOOR DICT:",secret_door_dict)
 
                     shape_dict['contents']['secret_door_dict'] = secret_door_dict
                     shape_dict['contents']['secret_door_count'] = secret_door_count
-
 
                 else:
                     take_exit = roll_dice(1,shape_dict['exits'])
 
                     for e in range(shape_dict['exits']):
                         #echeck plus 1 for room
-                        print("EXIT CHECK",e)
-                        print("exit location:",shape_dict['exitlocations'][e+1])
-                        print("exit direction:",shape_dict['exitdirections'][e+1])
-                        
-                        
+                        if VERBOSITY:                                                      
+                            print("EXIT CHECK",e)
+                            print("exit location:",shape_dict['exitlocations'][e+1])
+                            print("exit direction:",shape_dict['exitdirections'][e+1])
                         #putting in place
                         #need the maximum L/R/B/A back and ahead coordinates - so max and min X/Y for the room to place things
                         #work out which exit to take - currently will take the most recent one
@@ -2000,9 +1999,10 @@ def room_make(shape_dict, coord, size="C"):
                                 error_dict['key_count'] += 1
 
                                 #try and work out if null room - might go away if now has no coords
-                                print("error is:",roomsizeE)
-                                print(shape_dict)
-                                print(room_stack)
+                                if VERBOSITY:                                                              
+                                    print("error is:",roomsizeE)
+                                    print(shape_dict)
+                                    print(room_stack)
 
                             if shape_dict['exitdirections'][e+1] == 'A':
                                 new_coord = passage_make_sd((el[0],el[1],rzmin), secret_door_count, secret_door_dict, xmod=-1,xloop=-1,sdx=1,ywidth=1)
@@ -2017,7 +2017,6 @@ def room_make(shape_dict, coord, size="C"):
                                     new_coord = new_coord_left
                                 else:
                                     new_coord = new_coord_right
-
 
                         elif shape_dict['exitlocations'][e+1] == 'R':                    
                             #check for possible positions at xmax range from ymin to ymax    
@@ -2055,15 +2054,14 @@ def room_make(shape_dict, coord, size="C"):
                                     new_coord = new_coord_left
                                 else:
                                     new_coord = new_coord_right
-
                     #pass
-
             #check treasure, monsters, exits and place these
         #shape_dict['contents']['secret_door_dict'] = secret_door_dict if want to implement
         #shape_dict['contents']['secret_door_count'] = secret_door_count  #to place won't fit exits
 
             #exists need coloring for output so door/exit stack
-        print("adding ROOM:",room_stack['key_count'],"to stack")
+        if VERBOSITY:                                          
+            print("adding ROOM:",room_stack['key_count'],"to stack")
         room_stack['shape_dict'][room_stack['key_count']] = copy.deepcopy(shape_dict)
         return "GOOD"
     else:
