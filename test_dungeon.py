@@ -3943,6 +3943,22 @@ for down in range(zwidth-1):
                                         valuations['magic'] = valuations['magic'] + room_stack['shape_dict'][room]['contents']['treasure']['magic_values']
                                 ###make monster treasure
                             if key == 'monster':    
+                                ## work out XP then treasure
+                                mno = room_stack['shape_dict'][room]['contents'][key]['type']['No']
+                                mxp = room_stack['shape_dict'][room]['contents'][key]['type'][key]['XP']
+
+                                if isinstance(room_stack['shape_dict'][room]['contents']['type'], dict):
+                                    print("CHARACTER PARTY!")
+                                    for c in room_stack['shape_dict'][room]['contents']['key']['type']:
+                                        if 'level' room_stack['shape_dict'][room]['contents']['type'['key']][c]: #hack for a base xp points based on DMG table
+                                            cxp = xp_d[room_stack['shape_dict'][room]['contents']['type']['key'][c]['level']]
+                                        else:
+                                            cxp = 20
+                                        m_xp_total = m_xp_total + cxp
+                                else:
+                                    print("key:",key,"MNO:",mno,"WNXP",mxp)
+                                    m_xp_total = wm_xp_total + mxp * mno
+
                                 monster_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
                                 monster_valuations = {'gems':[],'jewellery':[], 'magic':[]}
                                 monster_valuations['magic_list'] = []
