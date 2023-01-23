@@ -806,7 +806,8 @@ def check_action(pc_dict, coord, room_stack):
 
             #if 'DragonSubtable' in wm_dict['name']:
             #if 'Dragon' in wm_dict['type']:                
-            if 'Dragon' in wm_dict['name']:           
+            #if 'Dragon' in wm_dict['name']:        
+            if checkdragon:   
             #if 'DragonSubtable' in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:                    
             #if 'Dragon' in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:                                    
                 print("DragonSubtable")
