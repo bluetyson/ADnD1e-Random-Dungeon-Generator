@@ -537,8 +537,8 @@ def check_action(pc_dict, coord, room_stack):
         shape_dict = room(coord, room_stack) #if another room pass not C="R"  
         #room_stack = shape_dict['room_stack']      
         #each room part check for inside
-
-        print("ROOM SHAPE:",shape_dict)
+        if VERBOSITY:
+            print("ROOM SHAPE:",shape_dict)
         rm = room_make(shape_dict, coord)
         if rm == "GOOD":
             secret_doors(shape_dict)                    
@@ -1572,7 +1572,8 @@ def room_make(shape_dict, coord, size="C"):
     newcoord = coord
 
     if shape_dict['shape'] == 'R':
-        print("rectangular", room_stack['key_count'])
+        if VERBOSITY:
+            print("rectangular", room_stack['key_count'])
         room_stack[room_stack['key_count']] = {}
         #H x W
         #position based on size
