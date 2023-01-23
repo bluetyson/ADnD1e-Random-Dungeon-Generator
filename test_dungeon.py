@@ -3918,7 +3918,7 @@ for down in range(zwidth-1):
             #got to do valuations if there are any, but probably not
             f.write('<br>' + "Wandering Monster Total XP:" + str(wm_xp_total) + '<br>')                            
             f.write('<br>' + "Wandering Monster Total Treasure:" + str(wm_total_treasure) + '<br>')                            
-            f.write('<br>' + "Wandering Monster Subtable:" + str(wm_monster_subtable) + '<br>')                            
+            f.write('<br>' + "Wandering Monster Subtable:" + str(wandering_monster_subtable) + '<br>')                            
             
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
