@@ -729,7 +729,7 @@ def check_action(pc_dict, coord, room_stack):
 
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['name']
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
-            wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['wm_dict'] = wm_dict
+            #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['wm_dict'] = wm_dict
 
             checkdragon = False
             
@@ -738,7 +738,7 @@ def check_action(pc_dict, coord, room_stack):
                     checkdragon = True
             print("checking dragon", checkdragon)
 
-            wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['checkdrg'] = checkdragon
+            #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['checkdrg'] = checkdragon
 
             #if 'Subtable' not in wm_dict['name']: #no subtable and check for dragon
             if 'Subtable' not in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:
