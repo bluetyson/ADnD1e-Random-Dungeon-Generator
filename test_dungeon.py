@@ -773,6 +773,7 @@ def check_action(pc_dict, coord, room_stack):
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
 
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = xp_d[wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level']]
                     print("dragon quitting")
                     print("DragonSubtableWM:",wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                     wandering_monster_subtable.append('dragon')
