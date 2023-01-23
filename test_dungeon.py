@@ -761,6 +761,7 @@ def check_action(pc_dict, coord, room_stack):
                     #if 'DragonSubtable' in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:                    
                     #if 'Dragon' in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:                                    
                     print("DragonSubtable")
+                    print("DRAGON WM_DICT:",wm_dict)
                     ######wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']['name']
                     #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['roll'][0]
                     ######wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['No'][0]
