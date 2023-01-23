@@ -164,7 +164,8 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0,xwid
         print()
         for y in range(loop):                
             will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
-            print("loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
+            if VERBOSITY:                                          
+                print("loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
             if not will_fit:
                 dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)] = {}
                 dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)]['fill'] = 'C'
@@ -412,7 +413,8 @@ def check_action(pc_dict, coord, room_stack):
 
         new_coord = coord
         s_dict = side(coord)
-        print("S_DICT:",s_dict)
+        if VERBOSITY:                                      
+            print("S_DICT:",s_dict)
 
         if s_dict['direction'] == 'L90':
             new_coord = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
