@@ -3950,22 +3950,46 @@ for down in range(zwidth-1):
                                 monster_valuations['magic_values'] = []
 
                                 treasure_list = room_stack['shape_dict'][room]['contents']['monster']['treasure_individual'] + room_stack['shape_dict'][room]['contents']['monster']['treasure_lair']
-                                if len(treasure_list) > 0:
-                                    for t in treasure_list:
+                                lairtry = int(room_stack['shape_dict'][room]['contents']['monster']['lair'].replace('%',''))
+                                l = roll_dice(1,100)
+                                individual = ['I','J','K','L','M','N']
+                                inlair = False
+                                if l <= lairtry:
+                                    inlair = True
+                                if inlair:
+                                    if len(treasure_list) > 0:
+                                        for t in room_stack['shape_dict'][room]['contents']['monster']['treasure_lair']:
+                                            if 'x' not in t:
+                                                treasure = treasure_choice(t, room_stack['shape_dict'][room]['contents']['monster']['No'])
+                                                print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
+                                                monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
+                                                monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
+                                                monster_treasure['electrum'] = monster_treasure['electrum'] + treasure['electrum']
+                                                monster_treasure['gold'] = monster_treasure['gold'] + treasure['gold']
+                                                monster_treasure['platinum'] = monster_treasure['platinum'] + treasure['platinum']
+                                                monster_treasure['gems'] = monster_treasure['gems'] + treasure['gems']
+                                                monster_treasure['jewellery'] = monster_treasure['jewellery'] + treasure['jewellery']
+                                                if isinstance(treasure['magic'], list): #if no data
+                                                    monster_treasure['magic'] = monster_treasure['magic'] + len(treasure['magic'])
+                                                else:
+                                                    monster_treasure['magic'] = monster_treasure['magic'] + treasure['magic']
+                                else:
+                                    for t in room_stack['shape_dict'][room]['contents']['monster']['treasure_individual']:
                                         if 'x' not in t:
                                             treasure = treasure_choice(t, room_stack['shape_dict'][room]['contents']['monster']['No'])
-                                            print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
-                                            monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
-                                            monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
-                                            monster_treasure['electrum'] = monster_treasure['electrum'] + treasure['electrum']
-                                            monster_treasure['gold'] = monster_treasure['gold'] + treasure['gold']
-                                            monster_treasure['platinum'] = monster_treasure['platinum'] + treasure['platinum']
-                                            monster_treasure['gems'] = monster_treasure['gems'] + treasure['gems']
-                                            monster_treasure['jewellery'] = monster_treasure['jewellery'] + treasure['jewellery']
-                                            if isinstance(treasure['magic'], list): #if no data
-                                                monster_treasure['magic'] = monster_treasure['magic'] + len(treasure['magic'])
-                                            else:
-                                                monster_treasure['magic'] = monster_treasure['magic'] + treasure['magic']
+                                            for n in room_stack['shape_dict'][room]['contents']['monster']['No']:
+                                                print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
+                                                monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
+                                                monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
+                                                monster_treasure['electrum'] = monster_treasure['electrum'] + treasure['electrum']
+                                                monster_treasure['gold'] = monster_treasure['gold'] + treasure['gold']
+                                                monster_treasure['platinum'] = monster_treasure['platinum'] + treasure['platinum']
+                                                monster_treasure['gems'] = monster_treasure['gems'] + treasure['gems']
+                                                monster_treasure['jewellery'] = monster_treasure['jewellery'] + treasure['jewellery']
+                                                if isinstance(treasure['magic'], list): #if no data
+                                                    monster_treasure['magic'] = monster_treasure['magic'] + len(treasure['magic'])
+                                                else:
+                                                    monster_treasure['magic'] = monster_treasure['magic'] + treasure['magic']
 
                                     #do valuations
                                     monster_gems_list = []
@@ -3990,7 +4014,8 @@ for down in range(zwidth-1):
                                         monster_valuations['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
                                         monster_valuations['treasure']['magic_values'].append(m[1][2]) #NOT IMPLEMENTED YET
 
-                                    f.write('<h5>Monster Valuation: ' + str(monster_valuations) + '</h5>')
+                                    f.write('<h5>Monster Valuation:</h5>')
+                                    f.write(str(monster_treasure) + '<br>')
                                     f.write(str(monster_valuations) + '<br>')
                                 else:
                                     print("no monster treasure")
