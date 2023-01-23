@@ -13,6 +13,9 @@ import math
 from monsters import monster_tables
 from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item, treasure_choice
 
+import timeit
+start = timeit.timeit()
+
 PI = math.pi
 ARGV = sys.argv
 
@@ -4262,4 +4265,5 @@ if VERBOSITY:
 
     #print("\nWATER LOG",
 
-print("DUNGEON DIMENSIONS",coord_lim)
+end = timeit.timeit()
+print("DUNGEON DIMENSIONS",coord_lim, "of ", PERIODIC_CHECKS, " rolls in ", end - start)
