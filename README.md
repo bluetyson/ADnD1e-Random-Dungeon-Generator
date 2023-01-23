@@ -8,6 +8,8 @@ Convert DMG tables to code to do for wandering around and down to make a dungeon
 - Only non-standard type library used is numpy
 
 # Binder
+- click the below to fire up a web container environment that lets you run this in your browser
+- you get jupyterlab, just click on the terminal link at the lower left and then type 'python dungeon.py 1' [or however many rolls as you like] and the files created will also be in the main directory, one for each dungeon level.
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/bluetyson/ADnD1e-Random-Dungeon-Generator/HEAD)
 
 # Running
