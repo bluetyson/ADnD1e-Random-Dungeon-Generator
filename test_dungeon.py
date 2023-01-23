@@ -3474,10 +3474,14 @@ print (testmonster() + ' ' + testtreasure())
 
 
 PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't count first one down
+VERBOSITY = 1
 
 if len(ARGV) > 1:
     if int(ARGV[1]) > 1:
         PERIODIC_CHECKS = int(ARGV[1])
+
+    if int(ARGV[1]) > 2:
+        VERBOSITY = int(ARGV[2])
 
     
 #make this a script argument
@@ -3532,7 +3536,8 @@ START_COORD = (0,0,-1)
 coord = START_COORD
 
 roll_first = random_check()
-print("SETUP: roll_first", roll_first)
+if VERBOSITY:
+    print("SETUP: roll_first", roll_first)
 #no possible dead_end on first action
 while roll_first == 18:
     roll_first = random_check()
@@ -3542,13 +3547,16 @@ first_action = check_action(roll_first, coord, room_stack)
 
 i = 0
 result_coord = first_action
-print("END SETUP:",)
+if VERBOSITY:
+    print("END SETUP:",)
 
 while i < PERIODIC_CHECKS:
-    print("\n--- ROLL:",i," ---\n")
+    if VERBOSITY:
+        print("\n--- ROLL:",i," ---\n")
     roll_first = random_check()
     result_coord = check_action(roll_first, result_coord, room_stack)
-    print("\n--- END ROLL:",i," ---\n")
+    if VERBOSITY:
+        print("\n--- END ROLL:",i," ---\n")
     i +=1
     
 
@@ -3566,38 +3574,44 @@ zwidth = zmax - zmin + 1
 
 zwidth = max(1, zwidth)
 
-print("\n --- FINAL OUTPUT ---")
-print("MIN:",xmin,ymin,zmin)
-print("MAX:",xmax,ymax,zmax)
+if VERBOSITY:
+    print("\n --- FINAL OUTPUT ---")
+    print("MIN:",xmin,ymin,zmin)
+    print("MAX:",xmax,ymax,zmax)
 
-print("COORD:", coord, result_coord, coord_lim)
+    print("COORD:", coord, result_coord, coord_lim)
 
-print("\nDUNGEON:", dungeon)
-print("\nEXIT_STACK:", exit_stack)
-print("\nLEVEL_STACK:", level_stack)
-print("\nROOM_STACK:", room_stack)
+    print("\nDUNGEON:", dungeon)
+    print("\nEXIT_STACK:", exit_stack)
+    print("\nLEVEL_STACK:", level_stack)
+    print("\nROOM_STACK:", room_stack)
 
 #can handle up to 4 characters
 #map chararray to independent for each level
 ## ignore any random tiny up level things for now on chimneys or trapdoros
 downlist = []
-print("\nLEVELS DOWN:",zwidth-1)
+if VERBOSITY:
+    print("\nLEVELS DOWN:",zwidth-1)
 for down in range(zwidth-1):
-    print("downloop:",down)
+    if VERBOSITY:
+        print("downloop:",down)
     chararray = np.full((xwidth,ywidth,1), 'B', dtype='U10')
-    print("SHAPE",chararray.shape)
+    if VERBOSITY:
+        print("SHAPE",chararray.shape)
     for key in dungeon:
         #print("KEY:",key,"KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
         #print("KEY:",key,"KEYWIDTH:",key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2])
         
         if key[2] == (0 - down -1): #-1, -2, etc
             if 'fill' in dungeon[key] :  
-                print("KEY:",key,"KEYWIDTH:",key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1,dungeon[key]['fill'])
+                if VERBOSITY:
+                    print("KEY:",key,"KEYWIDTH:",key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1,dungeon[key]['fill'])
                 #chararray[[key][0],key[1],key[2]] = dungeon[key]['fill']
                 #chararray[key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2]] = dungeon[key]['fill']
                 chararray[key[0]+xmin*-1,key[1]+ymin*-1,0] = dungeon[key]['fill']
             else:
-                print("KEY:",key,"KEYWIDTH:",key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1)
+                if VERBOSITY:
+                    print("KEY:",key,"KEYWIDTH:",key[0]+xmin*-1,key[1]+ymin*-1,key[2]+zmin*-1)
     downlist.append(chararray)
 
     #only for first level        
@@ -3818,7 +3832,8 @@ for down in range(zwidth-1):
                         try:
                             secret_door_dict = room_stack['shape_dict'][int(usestr)]['contents']['secret_door_dict']
                             for s in secret_door_dict:
-                                print("secret door",s,secret_door_dict[s],"ijk:",i+xmin,j+ymin,0 - down -1)
+                                if VERBOSITY:
+                                    print("secret door",s,secret_door_dict[s],"ijk:",i+xmin,j+ymin,0 - down -1)
                                 keylist = list(secret_door_dict[s].keys())
                                 if keylist[0] == (i+xmin,j+ymin,0 - down -1):  ##try and match real coords
                                     print("found a secret door!")
@@ -3885,7 +3900,8 @@ for down in range(zwidth-1):
                             error_dict['type']['key_count'] = "dead end output 3816"
                             error_dict['key_count'] += 1
 
-                            print("ERROR",deadendE)
+                            if VERBOSITY:
+                                print("ERROR",deadendE)
                             strdata = '<td class="brown_background">' + downlist[down][i,j,0] + '</td>'
                             #make an error log?
 
@@ -4169,30 +4185,31 @@ for down in range(zwidth-1):
         f.write(strend)
 
 
-with open('dungeon.pkl','wb') as fd:
-    pickle.dump(dungeon, fd)
+if VERBOSITY:
+    with open('dungeon.pkl','wb') as fd:
+        pickle.dump(dungeon, fd)
 
-with open('downlist.pkl','wb') as fd:
-    pickle.dump(downlist, fd)
+    with open('downlist.pkl','wb') as fd:
+        pickle.dump(downlist, fd)
 
-with open('room_stack.pkl','wb') as fd:
-    pickle.dump(room_stack, fd)
+    with open('room_stack.pkl','wb') as fd:
+        pickle.dump(room_stack, fd)
 
-with open('dungeon.pkl','rb') as fd:
-    df = pickle.load(fd)
-    if zwidth -1 > 1:
-        #print("picklecheck",df)
-        pass
+    with open('dungeon.pkl','rb') as fd:
+        df = pickle.load(fd)
+        if zwidth -1 > 1:
+            #print("picklecheck",df)
+            pass
 
-with open('downlist.pkl','rb') as fd:
-    df = pickle.load(fd)
-    if zwidth -1 > 1:
-        #print("picklecheck",df)
-        pass
+    with open('downlist.pkl','rb') as fd:
+        df = pickle.load(fd)
+        if zwidth -1 > 1:
+            #print("picklecheck",df)
+            pass
 
-print("\nFINAL ROOM STACK",room_stack)   
-    
-#print("\nERROR LOG",error_dict,"WATER_DICT:",water_dict, "WM_STACK:",wandering_monster_stack)
-print("\nERROR LOG",error_dict, "WM_STACK:",wandering_monster_stack)
+    print("\nFINAL ROOM STACK",room_stack)   
+        
+    #print("\nERROR LOG",error_dict,"WATER_DICT:",water_dict, "WM_STACK:",wandering_monster_stack)
+    print("\nERROR LOG",error_dict, "WM_STACK:",wandering_monster_stack)
 
-#print("\nWATER LOG",
+    #print("\nWATER LOG",
