@@ -755,8 +755,9 @@ def check_action(pc_dict, coord, room_stack):
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
 
-                #if 'Character' in wm_dict['details']:
-                if 'Character' in wm_dict['type']:   #character human subtyp type                    
+                if 'Character' in wm_dict['details']:
+                #if 'Character' in wm_dict['type']:   #character human subtyp type                    
+                #if 'Character' in wm_dict['name']:   #character human subtyp type                                    
                     print("HumanSubtable-Character - not implemented yet won't work")
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9                
