@@ -4123,7 +4123,7 @@ for down in range(zwidth-1):
 
             #got to do valuations if there are any, but probably not
             #have to get WM to carry magic if they have too
-            f.write('<br>' + "Monster Total XP:" + str("TO WORK OUT YET") + '<br>')                            
+            f.write('<br>' + "Monster Total XP:" + m_xp_total + '<br>')                            
             f.write('<br>' + "Monster Total Treasure:" + str(total_treasure_monster) + '<br>')                            
             f.write('<br>' + "Monster Total Valuations:" + str(total_valuations_monster) + '<br>')                                        
 
