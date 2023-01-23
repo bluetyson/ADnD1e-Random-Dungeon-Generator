@@ -4017,7 +4017,7 @@ for down in range(zwidth-1):
                                     if len(treasure_list) > 0:
                                         #if inlair:
                                         f.write('<h5>Monster Lair Treasure:</h5>')
-                                        f.write(str(l), str(inlair))
+                                        f.write(str(l) + str(inlair))
                                         f.write(str(monster_treasure) + '<br>')
                                         f.write(str(monster_valuations) + '<br>')
                                         f.write('<br>')
