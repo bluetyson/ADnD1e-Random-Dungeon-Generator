@@ -1453,7 +1453,8 @@ def room_contents(shape_dict, coord, content):
             ##monsters
             if 'NO-ENCOUNTER' not in shape_dict['contents']['monster']['type']:
                 m_data = all_d[shape_dict['contents']['monster']['type'].lower()]
-                print(m_data)
+                if VERBOSITY:
+                    print(m_data)
                 shape_dict['contents']['monster']['XP'] = m_data['XPtotal']
                 shape_dict['contents']['monster']['lair'] = m_data['lair']
                 shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
@@ -1463,11 +1464,9 @@ def room_contents(shape_dict, coord, content):
                 shape_dict['contents']['monster']['treasure_individual'] = []
                 shape_dict['contents']['monster']['treasure_lair'] = []
 
-
-
-        print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
-        print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['type'])
-
+        if VERBOSITY:
+            print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
+            print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['type'])
         
     elif r >15 and r <=17:
         shape_dict['contents']['monster'] = {}
@@ -1510,9 +1509,11 @@ def room_contents(shape_dict, coord, content):
             shape_dict['contents']['monster']['No'] = int(m_dict['no'][0])
 
             dname = m_dict['name'].split(':')[0]
-            print("Dragon dname", dname)
             m_data = dragon_d[dname.replace('Dragon-','')]
-            print("Dragon M Data", m_data)
+
+            if VERBOSITY:
+                print("Dragon dname", dname)
+                print("Dragon M Data", m_data)
             shape_dict['contents']['monster']['lair'] = m_data['lair']
             shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
             shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
@@ -1532,9 +1533,9 @@ def room_contents(shape_dict, coord, content):
                 shape_dict['contents']['monster']['treasure_individual'] = []
                 shape_dict['contents']['monster']['treasure_lair'] = []
 
-
-        print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
-        print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['type'])
+        if VERBOSITY:
+            print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
+            print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['type'])
 
         shape_dict = loot(shape_dict,coord,monster="Y")
         shape_dict = loot_store(shape_dict)
@@ -1611,11 +1612,8 @@ def room_make(shape_dict, coord, size="C"):
                     else:
                         break
 
-
         #loop the shape_dict contents for exists etc
-        print("ROOM SHAPE DICT CONTENTS")
-        
-        print("ROOM STACK CHECK",room_stack[room_stack['key_count']])
+
         troom_lim = coord_limits(room_stack[room_stack['key_count']])
         trxmin = troom_lim[0][0]
         trymin = troom_lim[0][1]
@@ -1623,14 +1621,18 @@ def room_make(shape_dict, coord, size="C"):
         trxmax = troom_lim[1][0]
         trymax = troom_lim[1][1]
         trzmax = troom_lim[1][2]
-        print("RMIN-CHECK:",trxmin,trymin,trzmin)
-        print("RMAX-CHECK:",trxmax,trymax,trzmax)
+        if VERBOSITY:
+            print("ROOM SHAPE DICT CONTENTS")      
+            print("ROOM STACK CHECK",room_stack[room_stack['key_count']])
+            print("RMIN-CHECK:",trxmin,trymin,trzmin)
+            print("RMAX-CHECK:",trxmax,trymax,trzmax)
 
         if trxmin > 9000 or trymin > 9000 or trzmin > 9000:
             #NULL room #should handle below exception problem
             #no coords above to reduce these numbers to room limits
             #must make sure everything else in contents comes out here
-            print("NULL ROOM: no need to progress further with this one")
+            if VERBOSITY:
+                print("NULL ROOM: no need to progress further with this one")
             #delete from room dictionary the stub?
             del room_stack[room_stack['key_count']]
             room_stack['key_count'] -= 1
@@ -1642,35 +1644,40 @@ def room_make(shape_dict, coord, size="C"):
             #print(key, shape_dict[key])
             #test to implement other things - need fills for these
             if key == 'water':
-                print("HAS WATER",shape_dict[key])
+                if VERBOSITY:                
+                    print("HAS WATER",shape_dict[key])
                 #mid_room = [int(trxmax-trxmin)/2+1,int(trymax-trymin)/2+1]  ## got to get from coords actually found
                 #for pool, shaft, well
                 #mid_coord = (trxmin + mid_room[0],trymin + mid_room[1], trzmin)
                 #now picking a random coord from list that exists to do this
                 mid_coord = coord_random(room_stack[room_stack['key_count']])
                 #print(mid_room, mid_coord)
-                print(mid_coord)
-
+                if VERBOSITY:                
+                    print(mid_coord)
                 #for lake - remove any edge coords
-
                 ##need to put in dict - maybe replace R with P in the fill
                 #this is where a pool goes
                 if shape_dict[key] == 'P':
-                    print("has Pool")
+                    if VERBOSITY:                    
+                        print("has Pool")
                     #check for wet_magic
                     if mid_coord in dungeon:
-                        print("fitting mid_coord", mid_coord)
+                        if VERBOSITY:                        
+                            print("fitting mid_coord", mid_coord)
                         dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'P'
                         if 'wet_magic' in shape_dict['pool']:
                             dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'M'
                     else:
-                        print("fit fail",room_stack[room_stack['key_count']])
+                        if VERBOSITY:                        
+                            print("fit fail",room_stack[room_stack['key_count']])
                 elif shape_dict[key] == 'L':
-                    print("has Lake")
+                    if VERBOSITY:
+                        print("has Lake")
                     ##double LL could be location of treasure and monster?
                     ## make sure at least tiny one pixel lake
                     if mid_coord in dungeon:
-                        print("fitting mid_coord", mid_coord)
+                        if VERBOSITY:
+                            print("fitting mid_coord", mid_coord)
                         dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'L'
                         if 'wet_magic' in shape_dict['lake']:
                             dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'M'
@@ -1681,32 +1688,39 @@ def room_make(shape_dict, coord, size="C"):
                             if 'wet_magic' in shape_dict['lake']:
                                 dungeon[c]['fill'] = dungeon[c]['fill'] + 'M'
                     else:
-                        print("fit fail",room_stack[room_stack['key_count']])
+                        if VERBOSITY:
+                            print("fit fail",room_stack[room_stack['key_count']])
 
                 elif shape_dict[key] == 'W':
-                    print("has Well")
+                    if VERBOSITY:                    
+                        print("has Well")
                     if mid_coord in dungeon:
-                        print("fitting mid_coord", mid_coord)
+                        if VERBOSITY:                        
+                            print("fitting mid_coord", mid_coord)
                         dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'W'
                     else:
-                        print("fit fail",room_stack[room_stack['key_count']])
+                        if VERBOSITY:
+                            print("fit fail",room_stack[room_stack['key_count']])
 
                 elif shape_dict[key] == 'S':
-                    print("has Shaft")
+                    if VERBOSITY:                    
+                        print("has Shaft")
                     if mid_coord in dungeon:
-                        print("fitting mid_coord", mid_coord)
+                        if VERBOSITY:                        
+                            print("fitting mid_coord", mid_coord)
                         dungeon[mid_coord]['fill'] = dungeon[mid_coord]['fill'] + 'S'
                     else:
-                        print("fit fail",room_stack[room_stack['key_count']])
+                        if VERBOSITY:
+                            print("fit fail",room_stack[room_stack['key_count']])
 
                 else:
                     pass #not wet
 
                 #what about lake
             if key == 'wet_magic':
-                print("HAS WATER AND MAGIC",shape_dict[key])
+                if VERBOSITY:
+                    print("HAS WATER AND MAGIC",shape_dict[key])
                 wet_magic_str = 'M'  #in building pools and lakes check for this
-
 
             if key == 'contents':
                 for c in shape_dict['contents']:
@@ -1715,18 +1729,19 @@ def room_make(shape_dict, coord, size="C"):
                         monster_string = 'm' #dummy default
                         #or the ref to the table rolled on is maybe good
                         #monsters has bug
-                        print("MONSTER ROOM STACK CHECK:",room_stack[room_stack['key_count']].keys())
-                        print("MONSTER ROOM LEN CHECK:",len(list(room_stack[room_stack['key_count']].keys())))
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
                         w = roll_dice(1,rand_length)
-                        print("MONSTER ROOM ROLL CHECK:",w)
+
+                            print("MONSTER ROOM STACK CHECK:",room_stack[room_stack['key_count']].keys())
+                            print("MONSTER ROOM LEN CHECK:",len(list(room_stack[room_stack['key_count']].keys())))
+                            print("MONSTER ROOM ROLL CHECK:",w)
                         for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
                             #print("treasureindex",r)print("monsterindex",r)
                             if index + 1 == w:
                                 room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + monster_string
-                                print("newmonsterfill",room_stack[room_stack['key_count']][r]['fill']) 
+                                if VERBOSITY:                              
+                                    print("newmonsterfill",room_stack[room_stack['key_count']][r]['fill']) 
                                 dungeon[r]['fill'] = dungeon[r]['fill'] + monster_string
-
 
                     if c == 'treasure':
                         treasure_string = ''
@@ -1736,37 +1751,43 @@ def room_make(shape_dict, coord, size="C"):
                                 treasure_string = tt[0]
                                 if tt == 'gems':
                                     treasure_string = treasure_string.upper()
+                        if VERBOSITY:
                                 print("TREASURE STRING CHECK:",treasure_string)
 
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
                         w = roll_dice(1,rand_length)
-                        print("TREASURE ROOM ROLL CHECK:",w)
+                        if VERBOSITY:
+                            print("TREASURE ROOM ROLL CHECK:",w)
                         for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
                             #print("treasureindex",r)
                             if index + 1 == w:
                                 room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + treasure_string
-                                print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'])
+                                if VERBOSITY:
+                                    print("newtreasurefill",room_stack[room_stack['key_count']][r]['fill'])
                                 dungeon[r]['fill'] = dungeon[r]['fill'] + treasure_string
                         #need to output guards and hidden in room_stack or put shape_dict in room_stack
-
 
                     if c == 'trap':
                         ##need to check for secret doors
                         ##need random location
                         for sh in shape_dict['contents']:
-                            print("TRAP SHAPE DICT CONTENTS:",shape_dict['contents'][sh])
+                            if VERBOSITY:
+                                print("TRAP SHAPE DICT CONTENTS:",shape_dict['contents'][sh])
                         for tr in shape_dict['contents']['trap']:
                             #for trtype in shape_dict['contents']['trap'][tr]:
                             #print( "CONTENTS TRAP TYPE:", trtype)
-                            print( "CONTENTS TRAP TYPE:", shape_dict['contents']['trap'][tr])
+                            if VERBOSITY:
+                                print( "CONTENTS TRAP TYPE:", shape_dict['contents']['trap'][tr])
                             if tr == 'secretdoor':
-                                print("secretdoor info:",shape_dict['contents']['trap'][tr])
+                                if VERBOSITY:
+                                    print("secretdoor info:",shape_dict['contents']['trap'][tr])
                                 #for this need secret door procedure like exits
                                 #secret room has treasure
 
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
                         w = roll_dice(1,rand_length)
-                        print("TRAP ROOM ROLL CHECK:",w)
+                        if VERBOSITY:
+                            print("TRAP ROOM ROLL CHECK:",w)
                         trap_string = ''
                         for index, r in enumerate(room_stack[room_stack['key_count']].keys()):
                             #print("trapindex",r)
@@ -1778,7 +1799,8 @@ def room_make(shape_dict, coord, size="C"):
                                     
                                     ##got to find from t_dict what to put in string
                                     room_stack[room_stack['key_count']][r]['fill'] = room_stack[room_stack['key_count']][r]['fill'] + trap_string
-                                    print("newtrapfill",room_stack[room_stack['key_count']][r]['fill'] + trap_string)
+                                    if VERBOSITY:
+                                        print("newtrapfill",room_stack[room_stack['key_count']][r]['fill'] + trap_string)
                                     dungeon[r]['fill'] = dungeon[r]['fill'] + trap_string
 
 
