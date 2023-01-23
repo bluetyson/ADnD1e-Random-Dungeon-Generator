@@ -143,6 +143,7 @@ def random_check():
     elif pc == 20:
         pc_dict['direction'] = 'random_encounter'
         pc_dict['check'] = 'roll_again'
+        wandering_monster_roll.append(i)
 
     print("RANDOM_CHECK",pc, pc_dict['direction'])
 
@@ -3455,6 +3456,7 @@ dungeon[(0,0,0)]['go'] = -1
 
 facing = 'A'
 wandering_monster_subtable = []
+wandering_monster_rolls = []
 ## got to implement for all here eventually, complicates things
 
 
