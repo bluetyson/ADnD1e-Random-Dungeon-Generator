@@ -769,18 +769,9 @@ def check_action(pc_dict, coord, room_stack):
                     print("Dragon dname", dname)
                     wm_data = dragon_d[dname]
                     print("Dragon WM Data", wm_data)
-
-                    if 1 == 2:
-                        #try and get to dragon quitting
-                        dname = wm_dict['details']['name'].split(':')[0]
-                        
-                        print("Dragon dname", dname)
-                        wm_data = dragon_d[dname]
-                        print("Dragon WM Data", wm_data)
-
-                        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
-                        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
-                        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
 
                     print("dragon quitting")
                     print("DragonSubtableWM:",wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
