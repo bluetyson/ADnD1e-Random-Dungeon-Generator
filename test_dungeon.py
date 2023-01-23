@@ -772,13 +772,13 @@ def check_action(pc_dict, coord, room_stack):
                     wandering_monster_subtable.append('human-character')
                     quit()
                 else:
-                    print("HumanSubtable-second branch - not implemented yet won't work")
+                    print("HumanSubtable-second branch basic human")
                     wandering_monster_subtable.append('human')
                     print("WM_DATA",wm_data)
-                    print("human quitting")
+                    #print("human quitting")
                     print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                     wandering_monster_subtable.append('human')
-                    quit()
+                    #quit()
 
             if 'CharacterSubtable' in wm_dict['name']:
                 print("CharacterSubtable") #this works
