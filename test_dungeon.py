@@ -3950,7 +3950,7 @@ for down in range(zwidth-1):
                                 if isinstance(room_stack['shape_dict'][room]['contents']['type'], dict):
                                     print("CHARACTER PARTY!")
                                     for c in room_stack['shape_dict'][room]['contents']['key']['type']:
-                                        if 'level' room_stack['shape_dict'][room]['contents']['type'['key']][c]: #hack for a base xp points based on DMG table
+                                        if 'level' in room_stack['shape_dict'][room]['contents']['type'['key']][c]: #hack for a base xp points based on DMG table
                                             cxp = xp_d[room_stack['shape_dict'][room]['contents']['type']['key'][c]['level']]
                                         else:
                                             cxp = 20
