@@ -3902,7 +3902,7 @@ for down in range(zwidth-1):
                         print("key:",key,"WMNO:",wmno,"WNXP",wmxp)
                         wm_xp_total = wm_xp_total + wmxp * wmno
                     #treasures
-                    wmti = 0
+                    wmti = []
                     if 'NO-ENCOUNTER' not in wandering_monster_stack[wm+1][key]['type']:
                         print("wm treasure checking",str(wandering_monster_stack[wm+1]))
                         wmlair = wandering_monster_stack[wm+1][key]['lair']
