@@ -731,18 +731,23 @@ def check_action(pc_dict, coord, room_stack):
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
 
             #if 'Subtable' not in wm_dict['name']: #no subtable and check for dragon
-            if 'Subtable' not in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] and 'Dragon' not in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:
-                print("WM_DATA1st NoSubtable - monster")
-                #print(all_d)
-                wm_data = all_d[wm_dict['name'].lower()]
-                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_data['XPtotal']
-                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
-                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
-                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
+            if 'Subtable' not in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:
+                checkdragon = False
+                for cd in [':young',':sub',':adult',':old',':very',':ancient']:
+                    if cd in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:
+                        checkdragon = True
+                if not checkdragon:
+                    print("WM_DATA1st NoSubtable - monster")
+                    #print(all_d)
+                    wm_data = all_d[wm_dict['name'].lower()]
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_data['XPtotal']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
 
-                print("WM_DATA",wm_data)
-                wandering_monster_subtable.append('monster')
-                print("WM_DICTNAME",wm_dict['name'])
+                    print("WM_DATA",wm_data)
+                    wandering_monster_subtable.append('monster')
+                    print("WM_DICTNAME",wm_dict['name'])
 
             if 'HumanSubtable' in wm_dict['name']:
                 #in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']
