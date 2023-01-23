@@ -2639,7 +2639,7 @@ def all_data():
     return ad    
 
 def monster_tables(level):
-
+    v = 0
     dice_lookup = {}
     #make lists of what for roll_dice
     #dice_lookup['1'] = [1,1,0]
@@ -3118,7 +3118,6 @@ def monster_tables(level):
         
     mcheck = levels[level][m]
 
-    print("CHECKINGM",mcheck,"LEVEL:",level,"ROLL:",m)
 
     if int(mcheck['roll'][0]) == 1 and int(mcheck['roll'][1]) == 1:
         mno = 1
@@ -3128,7 +3127,9 @@ def monster_tables(level):
         else:
             mno = multi_roll(mcheck['roll'][0],mcheck['roll'][1]) + mcheck['roll'][2]
 
-    print("choose monster", mcheck)
+    if v:
+        print("CHECKINGM",mcheck,"LEVEL:",level,"ROLL:",m)
+        print("choose monster", mcheck)
 
     mdict = {}
     mdict['name'] = mcheck['name']
@@ -3208,8 +3209,8 @@ def monster_tables(level):
             mdict['no'] = dcheck['roll']
             #mdict['XP'] = dragon_xp[level]  NOT IMPLEMENTED YET
         
-
-    print("MONSTER TABLE MDICT:",mdict)
+    if v:
+        print("MONSTER TABLE MDICT:",mdict)
 
     if 1 == 2:
         print("DUMPING LEVELS")
