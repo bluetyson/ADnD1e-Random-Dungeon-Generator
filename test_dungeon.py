@@ -3958,7 +3958,7 @@ for down in range(zwidth-1):
             total_treasure['gold'] = total_treasure['gold'] + treasure['gold']
             total_treasure['platinum'] = total_treasure['platinum'] + treasure['platinum']
             total_treasure['gems'] = total_treasure['gems'] + treasure['gems']
-            total_treasure['jewellery'] total_treasure['jewellery'] + treasure['jewellery']
+            total_treasure['jewellery'] = total_treasure['jewellery'] + treasure['jewellery']
             total_treasure['magic'] = total_treasure['magic'] + treasure['magic']            
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
