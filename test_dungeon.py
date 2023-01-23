@@ -1731,7 +1731,7 @@ def room_make(shape_dict, coord, size="C"):
                         #monsters has bug
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
                         w = roll_dice(1,rand_length)
-
+                        if VERBOSITY:                              
                             print("MONSTER ROOM STACK CHECK:",room_stack[room_stack['key_count']].keys())
                             print("MONSTER ROOM LEN CHECK:",len(list(room_stack[room_stack['key_count']].keys())))
                             print("MONSTER ROOM ROLL CHECK:",w)
