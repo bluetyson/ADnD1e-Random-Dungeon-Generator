@@ -4105,14 +4105,14 @@ for down in range(zwidth-1):
             f.write('<br>' + "Wandering Monster Total Treasure:" + str(wm_total_treasure) + '<br>')                            
             f.write('<br>' + "Wandering Monster Subtable:" + str(wandering_monster_subtable) + '<br>')                            
 
-            total_treasure['copper'] = total_treasure['copper'] + wm_total_treasure['copper']
-            total_treasure['silver'] = total_treasure['silver'] + wm_total_treasure['silver']
-            total_treasure['electrum'] = total_treasure['electrum'] + wm_total_treasure['electrum']
-            total_treasure['gold'] = total_treasure['gold'] + wm_total_treasure['gold']
-            total_treasure['platinum'] = total_treasure['platinum'] + wm_total_treasure['platinum']
-            total_treasure['gems'] = total_treasure['gems'] + wm_total_treasure['gems']
-            total_treasure['jewellery'] = total_treasure['jewellery'] + wm_total_treasure['jewellery']
-            total_treasure['magic'] = total_treasure['magic'] + wm_total_treasure['magic']            
+            total_treasure['copper'] = total_treasure['copper'] + wm_total_treasure['copper'] + total_treasure_monsters['copper']
+            total_treasure['silver'] = total_treasure['silver'] + wm_total_treasure['silver'] + total_treasure_monsters['silver']
+            total_treasure['electrum'] = total_treasure['electrum'] + wm_total_treasure['electrum'] + total_treasure_monsters['electrum']
+            total_treasure['gold'] = total_treasure['gold'] + wm_total_treasure['gold'] + total_treasure_monsters['gold']
+            total_treasure['platinum'] = total_treasure['platinum'] + wm_total_treasure['platinum'] + total_treasure_monsters['platinum']
+            total_treasure['gems'] = total_treasure['gems'] + wm_total_treasure['gems'] + total_treasure_monsters['gems']
+            total_treasure['jewellery'] = total_treasure['jewellery'] + wm_total_treasure['jewellery'] + total_treasure_monsters['jewellery']
+            total_treasure['magic'] = total_treasure['magic'] + wm_total_treasure['magic'] + total_treasure_monsters['magic']
 
         f.write('<h4>Total Treasure: ' + str(total_treasure) + '</h4>')
         gold = total_treasure['copper'] / 100.0 + total_treasure['silver'] / 10.0 + total_treasure['electrum']/2.0 + total_treasure['gold'] + total_treasure['platinum'] * 10
@@ -4120,13 +4120,13 @@ for down in range(zwidth-1):
         jewellery_total = 0
         magic_total = 0
         if total_treasure['gems'] > 0:
-            for g in valuations['gems']:
+            for g in valuations['gems'] + total_valuations_monster['gems']:
                 gem_total = gem_total + g
         if total_treasure['jewellery'] > 0:
-            for j in valuations['jewellery']:
+            for j in valuations['jewellery'] + total_valuations_monster['gems']:
                 jewellery_total = jewellery_total + j
         if total_treasure['magic'] > 0:
-            for m in valuations['magic']:
+            for m in valuations['magic'] + total_valuations_monster['magic_values']:
                 magic_total = magic_total + m
 
         f.write('Coins: ' + str(gold) + '<br>')
