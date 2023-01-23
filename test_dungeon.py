@@ -4017,8 +4017,6 @@ for down in range(zwidth-1):
                                     f.write('<h5>Monster Valuation:</h5>')
                                     f.write(str(monster_treasure) + '<br>')
                                     f.write(str(monster_valuations) + '<br>')
-                                else:
-                                    print("no monster treasure")
 
 
                 if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
