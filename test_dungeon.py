@@ -1421,6 +1421,11 @@ def room_contents(shape_dict, coord, content):
             ##monsters
             m_data = all_d[shape_dict['contents']['monster']['type'].lower()]
             print(m_data)
+            shape_dict['contents']['monster']['XP'] = m_data['XPtotal']
+            shape_dict['contents']['monster']['lair'] = m_data['lair']
+            shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
+            shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
+
             print("room quit 1")
             quit()
 
@@ -1447,13 +1452,25 @@ def room_contents(shape_dict, coord, content):
             if 'Character' in m_dict['details']:
                 shape_dict['contents']['monster']['type']  = m_dict['details']
                 shape_dict['contents']['monster']['No'] = 9
-        if 'CharacterSubtable' in m_dict['name']:
+        elif 'CharacterSubtable' in m_dict['name']:
             shape_dict['contents']['monster']['type']  = m_dict['details']
             shape_dict['contents']['monster']['No'] = 9
 
-        if 'DragonSubtable' in m_dict['name']:
+        elif 'DragonSubtable' in m_dict['name']:
             shape_dict['contents']['monster']['type']  = m_dict['details']['name']
             shape_dict['contents']['monster']['No'] = m_dict['roll'][0]
+        else:
+            ##monsters
+            m_data = all_d[shape_dict['contents']['monster']['type'].lower()]
+            print(m_data)
+            shape_dict['contents']['monster']['XP'] = m_data['XPtotal']
+            shape_dict['contents']['monster']['lair'] = m_data['lair']
+            shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
+            shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
+
+            print("room quit 1")
+            quit()
+
 
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['type'])
