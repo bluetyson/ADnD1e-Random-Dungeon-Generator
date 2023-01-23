@@ -3910,6 +3910,9 @@ for down in range(zwidth-1):
             total_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
             valuations = {'gems':[],'jewellery':[], 'magic':[]}
 
+            total_treasure_monster =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
+            total_valuations_monster = {'gems':[],'jewellery':[], 'magic':[]}
+
             for room in room_stack['shape_dict']:
                 f.write('<h4>Data: ' + str(room) + '</h4>')
                 f.write(str(room_stack['shape_dict'][room]) + '<br>')
@@ -3932,6 +3935,29 @@ for down in range(zwidth-1):
                                         valuations['jewellery'] = valuations['jewellery'] + room_stack['shape_dict'][room]['contents'][key]['jewellery_values']
                                     if tkey == 'magic' and room_stack['shape_dict'][room]['contents'][key]['type'][tkey] > 0:
                                         valuations['magic'] = valuations['magic'] + room_stack['shape_dict'][room]['contents']['treasure']['magic_values']
+                                ###make monster treasure
+                            if key == 'monster:'    
+                                monster_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
+                                monster_valuations = {'gems':[],'jewellery':[], 'magic':[]}
+                                treasure_list = room_stack['shape_dict'][room]['contents']['monster']['treasure_individual'] + room_stack['shape_dict'][room]['contents']['monster']['treasure_lair']
+                                if len(treasure_list) > 0:
+                                    for t in treasure_list:
+                                        if 'x' not in t:
+                                            treasure = treasure_choice(t, ['shape_dict'][room]['contents']['monster']['No'])
+                                            monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
+                                            monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
+                                            monster_treasure['electrum'] = monster_treasure['electrum'] + treasure['electrum']
+                                            monster_treasure['gold'] = monster_treasure['gold'] + treasure['gold']
+                                            monster_treasure['platinum'] = monster_treasure['platinum'] + treasure['platinum']
+                                            monster_treasure['gems'] = monster_treasure['gems'] + treasure['gems']
+                                            monster_treasure['jewellery'] = monster_treasure['jewellery'] + treasure['jewellery']
+                                            monster_treasure['magic'] = monster_treasure['magic'] + treasure['magic']
+
+                                    #do valuations
+
+                                else:
+                                    print("no monster treasure")
+
 
                 if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                     print("HAS WATER TO DO")
