@@ -3181,7 +3181,7 @@ def monster_tables(level):
                     dice_roll = monster_list[2]
                     monster = monster_list[1]
                     
-                    print(number_range, dice_roll, monster)
+                    #print(number_range, dice_roll, monster)
 
                     if '-' in monster_list[0]:
                         lo = int(number_range[0])
