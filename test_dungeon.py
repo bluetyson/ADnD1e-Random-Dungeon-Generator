@@ -3962,7 +3962,10 @@ for down in range(zwidth-1):
                                             monster_treasure['platinum'] = monster_treasure['platinum'] + treasure['platinum']
                                             monster_treasure['gems'] = monster_treasure['gems'] + treasure['gems']
                                             monster_treasure['jewellery'] = monster_treasure['jewellery'] + treasure['jewellery']
-                                            monster_treasure['magic'] = monster_treasure['magic'] + treasure['magic']
+                                            if isinstance(treasure['magic'], list): #if no data
+                                                monster_treasure['magic'] = monster_treasure['magic'] + len(treasure['magic'])
+                                            else:
+                                                monster_treasure['magic'] = monster_treasure['magic'] + len(treasure['magic'])
 
                                     #do valuations
                                     monster_gems_list = []
