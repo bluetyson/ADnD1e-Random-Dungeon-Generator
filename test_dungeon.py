@@ -4014,9 +4014,28 @@ for down in range(zwidth-1):
                                         monster_valuations['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
                                         monster_valuations['treasure']['magic_values'].append(m[1][2]) #NOT IMPLEMENTED YET
 
-                                    f.write('<h5>Monster Valuation:</h5>')
-                                    f.write(str(monster_treasure) + '<br>')
-                                    f.write(str(monster_valuations) + '<br>')
+                                    if len(treasure_list) > 0:
+                                        f.write('<h5>Monster Lair Treasure:</h5>')
+                                        f.write(str(monster_treasure) + '<br>')
+                                        f.write(str(monster_valuations) + '<br>')
+
+                                        total_treasure_monster['copper'] = total_treasure_monster['copper'] + monster_treasure['copper']
+                                        total_treasure_monster['silver'] = total_treasure_monster['copper'] + monster_treasure['silver']
+                                        total_treasure_monster['electrum'] = total_treasure_monster['electrum'] + monster_treasure['electrum']
+                                        total_treasure_monster['gold'] = total_treasure_monster['gold'] + monster_treasure['gold']
+                                        total_treasure_monster['platinum'] = total_treasure_monster['platinum'] + monster_treasure['platinum']
+                                        total_treasure_monster['gems'] = total_treasure_monster['gems'] + monster_treasure['gems']
+                                        total_treasure_monster['jewellery'] = total_treasure_monster['jewellery'] + monster_treasure['jewellery']
+                                        total_treasure_monster['magic'] = total_treasure_monster['magic'] + monster_treasure['magic']
+
+                                        total_valuations_monster['gems'] = total_valuations_monster['gems'] + monster_valuations['gems']
+                                        total_valuations_monster['jewellery'] = total_valuations_monster['jewellery'] + monster_valuations['jewellery']
+                                        total_valuations_monster['gems'] = total_valuations_monster['gems'] + monster_valuations['gems']
+                                        total_valuations_monster['magic_list'] = total_valuations_monster['magic_list'] + monster_valuations['magic_list']
+                                        total_valuations_monster['magic_xp'] = total_valuations_monster['magic_values'] + monster_valuations['magic_xp']
+                                        total_valuations_monster['magic_values'] = total_valuations_monster['magic_values'] + monster_valuations['magic_values']
+
+
 
 
                 if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
@@ -4078,6 +4097,10 @@ for down in range(zwidth-1):
 
             #got to do valuations if there are any, but probably not
             #have to get WM to carry magic if they have too
+            f.write('<br>' + "Monster Total XP:" + str("TO WORK OUT YET") + '<br>')                            
+            f.write('<br>' + "Monster Total Treasure:" + str(total_treasure_monster) + '<br>')                            
+            f.write('<br>' + "Monster Total Valuations:" + str(total_valuations_monster) + '<br>')                                        
+
             f.write('<br>' + "Wandering Monster Total XP:" + str(wm_xp_total) + '<br>')                            
             f.write('<br>' + "Wandering Monster Total Treasure:" + str(wm_total_treasure) + '<br>')                            
             f.write('<br>' + "Wandering Monster Subtable:" + str(wandering_monster_subtable) + '<br>')                            
