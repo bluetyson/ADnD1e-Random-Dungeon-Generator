@@ -3942,7 +3942,7 @@ for down in range(zwidth-1):
                                 wm_total_treasure['platinum'] = wm_total_treasure['platinum'] + treasure['platinum']
                                 wm_total_treasure['gems'] = wm_total_treasure['gems'] + treasure['gems']
                                 wm_total_treasure['jewellery'] = wm_total_treasure['jewellery'] + treasure['jewellery']
-                                wm_total_treasure['magic'] = wm_total_treasure['magic'] + treasure['copper']
+                                wm_total_treasure['magic'] = wm_total_treasure['magic'] + treasure['magic']
 
                                 f.write("Treasure:" + str(treasure) + '<br>')
 
