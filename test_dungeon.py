@@ -4220,3 +4220,5 @@ if VERBOSITY:
     print("\nERROR LOG",error_dict, "WM_STACK:",wandering_monster_stack)
 
     #print("\nWATER LOG",
+
+    print("DUNGEON DIMENSIONS",coord_lim)
