@@ -811,6 +811,7 @@ def check_action(pc_dict, coord, room_stack):
 
                 print("dragon quitting")
                 print("DragonSubtableWM:",wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                wandering_monster_subtable.append('dragon')
                 quit()
 
         except Exception as wmE:
