@@ -80,7 +80,8 @@ treasure:{'type': {'copper': 25300, 'silver': 0, 'electrum': 0, 'gold': 0, 'plat
 - See issues for things to do [lots of minor things]
 
 # Bugs
-- Will be quite a few I imagine
+- Will be quite a few I imagine, mostly minor or things to do with set facings or placements.  
+- Most of the data should be ok now.
 
 # Output to screen for checking purposes
 - Makes a basic html map for a level in dungeon_1.html
