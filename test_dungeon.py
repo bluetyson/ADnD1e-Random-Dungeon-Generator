@@ -4023,7 +4023,8 @@ for down in range(zwidth-1):
                                             cxp = 20
                                         m_xp_total = m_xp_total + cxp
                                 else:
-                                    print("key:",key,"MNO:",mno,"WNXP",mxp)
+                                    if VERBOSITY:
+                                        print("key:",key,"MNO:",mno,"WNXP",mxp)
                                     m_xp_total = m_xp_total + mxp * mno
 
                                 monster_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
