@@ -725,7 +725,6 @@ def check_action(pc_dict, coord, room_stack):
 
         try:
             wm_dict = monster_tables(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
-            #print("INITIAL WM",wm_dict)
 
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['name']
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
@@ -740,7 +739,6 @@ def check_action(pc_dict, coord, room_stack):
 
             #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['checkdrg'] = checkdragon
 
-            #if 'Subtable' not in wm_dict['name']: #no subtable and check for dragon
             if 'Subtable' not in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:
                 if not checkdragon:
                     print("WM_DATA1st NoSubtable - monster")
@@ -755,16 +753,12 @@ def check_action(pc_dict, coord, room_stack):
                     wandering_monster_subtable.append('monster')
                     print("WM_DICTNAME",wm_dict['name'])
                 else:
-                    print("quitting dragon early")
                     print(wm_dict)
-                    #if checkdragon:   
-                    #if 'DragonSubtable' in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:                    
-                    #if 'Dragon' in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:                                    
                     print("DragonSubtable")
                     print("DRAGON WM_DICT:",wm_dict)
-                    #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']['name']
+                    #type ok above already
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = int(wm_dict['no'][0])
-                    ######wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['No'][0]
+
                     dname = wm_dict['details']['name'].split(':')[0]
                     print("Dragon dname", dname)
                     wm_data = dragon_d[dname]
@@ -774,18 +768,13 @@ def check_action(pc_dict, coord, room_stack):
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
 
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = xp_d[wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level']]
-                    print("dragon quitting")
                     print("DragonSubtableWM:",wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                     wandering_monster_subtable.append('dragon')
-                    #quit()
 
             if 'HumanSubtable' in wm_dict['name']:
-                #in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']
-            #if 'HumanSubtable' in wm_dict['type']:                
                 print("HumanSubtable from wm")
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details'][0]
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['details'][1]
-                #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_dict['details'][1]
 
                 if 'Character' not in wm_dict['details']:
                     wm_data = human_d['human-' + wm_dict['details'][0].lower()]
@@ -797,8 +786,6 @@ def check_action(pc_dict, coord, room_stack):
 
                     print("human subtable check wmdict details:",wm_dict['details'])
                 if 'Character' in wm_dict['details']:
-                #if 'Character' in wm_dict['type']:   #character human subtyp type                    
-                #if 'Character' in wm_dict['name']:   #character human subtyp type                                    
                     print("HumanSubtable-Character - implementing")
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9                
@@ -806,20 +793,15 @@ def check_action(pc_dict, coord, room_stack):
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = '0%'
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = [] #have to work out
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = [] #have to work out
-                    ###print("WM_DATA for human-character",wm_data)
-                    print("human character quitting")
                     print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                     wandering_monster_subtable.append('human-character')
-                    #quit()
                 else:
                     print("HumanSubtable-second branch basic human")
                     print("WM_DATA",wm_data)
-                    #print("human quitting")
                     print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                     wandering_monster_subtable.append('human')
-                    #quit()
                 print("IN HUMAN")
-                #quit()
+
             if 'CharacterSubtable' in wm_dict['name']:
                 print("CharacterSubtable") #this works
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
@@ -832,18 +814,10 @@ def check_action(pc_dict, coord, room_stack):
                 #print("character quitting")
                 print("CharacterSubtableWM:", wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                 wandering_monster_subtable.append('character')
-                #quit()
 
-            ###dungeon
-            ###if 'DragonSubtable' in wm_dict['name']:
-               ### wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']['name']
-                ###wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['roll'][0]
-
-            #if 'DragonSubtable' in wm_dict['name']:
-            #if 'Dragon' in wm_dict['type']:                
         except Exception as wmE:
             #bound to be parsing problems in the monster tables until vetted dragons and characters etc.
-            print(wmE)
+            print("error:",wmE)
             error_dict[error_dict['key_count']] = wmE
             error_dict['type']['key_count'] = "wm roll error for level: " + str(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
             error_dict['key_count'] += 1            
