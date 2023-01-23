@@ -3949,6 +3949,8 @@ for down in range(zwidth-1):
                                 monster_valuations['magic_xp'] = [] 
                                 monster_valuations['magic_values'] = []
 
+                                print("MTMAGIC",monster_treasure['magic'])
+
                                 treasure_list = room_stack['shape_dict'][room]['contents']['monster']['treasure_individual'] + room_stack['shape_dict'][room]['contents']['monster']['treasure_lair']
                                 if len(treasure_list) > 0:
                                     for t in treasure_list:
