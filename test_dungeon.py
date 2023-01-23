@@ -1426,7 +1426,8 @@ def room_contents(shape_dict, coord, content):
             shape_dict['contents']['monster']['treasure_individual'] = []
             shape_dict['contents']['monster']['treasure_lair'] = []
 
-        elif 'DragonSubtable' in m_dict['name']:
+        #elif 'DragonSubtable' in m_dict['name']:
+        elif 'Dragon' in m_dict['name']:            
             shape_dict['contents']['monster']['type']  = m_dict['details']['name']
             shape_dict['contents']['monster']['No'] = int(m_dict['roll'][0])
 
@@ -1496,7 +1497,7 @@ def room_contents(shape_dict, coord, content):
             shape_dict['contents']['monster']['treasure_individual'] = []
             shape_dict['contents']['monster']['treasure_lair'] = []
 
-        elif 'DragonSubtable' in m_dict['name']:
+        elif 'Dragon' in m_dict['name']:            
             shape_dict['contents']['monster']['type']  = m_dict['details']['name']
             shape_dict['contents']['monster']['No'] = int(m_dict['roll'][0])
 
