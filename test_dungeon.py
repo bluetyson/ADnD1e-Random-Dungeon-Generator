@@ -4116,8 +4116,8 @@ for down in range(zwidth-1):
             f.write('<br>' + "Wandering Monster Subtable:" + str(wandering_monster_subtable) + '<br>')  
 
             f.write('<br>' + "Room Total Treasure:" + str(total_treasure) + '<br>')                            
-            f.write('<br>' + "Room Total Valuations:" + str([gem for gem in valuations['gems'].sum()]) + '<br>')                                        
-            f.write('<br>' + "Room Total Valuations:" + str([j for j in valuations['jewellery'].sum()]) + '<br>')                                        
+            f.write('<br>' + "Room Total Valuations:" + str(sum([gem for gem in valuations['gems']])) + '<br>')                                        
+            f.write('<br>' + "Room Total Valuations:" + str(sum([j for j in valuations['jewellery']])) + '<br>')                                        
 
             total_treasure['copper'] = total_treasure['copper'] + wm_total_treasure['copper'] + total_treasure_monster['copper']
             total_treasure['silver'] = total_treasure['silver'] + wm_total_treasure['silver'] + total_treasure_monster['silver']
