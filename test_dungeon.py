@@ -3480,7 +3480,7 @@ if len(ARGV) > 1:
     if int(ARGV[1]) > 1:
         PERIODIC_CHECKS = int(ARGV[1])
 
-    if int(ARGV[1]) > 2:
+    if len(ARGV[1]) > 2:
         VERBOSITY = int(ARGV[2])
 
 print("VERBOSITY:",VERBOSITY)
