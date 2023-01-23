@@ -3044,7 +3044,7 @@ def secret_doors(shape_dict):
         secret_door_count = room_stack['shape_dict'][room_stack['key_count']]['contents']['secret_door_count']
         secret_door_dict = room_stack['shape_dict'][room_stack['key_count']]['contents']['secret_door_dict']
 
-        print("\ncalling SD", room_stack, "\n")
+        #####print("\ncalling SD", room_stack, "\n")
     
         #loop through the secret doors  #just rest rooms first
         #somewhere in this loop is a problem
@@ -3062,9 +3062,9 @@ def secret_doors(shape_dict):
                         print("in secret door room and rolling")
                         new_coord = secret_door_dict[s + 1][key]
                         #shape_dict = room(secret_door_dict[s + 1][key], room_stack, size='R' )  ## different type to get slightly different table
-                        print("room stack before", room_stack)
+                        #####print("room stack before", room_stack)
                         shape_dict = room(key, room_stack, size='R' )  ## different type to get slightly different table
-                        print("room stack after", room_stack)
+                        #####print("room stack after", room_stack)
 
                         print("SECRETDOORDICT",secret_door_dict)
                         print("NEW_COORD",new_coord, "KEY:",key)
