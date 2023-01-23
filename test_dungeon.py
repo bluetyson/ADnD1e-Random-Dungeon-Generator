@@ -3959,7 +3959,7 @@ for down in range(zwidth-1):
                                         m_xp_total = m_xp_total + cxp
                                 else:
                                     print("key:",key,"MNO:",mno,"WNXP",mxp)
-                                    m_xp_total = wm_xp_total + mxp * mno
+                                    m_xp_total = m_xp_total + mxp * mno
 
                                 monster_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
                                 monster_valuations = {'gems':[],'jewellery':[], 'magic':[]}
