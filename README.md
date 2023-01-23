@@ -7,6 +7,9 @@ Convert DMG tables to code to do for wandering around and down to make a dungeon
 # Environment
 - Only non-standard type library used is numpy
 
+# Binder
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/bluetyson/ADnD1e-Random-Dungeon-Generator/HEAD)
+
 # Running
 
 - So converting to something else will just need something that can do char/string arrays
