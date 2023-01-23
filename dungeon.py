@@ -1,6 +1,7 @@
 import sys
 import os
 import numpy as np
+#import pandas as pd
 import random
 import time
 import datetime
@@ -11,11 +12,6 @@ import math
 
 from monsters import monster_tables
 from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item, treasure_choice
-
-#dungeon.py version 0.3 20230123
-#update - basic accounting for dungeon XP and treasure
-#dragons and character parties are just placeholder hacks - not accounting for special abilities 
-#totals don't include magic that wandering adventuring parties might be carrying - different format tables I have to standardise
 
 PI = math.pi
 ARGV = sys.argv
@@ -4041,8 +4037,8 @@ for down in range(zwidth-1):
                                 monster_valuations['magic_list'] = monster_magic_list
                                 
                                 for m in monster_valuations['magic_list']:
-                                    monster_valuations['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
-                                    monster_valuations['magic_values'].append(m[1][2]) #NOT IMPLEMENTED YET
+                                    monster_valuations['magic_xp'].append(m[1][1]) 
+                                    monster_valuations['magic_values'].append(m[1][2])
 
                                 if len(treasure_list) > 0:
                                     if inlair:
@@ -4060,14 +4056,11 @@ for down in range(zwidth-1):
                                     total_treasure_monster['jewellery'] = total_treasure_monster['jewellery'] + monster_treasure['jewellery']
                                     total_treasure_monster['magic'] = total_treasure_monster['magic'] + monster_treasure['magic']
 
-                                    total_valuations_monster['gems'] = total_valuations_monster['gems'] + monster_valuations['gems']
                                     total_valuations_monster['jewellery'] = total_valuations_monster['jewellery'] + monster_valuations['jewellery']
                                     total_valuations_monster['gems'] = total_valuations_monster['gems'] + monster_valuations['gems']
                                     total_valuations_monster['magic_list'] = total_valuations_monster['magic_list'] + monster_valuations['magic_list']
                                     total_valuations_monster['magic_xp'] = total_valuations_monster['magic_values'] + monster_valuations['magic_xp']
                                     total_valuations_monster['magic_values'] = total_valuations_monster['magic_values'] + monster_valuations['magic_values']
-
-
 
 
                 if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
