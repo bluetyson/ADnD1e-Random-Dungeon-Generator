@@ -4113,7 +4113,10 @@ for down in range(zwidth-1):
 
             f.write('<br>' + "Wandering Monster Total XP:" + str(wm_xp_total) + '<br>')                            
             f.write('<br>' + "Wandering Monster Total Treasure:" + str(wm_total_treasure) + '<br>')                            
-            f.write('<br>' + "Wandering Monster Subtable:" + str(wandering_monster_subtable) + '<br>')                            
+            f.write('<br>' + "Wandering Monster Subtable:" + str(wandering_monster_subtable) + '<br>')  
+
+            f.write('<br>' + "Room Total Treasure:" + str(total_treasure) + '<br>')                            
+            f.write('<br>' + "Room Total Valuations:" + str(total_valuations_monster) + '<br>')                                        
 
             total_treasure['copper'] = total_treasure['copper'] + wm_total_treasure['copper'] + total_treasure_monster['copper']
             total_treasure['silver'] = total_treasure['silver'] + wm_total_treasure['silver'] + total_treasure_monster['silver']
