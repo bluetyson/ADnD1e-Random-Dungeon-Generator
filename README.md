@@ -1,6 +1,8 @@
 ## Advanced Dungeons & Dragons style random dungeon generator
 Convert DMG tables to code to do for wandering around and down to make a dungeon.
 
+- Version 0.3
+
 # Environment
 - Only non-standard type library used is numpy
 
@@ -15,10 +17,40 @@ Convert DMG tables to code to do for wandering around and down to make a dungeon
 
 # Work in progress
 Building things as I go - just using a one roll test for now to see how it goes.
-- Generates some monsters now
+- Generates monsters in rooms
 - Generates treasures in rooms
 - Rolls for gems and jewellery
-- Have not checked wandering monsters for treasure or implemented treasure tables
+- Generates an in lair roll
+- Generates basic individual treasure
+- Does dungeon accounting  - adds up treasure and some XP metrics
+```python
+Monster Total XP:71798
+
+Monster Total Treasure:{'copper': 6000, 'silver': 6000, 'electrum': 42558, 'gold': 53794, 'platinum': 29000, 'gems': 29, 'jewellery': 12, 'magic': 0}
+
+Monster Total Valuations:{'gems': [110.0, 800.0, 5.0, 12.0, 500, 16.0, 500, 1000, 120.0, 20, 100, 25.0, 50, 120.0, 8.0, 14.0, 1000, 20, 110.0, 800.0, 5.0, 12.0, 500, 16.0, 500, 1000, 120.0, 20, 100, 25.0, 50, 120.0, 8.0, 14.0, 1000, 20, 10, 65.0, 100, 100, 5.0, 2000, 200, 50, 50, 500, 90.0, 10, 65.0, 100, 100, 5.0, 2000, 200, 50, 50, 500, 90.0], 'jewellery': [4000, 6000, 300, 1000, 4000, 1200, 4000, 500, 4000, 1600, 900, 9000], 'magic': [], 'magic_xp': [], 'magic_values': [], 'magic_list': []}
+
+Wandering Monster Total XP:829030
+
+Wandering Monster Total Treasure:{'copper': 427, 'silver': 234, 'electrum': 0, 'gold': 733, 'platinum': 42, 'gems': 35, 'jewellery': 0, 'magic': 0}
+
+Wandering Monster Subtable:['monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'human', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'character', 'monster', 'monster', 'monster', 'monster', 'dragon', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'character', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'dragon', 'character', 'monster', 'monster', 'dragon', 'dragon', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'character', 'monster', 'monster', 'monster', 'monster', 'dragon', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'character', 'character', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'dragon', 'character', 'monster', 'monster', 'dragon', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'monster', 'character', 'monster', 'monster', 'monster', 'dragon', 'monster', 'monster', 'monster', 'character', 'monster', 'monster']
+
+Room Total Treasure:{'copper': 132200, 'silver': 65400, 'electrum': 48525, 'gold': 15750, 'platinum': 3030, 'gems': 33, 'jewellery': 0, 'magic': 3}
+
+Room Total Gems:5453.0
+
+Room Total Jewellery:0
+
+Room Total Magic:20400
+Total Treasure: {'copper': 138627, 'silver': 71634, 'electrum': 91083, 'gold': 70277, 'platinum': 32072, 'gems': 97, 'jewellery': 12, 'magic': 3}
+Coins: 445088.17
+Gems: 20633.0
+Jewellery: 15180.0
+Magic: 20400
+Total Gold Equivalent: 501301.17
+```
+
 - Does basic Human and Character subtables (for running into adventuring parties)
 ```python
 1 : {'class': 'THIEF', 'level': '1', 'race': 'Human', 'multi': 'N', 'magic_items': []}
@@ -36,6 +68,9 @@ Building things as I go - just using a one roll test for now to see how it goes.
 monster:{'level': 10, 'type': 'Dragon-Copper:2', 'No': '2-2', 'XP': 0}
 treasure:{'type': {'copper': 23100, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}, 'gems_list': [], 'jewellery_list': [], 'magic_list': [], 'magic_xp': [], 'magic_values': [], 'store': 'Bloody Great Chests', 'protection': 'guard', 'guard': 'Blade: across inside'}
 ```
+- They are given a basic set XP value.  Have not found a table where someone has worked out every age combination and XP as yet.
+- Same goes for generic adventuring parties.
+
 - Adventuring parties at lower levels with henchpeople
 monster:{'level': 9, 'type': {1: {'class': 'CLERIC', 'level': 9, 'race': 'Human', 'multi': 'N', 'magic_items': [['1 JAVELIN +2'], ['1 MACE +1'], ['1 SCROLL: protection from magic'], ['1 SWORD: +3 (no special abilities)'], ['1 FIGURINE OF WONDROUS POWER: serpentine owl']]}, 2: {'class': 'BARD', 'level': 9, 'race': 'Elf', 'multi': 'Y', 'multi_no': 3, 'magic_items': [['1 SCROLL: protection from magic'], ['2 POTIONS: super-heroism, animal control'], ['2 POTIONS: extra-healing, polymorph (self)'], ['1 SCROLL: 3 Spells, level 2-9 or 2-7'], ['1 bracers of defense, armor class 4']]}, 3: {'class': 'CLERIC', 'level': 9, 'race': 'Human', 'multi': 'N', 'magic_items': [['1 MACE +1'], ['1 RING: protection +1'], ['4 BOLTS: +2'], ['1 WAND: illusion'], ['1 RING: protection +3']]}, 4: {'class': 'FIGHTER', 'level': 9, 'race': 'Human', 'multi': 'N', 'magic_items': [['1 SWORD: +4, defender']]}, 5: {'class': 'MAGIC-USER', 'level': 9, 'race': 'Human', 'multi': 'N', 'magic_items': [['1 JAVELIN +2'], ['1 RING: protection +1'], ['10 ARROWS: +1'], ['2 WEAPONS: crossbow of speed, hammer +2'], ['1 bracers of defense, armor class 4'], ['1 pipe of the sewers']]}, 6: {'class': 'CLERIC', 'level': 3, 'race': 'Human', 'multi': 'N', 'magic_items': [['3 javelins of lightning']]}, 7: {'class': 'FIGHTER', 'level': 3, 'race': 'Human', 'multi': 'N', 'magic_items': []}, 8: {'class': 'MAGIC-USER', 'level': 3, 'race': 'Human', 'multi': 'N', 'magic_items': []}, 9: {'class': 'FIGHTER', 'level': 3, 'race': 'Human', 'multi': 'N', 'magic_items': [['1 SCROLL: 1 Spell, level 1-6'], ['2 POTIONS: human control, levitation']]}}, 'No': 9, 'XP': 0}
 treasure:{'type': {'copper': 25300, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}, 'gems_list': [], 'jewellery_list': [], 'magic_list': [], 'magic_xp': [], 'magic_values': [], 'store': 'Sacks', 'protection': 'hide', 'hide': 'Secret: Disguised as other'}
