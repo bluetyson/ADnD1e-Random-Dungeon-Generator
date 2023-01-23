@@ -1433,7 +1433,7 @@ def room_contents(shape_dict, coord, content):
 
             dname = m_dict['name'].split(':')[0]
             print("Dragon dname", dname)
-            m_data = dragon_d[dname]
+            m_data = dragon_d[dname.replace('Dragon-','')]
             print("Dragon M Data", m_data)
             shape_dict['contents']['monster']['lair'] = m_data['lair']
             shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
