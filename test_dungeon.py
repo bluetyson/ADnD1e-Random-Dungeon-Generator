@@ -1486,10 +1486,6 @@ def room_contents(shape_dict, coord, content):
                 shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
                 shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
 
-            print("room quit 2 human")
-            print("shape_dict",shape_dict)
-            quit()
-
         elif 'CharacterSubtable' in m_dict['name']:
             shape_dict['contents']['monster']['type']  = m_dict['details']
             shape_dict['contents']['monster']['No'] = 9
