@@ -3987,8 +3987,8 @@ for down in range(zwidth-1):
                                     monster_valuations['magic_list'] = monster_magic_list
                                     
                                     for m in monster_valuations['magic_list']:
-                                        monster_valutions['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
-                                        monster_valutions['treasure']['magic_values'].append(m[1][2]) #NOT IMPLEMENTED YET
+                                        monster_valuations['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
+                                        monster_valuations['treasure']['magic_values'].append(m[1][2]) #NOT IMPLEMENTED YET
 
                                     f.write('<h5>Monster Valuation: ' + str(monster_valuations) + '</h5>')
                                     f.write(str(monster_valuations) + '<br>')
