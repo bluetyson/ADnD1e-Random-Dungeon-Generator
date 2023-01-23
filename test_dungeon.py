@@ -1406,6 +1406,11 @@ def room_contents(shape_dict, coord, content):
             shape_dict['contents']['monster']['type'] = m_dict['details'][0]
             shape_dict['contents']['monster']['No'] = m_dict['details'][1]
 
+            print("room quit 1 human")
+            print("shape_dict",shape_dict)
+            quit()
+
+
             if 'Character' in m_dict['details']:
                 shape_dict['contents']['monster']['type']  = m_dict['details']
                 shape_dict['contents']['monster']['No'] = 9
@@ -1426,9 +1431,6 @@ def room_contents(shape_dict, coord, content):
             shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
             shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
 
-            print("room quit 1")
-            print("shape_dict",shape_dict)
-            quit()
 
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['type'])
@@ -1450,6 +1452,10 @@ def room_contents(shape_dict, coord, content):
             shape_dict['contents']['monster']['type'] = m_dict['details'][0]
             shape_dict['contents']['monster']['No'] = m_dict['details'][1]
 
+            print("room quit 2 human")
+            print("shape_dict",shape_dict)
+            quit()
+
             if 'Character' in m_dict['details']:
                 shape_dict['contents']['monster']['type']  = m_dict['details']
                 shape_dict['contents']['monster']['No'] = 9
@@ -1469,9 +1475,6 @@ def room_contents(shape_dict, coord, content):
             shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
             shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
 
-            print("room quit 2")
-            print("shape_dict",shape_dict)
-            quit()
 
 
         print("CHECKSD FOR MONSTER CHARACTERS AFTER:",shape_dict['contents']['monster']['level'])
