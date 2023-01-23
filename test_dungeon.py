@@ -4141,10 +4141,12 @@ for down in range(zwidth-1):
                     wmxp = wandering_monster_stack[wm+1][key]['XP']
 
                     #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
-                    print("LOOP:",wm,"WMKEY:",wandering_monster_stack[wm+1])
+                    if VERBOSITY:                                                
+                        print("LOOP:",wm,"WMKEY:",wandering_monster_stack[wm+1])
                     if isinstance(wandering_monster_stack[wm+1][key]['type'], dict):
-                        print("CHARACTER PARTY!")
-                        print("WMSUBTABLE:",len(wandering_monster_subtable),wandering_monster_subtable,"KEYCOUNT:",wandering_monster_stack['key_count'])
+                        if VERBOSITY:                                                
+                            print("CHARACTER PARTY!")
+                            print("WMSUBTABLE:",len(wandering_monster_subtable),wandering_monster_subtable,"KEYCOUNT:",wandering_monster_stack['key_count'])
                         for c in wandering_monster_stack[wm+1][key]['type']:
                             if 'level' in wandering_monster_stack[wm+1][key]['type'][c]: #hack for a base xp points based on DMG table
                                 cxp = xp_d[wandering_monster_stack[wm+1][key]['type'][c]['level']]
@@ -4152,12 +4154,14 @@ for down in range(zwidth-1):
                                 cxp = 20
                             wm_xp_total = wm_xp_total + cxp
                     else:
-                        print("key:",key,"WMNO:",wmno,"WNXP",wmxp)
+                        if VERBOSITY:                                                
+                            print("key:",key,"WMNO:",wmno,"WNXP",wmxp)
                         wm_xp_total = wm_xp_total + wmxp * wmno
                     #treasures
                     wmti = []
                     if 'NO-ENCOUNTER' not in wandering_monster_stack[wm+1][key]['type']:
-                        print("wm treasure checking",str(wandering_monster_stack[wm+1]))
+                        if VERBOSITY:                                                
+                            print("wm treasure checking",str(wandering_monster_stack[wm+1]))
                         wmlair = wandering_monster_stack[wm+1][key]['lair']
                         wmlair = wmlair.replace('%','')
                         wmlair = int(wmlair)
@@ -4258,4 +4262,4 @@ if VERBOSITY:
 
     #print("\nWATER LOG",
 
-    print("DUNGEON DIMENSIONS",coord_lim)
+print("DUNGEON DIMENSIONS",coord_lim)
