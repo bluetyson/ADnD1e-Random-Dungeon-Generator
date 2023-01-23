@@ -145,7 +145,8 @@ def random_check():
         pc_dict['check'] = 'roll_again'
         
 
-    print("RANDOM_CHECK",pc, pc_dict['direction'])
+    if VERBOSITY:
+        print("RANDOM_CHECK",pc, pc_dict['direction'])
 
     #test purposes
     #pc_dict['direction'] = 'ahead'
@@ -171,7 +172,8 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0,xwid
             else:
                 break
     else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
-        print("FANCY WIDTH:",p_dict)
+        if VERBOSITY:
+            print("FANCY WIDTH:",p_dict)
         for w in range(p_dict['width']):
             
             new_coord = coord
@@ -200,7 +202,6 @@ def check_action(pc_dict, coord, room_stack):
             #new_coord = coord
             new_coord = passage_make(coord,loop=6,ymod=1,yloop=1,xwidth=1)
 
-
     elif pc_dict['direction'] == 'exit':
         '''
             e_dict['beyond'] = 'P'
@@ -209,7 +210,6 @@ def check_action(pc_dict, coord, room_stack):
             e_dict['beyond'] = '4BA'
             e_dict['beyond'] = 'Room'
         '''
-
         new_coord = coord
         e_dict = exit(coord)
         #test L parallel
@@ -222,7 +222,8 @@ def check_action(pc_dict, coord, room_stack):
             #e_dict['direction'] = 'R'
             e_dict['direction'] = 'A'
 
-        print("EDICT:",e_dict)
+        if VERBOSITY:
+            print("EDICT:",e_dict)
 
         if e_dict['direction'] == 'L':
             if e_dict['type'] == 'N':
@@ -238,7 +239,7 @@ def check_action(pc_dict, coord, room_stack):
                     new_coord = passage_make(coord, xmod=-1,ymod=1,yloop=1,xwidth=1)
 
                 if e_dict['beyond'] == 'A':       
-                    print("IN BRANCH")       
+                    #print("IN BRANCH")       
                     d = roll_dice(1,20)              
                     if d >=3 and d <= 5:
                         will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
@@ -272,8 +273,8 @@ def check_action(pc_dict, coord, room_stack):
                     shape_dict = room(coord, room_stack, size='Rd' )  ## different type to get slightly different table pass Rd to indicate from door
                     #room_stack = shape_dict['room_stack']
                     #each room part check for inside
-
-                    print("ROOM SHAPE:",shape_dict)
+                    if VERBOSITY:
+                        print("ROOM SHAPE:",shape_dict)
                     ## do simple version first of x directions and y directions of rectangular
                     rm = room_make(shape_dict, coord)
                     if rm == "GOOD":
@@ -301,7 +302,8 @@ def check_action(pc_dict, coord, room_stack):
                             exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
                     else:
                         #30m passage that direction
-                        print("CHECKEDICT",e_dict)
+                        if VERBOSITY:
+                            print("CHECKEDICT",e_dict)
                         new_coord = passage_make(coord, xmod=1,xloop=1, ywidth=1)
 
                 if e_dict['beyond'] == '4AB':   ##45 A
@@ -331,8 +333,8 @@ def check_action(pc_dict, coord, room_stack):
                         #chamber
                         shape_dict = room(coord, room_stack)
                     #each room part check for inside
-
-                    print("ROOM SHAPE:",shape_dict)
+                    if VERBOSITY:
+                        print("ROOM SHAPE:",shape_dict)
                     rm = room_make(shape_dict, coord)
                     if rm == "GOOD":
                         secret_doors(shape_dict)                    
@@ -3476,8 +3478,6 @@ print (testmonster() + ' ' + testtreasure())
 PERIODIC_CHECKS = 1  #number of rolls to make before stopping algorithm  #don't count first one down
 VERBOSITY = 1
 
-if VERBOSITY:
-    print(True)
 
 if len(ARGV) > 1:
     if int(ARGV[1]) > 1:
@@ -3487,7 +3487,7 @@ if len(ARGV) > 2:
     VERBOSITY = int(ARGV[2])
 
 if VERBOSITY:
-    print(True)
+    print("VERBOSITY ON")
 
 print("VERBOSITY:",VERBOSITY)
     
