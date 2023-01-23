@@ -765,6 +765,8 @@ def check_action(pc_dict, coord, room_stack):
                     #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']['name']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no'][0]
                     ######wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['No'][0]
+                    dname = wm_dict['details']['name'].split(':')[0]
+                    print("dname")
 
                     if 1 == 2:
                         #try and get to dragon quitting
