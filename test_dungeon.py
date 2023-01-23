@@ -757,6 +757,28 @@ def check_action(pc_dict, coord, room_stack):
                 else:
                     print("quitting dragon early")
                     print(wm_dict)
+                    #if checkdragon:   
+                    #if 'DragonSubtable' in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:                    
+                    #if 'Dragon' in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:                                    
+                    print("DragonSubtable")
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']['name']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['roll'][0]
+
+                    if 1 == 2:
+                        #try and get to dragon quitting
+                        dname = wm_dict['details']['name'].split(':')[0]
+                        #dname = dname.split('-')[1]
+                        print("Dragon dname", dname)
+                        wm_data = dragon_d[dname]
+                        print("Dragon WM Data", wm_data)
+
+                        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
+                        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
+                        wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
+
+                    print("dragon quitting")
+                    print("DragonSubtableWM:",wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                    wandering_monster_subtable.append('dragon')
                     quit()
 
             if 'HumanSubtable' in wm_dict['name']:
@@ -821,31 +843,6 @@ def check_action(pc_dict, coord, room_stack):
 
             #if 'DragonSubtable' in wm_dict['name']:
             #if 'Dragon' in wm_dict['type']:                
-            if 'Dragon' in wm_dict['name']:        
-            #if checkdragon:   
-            #if 'DragonSubtable' in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:                    
-            #if 'Dragon' in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:                                    
-                print("DragonSubtable")
-                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']['name']
-                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['roll'][0]
-
-                if 1 == 2:
-                    #try and get to dragon quitting
-                    dname = wm_dict['details']['name'].split(':')[0]
-                    #dname = dname.split('-')[1]
-                    print("Dragon dname", dname)
-                    wm_data = dragon_d[dname]
-                    print("Dragon WM Data", wm_data)
-
-                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
-                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
-                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
-
-                print("dragon quitting")
-                print("DragonSubtableWM:",wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
-                wandering_monster_subtable.append('dragon')
-                quit()
-
         except Exception as wmE:
             #bound to be parsing problems in the monster tables until vetted dragons and characters etc.
             print(wmE)
