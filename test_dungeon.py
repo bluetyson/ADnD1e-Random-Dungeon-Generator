@@ -724,7 +724,7 @@ def check_action(pc_dict, coord, room_stack):
 
         try:
             wm_dict = monster_tables(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
-            print("INITIAL WM",wm_dict)
+            #print("INITIAL WM",wm_dict)
 
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['name']
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
@@ -751,14 +751,15 @@ def check_action(pc_dict, coord, room_stack):
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['details'][1]
                 #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_dict['details'][1]
 
-                wm_data = human_d['human-' + wm_dict['details'][0].lower()]
-                print("WM_DATA",wm_data)
-                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_data['XPtotal']
-                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
-                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
-                wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
+                if 'Character' not in wm_dict['details']:
+                    wm_data = human_d['human-' + wm_dict['details'][0].lower()]
+                    print("WM_DATA",wm_data)
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_data['XPtotal']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
+                    wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
 
-                print("human subtable check wmdict details:",wm_dict['details'])
+                    print("human subtable check wmdict details:",wm_dict['details'])
                 if 'Character' in wm_dict['details']:
                 #if 'Character' in wm_dict['type']:   #character human subtyp type                    
                 #if 'Character' in wm_dict['name']:   #character human subtyp type                                    
