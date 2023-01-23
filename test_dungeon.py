@@ -1439,9 +1439,6 @@ def room_contents(shape_dict, coord, content):
             shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
             shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
             shape_dict['contents']['monster']['XP'] = xp_d[shape_dict['contents']['monster']['level']]
-            print("room quit 1 dragon")
-            print("shape_dict",shape_dict)
-            quit()
 
         else:
             ##monsters
@@ -1505,9 +1502,6 @@ def room_contents(shape_dict, coord, content):
             shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
             shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
             shape_dict['contents']['monster']['XP'] = xp_d[shape_dict['contents']['monster']['level']]
-            print("room quit 2 dragon")
-            print("shape_dict",shape_dict)
-            quit()
 
         else:
             ##monsters
