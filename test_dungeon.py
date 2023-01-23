@@ -1409,18 +1409,38 @@ def room_contents(shape_dict, coord, content):
             if 'Character' in m_dict['details']:
                 shape_dict['contents']['monster']['type']  = m_dict['details']
                 shape_dict['contents']['monster']['No'] = 9
-
-            print("room quit 1 human")
-            print("shape_dict",shape_dict)
-            quit()
+                shape_dict['contents']['monster']['lair'] = '0%'
+                shape_dict['contents']['monster']['treasure_individual'] = []
+                shape_dict['contents']['monster']['treasure_lair'] = []
+            else:
+                m_data = human_d['human-' + m_dict['details'][0].lower()]                
+                shape_dict['contents']['monster']['XP'] = m_data['XPtotal']
+                shape_dict['contents']['monster']['lair'] = m_data['lair']
+                shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
+                shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
 
         elif 'CharacterSubtable' in m_dict['name']:
             shape_dict['contents']['monster']['type']  = m_dict['details']
             shape_dict['contents']['monster']['No'] = 9
+            shape_dict['contents']['monster']['lair'] = '0%'
+            shape_dict['contents']['monster']['treasure_individual'] = []
+            shape_dict['contents']['monster']['treasure_lair'] = []
 
         elif 'DragonSubtable' in m_dict['name']:
             shape_dict['contents']['monster']['type']  = m_dict['details']['name']
-            shape_dict['contents']['monster']['No'] = m_dict['roll'][0]
+            shape_dict['contents']['monster']['No'] = int(m_dict['roll'][0])
+
+            dname = m_dict['name'].split(':')[0]
+            print("Dragon dname", dname)
+            m_data = dragon_d[dname]
+            print("Dragon M Data", m_data)
+            shape_dict['contents']['monster']['lair'] = m_data['lair']
+            shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
+            shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
+            shape_dict['contents']['monster']['XP'] = xp_d[shape_dict['contents']['monster']['level']]
+            print("room quit 1 dragon")
+            print("shape_dict",shape_dict)
+            quit()
 
         else:
             ##monsters
@@ -1455,6 +1475,15 @@ def room_contents(shape_dict, coord, content):
             if 'Character' in m_dict['details']:
                 shape_dict['contents']['monster']['type']  = m_dict['details']
                 shape_dict['contents']['monster']['No'] = 9
+                shape_dict['contents']['monster']['lair'] = '0%'
+                shape_dict['contents']['monster']['treasure_individual'] = []
+                shape_dict['contents']['monster']['treasure_lair'] = []
+            else:
+                m_data = human_d['human-' + m_dict['details'][0].lower()]                
+                shape_dict['contents']['monster']['XP'] = m_data['XPtotal']
+                shape_dict['contents']['monster']['lair'] = m_data['lair']
+                shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
+                shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
 
             print("room quit 2 human")
             print("shape_dict",shape_dict)
@@ -1463,10 +1492,26 @@ def room_contents(shape_dict, coord, content):
         elif 'CharacterSubtable' in m_dict['name']:
             shape_dict['contents']['monster']['type']  = m_dict['details']
             shape_dict['contents']['monster']['No'] = 9
+            shape_dict['contents']['monster']['lair'] = '0%'
+            shape_dict['contents']['monster']['treasure_individual'] = []
+            shape_dict['contents']['monster']['treasure_lair'] = []
 
         elif 'DragonSubtable' in m_dict['name']:
             shape_dict['contents']['monster']['type']  = m_dict['details']['name']
-            shape_dict['contents']['monster']['No'] = m_dict['roll'][0]
+            shape_dict['contents']['monster']['No'] = int(m_dict['roll'][0])
+
+            dname = m_dict['name'].split(':')[0]
+            print("Dragon dname", dname)
+            m_data = dragon_d[dname]
+            print("Dragon M Data", m_data)
+            shape_dict['contents']['monster']['lair'] = m_data['lair']
+            shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
+            shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
+            shape_dict['contents']['monster']['XP'] = xp_d[shape_dict['contents']['monster']['level']]
+            print("room quit 2 dragon")
+            print("shape_dict",shape_dict)
+            quit()
+
         else:
             ##monsters
             m_data = all_d[shape_dict['contents']['monster']['type'].lower()]
