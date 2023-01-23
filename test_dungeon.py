@@ -3953,8 +3953,7 @@ for down in range(zwidth-1):
                                 lairtry = int(room_stack['shape_dict'][room]['contents']['monster']['lair'].replace('%',''))
                                 l = roll_dice(1,100)
                                 individual = ['I','J','K','L','M','N']
-                                f.write("LairTry:" + str(lairtry) + '<br>')
-                                f.write("LairTry:" + str(l) + '<br>')
+                                f.write("LairTry:" + str(l) + ' from ' str(lairtry) + '<br>')
                                 inlair = False
                                 if l <= lairtry:
                                     inlair = True
@@ -4018,12 +4017,12 @@ for down in range(zwidth-1):
                                         monster_valuations['treasure']['magic_values'].append(m[1][2]) #NOT IMPLEMENTED YET
 
                                     if len(treasure_list) > 0:
-                                        #if inlair:
-                                        f.write('<h5>Monster Lair Treasure:</h5>')
-                                        f.write(str(l) + ' ' + str(lairtry) + ' ' + str(inlair))
-                                        f.write(str(monster_treasure) + '<br>')
-                                        f.write(str(monster_valuations) + '<br>')
-                                        f.write('<br>')
+                                        if inlair:
+                                            f.write('<h5>Monster Lair Treasure:</h5>')
+                                            f.write(str(l) + ' ' + str(lairtry) + ' ' + str(inlair))
+                                            f.write(str(monster_treasure) + '<br>')
+                                            f.write(str(monster_valuations) + '<br>')
+                                            f.write('<br>')
 
                                         total_treasure_monster['copper'] = total_treasure_monster['copper'] + monster_treasure['copper']
                                         total_treasure_monster['silver'] = total_treasure_monster['copper'] + monster_treasure['silver']
