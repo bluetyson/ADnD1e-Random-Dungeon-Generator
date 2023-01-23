@@ -729,7 +729,7 @@ def check_action(pc_dict, coord, room_stack):
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['no']
 
             #if 'Subtable' not in wm_dict['name']:
-            if 'Subtable' not in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']
+            if 'Subtable' not in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:
                 print("WM_DATA1st NoSubtable - monster")
                 #print(all_d)
                 wm_data = all_d[wm_dict['name'].lower()]
@@ -798,7 +798,7 @@ def check_action(pc_dict, coord, room_stack):
             #if 'DragonSubtable' in wm_dict['name']:
             #if 'Dragon' in wm_dict['type']:                
             #if 'Dragon' in wm_dict['name']:           
-            if 'DragonSubtable' in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']                     
+            if 'DragonSubtable' in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:                    
                 print("DragonSubtable")
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']['name']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['roll'][0]
