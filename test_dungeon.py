@@ -3953,9 +3953,12 @@ for down in range(zwidth-1):
                                 lairtry = int(room_stack['shape_dict'][room]['contents']['monster']['lair'].replace('%',''))
                                 l = roll_dice(1,100)
                                 individual = ['I','J','K','L','M','N']
+                                f.write("LairTry:" + str(lairtry + <br>)
+                                f.write("LairTry:" + str(l) + <br>)
                                 inlair = False
                                 if l <= lairtry:
                                     inlair = True
+                                
                                 if inlair:
                                     if len(treasure_list) > 0:
                                         for t in room_stack['shape_dict'][room]['contents']['monster']['treasure_lair']:
