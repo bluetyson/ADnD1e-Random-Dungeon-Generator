@@ -164,7 +164,6 @@ def passage_make(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0,xwid
     if p_dict['width'] <= 1: #0.5 width do cosmetically later
 
         new_coord = coord
-        print()
         for y in range(loop):                
             will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
             if VERBOSITY:                                          
@@ -568,8 +567,8 @@ def check_action(pc_dict, coord, room_stack):
         if level_dict['room'] == 'Y':
             #do room check
             shape_dict = room(coord, room_stack) #if another room pass not C="R"        
-
-            print("ROOM SHAPE:",shape_dict)
+            if VERBOSITY:
+                print("ROOM SHAPE:",shape_dict)
             rm = room_make(shape_dict, coord)
             if rm == "GOOD":
                 secret_doors(shape_dict)                    
