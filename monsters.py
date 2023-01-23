@@ -2696,7 +2696,7 @@ def monster_tables(level):
     19 Elf 3-11
     20-21 Gnome 5-15
     22-26 Goblin 6-15
-    27-28 Halfling** 9-16
+    27-28 Halfling 9-16
     29-33 Hobgoblin 2-8
     34-48 Human — see Human Subtable below 1-1
     49-54 Kobold 6-18
