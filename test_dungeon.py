@@ -771,7 +771,7 @@ def check_action(pc_dict, coord, room_stack):
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = '0%'
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = [] #have to work out
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = [] #have to work out
-                    print("WM_DATA for human-character",wm_data)
+                    ###print("WM_DATA for human-character",wm_data)
                     print("human character quitting")
                     print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                     wandering_monster_subtable.append('human-character')
