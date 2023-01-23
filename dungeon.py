@@ -1,7 +1,6 @@
 import sys
 import os
 import numpy as np
-#import pandas as pd
 import random
 import time
 import datetime
@@ -12,6 +11,11 @@ import math
 
 from monsters import monster_tables
 from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item, treasure_choice
+
+#dungeon.py version 0.3 20230123
+#update - basic accounting for dungeon XP and treasure
+#dragons and character parties are just placeholder hacks - not accounting for special abilities 
+#totals don't include magic that wandering adventuring parties might be carrying - different format tables I have to standardise
 
 PI = math.pi
 ARGV = sys.argv
