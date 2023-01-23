@@ -664,7 +664,8 @@ def check_action(pc_dict, coord, room_stack):
                 dungeon[(new_coord[0]+1,new_coord[1]+1,new_coord[2])]['fill'] = 'D'
 
             #need to retrace to last on exit stack?
-            print("DEAD END")
+            if VERBOSITY:
+                print("DEAD END")
             for key in exit_stack:
                 ## this needs to be checked for level
                 new_coord = key
@@ -845,7 +846,8 @@ def exit(coord):
     e_dict = {}
     e_dict['type'] = 'N'
     d = roll_dice(1,20)
-    print("EXIT CHECK",d)
+    if VERBOSITY:
+        print("EXIT CHECK",d)
     if d <= 6:
         e_dict['direction'] = 'L'
         will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
@@ -3921,8 +3923,8 @@ for down in range(zwidth-1):
                     if 'sd' in usestr:  #number and d
                         try:
                             dead_end = dead_end_dict[(i+xmin,j+ymin,0 - down -1)]
-
-                            print("found Dead End Secret door")
+                            if VERBOSITY:
+                                print("found Dead End Secret door")
                             if dead_end == 'ymax':
                                 borderdir = '<divb>'
                                 borderdire = '</divb>'
