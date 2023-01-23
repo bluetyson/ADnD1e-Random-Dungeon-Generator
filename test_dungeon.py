@@ -4019,7 +4019,7 @@ for down in range(zwidth-1):
                                         f.write('<h5>Monster Lair Treasure:</h5>')
                                         f.write(str(monster_treasure) + '<br>')
                                         f.write(str(monster_valuations) + '<br>')
-                                        f.write(str(monster_valuations) + '<br>')
+                                        f.write('<br>')
 
                                         total_treasure_monster['copper'] = total_treasure_monster['copper'] + monster_treasure['copper']
                                         total_treasure_monster['silver'] = total_treasure_monster['copper'] + monster_treasure['silver']
