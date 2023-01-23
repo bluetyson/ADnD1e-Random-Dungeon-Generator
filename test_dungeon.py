@@ -3947,7 +3947,7 @@ for down in range(zwidth-1):
                                 if len(treasure_list) > 0:
                                     for t in treasure_list:
                                         if 'x' not in t:
-                                            treasure = treasure_choice(t, ['shape_dict'][room]['contents']['monster']['No'])
+                                            treasure = treasure_choice(t, room_stack['shape_dict'][room]['contents']['monster']['No'])
                                             monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
                                             monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
                                             monster_treasure['electrum'] = monster_treasure['electrum'] + treasure['electrum']
