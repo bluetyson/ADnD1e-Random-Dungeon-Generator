@@ -3946,8 +3946,8 @@ for down in range(zwidth-1):
                                 ###make monster treasure
                             if key == 'monster':    
                                 ## work out XP then treasure
-                                mno = room_stack['shape_dict'][room]['contents'][key]['type']['No']
-                                mxp = room_stack['shape_dict'][room]['contents'][key]['type'][key]['XP']
+                                mno = room_stack['shape_dict'][room]['contents'][key]['No']
+                                mxp = room_stack['shape_dict'][room]['contents'][key]['XP']
 
                                 if isinstance(room_stack['shape_dict'][room]['contents']['type'], dict):
                                     print("CHARACTER PARTY!")
