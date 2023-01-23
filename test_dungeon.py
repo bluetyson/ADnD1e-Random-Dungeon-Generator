@@ -751,6 +751,10 @@ def check_action(pc_dict, coord, room_stack):
                     print("WM_DATA",wm_data)
                     wandering_monster_subtable.append('monster')
                     print("WM_DICTNAME",wm_dict['name'])
+                else:
+                    print("quitting dragon early")
+                    print(wm_dict)
+                    quit()
 
             if 'HumanSubtable' in wm_dict['name']:
                 #in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']
