@@ -4048,7 +4048,7 @@ for down in range(zwidth-1):
                                         f.write('<br>')
 
                                     total_treasure_monster['copper'] = total_treasure_monster['copper'] + monster_treasure['copper']
-                                    total_treasure_monster['silver'] = total_treasure_monster['copper'] + monster_treasure['silver']
+                                    total_treasure_monster['silver'] = total_treasure_monster['silver'] + monster_treasure['silver']
                                     total_treasure_monster['electrum'] = total_treasure_monster['electrum'] + monster_treasure['electrum']
                                     total_treasure_monster['gold'] = total_treasure_monster['gold'] + monster_treasure['gold']
                                     total_treasure_monster['platinum'] = total_treasure_monster['platinum'] + monster_treasure['platinum']
