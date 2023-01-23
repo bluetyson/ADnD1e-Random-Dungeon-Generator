@@ -1429,7 +1429,7 @@ def room_contents(shape_dict, coord, content):
         #elif 'DragonSubtable' in m_dict['name']:
         elif 'Dragon' in m_dict['name']:            
             shape_dict['contents']['monster']['type']  = m_dict['details']['name']
-            shape_dict['contents']['monster']['No'] = int(m_dict['roll'][0])
+            shape_dict['contents']['monster']['No'] = int(m_dict['no'][0])
 
             dname = m_dict['name'].split(':')[0]
             print("Dragon dname", dname)
@@ -1495,7 +1495,7 @@ def room_contents(shape_dict, coord, content):
 
         elif 'Dragon' in m_dict['name']:            
             shape_dict['contents']['monster']['type']  = m_dict['details']['name']
-            shape_dict['contents']['monster']['No'] = int(m_dict['roll'][0])
+            shape_dict['contents']['monster']['No'] = int(m_dict['no'][0])
 
             dname = m_dict['name'].split(':')[0]
             print("Dragon dname", dname)
