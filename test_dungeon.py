@@ -741,13 +741,15 @@ def check_action(pc_dict, coord, room_stack):
             for cd in [r':young',r':sub',r':adult',r':old',r':very',r':ancient','Tiamat','Bahamut',':2-']:
                 if cd in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:
                     checkdragon = True
-            print("checking dragon", checkdragon)
+            if VERBOSITY:
+                print("checking dragon", checkdragon)
 
             #wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['checkdrg'] = checkdragon
 
             if 'Subtable' not in wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type']:
                 if not checkdragon:
-                    print("WM_DATA1st NoSubtable - monster")
+                    if VERBOSITY:
+                        print("WM_DATA1st NoSubtable - monster")
                     #print(all_d)
                     wm_data = all_d[wm_dict['name'].lower()]
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_data['XPtotal']
