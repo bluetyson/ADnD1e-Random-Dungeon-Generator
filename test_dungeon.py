@@ -775,7 +775,7 @@ def check_action(pc_dict, coord, room_stack):
                     print("human character quitting")
                     print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                     wandering_monster_subtable.append('human-character')
-                    quit()
+                    #quit()
                 else:
                     print("HumanSubtable-second branch basic human")
                     print("WM_DATA",wm_data)
