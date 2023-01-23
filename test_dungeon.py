@@ -3939,6 +3939,10 @@ for down in range(zwidth-1):
                             if key == 'monster':    
                                 monster_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
                                 monster_valuations = {'gems':[],'jewellery':[], 'magic':[]}
+                                monster_valuations['magic_list'] = []
+                                monster_valuations['magic_xp'] = [] 
+                                monster_valuations['magic_values'] = []
+
                                 treasure_list = room_stack['shape_dict'][room]['contents']['monster']['treasure_individual'] + room_stack['shape_dict'][room]['contents']['monster']['treasure_lair']
                                 if len(treasure_list) > 0:
                                     for t in treasure_list:
@@ -3954,7 +3958,30 @@ for down in range(zwidth-1):
                                             monster_treasure['magic'] = monster_treasure['magic'] + treasure['magic']
 
                                     #do valuations
+                                    monster_gems_list = []
+                                    for g in range(monster_treasure['gems']):
+                                        base_value, description = select_gemstone()
+                                        new_base_value = update_gemstone(base_value)
+                                        monster_gems_list.append(new_base_value)
 
+                                    monster_jewellery_list = []
+                                    for g in range(monster_treasure['jewellery']):
+                                        base_value, description = select_jewellery()
+                                        monster)jewellery_list.append(base_value)
+                                    monster_valuations['jewellery'] = monster_jewellery_list
+
+                                    monster_magic_list = []
+                                    for g in range(monster_treasure['magic']):
+                                        item, choice = select_magic_item()
+                                        monster_magic_list.append([item, choice])
+                                    monster_valuations['magic_list'] = monster_magic_list
+                                    
+                                    for m in shape_dict['contents']['treasure']['magic_list']:
+                                        monster_valutions['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
+                                        monster_valutions['treasure']['magic_values'].append(m[1][2]) #NOT IMPLEMENTED YET
+
+                                    f.write('<h5>Monster Valuation: ' + str(wm) + '</h5>')
+                                    f.write(str(monster_valuations) + '<br>')
                                 else:
                                     print("no monster treasure")
 
