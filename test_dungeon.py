@@ -3956,11 +3956,11 @@ for down in range(zwidth-1):
                                 if lairtry > 0:
                                     l = roll_dice(1,100)
                                     individual = ['I','J','K','L','M','N']
-                                    f.write("LairTry:" + str(l) + ' from ' + str(lairtry) + '<br>')
+                                    f.write("LairTry:" + str(l) + ' from ' + str(lairtry))
                                 
                                     if l <= lairtry:
                                         inlair = True
-                                        f.write(' is in lair ' + str(inlair))
+                                        f.write(' is in lair: ' + str(inlair)  + '<br>')
                                         
                                 
                                 if inlair:
@@ -4024,7 +4024,6 @@ for down in range(zwidth-1):
                                 if len(treasure_list) > 0:
                                     if inlair:
                                         f.write('<h5>Monster Lair Treasure:</h5>')
-                                        f.write(str(l) + ' ' + str(lairtry) + ' ' + str(inlair))
                                         f.write(str(monster_treasure) + '<br>')
                                         f.write(str(monster_valuations) + '<br>')
                                         f.write('<br>')
