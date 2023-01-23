@@ -3876,6 +3876,7 @@ for down in range(zwidth-1):
                     water_dict[room] = room_stack['shape_dict']
 
         if len(wandering_monster_stack) > 0:
+            print("roll numbers:",wandering_monster_rolls)
             wm_xp_total = 0
             wm_total_treasure = {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
             for wm in range(wandering_monster_stack['key_count']):
