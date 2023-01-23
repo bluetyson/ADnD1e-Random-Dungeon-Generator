@@ -809,7 +809,7 @@ def check_action(pc_dict, coord, room_stack):
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['roll'][0]
 
                 if 1 == 2:
-                    "try and get to dragon quitting
+                    #try and get to dragon quitting
                     dname = wm_dict['details']['name'].split(':')[0]
                     #dname = dname.split('-')[1]
                     print("Dragon dname", dname)
