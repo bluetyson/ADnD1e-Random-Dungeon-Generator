@@ -783,8 +783,8 @@ def check_action(pc_dict, coord, room_stack):
                     print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                     wandering_monster_subtable.append('human')
                     #quit()
-                print("QUIT HUMAN")
-                quit()
+                print("IN HUMAN")
+                #quit()
             if 'CharacterSubtable' in wm_dict['name']:
                 print("CharacterSubtable") #this works
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
