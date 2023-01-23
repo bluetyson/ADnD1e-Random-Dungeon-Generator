@@ -3998,29 +3998,29 @@ for down in range(zwidth-1):
                                                 else:
                                                     monster_treasure['magic'] = monster_treasure['magic'] + treasure['magic']
 
-                                    #do valuations
-                                    monster_gems_list = []
-                                    for g in range(monster_treasure['gems']):
-                                        base_value, description = select_gemstone()
-                                        new_base_value = update_gemstone(base_value)
-                                        monster_gems_list.append(new_base_value)
-                                    monster_valuations['gems'] = monster_gems_list                                            
+                                #do valuations
+                                monster_gems_list = []
+                                for g in range(monster_treasure['gems']):
+                                    base_value, description = select_gemstone()
+                                    new_base_value = update_gemstone(base_value)
+                                    monster_gems_list.append(new_base_value)
+                                monster_valuations['gems'] = monster_gems_list                                            
 
-                                    monster_jewellery_list = []
-                                    for g in range(monster_treasure['jewellery']):
-                                        base_value, description = select_jewellery()
-                                        monster_jewellery_list.append(base_value)
-                                    monster_valuations['jewellery'] = monster_jewellery_list
+                                monster_jewellery_list = []
+                                for g in range(monster_treasure['jewellery']):
+                                    base_value, description = select_jewellery()
+                                    monster_jewellery_list.append(base_value)
+                                monster_valuations['jewellery'] = monster_jewellery_list
 
-                                    monster_magic_list = []
-                                    for g in range(monster_treasure['magic']):
-                                        item, choice = select_magic_item()
-                                        monster_magic_list.append([item, choice])
-                                    monster_valuations['magic_list'] = monster_magic_list
-                                    
-                                    for m in monster_valuations['magic_list']:
-                                        monster_valuations['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
-                                        monster_valuations['treasure']['magic_values'].append(m[1][2]) #NOT IMPLEMENTED YET
+                                monster_magic_list = []
+                                for g in range(monster_treasure['magic']):
+                                    item, choice = select_magic_item()
+                                    monster_magic_list.append([item, choice])
+                                monster_valuations['magic_list'] = monster_magic_list
+                                
+                                for m in monster_valuations['magic_list']:
+                                    monster_valuations['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
+                                    monster_valuations['treasure']['magic_values'].append(m[1][2]) #NOT IMPLEMENTED YET
 
                                 if len(treasure_list) > 0:
                                     if inlair:
