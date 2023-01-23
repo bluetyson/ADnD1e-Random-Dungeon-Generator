@@ -3486,6 +3486,9 @@ if len(ARGV) > 1:
 if len(ARGV[1]) > 2:
     VERBOSITY = int(ARGV[2])
 
+if VERBOSITY:
+    print(True)
+
 print("VERBOSITY:",VERBOSITY)
     
 #make this a script argument
