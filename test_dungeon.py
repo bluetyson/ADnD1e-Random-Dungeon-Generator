@@ -3977,7 +3977,7 @@ for down in range(zwidth-1):
                                     for t in room_stack['shape_dict'][room]['contents']['monster']['treasure_individual']:
                                         if 'x' not in t:
                                             treasure = treasure_choice(t, room_stack['shape_dict'][room]['contents']['monster']['No'])
-                                            for n in room_stack['shape_dict'][room]['contents']['monster']['No']:
+                                            for n in range(room_stack['shape_dict'][room]['contents']['monster']['No']):
                                                 print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
                                                 monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
                                                 monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
