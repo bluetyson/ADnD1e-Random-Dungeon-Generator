@@ -1329,7 +1329,8 @@ def exit_dir(shape_dict):
 def passage_make_sd(coord, secret_door_count, secret_door_dict, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0,sdx=0,sdy=0,xwidth=0,ywidth=0):
     p_dict = width()
     #print("PDICTBEFORE:",p_dict)
-    print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop,"COORD:",coord)
+    if VERBOSITY:                                  
+        print("CHECKWIDTH:",p_dict['width'],"LOOP:",loop,"COORD:",coord)
     #print("PDICT:",p_dict)
     if p_dict['width'] <= 1: #0.5 width do cosmetically later
 
