@@ -353,13 +353,10 @@ def check_action(pc_dict, coord, room_stack):
                         dungeon[(coord[0],coord[1],coord[2])]['fill'] = 'Cd'
                         new_coord = (coord[0],coord[1]+1,coord[2])
                         # 10 x 10 room need to check contents!
-
-                        #need to implement for set type room
                         new_coord = coord
                         shape_dict = room(coord, room_stack, size="10") #10 is special case to mandate 1 roll for size
-
-                        print("ROOM SHAPE:",shape_dict)
-                        #rm = room_make(shape_dict, coord)
+                        if VERBOSITY:
+                            print("ROOM SHAPE:",shape_dict)
                         # set Cd above for doors to indicate door to room ahead
                         rm = room_make(shape_dict, coord)
                         
@@ -375,7 +372,8 @@ def check_action(pc_dict, coord, room_stack):
                             exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
                     else:
                         #30m passage that direction
-                        print("CHECKEDICT",e_dict)
+                        if VERBOSITY:
+                            print("CHECKEDICT",e_dict)
                         new_coord = passage_make(coord, ymod=1,yloop=1, xwidth=1)
 
                 if e_dict['beyond'] == '4AB':   ##45 A - need to make facing for R different eventually
@@ -397,15 +395,13 @@ def check_action(pc_dict, coord, room_stack):
                 if e_dict['beyond'] == 'Room':
                     #want those we randomly position lr
                     new_coord = coord
-                    #new part!
                     #if coming from here pass door to room function?
                     #dungeon[coord]['fill'] = dungeon[coord]['fill'] + 'd'  #add door indicator
 
                     shape_dict = room(coord, room_stack, size='Rd' )  ## different type to get slightly different table pass Rd to indicate from door
-                    #room_stack = shape_dict['room_stack']
                     #each room part check for inside
-
-                    print("ROOM SHAPE:",shape_dict)
+                    if VERBOSITY:
+                        print("ROOM SHAPE:",shape_dict)
                     ## do simple version first of x directions and y directions of rectangular
                     rm = room_make(shape_dict, coord)
                     if rm == "GOOD":
@@ -491,7 +487,8 @@ def check_action(pc_dict, coord, room_stack):
     elif pc_dict['direction'] == 'turn':
         new_coord = coord
         t_dict = turn(coord)
-        print("T_DICT:",t_dict)
+        if VERBOSITY:
+            print("T_DICT:",t_dict)
 
         t = roll_dice(1,20)
 
@@ -549,8 +546,8 @@ def check_action(pc_dict, coord, room_stack):
         level_dict = level(coord)
         new_coord = level_dict['new_coord']
         level_stack[new_coord] = level_dict
-
-        print("LEVEL:",level_dict)
+        if VERBOSITY:
+            print("LEVEL:",level_dict)
         
         if level_dict['check'] > 0:
             #go ahead 3 on check 3
@@ -563,7 +560,6 @@ def check_action(pc_dict, coord, room_stack):
                 else:
                     break
 
-
         if level_dict['room'] == 'Y':
             #do room check
             shape_dict = room(coord, room_stack) #if another room pass not C="R"        
@@ -572,7 +568,6 @@ def check_action(pc_dict, coord, room_stack):
             rm = room_make(shape_dict, coord)
             if rm == "GOOD":
                 secret_doors(shape_dict)                    
-
 
         return new_coord
 
@@ -675,11 +670,11 @@ def check_action(pc_dict, coord, room_stack):
             return new_coord
 
 
-
     elif pc_dict['direction'] == 'bad_things':
         new_coord = coord
         t_dict = bad_things(coord, room_stack)
-        print("TRAP:",t_dict)
+        if VERBOSITY:
+            print("TRAP:",t_dict)
         
         if 'chute' in t_dict['trap']['type'] or 'elevator' in t_dict['trap']['type']:
             level_stack[new_coord] = t_dict
@@ -695,7 +690,8 @@ def check_action(pc_dict, coord, room_stack):
                 break
         
     elif pc_dict['direction'] == 'random_encounter':
-        print("WANDERING MONSTER")
+        if VERBOSITY:
+            print("WANDERING MONSTER")
         new_coord = coord
         roll_first = random_check()
         #"+1 like trap - wm"
@@ -707,14 +703,16 @@ def check_action(pc_dict, coord, room_stack):
             dungeon[(coord[0],coord[1]+1,coord[2])] = {}
             dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'wm'
         else:
-            print('wm filled up check:',dungeon[(coord[0],coord[1]+1,coord[2])])
+            if VERBOSITY:
+                print('wm filled up check:',dungeon[(coord[0],coord[1]+1,coord[2])])
             #dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'wm' #get this to work
             # do fill test to not write over other fills like 'monsters
             if 'fill' in dungeon[(coord[0],coord[1]+1,coord[2])]:
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] + 'wm' #get this to work'wm' #get this to work
             else:
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] =  'wm'
-            print('wm key check',dungeon[(coord[0],coord[1]+1,coord[2])])
+            if VERBOSITY:
+                print('wm key check',dungeon[(coord[0],coord[1]+1,coord[2])])
 
         wm_coord = (coord[0],coord[1]+1,coord[2])
         wandering_monster_stack['key_count'] +=1
@@ -750,62 +748,71 @@ def check_action(pc_dict, coord, room_stack):
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
-
-                    print("WM_DATA",wm_data)
+                    if VERBOSITY:
+                        print("WM_DATA",wm_data)
+                        print("WM_DICTNAME",wm_dict['name'])
                     wandering_monster_subtable.append('monster')
-                    print("WM_DICTNAME",wm_dict['name'])
                 else:
-                    print(wm_dict)
-                    print("DragonSubtable")
-                    print("DRAGON WM_DICT:",wm_dict)
+                    if VERBOSITY:
+                        print(wm_dict)
+                        print("DragonSubtable")
+                        print("DRAGON WM_DICT:",wm_dict)
                     #type ok above already
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = int(wm_dict['no'][0])
 
                     dname = wm_dict['details']['name'].split(':')[0]
-                    print("Dragon dname", dname)
+                    
                     wm_data = dragon_d[dname]
-                    print("Dragon WM Data", wm_data)
+                    if VERBOSITY:
+                        print("Dragon dname", dname)
+                        print("Dragon WM Data", wm_data)
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
 
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = xp_d[wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level']]
-                    print("DragonSubtableWM:",wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                    if VERBOSITY:
+                        print("DragonSubtableWM:",wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                     wandering_monster_subtable.append('dragon')
 
             if 'HumanSubtable' in wm_dict['name']:
-                print("HumanSubtable from wm")
+                if VERBOSITY:
+                    print("HumanSubtable from wm")
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details'][0]
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = wm_dict['details'][1]
 
                 if 'Character' not in wm_dict['details']:
                     wm_data = human_d['human-' + wm_dict['details'][0].lower()]
-                    print("WM_DATA",wm_data)
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['XP'] = wm_data['XPtotal']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = wm_data['lair']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = wm_data['treasure_individual']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = wm_data['treasure_lair']
-
-                    print("human subtable check wmdict details:",wm_dict['details'])
+                    if VERBOSITY:
+                        print("WM_DATA",wm_data)
+                        print("human subtable check wmdict details:",wm_dict['details'])
                 if 'Character' in wm_dict['details']:
-                    print("HumanSubtable-Character - implementing")
+                    if VERBOSITY:
+                        print("HumanSubtable-Character - implementing")
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9                
 
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['lair'] = '0%'
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = [] #have to work out
                     wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = [] #have to work out
-                    print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                    #print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                     wandering_monster_subtable.append('human-character')
                 else:
-                    print("HumanSubtable-second branch basic human")
-                    print("WM_DATA",wm_data)
-                    print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                    if VERBOSITY:
+                        print("HumanSubtable-second branch basic human")
+                        print("WM_DATA",wm_data)
+                        print(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                     wandering_monster_subtable.append('human')
-                print("IN HUMAN")
+                if VERBOSITY:
+                    print("IN HUMAN")
 
             if 'CharacterSubtable' in wm_dict['name']:
-                print("CharacterSubtable") #this works
+                if VERBOSITY:
+                    print("CharacterSubtable") #this works
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['type'] = wm_dict['details']
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['No'] = 9
                 
@@ -813,13 +820,12 @@ def check_action(pc_dict, coord, room_stack):
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_individual'] = [] #have to work out
                 wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['treasure_lair'] = [] #have to work out
 
-                #print("character quitting")
-                print("CharacterSubtableWM:", wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
+                #print("CharacterSubtableWM:", wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord])
                 wandering_monster_subtable.append('character')
 
         except Exception as wmE:
             #bound to be parsing problems in the monster tables until vetted dragons and characters etc.
-            print("error:",wmE)
+            print("error:",wmE)  #log to a file to see a pattern
             error_dict[error_dict['key_count']] = wmE
             error_dict['type']['key_count'] = "wm roll error for level: " + str(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
             error_dict['key_count'] += 1            
@@ -1011,8 +1017,6 @@ def room(coord, room_stack, size="C", content=None ):
             shape_dict['size'] = [3,4]
     if r >= 18:
         shape_dict = fancy_shape(shape_dict)
-        ##MAKE ALL ROOMS RECTANGULAR TO START
-        #shape_dict['size'] = [4,6]
 
     #shape, size, exits, contents, treasure, in  
     if size == 'Rd':
@@ -1025,10 +1029,9 @@ def room(coord, room_stack, size="C", content=None ):
     shape_dict = exit_dir(shape_dict)
 
     ## check the room stack and exit functions here
-    
-    print("ROOM KEY COUNT:",room_stack['key_count'])
+    if VERBOSITY:
+        print("ROOM KEY COUNT:",room_stack['key_count'])
     #####print("ROOM STACK CHECK in room function:", room_stack)
-
         
     return shape_dict
 
@@ -1351,7 +1354,8 @@ def passage_make_sd(coord, secret_door_count, secret_door_dict, loop=3,xmod=0,ym
                 break                
 
     else: #do column width first, then do fancy parts #work out new_coord??  #default go to xpos/right for now
-        print("FANCY WIDTH:",p_dict)
+        if VERBOSITY:
+            print("FANCY WIDTH:",p_dict)
         for w in range(p_dict['width']):
             new_coord = coord
             for y in range(loop):
@@ -1383,7 +1387,8 @@ def passage_make_sd(coord, secret_door_count, secret_door_dict, loop=3,xmod=0,ym
 def room_contents(shape_dict, coord, content):
     shape_dict['contents'] = {}
     r = roll_dice(1,20)
-    print("ROOM CONTENTS ROLL:", r)
+    if VERBOSITY:
+        print("ROOM CONTENTS ROLL:", r)
     if content == "MT":
         r = 15 #make monster and treasure
 
@@ -1396,11 +1401,13 @@ def room_contents(shape_dict, coord, content):
         shape_dict['contents']['monster']['No'] = 0
         shape_dict['contents']['monster']['XP'] = 0
 
-        print("CHECKSD FOR MONSTER CHARACTERS:",shape_dict['contents']['monster']['level'])
-        print("CHECKSD FOR MONSTER CHARACTERS:",shape_dict['contents']['monster']['type'])
+        if VERBOSITY:
+            print("CHECKSD FOR MONSTER CHARACTERS:",shape_dict['contents']['monster']['level'])
+            print("CHECKSD FOR MONSTER CHARACTERS:",shape_dict['contents']['monster']['type'])
 
         m_dict = monster_tables(shape_dict['contents']['monster']['level'])
-        print("CHECKM_DICT FOR MONSTER CHARACTERS:",shape_dict['contents']['monster']['type'])
+        if VERBOSITY:
+            print("CHECKM_DICT FOR MONSTER CHARACTERS:",shape_dict['contents']['monster']['type'])
         shape_dict['contents']['monster']['type']  = m_dict['name']
         shape_dict['contents']['monster']['No'] = m_dict['no']
 
@@ -3489,7 +3496,8 @@ if len(ARGV) > 2:
 if VERBOSITY:
     print("VERBOSITY ON")
 
-print("VERBOSITY:",VERBOSITY)
+if VERBOSITY:
+    print("VERBOSITY:",VERBOSITY)
     
 #make this a script argument
 START_LEVEL = 0
