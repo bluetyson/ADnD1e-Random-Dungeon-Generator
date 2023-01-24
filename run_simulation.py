@@ -4550,7 +4550,7 @@ if __name__ == '__main__':
     print("LEN", len(idx_list))
     #print(idx_list)
     use_index = 0
-    #print(idx_list[use_index:use_index + 1])
+    #print(idx_list[use_index:use_index + 1]) ##
     ctx = mp.get_context("spawn")
     with concurrent.futures.ProcessPoolExecutor(mp_context=ctx) as executor:
         future_to_data = {executor.submit(dungeon_simr, idx, pc_list[idx], verbosity_list[idx], usepath_list[idx]): idx for idx in idx_list}		
