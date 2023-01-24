@@ -3869,7 +3869,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                 return 'notreasure'
 
         
-        strpath = os.path.join(usepath, suffix, 'dungeon_' + str(down+1) + '.html')
+        strpath = os.path.join(usepath, str(suffix), 'dungeon_' + str(down+1) + '.html')
         #with open('dungeon_' + str(down+1) + '.html','w') as f:
         with open(strpath,'w') as f:            
             f.write(strhead)
