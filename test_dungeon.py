@@ -4200,9 +4200,9 @@ for down in range(zwidth-1):
                     if 'NO-ENCOUNTER' not in wandering_monster_stack[wm+1][key]['type']:
                         if VERBOSITY:                                                
                             print("wm treasure checking",str(wandering_monster_stack[wm+1]))
-                        wmlair = wandering_monster_stack[wm+1][key]['lair']
-                        wmlair = wmlair.replace('%','')
-                        wmlair = int(wmlair)
+                        #wmlair = wandering_monster_stack[wm+1][key]['lair']
+                        #wmlair = wmlair.replace('%','')
+                        #wmlair = int(wmlair)
                         wmti = wandering_monster_stack[wm+1][key]['treasure_individual']
                         f.write("XP:" + str(wmxp*wmno) + '<br>')
 
