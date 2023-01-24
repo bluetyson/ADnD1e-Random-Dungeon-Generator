@@ -4542,7 +4542,7 @@ if __name__ == '__main__':
 
     if len(ARGV) > 1:
         if int(ARGV[1]) > 1:
-            pc = int(ARGV[1])
+            periodic_checks = int(ARGV[1])
 
     if len(ARGV) > 2:
         simulations = int(ARGV[2])
