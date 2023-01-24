@@ -4173,10 +4173,13 @@ def dungeon_sim(periodic_checks, verbosity=0):
                             print('pool')
                             if 'monster_details' in room_stack['shape_dict'][room]['pool']:
                                 print(room_stack['shape_dict'][room]['pool'])
-                                quit()
                         if 'lake' in room_stack['shape_dict'][room]:
                             print('lake')
                             print(room_stack['shape_dict'][room]['lake'])
+                            if 'monster_details' in room_stack['shape_dict'][room]['pool']:
+                                print(room_stack['shape_dict'][room]['pool'])
+                                quit()
+
                         if VERBOSITY:                                                
                             print("HAS WATER TO DO")
                         water_dict[room] = room_stack['shape_dict']
