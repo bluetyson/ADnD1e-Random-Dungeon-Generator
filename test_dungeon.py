@@ -2963,7 +2963,7 @@ def wet_small(shape_dict, coord):
         wet_dict['monster_details']['No'] = m_dict['no']
 
         ##put subtable stuff here
-        wet_dict = wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d):
+        wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d)
 
     elif w >= 13 and w <=18:
         wet_dict['wet'] = 'Y'
@@ -2977,7 +2977,7 @@ def wet_small(shape_dict, coord):
         wet_dict['monster_details']['No'] = m_dict['no']
 
         ##put subtable stuff here
-        wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d):
+        wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d)
 
         wet_dict['treasure'] = 'Y'
 
@@ -3031,7 +3031,7 @@ def wet_large(shape_dict, coord):
         wet_dict['monster_details']['No'] = m_dict['no']
 
         ##put subtable stuff here
-        wet_dict = wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d):
+        wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d)
 
         shape_dict['lake'] = wet_dict
     else:
@@ -3052,7 +3052,7 @@ def wet_large(shape_dict, coord):
             wet_dict['monster_details']['No'] = m_dict['no']
 
             ##put subtable stuff here
-            wet_dict = wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d):
+            wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d)
 
             ##need to monster generate
 
