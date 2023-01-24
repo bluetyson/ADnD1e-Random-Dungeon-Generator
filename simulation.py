@@ -13,6 +13,7 @@ if __name__ == "__main__":
     if len(ARGV) > 2:
         VERBOSITY = int(ARGV[2])
 
+    print(PERIODIC_CHECKS, VERBOSITY)
     df = dungeon_sim(PERIODIC_CHECKS, VERBOSITY)
 
     print(df)
