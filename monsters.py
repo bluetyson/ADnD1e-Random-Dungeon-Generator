@@ -3036,6 +3036,7 @@ def monster_tables(level):
     79-82 Silver:ancient (8)
     83-100 White:2-ancient-&-very-old (8&7)'''    
 
+    #83-100 NO-ENCOUNTER 1-1
     #Titan elder
     level_10 ='''01-12 Beholder 1-1
     13-20 Character — see Character Subtable 1-1
@@ -3053,7 +3054,20 @@ def monster_tables(level):
     63-67 Titan-21HD 1-1
     68-72 Titan-22HD 1-1 
     73-82 Vampire 1-1
-    83-100 NO-ENCOUNTER 1-1'''    
+    33-42 Dragon — see Dragon Subtable below 1-2
+    43-52 Golem, iron 1-1
+    53-62 Lich 1-1
+    63-67 Titan-21HD 1-1
+    68-72 Titan-22HD 1-1 
+    73-82 Vampire 1-1    
+    83-84 Beholder 1-1
+    85-86 Character — see Character Subtable 1-1   
+    87-89 Dragon — see Dragon Subtable below 1-2 
+    90-92 Golem, iron 1-1
+    93-95 Lich 1-1
+    96 Titan-21HD 1-1
+    97 Titan-22HD 1-1 
+    98-100 Vampire 1-1'''    
 
     dragon_level_10='''01-20 Blue:2-ancient-&-very-old (8&7)
     21-26 Bronze:2-ancient-&-very-old (8&7)

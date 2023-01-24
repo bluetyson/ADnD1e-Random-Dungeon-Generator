@@ -4043,6 +4043,7 @@ for down in range(zwidth-1):
                                 mxp = room_stack['shape_dict'][room]['contents'][key]['XP']
 
                                 if isinstance(room_stack['shape_dict'][room]['contents'][key]['type'], dict):
+                                    # problems with no encounter here
                                     if VERBOSITY:
                                         print("CHARACTER PARTY!")
                                     for c in room_stack['shape_dict'][room]['contents'][key]['type']:
