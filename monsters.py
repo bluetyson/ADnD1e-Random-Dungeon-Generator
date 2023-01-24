@@ -2,7 +2,7 @@ import random
 import sys
 import json
 
-v = 1
+v = 0
 
 def multi_roll(rolls, sides):
     total = 0
@@ -3223,7 +3223,7 @@ def monster_tables(level):
     if 1 == 2:
         with open('dragons.json','w') as f:
             json.dump(dragon_levels, f)
-    print(mdict)
+    
     return mdict
 
 def monster_subtables_wet(m_dict, wet_dict):
