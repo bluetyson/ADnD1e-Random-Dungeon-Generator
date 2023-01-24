@@ -4560,6 +4560,7 @@ if __name__ == '__main__':
         verbosity_list.append(verbosity)
         usepath_list.append(usepath)
 
+    print(pc_list)
     idx_list = index_list
     print("LEN", len(idx_list))
     #print(idx_list)
