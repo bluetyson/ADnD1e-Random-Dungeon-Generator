@@ -1,6 +1,8 @@
 import sys
 import random
 
+v = 0
+
 def roll_dice(number, sides):
     roll = random.randint(number,sides)
     return roll
@@ -342,8 +344,9 @@ def create_party(level):
 
 
 
-    for key in party_members:            
-        print(key, ":", party_members[key])
+    for key in party_members:        
+        if v:    
+            print(key, ":", party_members[key])
 
     return party_members
 
