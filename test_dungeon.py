@@ -4219,7 +4219,39 @@ for down in range(zwidth-1):
             f.write('<br>' + "Room Total Treasure:" + str(total_treasure) + '<br>')                            
             f.write('<br>' + "Room Total Gems:" + str(sum([gem for gem in valuations['gems']])) + '<br>')                                        
             f.write('<br>' + "Room Total Jewellery:" + str(sum([j for j in valuations['jewellery']])) + '<br>')                                        
-            f.write('<br>' + "Room Total Magic:" + str(sum([m for m in valuations['magic']])) + '<br>')                                                    
+            f.write('<br>' + "Room Total Magic:" + str(sum([m for m in valuations['magic']])) + '<br>') 
+
+            #want a wm count
+            #want a monster count
+            dfxp = pd.Dataframe()
+            dfxp['monster_xp'] = [m_xp_total]
+            dfxp['wm_xp'] = [wm_xp_total]
+
+            dfsub = pd.Dataframe()                                                   
+            df['total_treasure_copper'] = [total_treasure['copper']]
+            df['total_treasure_silver'] = [total_treasure['silver']]
+            df['total_treasure_electrum'] = [total_treasure['electrum']]
+            df['total_treasure_gold'] = [total_treasure['gold']]
+            df['total_treasure_platinum'] = [total_treasure['platinum']]
+            df['total_treasure_gems'] = [total_treasure['gems']]
+            df['total_treasure_jewellery'] = [total_treasure['jewellery']]
+            df['total_treasure_magic'] = [total_treasure['magic']]
+            df['total_treasure_monster_copper'] = [total_treasure_monster['copper']]
+            df['total_treasure_monster_silver'] = [total_treasure_monster['silver']]
+            df['total_treasure_monster_electrum'] = [total_treasure_monster['electrum']]
+            df['total_treasure_monster_gold'] = [total_treasure_monster['gold']]
+            df['total_treasure_monster_platinum'] = [total_treasure_monster['platinum']]
+            df['total_treasure_monster_gems'] = [total_treasure_monster['gems']]
+            df['total_treasure_monster_jewellery'] = [total_treasure_monster['jewellery']]
+            df['total_treasure_monster_magic'] = [total_treasure_monster['magic']]
+            df['wm_total_treasure_copper'] = [wm_total_treasure['copper']]
+            df['wm_total_treasure_silver'] = [wm_total_treasure['silver']]
+            df['wm_total_treasure_electrum'] = [wm_total_treasure['electrum']]
+            df['wm_total_treasure_gold'] = [wm_total_treasure['gold']]
+            df['wm_total_treasure_platinum'] = [wm_total_treasure['platinum']]
+            df['wm_total_treasure_gems'] = [wm_total_treasure['gems']]
+            df['wm_total_treasure_jewellery'] = [wm_total_treasure['jewellery']]
+            df['wm_total_treasure_magic'] = [wm_total_treasure['magic']]
 
             total_treasure['copper'] = total_treasure['copper'] + wm_total_treasure['copper'] + total_treasure_monster['copper']
             total_treasure['silver'] = total_treasure['silver'] + wm_total_treasure['silver'] + total_treasure_monster['silver']
@@ -4254,6 +4286,13 @@ for down in range(zwidth-1):
         #end of page
         f.write(strend)
 
+        df = pd.Dataframe()
+        df['Coins'] = [gold]
+        df['Gems'] = [gem_total]
+        df['Jewellery'] = [gem_total]
+        df['Magic'] = [magic_total]
+        df['Total Gold Equivalent'] = [gold + gem_total + jewellery_total + magic_total]
+        df['Monster Total XP'] = [gem_total]
 
 if VERBOSITY:
     with open('dungeon.pkl','wb') as fd:
@@ -4286,7 +4325,6 @@ if VERBOSITY:
     print("\nERROR LOG",error_dict, "WM_STACK:",wandering_monster_stack)
 
     #print("\nWATER LOG",
-
 #end = timeit.timeit()
 dt = time.time() - t0
 #print("Finished in",dt)
