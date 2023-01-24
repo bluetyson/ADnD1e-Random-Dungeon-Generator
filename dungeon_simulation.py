@@ -4176,8 +4176,8 @@ def dungeon_sim(periodic_checks, verbosity=0):
                         if 'lake' in room_stack['shape_dict'][room]:
                             print('lake')
                             print(room_stack['shape_dict'][room]['lake'])
-                            if 'monster_details' in room_stack['shape_dict'][room]['pool']:
-                                print(room_stack['shape_dict'][room]['pool'])
+                            if 'monster_details' in room_stack['shape_dict'][room]['lake']:
+                                print(room_stack['shape_dict'][room]['lake'])
                                 quit()
 
                         if VERBOSITY:                                                
