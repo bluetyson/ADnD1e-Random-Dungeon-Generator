@@ -4539,6 +4539,7 @@ if __name__ == '__main__':
     simulations = 10
 
     ARGV = sys.argv
+    print(ARGV)
 
     if len(ARGV) > 1:
         if int(ARGV[1]) > 1:
