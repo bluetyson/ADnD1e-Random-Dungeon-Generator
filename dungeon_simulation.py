@@ -4314,6 +4314,11 @@ def dungeon_sim(periodic_checks, verbosity=0):
             df['Jewellery'] = [gem_total]
             df['Magic'] = [magic_total]
             df['Total Gold Equivalent'] = [gold + gem_total + jewellery_total + magic_total]
+            df['coord_lim'] = [coord_lim]
+            df['x'] = [x]
+            df['y'] = [y]
+            df['z'] = [z]
+            df['Periodic Checks'] = [PERIODIC_CHECKS]
 
             df.to_csv('dungeon-stats.csv', index=False)
 
