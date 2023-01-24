@@ -4300,7 +4300,7 @@ for down in range(zwidth-1):
         df['Total Gold Equivalent'] = [gold + gem_total + jewellery_total + magic_total]
 
         dfTotal = pd.concat([df,dfsub,dfxp])
-        dfTotal.to_csv(dfTotal, index=False)
+        dfTotal.to_csv('dungeon-stats.csv', index=False)
 
 if VERBOSITY:
     with open('dungeon.pkl','wb') as fd:
