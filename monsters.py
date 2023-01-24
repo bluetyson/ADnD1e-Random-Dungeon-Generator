@@ -3210,7 +3210,7 @@ def monster_tables(level):
             #mdict['XP'] = dragon_xp[level]  NOT IMPLEMENTED YET
 
 
-def monster_subtables_wet(m_dict, wet_dict)
+def monster_subtables_wet(m_dict, wet_dict):
 
     if 'HumanSubtable' in m_dict['name']:
         wet_dict['monster_details']['type'] = m_dict['details'][0]
