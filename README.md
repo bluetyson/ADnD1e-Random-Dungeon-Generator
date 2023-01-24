@@ -8,7 +8,7 @@ Convert DMG tables to code to do for wandering around and down to make a dungeon
 - simulation is a current dev branch
 
 # Environment
-- Only non-standard type library used is numpy
+- Only non-standard type libraries used are numpy and pandas [the latter to do dungeon accounting csv, not necessary for dungeon generation]
 
 # Binder
 - click the below to fire up a web container environment that lets you run this in your browser
