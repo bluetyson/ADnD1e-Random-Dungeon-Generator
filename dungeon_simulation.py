@@ -4166,7 +4166,9 @@ def dungeon_sim(periodic_checks, verbosity=0):
                                         total_valuations_monster['magic_xp'] = total_valuations_monster['magic_values'] + monster_valuations['magic_xp']
                                         total_valuations_monster['magic_values'] = total_valuations_monster['magic_values'] + monster_valuations['magic_values']
 
-
+                                if key == 'water':
+                                    print("HAS WATER TO DO")
+                                    
                     if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                         if VERBOSITY:                                                
                             print("HAS WATER TO DO")
