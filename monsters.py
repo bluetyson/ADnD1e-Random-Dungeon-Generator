@@ -635,7 +635,7 @@ def all_data():
   'HP': 18,
   'XPtotal': 222,
   'treasure_individual': [],
-  'treasure_lair': ['Special']},
+  'treasure_lair': ['J', 'K', 'L', 'M', 'N', 'Q', 'S']},
  'ghoul': {'usename': 'ghoul',
   'lair': '20%',
   'Treasure': 'B,T',

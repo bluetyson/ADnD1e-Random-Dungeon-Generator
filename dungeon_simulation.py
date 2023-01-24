@@ -682,6 +682,7 @@ def dungeon_sim(periodic_checks, verbosity=0):
 
 
         elif pc_dict['direction'] == 'bad_things':
+            trap_stack['key_count'] += 1
             new_coord = coord
             t_dict = bad_things(coord, room_stack)
             if VERBOSITY:
@@ -1571,6 +1572,7 @@ def dungeon_sim(periodic_checks, verbosity=0):
         elif r == 18:
             shape_dict['contents']['level'] = {}
         elif r == 19:        
+            trap_stack['key_count'] += 1
             shape_dict['contents']['trap'] = {}
             shape_dict['contents']['trap'] = bad_things(coord, room_stack, size="R") #or should all traps be on room entry and this is ok?
             #trying this again
@@ -4087,6 +4089,7 @@ def dungeon_sim(periodic_checks, verbosity=0):
                                                     treasure = treasure_choice(t, room_stack['shape_dict'][room]['contents']['monster']['No'])
                                                     if VERBOSITY:                                                
                                                         print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
+                                                    #has been an exception here, maybe a treasure type problem in monster dict
                                                     monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
                                                     monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
                                                     monster_treasure['electrum'] = monster_treasure['electrum'] + treasure['electrum']
@@ -4249,6 +4252,7 @@ def dungeon_sim(periodic_checks, verbosity=0):
                 df['wm_xp'] = [wm_xp_total]
                 df['monster_total'] = [monster_stack['key_count']]
                 df['wm_total'] = [wandering_monster_stack['key_count']]
+                df['traps'] = [trap_stack['key_count']]
 
                 df['total_treasure_copper'] = [total_treasure['copper']]
                 df['total_treasure_silver'] = [total_treasure['silver']]
@@ -4314,6 +4318,11 @@ def dungeon_sim(periodic_checks, verbosity=0):
             df['Jewellery'] = [gem_total]
             df['Magic'] = [magic_total]
             df['Total Gold Equivalent'] = [gold + gem_total + jewellery_total + magic_total]
+            df['coord_lim'] = [coord_lim]
+            df['x'] = [xwidth]
+            df['y'] = [ywidth]
+            df['z'] = [zwidth-1]
+            df['Periodic Checks'] = [PERIODIC_CHECKS]
 
             df.to_csv('dungeon-stats.csv', index=False)
 

@@ -264,7 +264,7 @@ def scroll_choice():
     elif roll <= 59:
         return 7, random.randint(2,9), -1, sc
     elif roll <= 60:
-        return 7, random.randint(4,0) if st==1 else random.randint(4,7), -1, sc
+        return 7, random.randint(4,9) if st==1 else random.randint(4,7), -1, sc
     elif roll <= 62:        
         return 1, 'Protection - Demons', 2500, sc
     elif roll <= 64:        
