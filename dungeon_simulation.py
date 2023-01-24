@@ -4249,7 +4249,7 @@ def dungeon_sim(periodic_checks, verbosity=0):
                                 for t in room_stack['shape_dict'][room][wett]['monster_details']['treasure_individual']:
                                     if 'x' not in t:
                                         treasure = treasure_choice(t, room_stack['shape_dict'][room][wett]['monster_details']['No'])
-                                        for n in range(room_stack['shape_dict'][room]['contents']['monster']['No']):
+                                        for n in range(room_stack['shape_dict'][room][wett]['monster_details']['No']):
                                             if VERBOSITY:                                                
                                                 print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
                                             monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
