@@ -4532,10 +4532,20 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
 
 
 if __name__ == '__main__':
+
     usepath = 'simulations'
-    pc = 10
+    periodic_checks = 10 
     verbosity = 0
     simulations = 10
+
+    ARGV = sys.argv
+
+    if len(ARGV) > 1:
+        if int(ARGV[1]) > 1:
+            pc = int(ARGV[1])
+
+    if len(ARGV) > 2:
+        simulations = int(ARGV[2])
 
     result_list = []
     index_list = []
@@ -4545,7 +4555,7 @@ if __name__ == '__main__':
     
     for i in range(simulations):
         index_list.append(i)
-        pc_list.append(pc)
+        pc_list.append(periodic_checks)
         verbosity_list.append(verbosity)
         usepath_list.append(usepath)
 
