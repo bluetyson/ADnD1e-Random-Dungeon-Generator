@@ -4289,4 +4289,4 @@ dt = time.time() - t0
 #print("Finished in",dt)
 
 #print("DUNGEON DIMENSIONS",coord_lim, "of ", PERIODIC_CHECKS, " rolls in ", end - start)
-print("DUNGEON DIMENSIONS: Levels -",zwidth, " and bounds:",xwidth,"x", ywidth,  " from ", PERIODIC_CHECKS, " rolls in ", dt, " coords:",coordslim)
+print("DUNGEON DIMENSIONS: Levels -",zwidth, " and bounds:",xwidth,"x", ywidth,  " from ", PERIODIC_CHECKS, " rolls in ", dt, " coords:",coord_lim)
