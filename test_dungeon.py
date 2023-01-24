@@ -1,3 +1,8 @@
+import timeit
+import time
+#start = timeit.timeit()
+t0 = time.time()
+
 import sys
 import os
 import numpy as np
@@ -13,8 +18,6 @@ import math
 from monsters import monster_tables
 from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item, treasure_choice
 
-import timeit
-start = timeit.timeit()
 
 PI = math.pi
 ARGV = sys.argv
@@ -4271,5 +4274,9 @@ if VERBOSITY:
 
     #print("\nWATER LOG",
 
-end = timeit.timeit()
-print("DUNGEON DIMENSIONS",coord_lim, "of ", PERIODIC_CHECKS, " rolls in ", end - start)
+#end = timeit.timeit()
+dt = time.time() - t0
+#print("Finished in",dt)
+
+#print("DUNGEON DIMENSIONS",coord_lim, "of ", PERIODIC_CHECKS, " rolls in ", end - start)
+print("DUNGEON DIMENSIONS",coord_lim, "of ", PERIODIC_CHECKS, " rolls in ", dt)
