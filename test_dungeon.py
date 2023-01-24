@@ -4299,7 +4299,7 @@ for down in range(zwidth-1):
         df['Magic'] = [magic_total]
         df['Total Gold Equivalent'] = [gold + gem_total + jewellery_total + magic_total]
 
-        dfTotal = pd.concat[df,dfsub,dfxp]
+        dfTotal = pd.concat([df,dfsub,dfxp])
         dfTotal.to_csv(dfTotal, index=False)
 
 if VERBOSITY:
