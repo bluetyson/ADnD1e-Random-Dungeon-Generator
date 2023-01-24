@@ -4447,7 +4447,7 @@ def dungeon_sim(periodic_checks, verbosity=0):
                     jewellery_total = jewellery_total + j
             if total_treasure['magic'] > 0:
                 for m in valuations['magic'] + total_valuations_monster['magic_values']:
-                    magic_total = magic_total + m
+                    magic_total = magic_total + int(m)
 
             f.write('Coins: ' + str(gold) + '<br>')
             f.write('Gems: ' + str(gem_total) + '<br>')
