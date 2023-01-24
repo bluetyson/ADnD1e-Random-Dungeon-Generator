@@ -4168,17 +4168,149 @@ def dungeon_sim(periodic_checks, verbosity=0):
 
                     if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                         #print(room_stack['shape_dict'][room])
-                        
+                        monster_details = False
                         if 'pool' in room_stack['shape_dict'][room]:
                             print('pool')
                             if 'monster_details' in room_stack['shape_dict'][room]['pool']:
                                 print(room_stack['shape_dict'][room]['pool'])
+                                wett = 'pool'
+                                monster_details = True
                         if 'lake' in room_stack['shape_dict'][room]:
                             print('lake')
                             print(room_stack['shape_dict'][room]['lake'])
                             if 'monster_details' in room_stack['shape_dict'][room]['lake']:
                                 print(room_stack['shape_dict'][room]['lake'])
-                                quit()
+                                wett = 'lake'
+                                monster_details = True
+
+                        if monster_details:
+                            #room_stack['shape_dict'][room][wet]
+                            ## doing second round of monster accounting
+                            monster_stack['key_count'] += 1
+
+                            mno = room_stack['shape_dict'][room][wett]['monster_details']['No']
+                            mxp = room_stack['shape_dict'][room][wett]['monster_details']['XP']
+
+                            if isinstance(room_stack['shape_dict'][room][wett]['monster_details']['type'], dict):
+                                # problems with no encounter here
+                                if VERBOSITY:
+                                    print("CHARACTER PARTY!")
+                                for c in room_stack['shape_dict'][room][wett]['monster_details']['type']:
+                                    if 'level' in room_stack['shape_dict'][room][wett]['monster_details']['type'][c]: #hack for a base xp points based on DMG table
+                                        cxp = xp_d[room_stack['shape_dict'][room][wett]['monster_details']['type'][c]['level']]
+                                    else:
+                                        cxp = 20
+                                    m_xp_total = m_xp_total + cxp
+                            else:
+                                if VERBOSITY:
+                                    print("key:",key,"MNO:",mno,"WNXP",mxp)
+                                m_xp_total = m_xp_total + mxp * mno
+
+                            monster_treasure =  {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
+                            monster_valuations = {'gems':[],'jewellery':[], 'magic':[]}
+                            monster_valuations['magic_list'] = []
+                            monster_valuations['magic_xp'] = [] 
+                            monster_valuations['magic_values'] = []
+
+                            treasure_list = room_stack['shape_dict'][room][wett]['monster_details']['treasure_individual'] + room_stack['shape_dict'][room][wett]['monster_details']['treasure_lair']
+                            lairtry = int(room_stack['shape_dict'][room][wett]['monster_details']['lair'].replace('%',''))
+
+                            inlair = False
+                            if lairtry > 0:
+                                l = roll_dice(1,100)
+                                individual = ['I','J','K','L','M','N']
+                                f.write("LairTry:" + str(l) + ' from ' + str(lairtry))
+                            
+                                if l <= lairtry:
+                                    inlair = True
+                                    f.write(' is in lair: ' + str(inlair)  + '<br>')
+                                    
+                            
+                            if inlair:
+                                if len(treasure_list) > 0:
+                                    for t in room_stack['shape_dict'][room][wett]['monster_details']['treasure_lair']:
+                                        if 'x' not in t:
+                                            treasure = treasure_choice(t, room_stack['shape_dict'][room][wett]['monster_details']['No'])
+                                            if VERBOSITY:                                                
+                                                print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
+                                            #has been an exception here, maybe a treasure type problem in monster dict
+                                            monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
+                                            monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
+                                            monster_treasure['electrum'] = monster_treasure['electrum'] + treasure['electrum']
+                                            monster_treasure['gold'] = monster_treasure['gold'] + treasure['gold']
+                                            monster_treasure['platinum'] = monster_treasure['platinum'] + treasure['platinum']
+                                            monster_treasure['gems'] = monster_treasure['gems'] + treasure['gems']
+                                            monster_treasure['jewellery'] = monster_treasure['jewellery'] + treasure['jewellery']
+                                            if isinstance(treasure['magic'], list): #if no data
+                                                monster_treasure['magic'] = monster_treasure['magic'] + len(treasure['magic'])
+                                            else:
+                                                monster_treasure['magic'] = monster_treasure['magic'] + treasure['magic']
+                            else:
+                                for t in room_stack['shape_dict'][room][wett]['monster_details']['treasure_individual']:
+                                    if 'x' not in t:
+                                        treasure = treasure_choice(t, room_stack['shape_dict'][room][wett]['monster_details']['No'])
+                                        for n in range(room_stack['shape_dict'][room]['contents']['monster']['No']):
+                                            if VERBOSITY:                                                
+                                                print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
+                                            monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
+                                            monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
+                                            monster_treasure['electrum'] = monster_treasure['electrum'] + treasure['electrum']
+                                            monster_treasure['gold'] = monster_treasure['gold'] + treasure['gold']
+                                            monster_treasure['platinum'] = monster_treasure['platinum'] + treasure['platinum']
+                                            monster_treasure['gems'] = monster_treasure['gems'] + treasure['gems']
+                                            monster_treasure['jewellery'] = monster_treasure['jewellery'] + treasure['jewellery']
+                                            if isinstance(treasure['magic'], list): #if no data
+                                                monster_treasure['magic'] = monster_treasure['magic'] + len(treasure['magic'])
+                                            else:
+                                                monster_treasure['magic'] = monster_treasure['magic'] + treasure['magic']
+
+                            #do valuations
+                            monster_gems_list = []
+                            for g in range(monster_treasure['gems']):
+                                base_value, description = select_gemstone()
+                                new_base_value = update_gemstone(base_value)
+                                monster_gems_list.append(new_base_value)
+                            monster_valuations['gems'] = monster_gems_list                                            
+
+                            monster_jewellery_list = []
+                            for g in range(monster_treasure['jewellery']):
+                                base_value, description = select_jewellery()
+                                monster_jewellery_list.append(base_value)
+                            monster_valuations['jewellery'] = monster_jewellery_list
+
+                            monster_magic_list = []
+                            for g in range(monster_treasure['magic']):
+                                item, choice = select_magic_item()
+                                monster_magic_list.append([item, choice])
+                            monster_valuations['magic_list'] = monster_magic_list
+                            
+                            for m in monster_valuations['magic_list']:
+                                monster_valuations['magic_xp'].append(m[1][1]) 
+                                monster_valuations['magic_values'].append(m[1][2])
+
+                            if len(treasure_list) > 0:
+                                if inlair:
+                                    f.write('<h5>Wet Monster Lair Treasure:</h5>')
+                                    f.write(str(monster_treasure) + '<br>')
+                                    f.write(str(monster_valuations) + '<br>')
+                                    f.write('<br>')
+
+                                total_treasure_monster['copper'] = total_treasure_monster['copper'] + monster_treasure['copper']
+                                total_treasure_monster['silver'] = total_treasure_monster['silver'] + monster_treasure['silver']
+                                total_treasure_monster['electrum'] = total_treasure_monster['electrum'] + monster_treasure['electrum']
+                                total_treasure_monster['gold'] = total_treasure_monster['gold'] + monster_treasure['gold']
+                                total_treasure_monster['platinum'] = total_treasure_monster['platinum'] + monster_treasure['platinum']
+                                total_treasure_monster['gems'] = total_treasure_monster['gems'] + monster_treasure['gems']
+                                total_treasure_monster['jewellery'] = total_treasure_monster['jewellery'] + monster_treasure['jewellery']
+                                total_treasure_monster['magic'] = total_treasure_monster['magic'] + monster_treasure['magic']
+
+                                total_valuations_monster['jewellery'] = total_valuations_monster['jewellery'] + monster_valuations['jewellery']
+                                total_valuations_monster['gems'] = total_valuations_monster['gems'] + monster_valuations['gems']
+                                total_valuations_monster['magic_list'] = total_valuations_monster['magic_list'] + monster_valuations['magic_list']
+                                total_valuations_monster['magic_xp'] = total_valuations_monster['magic_values'] + monster_valuations['magic_xp']
+                                total_valuations_monster['magic_values'] = total_valuations_monster['magic_values'] + monster_valuations['magic_values']
+
+
 
                         if VERBOSITY:                                                
                             print("HAS WATER TO DO")
