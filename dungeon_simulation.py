@@ -4170,16 +4170,16 @@ def dungeon_sim(periodic_checks, verbosity=0):
                         #print(room_stack['shape_dict'][room])
                         monster_details = False
                         if 'pool' in room_stack['shape_dict'][room]:
-                            print('pool')
+                            #print('pool')
                             if 'monster_details' in room_stack['shape_dict'][room]['pool']:
-                                print(room_stack['shape_dict'][room]['pool'])
+                                #print(room_stack['shape_dict'][room]['pool'])
                                 wett = 'pool'
                                 monster_details = True
                         if 'lake' in room_stack['shape_dict'][room]:
-                            print('lake')
-                            print(room_stack['shape_dict'][room]['lake'])
+                            #print('lake')
+                            #print(room_stack['shape_dict'][room]['lake'])
                             if 'monster_details' in room_stack['shape_dict'][room]['lake']:
-                                print(room_stack['shape_dict'][room]['lake'])
+                                #print(room_stack['shape_dict'][room]['lake'])
                                 wett = 'lake'
                                 monster_details = True
 
