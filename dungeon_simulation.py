@@ -4168,10 +4168,10 @@ def dungeon_sim(periodic_checks, verbosity=0):
 
                     if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                         print("WATER:")
-                        if 'pool' in room_stack['shape_dict']:
+                        if 'pool' in room_stack['shape_dict'][room]:
                             print('pool')
                             print(room_stack['shape_dict'][room]['pool'])
-                        else:
+                        if 'lake' in room_stack['shape_dict'][room]:
                             print('lake')
                             print(room_stack['shape_dict'][room]['lake'])
                         if VERBOSITY:                                                
