@@ -1,7 +1,7 @@
 ## Advanced Dungeons & Dragons style random dungeon generator
 Convert DMG tables to code to do for wandering around and down to make a dungeon.
 
-- Version 0.3
+- Version 0.4
 - See blog for more examples and notes as it was worked on https://cosmicheroes.space/blog/index.php/tag/random-dungeon-generator/
 
 # Setup
@@ -31,7 +31,8 @@ Building things as I go - just using a one roll test for now to see how it goes.
 - Rolls for gems and jewellery
 - Generates an in lair roll
 - Generates basic individual treasure
-- Does dungeon accounting  - adds up treasure and some XP metrics
+- Does dungeon accounting  - adds up treasure and some XP metrics and traps
+    - Outputs this to a csv when run
 ```python
 Monster Total XP:71798
 
