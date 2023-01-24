@@ -4227,13 +4227,13 @@ for down in range(zwidth-1):
 
             #want a wm count
             #want a monster count
-            dfxp = pd.Dataframe()
+            dfxp = pd.DataFrame()
             dfxp['monster_xp'] = [m_xp_total]
             dfxp['wm_xp'] = [wm_xp_total]
             dfxp['monster_total'] = [monster_stack['key_count']]
             dfxp['wm_total'] = [wandering_monster_stack['key_count']]
 
-            dfsub = pd.Dataframe()                                                   
+            dfsub = pd.DataFrame()                                                   
             df['total_treasure_copper'] = [total_treasure['copper']]
             df['total_treasure_silver'] = [total_treasure['silver']]
             df['total_treasure_electrum'] = [total_treasure['electrum']]
@@ -4292,7 +4292,7 @@ for down in range(zwidth-1):
         #end of page
         f.write(strend)
 
-        df = pd.Dataframe()
+        df = pd.DataFrame()
         df['Coins'] = [gold]
         df['Gems'] = [gem_total]
         df['Jewellery'] = [gem_total]
