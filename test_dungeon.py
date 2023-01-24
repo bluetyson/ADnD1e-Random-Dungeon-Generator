@@ -4045,9 +4045,9 @@ for down in range(zwidth-1):
                                 if isinstance(room_stack['shape_dict'][room]['contents'][key]['type'], dict):
                                     if VERBOSITY:
                                         print("CHARACTER PARTY!")
-                                    for c in room_stack['shape_dict'][room]['contents']['key']['type']:
-                                        if 'level' in room_stack['shape_dict'][room]['contents']['key']['type'][c]: #hack for a base xp points based on DMG table
-                                            cxp = xp_d[room_stack['shape_dict'][room]['contents']['key']['type'][c]['level']]
+                                    for c in room_stack['shape_dict'][room]['contents'][key]['type']:
+                                        if 'level' in room_stack['shape_dict'][room]['contents'][key]['type'][c]: #hack for a base xp points based on DMG table
+                                            cxp = xp_d[room_stack['shape_dict'][room]['contents'][key]['type'][c]['level']]
                                         else:
                                             cxp = 20
                                         m_xp_total = m_xp_total + cxp
