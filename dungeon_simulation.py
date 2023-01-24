@@ -4167,11 +4167,13 @@ def dungeon_sim(periodic_checks, verbosity=0):
                                         total_valuations_monster['magic_values'] = total_valuations_monster['magic_values'] + monster_valuations['magic_values']
 
                     if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
-                        print(room_stack['shape_dict'][room])
-                        quit()
+                        #print(room_stack['shape_dict'][room])
+                        
                         if 'pool' in room_stack['shape_dict'][room]:
                             print('pool')
-                            print(room_stack['shape_dict'][room]['pool'])
+                            if 'monster_details' in room_stack['shape_dict'][room]['pool']:
+                                print(room_stack['shape_dict'][room]['pool'])
+                                quit()
                         if 'lake' in room_stack['shape_dict'][room]:
                             print('lake')
                             print(room_stack['shape_dict'][room]['lake'])
