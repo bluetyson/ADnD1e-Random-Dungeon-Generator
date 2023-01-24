@@ -15,7 +15,7 @@ import json
 import pickle
 import math
 
-from monsters import monster_tables
+from monsters import monster_tables, monster_subtables_wet
 from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item, treasure_choice
 
 
@@ -3567,6 +3567,7 @@ room_stack['key_count'] = 0
 room_stack['shape_dict'] = {}
 
 trap_stack = {}
+trap_stack['key_count'] = 0
 
 ##add room key as identifier
 wandering_monster_stack = {}
