@@ -1,4 +1,16 @@
-def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
+
+import os
+import concurrent.futures
+import multiprocessing as mp
+import pandas as pd
+
+import time as tm
+import pandas as pd
+
+import sys
+#def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
+
+def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
 
     import timeit
     import time
@@ -3857,7 +3869,9 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 return 'notreasure'
 
         
-        with open('dungeon_' + str(down+1) + '.html','w') as f:
+        strpath = os.path.join(usepath, suffix, 'dungeon_' + str(down+1) + '.html')
+        #with open('dungeon_' + str(down+1) + '.html','w') as f:
+        with open(strpath,'w') as f:            
             f.write(strhead)
             
             for j in range(downlist[down].shape[1]):            
@@ -4507,5 +4521,57 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
     #print("Finished in",dt)
 
     #print("DUNGEON DIMENSIONS",coord_lim, "of ", PERIODIC_CHECKS, " rolls in ", end - start)
-    print("DUNGEON DIMENSIONS: Levels -",zwidth-1, "and bounds",xwidth,"x", ywidth,  "from", PERIODIC_CHECKS, " rolls in ", dt, " coords:",coord_lim)
+    #print("DUNGEON DIMENSIONS: Levels -",zwidth-1, "and bounds",xwidth,"x", ywidth,  "from", PERIODIC_CHECKS, " rolls in ", dt, " coords:",coord_lim)
     return df
+
+
+#def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
+
+
+if __name__ == '__main__':
+    usepath = 'simulations'
+    pc = 10
+    verbosity = 0
+    simulations = 10
+
+    result_list = []
+    index_list = []
+    pc_list = []
+    verbosity_list = []
+    usepath_list = []
+    
+    for i in range(simulations):
+        index_list.append(i)
+        pc_list.append(pc)
+        verbosity_list.append(verbosity)
+        usepath_list.append(usepath)
+
+    idx_list = index_list
+    print("LEN", len(idx_list))
+    #print(idx_list)
+    use_index = 0
+    #print(idx_list[use_index:use_index + 1])
+    ctx = mp.get_context("spawn")
+    with concurrent.futures.ProcessPoolExecutor(mp_context=ctx) as executor:
+        future_to_data = {executor.submit(dungeon_simr, idx, pc_list[idx], verbosity_list[idx], usepath_list[idx]): idx for idx in idx_list}		
+
+        for future in concurrent.futures.as_completed(future_to_data):
+            datainfo = future_to_data[future]
+            try:
+                data = future.result()
+                result_list.append(data)
+                #print("BS", bin_series)
+                #if datainfo == '1-2021-10-25-06-21-Invert-the-Gawler-Mira_GeoscienceAnalyst.csv':
+            except Exception as exc:
+                print('%r generated an exception: %s' % (datainfo, exc))
+            else:
+                print('%r run finished' % (datainfo))
+
+    #print(bin_series)
+    #print(result_list)
+    output = pd.concat(result_list)
+    print(output.head())
+
+    output.to_csv('dungeon_simulation.csv')
+
+
