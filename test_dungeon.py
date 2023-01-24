@@ -4265,6 +4265,9 @@ if VERBOSITY:
     with open('room_stack.pkl','wb') as fd:
         pickle.dump(room_stack, fd)
 
+    with open('wandering_monster_stack.pkl','wb') as fd:
+        pickle.dump(wandering_monster_stack, fd)
+
     with open('dungeon.pkl','rb') as fd:
         df = pickle.load(fd)
         if zwidth -1 > 1:
