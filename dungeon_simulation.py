@@ -682,6 +682,7 @@ def dungeon_sim(periodic_checks, verbosity=0):
 
 
         elif pc_dict['direction'] == 'bad_things':
+            trap_stack['key_count'] += 1
             new_coord = coord
             t_dict = bad_things(coord, room_stack)
             if VERBOSITY:
@@ -1571,6 +1572,7 @@ def dungeon_sim(periodic_checks, verbosity=0):
         elif r == 18:
             shape_dict['contents']['level'] = {}
         elif r == 19:        
+            trap_stack['key_count'] += 1
             shape_dict['contents']['trap'] = {}
             shape_dict['contents']['trap'] = bad_things(coord, room_stack, size="R") #or should all traps be on room entry and this is ok?
             #trying this again
@@ -4249,6 +4251,7 @@ def dungeon_sim(periodic_checks, verbosity=0):
                 df['wm_xp'] = [wm_xp_total]
                 df['monster_total'] = [monster_stack['key_count']]
                 df['wm_total'] = [wandering_monster_stack['key_count']]
+                df['traps'] = [trap_stack['key_count']]
 
                 df['total_treasure_copper'] = [total_treasure['copper']]
                 df['total_treasure_silver'] = [total_treasure['silver']]
