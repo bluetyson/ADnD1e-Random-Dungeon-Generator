@@ -3561,6 +3561,8 @@ wandering_monster_stack = {}
 wandering_monster_stack['key_count'] = 0
 
 monster_stack = {}
+monster_stack['key_count'] = 0
+
 dead_end_dict = {}
 
 error_dict = {}
@@ -4022,6 +4024,8 @@ for down in range(zwidth-1):
                                 ###make monster treasure
                             if key == 'monster':    
                                 ## work out XP then treasure
+                                monster_stack['key_count'] += 1
+
                                 mno = room_stack['shape_dict'][room]['contents'][key]['No']
                                 mxp = room_stack['shape_dict'][room]['contents'][key]['XP']
 
@@ -4226,6 +4230,8 @@ for down in range(zwidth-1):
             dfxp = pd.Dataframe()
             dfxp['monster_xp'] = [m_xp_total]
             dfxp['wm_xp'] = [wm_xp_total]
+            dfxp['monster_total'] = [monster_stack['key_count']]
+            dfxp['wm_total'] = [wandering_monster_stack['key_count']]
 
             dfsub = pd.Dataframe()                                                   
             df['total_treasure_copper'] = [total_treasure['copper']]
@@ -4292,7 +4298,9 @@ for down in range(zwidth-1):
         df['Jewellery'] = [gem_total]
         df['Magic'] = [magic_total]
         df['Total Gold Equivalent'] = [gold + gem_total + jewellery_total + magic_total]
-        df['Monster Total XP'] = [gem_total]
+
+        dfTotal = pd.concat[df,dfsub,dfxp]
+        dfTotal.to_csv(dfTotal, index=False)
 
 if VERBOSITY:
     with open('dungeon.pkl','wb') as fd:
