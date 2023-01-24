@@ -1,6 +1,8 @@
 import random
 import sys
 
+v = 0
+
 def testtreasure():
     return "Basic treasure goes in shape_dict for room! Not done random gems, jewellery, magic."
 
@@ -10,7 +12,8 @@ def roll_dice(number, sides):
 
 def select_gemstone():
     dice_roll = roll_dice(1, 100)
-    print(dice_roll)
+    if v:
+        print(dice_roll)
     if dice_roll <= 25:
         return 10, "Ornamental Stones"
     elif dice_roll <= 50:
@@ -26,7 +29,8 @@ def select_gemstone():
 
 def update_gemstone(base_value):
     dice_roll = roll_dice(1, 10)
-    print(dice_roll)
+    if v:
+        print(dice_roll)
     if dice_roll == 1:
         next_base_value = base_value * 2
         if next_base_value > 1000000:
@@ -946,7 +950,8 @@ def misc_5_choice():
         return ("Wings of Flying", 750, 7500)        
 
 def treasure_choice(treasure_type, no):
-    print(treasure_type, no)
+    if v:
+        print(treasure_type, no)
     treasure = {}
     treasure['copper'] = 0
     treasure['silver'] = 0
@@ -1138,7 +1143,8 @@ def treasure_choice(treasure_type, no):
         if r <= 30:
             magic_list = []
             for c in range(3):
-                print(c)
+                if v:
+                    print(c)
                 magic_list.append(random.choice(["Potion","Scroll","Ring","Wand","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"]))
             for c in range(1):
                 magic_list.append(random.choice(["Potion"]))
@@ -1549,6 +1555,7 @@ if __name__ == "__main__":
         character_level = ARGV[1]
     else:
         character_level = 1
+
 
     print(select_gemstone())
     base_value, description = select_gemstone()
