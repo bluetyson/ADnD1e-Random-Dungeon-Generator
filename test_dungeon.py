@@ -1458,9 +1458,11 @@ def room_contents(shape_dict, coord, content):
             shape_dict['contents']['monster']['No'] = int(m_dict['no'][0])
 
             dname = m_dict['name'].split(':')[0]
-            print("Dragon dname", dname)
+            
             m_data = dragon_d[dname.replace('Dragon-','')]
-            print("Dragon M Data", m_data)
+            if VERBOSITY:
+                print("Dragon dname", dname)
+                print("Dragon M Data", m_data)
             shape_dict['contents']['monster']['lair'] = m_data['lair']
             shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
             shape_dict['contents']['monster']['treasure_lair'] = m_data['treasure_lair']
@@ -1540,7 +1542,8 @@ def room_contents(shape_dict, coord, content):
             ##monsters
             if 'NO-ENCOUNTER' not in shape_dict['contents']['monster']['type']:
                 m_data = all_d[shape_dict['contents']['monster']['type'].lower()]
-                print(m_data)
+                if VERBOSITY:                
+                    print(m_data)
                 shape_dict['contents']['monster']['XP'] = m_data['XPtotal']
                 shape_dict['contents']['monster']['lair'] = m_data['lair']
                 shape_dict['contents']['monster']['treasure_individual'] = m_data['treasure_individual']
@@ -1770,7 +1773,7 @@ def room_make(shape_dict, coord, size="C"):
                                 if tt == 'gems':
                                     treasure_string = treasure_string.upper()
                         if VERBOSITY:
-                                print("TREASURE STRING CHECK:",treasure_string)
+                            print("TREASURE STRING CHECK:",treasure_string)
 
                         rand_length = len(list(room_stack[room_stack['key_count']].keys()))
                         w = roll_dice(1,rand_length)
@@ -2151,7 +2154,8 @@ def loot(shape_dict,coord,monster="N"):
                 item, choice = select_magic_item()
                 magic_list.append([item, choice])
             shape_dict['contents']['treasure']['magic_list'] = magic_list
-            print("MAGIC LIST:",shape_dict['contents']['treasure']['magic_list'])
+            if VERBOSITY:            
+                print("MAGIC LIST:",shape_dict['contents']['treasure']['magic_list'])
             
             for m in shape_dict['contents']['treasure']['magic_list']:
                 shape_dict['contents']['treasure']['magic_xp'].append(m[1][1]) #NOT IMPLEMENTED YET
@@ -2993,7 +2997,8 @@ def wet_small(shape_dict, coord):
 def wet_large(shape_dict, coord):
     #not implemented yet
     w = roll_dice(1,20)
-    print("WET LARGE ROLL:",w)
+    if VERBOSITY:    
+        print("WET LARGE ROLL:",w)
     wet_dict = {}
     wet_dict['wet'] = 'N'
     wet_dict['monster'] = 'N'
@@ -3262,7 +3267,8 @@ def passage_make_full(coord, loop=3,xmod=0,ymod=0,zmod=0,xloop=0,yloop=0,zloop=0
         new_coord = coord
         for y in range(loop):                
             will_fit = in_dungeon((coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
-            print("loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
+            if VERBOSITY:            
+                print("loop:","willfit:",will_fit,(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y))
             if not will_fit:
                 dungeon[(coord[0]+xmod+xloop*y,coord[1]+ymod+yloop*y,coord[2]+zmod+zloop*y)] = {}
                 if y != 0:
@@ -3850,7 +3856,8 @@ for down in range(zwidth-1):
                     usestr = usestr.replace('C','')
 
                     if 'd' in usestr and 's' not in usestr:  #number and d
-                        print("found door")
+                        if VERBOSITY:
+                            print("found door")
                         borderdir = '<divb>'
                         borderdire = '</divb>'
                         strdata = '<td>' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
@@ -3920,7 +3927,8 @@ for down in range(zwidth-1):
                             strdata = '<td class="gray_background" style="color:' + color + '">' + borderdir  + downlist[down][i,j,0] + borderdire + '</td>'
 
                     if 'd' in usestr and 's' not in usestr:  #number and d
-                        print("found door")
+                        if VERBOSITY:
+                            print("found door")
                         borderdir = '<divb>'
                         borderdire = '</divb>'
                         #strdata = '<td>' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
@@ -3995,7 +4003,8 @@ for down in range(zwidth-1):
 
                 f.write('<h4>Key: ' + str(room) + '</h4>')
                 if 'empty' in room_stack['shape_dict'][room]['contents']:
-                    print(str(room_stack['shape_dict'][room]['contents']))
+                    if VERBOSITY:
+                        print(str(room_stack['shape_dict'][room]['contents']))
                     f.write('Empty<br>')
                 else:
                     for key in room_stack['shape_dict'][room]['contents']:
@@ -4017,7 +4026,8 @@ for down in range(zwidth-1):
                                 mxp = room_stack['shape_dict'][room]['contents'][key]['XP']
 
                                 if isinstance(room_stack['shape_dict'][room]['contents'][key]['type'], dict):
-                                    print("CHARACTER PARTY!")
+                                    if VERBOSITY:
+                                        print("CHARACTER PARTY!")
                                     for c in room_stack['shape_dict'][room]['contents']['key']['type']:
                                         if 'level' in room_stack['shape_dict'][room]['contents']['key']['type'][c]: #hack for a base xp points based on DMG table
                                             cxp = xp_d[room_stack['shape_dict'][room]['contents']['key']['type'][c]['level']]
