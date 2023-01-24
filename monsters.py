@@ -3211,6 +3211,20 @@ def monster_tables(level):
             mdict['no'] = dcheck['roll']
             #mdict['XP'] = dragon_xp[level]  NOT IMPLEMENTED YET
 
+    if v:
+        print("MONSTER TABLE MDICT:",mdict)
+
+    if 1 == 2:
+        print("DUMPING LEVELS")
+        with open('levels.json','w') as f:
+            json.dump(levels, f)
+        return mdict
+
+    if 1 == 2:
+        with open('dragons.json','w') as f:
+            json.dump(dragon_levels, f)
+    print(mdict)
+    return mdict
 
 def monster_subtables_wet(m_dict, wet_dict):
 
@@ -3276,20 +3290,6 @@ def monster_subtables_wet(m_dict, wet_dict):
     return wet_dict
 
         
-    if v:
-        print("MONSTER TABLE MDICT:",mdict)
-
-    if 1 == 2:
-        print("DUMPING LEVELS")
-        with open('levels.json','w') as f:
-            json.dump(levels, f)
-        return mdict
-
-    if 1 == 2:
-        with open('dragons.json','w') as f:
-            json.dump(dragon_levels, f)
-    print(mdict)
-    return mdict
 
 if __name__ == "__main__":
     ARGV = sys.argv
