@@ -1,6 +1,8 @@
 import random
 import sys
 
+'''verbosity v
+'''
 v = 0
 
 def testtreasure():
