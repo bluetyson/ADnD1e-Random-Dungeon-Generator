@@ -4253,6 +4253,7 @@ def dungeon_sim(periodic_checks, verbosity=0):
                 df['monster_total'] = [monster_stack['key_count']]
                 df['wm_total'] = [wandering_monster_stack['key_count']]
                 df['traps'] = [trap_stack['key_count']]
+                df['rooms'] = [room_stack['key_count']]
 
                 df['total_treasure_copper'] = [total_treasure['copper']]
                 df['total_treasure_silver'] = [total_treasure['silver']]
