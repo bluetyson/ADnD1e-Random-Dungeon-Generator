@@ -4408,6 +4408,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                 #want a wm count
                 #want a monster count
                 df = pd.DataFrame()
+                df['suffix'] = [suffix]
                 df['monster_xp'] = [m_xp_total]
                 df['wm_xp'] = [wm_xp_total]
                 df['monster_total'] = [monster_stack['key_count']]
