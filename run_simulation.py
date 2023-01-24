@@ -4542,8 +4542,7 @@ if __name__ == '__main__':
     print(ARGV)
 
     if len(ARGV) > 1:
-        if int(ARGV[1]) > 1:
-            periodic_checks = int(ARGV[1])
+        periodic_checks = int(ARGV[1])
 
     if len(ARGV) > 2:
         simulations = int(ARGV[2])
@@ -4560,9 +4559,9 @@ if __name__ == '__main__':
         verbosity_list.append(verbosity)
         usepath_list.append(usepath)
 
-    print(pc_list)
+    #print(pc_list)
     idx_list = index_list
-    print("LEN", len(idx_list))
+    print("RUNS:", len(idx_list))
     #print(idx_list)
     use_index = 0
     #print(idx_list[use_index:use_index + 1]) ##
