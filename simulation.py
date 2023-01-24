@@ -1,8 +1,9 @@
 
-
+import sys
 from dungeon_simulation import dungeon_sim
 
 if __name__ == "__main__":
+    ARGV sys.argv
     PERIODIC_CHECKS = 1
     VERBOSITY = 0
 
