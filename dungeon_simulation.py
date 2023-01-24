@@ -4316,7 +4316,7 @@ def dungeon_sim(periodic_checks, verbosity=0):
             df['Total Gold Equivalent'] = [gold + gem_total + jewellery_total + magic_total]
             df['coord_lim'] = [coord_lim]
             df['x'] = [xwidth]
-            df['y'] = [ywith]
+            df['y'] = [ywidth]
             df['z'] = [zwidth-1]
             df['Periodic Checks'] = [PERIODIC_CHECKS]
 
