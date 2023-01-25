@@ -627,16 +627,18 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 #only in left, right and ahead
                 #put SD dict in to handle the directions, or a dict that can be read out?  
                 #or make a dead end dict as no rooms here
-                error_log.write("Dead End: " + str(coord) + "\n")
-                will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
-                error_log.write('ymax:' + str(will_fit) + "\n")
-                will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
-                error_log.write('xmin:' + str(will_fit) + "\n")
-                will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
-                error_log.write('xmax:' + str(will_fit) + "\n")
+                if VERBOSITY:
+                    error_log.write("Dead End: " + str(coord) + "\n")
+                    will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
+                    error_log.write('ymax:' + str(will_fit) + "\n")
+                    will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                    error_log.write('xmin:' + str(will_fit) + "\n")
+                    will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
+                    error_log.write('xmax:' + str(will_fit) + "\n")
 
                 will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
-                error_log.write("ymax: " + str(will_fit) + "\n")
+                if VERBOSITY:
+                    error_log.write("ymax: " + str(will_fit) + "\n")
                 if not will_fit:
                     dungeon[(coord[0],coord[1]+1,coord[2])] = {}
                     dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
@@ -647,10 +649,12 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                         dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Dsd'
                         e_dict = exit((coord[0],coord[1]+1,coord[2]))
                         exit_direction_full((coord[0],coord[1]+1,coord[2]), e_dict)
-                error_log.write("ymax: " + str(coord) + " " + str(dead_end_dict) + "\n")
+                if VERBOSITY:                        
+                    error_log.write("ymax: " + str(coord) + " " + str(dead_end_dict) + "\n")
 
                 will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
-                error_log.write("xmin: " + str(will_fit) + "\n")
+                if VERBOSITY:
+                    error_log.write("xmin: " + str(will_fit) + "\n")
                 #error_log.write("xmin-dungeon: " + str(dungeon[(coord[0]-1,coord[1],coord[2])]) + "\n")
                 if not will_fit:
                     dungeon[(coord[0]-1,coord[1],coord[2])] = {}
@@ -662,11 +666,14 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                         e_dict = exit((coord[0]-1,coord[1],coord[2]))
                         exit_direction_full((coord[0]-1,coord[1],coord[2]), e_dict)
                 else:
-                    error_log.write("xmin-dungeon: " + str(dungeon[(coord[0]-1,coord[1],coord[2])]) + "\n")
-                error_log.write("xmin: " + str(coord) + " " + str(dead_end_dict) + "\n")
+                    if VERBOSITY:
+                        error_log.write("xmin-dungeon: " + str(dungeon[(coord[0]-1,coord[1],coord[2])]) + "\n")
+                if VERBOSITY:
+                    error_log.write("xmin: " + str(coord) + " " + str(dead_end_dict) + "\n")
 
                 will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
-                error_log.write("xmax: " + str(will_fit) + "\n")
+                if VERBOSITY:
+                    error_log.write("xmax: " + str(will_fit) + "\n")
                 if not will_fit:
                     dungeon[(coord[0]+1,coord[1],coord[2])] = {}
                     dungeon[(coord[0]+1,coord[1],coord[2])]['fill'] = 'D'
@@ -676,7 +683,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                         dungeon[(coord[0]-1,coord[1],coord[2])]['fill'] = 'Dsd'
                         e_dict = exit((coord[0]+1,coord[1],coord[2]))
                         exit_direction_full((coord[0]+1,coord[1],coord[2]), e_dict)
-                error_log.write("xmax: " + str(coord) + " " + str(dead_end_dict) + "\n")
+                if VERBOSITY:                        
+                    error_log.write("xmax: " + str(coord) + " " + str(dead_end_dict) + "\n")
 
                 ## add angle parts
                 will_fit = in_dungeon((coord[0]-1,coord[1]+1,coord[2]))
@@ -698,8 +706,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 for key in exit_stack:
                     ## this needs to be checked for level
                     new_coord = key
-
-                error_log.write("final: " + str(dead_end_dict) + "\n\n")
+                if VERBOSITY:
+                    error_log.write("final: " + str(dead_end_dict) + "\n\n")
                 return new_coord
 
 
@@ -3610,7 +3618,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
     error_dict['key_count'] = 0
     error_dict['type'] = {}
 
-    error_log = open("error_log.txt","w")
+    if VERBOSITY:
+        error_log = open("error_log.txt","w")
 
     water_dict = {}
     #make water log as need to run a lot to get one and can't scroll that far
@@ -3958,7 +3967,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                                         sdstr = 'border-' + borderdir + '-style: dashed'
                             except Exception as secretdoorE:
-                                error_dict[error_dict['key_count']] = str(secretdoorE) + "secret door output 3933"
+                                error_dict[error_dict['key_count']] = str(secretdoorE) + "secret door output 3960"
                                 error_dict['key_count'] += 1                            
 
                         color = colorcheck(downlist[down][i,j,0])
