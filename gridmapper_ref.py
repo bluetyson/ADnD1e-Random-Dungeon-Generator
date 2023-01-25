@@ -118,6 +118,7 @@ striplist = []
 #tag_re = re.compile(r'(<!--.*?-->|<[^>]*>)')
 
 tag_re = re.compile(r'<[^>]+') 
+print(tag_re)
 #result = pattern.sub('',text)  
 for t in testlist:
     no_tags = tag_re.sub('', t)
