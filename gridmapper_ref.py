@@ -61,7 +61,7 @@ for key in legend_gridmapper:
     legend_gridmapper[key] = ''
 
 legend_gridmapper['B'] = "pvvvv"
-legend_gridmapper['O'] = "m"
+legend_gridmapper['O'] = "fF"
 legend_gridmapper['C'] = "f"
 legend_gridmapper['R'] = "fQ"
 legend_gridmapper['D'] = "gS"
