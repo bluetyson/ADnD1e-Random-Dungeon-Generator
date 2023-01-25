@@ -4496,7 +4496,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         print("\nFINAL ROOM STACK",room_stack)   
             
         #print("\nERROR LOG",error_dict,"WATER_DICT:",water_dict, "WM_STACK:",wandering_monster_stack)
-        print("\nSECRET DOOR DICT",secret_door_dict, "\nDEAD END DICT",dead_end_dict)
+        print("\nDEAD END DICT",dead_end_dict)
 
         print("\nERROR LOG",error_dict, "WM_STACK:",wandering_monster_stack)
 
