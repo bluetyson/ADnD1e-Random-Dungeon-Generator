@@ -690,7 +690,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                     ## this needs to be checked for level
                     new_coord = key
 
-                error_log.write("final: " + str(dead_end_dict) + "\n")
+                error_log.write("final: " + str(dead_end_dict) + "\n\n")
                 return new_coord
 
 
