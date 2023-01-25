@@ -122,8 +122,6 @@ if 1 == 1:
     #result = pattern.sub('',text)  
     for t in testlist:
         no_tags = tag_re.sub(' ', t)
-        no_tags = no_tags[1:]
-        no_tags = no_tags[-1:]
         
         tag_list = no_tags.split()
         new_list = []
