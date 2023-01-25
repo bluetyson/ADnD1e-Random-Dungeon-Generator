@@ -4480,7 +4480,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 for g in valuations['gems'] + total_valuations_monster['gems']:
                     gem_total = gem_total + g
             if total_treasure['jewellery'] > 0:
-                for j in valuations['jewellery'] + total_valuations_monster['gems']:
+                for j in valuations['jewellery'] + total_valuations_monster['jewellery']:
                     jewellery_total = jewellery_total + j
             if total_treasure['magic'] > 0:
                 for m in valuations['magic'] + total_valuations_monster['magic_values']:
