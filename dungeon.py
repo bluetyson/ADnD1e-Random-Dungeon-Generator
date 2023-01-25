@@ -22,7 +22,7 @@ if __name__ == "__main__":
     print(PERIODIC_CHECKS, VERBOSITY)
     df = dungeon_sim(PERIODIC_CHECKS, VERBOSITY)
 
-    print(df)
+    #print(df)
     
 
 
