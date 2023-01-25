@@ -126,6 +126,9 @@ if 1 == 1:
         tag_list = no_tags.split()
         new_list = []
         for tl in tag_list:
+            if 'R' in tl:
+                if len(R) > 1:
+                    tl = 'R'
             newtl = legend_gridmapper[tl]
             new_list.append(tl)
         
