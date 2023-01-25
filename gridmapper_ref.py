@@ -128,7 +128,7 @@ if 1 == 1:
         for tl in tag_list:
             if 'R' in tl:
                 usetl = tl
-                if len(usel) > 1:
+                if len(usetl) > 1:
                     tl = 'R'
                 if 'g' in usetl or 'p' in usetl or 'g' in usetl or 's' in usetl or 'c' in usetl:
                     tl = 'RA'
