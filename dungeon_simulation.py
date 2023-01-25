@@ -3610,7 +3610,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
     error_dict['key_count'] = 0
     error_dict['type'] = {}
 
-    error_log = open("error_log.txt","a")
+    error_log = open("error_log.txt","w")
 
     water_dict = {}
     #make water log as need to run a lot to get one and can't scroll that far
