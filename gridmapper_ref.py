@@ -127,8 +127,11 @@ if 1 == 1:
         new_list = []
         for tl in tag_list:
             if 'R' in tl:
-                if len(tl) > 1:
+                usetl = tl
+                if len(usel) > 1:
                     tl = 'R'
+                if 'g' in usetl or 'p' in usetl or 'g' in usetl or 's' in usetl or 'c' in usetl:
+                    tl = 'RA'
             newtl = legend_gridmapper[tl]
             
             new_list.append(newtl)
