@@ -1,7 +1,6 @@
 import re, html
 
 # Remove well-formed tags, fixing mistakes by legitimate users
-no_tags = tag_re.sub('', user_input)
 legend_gridmapper =  {}
 legend_gridmapper['B'] = "pVVVV"
 legend_gridmapper['O'] = "Outside Entrance"
@@ -117,7 +116,7 @@ print(testlist)
 striplist = []
 #tag_re = re.compile(r'(<!--.*?-->|<[^>]*>)')
 
-if 1 == 2:
+if 1 == 1:
     tag_re = re.compile(r'<[^>]+') 
     print(tag_re)
     #result = pattern.sub('',text)  
