@@ -840,8 +840,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             except Exception as wmE:
                 #bound to be parsing problems in the monster tables until vetted dragons and characters etc.
                 print("error:",wmE)  #log to a file to see a pattern
-                error_dict[error_dict['key_count']] = wmE
-                error_dict['type']['key_count'] = "wm roll error for level: " + str(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
+                error_dict[error_dict['key_count']] = wmE + "wm roll error for level: " + str(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
                 error_dict['key_count'] += 1            
 
 
@@ -1881,8 +1880,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 try:
                                     dungeon[(rxmin,y,rzmin)]['fill'] = dungeon[(rxmin,y,rzmin)]['fill'] + 'sd'
                                 except Exception as nosdfillE:
-                                    error_dict[error_dict['key_count']] = nosdfillE
-                                    error_dict['type']['key_count'] = "secret door fill 1667"
+                                    error_dict[error_dict['key_count']] = nosdfillE + " secret door fill 1667"
                                     error_dict['key_count'] += 1
                                     print(nosdfillE)
                                     if VERBOSITY:                                                              
@@ -1907,8 +1905,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                     dungeon[(rxmax,y,rzmin)]['fill'] = dungeon[(rxmax,y,rzmin)]['fill'] + 'sd'
                                 except Exception as nosdfillE:
                                     print(nosdfillE)
-                                    error_dict[error_dict['key_count']] = nosdfillE
-                                    error_dict['type']['key_count'] = "secret door fill 1693"
+                                    error_dict[error_dict['key_count']] = nosdfillE + "secret door fill 1911"
                                     error_dict['key_count'] += 1
                                     if VERBOSITY:                                                                       
                                         print("DUNGEONERRORCHECK:",dungeon, "xmax sd")
@@ -1932,8 +1929,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 try:
                                     dungeon[(x,rymin,rzmin)]['fill'] = dungeon[(x,rymin,rzmin)]['fill'] + 'sd'
                                 except Exception as nosdfillE:
-                                    error_dict[error_dict['key_count']] = nosdfillE
-                                    error_dict['type']['key_count'] = "secret door fill 1717"
+                                    error_dict[error_dict['key_count']] = nosdfillE + " secret door fill 1936"
                                     error_dict['key_count'] += 1
                                     print(nosdfillE)
                                     if VERBOSITY:                                                              
@@ -1956,8 +1952,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 try:
                                     dungeon[(x,rymax,rzmin)]['fill'] = dungeon[(x,rymax,rzmin)]['fill'] + 'sd'
                                 except Exception as nosdfillE:
-                                    error_dict[error_dict['key_count']] = nosdfillE
-                                    error_dict['type']['key_count'] = "secret door fill 1740"
+                                    error_dict[error_dict['key_count']] = nosdfillE + " secret door fill 1960"
                                     error_dict['key_count'] += 1
                                     if VERBOSITY:                                                              
                                         print(nosdfillE)
@@ -2020,8 +2015,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                     es = roll_dice(1,rymax-rymin + 1)
                                     el = [rxmin,rymin + es -1]
                                 except Exception as roomsizeE:
-                                    error_dict[error_dict['key_count']] = roomsizeE
-                                    error_dict['type']['key_count'] = "room size 1855"
+                                    error_dict[error_dict['key_count']] = roomsizeE + " room size 2024"
                                     error_dict['key_count'] += 1
 
                                     #try and work out if null room - might go away if now has no coords
@@ -3935,8 +3929,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                                         sdstr = 'border-' + borderdir + '-style: dashed'
                             except Exception as secretdoorE:
-                                error_dict[error_dict['key_count']] = secretdoorE
-                                error_dict['type']['key_count'] = "secret door output 3772"
+                                error_dict[error_dict['key_count']] = secretdoorE + "secret door output 3933"
                                 error_dict['key_count'] += 1                            
 
                         color = colorcheck(downlist[down][i,j,0])
@@ -3980,8 +3973,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                     borderdire = '</divl>'                            
                                     strdata = '<td class="brown_background">' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
                             except Exception as deadendE:
-                                error_dict[error_dict['key_count']] = deadendE
-                                error_dict['type']['key_count'] = "dead end output 3816"
+                                error_dict[error_dict['key_count']] = deadendE + " dead end output 3976"
                                 error_dict['key_count'] += 1
 
                                 if VERBOSITY:
