@@ -127,7 +127,7 @@ if 1 == 1:
         new_list = []
         for tl in tag_list:
             newtl = legend_gridmapper[tl]
-            new_list.append(tol)
+            new_list.append(tl)
         
         striplist.append(new_list)
 
