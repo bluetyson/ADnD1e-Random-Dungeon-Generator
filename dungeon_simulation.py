@@ -4500,11 +4500,12 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         print("\nFINAL ROOM STACK",room_stack)   
             
         #print("\nERROR LOG",error_dict,"WATER_DICT:",water_dict, "WM_STACK:",wandering_monster_stack)
-        for rc in range(room_stack['key_count'] ):
-            if 'shape_dict' in room_stack:
-                if 'contents' in room_stack['shape_dict'][rc+1]:
-                    if 'secret_door_dict' in room_stack['shape_dict'][rc+1]['contents']:
-                        print("\nSECRET DOOR DICT",room_stack['shape_dict'][rc+1]['contents']['secret_door_dict'])
+        if 1 == 2:
+            for rc in range(room_stack['key_count'] ):
+                if 'shape_dict' in room_stack:
+                    if 'contents' in room_stack['shape_dict'][rc+1]:
+                        if 'secret_door_dict' in room_stack['shape_dict'][rc+1]['contents']:
+                            print("\nSECRET DOOR DICT",room_stack['shape_dict'][rc+1]['contents']['secret_door_dict'])
 
         print("\nDEAD END DICT",dead_end_dict)
         print("\nERROR LOG",error_dict, "WM_STACK:",wandering_monster_stack)
