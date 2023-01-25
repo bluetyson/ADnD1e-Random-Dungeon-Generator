@@ -117,11 +117,12 @@ print(testlist)
 striplist = []
 #tag_re = re.compile(r'(<!--.*?-->|<[^>]*>)')
 
-tag_re = re.compile(r'<[^>]+') 
-print(tag_re)
-#result = pattern.sub('',text)  
-for t in testlist:
-    no_tags = tag_re.sub('', t)
-    striplist.append(no_tags)
+if 1 == 2:
+    tag_re = re.compile(r'<[^>]+') 
+    print(tag_re)
+    #result = pattern.sub('',text)  
+    for t in testlist:
+        no_tags = tag_re.sub('', t)
+        striplist.append(no_tags)
 
-print(striplist)
+    print(striplist)
