@@ -4591,6 +4591,6 @@ if __name__ == '__main__':
     output = pd.concat(result_list)
     print(output.head())
 
-    output.to_csv('dungeon_simulation.csv')
+    output.to_csv('dungeon_simulation.csv', index=False)
 
 
