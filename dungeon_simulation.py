@@ -1905,7 +1905,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                     dungeon[(rxmax,y,rzmin)]['fill'] = dungeon[(rxmax,y,rzmin)]['fill'] + 'sd'
                                 except Exception as nosdfillE:
                                     print(nosdfillE)
-                                    error_dict[error_dict['key_count']] = str(nosdfillE) + "secret door fill 1911"
+                                    error_dict[error_dict['key_count']] = str(nosdfillE) + "secret door fill 1908"
                                     error_dict['key_count'] += 1
                                     if VERBOSITY:                                                                       
                                         print("DUNGEONERRORCHECK:",dungeon, "xmax sd")
@@ -4496,7 +4496,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         print("\nFINAL ROOM STACK",room_stack)   
             
         #print("\nERROR LOG",error_dict,"WATER_DICT:",water_dict, "WM_STACK:",wandering_monster_stack)
-        print("\nDEAD END DICT",dead_end_dict)
+        print("\nSECRET DOOR DICT",secret_door_dict, "\nDEAD END DICT",dead_end_dict)
 
         print("\nERROR LOG",error_dict, "WM_STACK:",wandering_monster_stack)
 
