@@ -3921,6 +3921,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                             usestr = usestr.replace('p','')
                             usestr = usestr.replace('s','')
                             usestr = usestr.replace('t','')
+                            usestr = usestr.replace('w','')
                             
                             ## get anything but number eventually regex
                             #usestr = usestr[0]
