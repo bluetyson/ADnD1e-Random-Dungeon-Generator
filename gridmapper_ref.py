@@ -140,5 +140,8 @@ if 1 == 1:
     with open('testgrid.txt','w') as f:
         for s in striplist:
             for sl in s:
-                f.write(str(sl) + " ")
+                if sl != 'f':
+                    f.write(str(sl) + " ")
+                else:
+                    f.write(str(sl) + "")
             f.write("\n")
