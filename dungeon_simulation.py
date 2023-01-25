@@ -666,19 +666,18 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 if not will_fit:
                     dungeon[(new_coord[0]-1,new_coord[1]+1,new_coord[2])] = {}
                     dungeon[(new_coord[0]-1,new_coord[1]+1,new_coord[2])]['fill'] = 'D'
-                    dead_end_dict[(new_coord[0]-1,new_coord[1]+1,new_coord[2])] = 'xangle'
+                    dead_end_dict[(new_coord[0]-1,new_coord[1]+1,new_coord[2])] = 'angle-minus'
                 will_fit = in_dungeon((new_coord[0]+1,new_coord[1]+1,new_coord[2]))
                 if not will_fit:
                     dungeon[(new_coord[0]+1,new_coord[1]+1,new_coord[2])] = {}
                     dungeon[(new_coord[0]+1,new_coord[1]+1,new_coord[2])]['fill'] = 'D'
-                    dead_end_dict[(new_coord[0]+1,new_coord[1]+1,new_coord[2])] = 'yangle'
+                    dead_end_dict[(new_coord[0]+1,new_coord[1]+1,new_coord[2])] = 'angle-plus'
 
-                print(new_coord, dead_end_dict)
-                print("dead end quit")
-                quit()
+                #print("dead end quit")
+                #quit()
                 #need to retrace to last on exit stack?
                 if VERBOSITY:
-                    print("DEAD END")
+                    print("DEAD END INFO",new_coord, dead_end_dict)
                 for key in exit_stack:
                     ## this needs to be checked for level
                     new_coord = key
