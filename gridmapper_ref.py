@@ -122,6 +122,14 @@ if 1 == 1:
     #result = pattern.sub('',text)  
     for t in testlist:
         no_tags = tag_re.sub(' ', t)
-        striplist.append(no_tags)
+        no_tags[0] = ''
+        no_tags[0] = ''
+        tag_list = no_tags.split()
+        new_list = []
+        for tl in tag_list:
+            newtl = legend_gridmapper[tl]
+            new_list.append(tol)
+        
+        striplist.append(new_list)
 
     print(striplist)
