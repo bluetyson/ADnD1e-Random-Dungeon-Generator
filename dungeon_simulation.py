@@ -2369,6 +2369,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             if not will_fit:                            
                 dungeon[(coord[0],coord[1]+1,coord[2])] = {}
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
+                dead_end_dict[(coord[0],coord[1]+1,coord[2])] = 'ymax'
                 #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes     
                 level_dict['type'] = 'UD'   
                 level_dict['new_coord'] = new_coord    
@@ -2391,6 +2392,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             if not will_fit:                            
                 dungeon[(coord[0],coord[1]+1,coord[2])] = {}
                 dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
+                dead_end_dict[(coord[0],coord[1]+1,coord[2])] = 'ymax'
                 #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes            
                 level_dict['type'] = 'DD'       
                 level_dict['new_coord'] = new_coord
