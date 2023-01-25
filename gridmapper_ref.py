@@ -139,4 +139,5 @@ if 1 == 1:
     with open('testgrid.txt','w') as f:
         for s in striplist:
             for sl in s:
-                f.write(str(sl) + "\n")
+                f.write(str(sl) + " ")
+            f.write("\n")
