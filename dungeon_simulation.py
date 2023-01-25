@@ -4497,7 +4497,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             
         #print("\nERROR LOG",error_dict,"WATER_DICT:",water_dict, "WM_STACK:",wandering_monster_stack)
         for rc in range(room_stack['key_count']):
-            if 'contents' in room_stack['shape_dict'][rc]:
+            if 'contents' in room_stack['shape_dict'][rc+1]:
                 if 'secret_door_dict' in room_stack['shape_dict'][rc]['contents']:
                     print("\nSECRET DOOR DICT",room_stack['shape_dict'][rc]['contents']['secret_door_dict'])
 
