@@ -1902,7 +1902,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 try:
                                     dungeon[(rxmin,y,rzmin)]['fill'] = dungeon[(rxmin,y,rzmin)]['fill'] + 'sd'
                                 except Exception as nosdfillE:
-                                    error_dict[error_dict['key_count']] = str(nosdfillE) + " secret door fill 1667"
+                                    error_dict[error_dict['key_count']] = str(nosdfillE) + " secret door fill 1905"
                                     error_dict['key_count'] += 1
                                     print(nosdfillE)
                                     if VERBOSITY:                                                              
@@ -1927,7 +1927,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                     dungeon[(rxmax,y,rzmin)]['fill'] = dungeon[(rxmax,y,rzmin)]['fill'] + 'sd'
                                 except Exception as nosdfillE:
                                     print(nosdfillE)
-                                    error_dict[error_dict['key_count']] = str(nosdfillE) + "secret door fill 1908"
+                                    error_dict[error_dict['key_count']] = str(nosdfillE) + "secret door fill 1930"
                                     error_dict['key_count'] += 1
                                     if VERBOSITY:                                                                       
                                         print("DUNGEONERRORCHECK:",dungeon, "xmax sd")
@@ -1951,7 +1951,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 try:
                                     dungeon[(x,rymin,rzmin)]['fill'] = dungeon[(x,rymin,rzmin)]['fill'] + 'sd'
                                 except Exception as nosdfillE:
-                                    error_dict[error_dict['key_count']] = str(nosdfillE) + " secret door fill 1936"
+                                    error_dict[error_dict['key_count']] = str(nosdfillE) + " secret door fill 1954"
                                     error_dict['key_count'] += 1
                                     print(nosdfillE)
                                     if VERBOSITY:                                                              
