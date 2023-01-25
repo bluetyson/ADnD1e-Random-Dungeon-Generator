@@ -645,7 +645,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                 will_fit = in_dungeon((new_coord[0]-1,new_coord[1],new_coord[2]))
                 error_log.write("xmin: " + str(will_fit) + "\n")
-                error_log.write("xmin-dungeon: " + str(dungeon[(new_coord[0]-1,new_coord[1],new_coord[2])]) + "\n")
+                #error_log.write("xmin-dungeon: " + str(dungeon[(new_coord[0]-1,new_coord[1],new_coord[2])]) + "\n")
                 if not will_fit:
                     dungeon[(new_coord[0]-1,new_coord[1],new_coord[2])] = {}
                     dungeon[(new_coord[0]-1,new_coord[1],new_coord[2])]['fill'] = 'D'
