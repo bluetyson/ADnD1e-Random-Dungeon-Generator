@@ -4508,8 +4508,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                             print("\nSECRET DOOR DICT",room_stack['shape_dict'][rc+1]['contents']['secret_door_dict'])
 
         print("\nDEAD END DICT",dead_end_dict\n")
-        
-        print("\nERROR LOG",error_dict, "WM_STACK:",wandering_monster_stack)
+
+        print("\nERROR LOG",error_dict, "\nWM_STACK:",wandering_monster_stack)
 
         #print("\nWATER LOG",
     #end = timeit.timeit()
