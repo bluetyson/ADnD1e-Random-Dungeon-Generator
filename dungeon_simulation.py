@@ -628,6 +628,12 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 #put SD dict in to handle the directions, or a dict that can be read out?  
                 #or make a dead end dict as no rooms here
                 error_log.write("Dead End: " + str(coord) + "\n")
+                will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
+                error_log.write('ymax:',will_fit + "\n")
+                will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                error_log.write('xmin:',will_fit + "\n")
+                will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
+                error_log.write('xmax:',will_fit + "\n")
 
                 will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
                 error_log.write("ymax: " + str(will_fit) + "\n")
