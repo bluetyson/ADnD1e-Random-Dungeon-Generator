@@ -4507,7 +4507,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                         if 'secret_door_dict' in room_stack['shape_dict'][rc+1]['contents']:
                             print("\nSECRET DOOR DICT",room_stack['shape_dict'][rc+1]['contents']['secret_door_dict'])
 
-        print("\nDEAD END DICT",dead_end_dict\n")
+        print("\nDEAD END DICT",dead_end_dict,"\n")
 
         print("\nERROR LOG",error_dict, "\nWM_STACK:",wandering_monster_stack)
 
