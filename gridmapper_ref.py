@@ -114,10 +114,10 @@ testlist = testt.split(r'</TR>')
 print(testlist)
 
 striplist = []
-#tag_re = re.compile(r'(<!--.*?-->|<[^>]*>)')
+tag_re = re.compile(r'(<!--.*?-->|<[^>]*>)')
 
 if 1 == 1:
-    tag_re = re.compile(r'<[^>]+') 
+    #tag_re = re.compile(r'<[^>]+') 
     print(tag_re)
     #result = pattern.sub('',text)  
     for t in testlist:
