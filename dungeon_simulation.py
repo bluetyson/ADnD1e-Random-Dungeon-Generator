@@ -627,60 +627,60 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 #only in left, right and ahead
                 #put SD dict in to handle the directions, or a dict that can be read out?  
                 #or make a dead end dict as no rooms here
-                error_log.write("Dead End: " + str(new_coord) + "\n")
+                error_log.write("Dead End: " + str(coord) + "\n")
 
-                will_fit = in_dungeon((new_coord[0],new_coord[1]+1,new_coord[2]))
+                will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
                 error_log.write("ymax: " + str(will_fit) + "\n")
                 if not will_fit:
-                    dungeon[(new_coord[0],new_coord[1]+1,new_coord[2])] = {}
-                    dungeon[(new_coord[0],new_coord[1]+1,new_coord[2])]['fill'] = 'D'
-                    dead_end_dict[(new_coord[0],new_coord[1]+1,new_coord[2])] = 'ymax'
-                    #dead_end_dict[(new_coord[0],new_coord[1]+1,new_coord[2])] = {}
+                    dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
+                    dead_end_dict[(coord[0],coord[1]+1,coord[2])] = 'ymax'
+                    #dead_end_dict[(coord[0],coord[1]+1,coord[2])] = {}
                     s = roll_dice(1,20)
                     if s <= 5:
-                        dungeon[(new_coord[0],new_coord[1]+1,new_coord[2])]['fill'] = 'Dsd'
-                        e_dict = exit((new_coord[0],new_coord[1]+1,new_coord[2]))
-                        exit_direction_full((new_coord[0],new_coord[1]+1,new_coord[2]), e_dict)
+                        dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Dsd'
+                        e_dict = exit((coord[0],coord[1]+1,coord[2]))
+                        exit_direction_full((coord[0],coord[1]+1,coord[2]), e_dict)
                 error_log.write("ymax: " + str(dead_end_dict) + "\n")
 
-                will_fit = in_dungeon((new_coord[0]-1,new_coord[1],new_coord[2]))
+                will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
                 error_log.write("xmin: " + str(will_fit) + "\n")
-                #error_log.write("xmin-dungeon: " + str(dungeon[(new_coord[0]-1,new_coord[1],new_coord[2])]) + "\n")
+                #error_log.write("xmin-dungeon: " + str(dungeon[(coord[0]-1,coord[1],coord[2])]) + "\n")
                 if not will_fit:
-                    dungeon[(new_coord[0]-1,new_coord[1],new_coord[2])] = {}
-                    dungeon[(new_coord[0]-1,new_coord[1],new_coord[2])]['fill'] = 'D'
-                    dead_end_dict[(new_coord[0]-1,new_coord[1],new_coord[2])] = 'xmin'
+                    dungeon[(coord[0]-1,coord[1],coord[2])] = {}
+                    dungeon[(coord[0]-1,coord[1],coord[2])]['fill'] = 'D'
+                    dead_end_dict[(coord[0]-1,coord[1],coord[2])] = 'xmin'
                     s = roll_dice(1,20)
                     if s <= 5:
-                        dungeon[(new_coord[0]-1,new_coord[1],new_coord[2])]['fill'] = 'Dsd'
-                        e_dict = exit((new_coord[0]-1,new_coord[1],new_coord[2]))
-                        exit_direction_full((new_coord[0]-1,new_coord[1],new_coord[2]), e_dict)
+                        dungeon[(coord[0]-1,coord[1],coord[2])]['fill'] = 'Dsd'
+                        e_dict = exit((coord[0]-1,coord[1],coord[2]))
+                        exit_direction_full((coord[0]-1,coord[1],coord[2]), e_dict)
                 error_log.write("xmin: " + str(dead_end_dict) + "\n")
 
-                will_fit = in_dungeon((new_coord[0]+1,new_coord[1],new_coord[2]))
+                will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
                 error_log.write("xmax: " + str(will_fit) + "\n")
                 if not will_fit:
-                    dungeon[(new_coord[0]+1,new_coord[1],new_coord[2])] = {}
-                    dungeon[(new_coord[0]+1,new_coord[1],new_coord[2])]['fill'] = 'D'
-                    dead_end_dict[(new_coord[0]+1,new_coord[1],new_coord[2])] = 'xmax'
+                    dungeon[(coord[0]+1,coord[1],coord[2])] = {}
+                    dungeon[(coord[0]+1,coord[1],coord[2])]['fill'] = 'D'
+                    dead_end_dict[(coord[0]+1,coord[1],coord[2])] = 'xmax'
                     s = roll_dice(1,20)
                     if s <= 5:
-                        dungeon[(new_coord[0]-1,new_coord[1],new_coord[2])]['fill'] = 'Dsd'
-                        e_dict = exit((new_coord[0]+1,new_coord[1],new_coord[2]))
-                        exit_direction_full((new_coord[0]+1,new_coord[1],new_coord[2]), e_dict)
+                        dungeon[(coord[0]-1,coord[1],coord[2])]['fill'] = 'Dsd'
+                        e_dict = exit((coord[0]+1,coord[1],coord[2]))
+                        exit_direction_full((coord[0]+1,coord[1],coord[2]), e_dict)
                 error_log.write("xmax: " + str(dead_end_dict) + "\n")
 
                 ## add angle parts
-                will_fit = in_dungeon((new_coord[0]-1,new_coord[1]+1,new_coord[2]))
+                will_fit = in_dungeon((coord[0]-1,coord[1]+1,coord[2]))
                 if not will_fit:
-                    dungeon[(new_coord[0]-1,new_coord[1]+1,new_coord[2])] = {}
-                    dungeon[(new_coord[0]-1,new_coord[1]+1,new_coord[2])]['fill'] = 'D'
-                    dead_end_dict[(new_coord[0]-1,new_coord[1]+1,new_coord[2])] = 'angle-minus'
-                will_fit = in_dungeon((new_coord[0]+1,new_coord[1]+1,new_coord[2]))
+                    dungeon[(coord[0]-1,coord[1]+1,coord[2])] = {}
+                    dungeon[(coord[0]-1,coord[1]+1,coord[2])]['fill'] = 'D'
+                    dead_end_dict[(coord[0]-1,coord[1]+1,coord[2])] = 'angle-minus'
+                will_fit = in_dungeon((coord[0]+1,coord[1]+1,coord[2]))
                 if not will_fit:
-                    dungeon[(new_coord[0]+1,new_coord[1]+1,new_coord[2])] = {}
-                    dungeon[(new_coord[0]+1,new_coord[1]+1,new_coord[2])]['fill'] = 'D'
-                    dead_end_dict[(new_coord[0]+1,new_coord[1]+1,new_coord[2])] = 'angle-plus'
+                    dungeon[(coord[0]+1,coord[1]+1,coord[2])] = {}
+                    dungeon[(coord[0]+1,coord[1]+1,coord[2])]['fill'] = 'D'
+                    dead_end_dict[(coord[0]+1,coord[1]+1,coord[2])] = 'angle-plus'
 
                 #print("dead end quit")
                 #quit()
@@ -4520,7 +4520,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                         if 'secret_door_dict' in room_stack['shape_dict'][rc+1]['contents']:
                             print("\nSECRET DOOR DICT",room_stack['shape_dict'][rc+1]['contents']['secret_door_dict'])
 
-        print("\nDEAD END DICT",dead_end_dict,"\n")
+        print("\nDEAD END DICT",dead_end_dict)
 
         print("\nERROR LOG",error_dict, "\nWM_STACK:",wandering_monster_stack)
 
