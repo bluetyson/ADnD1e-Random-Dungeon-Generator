@@ -2368,7 +2368,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
             if not will_fit:                            
                 dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'std' #stair dead end
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'sn' #stair dead end
                 dead_end_dict[(coord[0],coord[1]+1,coord[2])] = 'ymax'
                 #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes     
                 level_dict['type'] = 'UD'   
@@ -2391,7 +2391,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
             if not will_fit:                            
                 dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'std' #stair dead end
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'sn' #stair dead end
                 dead_end_dict[(coord[0],coord[1]+1,coord[2])] = 'ymax'
                 #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes            
                 level_dict['type'] = 'DD'       
@@ -3814,6 +3814,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         legend_dict['wm'] = "Wandering Monster"
         legend_dict['sd'] = "Secret Door"
         legend_dict['st'] = "Stairs"
+        legend_dict['sn'] = "Stairs dead end"
         legend_dict['ch'] = "Chute"
         legend_dict['cm'] = "Chimney"
         legend_dict['td'] = "Trapdoor"
