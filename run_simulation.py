@@ -3923,6 +3923,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                             usestr = usestr.replace('p','')
                             usestr = usestr.replace('s','')
                             usestr = usestr.replace('t','')
+                            usestr = usestr.replace('w','')
                             
                             ## get anything but number eventually regex
                             #usestr = usestr[0]
