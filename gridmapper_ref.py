@@ -135,3 +135,7 @@ if 1 == 1:
         striplist.append(new_list)
 
     print(striplist)
+
+    with open('testgrid.txt','w') as f:
+        for s in striplist:
+            f.write(striplist + "\n")
