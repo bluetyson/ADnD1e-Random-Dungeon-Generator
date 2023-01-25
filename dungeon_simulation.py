@@ -674,6 +674,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                     dead_end_dict[(new_coord[0]+1,new_coord[1]+1,new_coord[2])] = 'yangle'
 
                 print(new_coord, dead_end_dict)
+                print("dead end quit")
                 quit()
                 #need to retrace to last on exit stack?
                 if VERBOSITY:
