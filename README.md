@@ -1,7 +1,7 @@
 ## Advanced Dungeons & Dragons style random dungeon generator
 Convert DMG tables to code to do for wandering around and down to make a dungeon.
 
-- Version 0.51
+- Version 0.51.1
 - See blog for more examples and notes as it was worked on https://cosmicheroes.space/blog/index.php/tag/random-dungeon-generator/
 
 # Setup
