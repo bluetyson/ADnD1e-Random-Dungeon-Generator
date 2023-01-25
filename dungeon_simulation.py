@@ -2368,7 +2368,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
             if not will_fit:                            
                 dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'std' #stair dead end
                 dead_end_dict[(coord[0],coord[1]+1,coord[2])] = 'ymax'
                 #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes     
                 level_dict['type'] = 'UD'   
@@ -2391,7 +2391,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
             if not will_fit:                            
                 dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'std' #stair dead end
                 dead_end_dict[(coord[0],coord[1]+1,coord[2])] = 'ymax'
                 #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes            
                 level_dict['type'] = 'DD'       
