@@ -1,4 +1,16 @@
-def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
+
+import os
+import concurrent.futures
+import multiprocessing as mp
+import pandas as pd
+
+import time as tm
+import pandas as pd
+
+import sys
+#def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
+
+def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
 
     import timeit
     import time
@@ -2979,7 +2991,6 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             wet_dict['monster_details']['type'] = 'NA'
             wet_dict['monster_details']['No'] = 0
             wet_dict['monster_details']['XP'] = 0
-
             m_dict = monster_tables(wet_dict['monster_details']['level'])
             wet_dict['monster_details']['type']  = m_dict['name']
             wet_dict['monster_details']['No'] = m_dict['no']
@@ -3862,7 +3873,11 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 return 'notreasure'
 
         
-        with open('dungeon_' + str(down+1) + '.html','w') as f:
+        strpath = os.path.join(usepath, str(suffix), 'dungeon_' + str(down+1) + '.html')
+        if not os.path.exists(os.path.join(usepath, str(suffix))):
+            os.mkdir(os.path.join(usepath, str(suffix)))
+        #with open('dungeon_' + str(down+1) + '.html','w') as f:
+        with open(strpath,'w') as f:            
             f.write(strhead)
             
             for j in range(downlist[down].shape[1]):            
@@ -4397,6 +4412,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 #want a wm count
                 #want a monster count
                 df = pd.DataFrame()
+                df['suffix'] = [suffix]
                 df['monster_xp'] = [m_xp_total]
                 df['wm_xp'] = [wm_xp_total]
                 df['monster_total'] = [monster_stack['key_count']]
@@ -4512,5 +4528,69 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
     #print("Finished in",dt)
 
     #print("DUNGEON DIMENSIONS",coord_lim, "of ", PERIODIC_CHECKS, " rolls in ", end - start)
-    print("DUNGEON DIMENSIONS: Levels -",zwidth-1, "and bounds",xwidth,"x", ywidth,  "from", PERIODIC_CHECKS, " rolls in ", dt, " coords:",coord_lim)
+    #print("DUNGEON DIMENSIONS: Levels -",zwidth-1, "and bounds",xwidth,"x", ywidth,  "from", PERIODIC_CHECKS, " rolls in ", dt, " coords:",coord_lim)
     return df
+
+
+#def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
+
+
+if __name__ == '__main__':
+
+    usepath = 'simulations'
+    periodic_checks = 10 
+    verbosity = 0
+    simulations = 10
+
+    ARGV = sys.argv
+    print(ARGV)
+
+    #pc first param, simulations second
+    if len(ARGV) > 1:
+        periodic_checks = int(ARGV[1])
+
+    if len(ARGV) > 2:
+        simulations = int(ARGV[2])
+
+    result_list = []
+    index_list = []
+    pc_list = []
+    verbosity_list = []
+    usepath_list = []
+    
+    for i in range(simulations):
+        index_list.append(i)
+        pc_list.append(periodic_checks)
+        verbosity_list.append(verbosity)
+        usepath_list.append(usepath)
+
+    #print(pc_list)
+    idx_list = index_list
+    print("RUNS:", len(idx_list))
+    #print(idx_list)
+    use_index = 0
+    #print(idx_list[use_index:use_index + 1]) ##
+    ctx = mp.get_context("spawn")
+    with concurrent.futures.ProcessPoolExecutor(mp_context=ctx) as executor:
+        future_to_data = {executor.submit(dungeon_simr, idx, pc_list[idx], verbosity_list[idx], usepath_list[idx]): idx for idx in idx_list}		
+
+        for future in concurrent.futures.as_completed(future_to_data):
+            datainfo = future_to_data[future]
+            try:
+                data = future.result()
+                result_list.append(data)
+                #print("BS", bin_series)
+                #if datainfo == '1-2021-10-25-06-21-Invert-the-Gawler-Mira_GeoscienceAnalyst.csv':
+            except Exception as exc:
+                print('%r generated an exception: %s' % (datainfo, exc))
+            else:
+                print('%r run finished' % (datainfo))
+
+    #print(bin_series)
+    #print(result_list)
+    output = pd.concat(result_list)
+    print(output.head())
+
+    output.to_csv('dungeon_simulation.csv')
+
+
