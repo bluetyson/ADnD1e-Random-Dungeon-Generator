@@ -641,7 +641,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                         dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Dsd'
                         e_dict = exit((coord[0],coord[1]+1,coord[2]))
                         exit_direction_full((coord[0],coord[1]+1,coord[2]), e_dict)
-                error_log.write("ymax: " + str(dead_end_dict) + "\n")
+                error_log.write("ymax: " + str(coord) + " " + str(dead_end_dict) + "\n")
 
                 will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
                 error_log.write("xmin: " + str(will_fit) + "\n")
@@ -655,7 +655,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                         dungeon[(coord[0]-1,coord[1],coord[2])]['fill'] = 'Dsd'
                         e_dict = exit((coord[0]-1,coord[1],coord[2]))
                         exit_direction_full((coord[0]-1,coord[1],coord[2]), e_dict)
-                error_log.write("xmin: " + str(dead_end_dict) + "\n")
+                error_log.write("xmin: " + str(coord) + " " + str(dead_end_dict) + "\n")
 
                 will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
                 error_log.write("xmax: " + str(will_fit) + "\n")
@@ -668,7 +668,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                         dungeon[(coord[0]-1,coord[1],coord[2])]['fill'] = 'Dsd'
                         e_dict = exit((coord[0]+1,coord[1],coord[2]))
                         exit_direction_full((coord[0]+1,coord[1],coord[2]), e_dict)
-                error_log.write("xmax: " + str(dead_end_dict) + "\n")
+                error_log.write("xmax: " + str(coord) + " " + str(dead_end_dict) + "\n")
 
                 ## add angle parts
                 will_fit = in_dungeon((coord[0]-1,coord[1]+1,coord[2]))
