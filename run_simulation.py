@@ -8,7 +8,6 @@ import time as tm
 import pandas as pd
 
 import sys
-#def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
 def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
 

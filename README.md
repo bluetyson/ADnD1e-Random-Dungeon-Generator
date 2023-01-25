@@ -229,3 +229,9 @@ treasure:{'type': {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 2200, 'plati
     </body>
     </html>
     
+
+## References
+- dungeon mapping icons : https://savevsdragon.blogspot.com/2012/03/free-download-master-dungeon-mapping.html
+- Monsters
+- Treasure
+- Spells
