@@ -4555,7 +4555,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
     #print("DUNGEON DIMENSIONS",coord_lim, "of ", PERIODIC_CHECKS, " rolls in ", end - start)
     print("DUNGEON DIMENSIONS: Levels -",zwidth-1, "and bounds",xwidth,"x", ywidth,  "from", PERIODIC_CHECKS, " rolls in ", dt, " coords:",coord_lim)
     
-    error_log.close()
+    if VERBOSITY:
+        error_log.close()
 
     return df
 
