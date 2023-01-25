@@ -2974,6 +2974,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
             wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
             wet_dict['monster_details']['type'] = 'NA'
             wet_dict['monster_details']['No'] = 0
+            wet_dict['monster_details']['XP'] = 0
 
             m_dict = monster_tables(wet_dict['monster_details']['level'])
             wet_dict['monster_details']['type']  = m_dict['name']
@@ -2989,6 +2990,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
             wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
             wet_dict['monster_details']['type'] = 'NA'
             wet_dict['monster_details']['No'] = 0
+            wet_dict['monster_details']['XP'] = 0
             m_dict = monster_tables(wet_dict['monster_details']['level'])
             wet_dict['monster_details']['type']  = m_dict['name']
             wet_dict['monster_details']['No'] = m_dict['no']
@@ -3042,6 +3044,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
             wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
             wet_dict['monster_details']['type'] = 'NA'
             wet_dict['monster_details']['No'] = 0
+            wet_dict['monster_details']['XP'] = 0
 
             m_dict = monster_tables(wet_dict['monster_details']['level'])
             wet_dict['monster_details']['type']  = m_dict['name']
@@ -3063,6 +3066,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                 wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
                 wet_dict['monster_details']['type'] = 'NA'
                 wet_dict['monster_details']['No'] = 0
+                wet_dict['monster_details']['XP'] = 0
 
                 m_dict = monster_tables(wet_dict['monster_details']['level'])
                 wet_dict['monster_details']['type']  = m_dict['name']
@@ -4541,6 +4545,7 @@ if __name__ == '__main__':
     ARGV = sys.argv
     print(ARGV)
 
+    #pc first param, simulations second
     if len(ARGV) > 1:
         periodic_checks = int(ARGV[1])
 

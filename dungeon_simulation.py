@@ -2962,6 +2962,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
             wet_dict['monster_details']['type'] = 'NA'
             wet_dict['monster_details']['No'] = 0
+            wet_dict['monster_details']['XP'] = 0
 
             m_dict = monster_tables(wet_dict['monster_details']['level'])
             wet_dict['monster_details']['type']  = m_dict['name']
@@ -2977,6 +2978,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
             wet_dict['monster_details']['type'] = 'NA'
             wet_dict['monster_details']['No'] = 0
+            wet_dict['monster_details']['XP'] = 0
+
             m_dict = monster_tables(wet_dict['monster_details']['level'])
             wet_dict['monster_details']['type']  = m_dict['name']
             wet_dict['monster_details']['No'] = m_dict['no']
@@ -3030,6 +3033,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
             wet_dict['monster_details']['type'] = 'NA'
             wet_dict['monster_details']['No'] = 0
+            wet_dict['monster_details']['XP'] = 0
 
             m_dict = monster_tables(wet_dict['monster_details']['level'])
             wet_dict['monster_details']['type']  = m_dict['name']
@@ -3051,6 +3055,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 wet_dict['monster_details']['level'] = level_matrix(abs(coord[2]))
                 wet_dict['monster_details']['type'] = 'NA'
                 wet_dict['monster_details']['No'] = 0
+                wet_dict['monster_details']['XP'] = 0
 
                 m_dict = monster_tables(wet_dict['monster_details']['level'])
                 wet_dict['monster_details']['type']  = m_dict['name']
