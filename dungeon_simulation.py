@@ -4111,7 +4111,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                                 if 'x' not in t:
                                                     treasure = treasure_choice(t, room_stack['shape_dict'][room]['contents']['monster']['No'])
                                                     if VERBOSITY:                                                
-                                                        print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
+                                                        #print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
+                                                        pass
                                                     #has been an exception here, maybe a treasure type problem in monster dict
                                                     monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
                                                     monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
