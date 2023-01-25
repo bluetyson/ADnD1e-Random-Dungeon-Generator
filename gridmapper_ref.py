@@ -130,6 +130,7 @@ if 1 == 1:
                 if len(tl) > 1:
                     tl = 'R'
             newtl = legend_gridmapper[tl]
+            newtl = newt
             new_list.append(newtl)
         
         striplist.append(new_list)
