@@ -1,5 +1,5 @@
 
-#version 0.51.1, 20220125
+#version 0.51.3, 20220125
 
 import sys
 from dungeon_simulation import dungeon_sim
@@ -22,7 +22,7 @@ if __name__ == "__main__":
     print(PERIODIC_CHECKS, VERBOSITY)
     df = dungeon_sim(PERIODIC_CHECKS, VERBOSITY)
 
-    print(df)
+    #print(df)
     
 
 

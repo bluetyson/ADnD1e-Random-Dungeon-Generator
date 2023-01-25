@@ -627,57 +627,87 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 #only in left, right and ahead
                 #put SD dict in to handle the directions, or a dict that can be read out?  
                 #or make a dead end dict as no rooms here
-                will_fit = in_dungeon((new_coord[0],new_coord[1]+1,new_coord[2]))
-                if not will_fit:
-                    dungeon[(new_coord[0],new_coord[1]+1,new_coord[2])] = {}
-                    dungeon[(new_coord[0],new_coord[1]+1,new_coord[2])]['fill'] = 'D'
-                    dead_end_dict[(new_coord[0],new_coord[1]+1,new_coord[2])] = 'ymax'
-                    #dead_end_dict[(new_coord[0],new_coord[1]+1,new_coord[2])] = {}
-                    s = roll_dice(1,20)
-                    if s <= 5:
-                        dungeon[(new_coord[0],new_coord[1]+1,new_coord[2])]['fill'] = 'Dsd'
-                        e_dict = exit((new_coord[0],new_coord[1]+1,new_coord[2]))
-                        exit_direction_full((new_coord[0],new_coord[1]+1,new_coord[2]), e_dict)
+                if VERBOSITY:
+                    error_log.write("Dead End: " + str(coord) + "\n")
+                    will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
+                    error_log.write('ymax:' + str(will_fit) + "\n")
+                    will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                    error_log.write('xmin:' + str(will_fit) + "\n")
+                    will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
+                    error_log.write('xmax:' + str(will_fit) + "\n")
 
-                will_fit = in_dungeon((new_coord[0]-1,new_coord[1],new_coord[2]))
+                will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
+                if VERBOSITY:
+                    error_log.write("ymax: " + str(will_fit) + "\n")
                 if not will_fit:
-                    dungeon[(new_coord[0]-1,new_coord[1],new_coord[2])] = {}
-                    dungeon[(new_coord[0]-1,new_coord[1],new_coord[2])]['fill'] = 'D'
-                    dead_end_dict[(new_coord[0]-1,new_coord[1],new_coord[2])] = 'xmin'
+                    dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+                    dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
+                    dead_end_dict[(coord[0],coord[1]+1,coord[2])] = 'ymax'
+                    #dead_end_dict[(coord[0],coord[1]+1,coord[2])] = {}
                     s = roll_dice(1,20)
                     if s <= 5:
-                        dungeon[(new_coord[0]-1,new_coord[1],new_coord[2])]['fill'] = 'Dsd'
-                        e_dict = exit((new_coord[0]-1,new_coord[1],new_coord[2]))
-                        exit_direction_full((new_coord[0]-1,new_coord[1],new_coord[2]), e_dict)
+                        dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Dsd'
+                        e_dict = exit((coord[0],coord[1]+1,coord[2]))
+                        exit_direction_full((coord[0],coord[1]+1,coord[2]), e_dict)
+                if VERBOSITY:                        
+                    error_log.write("ymax: " + str(coord) + " " + str(dead_end_dict) + "\n")
 
-                will_fit = in_dungeon((new_coord[0]+1,new_coord[1],new_coord[2]))
+                will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                if VERBOSITY:
+                    error_log.write("xmin: " + str(will_fit) + "\n")
+                #error_log.write("xmin-dungeon: " + str(dungeon[(coord[0]-1,coord[1],coord[2])]) + "\n")
                 if not will_fit:
-                    dungeon[(new_coord[0]+1,new_coord[1],new_coord[2])] = {}
-                    dungeon[(new_coord[0]+1,new_coord[1],new_coord[2])]['fill'] = 'D'
-                    dead_end_dict[(new_coord[0]+1,new_coord[1],new_coord[2])] = 'xmax'
+                    dungeon[(coord[0]-1,coord[1],coord[2])] = {}
+                    dungeon[(coord[0]-1,coord[1],coord[2])]['fill'] = 'D'
+                    dead_end_dict[(coord[0]-1,coord[1],coord[2])] = 'xmin'
                     s = roll_dice(1,20)
                     if s <= 5:
-                        dungeon[(new_coord[0]-1,new_coord[1],new_coord[2])]['fill'] = 'Dsd'
-                        e_dict = exit((new_coord[0]+1,new_coord[1],new_coord[2]))
-                        exit_direction_full((new_coord[0]+1,new_coord[1],new_coord[2]), e_dict)
+                        dungeon[(coord[0]-1,coord[1],coord[2])]['fill'] = 'Dsd'
+                        e_dict = exit((coord[0]-1,coord[1],coord[2]))
+                        exit_direction_full((coord[0]-1,coord[1],coord[2]), e_dict)
+                else:
+                    if VERBOSITY:
+                        error_log.write("xmin-dungeon: " + str(dungeon[(coord[0]-1,coord[1],coord[2])]) + "\n")
+                if VERBOSITY:
+                    error_log.write("xmin: " + str(coord) + " " + str(dead_end_dict) + "\n")
+
+                will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
+                if VERBOSITY:
+                    error_log.write("xmax: " + str(will_fit) + "\n")
+                if not will_fit:
+                    dungeon[(coord[0]+1,coord[1],coord[2])] = {}
+                    dungeon[(coord[0]+1,coord[1],coord[2])]['fill'] = 'D'
+                    dead_end_dict[(coord[0]+1,coord[1],coord[2])] = 'xmax'
+                    s = roll_dice(1,20)
+                    if s <= 5:
+                        dungeon[(coord[0]-1,coord[1],coord[2])]['fill'] = 'Dsd'
+                        e_dict = exit((coord[0]+1,coord[1],coord[2]))
+                        exit_direction_full((coord[0]+1,coord[1],coord[2]), e_dict)
+                if VERBOSITY:                        
+                    error_log.write("xmax: " + str(coord) + " " + str(dead_end_dict) + "\n")
 
                 ## add angle parts
-                will_fit = in_dungeon((new_coord[0]-1,new_coord[1]+1,new_coord[2]))
+                will_fit = in_dungeon((coord[0]-1,coord[1]+1,coord[2]))
                 if not will_fit:
-                    dungeon[(new_coord[0]-1,new_coord[1]+1,new_coord[2])] = {}
-                    dungeon[(new_coord[0]-1,new_coord[1]+1,new_coord[2])]['fill'] = 'D'
-                will_fit = in_dungeon((new_coord[0]+1,new_coord[1]+1,new_coord[2]))
+                    dungeon[(coord[0]-1,coord[1]+1,coord[2])] = {}
+                    dungeon[(coord[0]-1,coord[1]+1,coord[2])]['fill'] = 'D'
+                    dead_end_dict[(coord[0]-1,coord[1]+1,coord[2])] = 'angle-minus'
+                will_fit = in_dungeon((coord[0]+1,coord[1]+1,coord[2]))
                 if not will_fit:
-                    dungeon[(new_coord[0]+1,new_coord[1]+1,new_coord[2])] = {}
-                    dungeon[(new_coord[0]+1,new_coord[1]+1,new_coord[2])]['fill'] = 'D'
+                    dungeon[(coord[0]+1,coord[1]+1,coord[2])] = {}
+                    dungeon[(coord[0]+1,coord[1]+1,coord[2])]['fill'] = 'D'
+                    dead_end_dict[(coord[0]+1,coord[1]+1,coord[2])] = 'angle-plus'
 
+                #print("dead end quit")
+                #quit()
                 #need to retrace to last on exit stack?
                 if VERBOSITY:
-                    print("DEAD END")
+                    print("DEAD END INFO",new_coord, dead_end_dict)
                 for key in exit_stack:
                     ## this needs to be checked for level
                     new_coord = key
-
+                if VERBOSITY:
+                    error_log.write("final: " + str(dead_end_dict) + "\n\n")
                 return new_coord
 
 
@@ -840,8 +870,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             except Exception as wmE:
                 #bound to be parsing problems in the monster tables until vetted dragons and characters etc.
                 print("error:",wmE)  #log to a file to see a pattern
-                error_dict[error_dict['key_count']] = wmE
-                error_dict['type']['key_count'] = "wm roll error for level: " + str(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
+                error_dict[error_dict['key_count']] = str(wmE) + "wm roll error for level: " + str(wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord]['level'])
                 error_dict['key_count'] += 1            
 
 
@@ -1881,8 +1910,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 try:
                                     dungeon[(rxmin,y,rzmin)]['fill'] = dungeon[(rxmin,y,rzmin)]['fill'] + 'sd'
                                 except Exception as nosdfillE:
-                                    error_dict[error_dict['key_count']] = nosdfillE
-                                    error_dict['type']['key_count'] = "secret door fill 1667"
+                                    error_dict[error_dict['key_count']] = str(nosdfillE) + " secret door fill 1905"
                                     error_dict['key_count'] += 1
                                     print(nosdfillE)
                                     if VERBOSITY:                                                              
@@ -1907,8 +1935,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                     dungeon[(rxmax,y,rzmin)]['fill'] = dungeon[(rxmax,y,rzmin)]['fill'] + 'sd'
                                 except Exception as nosdfillE:
                                     print(nosdfillE)
-                                    error_dict[error_dict['key_count']] = nosdfillE
-                                    error_dict['type']['key_count'] = "secret door fill 1693"
+                                    error_dict[error_dict['key_count']] = str(nosdfillE) + "secret door fill 1930"
                                     error_dict['key_count'] += 1
                                     if VERBOSITY:                                                                       
                                         print("DUNGEONERRORCHECK:",dungeon, "xmax sd")
@@ -1932,8 +1959,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 try:
                                     dungeon[(x,rymin,rzmin)]['fill'] = dungeon[(x,rymin,rzmin)]['fill'] + 'sd'
                                 except Exception as nosdfillE:
-                                    error_dict[error_dict['key_count']] = nosdfillE
-                                    error_dict['type']['key_count'] = "secret door fill 1717"
+                                    error_dict[error_dict['key_count']] = str(nosdfillE) + " secret door fill 1954"
                                     error_dict['key_count'] += 1
                                     print(nosdfillE)
                                     if VERBOSITY:                                                              
@@ -1956,8 +1982,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 try:
                                     dungeon[(x,rymax,rzmin)]['fill'] = dungeon[(x,rymax,rzmin)]['fill'] + 'sd'
                                 except Exception as nosdfillE:
-                                    error_dict[error_dict['key_count']] = nosdfillE
-                                    error_dict['type']['key_count'] = "secret door fill 1740"
+                                    error_dict[error_dict['key_count']] = str(nosdfillE) + " secret door fill 1960"
                                     error_dict['key_count'] += 1
                                     if VERBOSITY:                                                              
                                         print(nosdfillE)
@@ -2020,8 +2045,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                     es = roll_dice(1,rymax-rymin + 1)
                                     el = [rxmin,rymin + es -1]
                                 except Exception as roomsizeE:
-                                    error_dict[error_dict['key_count']] = roomsizeE
-                                    error_dict['type']['key_count'] = "room size 1855"
+                                    error_dict[error_dict['key_count']] = str(roomsizeE) + " room size 2024"
                                     error_dict['key_count'] += 1
 
                                     #try and work out if null room - might go away if now has no coords
@@ -2352,7 +2376,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
             if not will_fit:                            
                 dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'sn' #stair dead end
+                dead_end_dict[(coord[0],coord[1]+1,coord[2])] = 'ymax'
                 #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes     
                 level_dict['type'] = 'UD'   
                 level_dict['new_coord'] = new_coord    
@@ -2374,7 +2399,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))  #facing
             if not will_fit:                            
                 dungeon[(coord[0],coord[1]+1,coord[2])] = {}
-                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'D'
+                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'sn' #stair dead end
+                dead_end_dict[(coord[0],coord[1]+1,coord[2])] = 'ymax'
                 #new_coord = (coord[0],coord[1]+1,coord[2])  ##1 in 20 closes            
                 level_dict['type'] = 'DD'       
                 level_dict['new_coord'] = new_coord
@@ -3592,6 +3618,9 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
     error_dict['key_count'] = 0
     error_dict['type'] = {}
 
+    if VERBOSITY:
+        error_log = open("error_log.txt","w")
+
     water_dict = {}
     #make water log as need to run a lot to get one and can't scroll that far
     from monsters import all_data, dragon_data, human_data, xp_hack
@@ -3610,6 +3639,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
     wandering_monster_subtable = []
     wandering_monster_rolls = []
     ## got to implement for all here eventually, complicates things
+
 
 
     START_COORD = (0,0,-1)
@@ -3793,6 +3823,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         legend_dict['wm'] = "Wandering Monster"
         legend_dict['sd'] = "Secret Door"
         legend_dict['st'] = "Stairs"
+        legend_dict['sn'] = "Stairs dead end"
         legend_dict['ch'] = "Chute"
         legend_dict['cm'] = "Chimney"
         legend_dict['td'] = "Trapdoor"
@@ -3908,6 +3939,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                             usestr = usestr.replace('p','')
                             usestr = usestr.replace('s','')
                             usestr = usestr.replace('t','')
+                            usestr = usestr.replace('w','')
                             
                             ## get anything but number eventually regex
                             #usestr = usestr[0]
@@ -3935,8 +3967,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                                         sdstr = 'border-' + borderdir + '-style: dashed'
                             except Exception as secretdoorE:
-                                error_dict[error_dict['key_count']] = secretdoorE
-                                error_dict['type']['key_count'] = "secret door output 3772"
+                                error_dict[error_dict['key_count']] = str(secretdoorE) + "secret door output 3960"
                                 error_dict['key_count'] += 1                            
 
                         color = colorcheck(downlist[down][i,j,0])
@@ -3980,8 +4011,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                     borderdire = '</divl>'                            
                                     strdata = '<td class="brown_background">' + borderdir + downlist[down][i,j,0] + borderdire + '</td>'
                             except Exception as deadendE:
-                                error_dict[error_dict['key_count']] = deadendE
-                                error_dict['type']['key_count'] = "dead end output 3816"
+                                error_dict[error_dict['key_count']] = str(deadendE) + " dead end output 3976"
                                 error_dict['key_count'] += 1
 
                                 if VERBOSITY:
@@ -4092,8 +4122,10 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                             for t in room_stack['shape_dict'][room]['contents']['monster']['treasure_lair']:
                                                 if 'x' not in t:
                                                     treasure = treasure_choice(t, room_stack['shape_dict'][room]['contents']['monster']['No'])
-                                                    if VERBOSITY:                                                
-                                                        print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
+                                                    if VERBOSITY:               
+                                                        #if isinstance(treasure['magic'], list): #if no data                                                                                         
+                                                            #print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
+                                                        pass
                                                     #has been an exception here, maybe a treasure type problem in monster dict
                                                     monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
                                                     monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
@@ -4504,7 +4536,16 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         print("\nFINAL ROOM STACK",room_stack)   
             
         #print("\nERROR LOG",error_dict,"WATER_DICT:",water_dict, "WM_STACK:",wandering_monster_stack)
-        print("\nERROR LOG",error_dict, "WM_STACK:",wandering_monster_stack)
+        if 1 == 2:
+            for rc in range(room_stack['key_count'] ):
+                if 'shape_dict' in room_stack:
+                    if 'contents' in room_stack['shape_dict'][rc+1]:
+                        if 'secret_door_dict' in room_stack['shape_dict'][rc+1]['contents']:
+                            print("\nSECRET DOOR DICT",room_stack['shape_dict'][rc+1]['contents']['secret_door_dict'])
+
+        print("\nDEAD END DICT",dead_end_dict)
+
+        print("\nERROR LOG",error_dict, "\nWM_STACK:",wandering_monster_stack)
 
         #print("\nWATER LOG",
     #end = timeit.timeit()
@@ -4513,4 +4554,10 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
     #print("DUNGEON DIMENSIONS",coord_lim, "of ", PERIODIC_CHECKS, " rolls in ", end - start)
     print("DUNGEON DIMENSIONS: Levels -",zwidth-1, "and bounds",xwidth,"x", ywidth,  "from", PERIODIC_CHECKS, " rolls in ", dt, " coords:",coord_lim)
+    print(df)
+    
+    if VERBOSITY:
+        error_log.close()
+
     return df
+
