@@ -1174,7 +1174,7 @@ def treasure_choice(treasure_type, no):
             treasure['gold'] = roll_dice(1,6) * 10 * 1000
         r = roll_dice(1,100)            
         if r <= 25:
-            treasure['platinum'] = roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) * 1000
+            treasure['platinum'] = roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10)
             treasure['platinum'] = treasure['platinum'] * 1000
         r = roll_dice(1,100)            
         if r <= 50:
@@ -1295,7 +1295,6 @@ def treasure_choice(treasure_type, no):
             magic_list = []
             magic_list.append(["Ring","Wand","Sword","Weapon","Armor","Misc 1","Misc 2","Misc 3","Misc 4","Misc 5"])
             treasure['magic'] = magic_list
-        return (0, 0, 0, 0, 0, random.randint(10, 80) * 90, random.randint(5, 30) * 80, None)
 
     elif treasure_type == "V":
         r = roll_dice(1,100)            
