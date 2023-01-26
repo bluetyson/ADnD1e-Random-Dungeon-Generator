@@ -4133,7 +4133,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                                         print(room_stack['shape_dict'][room]['contents']['monster']['treasure_lair'])
                                                         print(treasure)
                                                         print(treasureE)
-                                                        print("OBSCURE BUG TO FIX TRACKING")
+                                                        print("OBSCURE BUG TO FIX TRACKING") #H, S, T U
                                                         quit()
                                                     monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
                                                     monster_treasure['electrum'] = monster_treasure['electrum'] + treasure['electrum']
