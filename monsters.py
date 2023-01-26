@@ -3240,7 +3240,7 @@ def monster_tables(level):
     
     return mdict
 
-def monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d, VERBOSITY=v):
+def monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d, xp_d, VERBOSITY=v):
 
     if 'HumanSubtable' in m_dict['name']:
         wet_dict['monster_details']['type'] = m_dict['details'][0]

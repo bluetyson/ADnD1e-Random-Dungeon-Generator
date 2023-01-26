@@ -2980,7 +2980,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
             wet_dict['monster_details']['No'] = m_dict['no']
 
             ##put subtable stuff here
-            wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d)
+            wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d, xp_d)
 
         elif w >= 13 and w <=18:
             wet_dict['wet'] = 'Y'
@@ -2995,7 +2995,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
             wet_dict['monster_details']['No'] = m_dict['no']
 
             ##put subtable stuff here
-            wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d)
+            wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d, xp_d)
 
             wet_dict['treasure'] = 'Y'
 
@@ -3050,7 +3050,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
             wet_dict['monster_details']['No'] = m_dict['no']
 
             ##put subtable stuff here
-            wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d)
+            wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d, xp_d)
 
             shape_dict['lake'] = wet_dict
         else:
@@ -3072,7 +3072,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                 wet_dict['monster_details']['No'] = m_dict['no']
 
                 ##put subtable stuff here
-                wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d)
+                wet_dict = monster_subtables_wet(m_dict, wet_dict, all_d, human_d,dragon_d, xp_d)
 
                 ##need to monster generate
 
