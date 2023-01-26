@@ -4492,7 +4492,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
             df['z'] = [zwidth-1]
             df['Periodic Checks'] = [PERIODIC_CHECKS]
 
-            df.to_csv('dungeon-stats.csv', index=False)
+            df.to_csv(os.path.join(usepath,str(suffix),'dungeon-stats.csv'), index=False)
 
     if VERBOSITY:
         with open('dungeon.pkl','wb') as fd:
@@ -4593,6 +4593,6 @@ if __name__ == '__main__':
     output = pd.concat(result_list)
     print(output.head())
 
-    output.to_csv('dungeon_simulation.csv', index=False)
+    output.to_csv(os.path.join(usepath,str(suffix),'dungeon-stats.csv'), index=False)
 
 
