@@ -60,13 +60,16 @@ def select_jewellery():
         base_value = roll_dice(1, 10) * 100
         description = "Ivory or wrought silver"
     elif dice_roll <= 20:
-        base_value = (roll_dice(1, 6) + roll_dice(1, 6)) * 100
+        base_value = roll_dice(1, 6) + roll_dice(1, 6)
+        base_value = base_value * 100
         description = "Wrought silver and gold"
     elif dice_roll <= 40:
-        base_value = (roll_dice(1, 6) + roll_dice(1, 6)+ roll_dice(1, 6)) * 100
+        base_value = roll_dice(1, 6) + roll_dice(1, 6)+ roll_dice(1, 6)
+        base_value = base_value * 100
         description = "Wrought gold"
     elif dice_roll <= 50:
-        base_value = (roll_dice(1, 6) + roll_dice(1, 6)+ roll_dice(1, 6)+ roll_dice(1, 6)+ roll_dice(1, 6)) * 100
+        base_value = roll_dice(1, 6) + roll_dice(1, 6)+ roll_dice(1, 6)+ roll_dice(1, 6)+ roll_dice(1, 6)
+        base_value = base_value * 100
         description = "Jade, coral or wrought platinum"
     elif dice_roll <= 70:
         base_value = roll_dice(1, 10) * 1000
@@ -75,7 +78,8 @@ def select_jewellery():
         base_value = roll_dice(1, 4) * 1000 + roll_dice(1, 4) * 1000
         description = "Gold with gems"
     else:
-        base_value = (roll_dice(1, 6) + roll_dice(1, 6)) * 1000
+        base_value = roll_dice(1, 6) + roll_dice(1, 6)
+        base_value = base_value * 1000
         description = "Platinum with gems"
     # Check for exceptional value
     w = roll_dice(1,10)
@@ -1157,7 +1161,8 @@ def treasure_choice(treasure_type, no):
     elif treasure_type == "H":
         r = roll_dice(1,100)
         if r <= 25:
-            treasure['copper'] = (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6)) * 1000
+            treasure['copper'] = roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6)
+            treasure['copper'] = treasure['copper'] * 1000
         r = roll_dice(1,100)
         if r <= 40:
             treasure['silver'] = roll_dice(1,100) * 1000
@@ -1169,7 +1174,8 @@ def treasure_choice(treasure_type, no):
             treasure['gold'] = roll_dice(1,6) * 10 * 1000
         r = roll_dice(1,100)            
         if r <= 25:
-            treasure['platinum'] = (roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10)) * 1000
+            treasure['platinum'] = roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) + roll_dice(1,10) * 1000
+            treasure['platinum'] = treasure['platinum'] * 1000
         r = roll_dice(1,100)            
         if r <= 50:
             treasure['gems'] = roll_dice(1,100)
@@ -1190,7 +1196,8 @@ def treasure_choice(treasure_type, no):
     elif treasure_type == "I":
         r = roll_dice(1,100)            
         if r <= 30:
-            treasure['platinum'] = (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6)) * 1000
+            treasure['platinum'] = roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6)
+            treasure['platinum'] = treasure['platinum'] * 1000
         r = roll_dice(1,100)            
         if r <= 55:
             treasure['gems'] = roll_dice(1,10) + roll_dice(1,10)
@@ -1206,19 +1213,19 @@ def treasure_choice(treasure_type, no):
 
     elif treasure_type == "J":
         for n in range(no):
-            treasure['copper'] = treasure['copper'] + (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6))
+            treasure['copper'] = treasure['copper'] + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6)
         
     elif treasure_type == "K":
         for n in range(no):
-            treasure['silver'] = treasure['silver'] + (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6))
+            treasure['silver'] = treasure['silver'] + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6)
 
     elif treasure_type == "L":
         for n in range(no):
-            treasure['electrum'] = treasure['electrum'] + (roll_dice(1,6) + roll_dice(1,6))
+            treasure['electrum'] = treasure['electrum'] + roll_dice(1,6) + roll_dice(1,6)
 
     elif treasure_type == "M":
         for n in range(no):
-            treasure['gold'] = treasure['gold'] + (roll_dice(1,4) + roll_dice(1,4))
+            treasure['gold'] = treasure['gold'] + roll_dice(1,4) + roll_dice(1,4)
 
     elif treasure_type == "N":
         for n in range(no):
@@ -1248,7 +1255,8 @@ def treasure_choice(treasure_type, no):
     elif treasure_type == "R":
         r = roll_dice(1,100)            
         if r <= 40:
-            treasure['gold'] = (roll_dice(1,4)+roll_dice(1,4)) * 1000
+            treasure['gold'] = roll_dice(1,4)+roll_dice(1,4)
+            treasure['gold'] = treasure['gold'] * 1000
         r = roll_dice(1,100)            
         if r <= 50:
             treasure['platinum'] = roll_dice(1,6) * 10 * 1000
@@ -1281,7 +1289,7 @@ def treasure_choice(treasure_type, no):
             treasure['gems'] = roll_dice(1,8) * 10
         r = roll_dice(1,100)            
         if r <= 80:
-            treasure['jewellery'] = (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6))
+            treasure['jewellery'] = roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6)
         r = roll_dice(1,100)            
         if r <= 70:
             magic_list = []
@@ -1300,7 +1308,8 @@ def treasure_choice(treasure_type, no):
     elif treasure_type == "W":
         r = roll_dice(1,100)            
         if r <= 60:
-            treasure['gold'] = (roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6)) * 1000
+            treasure['gold'] = roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6))
+            treasure['gold'] = treasure['gold'] * 1000
         r = roll_dice(1,100)            
         if r <= 15:
             treasure['platinum'] = roll_dice(1,8) * 1000
@@ -1309,7 +1318,7 @@ def treasure_choice(treasure_type, no):
             treasure['gems'] = roll_dice(1,8) * 10
         r = roll_dice(1,100)            
         if r <= 50:
-            treasure['jewellery'] = (roll_dice(1,8) + roll_dice(1,8) + roll_dice(1,8) + roll_dice(1,8) + roll_dice(1,8))
+            treasure['jewellery'] = roll_dice(1,8) + roll_dice(1,8) + roll_dice(1,8) + roll_dice(1,8) + roll_dice(1,8)
 
     elif treasure_type == "X":
         r = roll_dice(1,100)            
