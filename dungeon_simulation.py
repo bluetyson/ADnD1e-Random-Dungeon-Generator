@@ -4127,12 +4127,13 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                                             #print("MTMAGIC",monster_treasure['magic'],treasure['magic'])
                                                         pass
                                                     #has been an exception here, maybe a treasure type problem in monster dict
-                                                    print(room_stack['shape_dict'][room]['contents']['monster']['treasure_lair'])
-                                                    print(treasure)
                                                     try:
                                                         monster_treasure['copper'] = monster_treasure['copper'] + treasure['copper']
                                                     except Exception as treasureE:
+                                                        print(room_stack['shape_dict'][room]['contents']['monster']['treasure_lair'])
+                                                        print(treasure)
                                                         print(treasureE)
+                                                        print("OBSCURE BUG TO FIX TRACKING")
                                                         quit()
                                                     monster_treasure['silver'] = monster_treasure['silver'] + treasure['silver']
                                                     monster_treasure['electrum'] = monster_treasure['electrum'] + treasure['electrum']
