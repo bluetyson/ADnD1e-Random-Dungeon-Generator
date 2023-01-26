@@ -1308,7 +1308,7 @@ def treasure_choice(treasure_type, no):
     elif treasure_type == "W":
         r = roll_dice(1,100)            
         if r <= 60:
-            treasure['gold'] = roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6))
+            treasure['gold'] = roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6) + roll_dice(1,6)
             treasure['gold'] = treasure['gold'] * 1000
         r = roll_dice(1,100)            
         if r <= 15:
