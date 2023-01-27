@@ -1699,15 +1699,15 @@ def select_magic_item():
         if isinstance(rnge, int):
             for s in range(rnge):
                 if class_use == 'MAGIC-USER':
-                    ispell = magicuser_choice(range)
+                    ispell = magicuser_choice(rnge)
                 elif class_use == 'ILLUSIONIST':
                     if rnge > 7:
                         rnge = 7
-                    ispell = illusionist_choice(range)
+                    ispell = illusionist_choice(rnge)
                 elif class_use == 'CLERIC':
-                    ispell = cleric_choice(range)
+                    ispell = cleric_choice(rnge)
                 else:
-                    ispell = druid_choice(range)
+                    ispell = druid_choice(rnge)
                 individual_spells.append(ispell)
             else:
                 individual_spells.append(rnge)
