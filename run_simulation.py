@@ -4412,8 +4412,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                     f.write('<br>' + "Wandering Monster Subtable:" + str(wandering_monster_subtable) + '<br>')  
 
                 f.write('<br>' + "Room Total Treasure:" + str(total_treasure) + '<br>')                            
-                f.write('' + "Room Total Gems:" + str(sum([gem for gem in valuations['gems']])) + "Room Total Jewellery:" + str(sum([j for j in valuations['jewellery']])) + '<br>')                                        
-                f.write('' + "Room Total Magic:" + str(sum([m for m in valuations['magic']])) + '<br>') 
+                f.write('' + "Room Total Gems: " + str(sum([gem for gem in valuations['gems']])) + "Room Total Jewellery: " + str(sum([j for j in valuations['jewellery']])) + "Room Total Magic:" + str(sum([m for m in valuations['magic']])) + '<br>')                                        
 
                 #want a wm count
                 #want a monster count
