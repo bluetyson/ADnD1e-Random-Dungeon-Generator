@@ -4050,11 +4050,13 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
 
                         #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
 
-                    f.write('<br><b>Key ' + str(room) + ': </b>')
+                    if abs(keylist[0][2]) == down + 1:
+                        f.write('<br><b>Key ' + str(room) + ': </b>')
                     if 'empty' in room_stack['shape_dict'][room]['contents']:
                         if VERBOSITY:
                             print(str(room_stack['shape_dict'][room]['contents']))
-                        f.write('Empty<br>')
+                        if abs(keylist[0][2]) == down + 1:
+                            f.write('Empty<br>')
                     else:
                         for key in room_stack['shape_dict'][room]['contents']:
                             if key == 'monster' or key == 'treasure' or key == 'trap':
