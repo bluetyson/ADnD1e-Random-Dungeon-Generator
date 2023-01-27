@@ -4057,7 +4057,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                         f.write(str(room_stack['shape_dict'][room]) + '<br>')
                     #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
 
-                    f.write('<h4>Key: ' + str(room) + '</h4>')
+                    #f.write('<h4>Key: ' + str(room) + '</h4>')
+                    f.write('<b>Key: ' + str(room) + '</b>')
                     if 'empty' in room_stack['shape_dict'][room]['contents']:
                         if VERBOSITY:
                             print(str(room_stack['shape_dict'][room]['contents']))
