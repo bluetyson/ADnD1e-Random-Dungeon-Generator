@@ -3741,7 +3741,11 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
         <html>
         <head>
-        <title>DUNGEON</title>
+        <title>DUNGEON 
+        ''' 
+        strtitle = str(down+1) + '</title>'
+
+        strhead2 = '''
         <style>
             table,
             th,
@@ -3803,6 +3807,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         </body>
         </html>
         '''
+
+        strusehead = strhead + strtitle + strhead2
 
         legend_dict =  {}
         legend_dict['O'] = "Outside Entrance"
@@ -3894,7 +3900,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
         
         with open('dungeon_' + str(down+1) + '.html','w') as f:
-            f.write(strhead)
+            #f.write(strhead)
+            f.write(usestrhead)
             
             for j in range(downlist[down].shape[1]):            
                 f.write('<TR>')

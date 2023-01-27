@@ -3787,6 +3787,8 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
         </html>
         '''
 
+        strusehead = strhead + strtitle + strhead2
+
         legend_dict =  {}
         legend_dict['O'] = "Outside Entrance"
         legend_dict['C'] = "Corridor/Passage"
