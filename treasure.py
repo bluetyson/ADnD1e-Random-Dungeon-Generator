@@ -1696,18 +1696,22 @@ def select_magic_item():
 
         no, rnge, xp, class_use = scroll_choice()
         individual_spells = []
-        for s in range(rnge):
-            if class_use == 'MAGIC-USER':
-                ispell = magicuser_choice(range)
-            elif class_use == 'ILLUSIONIST':
-                if rnge > 7:
-                    rnge = 7
-                ispell = illusionist_choice(range)
-            elif class_use == 'CLERIC':
-                ispell = cleric_choice(range)
+        if isinstance(rnge, int):
+            for s in range(rnge):
+                if class_use == 'MAGIC-USER':
+                    ispell = magicuser_choice(range)
+                elif class_use == 'ILLUSIONIST':
+                    if rnge > 7:
+                        rnge = 7
+                    ispell = illusionist_choice(range)
+                elif class_use == 'CLERIC':
+                    ispell = cleric_choice(range)
+                else:
+                    ispell = druid_choice(range)
+                individual_spells.append(ispell)
             else:
-                ispell = druid_choice(range)
-            individual_spells.append(ispell)
+                individual_spells.append(rnge)
+
 
         details = str(no) + '-' + str(rnge) + '-' + class_use + '-' + str(individual_spells)
         if xp == -1:
