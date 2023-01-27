@@ -4039,9 +4039,10 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                 m_xp_total = 0
 
                 for room in room_stack['shape_dict']:
-                    f.write('<h4>Data: ' + str(room) + '</h4>')
-                    f.write(str(room_stack['shape_dict'][room]) + '<br>')
-                    #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
+                    if VERBOSITY:
+                        f.write('<h4>Data: ' + str(room) + '</h4>')
+                        f.write(str(room_stack['shape_dict'][room]) + '<br>')
+                        #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
 
                     f.write('<h4>Key: ' + str(room) + '</h4>')
                     if 'empty' in room_stack['shape_dict'][room]['contents']:
