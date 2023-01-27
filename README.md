@@ -33,6 +33,7 @@ Building things as I go - just using a one roll test for now to see how it goes.
 - Generates basic individual treasure
 - Does dungeon accounting  - adds up treasure and some XP metrics and traps, wet monsters
     - Outputs this to a csv when run
+- Links to each level are at the bottom of each Dungeon Level html page
 ```python
 Monster Total XP:71798
 
