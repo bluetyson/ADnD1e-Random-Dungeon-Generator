@@ -4371,8 +4371,9 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 wm_xp_total = 0
                 wm_total_treasure = {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
                 for wm in range(wandering_monster_stack['key_count']):
-                    f.write('<h4>Wandering Monster: ' + str(wm) + '</h4>')
+                    f.write('<b>Wandering Monster: ' + str(wm) + '')
                     f.write(str(wandering_monster_stack[wm+1]) + '<br>')
+                    
                     for key in wandering_monster_stack[wm+1]:
                         #f.write("key" + str(key) + '<br>')
                         #for subkey in wandering_monster_stack[wm+1]:
