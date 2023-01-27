@@ -4229,7 +4229,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 #print(room_stack['shape_dict'][room]['lake'])
                                 wett = 'lake'
                                 monster_details = True
-                            f.write("water:" + str(room_stack['shape_dict'][room]['pool']) + '<br>')
+                            f.write("water:" + str(room_stack['shape_dict'][room]['lake']) + '<br>')
 
                         if monster_details:
                             #room_stack['shape_dict'][room][wet]
