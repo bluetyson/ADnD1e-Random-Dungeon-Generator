@@ -3720,8 +3720,11 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
         strhead = '''
 
         <html>
-        <head>
-        <title>DUNGEON</title>
+        <head>'''
+
+        strtitle = '<title>DUNGEON ' + str(down+1) + '</title>'
+
+        strhead2='''
         <style>
             table,
             th,
@@ -3880,6 +3883,8 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
         #with open('dungeon_' + str(down+1) + '.html','w') as f:
         with open(strpath,'w') as f:            
             f.write(strhead)
+            f.write(strtitle)
+            f.write(strhead2)
             
             for j in range(downlist[down].shape[1]):            
                 f.write('<TR>')
@@ -4506,8 +4511,12 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
             for link in range(zwidth-1):                
                 url = 'dungeon_' + str(link+1) + '.html'
                 f.write('<a href="' + url + '"' + '>Dungeon Level ' + str(link+1) + '</a>' + '<br>')
-            #end of page
-            f.write(strend)
+
+            f.write('<br><b>Legend</b><br>')                
+            for key in legend_dict:
+                f.write(str(key) + ':' + ' ' + str(legend_dict[key]) + '<br>')
+            for key in background_dict:
+                f.write(str(key) + ':' + ' ' + str(background_dict[key]) + '<br>')
 
             #end of page
             f.write(strend)
