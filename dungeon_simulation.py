@@ -4427,7 +4427,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                             #wmlair = wmlair.replace('%','')
                             #wmlair = int(wmlair)
                             wmti = wandering_monster_stack[wm+1][key]['treasure_individual']
-                            f.write(" - XP:" + str(wmxp*wmno) + '<br>')
+                            if abs(wmkeylist[0][2]) == down+1:                    
+                                f.write(" - XP:" + str(wmxp*wmno) + '<br>')
 
                         if len(wmti) > 0:
                             for t in wmti:
@@ -4442,8 +4443,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                     wm_total_treasure['gems'] = wm_total_treasure['gems'] + treasure['gems']
                                     wm_total_treasure['jewellery'] = wm_total_treasure['jewellery'] + treasure['jewellery']
                                     wm_total_treasure['magic'] = wm_total_treasure['magic'] + treasure['magic']
-
-                                    f.write("Treasure:" + str(treasure) + '<br>')
+                                    if abs(wmkeylist[0][2]) == down+1:                    
+                                        f.write("Treasure:" + str(treasure) + '<br>')
 
                 #got to do valuations if there are any, but probably not
                 #have to get WM to carry magic if they have too
