@@ -4070,8 +4070,6 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                             print(str(room_stack['shape_dict'][room]['contents']))
                         if abs(keylist[0][2]) == down + 1:
                             f.write('Empty<br>')
-                            
-                        f.write('Empty<br>')
                     else:
                         for key in room_stack['shape_dict'][room]['contents']:
                             if key == 'monster' or key == 'treasure' or key == 'trap':
