@@ -4193,7 +4193,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                                     if len(treasure_list) > 0:
                                         if inlair:
-                                            f.write('<b>Monster Lair Treasure:</b>')
+                                            f.write('<i>Monster Lair Treasure:</i>')
                                             f.write(str(monster_treasure) + '<br>')
                                             f.write(str(monster_valuations) + '<br>')
                                             f.write('<br>')
