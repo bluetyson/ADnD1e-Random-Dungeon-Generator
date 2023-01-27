@@ -4498,14 +4498,15 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             f.write('Jewellery: ' + str(jewellery_total) + '<br>')
             f.write('Magic: ' + str(magic_total) + '<br>')
             f.write('Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total + magic_total))
-            f.write('banana')
-            
+
             #end of page
             ##put links here
             f.write('<br>')
             for link in range(down):
                
                 url = 'dungeon_' + str(link+1) + '.html'
+                f.write(url)
+                f.write('banana')
                 #print(url)
                 #print('banana')
                 
