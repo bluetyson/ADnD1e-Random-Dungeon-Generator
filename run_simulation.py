@@ -4398,7 +4398,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                                     wm_total_treasure['jewellery'] = wm_total_treasure['jewellery'] + treasure['jewellery']
                                     wm_total_treasure['magic'] = wm_total_treasure['magic'] + treasure['magic']
 
-                                    f.write("Treasure:" + str(treasure) + '<br>')
+                                    f.write("Treasure:" + str(treasure) + '<br><br>')
 
                 #got to do valuations if there are any, but probably not
                 #have to get WM to carry magic if they have too
