@@ -4356,10 +4356,11 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                             if len(treasure_list) > 0:
                                 if inlair:
-                                    f.write('<h5>Wet Monster Lair Treasure:</h5>')
-                                    f.write(str(monster_treasure) + '<br>')
-                                    f.write(str(monster_valuations) + '<br>')
-                                    f.write('<br>')
+                                    if abs(keylist[0][2]) == down + 1:
+                                        f.write('<h5>Wet Monster Lair Treasure:</h5>')
+                                        f.write(str(monster_treasure) + '<br>')
+                                        f.write(str(monster_valuations) + '<br>')
+                                        f.write('<br>')
 
                                 total_treasure_monster['copper'] = total_treasure_monster['copper'] + monster_treasure['copper']
                                 total_treasure_monster['silver'] = total_treasure_monster['silver'] + monster_treasure['silver']
@@ -4389,8 +4390,10 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 wm_total_treasure = {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
                 f.write('<br>')
                 for wm in range(wandering_monster_stack['key_count']):
-                    f.write('<b>Wandering Monster ' + str(wm) + ': </b>')
-                    f.write(str(wandering_monster_stack[wm+1]) + ' ')
+                    wmkeylist = list(wandering_monster_stack[wm+1].keys())
+                    if abs(wmkeylist[0][2]) == down+1:                    
+                        f.write('<b>Wandering Monster ' + str(wm) + ': </b>')
+                        f.write(str(wandering_monster_stack[wm+1]) + ' ')
 
                     for key in wandering_monster_stack[wm+1]:
                         #f.write("key" + str(key) + '<br>')
