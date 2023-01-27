@@ -359,23 +359,22 @@ def cleric_choice(level):
     sixth_level = ["Aerial Servant", "Animate Object",  "Blade Barrier","Conjure Animals", "Find The Path","Heal","Part Water","Speak With Monsters","Stone Tell", "Word Of Recall"]
     seventh_level = [ "Astral Spell","Control Weather", "Earthquake","Gate",  "Holy (Unholy) Word","Regenerate", "Restoration", "Resurrection", "Symbol", "Wind Walk"]
 
-    def random_spell(level):
-        if level == 1:
-            return random.choice(first_level)
-        elif level == 2:
-            return random.choice(second_level)
-        elif level == 3:
-            return random.choice(third_level)
-        elif level == 4:
-            return random.choice(fourth_level)
-        elif level == 5:
-            return random.choice(fifth_level)
-        elif level == 6:
-            return random.choice(sixth_level)
-        elif level == 7:
-            return random.choice(seventh_level)
-        else:
-            return "Invalid Level"
+    if level == 1:
+        return random.choice(first_level)
+    elif level == 2:
+        return random.choice(second_level)
+    elif level == 3:
+        return random.choice(third_level)
+    elif level == 4:
+        return random.choice(fourth_level)
+    elif level == 5:
+        return random.choice(fifth_level)
+    elif level == 6:
+        return random.choice(sixth_level)
+    elif level == 7:
+        return random.choice(seventh_level)
+    else:
+        return "Invalid Level"
 
 def druid_choice(level):
     druid = {1: ['Animals Friendship',
