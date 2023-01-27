@@ -350,6 +350,119 @@ def create_party(level):
 
     return party_members
 
+CLERICS
+
+def cleric_choice(level):
+    first_level = ["Bless", "Command", "Create Water", "Cure Light Wounds", "Detect Evil", "Detect Magic", "Light", "Protection From Evil", "Purify Food & Drink", "Remove Fear", "Resist Cold", "Sanctuary"]
+    second_level = ["Augury", "Chant", "Detect Charm", "Find Traps", "Hold Person", "Know Alignment", "Resist Fire", "Silence 15 Radius", "Slow Poison","Snake Charm","Speak With Animals","Spiritual Hammer"]
+    third_level = ["Animate Dead", "Continual Light","Create Food & Water", "Cure Blindness", "Cure Disease", "Dispel Magic", "Feign Death","Glyph Of Warding", "Locate Object", "Prayer", "Remove Curse",  "Speak With Dead"]
+    fourth_level ="Cure Serious Wounds", "Detect Lie", "Cure Critical Wounds","Divination","Exorcise","Lower Water","Neutralize Poison","Protection from Evil 10 Radius","Speak With Plants","Sticks To Snakes","Tongues"]
+    fifth_level = ["Atonement", "Commune", "Cure Critical Wounds","Dispel Evil", "Earthquake", "Flame Strike", "Insect Plague", "Plane Shift", "Quest", "Raise Dead","True Seeing"]
+    sixth_level = ["Aerial Servant", "Animate Object",  "Blade Barrier","Conjure Animals", "Find The Path","Heal","Part Water","Speak With Monsters","Stone Tell", "Word Of Recall"]
+    seventh_level = [ "Astral Spell","Control Weather", "Earthquake","Gate",  "Holy (Unholy) Word","Regenerate", "Restoration", "Resurrection", "Symbol", "Wind Walk"]
+
+    def random_spell(level):
+        if level == 1:
+            return random.choice(first_level)
+        elif level == 2:
+            return random.choice(second_level)
+        elif level == 3:
+            return random.choice(third_level)
+        elif level == 4:
+            return random.choice(fourth_level)
+        elif level == 5:
+            return random.choice(fifth_level)
+        elif level == 6:
+            return random.choice(sixth_level)
+        elif level == 7:
+            return random.choice(seventh_level)
+        else:
+            return "Invalid Level"
+
+def druid_choice(level):
+    druid = {1: ['Animals Friendship',
+    'Detect Magic',
+    'Detect Snares & Pits',
+    'Entangle',
+    'Faerie Fire',
+    'Invisibility To Animals',
+    'Locate Animals',
+    'Pass Without Trace',
+    'Predict Weather',
+    'Purify Water',
+    'Shillelagh',
+    'Speak With Animals'],
+    2: ['Barkskin',
+    'Charm Person/Mammal',
+    'Create Water',
+    'Cure Light Wounds',
+    'Feign Death',
+    'Fire Trap',
+    'Heat Metal',
+    'Locate Plants',
+    'Obscurement',
+    'Produce Flame',
+    'Trip',
+    'Warp Wood'],
+    3: ['Call Lightning',
+    'Cure Disease',
+    'Hold Animal',
+    'Neutralize Poison',
+    'Plant Growth',
+    'Protection From Fire',
+    'Pyrotechnics',
+    'Snare',
+    'Stone Shape',
+    'Summon Insects',
+    'Tree',
+    'Water Breathing'],
+    4: ['Animals Summoning I',
+    'Call Woodland Beings',
+    'Control Temperature',
+    'Cure Serious Wounds',
+    'Dispel Magic',
+    'Hallucinatory Forest',
+    'Hold Plant',
+    'Plant Door',
+    'Produce Fire',
+    'Prot. From Lightning',
+    'Repel Insects',
+    'Speak With Plants'],
+    5: ['Animals Growth',
+    'Animals Summoning II',
+    'Anti-Plant Shell',
+    'Commune With Nature',
+    'Control Winds',
+    'Insect Plague',
+    'Pass Plant',
+    'Sticks To Snakes',
+    'Trans Rock To Mud',
+    'Wall Of Fire'],
+    6: ['Animals Summoning III',
+    'Anti-Animals Shell',
+    'Conjure Fire Elemental',
+    'Cure Critical Wounds',
+    'Feeblemind',
+    'Fire Seeds',
+    'Transport Via Plants',
+    'Turn Wood',
+    'Wall Of Thorns',
+    'Weather Summoning'],
+    7: ['Animate Rock',
+    'Chariot Of Sustarre',
+    'Confusion',
+    'Conjure Earth Elemental',
+    'Control Weather',
+    'Creeping Doom',
+    'Finger Of Death',
+    'Fire Storm',
+    'Reincarnate',
+    'Trans Metal To Wood']
+    }
+
+    return random.choice(druid[level])
+
+
 def select_human(level):
     h = roll_dice(1,100)
     if h <= 25:
@@ -371,3 +484,6 @@ if __name__ == "__main__":
 
     party_members = create_party(character_level)
 
+    roll = roll_dice(1,7)
+    print(cleric_choice(roll))
+    print(druid_choice(roll))
