@@ -4504,7 +4504,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             f.write('Gems: ' + str(gem_total) + '<br>')
             f.write('Jewellery: ' + str(jewellery_total) + '<br>')
             f.write('Magic: ' + str(magic_total) + '<br>')
-            f.write('Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total + magic_total))
+            f.write('<b>Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total + magic_total) + '</b>')
 
             f.write('<br><br>')
             for link in range(zwidth-1):                
