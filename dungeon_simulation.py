@@ -4063,10 +4063,14 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                     #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
 
-                    f.write('<br><b>Key ' + str(room) + ': </b>')
+                    if abs(keylist[0][2]) == down + 1:
+                        f.write('<br><b>Key ' + str(room) + ': </b>')
                     if 'empty' in room_stack['shape_dict'][room]['contents']:
                         if VERBOSITY:
                             print(str(room_stack['shape_dict'][room]['contents']))
+                        if abs(keylist[0][2]) == down + 1:
+                            f.write('<br><b>Key ' + str(room) + ': </b>')
+                            
                         f.write('Empty<br>')
                     else:
                         for key in room_stack['shape_dict'][room]['contents']:
