@@ -4196,7 +4196,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                             f.write('<i>Monster Lair Treasure:</i>')
                                             f.write(str(monster_treasure) + '<br>')
                                             f.write(str(monster_valuations) + '<br>')
-                                            f.write('<br>')
+                                            #f.write('<br>')
 
                                         total_treasure_monster['copper'] = total_treasure_monster['copper'] + monster_treasure['copper']
                                         total_treasure_monster['silver'] = total_treasure_monster['silver'] + monster_treasure['silver']
