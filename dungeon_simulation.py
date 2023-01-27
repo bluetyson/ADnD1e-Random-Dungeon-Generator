@@ -4062,6 +4062,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                             f.write(str(room_stack['shape_dict'][room]) + '<br>')
                         else:
                             print(down, countroom, keylist[0],keylist[0],2)
+                            print("countroom quitting")
                             quit()
                     #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
 
