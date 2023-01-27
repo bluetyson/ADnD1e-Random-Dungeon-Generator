@@ -4103,7 +4103,8 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                                     
                                         if l <= lairtry:
                                             inlair = True
-                                            f.write(' is in lair: ' + str(inlair)  + '<br>')
+                                            if VERBOSITY:
+                                                f.write(' is in lair: ' + str(inlair)  + '<br>')
                                             
                                     
                                     if inlair:
@@ -4170,10 +4171,10 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
 
                                     if len(treasure_list) > 0:
                                         if inlair:
-                                            f.write('<h5>Monster Lair Treasure:</h5>')
+                                            f.write('<i>Monster Lair Treasure:</i>')
                                             f.write(str(monster_treasure) + '<br>')
                                             f.write(str(monster_valuations) + '<br>')
-                                            f.write('<br>')
+                                            #f.write('<br>')
 
                                         total_treasure_monster['copper'] = total_treasure_monster['copper'] + monster_treasure['copper']
                                         total_treasure_monster['silver'] = total_treasure_monster['silver'] + monster_treasure['silver']
@@ -4347,8 +4348,8 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                 wm_xp_total = 0
                 wm_total_treasure = {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
                 for wm in range(wandering_monster_stack['key_count']):
-                    f.write('<h4>Wandering Monster: ' + str(wm) + '</h4>')
-                    f.write(str(wandering_monster_stack[wm+1]) + '<br>')
+                    f.write('<b>Wandering Monster ' + str(wm) + ': </b>')
+                    f.write(str(wandering_monster_stack[wm+1]) + ' ')
                     for key in wandering_monster_stack[wm+1]:
                         #f.write("key" + str(key) + '<br>')
                         #for subkey in wandering_monster_stack[wm+1]:
@@ -4381,7 +4382,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                             #wmlair = wmlair.replace('%','')
                             #wmlair = int(wmlair)
                             wmti = wandering_monster_stack[wm+1][key]['treasure_individual']
-                            f.write("XP:" + str(wmxp*wmno) + '<br>')
+                            f.write(" - XP:" + str(wmxp*wmno) + '<br>')
 
                         if len(wmti) > 0:
                             for t in wmti:
@@ -4401,18 +4402,17 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
 
                 #got to do valuations if there are any, but probably not
                 #have to get WM to carry magic if they have too
-                f.write('<br>' + "Monster Total XP:" + str(m_xp_total) + '<br>')                            
-                f.write('<br>' + "Monster Total Treasure:" + str(total_treasure_monster) + '<br>')                            
-                f.write('<br>' + "Monster Total Valuations:" + str(total_valuations_monster) + '<br>')                                        
+                f.write('<br><b>Full Dungeon Stats:</b><br>')                            
+                f.write('<br>' + "Monster Total XP: " + str(m_xp_total) + '<br>')                            
+                f.write('' + "Monster Total Treasure: " + str(total_treasure_monster) + " Total Valuations: " + str(total_valuations_monster) + '<br>')                            
 
-                f.write('<br>' + "Wandering Monster Total XP:" + str(wm_xp_total) + '<br>')                            
-                f.write('<br>' + "Wandering Monster Total Treasure:" + str(wm_total_treasure) + '<br>')                            
-                f.write('<br>' + "Wandering Monster Subtable:" + str(wandering_monster_subtable) + '<br>')  
+                f.write('<br>' + "Wandering Monster Total XP: " + str(wm_xp_total) + '<br>')                            
+                f.write('' + "Wandering Monster Total Treasure: " + str(wm_total_treasure) + '<br>')                            
+                if VERBOSITY:
+                    f.write('<br>' + "Wandering Monster Subtable:" + str(wandering_monster_subtable) + '<br>')  
 
                 f.write('<br>' + "Room Total Treasure:" + str(total_treasure) + '<br>')                            
-                f.write('<br>' + "Room Total Gems:" + str(sum([gem for gem in valuations['gems']])) + '<br>')                                        
-                f.write('<br>' + "Room Total Jewellery:" + str(sum([j for j in valuations['jewellery']])) + '<br>')                                        
-                f.write('<br>' + "Room Total Magic:" + str(sum([m for m in valuations['magic']])) + '<br>') 
+                f.write('' + "Room Total Gems: " + str(sum([gem for gem in valuations['gems']])) + "Room Total Jewellery: " + str(sum([j for j in valuations['jewellery']])) + "Room Total Magic:" + str(sum([m for m in valuations['magic']])) + '<br>')                                        
 
                 #want a wm count
                 #want a monster count
