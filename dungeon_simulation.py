@@ -4359,7 +4359,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                         if VERBOSITY:                                                
                             print("HAS WATER TO DO")
                         water_dict[room] = room_stack['shape_dict']
-
+            #if down == 0:
             if len(wandering_monster_stack) > 0:
                 if VERBOSITY:                                          
                     print("roll numbers:",wandering_monster_rolls)
@@ -4500,6 +4500,13 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             f.write('Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total + magic_total))
 
             #end of page
+            ##put links here
+            f.write('<br>')
+            for link in range(down):
+                f.write(r'<a href="dungeon_' + str(link+1) + r'.html"'> + 'Level ' + str(link+1) + '</a>')
+
+            str(down+1)
+
             f.write(strend)
 
             df['Coins'] = [gold]
