@@ -4499,19 +4499,11 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             f.write('Magic: ' + str(magic_total) + '<br>')
             f.write('Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total + magic_total))
 
-            #end of page
-            ##put links here
-            f.write('<br>')
-            #for link in range(down):
+            f.write('<br><br>'')
             for link in range(zwidth-1):                
                 url = 'dungeon_' + str(link+1) + '.html'
-                #f.write(url)
-                #f.write('banana')
-                #print(url)
-                #print('banana')
-                
-                f.write('<a href="' + url + '"' + '>Level ' + str(link+1) + '</a>' + '<br>')
-
+                f.write('<a href="' + url + '"' + '>Dungeon Level ' + str(link+1) + '</a>' + '<br>')
+            #end of page
             f.write(strend)
 
             df['Coins'] = [gold]
