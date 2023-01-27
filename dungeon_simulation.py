@@ -4425,7 +4425,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                 #got to do valuations if there are any, but probably not
                 #have to get WM to carry magic if they have too
-                f.write('<br>' + "<b>Full Dungeon Stats:</b><br>')                            
+                f.write('<br><b>Full Dungeon Stats:</b><br>')                            
                 f.write('<br>' + "Monster Total XP: " + str(m_xp_total) + '<br>')                            
                 f.write('' + "Monster Total Treasure: " + str(total_treasure_monster) + " Total Valuations: " + str(total_valuations_monster) + '<br>')                            
 
