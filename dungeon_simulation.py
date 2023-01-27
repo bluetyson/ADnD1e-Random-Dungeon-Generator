@@ -4060,6 +4060,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                         if keylist[0][2] == down + 1:
                             f.write('<h4>Data: ' + str(room) + '</h4>')
                             f.write(str(room_stack['shape_dict'][room]) + '<br>')
+                        else:
+                            quit()
                     #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
 
                     f.write('<br><b>Key ' + str(room) + ': </b>')
