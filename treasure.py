@@ -288,6 +288,327 @@ def scroll_choice():
     elif roll <= 100:        
         return 1, 'Curse', 0, sc
 
+def cleric_choice(level):
+    first_level = ["Bless", "Command", "Create Water", "Cure Light Wounds", "Detect Evil", "Detect Magic", "Light", "Protection From Evil", "Purify Food & Drink", "Remove Fear", "Resist Cold", "Sanctuary"]
+    second_level = ["Augury", "Chant", "Detect Charm", "Find Traps", "Hold Person", "Know Alignment", "Resist Fire", "Silence 15 Radius", "Slow Poison","Snake Charm","Speak With Animals","Spiritual Hammer"]
+    third_level = ["Animate Dead", "Continual Light","Create Food & Water", "Cure Blindness", "Cure Disease", "Dispel Magic", "Feign Death","Glyph Of Warding", "Locate Object", "Prayer", "Remove Curse",  "Speak With Dead"]
+    fourth_level = ["Cure Serious Wounds", "Detect Lie", "Cure Critical Wounds","Divination","Exorcise","Lower Water","Neutralize Poison","Protection from Evil 10 Radius","Speak With Plants","Sticks To Snakes","Tongues"]
+    fifth_level = ["Atonement", "Commune", "Cure Critical Wounds","Dispel Evil", "Earthquake", "Flame Strike", "Insect Plague", "Plane Shift", "Quest", "Raise Dead","True Seeing"]
+    sixth_level = ["Aerial Servant", "Animate Object",  "Blade Barrier","Conjure Animals", "Find The Path","Heal","Part Water","Speak With Monsters","Stone Tell", "Word Of Recall"]
+    seventh_level = [ "Astral Spell","Control Weather", "Earthquake","Gate",  "Holy (Unholy) Word","Regenerate", "Restoration", "Resurrection", "Symbol", "Wind Walk"]
+
+    if level == 1:
+        return random.choice(first_level)
+    elif level == 2:
+        return random.choice(second_level)
+    elif level == 3:
+        return random.choice(third_level)
+    elif level == 4:
+        return random.choice(fourth_level)
+    elif level == 5:
+        return random.choice(fifth_level)
+    elif level == 6:
+        return random.choice(sixth_level)
+    elif level == 7:
+        return random.choice(seventh_level)
+    else:
+        return "Invalid Level"
+
+def druid_choice(level):
+    druid = {1: ['Animals Friendship',
+    'Detect Magic',
+    'Detect Snares & Pits',
+    'Entangle',
+    'Faerie Fire',
+    'Invisibility To Animals',
+    'Locate Animals',
+    'Pass Without Trace',
+    'Predict Weather',
+    'Purify Water',
+    'Shillelagh',
+    'Speak With Animals'],
+    2: ['Barkskin',
+    'Charm Person/Mammal',
+    'Create Water',
+    'Cure Light Wounds',
+    'Feign Death',
+    'Fire Trap',
+    'Heat Metal',
+    'Locate Plants',
+    'Obscurement',
+    'Produce Flame',
+    'Trip',
+    'Warp Wood'],
+    3: ['Call Lightning',
+    'Cure Disease',
+    'Hold Animal',
+    'Neutralize Poison',
+    'Plant Growth',
+    'Protection From Fire',
+    'Pyrotechnics',
+    'Snare',
+    'Stone Shape',
+    'Summon Insects',
+    'Tree',
+    'Water Breathing'],
+    4: ['Animals Summoning I',
+    'Call Woodland Beings',
+    'Control Temperature',
+    'Cure Serious Wounds',
+    'Dispel Magic',
+    'Hallucinatory Forest',
+    'Hold Plant',
+    'Plant Door',
+    'Produce Fire',
+    'Prot. From Lightning',
+    'Repel Insects',
+    'Speak With Plants'],
+    5: ['Animals Growth',
+    'Animals Summoning II',
+    'Anti-Plant Shell',
+    'Commune With Nature',
+    'Control Winds',
+    'Insect Plague',
+    'Pass Plant',
+    'Sticks To Snakes',
+    'Trans Rock To Mud',
+    'Wall Of Fire'],
+    6: ['Animals Summoning III',
+    'Anti-Animals Shell',
+    'Conjure Fire Elemental',
+    'Cure Critical Wounds',
+    'Feeblemind',
+    'Fire Seeds',
+    'Transport Via Plants',
+    'Turn Wood',
+    'Wall Of Thorns',
+    'Weather Summoning'],
+    7: ['Animate Rock',
+    'Chariot Of Sustarre',
+    'Confusion',
+    'Conjure Earth Elemental',
+    'Control Weather',
+    'Creeping Doom',
+    'Finger Of Death',
+    'Fire Storm',
+    'Reincarnate',
+    'Trans Metal To Wood']
+    }
+
+    return random.choice(druid[level])
+
+def magicuser_choice(level):
+    magicuser = {1: ['Affect Normal Fires',
+    'Burning Hands',
+    'Charm Person',
+    'Comprehend Languages',
+    'Dancing Lights',
+    'Detect Magic',
+    'Enlarge',
+    'Erase',
+    'Feather Fall',
+    'Find Familiar',
+    'Friends',
+    'Hold Portal',
+    'Identify',
+    'Jump',
+    'Light',
+    'Magic Missile',
+    'Mending',
+    'Message',
+    "Nystul's Magic Aura",
+    'Protection From Evil',
+    'Push',
+    'Read Magic',
+    'Shield',
+    'Shocking Grasp',
+    'Sleep',
+    'Spider Climb',
+    "Tenser's Floating Disc",
+    'Unseen Servant',
+    'Ventriloquism',
+    'Write'],
+    2: ['Audible Glamour',
+    'Continual Light',
+    "Darkness 15' Radius",
+    'Detect Evil',
+    'Detect Invisibility',
+    'ESP',
+    'Fools Gold',
+    'Forget',
+    'Invisibility',
+    'Knock',
+    "Leomund's Trap",
+    'Levitate',
+    'Locate Object',
+    'Magic Mouth',
+    'Mirror Image',
+    'Pyrotechnics',
+    'Ray Of Enfeeblement',
+    'Rope Trick',
+    'Scare',
+    'Shatter',
+    'Stinking Cloud',
+    'Strength',
+    'Web',
+    'Wizard Lock'],
+    3: ['Blink',
+    'Clairaudience',
+    'Clairvoyance',
+    'Dispel Magic',
+    'Explosive Runes',
+    'Feign Death',
+    'Fireball',
+    'Flame Arrow',
+    'Fly',
+    'Gust Of Wind',
+    'Haste',
+    'Hold Person',
+    'Infravision',
+    "Invisibility 10' Radius",
+    "Leomund's Tiny Hut",
+    'Lightning Bolt',
+    'Monster Summoning I',
+    'Phantasmal Force',
+    "Protection From Evil 10' Radius",
+    'Protection From Normal Missiles',
+    'Slow',
+    'Suggestion',
+    'Tongues',
+    'Water Breathing'],
+    4: ['Charm Monster',
+    'Confusion',
+    'Dig',
+    'Dimension Door',
+    'Enchanted Weapon',
+    'Extension I',
+    'Fear',
+    'Fire Charm',
+    'Fire Shield',
+    'Fire Trap',
+    'Fumble',
+    'Hallucinatory Terrain',
+    'Ice Storm',
+    'Massmorph',
+    'Minor Globe Of Invulnerability',
+    'Monster Summoning II',
+    'Plant Growth',
+    'Polymorph Other',
+    'Polymorph Self',
+    "Rary's Mnemonic Enhancer",
+    'Remove Curse',
+    'Wall Of Fire',
+    'Wall Of Ice',
+    'Wizard Eye'],
+    5: ['Airy Water',
+    'Animals Growth',
+    'Animate Dead',
+    "Bigby's Interposing Hand",
+    'Cloudkill',
+    'Conjure Elemental',
+    'Cone Of Cold',
+    'Contact Other Plane',
+    'Distance Distortion',
+    'Extension II',
+    'Feeblemind',
+    'Hold Monster',
+    "Leomund's Secret Chest",
+    'Magic Jar',
+    'Monster Summoning III',
+    "Mordenkainen's Faithful Hound",
+    'Passwall',
+    'Stone Shape',
+    'Telekinesis',
+    'Teleport',
+    'Transmute Rock To Mud',
+    'Wall Of Force',
+    'Wall Of Iron',
+    'Wall Of Stone'],
+    6: ['Anti-Magic Shell',
+    'Bigbys Forceful Hand',
+    'Control Weather',
+    'Death Spell',
+    'Disintegrate',
+    'Enchant An Item',
+    'Extension III',
+    'Geas',
+    'Glassee',
+    'Globe Of Invulnerability',
+    'Guards And Wards',
+    'Invisible Stalker',
+    'Legend Lore',
+    'Lower Water',
+    'Monster Summoning IV',
+    'Move Earth',
+    'Otilukes Freezing Sphere',
+    'Part Water',
+    'Project Image',
+    'Reincarnation',
+    'Repulsion',
+    'Spiritwrack',
+    'Stone To Flesh',
+    'Tensers Transformation'],
+    7: ['Bigbys Grasping Hand',
+    'Cacodemon',
+    'Charm Plants',
+    'Delayed Blast Fireball',
+    'Drawmijs Instant Summons',
+    'Duo-Dimension',
+    'Limited Wish',
+    'Mass Invisibility',
+    'Monster Summoning V',
+    'Mordenkainens Sword',
+    'Phase Door',
+    'Power Word, Stun',
+    'Reverse Gravity',
+    'Simulacrum',
+    'Statue',
+    'Vanish'],
+    8: ['Antipathy/Sympathy',
+    'Bigbys Clenched Fist',
+    'Clone',
+    'Glassteel',
+    'Incendiary Cloud',
+    'Mass Charm',
+    'Maze',
+    'Mind Blank',
+    'Monster Summoning VI',
+    'Ottos Irresistible Dance',
+    'Permanency',
+    'Polymorph Any Object',
+    'Power Word, Blind',
+    'Sertens Spell Immunity',
+    'Symbol',
+    'Trap The Soul'],
+    9: ['Astral Spell',
+    'Bigbys Crushing Hand',
+    'Gate',
+    'Imprisonment',
+    'Meteor Swarm',
+    'Monster Summoning VII',
+    'Power Word, Kill',
+    'Prismatic Sphere',
+    'Shape Change',
+    'Temporal Stasis',
+    'Time Stop',
+    'Wish']}
+
+    return random.choice(magicuser[level])
+
+
+def illusionist_choice(level):
+    illusionist =  {
+    1: ["Audible Glamour", "Change Self", "Colour Spray", "Dancing Lights", "Darkness", "Detect Illusion", "Detect Invisibility", "Gaze Reflection"],
+    2: ["Blindness", "Blur", "Deafness", "Detect Magic", "Fog Cloud", "Hypnotic Pattern", "Improved Phantasmal Force", "Invisibility"],
+    3: ["Continual Darkness", "Continual Light", "Dispel Illusion", "Emotion", "Hallucinatory Terrain", "Illusionary Script", "Invisibility 10' Radius", "Non-detection"],
+    4: ["Confusion", "Dispel Exhaustion", "Fear", "Improved Invisibility", "Massmorph", "Minor Creation", "Phantasmal Killer", "Shadow Monsters"],
+    5: ["Chaos", "Demi-Shadow Monsters", "Major Creation", "Maze", "Projected Image", "Shadow Door", "Shades", "Summon Shadow"],
+    6: ["Conjure Animals", "Demi-Shadow Magic", "Mass Suggestion", "Permanent Illusion", "Programmed Illusion", "True Sight", "Veil"],
+    7: ["Alter Reality", "Astral Spell", "Prismatic Spray", "Prismatic Wall", "Vision"]
+}
+    return random.choice(illusionist[level])
+
+
 def ring_choice():
     dice_roll = roll_dice(1, 100)
     if dice_roll <= 6:
@@ -1374,7 +1695,21 @@ def select_magic_item():
         item = "Scrolls (B.)"
 
         no, rnge, xp, class_use = scroll_choice()
-        details = str(no) + '-' + str(rnge) + '-' + class_use
+        individual_spells = []
+        for s in range(rnge):
+            if class_use == 'MAGIC-USER':
+                ispell = magicuser_choice(range)
+            elif class_use == 'ILLUSIONIST':
+                if rnge > 7:
+                    rnge = 7
+                ispell = illusionist_choice(range)
+            elif class_use == 'CLERIC':
+                ispell = cleric_choice(range)
+            else:
+                ispell = druid_choice(range)
+            individual_spells.append(ispell)
+
+        details = str(no) + '-' + str(rnge) + '-' + class_use + '-' + str(individual_spells)
         if xp == -1:
             xp = 100 * no * rnge
             val = 3 * xp
