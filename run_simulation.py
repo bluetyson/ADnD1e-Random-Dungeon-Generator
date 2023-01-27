@@ -4039,11 +4039,12 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                 m_xp_total = 0
 
                 for room in room_stack['shape_dict']:
-                    f.write('<h4>Data: ' + str(room) + '</h4>')
-                    f.write(str(room_stack['shape_dict'][room]) + '<br>')
-                    #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
+                    if VERBOSITY:
+                        f.write('<h4>Data: ' + str(room) + '</h4>')
+                        f.write(str(room_stack['shape_dict'][room]) + '<br>')
+                        #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
 
-                    f.write('<h4>Key: ' + str(room) + '</h4>')
+                    f.write('<br><b>Key ' + str(room) + ': </b>')
                     if 'empty' in room_stack['shape_dict'][room]['contents']:
                         if VERBOSITY:
                             print(str(room_stack['shape_dict'][room]['contents']))
@@ -4097,7 +4098,8 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                                     if lairtry > 0:
                                         l = roll_dice(1,100)
                                         individual = ['I','J','K','L','M','N']
-                                        f.write("LairTry:" + str(l) + ' from ' + str(lairtry))
+                                        if VERBOSITY:
+                                            f.write("LairTry:" + str(l) + ' from ' + str(lairtry))
                                     
                                         if l <= lairtry:
                                             inlair = True
@@ -4197,6 +4199,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                                 #print(room_stack['shape_dict'][room]['pool'])
                                 wett = 'pool'
                                 monster_details = True
+                            f.write("water:" + str(room_stack['shape_dict'][room]['pool']) + '<br>')                                
                         if 'lake' in room_stack['shape_dict'][room]:
                             #print('lake')
                             #print(room_stack['shape_dict'][room]['lake'])
@@ -4204,7 +4207,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                                 #print(room_stack['shape_dict'][room]['lake'])
                                 wett = 'lake'
                                 monster_details = True
-
+                            f.write("water:" + str(room_stack['shape_dict'][room]['lake']) + '<br>')                                
                         if monster_details:
                             #room_stack['shape_dict'][room][wet]
                             ## doing second round of monster accounting
@@ -4477,6 +4480,13 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
             f.write('Jewellery: ' + str(jewellery_total) + '<br>')
             f.write('Magic: ' + str(magic_total) + '<br>')
             f.write('Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total + magic_total))
+
+            f.write('<br><br>')
+            for link in range(zwidth-1):                
+                url = 'dungeon_' + str(link+1) + '.html'
+                f.write('<a href="' + url + '"' + '>Dungeon Level ' + str(link+1) + '</a>' + '<br>')
+            #end of page
+            f.write(strend)
 
             #end of page
             f.write(strend)
