@@ -350,6 +350,7 @@ def create_party(level):
 
     return party_members
 
+
 def select_human(level):
     h = roll_dice(1,100)
     if h <= 25:
@@ -370,4 +371,10 @@ if __name__ == "__main__":
         character_level = 1
 
     party_members = create_party(character_level)
+
+    roll = roll_dice(1,7)
+    print(cleric_choice(roll))
+    print(druid_choice(roll))
+    print(illusionist_choice(roll))
+    print(magicuser_choice(roll))
 
