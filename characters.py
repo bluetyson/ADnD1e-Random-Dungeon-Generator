@@ -469,7 +469,7 @@ def illusionist_choice(level):
     6: ["Conjure Animals", "Demi-Shadow Magic", "Mass Suggestion", "Permanent Illusion", "Programmed Illusion", "True Sight", "Veil"],
     7: ["Alter Reality", "Astral Spell", "Prismatic Spray", "Prismatic Wall", "Vision"]
 }
-    return random.choice(llusionist[level])
+    return random.choice(illusionist[level])
 
 def select_human(level):
     h = roll_dice(1,100)
@@ -496,4 +496,4 @@ if __name__ == "__main__":
     print(cleric_choice(roll))
     print(druid_choice(roll))
     print(illusionist_choice(roll))
-    
+
