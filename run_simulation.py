@@ -4044,7 +4044,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                         f.write(str(room_stack['shape_dict'][room]) + '<br>')
                         #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
 
-                    f.write('<h4>Key: ' + str(room) + '</h4>')
+                    f.write('<br><b>Key ' + str(room) + ': </b>')
                     if 'empty' in room_stack['shape_dict'][room]['contents']:
                         if VERBOSITY:
                             print(str(room_stack['shape_dict'][room]['contents']))
@@ -4098,7 +4098,8 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                                     if lairtry > 0:
                                         l = roll_dice(1,100)
                                         individual = ['I','J','K','L','M','N']
-                                        f.write("LairTry:" + str(l) + ' from ' + str(lairtry))
+                                        if VERBOSITY:
+                                            f.write("LairTry:" + str(l) + ' from ' + str(lairtry))
                                     
                                         if l <= lairtry:
                                             inlair = True
