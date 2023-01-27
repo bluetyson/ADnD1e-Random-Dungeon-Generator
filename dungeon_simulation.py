@@ -3901,7 +3901,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         
         with open('dungeon_' + str(down+1) + '.html','w') as f:
             #f.write(strhead)
-            f.write(usestrhead)
+            f.write(strusehead)
             
             for j in range(downlist[down].shape[1]):            
                 f.write('<TR>')
