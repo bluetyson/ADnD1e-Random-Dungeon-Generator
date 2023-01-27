@@ -4054,7 +4054,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 countroom = 0
                 for room in room_stack['shape_dict']:
                     countroom += 1
-                    print(keylist)
+                    print(countroom)
                     print(room_stack['shape_dict'])
                     keylist = list(room_stack[countroom].keys())
                     
