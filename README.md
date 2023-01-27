@@ -1,7 +1,7 @@
 ## Advanced Dungeons & Dragons style random dungeon generator
 Convert DMG tables to code to do for wandering around and down to make a dungeon.
 
-- Version 0.82.2
+- Version 0.82.3
 - See blog for more examples and notes as it was worked on https://cosmicheroes.space/blog/index.php/tag/random-dungeon-generator/
 
 # Setup
@@ -9,11 +9,6 @@ Convert DMG tables to code to do for wandering around and down to make a dungeon
 
 # Environment
 - Only non-standard type libraries used are numpy and pandas [the latter to do dungeon accounting csv, not necessary for dungeon generation]
-
-# Binder
-- click the below to fire up a web container environment that lets you run this in your browser
-- you get jupyterlab, just click on the terminal link at the lower left and then type 'python dungeon.py 1' [or however many rolls as you like] and the files created will also be in the main directory, one for each dungeon level.
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/bluetyson/ADnD1e-Random-Dungeon-Generator/HEAD)
 
 # Running
 
@@ -23,6 +18,14 @@ Convert DMG tables to code to do for wandering around and down to make a dungeon
   ```python
   python dungeon.py 3
   ```
+ 
+# Binder
+- click the below to fire up a web container environment that lets you run this in your browser
+- you get jupyterlab, just click on the terminal link at the lower left and then type 'python dungeon.py 1' [or however many rolls as you like] and the files created will also be in the main directory, one for each dungeon level.
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/bluetyson/ADnD1e-Random-Dungeon-Generator/HEAD)
+
+# Binder Example
+  ![image](https://user-images.githubusercontent.com/17399794/215028235-63861c31-867a-4773-88ea-982047b39be4.png)
 
 # Work in progress
 Building things as I go - just using a one roll test for now to see how it goes.
