@@ -4051,10 +4051,14 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                 m_xp_total = 0
 
+                countroom = 0
                 for room in room_stack['shape_dict']:
+                    countroom += 1
                     if VERBOSITY:
-                        f.write('<h4>Data: ' + str(room) + '</h4>')
-                        f.write(str(room_stack['shape_dict'][room]) + '<br>')
+                        keylist = list(room_stack[countroom].keys())
+                        if room_stack[countroom][keylist[0]][2] == down + 1:
+                            f.write('<h4>Data: ' + str(room) + '</h4>')
+                            f.write(str(room_stack['shape_dict'][room]) + '<br>')
                     #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
 
                     f.write('<br><b>Key ' + str(room) + ': </b>')
