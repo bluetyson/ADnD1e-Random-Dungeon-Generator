@@ -4054,16 +4054,13 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 countroom = 0
                 for room in room_stack['shape_dict']:
                     countroom += 1
+                    keylist = list(room_stack[countroom].keys())
                     if VERBOSITY:
-                        keylist = list(room_stack[countroom].keys())
                         print(keylist,room_stack[countroom][keylist[0]])
                         if abs(keylist[0][2]) == down + 1:
                             f.write('<h4>Data: ' + str(room) + '</h4>')
                             f.write(str(room_stack['shape_dict'][room]) + '<br>')
-                        #else:
-                            #print(down, countroom, keylist[0],keylist[0],2)
-                            #print("countroom quitting")
-                            #quit()
+
                     #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
 
                     f.write('<br><b>Key ' + str(room) + ': </b>')
