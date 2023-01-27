@@ -4052,8 +4052,9 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 m_xp_total = 0
 
                 for room in room_stack['shape_dict']:
-                    f.write('<h4>Data: ' + str(room) + '</h4>')
-                    f.write(str(room_stack['shape_dict'][room]) + '<br>')
+                    if VERBOSITY:
+                        f.write('<h4>Data: ' + str(room) + '</h4>')
+                        f.write(str(room_stack['shape_dict'][room]) + '<br>')
                     #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
 
                     f.write('<h4>Key: ' + str(room) + '</h4>')
@@ -4219,6 +4220,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 #print(room_stack['shape_dict'][room]['pool'])
                                 wett = 'pool'
                                 monster_details = True
+                            f.write("water:" + str(room_stack['shape_dict'][room]['pool']) + '<br>')
                         if 'lake' in room_stack['shape_dict'][room]:
                             #print('lake')
                             #print(room_stack['shape_dict'][room]['lake'])
@@ -4226,6 +4228,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 #print(room_stack['shape_dict'][room]['lake'])
                                 wett = 'lake'
                                 monster_details = True
+                            f.write("water:" + str(room_stack['shape_dict'][room]['pool']) + '<br>')
 
                         if monster_details:
                             #room_stack['shape_dict'][room][wet]
