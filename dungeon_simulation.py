@@ -4052,20 +4052,28 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 m_xp_total = 0
 
                 for room in room_stack['shape_dict']:
+                    keylist = list(room_stack[room].keys())
+
                     if VERBOSITY:
-                        f.write('<h4>Data: ' + str(room) + '</h4>')
-                        f.write(str(room_stack['shape_dict'][room]) + '<br>')
+                        print(keylist,room_stack[countroom][keylist[0]])
+                        if abs(keylist[0][2]) == down + 1:
+                            f.write('<h4>Data: ' + str(room) + '</h4>')
+                            f.write(str(room_stack['shape_dict'][room]) + '<br>')
+
                     #f.write("Contents:" + str(room_stack['shape_dict'][room]['contents']))
 
-                    f.write('<br><b>Key ' + str(room) + ': </b>')
+                    if abs(keylist[0][2]) == down + 1:
+                        f.write('<br><b>Key ' + str(room) + ': </b>')
                     if 'empty' in room_stack['shape_dict'][room]['contents']:
                         if VERBOSITY:
                             print(str(room_stack['shape_dict'][room]['contents']))
-                        f.write('Empty<br>')
+                        if abs(keylist[0][2]) == down + 1:
+                            f.write('Empty<br>')
                     else:
                         for key in room_stack['shape_dict'][room]['contents']:
                             if key == 'monster' or key == 'treasure' or key == 'trap':
-                                f.write(str(key) + ":" + str(room_stack['shape_dict'][room]['contents'][key]) + '<br>')
+                                if abs(keylist[0][2]) == down + 1:
+                                    f.write(str(key) + ":" + str(room_stack['shape_dict'][room]['contents'][key]) + '<br>')
                                 if key == 'treasure':
                                     for tkey in total_treasure:
                                         total_treasure[tkey] = total_treasure[tkey] + room_stack['shape_dict'][room]['contents'][key]['type'][tkey]
@@ -4112,12 +4120,14 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                         l = roll_dice(1,100)
                                         individual = ['I','J','K','L','M','N']
                                         if VERBOSITY:
-                                            f.write("LairTry:" + str(l) + ' from ' + str(lairtry))
+                                            if abs(keylist[0][2]) == down + 1:
+                                                f.write("LairTry:" + str(l) + ' from ' + str(lairtry))
                                     
                                         if l <= lairtry:
                                             inlair = True
                                             if VERBOSITY:
-                                                f.write(' is in lair: ' + str(inlair)  + '<br>')
+                                                if abs(keylist[0][2]) == down + 1:
+                                                    f.write(' is in lair: ' + str(inlair)  + '<br>')
                                             
                                     
                                     if inlair:
@@ -4193,10 +4203,11 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                                     if len(treasure_list) > 0:
                                         if inlair:
-                                            f.write('<i>Monster Lair Treasure:</i>')
-                                            f.write(str(monster_treasure) + '<br>')
-                                            f.write(str(monster_valuations) + '<br>')
-                                            #f.write('<br>')
+                                            if abs(keylist[0][2]) == down + 1:
+                                                f.write('<i>Monster Lair Treasure:</i>')
+                                                f.write(str(monster_treasure) + '<br>')
+                                                f.write(str(monster_valuations) + '<br>')
+                                                #f.write('<br>')
 
                                         total_treasure_monster['copper'] = total_treasure_monster['copper'] + monster_treasure['copper']
                                         total_treasure_monster['silver'] = total_treasure_monster['silver'] + monster_treasure['silver']
@@ -4222,7 +4233,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 #print(room_stack['shape_dict'][room]['pool'])
                                 wett = 'pool'
                                 monster_details = True
-                            f.write("water:" + str(room_stack['shape_dict'][room]['pool']) + '<br>')
+                            if abs(keylist[0][2]) == down + 1:                                
+                                f.write("water:" + str(room_stack['shape_dict'][room]['pool']) + '<br>')
                         if 'lake' in room_stack['shape_dict'][room]:
                             #print('lake')
                             #print(room_stack['shape_dict'][room]['lake'])
@@ -4230,7 +4242,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 #print(room_stack['shape_dict'][room]['lake'])
                                 wett = 'lake'
                                 monster_details = True
-                            f.write("water:" + str(room_stack['shape_dict'][room]['lake']) + '<br>')
+                            if abs(keylist[0][2]) == down + 1:                                
+                                f.write("water:" + str(room_stack['shape_dict'][room]['lake']) + '<br>')
 
                         if monster_details:
                             #room_stack['shape_dict'][room][wet]
@@ -4268,11 +4281,14 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                             if lairtry > 0:
                                 l = roll_dice(1,100)
                                 individual = ['I','J','K','L','M','N']
-                                f.write("LairTry:" + str(l) + ' from ' + str(lairtry))
+                                if VERBOSITY:
+                                    if abs(keylist[0][2]) == down + 1:                                
+                                        f.write("LairTry:" + str(l) + ' from ' + str(lairtry))
                             
                                 if l <= lairtry:
                                     inlair = True
-                                    f.write(' is in lair: ' + str(inlair)  + '<br>')
+                                    if abs(keylist[0][2]) == down + 1:                                    
+                                        f.write(' is in lair: ' + str(inlair)  + '<br>')
                                     
                             
                             if inlair:
@@ -4339,10 +4355,11 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                             if len(treasure_list) > 0:
                                 if inlair:
-                                    f.write('<h5>Wet Monster Lair Treasure:</h5>')
-                                    f.write(str(monster_treasure) + '<br>')
-                                    f.write(str(monster_valuations) + '<br>')
-                                    f.write('<br>')
+                                    if abs(keylist[0][2]) == down + 1:
+                                        f.write('<h5>Wet Monster Lair Treasure:</h5>')
+                                        f.write(str(monster_treasure) + '<br>')
+                                        f.write(str(monster_valuations) + '<br>')
+                                        f.write('<br>')
 
                                 total_treasure_monster['copper'] = total_treasure_monster['copper'] + monster_treasure['copper']
                                 total_treasure_monster['silver'] = total_treasure_monster['silver'] + monster_treasure['silver']
@@ -4372,8 +4389,10 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 wm_total_treasure = {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
                 f.write('<br>')
                 for wm in range(wandering_monster_stack['key_count']):
-                    f.write('<b>Wandering Monster ' + str(wm) + ': </b>')
-                    f.write(str(wandering_monster_stack[wm+1]) + ' ')
+                    wmkeylist = list(wandering_monster_stack[wm+1].keys())
+                    if abs(wmkeylist[0][2]) == down+1:                    
+                        f.write('<b>Wandering Monster ' + str(wm) + ': </b>')
+                        f.write(str(wandering_monster_stack[wm+1]) + ' ')
 
                     for key in wandering_monster_stack[wm+1]:
                         #f.write("key" + str(key) + '<br>')
@@ -4407,7 +4426,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                             #wmlair = wmlair.replace('%','')
                             #wmlair = int(wmlair)
                             wmti = wandering_monster_stack[wm+1][key]['treasure_individual']
-                            f.write(" - XP:" + str(wmxp*wmno) + '<br>')
+                            if abs(wmkeylist[0][2]) == down+1:                    
+                                f.write(" - XP:" + str(wmxp*wmno) + '<br>')
 
                         if len(wmti) > 0:
                             for t in wmti:
@@ -4422,8 +4442,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                     wm_total_treasure['gems'] = wm_total_treasure['gems'] + treasure['gems']
                                     wm_total_treasure['jewellery'] = wm_total_treasure['jewellery'] + treasure['jewellery']
                                     wm_total_treasure['magic'] = wm_total_treasure['magic'] + treasure['magic']
-
-                                    f.write("Treasure:" + str(treasure) + '<br>')
+                                    if abs(wmkeylist[0][2]) == down+1:                    
+                                        f.write("Treasure:" + str(treasure) + '<br>')
 
                 #got to do valuations if there are any, but probably not
                 #have to get WM to carry magic if they have too
@@ -4509,6 +4529,13 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             for link in range(zwidth-1):                
                 url = 'dungeon_' + str(link+1) + '.html'
                 f.write('<a href="' + url + '"' + '>Dungeon Level ' + str(link+1) + '</a>' + '<br>')
+
+            f.write('<br><b>Legend</b><br>')                
+            for key in legend_dict:
+                f.write(str(key) + ':' + ' ' + str(legend_dict[key]) + '<br>')
+            for key in background_dict:
+                f.write(str(key) + ':' + ' ' + str(background_dict[key]) + '<br>')
+
             #end of page
             f.write(strend)
 
