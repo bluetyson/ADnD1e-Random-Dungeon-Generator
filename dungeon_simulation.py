@@ -4530,7 +4530,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 url = 'dungeon_' + str(link+1) + '.html'
                 f.write('<a href="' + url + '"' + '>Dungeon Level ' + str(link+1) + '</a>' + '<br>')
 
-            f.write('<b>Legend</b><br>')                
+            f.write('<br><b>Legend</b><br>')                
             for key in legend_dict:
                 f.write(str(key) + ':' + ' ' + str(legend_dict[key]) + '<br>')
             for key in background_dict:
