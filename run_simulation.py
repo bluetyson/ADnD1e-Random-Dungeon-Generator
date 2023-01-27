@@ -4198,6 +4198,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                                 #print(room_stack['shape_dict'][room]['pool'])
                                 wett = 'pool'
                                 monster_details = True
+                            f.write("water:" + str(room_stack['shape_dict'][room]['pool']) + '<br>')                                
                         if 'lake' in room_stack['shape_dict'][room]:
                             #print('lake')
                             #print(room_stack['shape_dict'][room]['lake'])
@@ -4205,7 +4206,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                                 #print(room_stack['shape_dict'][room]['lake'])
                                 wett = 'lake'
                                 monster_details = True
-
+                            f.write("water:" + str(room_stack['shape_dict'][room]['lake']) + '<br>')                                
                         if monster_details:
                             #room_stack['shape_dict'][room][wet]
                             ## doing second round of monster accounting
