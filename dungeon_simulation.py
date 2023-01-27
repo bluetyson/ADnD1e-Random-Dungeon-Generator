@@ -4504,7 +4504,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             f.write('<br>')
             #for link in range(down):
             for link in range(zwidth-1):                
-                #url = 'dungeon_' + str(link+1) + '.html'
+                url = 'dungeon_' + str(link+1) + '.html'
                 #f.write(url)
                 #f.write('banana')
                 #print(url)
