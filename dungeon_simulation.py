@@ -4532,9 +4532,9 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
             f.write('<b>Legend</b><br>')                
             for key in legend_dict:
-                f.write(str(key) + ':' + ' ' + str(legend_dict[key])) + '<br>')
+                f.write(str(key) + ':' + ' ' + str(legend_dict[key]) + '<br>')
             for key in background_dict:
-                f.write(str(key) + ':' + ' ' + str(background_dict[key])) + '<br>')
+                f.write(str(key) + ':' + ' ' + str(background_dict[key]) + '<br>')
 
             #end of page
             f.write(strend)
