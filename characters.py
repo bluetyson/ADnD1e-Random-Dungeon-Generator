@@ -655,7 +655,7 @@ def magicuser_choice(level):
     'Time Stop',
     'Wish']}
     
-    ​    
+        
 def illusionist_choice(level):
     illusionist =  {
     1: ["Audible Glamour", "Change Self", "Colour Spray", "Dancing Lights", "Darkness", "Detect Illusion", "Detect Invisibility", "Gaze Reflection"],
