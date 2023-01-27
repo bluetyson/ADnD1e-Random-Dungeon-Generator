@@ -356,7 +356,7 @@ def cleric_choice(level):
     first_level = ["Bless", "Command", "Create Water", "Cure Light Wounds", "Detect Evil", "Detect Magic", "Light", "Protection From Evil", "Purify Food & Drink", "Remove Fear", "Resist Cold", "Sanctuary"]
     second_level = ["Augury", "Chant", "Detect Charm", "Find Traps", "Hold Person", "Know Alignment", "Resist Fire", "Silence 15 Radius", "Slow Poison","Snake Charm","Speak With Animals","Spiritual Hammer"]
     third_level = ["Animate Dead", "Continual Light","Create Food & Water", "Cure Blindness", "Cure Disease", "Dispel Magic", "Feign Death","Glyph Of Warding", "Locate Object", "Prayer", "Remove Curse",  "Speak With Dead"]
-    fourth_level ="Cure Serious Wounds", "Detect Lie", "Cure Critical Wounds","Divination","Exorcise","Lower Water","Neutralize Poison","Protection from Evil 10 Radius","Speak With Plants","Sticks To Snakes","Tongues"]
+    fourth_level = ["Cure Serious Wounds", "Detect Lie", "Cure Critical Wounds","Divination","Exorcise","Lower Water","Neutralize Poison","Protection from Evil 10 Radius","Speak With Plants","Sticks To Snakes","Tongues"]
     fifth_level = ["Atonement", "Commune", "Cure Critical Wounds","Dispel Evil", "Earthquake", "Flame Strike", "Insect Plague", "Plane Shift", "Quest", "Raise Dead","True Seeing"]
     sixth_level = ["Aerial Servant", "Animate Object",  "Blade Barrier","Conjure Animals", "Find The Path","Heal","Part Water","Speak With Monsters","Stone Tell", "Word Of Recall"]
     seventh_level = [ "Astral Spell","Control Weather", "Earthquake","Gate",  "Holy (Unholy) Word","Regenerate", "Restoration", "Resurrection", "Symbol", "Wind Walk"]
