@@ -459,6 +459,17 @@ def druid_choice(level):
 
     return random.choice(druid[level])
 
+def illusionist_choice(level):
+    illusionist =  {
+    1: ["Audible Glamour", "Change Self", "Colour Spray", "Dancing Lights", "Darkness", "Detect Illusion", "Detect Invisibility", "Gaze Reflection"],
+    2: ["Blindness", "Blur", "Deafness", "Detect Magic", "Fog Cloud", "Hypnotic Pattern", "Improved Phantasmal Force", "Invisibility"],
+    3: ["Continual Darkness", "Continual Light", "Dispel Illusion", "Emotion", "Hallucinatory Terrain", "Illusionary Script", "Invisibility 10' Radius", "Non-detection"],
+    4: ["Confusion", "Dispel Exhaustion", "Fear", "Improved Invisibility", "Massmorph", "Minor Creation", "Phantasmal Killer", "Shadow Monsters"],
+    5: ["Chaos", "Demi-Shadow Monsters", "Major Creation", "Maze", "Projected Image", "Shadow Door", "Shades", "Summon Shadow"],
+    6: ["Conjure Animals", "Demi-Shadow Magic", "Mass Suggestion", "Permanent Illusion", "Programmed Illusion", "True Sight", "Veil"],
+    7: ["Alter Reality", "Astral Spell", "Prismatic Spray", "Prismatic Wall", "Vision"]
+}
+    return random.choice(llusionist[level])
 
 def select_human(level):
     h = roll_dice(1,100)
@@ -484,3 +495,5 @@ if __name__ == "__main__":
     roll = roll_dice(1,7)
     print(cleric_choice(roll))
     print(druid_choice(roll))
+    print(illusionist_choice(roll))
+    
