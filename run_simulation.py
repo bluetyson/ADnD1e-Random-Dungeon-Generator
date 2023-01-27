@@ -4038,10 +4038,9 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
 
                 m_xp_total = 0
 
-                countroom = 0
                 for room in room_stack['shape_dict']:
-                    countroom += 1
-                    keylist = list(room_stack[countroom].keys())
+                    keylist = list(room_stack[room].keys())
+
                     if VERBOSITY:
                         print(keylist,room_stack[countroom][keylist[0]])
                         if abs(keylist[0][2]) == down + 1:

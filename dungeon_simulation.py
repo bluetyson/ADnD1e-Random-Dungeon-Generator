@@ -4051,14 +4051,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                 m_xp_total = 0
 
-                countroom = 0
                 for room in room_stack['shape_dict']:
-                    countroom += 1
-                    
-                    print(room_stack['shape_dict'])
-                    print(countroom, room_stack['key_count'])
-                    keylist = list(room_stack[countroom].keys())
-                    
+                    keylist = list(room_stack[room].keys())
 
                     if VERBOSITY:
                         print(keylist,room_stack[countroom][keylist[0]])
