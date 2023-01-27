@@ -3720,11 +3720,12 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
         strhead = '''
 
         <html>
-        <head>'''
+        <head>
+        <title>DUNGEON 
+        ''' 
+        strtitle = str(down+1) + '</title>'
 
-        strtitle = '<title>DUNGEON ' + str(down+1) + '</title>'
-
-        strhead2='''
+        strhead2 = '''
         <style>
             table,
             th,
