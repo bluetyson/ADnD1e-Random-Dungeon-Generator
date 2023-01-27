@@ -4506,7 +4506,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 
                 url = 'dungeon_' + str(link+1) + '.html'
                 print(url)
-                f.write('<a href="' + url + '"' + '>Level ' + str(link+1) + '</a>')
+                f.write('banana')
+                f.write('<a href="' + url + '"' + '>Level ' + str(link+1) + '</a>' + <br>)
 
             str(down+1)
 
