@@ -460,7 +460,7 @@ def druid_choice(level):
     return random.choice(druid[level])
 
 def magicuser_choice(level):
-    {1: ['Affect Normal Fires',
+    magicuser = {1: ['Affect Normal Fires',
     'Burning Hands',
     'Charm Person',
     'Comprehend Languages',
@@ -654,8 +654,10 @@ def magicuser_choice(level):
     'Temporal Stasis',
     'Time Stop',
     'Wish']}
-    
-        
+
+    return random.choice(magicuser[level])
+
+
 def illusionist_choice(level):
     illusionist =  {
     1: ["Audible Glamour", "Change Self", "Colour Spray", "Dancing Lights", "Darkness", "Detect Illusion", "Detect Invisibility", "Gaze Reflection"],
