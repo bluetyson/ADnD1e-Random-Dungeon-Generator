@@ -4407,7 +4407,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                             #wmlair = wmlair.replace('%','')
                             #wmlair = int(wmlair)
                             wmti = wandering_monster_stack[wm+1][key]['treasure_individual']
-                            f.write("XP:" + str(wmxp*wmno) + '<br>')
+                            f.write(" - XP:" + str(wmxp*wmno) + '<br><br>')
 
                         if len(wmti) > 0:
                             for t in wmti:

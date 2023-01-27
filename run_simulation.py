@@ -4348,8 +4348,8 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                 wm_xp_total = 0
                 wm_total_treasure = {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 0, 'platinum': 0, 'gems': 0, 'jewellery': 0, 'magic': 0}
                 for wm in range(wandering_monster_stack['key_count']):
-                    f.write('<h4>Wandering Monster: ' + str(wm) + '</h4>')
-                    f.write(str(wandering_monster_stack[wm+1]) + '<br>')
+                    f.write('<b>Wandering Monster: ' + str(wm) + '</b>')
+                    f.write(str(wandering_monster_stack[wm+1]) + ' ')
                     for key in wandering_monster_stack[wm+1]:
                         #f.write("key" + str(key) + '<br>')
                         #for subkey in wandering_monster_stack[wm+1]:
@@ -4382,7 +4382,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                             #wmlair = wmlair.replace('%','')
                             #wmlair = int(wmlair)
                             wmti = wandering_monster_stack[wm+1][key]['treasure_individual']
-                            f.write("XP:" + str(wmxp*wmno) + '<br>')
+                            f.write(" - XP:" + str(wmxp*wmno) + '<br><br>')
 
                         if len(wmti) > 0:
                             for t in wmti:
