@@ -3736,14 +3736,12 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         #Each side can be set individually using border-top-color, border-right-color, border-bottom-color, and border-left-color; or using the writing mode-aware border-block-start-color, border-block-end-color, border-inline-start-color, and border-inline-end-color.
         #make dungeon html
         #            
+
         strhead = '''
 
         <html>
-        <head>'''
-
-        strtitle = '<title>DUNGEON ' + str(down+1) + '</title>'
-
-        strhead2='''
+        <head>
+        <title>DUNGEON</title>
         <style>
             table,
             th,
