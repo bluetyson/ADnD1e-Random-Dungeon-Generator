@@ -4425,18 +4425,19 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                 #got to do valuations if there are any, but probably not
                 #have to get WM to carry magic if they have too
+                f.write('<br>' + "Full Dungeon Stats:" + str(m_xp_total) + '<br>')                            
                 f.write('<br>' + "Monster Total XP:" + str(m_xp_total) + '<br>')                            
-                f.write('<br>' + "Monster Total Treasure:" + str(total_treasure_monster) + '<br>')                            
-                f.write('<br>' + "Monster Total Valuations:" + str(total_valuations_monster) + '<br>')                                        
+                f.write('' + "Monster Total Treasure:" + str(total_treasure_monster) + " Total Valuations:" + str(total_valuations_monster) + '<br>')                            
 
                 f.write('<br>' + "Wandering Monster Total XP:" + str(wm_xp_total) + '<br>')                            
                 f.write('<br>' + "Wandering Monster Total Treasure:" + str(wm_total_treasure) + '<br>')                            
-                f.write('<br>' + "Wandering Monster Subtable:" + str(wandering_monster_subtable) + '<br>')  
+                if VERBOSITY:
+                    f.write('<br>' + "Wandering Monster Subtable:" + str(wandering_monster_subtable) + '<br>')  
 
                 f.write('<br>' + "Room Total Treasure:" + str(total_treasure) + '<br>')                            
-                f.write('<br>' + "Room Total Gems:" + str(sum([gem for gem in valuations['gems']])) + '<br>')                                        
-                f.write('<br>' + "Room Total Jewellery:" + str(sum([j for j in valuations['jewellery']])) + '<br>')                                        
-                f.write('<br>' + "Room Total Magic:" + str(sum([m for m in valuations['magic']])) + '<br>') 
+                f.write('' + "Room Total Gems:" + str(sum([gem for gem in valuations['gems']])) + '<br>')                                        
+                f.write('' + "Room Total Jewellery:" + str(sum([j for j in valuations['jewellery']])) + '<br>')                                        
+                f.write('' + "Room Total Magic:" + str(sum([m for m in valuations['magic']])) + '<br>') 
 
                 #want a wm count
                 #want a monster count
