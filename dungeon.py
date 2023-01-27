@@ -1,5 +1,5 @@
 
-#Version 0.60, 20220127
+#Version 0.60.1, 20220127
 
 import sys
 from dungeon_simulation import dungeon_sim
