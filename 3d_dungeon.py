@@ -105,3 +105,6 @@ plotter.add_mesh(ghost,cmap=["green","white","gray","brown","brown","red","blue"
 #plotter.add_mesh(ghost,cmap="Spectral",nan_color='black',annotations=annotations,nan_opacity=0,opacity=0.3,style='wireframe')
 plotter.show()
 
+ghost.save('ghost.vtu')
+
+

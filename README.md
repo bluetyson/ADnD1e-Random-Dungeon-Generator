@@ -1,7 +1,7 @@
 ## Advanced Dungeons & Dragons style random dungeon generator
 Convert DMG tables to code to do for wandering around and down to make a dungeon.
 
-- Version 0.92.0
+- Version 0.92.1
 - See blog for more examples and notes as it was worked on https://cosmicheroes.space/blog/index.php/tag/random-dungeon-generator/
 
 # Setup
@@ -17,6 +17,11 @@ Convert DMG tables to code to do for wandering around and down to make a dungeon
   - or overide on command line to do 3 rolls for example:
   ```python
   python dungeon.py 3
+  ```
+  - If you want to see lots of debugging type help and get the dumped dungeon pickle files - and the downlist for doing a 3D dungeon prototype.
+  - You can pass a second 'flag' - 1 is VERBOSITY on, 0 is off - the default.  So the below is 20 periodic checks with verbosity on.
+  ```python
+  python dungeon.py 20 1  
   ```
  
 # Binder
