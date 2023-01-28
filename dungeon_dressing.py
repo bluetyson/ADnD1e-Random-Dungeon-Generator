@@ -44,8 +44,17 @@ def dungeon_dressing():
         100: "urine smell"
     }
 
-    dressing_list = [air_currents, odors]
-    roll_list = [ac, o]
+    a = roll_dice(1,100)
+    air = {
+        70: "clear",
+        80: "foggy (or steamy)",
+        88: "foggy near floor (or steamy)",
+        90: "hazy (dust)",
+        98: "hazy (smoke)",
+        100: "misted"
+    }
+    dressing_list = [air_currents, odors, air]
+    roll_list = [ac, o, a]
     dressing_result = []
     for i, d in enumerate(dressing_list):
         for key in d:
