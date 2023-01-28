@@ -4050,7 +4050,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                     keylist = list(room_stack[room].keys())
 
                     if VERBOSITY:
-                        print(keylist,room_stack[countroom][keylist[0]])
+                        print(keylist,room_stack[room][keylist[0]])
                         if abs(keylist[0][2]) == down + 1:
                             f.write('<h4>Data: ' + str(room) + '</h4>')
                             f.write(str(room_stack['shape_dict'][room]) + '<br>')
