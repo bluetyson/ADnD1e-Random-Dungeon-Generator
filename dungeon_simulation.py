@@ -3698,7 +3698,10 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
     #can handle up to 4 characters
     #map chararray to independent for each level
-    ## ignore any random tiny up level things for now on chimneys or trapdoros
+    ## ignore any random tiny up level things for now on chimneys or trapdoors
+
+    #dungeonarray = np.full((xwidth,ywidth,zwidth-1), 'B', dtype='U10')
+
     downlist = []
     if VERBOSITY:
         print("\nLEVELS DOWN:",zwidth-1)
@@ -4062,7 +4065,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                     keylist = list(room_stack[room].keys())
 
                     if VERBOSITY:
-                        print(keylist,room_stack[countroom][keylist[0]])
+                        print(keylist,room_stack[room][keylist[0]])
                         if abs(keylist[0][2]) == down + 1:
                             f.write('<h4>Data: ' + str(room) + '</h4>')
                             f.write(str(room_stack['shape_dict'][room]) + '<br>')
