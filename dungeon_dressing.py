@@ -51,6 +51,7 @@ def dungeon_dressing():
         for key in d:
             if roll_list[i] <= key:
                 dressing_result.append(d[key])
+                break
 
     return dressing_result
 
