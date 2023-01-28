@@ -105,48 +105,48 @@ def select_jewellery():
 
     return base_value, description
 
-    def jewellery_type():
-        i = roll_dice(1,00)
-        items = {
-            2: "anklet",
-            6: "arm band",
-            9: "belt",
-            12: "box (small)",
-            16: "bracelet",
-            19: "brooch",
-            21: "buckle",
-            25: "chain",
-            26: "chalice",
-            27: "choker",
-            30: "clasp",
-            32: "coffer",
-            33: "collar",
-            35: "comb",
-            36: "coronet",
-            37: "crown",
-            39: "decanter",
-            40: "diadem",
-            45: "earring",
-            47: "fob",
-            52: "goblet",
-            54: "headband (fillet)",
-            57: "idol",
-            59: "locket",
-            62: "medal",
-            68: "medallion",
-            75: "necklace",
-            78: "pendant",
-            83: "pin",
-            84: "orb",
-            93: "ring",
-            94: "sceptre",
-            96: "seal",
-            99: "statuette",
-            100: "tiara"
-        }    
-        for key in items:
-            if i <= key:
-                return items[key]
+def jewellery_type():
+    i = roll_dice(1,00)
+    items = {
+        2: "anklet",
+        6: "arm band",
+        9: "belt",
+        12: "box (small)",
+        16: "bracelet",
+        19: "brooch",
+        21: "buckle",
+        25: "chain",
+        26: "chalice",
+        27: "choker",
+        30: "clasp",
+        32: "coffer",
+        33: "collar",
+        35: "comb",
+        36: "coronet",
+        37: "crown",
+        39: "decanter",
+        40: "diadem",
+        45: "earring",
+        47: "fob",
+        52: "goblet",
+        54: "headband (fillet)",
+        57: "idol",
+        59: "locket",
+        62: "medal",
+        68: "medallion",
+        75: "necklace",
+        78: "pendant",
+        83: "pin",
+        84: "orb",
+        93: "ring",
+        94: "sceptre",
+        96: "seal",
+        99: "statuette",
+        100: "tiara"
+    }    
+    for key in items:
+        if i <= key:
+            return items[key]
 
 def potion_choice():
     potion_table = [
