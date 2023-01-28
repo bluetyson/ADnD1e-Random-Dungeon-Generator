@@ -153,8 +153,70 @@ def dungeon_dressing():
 
     }
 
-    dressing_list = [air_currents, odors, air, general]
-    roll_list = [ac, o, a, g]
+    s = roll_dice(1,100)
+    sounds = {
+        5: "bang, slam",
+        6: "bellow (ing)",
+        7: "bong",
+        8: "buzzing",
+        10: "chanting",
+        11: "chiming",
+        12: "chirping",
+        13: "clanking",
+        14: "clashing",
+        15: "clicking",
+        16: "coughing",
+        18: "creaking",
+        19: "drumming",
+        23: "footsteps (ahead)",
+        26: "footsteps (approaching)",
+        29: "footsteps (behind)",
+        31: "footsteps (receding)",
+        33: "footsteps (side)",
+        35: "giggling (faint)",
+        36: "gong",
+        39: "grating",
+        41: "groaning",
+        42: "grunting",
+        44: "hissing",
+        45: "hooting",
+        46: "horn/trumpet sounding",
+        47: "howling",
+        48: "humming",
+        49: "jingling",
+        53: "knocking",
+        55: "laughter",
+        57: "moaning",
+        60: "murmuring",
+        61: "music",
+        62: "rattling",
+        63: "ringing",
+        64: "roar(ing)",
+        68: "rustling",
+        72: "scratching/scrabbling",
+        74: "scream(ing)",
+        77: "scuttling",
+        78: "shuffling",
+        80: "slithering",
+        81: "snapping",
+        82: "sneezing",
+        83: "sobbing",
+        84: "splashing",
+        85: "splintering",
+        87: "squeaking",
+        88: "squealing",
+        90: "tapping",
+        92: "thud",
+        94: "thumping",
+        95: "tinkling",
+        96: "twanging",
+        97: "whining",
+        98: "whispering",
+        100: "whistling"
+    }
+
+    dressing_list = [air_currents, odors, air, general, sounds]
+    roll_list = [ac, o, a, g, s]
     dressing_result = []
     for i, d in enumerate(dressing_list):
         for key in d:
