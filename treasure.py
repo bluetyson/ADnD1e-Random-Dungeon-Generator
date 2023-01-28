@@ -106,7 +106,7 @@ def select_jewellery():
     return base_value, description
 
 def jewellery_type():
-    i = roll_dice(1,00)
+    i = roll_dice(1,100)
     items = {
         2: "anklet",
         6: "arm band",
