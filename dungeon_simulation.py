@@ -3560,6 +3560,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         return monster_level
 
 
+
     #need data structure
     #do we have an exit order stack?
     #array of corridors and walls, where corridor can be room/staircase etc odd corridor, even wall
