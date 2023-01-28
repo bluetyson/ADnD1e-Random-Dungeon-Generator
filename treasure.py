@@ -146,7 +146,7 @@ def select_jewellery():
         }    
         for key in items:
             if i <= key:
-                return items[key])
+                return items[key]
 
 def potion_choice():
     potion_table = [
