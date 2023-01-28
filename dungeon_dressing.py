@@ -58,4 +58,4 @@ def dungeon_dressing():
 if __name__ == "__main__":
     ARGV = sys.argv
 
-    print(dungeon_dressing)
+    print(dungeon_dressing())
