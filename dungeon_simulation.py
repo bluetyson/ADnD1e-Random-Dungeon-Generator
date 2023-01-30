@@ -3914,7 +3914,7 @@ def dungeon_sim(suffix, usepaht, periodic_checks, verbosity=0):
             strpath = 'dungeon_' + str(down+1) + '.html'
 
        
-        with open(strpath','w') as f:
+        with open(strpath,'w') as f:
             #f.write(strhead)
             f.write(strusehead)
             
