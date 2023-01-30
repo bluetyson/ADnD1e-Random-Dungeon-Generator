@@ -1,4 +1,4 @@
-def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
+def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels_check):
 
     import timeit
     import time
@@ -21,19 +21,11 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
     from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item, treasure_choice
 
     VERBOSITY = verbosity
+    ROOMS_CHECK = rooms_check
+    LEVELS_CHECK = levels_check
 
     PI = math.pi
-    #ARGV = sys.argv
-
-    #standard algorithm
-    LEVEL = "Y"
-    #if len(ARGV) > 2:
-        #LEVEL = ARGV[2]
-        #stub to handle making a dungeon of just one level
-        #this would be checked to disable level descent in periodi check
-        #also in traps that go down, substitute
-
-    #pass location?
+    
     def roll_dice(number, sides):
         roll = random.randint(number,sides)
         return roll
@@ -4242,14 +4234,25 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
     if VERBOSITY:
         print("END SETUP:",)
 
-    while i < PERIODIC_CHECKS:
-        if VERBOSITY:
-            print("\n--- ROLL:",i," ---\n")
-        roll_first = random_check()
-        result_coord = check_action(roll_first, result_coord, room_stack, facing)
-        if VERBOSITY:
-            print("\n--- END ROLL:",i," ---\n")
-        i +=1
+    if ROOMS_CHECK == 0 and LEVELS_CHECK == 0:
+        while i < PERIODIC_CHECKS:
+            if VERBOSITY:
+                print("\n--- ROLL:",i," ---\n")
+            roll_first = random_check()
+            result_coord = check_action(roll_first, result_coord, room_stack, facing)
+            if VERBOSITY:
+                print("\n--- END ROLL:",i," ---\n")
+            i +=1
+
+    if ROOMS_CHECK >= 0 and LEVELS_CHECK == 0:
+        while i < ROOMS_CHECK:
+            if VERBOSITY:
+                print("\n--- ROLL:",i," ---\n")
+            roll_first = random_check()
+            result_coord = check_action(roll_first, result_coord, room_stack, facing)
+            if VERBOSITY:
+                print("\n--- END ROLL:",i," ---\n")
+            i = room_stack['key_count']
         
 
     coord_lim = coord_limits(dungeon)
