@@ -3964,7 +3964,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             #print("KEY:",key,"KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
             #print("KEY:",key,"KEYWIDTH:",key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2])
             print("KEYTEST:",key)
-            key = key.astype('int')
             if key[2] == (0 - down -1): #-1, -2, etc
                 if 'fill' in dungeon[key] :  
                     if VERBOSITY:
