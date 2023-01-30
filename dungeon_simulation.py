@@ -617,6 +617,8 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             s_dict = side(coord)
             if VERBOSITY:                                      
                 print("S_DICT:",s_dict)
+            print(facing)
+            
             if facing[0] == 0:
                 xw = 1
                 yw = 0
