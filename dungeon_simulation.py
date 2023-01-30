@@ -457,16 +457,24 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
             if e_dict['direction'] == 'L':
                 if e_dict['type'] == 'N':
+                    #newfacing, xw, yw = new_facing("L90", facing)
+                    #ex_coord = wm_facing(newfacing, coord)
                     exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
+                    #exit_stack[ex_coord] = {}
 
                     if e_dict['beyond'] == 'P':
-                        will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                        #will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                        will_fit = in_dungeon(ex_coord)
                         if not will_fit: #fit the zero door site
                             dungeon[(coord[0]-1,coord[1],coord[2])] = {}
+                            #dungeon[ex_coord] = {}
                             dungeon[(coord[0]-1,coord[1],coord[2])]['fill'] = 'Cd'
+                            #dungeon[ex_coord]['fill'] = 'Cd'
 
                         new_coord = passage_make(coord, xmod=-1,ymod=-1,yloop=-1,xwidth=1)
                         new_coord = passage_make(coord, xmod=-1,ymod=1,yloop=1,xwidth=1)
+
+                        
 
                     if e_dict['beyond'] == 'A':       
                         d = roll_dice(1,20)              
@@ -718,6 +726,20 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                     facing, xw, yw = facing_check('R45',facing)
 
             elif s_dict['direction'] == 'P': #plus
+
+                '''which_way = roll_dice(1,3)
+                new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
+                new_coord_right = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
+                new_coord_ahead = passage_make(coord,ymod=1,yloop=1,xwidth=1)    
+
+                if which_way == 1:
+                    new_coord = new_coord_left
+                elif which_way == 2:
+                    new_coord = new_coord_right
+                else:
+                    new_coord = new_coord_ahead
+                '''
+                
                 which_way = roll_dice(1,3)
                 
                 newfacing, nxw, nyw = new_facing("L90",facing)
