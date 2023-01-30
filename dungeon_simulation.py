@@ -312,7 +312,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                 #"do error?"
             return facing
 
-        def newfacing(move, facing):
+        def new_facing(move, facing):
             newfacing = copy.deepcopy(facing)
             newfacing = facing_check(move, newfacing)
             if newfacing[0] == 0:
@@ -669,11 +669,11 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
             elif s_dict['direction'] == 'T':
                 which_way = roll_dice(1,2)
-                newfacing, nxw, nxy = newfacing("L90",facing)
+                newfacing, nxw, nxy = new_facing("L90",facing)
                 #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
                 new_coord_left = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
 
-                newfacing, nxw, nxy = newfacing("R90",facing)
+                newfacing, nxw, nxy = new_facing("R90",facing)
                 #new_coord_right = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
                 new_coord_right = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
 
@@ -687,11 +687,11 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             elif s_dict['direction'] == 'Y':
                 which_way = roll_dice(1,2)  #got to move this up
 
-                newfacing, nxw, nxy = newfacing("L45",facing)
+                newfacing, nxw, nxy = new_facing("L45",facing)
                 #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
                 new_coord_left = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
 
-                newfacing, nxw, nxy = newfacing("R45",facing)
+                newfacing, nxw, nxy = new_facing("R45",facing)
                 #new_coord_right = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)    
                 new_coord_right = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
 
