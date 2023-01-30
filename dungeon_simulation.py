@@ -623,9 +623,8 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             s_dict = side(coord)
             if VERBOSITY:                                      
                 print("S_DICT:",s_dict)
-            print(dungeon)
-            print(facing)
 
+            print(facing)
 
             if s_dict['direction'] == 'L90':
                 #new_coord = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
