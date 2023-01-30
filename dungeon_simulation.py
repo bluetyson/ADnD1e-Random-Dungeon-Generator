@@ -1,4 +1,4 @@
-def dungeon_sim(suffix, usepaht, periodic_checks, verbosity=0):
+def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
     import timeit
     import time
