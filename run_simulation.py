@@ -4584,7 +4584,7 @@ from dungeon_simulation import dungeon_sim
 
 if __name__ == '__main__':
 
-    usepath = 'simulations'
+    usepath = 'simulationstest'
     periodic_checks = 10 
     verbosity = 0
     simulations = 10

@@ -3903,7 +3903,18 @@ def dungeon_sim(suffix, usepaht, periodic_checks, verbosity=0):
                 return 'notreasure'
 
         
-        with open('dungeon_' + str(down+1) + '.html','w') as f:
+        if usepath != '' and str(suffix) != ''
+            
+            if not os.path.exists(usepath):
+                os.mkdir(usepath)
+            if not os.path.exists(os.path.join(usepath, str(suffix))):
+                os.mkdir(os.path.join(usepath, str(suffix)))
+            strpath = os.path.join(usepath, str(suffix), 'dungeon_' + str(down+1) + '.html')
+        else:
+            strpath = 'dungeon_' + str(down+1) + '.html'
+
+       
+        with open(strpath','w') as f:
             #f.write(strhead)
             f.write(strusehead)
             
