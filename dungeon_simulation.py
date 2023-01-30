@@ -117,6 +117,202 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
         
         return non_edge
 
+        def facing_check(move, facing):
+            if facing[0] == 0 and facing[1] == 1:
+                if move == 'L90':
+                    facing[0] = -1
+                    facing[1] = 0
+                elif move == 'R90':
+                    facing[0] = 1
+                    facing[1] = 0
+                elif move == 'L45':
+                    facing[0] = -1
+                    facing[1] = 1
+                elif move == 'R45':
+                    facing[0] = 1
+                    facing[1] = 1
+                elif move == 'L135':
+                    facing[0] = -1
+                    facing[1] = -1
+                elif move == 'R135':
+                    facing[0] = 1
+                    facing[1] = -1
+                else:
+                    pass
+                    #"do error?"
+                return facing
+
+            elif facing[0] == -1 and facing[1] == 0:
+                if move == 'L90':
+                    facing[0] = 0
+                    facing[1] = 1
+                elif move == 'R90':
+                    facing[0] = 0
+                    facing[1] = -1
+                elif move == 'L45':
+                    facing[0] = -1
+                    facing[1] = 1
+                elif move == 'R45':
+                    facing[0] = -1
+                    facing[1] = -1
+                elif move == 'L135':
+                    facing[0] = 1
+                    facing[1] = 1
+                elif move == 'R135':
+                    facing[0] = 1
+                    facing[1] = -1
+                else:
+                    pass
+                    #"do error?"
+                return facing
+
+            elif facing[0] == 0 and facing[1] == -1:
+                if move == 'L90':
+                    facing[0] = -1
+                    facing[1] = 0
+                elif move == 'R90':
+                    facing[0] = 1
+                    facing[1] = 0
+                elif move == 'L45':
+                    facing[0] = -1
+                    facing[1] = -1
+                elif move == 'R45':
+                    facing[0] = 1
+                    facing[1] = -1
+                elif move == 'L135':
+                    facing[0] = -1
+                    facing[1] = 1
+                elif move == 'R135':
+                    facing[0] = 1
+                    facing[1] = 1
+                else:
+                    pass
+                    #"do error?"
+                return facing
+                    
+            elif facing[0] == 1 and facing[1] == 0:
+                if move == 'L90':
+                    facing[0] = 0
+                    facing[1] = -1
+                elif move == 'R90':
+                    facing[0] = 0
+                    facing[1] = 1
+                elif move == 'L45':
+                    facing[0] = 1
+                    facing[1] = -1
+                elif move == 'R45':
+                    facing[0] = 1
+                    facing[1] = 1
+                elif move == 'L135':
+                    facing[0] = -1
+                    facing[1] = -1
+                elif move == 'R135':
+                    facing[0] = -1
+                    facing[1] = 1
+                else:
+                    pass
+                    #"do error?"
+                return facing
+
+            #angles
+            elif facing[0] == 1 and facing[1] == 1:
+                if move == 'L90':
+                    facing[0] = -1
+                    facing[1] = 1
+                elif move == 'R90':
+                    facing[0] = 1
+                    facing[1] = -1
+                elif move == 'L45':
+                    facing[0] = 0
+                    facing[1] = 1
+                elif move == 'R45':
+                    facing[0] = 1
+                    facing[1] = 0
+                elif move == 'L135':
+                    facing[0] = 0
+                    facing[1] = -1
+                elif move == 'R135':
+                    facing[0] = -1
+                    facing[1] = 0
+                else:
+                    pass
+                    #"do error?"
+                return facing
+
+            elif facing[0] == -1 and facing[1] == 1:
+                if move == 'L90':
+                    facing[0] = -1
+                    facing[1] = -1
+                elif move == 'R90':
+                    facing[0] = 1
+                    facing[1] = 1
+                elif move == 'L45':
+                    facing[0] = 0
+                    facing[1] = 1
+                elif move == 'R45':
+                    facing[0] = 0
+                    facing[1] = -1
+                elif move == 'L135':
+                    facing[0] = -1
+                    facing[1] = 0
+                elif move == 'R135':
+                    facing[0] = 1
+                    facing[1] = 0
+                else:
+                    pass
+                    #"do error?"
+                return facing
+
+            elif facing[0] == 1 and facing[1] == -1:
+                if move == 'L90':
+                    facing[0] = -1
+                    facing[1] = -1
+                elif move == 'R90':
+                    facing[0] = 1
+                    facing[1] = 1
+                elif move == 'L45':
+                    facing[0] = 0
+                    facing[1] = -1
+                elif move == 'R45':
+                    facing[0] = 1
+                    facing[1] = 0
+                elif move == 'L135':
+                    facing[0] = -1
+                    facing[1] = 0
+                elif move == 'R135':
+                    facing[0] = 0
+                    facing[1] = 1
+                else:
+                    pass
+                    #"do error?"
+                return facing
+
+
+            else:  #facing[0] == -1 and facing[1] == -1:
+                if move == 'L90':
+                    facing[0] = -1
+                    facing[1] = 1
+                elif move == 'R90':
+                    facing[0] = 1
+                    facing[1] = -1
+                elif move == 'L45':
+                    facing[0] = -1
+                    facing[1] = 0
+                elif move == 'R45':
+                    facing[0] = 0
+                    facing[1] = -1
+                elif move == 'L135':
+                    facing[0] = 0
+                    facing[1] = 1
+                elif move == 'R135':
+                    facing[0] = 1
+                    facing[1] = 0
+                else:
+                    pass
+                    #"do error?"
+                return facing
+
+
 
     def random_check():
         pc_dict = {}
@@ -415,201 +611,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             ## got to proceed with direction/type of exit
 
         elif pc_dict['direction'] == 'side':
-
-            def facing_check(move, facing):
-                if facing[0] == 0 and facing[1] == 1:
-                    if move == 'L90':
-                        facing[0] = -1
-                        facing[1] = 0
-                    elif move == 'R90':
-                        facing[0] = 1
-                        facing[1] = 0
-                    elif move == 'L45':
-                        facing[0] = -1
-                        facing[1] = 1
-                    elif move == 'R45':
-                        facing[0] = 1
-                        facing[1] = 1
-                    elif move == 'L135':
-                        facing[0] = -1
-                        facing[1] = -1
-                    elif move == 'R135':
-                        facing[0] = 1
-                        facing[1] = -1
-                    else:
-                        pass
-                        #"do error?"
-                    return facing
-
-                elif facing[0] == -1 and facing[1] == 0:
-                    if move == 'L90':
-                        facing[0] = 0
-                        facing[1] = 1
-                    elif move == 'R90':
-                        facing[0] = 0
-                        facing[1] = -1
-                    elif move == 'L45':
-                        facing[0] = -1
-                        facing[1] = 1
-                    elif move == 'R45':
-                        facing[0] = -1
-                        facing[1] = -1
-                    elif move == 'L135':
-                        facing[0] = 1
-                        facing[1] = 1
-                    elif move == 'R135':
-                        facing[0] = 1
-                        facing[1] = -1
-                    else:
-                        pass
-                        #"do error?"
-                    return facing
-
-                elif facing[0] == 0 and facing[1] == -1:
-                    if move == 'L90':
-                        facing[0] = -1
-                        facing[1] = 0
-                    elif move == 'R90':
-                        facing[0] = 1
-                        facing[1] = 0
-                    elif move == 'L45':
-                        facing[0] = -1
-                        facing[1] = -1
-                    elif move == 'R45':
-                        facing[0] = 1
-                        facing[1] = -1
-                    elif move == 'L135':
-                        facing[0] = -1
-                        facing[1] = 1
-                    elif move == 'R135':
-                        facing[0] = 1
-                        facing[1] = 1
-                    else:
-                        pass
-                        #"do error?"
-                    return facing
-                        
-                elif facing[0] == 1 and facing[1] == 0:
-                    if move == 'L90':
-                        facing[0] = 0
-                        facing[1] = -1
-                    elif move == 'R90':
-                        facing[0] = 0
-                        facing[1] = 1
-                    elif move == 'L45':
-                        facing[0] = 1
-                        facing[1] = -1
-                    elif move == 'R45':
-                        facing[0] = 1
-                        facing[1] = 1
-                    elif move == 'L135':
-                        facing[0] = -1
-                        facing[1] = -1
-                    elif move == 'R135':
-                        facing[0] = -1
-                        facing[1] = 1
-                    else:
-                        pass
-                        #"do error?"
-                    return facing
-
-                #angles
-                elif facing[0] == 1 and facing[1] == 1:
-                    if move == 'L90':
-                        facing[0] = -1
-                        facing[1] = 1
-                    elif move == 'R90':
-                        facing[0] = 1
-                        facing[1] = -1
-                    elif move == 'L45':
-                        facing[0] = 0
-                        facing[1] = 1
-                    elif move == 'R45':
-                        facing[0] = 1
-                        facing[1] = 0
-                    elif move == 'L135':
-                        facing[0] = 0
-                        facing[1] = -1
-                    elif move == 'R135':
-                        facing[0] = -1
-                        facing[1] = 0
-                    else:
-                        pass
-                        #"do error?"
-                    return facing
-
-                elif facing[0] == -1 and facing[1] == 1:
-                    if move == 'L90':
-                        facing[0] = -1
-                        facing[1] = -1
-                    elif move == 'R90':
-                        facing[0] = 1
-                        facing[1] = 1
-                    elif move == 'L45':
-                        facing[0] = 0
-                        facing[1] = 1
-                    elif move == 'R45':
-                        facing[0] = 0
-                        facing[1] = -1
-                    elif move == 'L135':
-                        facing[0] = -1
-                        facing[1] = 0
-                    elif move == 'R135':
-                        facing[0] = 1
-                        facing[1] = 0
-                    else:
-                        pass
-                        #"do error?"
-                    return facing
-
-                elif facing[0] == 1 and facing[1] == -1:
-                    if move == 'L90':
-                        facing[0] = -1
-                        facing[1] = -1
-                    elif move == 'R90':
-                        facing[0] = 1
-                        facing[1] = 1
-                    elif move == 'L45':
-                        facing[0] = 0
-                        facing[1] = -1
-                    elif move == 'R45':
-                        facing[0] = 1
-                        facing[1] = 0
-                    elif move == 'L135':
-                        facing[0] = -1
-                        facing[1] = 0
-                    elif move == 'R135':
-                        facing[0] = 0
-                        facing[1] = 1
-                    else:
-                        pass
-                        #"do error?"
-                    return facing
-
-
-                else:  #facing[0] == -1 and facing[1] == -1:
-                    if move == 'L90':
-                        facing[0] = -1
-                        facing[1] = 1
-                    elif move == 'R90':
-                        facing[0] = 1
-                        facing[1] = -1
-                    elif move == 'L45':
-                        facing[0] = -1
-                        facing[1] = 0
-                    elif move == 'R45':
-                        facing[0] = 0
-                        facing[1] = -1
-                    elif move == 'L135':
-                        facing[0] = 0
-                        facing[1] = 1
-                    elif move == 'R135':
-                        facing[0] = 1
-                        facing[1] = 0
-                    else:
-                        pass
-                        #"do error?"
-                    return facing
 
 
             new_coord = coord
