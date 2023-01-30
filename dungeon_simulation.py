@@ -811,7 +811,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                             elif facing[1] == 0:
                                 new_coord = passage_make(coord, xmod=facing[0],xloop=facing[0], ywidth=1)
                             else:
-                                new_coord = passage_make(coord, xmod=facing[0],ymod==facing[1],xloop=facing[0],yloop=facing[1], ywidth=1)
+                                new_coord = passage_make(coord, xmod=facing[0],ymod=facing[1],xloop=facing[0],yloop=facing[1], ywidth=1)
 
 
                     if e_dict['beyond'] == '4AB':   ##45 A - need to make facing for R different eventually
