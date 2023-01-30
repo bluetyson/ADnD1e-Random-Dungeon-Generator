@@ -612,13 +612,14 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
         elif pc_dict['direction'] == 'side':
 
-
+            
             new_coord = coord
             s_dict = side(coord)
             if VERBOSITY:                                      
                 print("S_DICT:",s_dict)
+            print(dungeon)
             print(facing)
-            
+
             if facing[0] == 0:
                 xw = 1
                 yw = 0
