@@ -723,11 +723,27 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             else:
             #s_dict['direction'] == 'X': 45 and 135
                 which_way = roll_dice(1,4) ##got to move this up
-                new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
-                new_coord_right = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1) 
-                
-                new_coord_left_back = passage_make(coord,xmod=-1,xloop=-1,ymod=-1,yloop=-1,xwidth=1)    
-                new_coord_right_back = passage_make(coord,xmod=1,xloop=1,ymod=-1,yloop=-1,xwidth=1)                   
+                #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
+                #new_coord_right = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1) 
+
+                newfacing, nxw, nyw = new_facing("L45",facing)
+                #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
+                new_coord_left = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
+
+                newfacing, nxw, nyw = new_facing("R45",facing)
+                #new_coord_right = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)    
+                new_coord_right = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
+
+                #new_coord_left_back = passage_make(coord,xmod=-1,xloop=-1,ymod=-1,yloop=-1,xwidth=1)    
+                #new_coord_right_back = passage_make(coord,xmod=1,xloop=1,ymod=-1,yloop=-1,xwidth=1)     
+
+                newfacing, nxw, nyw = new_facing("L135",facing)
+                #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
+                new_coord_left_back = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
+
+                newfacing, nxw, nyw = new_facing("R135",facing)
+                #new_coord_right = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)    
+                new_coord_right_back= passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
 
                 if which_way == 1:
                     new_coord = new_coord_left
@@ -741,7 +757,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                 else:
                     new_coord = new_coord_right_back
                     facing, xw, yw = facing_check('R135',facing)
-
                         
 
         elif pc_dict['direction'] == 'turn':
