@@ -400,7 +400,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
         return new_coord
 
 
-    def check_action(pc_dict, coord, room_stack):
+    def check_action(pc_dict, coord, room_stack, facing):
         ## need a current 'orientation' 'L R A B
         print("facing:",facing)
         if pc_dict['direction'] == 'ahead':
