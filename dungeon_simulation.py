@@ -3884,6 +3884,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
     facing = np.zeros(2) #x, y
     facing[1] = 1
+    print(facing, facing[0])
     #start off as ahead
 
     wandering_monster_subtable = []
