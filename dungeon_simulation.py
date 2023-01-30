@@ -676,9 +676,8 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                             new_coord = passage_make(coord,xmod=1,ymod=1,xloop=-1,yloop=-1,ywidth=1)
 
 
-                    if e_dict['beyond'] == 'A':              
-                        d = roll_dice(1,20)         
-                        #d = 20 #test number
+                    if e_dict['beyond'] == 'A':          
+                        '''
                         if d >=3 and d <= 5:
                             will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
                             if not will_fit:
@@ -688,6 +687,37 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                             if VERBOSITY:
                                 print("CHECKEDICT",e_dict)
                             new_coord = passage_make(coord, xmod=1,xloop=1, ywidth=1)
+                        '''
+
+                        d = roll_dice(1,20)         
+                        #d = 20 #test number
+                        if d >=3 and d <= 5:
+                            #will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                            #if not will_fit:
+                                #exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
+
+                            if facing[0] == 0:
+                                will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
+                                if not will_fit:
+                                    exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
+                            elif facing[1] == 0:
+                                will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
+                                if not will_fit:
+                                    exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
+                            else:
+                                will_fit = in_dungeon((coord[0]+1,coord[1]+1,coord[2]))
+                                if not will_fit:
+                                    exit_stack[(coord[0]+1,coord[1]+1,coord[2])] = {}
+
+                        else:
+                            #30m passage that direction
+                            if facing[0] == 0:
+                                new_coord = passage_make(coord, ymod=+1,yloop=facing[1], xwidth=1)
+                            elif facing[1] == 0:
+                                new_coord = passage_make(coord, xmod=+1,xloop=facing[0], ywidth=1)
+                            else:
+                                new_coord = passage_make(coord, xmod=+1,ymod=+1,xloop=facing[0],yloop=facing[1], ywidth=1)
+
 
                     if e_dict['beyond'] == '4AB':   ##45 A
                         which_way = roll_dice(1,2)           
