@@ -327,13 +327,17 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
         elif facing[1] == -1:
             if facing[1] == 1:
                 wm_coord = (coord[0]-1,coord[1]+1,coord[2])        
-            else:
+            elif facing[1] == -1:
                 wm_coord = (coord[0]-1,coord[1]-1,coord[2])        
+            else:
+                wm_coord = (coord[0]-1,coord[1],coord[2])        
         else:
             if facing[1] == 1:
                 wm_coord = (coord[0]+1,coord[1]+1,coord[2])        
-            else:
+            elif facing[1] == -1:
                 wm_coord = (coord[0]+1,coord[1]-1,coord[2])        
+            else:
+                wm_coord = (coord[0]+1,coord[1]0,coord[2])        
 
         return wm_coord
 
@@ -465,7 +469,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                         new_coord = passage_make(coord, xmod=-1,ymod=1,yloop=1,xwidth=1)
 
                     if e_dict['beyond'] == 'A':       
-                        #print("IN BRANCH")       
                         d = roll_dice(1,20)              
                         if d >=3 and d <= 5:
                             will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
