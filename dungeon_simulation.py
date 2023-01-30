@@ -611,8 +611,13 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             ## got to proceed with direction/type of exit
 
         elif pc_dict['direction'] == 'side':
-
-            
+            if facing[0] == 0:
+                xw = 1
+                yw = 0
+            else:
+                yw = 1
+                xw = 0
+           
             new_coord = coord
             s_dict = side(coord)
             if VERBOSITY:                                      
@@ -620,12 +625,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             print(dungeon)
             print(facing)
 
-            if facing[0] == 0:
-                xw = 1
-                yw = 0
-            else:
-                yw = 1
-                xw = 0
 
             if s_dict['direction'] == 'L90':
                 #new_coord = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
