@@ -312,17 +312,17 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                 #"do error?"
             return facing
 
-        def new_facing(move, facing):
-            newfacing = copy.deepcopy(facing)
-            newfacing = facing_check(move, newfacing)
-            if newfacing[0] == 0:
-                nxw = 1
-                nyw = 0
-            else:
-                nyw = 1
-                nxw = 0
+    def new_facing(move, facing):
+        newfacing = copy.deepcopy(facing)
+        newfacing = facing_check(move, newfacing)
+        if newfacing[0] == 0:
+            nxw = 1
+            nyw = 0
+        else:
+            nyw = 1
+            nxw = 0
 
-            return newfacing, nxw, nwy
+        return newfacing, nxw, nwy
 
     def random_check():
         pc_dict = {}
