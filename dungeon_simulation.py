@@ -983,7 +983,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             new_coord = coord
             roll_first = random_check()
             #"+1 like trap - wm"
-            result_coord = check_action(roll_first, new_coord, room_stack)
+            result_coord = check_action(roll_first, new_coord, room_stack, facing)
             new_coord = result_coord
 
             will_fit = in_dungeon((coord[0],coord[1]+1,coord[2])) #square for monster
