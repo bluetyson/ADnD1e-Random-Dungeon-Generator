@@ -657,8 +657,27 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
             elif s_dict['direction'] == 'T':
                 which_way = roll_dice(1,2)
-                new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
-                new_coord_right = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
+                newfacing = copy.deepcopy(facing)
+                newfacing = facing_check('L90', newfacing)
+                if newfacing[0] == 0:
+                    nxw = 1
+                    nyw = 0
+                else:
+                    nyw = 1
+                    nxw = 0
+
+                #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
+                new_coord_left = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
+
+                newfacing = facing_check('R90', newfacing)
+                if newfacing[0] == 0:
+                    nxw = 1
+                    nyw = 0
+                else:
+                    nyw = 1
+                    nxw = 0
+                #new_coord_right = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
+                new_coord_right = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
 
                 if which_way == 1:
                     new_coord = new_coord_left
