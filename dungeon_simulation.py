@@ -316,7 +316,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
         newfacing = copy.deepcopy(facing)
         newfacing, nxw, nyw = facing_check(move, newfacing)
 
-        return newfacing, nxw, nwy
+        return newfacing, nxw, nyw
 
     def random_check():
         pc_dict = {}
