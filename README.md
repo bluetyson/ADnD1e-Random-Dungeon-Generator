@@ -2,6 +2,8 @@
 Convert DMG tables to code to do for wandering around and down to make a dungeon.
 
 - Version 1.0
+- Additions now are embellishments, obscure errors and things not in the original algorithm
+- Thought it would take around a month, appears to have
 - See blog for more examples and notes as it was worked on https://cosmicheroes.space/blog/index.php/tag/random-dungeon-generator/
 
 # Setup
@@ -44,6 +46,7 @@ Building things as I go - just using a one roll test for now to see how it goes.
 - Links to each level are at the bottom of each Dungeon Level html page
 - Keys are now just for the specific level
 - an example Dungeon with lots of Chasms https://bluetyson.github.io/ADnD1e-Random-Dungeon-Generator/dungeon_4.html
+- now uses facings, so should be a bit less wandery and somewhat more square at times, e.g. can get long angles etc.
 
 ```python
 Monster Total XP:71798
