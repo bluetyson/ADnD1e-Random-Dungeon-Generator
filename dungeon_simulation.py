@@ -584,6 +584,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             elif e_dict['direction'] == 'R':
                 if e_dict['type'] == 'N':
                     exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
+                    '''
                     if e_dict['beyond'] == 'P':
                         will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
                         if not will_fit: #fit the zero door site
@@ -592,6 +593,66 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
                         new_coord = passage_make(coord, xmod=1,ymod=-1,yloop=-1,xwidth=1)
                         new_coord = passage_make(coord, xmod=1,ymod=1,yloop=1,xwidth=1)
+                    '''
+                    if e_dict['beyond'] == 'P':
+                        # adjust xmod 1 or ymod 1
+                        if facing[0] == 0:
+                            nxmod = 1
+                            nymodp = 1
+                            nymodn = -1
+                            nyloopp = 1
+                            nyloopn = -1
+
+                            exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
+
+                            will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
+                            if not will_fit: #fit the zero door site
+                                dungeon[(coord[0]+1,coord[1],coord[2])] = {}
+                                dungeon[(coord[0]+1,coord[1],coord[2])]['fill'] = 'Cd'
+
+                            new_coord = passage_make(coord,xmod=1,ymod=1,yloop=1,xwidth=1)
+                            new_coord = passage_make(coord,xmod=1,ymod=-1,yloop=-1,xwidth=1)
+
+                        elif facing[1] == 0:
+                            nymod = 1
+                            nxmodp = 1
+                            nxmodn = -1
+                            nxloopp = 1
+                            nxloopn = -1
+
+                            exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
+
+                            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
+                            if not will_fit: #fit the zero door site
+                                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+                                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Cd'
+
+                            new_coord = passage_make(coord,ymod=1,xmod=1,xloop=1,ywidth=1)
+                            new_coord = passage_make(coord,ymod=1,xmod=-1,xloop=-1,ywidth=1)
+
+                        else:
+                            nxmod = 1
+                            nxmodp = 1
+                            nxmodn = -1
+                            nxloopp = 1
+                            nxloopn = -1
+
+                            nymod = 1
+                            nymodp = 1
+                            nymodn = -1
+                            nyloopp = 1
+                            nyloopn = -1                        
+
+                            exit_stack[(coord[0]-1,coord[1]-1,coord[2])] = {}
+
+                            will_fit = in_dungeon((coord[0]-1,coord[1]-1,coord[2]))
+                            if not will_fit: #fit the zero door site
+                                dungeon[(coord[0]-1,coord[1]-1,coord[2])] = {}
+                                dungeon[(coord[0]-1,coord[1]-1,coord[2])]['fill'] = 'Cd'
+
+                            new_coord = passage_make(coord,xmod=1,ymod=1,xloop=1,yloop=1,ywidth=1)
+                            new_coord = passage_make(coord,xmod=1,ymod=1,xloop=-1,yloop=-1,ywidth=1)
+
 
                     if e_dict['beyond'] == 'A':              
                         d = roll_dice(1,20)         
