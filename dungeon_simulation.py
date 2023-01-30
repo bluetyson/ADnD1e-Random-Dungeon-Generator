@@ -4836,9 +4836,9 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
                             # to here??
                             else: #other key
                                 pass #just informational data
-                                if 'empty' not in room_stack['shape_dict'][room]['contents']:
-                                    f.write('<br><b>Key ' + str(room) + ': </b>')
-                                    f.write('Empty<br>')                                
+                                #if 'empty' not in room_stack['shape_dict'][room]['contents']:
+                                    #f.write('<br><b>Key ' + str(room) + ': </b>')
+                                    #f.write('Empty<br>')                                
 
                     if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                         #print(room_stack['shape_dict'][room])
