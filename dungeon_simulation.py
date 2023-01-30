@@ -4827,6 +4827,10 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                                         total_valuations_monster['magic_xp'] = total_valuations_monster['magic_values'] + monster_valuations['magic_xp']
                                         total_valuations_monster['magic_values'] = total_valuations_monster['magic_values'] + monster_valuations['magic_values']
 
+                            # to here??
+                            else: #other key
+                                f.write(str(key) + ":" + str(room_stack['shape_dict'][room]['contents'][key]) + '<br>')
+
                     if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                         #print(room_stack['shape_dict'][room])
                         monster_details = False
@@ -5128,7 +5132,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             f.write('Magic: ' + str(magic_total) + '<br>')
             f.write('<b>Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total + magic_total) + '</b><br>')
 
-            f.write('<b>Total Rooms' + str(room_stack['key_count'])  + '</b>')
+            f.write('<b>Total Rooms: ' + str(room_stack['key_count'])  + '</b>')
 
             f.write('<br><br>')
             for link in range(zwidth-1):                
