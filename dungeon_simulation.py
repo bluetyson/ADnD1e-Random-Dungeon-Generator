@@ -310,17 +310,19 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             else:
                 pass
                 #"do error?"
-            return facing
+
+            if facing[0] == 0:
+                xw = 1
+                yw = 0
+            else:
+                yw = 1
+                xw = 0
+
+            return facing, xw, yw
 
     def new_facing(move, facing):
         newfacing = copy.deepcopy(facing)
-        newfacing = facing_check(move, newfacing)
-        if newfacing[0] == 0:
-            nxw = 1
-            nyw = 0
-        else:
-            nyw = 1
-            nxw = 0
+        newfacing, nxw, nyw = facing_check(move, newfacing)
 
         return newfacing, nxw, nwy
 
@@ -638,32 +640,31 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
             if s_dict['direction'] == 'L90':
                 #new_coord = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
-                facing = facing_check('L90',facing)
+                facing, xw, yw = facing_check('L90',facing)
                 new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
 
             elif s_dict['direction'] == 'R90':
                 #new_coord = passage_make(coord,xmod=1,xloop=1,ywidth=1)  
-                facing = facing_check('R90',facing)
+                facing, xw, yw = facing_check('R90',facing)
                 new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
 
-
             elif s_dict['direction'] == 'L45':
-                facing = facing_check('L45',facing)
+                facing, xw, yw = facing_check('L45',facing)
                 #new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
                 new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
 
             elif s_dict['direction'] == 'R45':
-                facing = facing_check('R45',facing)
+                facing, xw, yw = facing_check('R45',facing)
                 #new_coord = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)   
                 new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw) 
 
             elif s_dict['direction'] == 'L135':
-                facing = facing_check('L135',facing)
+                facing, xw, yw = facing_check('L135',facing)
                 #new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=-1,yloop=-1,xwidth=1)    
                 new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
 
             elif s_dict['direction'] == 'R135':
-                facing = facing_check('R135',facing)
+                facing, xw, yw = facing_check('R135',facing)
                 #new_coord = passage_make(coord,xmod=1,xloop=1,ymod=-1,yloop=-1,xwidth=1)    
                 new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
 
@@ -679,10 +680,10 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
                 if which_way == 1:
                     new_coord = new_coord_left
-                    facing = facing_check('L90',facing)
+                    facing, xw, yw = facing_check('L90',facing)
                 else:
                     new_coord = new_coord_right
-                    facing = facing_check('R90',facing)
+                    facing, xw, yw = facing_check('R90',facing)
 
             elif s_dict['direction'] == 'Y':
                 which_way = roll_dice(1,2)  #got to move this up
@@ -697,10 +698,10 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
                 if which_way == 1:
                     new_coord = new_coord_left
-                    facing = facing_check('L45',facing)
+                    facing, xw, yw = facing_check('L45',facing)
                 else:
                     new_coord = new_coord_right
-                    facing = facing_check('R45',facing)
+                    facing, xw, yw = facing_check('R45',facing)
 
             elif s_dict['direction'] == 'P': #plus
                 which_way = roll_dice(1,3)
@@ -710,10 +711,10 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
                 if which_way == 1:
                     new_coord = new_coord_left
-                    facing = facing_check('L90',facing)
+                    facing, xw, yw = facing_check('L90',facing)
                 elif which_way == 2:
                     new_coord = new_coord_right
-                    facing = facing_check('R90',facing)
+                    facing, xw, yw = facing_check('R90',facing)
                 else:
                     new_coord = new_coord_ahead
 
@@ -728,16 +729,16 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
                 if which_way == 1:
                     new_coord = new_coord_left
-                    facing = facing_check('L45',facing)
+                    facing, xw, yw = facing_check('L45',facing)
                 elif which_way == 2:
                     new_coord = new_coord_right
-                    facing = facing_check('R45',facing)
+                    facing, xw, yw = facing_check('R45',facing)
                 elif which_way == 3:
                     new_coord = new_coord_left_back
-                    facing = facing_check('L135',facing)
+                    facing, xw, yw = facing_check('L135',facing)
                 else:
                     new_coord = new_coord_right_back
-                    facing = facing_check('R135',facing)
+                    facing, xw, yw = facing_check('R135',facing)
 
                         
 
