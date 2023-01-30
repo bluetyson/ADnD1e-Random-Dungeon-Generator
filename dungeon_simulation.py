@@ -5200,7 +5200,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
     #print("Finished in",dt)
 
     #print("DUNGEON DIMENSIONS",coord_lim, "of ", PERIODIC_CHECKS, " rolls in ", end - start)
-    print("DUNGEON DIMENSIONS: Levels -",zwidth-1, "and bounds",xwidth,"x", ywidth,  "from", PERIODIC_CHECKS, " rolls in ", dt, " coords:",coord_lim)
+    print("DUNGEON DIMENSIONS: Levels -",zwidth-1, "and bounds",xwidth,"x", ywidth, "with",room_stack['key_count'],  "rooms from", PERIODIC_CHECKS, " rolls in ", dt, " coords:",coord_lim)
     #print(df)
     
     if VERBOSITY:
