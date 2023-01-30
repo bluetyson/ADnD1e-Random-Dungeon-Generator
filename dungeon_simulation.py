@@ -3882,6 +3882,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
     dungeon[(0,0,0)]['go'] = -1
 
     facing = np.zeros(2) #x, y
+    facing = facing.astype('int')
     facing[0] = int(0)
     facing[1] = int(1)
     print(facing, facing[0])
