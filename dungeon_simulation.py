@@ -752,36 +752,36 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
             if t_dict['direction'] == 'L90':
                 #new_coord = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
-                facing = facing_check('L90',facing)
+                facing, xw, yw = facing_check('L90',facing)
                 new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
                 
 
             elif t_dict['direction'] == 'R90':
                 #new_coord = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
-                facing = facing_check('R90',facing)
+                facing, xw, yw = facing_check('R90',facing)
                 new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
                 
 
             elif t_dict['direction'] == 'L45':
                 #new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
-                facing = facing_check('L45',facing)
+                facing, xw, yw = facing_check('L45',facing)
                 new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
                 
 
             elif t_dict['direction'] == 'R45':
                 #new_coord = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)    
                 new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
-                facing = facing_check('R45',facing)                
+                facing, xw, yw = facing_check('R45',facing)                
 
             elif t_dict['direction'] == 'L135':
                 #new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=-1,yloop=-1,xwidth=1)    
-                facing = facing_check('L135',facing)                
+                facing, xw, yw = facing_check('L135',facing)                
                 new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
                 
 
             else:  #t_dict['direction'] == 'R135'
                 #new_coord = passage_make(coord,xmod=1,xloop=1,ymod=-1,yloop=-1,xwidth=1)    
-                facing = facing_check('R135',facing)                
+                facing, xw, yw = facing_check('R135',facing)                
                 new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
                 
             
