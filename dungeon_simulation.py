@@ -566,7 +566,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                     if move == 'L90':
                         facing[0] = -1
                         facing[1] = -1
-                    elif move == 'R90'
+                    elif move == 'R90':
                         facing[0] = 1
                         facing[1] = 1
                     elif move == 'L45':
