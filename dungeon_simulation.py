@@ -3903,7 +3903,7 @@ def dungeon_sim(suffix, usepaht, periodic_checks, verbosity=0):
                 return 'notreasure'
 
         
-        if usepath != '' and str(suffix) != ''
+        if usepath != '' and str(suffix) != '':
             
             if not os.path.exists(usepath):
                 os.mkdir(usepath)
