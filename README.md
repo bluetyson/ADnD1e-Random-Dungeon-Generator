@@ -44,6 +44,7 @@ Building things as I go - just using a one roll test for now to see how it goes.
 - Links to each level are at the bottom of each Dungeon Level html page
 - Keys are now just for the specific level
 - an example Dungeon with lots of Chasms https://bluetyson.github.io/ADnD1e-Random-Dungeon-Generator/dungeon_4.html
+- now uses facings, so should be a bit less wandery and somewhat more square at times, e.g. can get long angles etc.
 
 ```python
 Monster Total XP:71798
