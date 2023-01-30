@@ -2,6 +2,7 @@
 Convert DMG tables to code to do for wandering around and down to make a dungeon.
 
 - Version 1.0
+- Additions now are embellishments, obscure errors and things not in the original algorithm
 - See blog for more examples and notes as it was worked on https://cosmicheroes.space/blog/index.php/tag/random-dungeon-generator/
 
 # Setup
