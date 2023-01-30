@@ -303,12 +303,12 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                 pass
                 #"do error?"
 
-            if facing[0] == 0:
-                xw = 1
-                yw = 0
-            else:
-                yw = 1
-                xw = 0
+        if facing[0] == 0:
+            xw = 1
+            yw = 0
+        else:
+            xw = 0
+            yw = 1
 
         return facing, xw, yw
 
