@@ -317,6 +317,8 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
     def random_check():
         pc_dict = {}
         pc = roll_dice(1,20)
+
+        print("facing:",facing)
         
         if pc <= 2:
             pc_dict['direction'] = 'ahead'
