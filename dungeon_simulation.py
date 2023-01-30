@@ -4827,6 +4827,12 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                                         total_valuations_monster['magic_xp'] = total_valuations_monster['magic_values'] + monster_valuations['magic_xp']
                                         total_valuations_monster['magic_values'] = total_valuations_monster['magic_values'] + monster_valuations['magic_values']
 
+                            # to here??
+                            else: #other key
+                                pass #just informational data
+                                f.write('<br><b>Key ' + str(room) + ': </b>')
+                                f.write('Empty<br>')                                
+
                     if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                         #print(room_stack['shape_dict'][room])
                         monster_details = False
@@ -5126,7 +5132,9 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             f.write('Gems: ' + str(gem_total) + '<br>')
             f.write('Jewellery: ' + str(jewellery_total) + '<br>')
             f.write('Magic: ' + str(magic_total) + '<br>')
-            f.write('<b>Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total + magic_total) + '</b>')
+            f.write('<b>Total Gold Equivalent: ' + str(gold + gem_total + jewellery_total + magic_total) + '</b><br>')
+
+            f.write('<b>Total Rooms: ' + str(room_stack['key_count'])  + '</b>')
 
             f.write('<br><br>')
             for link in range(zwidth-1):                
@@ -5200,7 +5208,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
     #print("Finished in",dt)
 
     #print("DUNGEON DIMENSIONS",coord_lim, "of ", PERIODIC_CHECKS, " rolls in ", end - start)
-    print("DUNGEON DIMENSIONS: Levels -",zwidth-1, "and bounds",xwidth,"x", ywidth,  "from", PERIODIC_CHECKS, " rolls in ", dt, " coords:",coord_lim)
+    print("DUNGEON DIMENSIONS: Levels -",zwidth-1, "and bounds",xwidth,"x", ywidth, "with",room_stack['key_count'],  "rooms from", PERIODIC_CHECKS, "rolls in ", dt, " coords:",coord_lim)
     #print(df)
     
     if VERBOSITY:
