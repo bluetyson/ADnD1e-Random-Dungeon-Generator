@@ -4201,6 +4201,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
     human_d = human_data()
     xp_d = xp_hack()
 
+    "EXEC"
     dungeon = {}
     dungeon[(0,0,0)] = {}
     dungeon[(0,0,0)]['direction'] = 'level'
@@ -4254,10 +4255,13 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
             result_coord = check_action(roll_first, result_coord, room_stack, facing)
             if VERBOSITY:
                 print("\n--- END ROLL:",i," ---\n")
-            i = room_stack['key_count']
+
+            if 'shape_dict' in room_stack:
+                i = len(room_stack['shape_dict'])
+            else:
+                i = room_stack['key_count']
             print(room_stack)
         
-
     coord_lim = coord_limits(dungeon)
     xmin = coord_lim[0][0]
     ymin = coord_lim[0][1]
