@@ -4218,7 +4218,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
     facing[0] = int(0)
     facing[1] = int(1)
     if VERBOSITY:
-        #print(facing, facing[0])
+        print(facing, facing[0])
     #start off as ahead
 
     wandering_monster_subtable = []
