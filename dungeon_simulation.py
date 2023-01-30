@@ -697,9 +697,19 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
             elif s_dict['direction'] == 'P': #plus
                 which_way = roll_dice(1,3)
-                new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
-                new_coord_right = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
-                new_coord_ahead = passage_make(coord,ymod=1,yloop=1,xwidth=1)    
+                
+                newfacing, nxw, nyw = new_facing("L90",facing)
+                #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)
+                new_coord_left = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)    
+
+                newfacing, nxw, nyw = new_facing("R90",facing)
+                #new_coord_right = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
+                new_coord_right = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
+
+                #new_coord_ahead = passage_make(coord,ymod=1,yloop=1,xwidth=1)    
+                #use xy and yw as same direction
+                new_coord_ahead = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=xw, ywidth=yw)
+
 
                 if which_way == 1:
                     new_coord = new_coord_left
