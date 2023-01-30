@@ -69,7 +69,7 @@ da = xr.DataArray(data=d_int,dims=["x","y","z"],
 import matplotlib.pyplot as plt
 plt.rcParams['axes.facecolor'] = 'black'
 
-fg = da.plot(x='x',y='y',col='z',levels=[0,1,2,3,3,4,5,6],colors=["green","white","gray","brown","brown","red","blue"], size=4,aspect=downlist[0].shape[0]/downlist[0].shape[1])
+fg = da.plot(x='x',y='y',col='z',levels=[0,1,2,3,3,4,5,6,7],colors=["green","white","gray","brown","brown","red","orange","blue"], size=4,aspect=downlist[0].shape[0]/downlist[0].shape[1])
 
 grid = pv.UniformGrid()
 
@@ -78,13 +78,6 @@ grid.dimensions = np.array(darray.shape) + 1
 grid.spacing=(1,1,1)
 grid.cell_data["map"] = d_int.flatten(order="F")
 grid.plot()
-
-plotter = pv.Plotter(notebook=False)
-annotations={0:"Out",1:"C",2:"R",3:"D",4:"CH",5:"Bad",6:"Wet"}
-#plotter.show_axes()
-#plotter.show_bounds(grid=True)
-plotter.add_mesh(grid,cmap=["green","white","gray","brown","brown","red","blue"],nan_color='black',annotations=annotations,nan_opacity=0,opacity=0.5,style='wireframe')
-plotter.show()
 
 #to remove all the empty default cells, use ghost cells
 ghost = grid.cast_to_unstructured_grid()
@@ -97,12 +90,9 @@ ghost
 
 pv.global_theme.background = 'black'
 plotter = pv.Plotter(notebook=False)
-annotations={0:"Out",1:"C",2:"R",3:"D",4:"CH",5:"Bad",6:"Wet"}
-#plotter.show_axes()
-#plotter.show_bounds(grid=True)
-#plotter.add_mesh(ghost,cmap=["green","white","gray","brown","brown","red","blue"],nan_color='black',annotations=annotations,nan_opacity=0,opacity=0.5,style='wireframe')
-plotter.add_mesh(ghost,cmap=["green","white","gray","brown","brown","red","blue"],nan_color='black',annotations=annotations, scalars='map')
-#plotter.add_mesh(ghost,cmap="Spectral",nan_color='black',annotations=annotations,nan_opacity=0,opacity=0.3,style='wireframe')
+annotations={0:"Out",1:"C",2:"R",3:"D",4:"CH",5:"Bad",6:"Stair",7:"Wet"}
+plotter.add_mesh(ghost,cmap=["green","white","gray","brown","brown","red","orange","blue"],nan_color='black',annotations=annotations, scalars='map')
+##plotter.add_mesh(ghost,cmap=["green","white","gray","brown","brown","red","orange","blue"],nan_color='black',annotations=annotations, scalars='map', style='wireframe')
 plotter.show()
 
 ghost.save('ghost.vtu')
