@@ -846,9 +846,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                             else:
                                 new_coord = passage_make(coord, xmod=facing[0],ymod=facing[1],xloop=facing[0],yloop=facing[1], ywidth=1)
 
-
-                    if e_dict['beyond'] == '4AB':   ##45 A - need to make facing for R different eventually
-                        which_way = roll_dice(1,2)        
+                    '''
                     if e_dict['beyond'] == '4AB':   ##45 A
                         which_way = roll_dice(1,2)           
                         if which_way == 1:  #corridor left
@@ -862,6 +860,30 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                             new_coord = passage_make(coord, xmod=-1,xloop=-1,ymod=-1,yloop=-1,ywidth=1)
                         else:
                             new_coord = passage_make(coord, xmod=1,xloop=1,ymod=-1,yloop=-1,ywidth=1)
+                    '''
+
+                    if e_dict['beyond'] == '4AB':   ##45 A  'L45' and 'R45'
+                        which_way = roll_dice(1,2)           
+                        if which_way == 1:  #corridor left
+                            #new_coord = passage_make(coord, xmod=-1,xloop=-1,ymod=1,yloop=1,ywidth=1)
+                            facing, xw, yw = facing_check('L45',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
+                        else:
+                            #new_coord = passage_make(coord, xmod=1,xloop=1,ymod=1,yloop=1,ywidth=1)
+                            facing, xw, yw = facing_check('R45',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)                             
+
+                    if e_dict['beyond'] == '4BA':   ##45 A 'L135' and 'R135'
+                        which_way = roll_dice(1,2)           
+                        if which_way == 1:  #corridor left
+                            #new_coord = passage_make(coord, xmod=-1,xloop=-1,ymod=-1,yloop=-1,ywidth=1)
+                            facing, xw, yw = facing_check('L135',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)                            
+                        else:
+                            #new_coord = passage_make(coord, xmod=1,xloop=1,ymod=-1,yloop=-1,ywidth=1)
+                            facing, xw, yw = facing_check('LR135',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)                            
+
 
                     if e_dict['beyond'] == 'Room':
                         #want those we randomly position lr
