@@ -4684,7 +4684,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
                             f.write('Empty<br>')
                     else:
                         for key in room_stack['shape_dict'][room]['contents']:
-                            if key == 'monster' or key == 'treasure' or key == 'trap':
+                            if key == 'monster' or key == 'treasure' or key == 'trap' or key == 'level':
                                 if abs(keylist[0][2]) == down + 1:
                                     f.write(str(key) + ":" + str(room_stack['shape_dict'][room]['contents'][key]) + '<br>')
                                 if key == 'treasure':
