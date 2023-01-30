@@ -1,4 +1,4 @@
-def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
+def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
     import timeit
     import time
@@ -117,11 +117,234 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         
         return non_edge
 
+    def facing_check(move, facing):
+        if facing[0] == 0 and facing[1] == 1:
+            if move == 'L90':
+                facing[0] = -1
+                facing[1] = 0
+            elif move == 'R90':
+                facing[0] = 1
+                facing[1] = 0
+            elif move == 'L45':
+                facing[0] = -1
+                facing[1] = 1
+            elif move == 'R45':
+                facing[0] = 1
+                facing[1] = 1
+            elif move == 'L135':
+                facing[0] = -1
+                facing[1] = -1
+            elif move == 'R135':
+                facing[0] = 1
+                facing[1] = -1
+            else:
+                pass
+                #"do error?"
+
+        elif facing[0] == -1 and facing[1] == 0:
+            if move == 'L90':
+                facing[0] = 0
+                facing[1] = 1
+            elif move == 'R90':
+                facing[0] = 0
+                facing[1] = -1
+            elif move == 'L45':
+                facing[0] = -1
+                facing[1] = 1
+            elif move == 'R45':
+                facing[0] = -1
+                facing[1] = -1
+            elif move == 'L135':
+                facing[0] = 1
+                facing[1] = 1
+            elif move == 'R135':
+                facing[0] = 1
+                facing[1] = -1
+            else:
+                pass
+                #"do error?"
+
+        elif facing[0] == 0 and facing[1] == -1:
+            if move == 'L90':
+                facing[0] = -1
+                facing[1] = 0
+            elif move == 'R90':
+                facing[0] = 1
+                facing[1] = 0
+            elif move == 'L45':
+                facing[0] = -1
+                facing[1] = -1
+            elif move == 'R45':
+                facing[0] = 1
+                facing[1] = -1
+            elif move == 'L135':
+                facing[0] = -1
+                facing[1] = 1
+            elif move == 'R135':
+                facing[0] = 1
+                facing[1] = 1
+            else:
+                pass
+                #"do error?"
+                
+        elif facing[0] == 1 and facing[1] == 0:
+            if move == 'L90':
+                facing[0] = 0
+                facing[1] = -1
+            elif move == 'R90':
+                facing[0] = 0
+                facing[1] = 1
+            elif move == 'L45':
+                facing[0] = 1
+                facing[1] = -1
+            elif move == 'R45':
+                facing[0] = 1
+                facing[1] = 1
+            elif move == 'L135':
+                facing[0] = -1
+                facing[1] = -1
+            elif move == 'R135':
+                facing[0] = -1
+                facing[1] = 1
+            else:
+                pass
+                #"do error?"
+
+        #angles
+        elif facing[0] == 1 and facing[1] == 1:
+            if move == 'L90':
+                facing[0] = -1
+                facing[1] = 1
+            elif move == 'R90':
+                facing[0] = 1
+                facing[1] = -1
+            elif move == 'L45':
+                facing[0] = 0
+                facing[1] = 1
+            elif move == 'R45':
+                facing[0] = 1
+                facing[1] = 0
+            elif move == 'L135':
+                facing[0] = 0
+                facing[1] = -1
+            elif move == 'R135':
+                facing[0] = -1
+                facing[1] = 0
+            else:
+                pass
+                #"do error?"
+
+        elif facing[0] == -1 and facing[1] == 1:
+            if move == 'L90':
+                facing[0] = -1
+                facing[1] = -1
+            elif move == 'R90':
+                facing[0] = 1
+                facing[1] = 1
+            elif move == 'L45':
+                facing[0] = 0
+                facing[1] = 1
+            elif move == 'R45':
+                facing[0] = 0
+                facing[1] = -1
+            elif move == 'L135':
+                facing[0] = -1
+                facing[1] = 0
+            elif move == 'R135':
+                facing[0] = 1
+                facing[1] = 0
+            else:
+                pass
+                #"do error?"
+
+        elif facing[0] == 1 and facing[1] == -1:
+            if move == 'L90':
+                facing[0] = -1
+                facing[1] = -1
+            elif move == 'R90':
+                facing[0] = 1
+                facing[1] = 1
+            elif move == 'L45':
+                facing[0] = 0
+                facing[1] = -1
+            elif move == 'R45':
+                facing[0] = 1
+                facing[1] = 0
+            elif move == 'L135':
+                facing[0] = -1
+                facing[1] = 0
+            elif move == 'R135':
+                facing[0] = 0
+                facing[1] = 1
+            else:
+                pass
+                #"do error?"
+
+        else:  #facing[0] == -1 and facing[1] == -1:
+            if move == 'L90':
+                facing[0] = -1
+                facing[1] = 1
+            elif move == 'R90':
+                facing[0] = 1
+                facing[1] = -1
+            elif move == 'L45':
+                facing[0] = -1
+                facing[1] = 0
+            elif move == 'R45':
+                facing[0] = 0
+                facing[1] = -1
+            elif move == 'L135':
+                facing[0] = 0
+                facing[1] = 1
+            elif move == 'R135':
+                facing[0] = 1
+                facing[1] = 0
+            else:
+                pass
+                #"do error?"
+
+        if facing[0] == 0:
+            xw = 1
+            yw = 0
+        else:
+            xw = 0
+            yw = 1
+
+        return facing, xw, yw
+
+    def new_facing(move, facing):
+        newfacing = copy.deepcopy(facing)
+        newfacing, nxw, nyw = facing_check(move, newfacing)
+
+        return newfacing, nxw, nyw
+
+    def wm_facing(facing, coord):
+        if facing[0] == 0:
+            if facing[1] == 1:
+                wm_coord = (coord[0],coord[1]+1,coord[2])        
+            else:
+                wm_coord = (coord[0],coord[1]-1,coord[2])        
+        elif facing[1] == -1:
+            if facing[1] == 1:
+                wm_coord = (coord[0]-1,coord[1]+1,coord[2])        
+            elif facing[1] == -1:
+                wm_coord = (coord[0]-1,coord[1]-1,coord[2])        
+            else: #0y
+                wm_coord = (coord[0]-1,coord[1],coord[2])        
+        else:
+            if facing[1] == 1:
+                wm_coord = (coord[0]+1,coord[1]+1,coord[2])        
+            elif facing[1] == -1:
+                wm_coord = (coord[0]+1,coord[1]-1,coord[2])        
+            else: #0y
+                wm_coord = (coord[0]+1,coord[1],coord[2])        
+
+        return wm_coord
 
     def random_check():
         pc_dict = {}
         pc = roll_dice(1,20)
-        
+
         if pc <= 2:
             pc_dict['direction'] = 'ahead'
             pc_dict['check'] = 6
@@ -204,12 +427,19 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         return new_coord
 
 
-    def check_action(pc_dict, coord, room_stack):
+    def check_action(pc_dict, coord, room_stack, facing):
         ## need a current 'orientation' 'L R A B
+        #print("facing:",facing)
         if pc_dict['direction'] == 'ahead':
-            if 1 == 1:
-                #new_coord = coord
-                new_coord = passage_make(coord,loop=6,ymod=1,yloop=1,xwidth=1)
+            #new_coord = passage_make(coord,loop=6,ymod=1,yloop=1,xwidth=1)
+            if facing[0] == 0:
+                xw = 1
+                yw = 0
+            else:
+                yw = 1
+                xw = 0
+                
+            new_coord = passage_make(coord,loop=6,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
 
         elif pc_dict['direction'] == 'exit':
             '''
@@ -221,56 +451,147 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             '''
             new_coord = coord
             e_dict = exit(coord)
-            #test L parallel
-            if 1 == 2: #disable tests
-                e_dict['beyond'] = 'P'
-                #e_dict['beyond'] = '4BA'
-                #e_dict['beyond'] = '4AB'
-                e_dict['beyond'] = 'A'
-                #e_dict['direction'] = 'L'
-                #e_dict['direction'] = 'R'
-                e_dict['direction'] = 'A'
 
             if VERBOSITY:
                 print("EDICT:",e_dict)
 
+            if facing[0] == 0:
+                xw = 1
+                yw = 0
+            else:
+                xw = 0
+                yw = 1
+
             if e_dict['direction'] == 'L':
                 if e_dict['type'] == 'N':
-                    exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
-
+                    '''
                     if e_dict['beyond'] == 'P':
+                        #make it one to left depending on facing?
                         will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                        #will_fit = in_dungeon(ex_coord)
                         if not will_fit: #fit the zero door site
                             dungeon[(coord[0]-1,coord[1],coord[2])] = {}
+                            #dungeon[ex_coord] = {}
                             dungeon[(coord[0]-1,coord[1],coord[2])]['fill'] = 'Cd'
+                            #dungeon[ex_coord]['fill'] = 'Cd'
 
                         new_coord = passage_make(coord, xmod=-1,ymod=-1,yloop=-1,xwidth=1)
                         new_coord = passage_make(coord, xmod=-1,ymod=1,yloop=1,xwidth=1)
+                    '''
+                    if e_dict['beyond'] == 'P':
+                        # adjust xmod -1 or ymod -1
+                        if facing[0] == 0:
+                            nxmod = -1
+                            nymodp = 1
+                            nymodn = -1
+                            nyloopp = 1
+                            nyloopn = -1
+
+                            exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
+
+                            will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                            if not will_fit: #fit the zero door site
+                                dungeon[(coord[0]-1,coord[1],coord[2])] = {}
+                                dungeon[(coord[0]-1,coord[1],coord[2])]['fill'] = 'Cd'
+
+                            new_coord = passage_make(coord,xmod=-1,ymod=1,yloop=1,xwidth=1)
+                            new_coord = passage_make(coord,xmod=-1,ymod=-1,yloop=-1,xwidth=1)
+
+                        elif facing[1] == 0:
+                            nymod = -1
+                            nxmodp = 1
+                            nxmodn = -1
+                            nxloopp = 1
+                            nxloopn = -1
+
+                            exit_stack[(coord[0],coord[1]-1,coord[2])] = {}
+
+                            will_fit = in_dungeon((coord[0],coord[1]-1,coord[2]))
+                            if not will_fit: #fit the zero door site
+                                dungeon[(coord[0],coord[1]-1,coord[2])] = {}
+                                dungeon[(coord[0],coord[1]-1,coord[2])]['fill'] = 'Cd'
+
+                            new_coord = passage_make(coord,ymod=-1,xmod=1,xloop=1,ywidth=1)
+                            new_coord = passage_make(coord,ymod=-1,xmod=-1,xloop=-1,ywidth=1)
+
+                        else:
+                            nxmod = -1
+                            nxmodp = 1
+                            nxmodn = -1
+                            nxloopp = 1
+                            nxloopn = -1
+
+                            nymod = -1
+                            nymodp = 1
+                            nymodn = -1
+                            nyloopp = 1
+                            nyloopn = -1                        
+
+                            exit_stack[(coord[0]-1,coord[1]-1,coord[2])] = {}
+
+                            will_fit = in_dungeon((coord[0]-1,coord[1]-1,coord[2]))
+                            if not will_fit: #fit the zero door site
+                                dungeon[(coord[0]-1,coord[1]-1,coord[2])] = {}
+                                dungeon[(coord[0]-1,coord[1]-1,coord[2])]['fill'] = 'Cd'
+
+                            new_coord = passage_make(coord,xmod=-1,ymod=-1,xloop=1,yloop=1,ywidth=1)
+                            new_coord = passage_make(coord,xmod=-1,ymod=-1,xloop=-1,yloop=-1,ywidth=1)
+
 
                     if e_dict['beyond'] == 'A':       
-                        #print("IN BRANCH")       
                         d = roll_dice(1,20)              
                         if d >=3 and d <= 5:
-                            will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
-                            if not will_fit:
-                                exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
+                            #will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                            #if not will_fit:
+                                #exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
+
+                            if facing[0] == 0:
+                                will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                                if not will_fit:
+                                    exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
+                            elif facing[1] == 0:
+                                will_fit = in_dungeon((coord[0],coord[1]-1,coord[2]))
+                                if not will_fit:
+                                    exit_stack[(coord[0],coord[1]-1,coord[2])] = {}
+                            else:
+                                will_fit = in_dungeon((coord[0]-1,coord[1]-1,coord[2]))
+                                if not will_fit:
+                                    exit_stack[(coord[0]-1,coord[1]-1,coord[2])] = {}
+
                         else:
                             #30m passage that direction
-                            new_coord = passage_make(coord, xmod=-1,xloop=-1, ywidth=1)
+                            if facing[0] == 0:
+                                #new_coord = passage_make(coord, xmod=-1,xloop=-1, ywidth=1)
+                                new_coord = passage_make(coord, ymod=-1,yloop=facing[1], xwidth=1)
+                            elif facing[1] == 0:
+                                #new_coord = passage_make(coord, xmod=-1,xloop=-1, ywidth=1)
+                                new_coord = passage_make(coord, xmod=-1,xloop=facing[0], ywidth=1)
+                            else:
+                                new_coord = passage_make(coord, xmod=-1,ymod=-1,xloop=facing[0],yloop=facing[1], ywidth=1)
 
-                    if e_dict['beyond'] == '4AB':   ##45 A
+                            #new_coord = passage_make(coord, xmod=-1,xloop=-1, ywidth=1)
+
+                    if e_dict['beyond'] == '4AB':   ##45 A  'L45' and 'R45'
                         which_way = roll_dice(1,2)           
                         if which_way == 1:  #corridor left
-                            new_coord = passage_make(coord, xmod=-1,xloop=-1,ymod=1,yloop=1,ywidth=1)
+                            #new_coord = passage_make(coord, xmod=-1,xloop=-1,ymod=1,yloop=1,ywidth=1)
+                            facing, xw, yw = facing_check('L45',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
                         else:
-                            new_coord = passage_make(coord, xmod=1,xloop=1,ymod=1,yloop=1,ywidth=1)
+                            #new_coord = passage_make(coord, xmod=1,xloop=1,ymod=1,yloop=1,ywidth=1)
+                            facing, xw, yw = facing_check('R45',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)                             
 
-                    if e_dict['beyond'] == '4BA':   ##45 A
+                    if e_dict['beyond'] == '4BA':   ##45 A 'L135' and 'R135'
                         which_way = roll_dice(1,2)           
                         if which_way == 1:  #corridor left
-                            new_coord = passage_make(coord, xmod=-1,xloop=-1,ymod=-1,yloop=-1,ywidth=1)
+                            #new_coord = passage_make(coord, xmod=-1,xloop=-1,ymod=-1,yloop=-1,ywidth=1)
+                            facing, xw, yw = facing_check('L135',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)                            
                         else:
-                            new_coord = passage_make(coord, xmod=1,xloop=1,ymod=-1,yloop=-1,ywidth=1)
+                            #new_coord = passage_make(coord, xmod=1,xloop=1,ymod=-1,yloop=-1,ywidth=1)
+                            facing, xw, yw = facing_check('R135',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)                            
 
                     if e_dict['beyond'] == 'Room':
                         #want those we randomly position lr
@@ -293,6 +614,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             elif e_dict['direction'] == 'R':
                 if e_dict['type'] == 'N':
                     exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
+                    '''
                     if e_dict['beyond'] == 'P':
                         will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
                         if not will_fit: #fit the zero door site
@@ -301,10 +623,69 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
 
                         new_coord = passage_make(coord, xmod=1,ymod=-1,yloop=-1,xwidth=1)
                         new_coord = passage_make(coord, xmod=1,ymod=1,yloop=1,xwidth=1)
+                    '''
+                    if e_dict['beyond'] == 'P':
+                        # adjust xmod 1 or ymod 1
+                        if facing[0] == 0:
+                            nxmod = 1
+                            nymodp = 1
+                            nymodn = -1
+                            nyloopp = 1
+                            nyloopn = -1
 
-                    if e_dict['beyond'] == 'A':              
-                        d = roll_dice(1,20)         
-                        #d = 20 #test number
+                            exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
+
+                            will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
+                            if not will_fit: #fit the zero door site
+                                dungeon[(coord[0]+1,coord[1],coord[2])] = {}
+                                dungeon[(coord[0]+1,coord[1],coord[2])]['fill'] = 'Cd'
+
+                            new_coord = passage_make(coord,xmod=1,ymod=1,yloop=1,xwidth=1)
+                            new_coord = passage_make(coord,xmod=1,ymod=-1,yloop=-1,xwidth=1)
+
+                        elif facing[1] == 0:
+                            nymod = 1
+                            nxmodp = 1
+                            nxmodn = -1
+                            nxloopp = 1
+                            nxloopn = -1
+
+                            exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
+
+                            will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
+                            if not will_fit: #fit the zero door site
+                                dungeon[(coord[0],coord[1]+1,coord[2])] = {}
+                                dungeon[(coord[0],coord[1]+1,coord[2])]['fill'] = 'Cd'
+
+                            new_coord = passage_make(coord,ymod=1,xmod=1,xloop=1,ywidth=1)
+                            new_coord = passage_make(coord,ymod=1,xmod=-1,xloop=-1,ywidth=1)
+
+                        else:
+                            nxmod = 1
+                            nxmodp = 1
+                            nxmodn = -1
+                            nxloopp = 1
+                            nxloopn = -1
+
+                            nymod = 1
+                            nymodp = 1
+                            nymodn = -1
+                            nyloopp = 1
+                            nyloopn = -1                        
+
+                            exit_stack[(coord[0]-1,coord[1]-1,coord[2])] = {}
+
+                            will_fit = in_dungeon((coord[0]-1,coord[1]-1,coord[2]))
+                            if not will_fit: #fit the zero door site
+                                dungeon[(coord[0]-1,coord[1]-1,coord[2])] = {}
+                                dungeon[(coord[0]-1,coord[1]-1,coord[2])]['fill'] = 'Cd'
+
+                            new_coord = passage_make(coord,xmod=1,ymod=1,xloop=1,yloop=1,ywidth=1)
+                            new_coord = passage_make(coord,xmod=1,ymod=1,xloop=-1,yloop=-1,ywidth=1)
+
+
+                    if e_dict['beyond'] == 'A':          
+                        '''
                         if d >=3 and d <= 5:
                             will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
                             if not will_fit:
@@ -314,7 +695,38 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                             if VERBOSITY:
                                 print("CHECKEDICT",e_dict)
                             new_coord = passage_make(coord, xmod=1,xloop=1, ywidth=1)
+                        '''
 
+                        d = roll_dice(1,20)         
+                        if d >=3 and d <= 5:
+                            #will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                            #if not will_fit:
+                                #exit_stack[(coord[0]-1,coord[1],coord[2])] = {}
+
+                            if facing[0] == 0:
+                                will_fit = in_dungeon((coord[0]+1,coord[1],coord[2]))
+                                if not will_fit:
+                                    exit_stack[(coord[0]+1,coord[1],coord[2])] = {}
+                            elif facing[1] == 0:
+                                will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
+                                if not will_fit:
+                                    exit_stack[(coord[0],coord[1]+1,coord[2])] = {}
+                            else:
+                                will_fit = in_dungeon((coord[0]+1,coord[1]+1,coord[2]))
+                                if not will_fit:
+                                    exit_stack[(coord[0]+1,coord[1]+1,coord[2])] = {}
+
+                        else:
+                            #30m passage that direction
+                            if facing[0] == 0:
+                                new_coord = passage_make(coord, ymod=+1,yloop=facing[1], xwidth=1)
+                            elif facing[1] == 0:
+                                new_coord = passage_make(coord, xmod=+1,xloop=facing[0], ywidth=1)
+                            else:
+                                new_coord = passage_make(coord, xmod=+1,ymod=+1,xloop=facing[0],yloop=facing[1], ywidth=1)
+
+
+                    '''
                     if e_dict['beyond'] == '4AB':   ##45 A
                         which_way = roll_dice(1,2)           
                         if which_way == 1:  #corridor left
@@ -328,6 +740,30 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                             new_coord = passage_make(coord, xmod=-1,xloop=-1,ymod=-1,yloop=-1,ywidth=1)
                         else:
                             new_coord = passage_make(coord, xmod=1,xloop=1,ymod=-1,yloop=-1,ywidth=1)
+                    '''
+
+                    if e_dict['beyond'] == '4AB':   ##45 A  'L45' and 'R45'
+                        which_way = roll_dice(1,2)           
+                        if which_way == 1:  #corridor left
+                            #new_coord = passage_make(coord, xmod=-1,xloop=-1,ymod=1,yloop=1,ywidth=1)
+                            facing, xw, yw = facing_check('L45',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
+                        else:
+                            #new_coord = passage_make(coord, xmod=1,xloop=1,ymod=1,yloop=1,ywidth=1)
+                            facing, xw, yw = facing_check('R45',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)                             
+
+                    if e_dict['beyond'] == '4BA':   ##45 A 'L135' and 'R135'
+                        which_way = roll_dice(1,2)           
+                        if which_way == 1:  #corridor left
+                            #new_coord = passage_make(coord, xmod=-1,xloop=-1,ymod=-1,yloop=-1,ywidth=1)
+                            facing, xw, yw = facing_check('L135',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)                            
+                        else:
+                            #new_coord = passage_make(coord, xmod=1,xloop=1,ymod=-1,yloop=-1,ywidth=1)
+                            facing, xw, yw = facing_check('R135',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)                            
+
 
                     if e_dict['beyond'] == 'Room':
                         #want those we randomly position lr
@@ -373,8 +809,8 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                                 secret_doors(shape_dict)                    
 
                     if e_dict['beyond'] == 'A':              
+                        '''
                         d = roll_dice(1,20)         
-                        d = 20 #test number
                         if d >=3 and d <= 5:
                             will_fit = in_dungeon((coord[0],coord[1]+1,coord[2]))
                             if not will_fit:
@@ -384,9 +820,33 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                             if VERBOSITY:
                                 print("CHECKEDICT",e_dict)
                             new_coord = passage_make(coord, ymod=1,yloop=1, xwidth=1)
+                        '''
 
-                    if e_dict['beyond'] == '4AB':   ##45 A - need to make facing for R different eventually
-                        which_way = roll_dice(1,2)        
+                        d = roll_dice(1,20)         
+                        if d >=3 and d <= 5:
+                            if facing[0] == 0:
+                                will_fit = in_dungeon((coord[0],coord[1]+facing[1],coord[2]))
+                                if not will_fit:
+                                    exit_stack[(coord[0]+1,coord[1]+facing[1],coord[2])] = {}
+                            elif facing[1] == 0:
+                                will_fit = in_dungeon((coord[0]+facing[0],coord[1],coord[2]))
+                                if not will_fit:
+                                    exit_stack[(coord[0]+facing[0],coord[1],coord[2])] = {}
+                            else:
+                                will_fit = in_dungeon((coord[0]+facing[0],coord[1]+facing[1],coord[2]))
+                                if not will_fit:
+                                    exit_stack[(coord[0]+facing[0],coord[1]+facing[1],coord[2])] = {}
+
+                        else:
+                            #30m passage that direction
+                            if facing[0] == 0:
+                                new_coord = passage_make(coord, ymod=facing[1],yloop=facing[1], xwidth=1)
+                            elif facing[1] == 0:
+                                new_coord = passage_make(coord, xmod=facing[0],xloop=facing[0], ywidth=1)
+                            else:
+                                new_coord = passage_make(coord, xmod=facing[0],ymod=facing[1],xloop=facing[0],yloop=facing[1], ywidth=1)
+
+                    '''
                     if e_dict['beyond'] == '4AB':   ##45 A
                         which_way = roll_dice(1,2)           
                         if which_way == 1:  #corridor left
@@ -400,6 +860,30 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                             new_coord = passage_make(coord, xmod=-1,xloop=-1,ymod=-1,yloop=-1,ywidth=1)
                         else:
                             new_coord = passage_make(coord, xmod=1,xloop=1,ymod=-1,yloop=-1,ywidth=1)
+                    '''
+
+                    if e_dict['beyond'] == '4AB':   ##45 A  'L45' and 'R45'
+                        which_way = roll_dice(1,2)           
+                        if which_way == 1:  #corridor left
+                            #new_coord = passage_make(coord, xmod=-1,xloop=-1,ymod=1,yloop=1,ywidth=1)
+                            facing, xw, yw = facing_check('L45',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
+                        else:
+                            #new_coord = passage_make(coord, xmod=1,xloop=1,ymod=1,yloop=1,ywidth=1)
+                            facing, xw, yw = facing_check('R45',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)                             
+
+                    if e_dict['beyond'] == '4BA':   ##45 A 'L135' and 'R135'
+                        which_way = roll_dice(1,2)           
+                        if which_way == 1:  #corridor left
+                            #new_coord = passage_make(coord, xmod=-1,xloop=-1,ymod=-1,yloop=-1,ywidth=1)
+                            facing, xw, yw = facing_check('L135',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)                            
+                        else:
+                            #new_coord = passage_make(coord, xmod=1,xloop=1,ymod=-1,yloop=-1,ywidth=1)
+                            facing, xw, yw = facing_check('LR135',facing)
+                            new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)                            
+
 
                     if e_dict['beyond'] == 'Room':
                         #want those we randomly position lr
@@ -418,83 +902,158 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             ## got to proceed with direction/type of exit
 
         elif pc_dict['direction'] == 'side':
-
+            if facing[0] == 0:
+                xw = 1
+                yw = 0
+            else:
+                xw = 0
+                yw = 1
+           
             new_coord = coord
             s_dict = side(coord)
             if VERBOSITY:                                      
                 print("S_DICT:",s_dict)
 
+            #print(facing)
+
             if s_dict['direction'] == 'L90':
-                new_coord = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
+                #new_coord = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
+                facing, xw, yw = facing_check('L90',facing)
+                new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
 
             elif s_dict['direction'] == 'R90':
-                new_coord = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
+                #new_coord = passage_make(coord,xmod=1,xloop=1,ywidth=1)  
+                facing, xw, yw = facing_check('R90',facing)
+                new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
 
             elif s_dict['direction'] == 'L45':
-                new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
+                facing, xw, yw = facing_check('L45',facing)
+                #new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
+                new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
 
             elif s_dict['direction'] == 'R45':
-                new_coord = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)    
+                facing, xw, yw = facing_check('R45',facing)
+                #new_coord = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)   
+                new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw) 
 
             elif s_dict['direction'] == 'L135':
-                new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=-1,yloop=-1,xwidth=1)    
+                facing, xw, yw = facing_check('L135',facing)
+                #new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=-1,yloop=-1,xwidth=1)    
+                new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
 
             elif s_dict['direction'] == 'R135':
-                new_coord = passage_make(coord,xmod=1,xloop=1,ymod=-1,yloop=-1,xwidth=1)    
+                facing, xw, yw = facing_check('R135',facing)
+                #new_coord = passage_make(coord,xmod=1,xloop=1,ymod=-1,yloop=-1,xwidth=1)    
+                new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
 
             elif s_dict['direction'] == 'T':
                 which_way = roll_dice(1,2)
-                new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
-                new_coord_right = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
+                newfacing, nxw, nyw = new_facing("L90",facing)
+                #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
+                new_coord_left = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
+
+                newfacing, nxw, nyw = new_facing("R90",facing)
+                #new_coord_right = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
+                new_coord_right = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
 
                 if which_way == 1:
                     new_coord = new_coord_left
+                    facing, xw, yw = facing_check('L90',facing)
                 else:
                     new_coord = new_coord_right
+                    facing, xw, yw = facing_check('R90',facing)
 
             elif s_dict['direction'] == 'Y':
                 which_way = roll_dice(1,2)  #got to move this up
-                new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
-                new_coord_right = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)    
+
+                newfacing, nxw, nyw = new_facing("L45",facing)
+                #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
+                new_coord_left = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
+
+                newfacing, nxw, nyw = new_facing("R45",facing)
+                #new_coord_right = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)    
+                new_coord_right = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
+
                 if which_way == 1:
                     new_coord = new_coord_left
+                    facing, xw, yw = facing_check('L45',facing)
                 else:
                     new_coord = new_coord_right
+                    facing, xw, yw = facing_check('R45',facing)
 
             elif s_dict['direction'] == 'P': #plus
+
                 which_way = roll_dice(1,3)
-                new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
-                new_coord_right = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
-                new_coord_ahead = passage_make(coord,ymod=1,yloop=1,xwidth=1)    
+                
+                newfacing, nxw, nyw = new_facing("L90",facing)
+                #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)
+                new_coord_left = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)    
+
+                newfacing, nxw, nyw = new_facing("R90",facing)
+                #new_coord_right = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
+                new_coord_right = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
+
+                #new_coord_ahead = passage_make(coord,ymod=1,yloop=1,xwidth=1)    
+                #use xy and yw as same direction and facing the same
+                new_coord_ahead = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
 
                 if which_way == 1:
                     new_coord = new_coord_left
+                    facing, xw, yw = facing_check('L90',facing)
                 elif which_way == 2:
                     new_coord = new_coord_right
+                    facing, xw, yw = facing_check('R90',facing)
                 else:
                     new_coord = new_coord_ahead
 
             else:
             #s_dict['direction'] == 'X': 45 and 135
                 which_way = roll_dice(1,4) ##got to move this up
-                new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
-                new_coord_right = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1) 
-                
-                new_coord_left_back = passage_make(coord,xmod=-1,xloop=-1,ymod=-1,yloop=-1,xwidth=1)    
-                new_coord_right_back = passage_make(coord,xmod=1,xloop=1,ymod=-1,yloop=-1,xwidth=1)                   
+                #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
+                #new_coord_right = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1) 
+
+                newfacing, nxw, nyw = new_facing("L45",facing)
+                #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
+                new_coord_left = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
+
+                newfacing, nxw, nyw = new_facing("R45",facing)
+                #new_coord_right = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)    
+                new_coord_right = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
+
+                #new_coord_left_back = passage_make(coord,xmod=-1,xloop=-1,ymod=-1,yloop=-1,xwidth=1)    
+                #new_coord_right_back = passage_make(coord,xmod=1,xloop=1,ymod=-1,yloop=-1,xwidth=1)     
+
+                newfacing, nxw, nyw = new_facing("L135",facing)
+                #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
+                new_coord_left_back = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
+
+                newfacing, nxw, nyw = new_facing("R135",facing)
+                #new_coord_right = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)    
+                new_coord_right_back= passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
 
                 if which_way == 1:
                     new_coord = new_coord_left
+                    facing, xw, yw = facing_check('L45',facing)
                 elif which_way == 2:
                     new_coord = new_coord_right
+                    facing, xw, yw = facing_check('R45',facing)
                 elif which_way == 3:
                     new_coord = new_coord_left_back
+                    facing, xw, yw = facing_check('L135',facing)
                 else:
                     new_coord = new_coord_right_back
-
+                    facing, xw, yw = facing_check('R135',facing)
                         
 
         elif pc_dict['direction'] == 'turn':
+
+            if facing[0] == 0:
+                xw = 1
+                yw = 0
+            else:
+                yw = 1
+                xw = 0            
+
             new_coord = coord
             t_dict = turn(coord)
             if VERBOSITY:
@@ -503,23 +1062,39 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             t = roll_dice(1,20)
 
             if t_dict['direction'] == 'L90':
-                new_coord = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
+                #new_coord = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
+                facing, xw, yw = facing_check('L90',facing)
+                new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
+                
 
             elif t_dict['direction'] == 'R90':
-                new_coord = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
+                #new_coord = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
+                facing, xw, yw = facing_check('R90',facing)
+                new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
+                
 
             elif t_dict['direction'] == 'L45':
-                new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
+                #new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=1,yloop=1,xwidth=1)    
+                facing, xw, yw = facing_check('L45',facing)
+                new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
+                
 
             elif t_dict['direction'] == 'R45':
-                new_coord = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)    
+                #new_coord = passage_make(coord,xmod=1,xloop=1,ymod=1,yloop=1,xwidth=1)    
+                new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
+                facing, xw, yw = facing_check('R45',facing)                
 
             elif t_dict['direction'] == 'L135':
-                new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=-1,yloop=-1,xwidth=1)    
+                #new_coord = passage_make(coord,xmod=-1,xloop=-1,ymod=-1,yloop=-1,xwidth=1)    
+                facing, xw, yw = facing_check('L135',facing)                
+                new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
+                
 
             else:  #t_dict['direction'] == 'R135'
-                new_coord = passage_make(coord,xmod=1,xloop=1,ymod=-1,yloop=-1,xwidth=1)    
-
+                #new_coord = passage_make(coord,xmod=1,xloop=1,ymod=-1,yloop=-1,xwidth=1)    
+                facing, xw, yw = facing_check('R135',facing)                
+                new_coord = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
+                
             
         elif pc_dict['direction'] == 'room':
             '''
@@ -737,7 +1312,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
             new_coord = coord
             roll_first = random_check()
             #"+1 like trap - wm"
-            result_coord = check_action(roll_first, new_coord, room_stack)
+            result_coord = check_action(roll_first, new_coord, room_stack, facing)
             new_coord = result_coord
 
             will_fit = in_dungeon((coord[0],coord[1]+1,coord[2])) #square for monster
@@ -756,7 +1331,9 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 if VERBOSITY:
                     print('wm key check',dungeon[(coord[0],coord[1]+1,coord[2])])
 
-            wm_coord = (coord[0],coord[1]+1,coord[2])
+            #wm_coord = (coord[0],coord[1]+1,coord[2])
+            wm_coord = wm_facing(facing, coord)
+
             wandering_monster_stack['key_count'] +=1
             wandering_monster_stack[wandering_monster_stack['key_count']] = {}
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord] = {}
@@ -3636,12 +4213,17 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
     dungeon[(0,0,0)]['check'] = 'up_down'
     dungeon[(0,0,0)]['go'] = -1
 
-    facing = 'A'
+    facing = np.zeros(2) #x, y
+    facing = facing.astype('int')
+    facing[0] = int(0)
+    facing[1] = int(1)
+    if VERBOSITY:
+        print(facing, facing[0])
+    #start off as ahead
+
     wandering_monster_subtable = []
     wandering_monster_rolls = []
     ## got to implement for all here eventually, complicates things
-
-
 
     START_COORD = (0,0,-1)
     coord = START_COORD
@@ -3653,8 +4235,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
     while roll_first == 18:
         roll_first = random_check()
 
-
-    first_action = check_action(roll_first, coord, room_stack)    
+    first_action = check_action(roll_first, coord, room_stack, facing)    
 
     i = 0
     result_coord = first_action
@@ -3665,7 +4246,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         if VERBOSITY:
             print("\n--- ROLL:",i," ---\n")
         roll_first = random_check()
-        result_coord = check_action(roll_first, result_coord, room_stack)
+        result_coord = check_action(roll_first, result_coord, room_stack, facing)
         if VERBOSITY:
             print("\n--- END ROLL:",i," ---\n")
         i +=1
@@ -3715,7 +4296,7 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
         for key in dungeon:
             #print("KEY:",key,"KEYWIDTH:",key[0]+xwidth-1,key[1]+ywidth-1,key[2]+zwidth-1)
             #print("KEY:",key,"KEYWIDTH:",key[0]+xmax-key[0],key[1]+ymax-key[1],key[2]+zmax - key[2])
-            
+            #print("KEYTEST:",key)
             if key[2] == (0 - down -1): #-1, -2, etc
                 if 'fill' in dungeon[key] :  
                     if VERBOSITY:
@@ -3903,7 +4484,18 @@ def dungeon_sim(periodic_checks, verbosity=0, usepath = '', suffix=''):
                 return 'notreasure'
 
         
-        with open('dungeon_' + str(down+1) + '.html','w') as f:
+        if usepath != '' and str(suffix) != '':
+            
+            if not os.path.exists(usepath):
+                os.mkdir(usepath)
+            if not os.path.exists(os.path.join(usepath, str(suffix))):
+                os.mkdir(os.path.join(usepath, str(suffix)))
+            strpath = os.path.join(usepath, str(suffix), 'dungeon_' + str(down+1) + '.html')
+        else:
+            strpath = 'dungeon_' + str(down+1) + '.html'
+
+       
+        with open(strpath,'w') as f:
             #f.write(strhead)
             f.write(strusehead)
             

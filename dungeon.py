@@ -1,5 +1,5 @@
 
-#Version 0.94.1, 20220127
+#Version 1.0, 20220130
 
 import sys
 from dungeon_simulation import dungeon_sim
@@ -7,7 +7,9 @@ from dungeon_simulation import dungeon_sim
 if __name__ == "__main__":
     #make 3rd one, number of sims!
     #then do multiprocessing
-    
+    suffix = ''
+    usepath = ''
+
     ARGV = sys.argv
     PERIODIC_CHECKS = 1
     VERBOSITY = 0
@@ -19,8 +21,8 @@ if __name__ == "__main__":
     if len(ARGV) > 2:
         VERBOSITY = int(ARGV[2])
 
-    print(PERIODIC_CHECKS, VERBOSITY)
-    df = dungeon_sim(PERIODIC_CHECKS, VERBOSITY)
+    print(suffix, usepath, PERIODIC_CHECKS, VERBOSITY)
+    df = dungeon_sim(suffix, usepath, PERIODIC_CHECKS, VERBOSITY)
 
     #print(df)
     

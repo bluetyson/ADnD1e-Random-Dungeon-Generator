@@ -4579,10 +4579,12 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
 
 #def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
 
+from dungeon_simulation import dungeon_sim
+
 
 if __name__ == '__main__':
 
-    usepath = 'simulations'
+    usepath = 'simulationstest'
     periodic_checks = 10 
     verbosity = 0
     simulations = 10
@@ -4617,7 +4619,7 @@ if __name__ == '__main__':
     #print(idx_list[use_index:use_index + 1]) ##
     ctx = mp.get_context("spawn")
     with concurrent.futures.ProcessPoolExecutor(mp_context=ctx) as executor:
-        future_to_data = {executor.submit(dungeon_simr, idx, pc_list[idx], verbosity_list[idx], usepath_list[idx]): idx for idx in idx_list}		
+        future_to_data = {executor.submit(dungeon_sim, idx, pc_list[idx], verbosity_list[idx], usepath_list[idx]): idx for idx in idx_list}		
 
         for future in concurrent.futures.as_completed(future_to_data):
             datainfo = future_to_data[future]
