@@ -25,6 +25,8 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
     LEVELS_CHECK = levels_check
 
     PI = math.pi
+     #standard algorithm
+    LEVEL = "Y" #in case want to not let levels go down  - NOT YET IMPLEMENTED
     
     def roll_dice(number, sides):
         roll = random.randint(number,sides)
