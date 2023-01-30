@@ -4255,6 +4255,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
             if VERBOSITY:
                 print("\n--- END ROLL:",i," ---\n")
             i = room_stack['key_count']
+            print(room_stack)
         
 
     coord_lim = coord_limits(dungeon)
