@@ -318,8 +318,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
         pc_dict = {}
         pc = roll_dice(1,20)
 
-        print("facing:",facing)
-        
         if pc <= 2:
             pc_dict['direction'] = 'ahead'
             pc_dict['check'] = 6
@@ -3904,7 +3902,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
     while roll_first == 18:
         roll_first = random_check()
 
-    first_action = check_action(roll_first, coord, room_stack)    
+    first_action = check_action(roll_first, coord, room_stack, facing)    
 
     i = 0
     result_coord = first_action
@@ -3915,7 +3913,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
         if VERBOSITY:
             print("\n--- ROLL:",i," ---\n")
         roll_first = random_check()
-        result_coord = check_action(roll_first, result_coord, room_stack)
+        result_coord = check_action(roll_first, result_coord, room_stack, facing)
         if VERBOSITY:
             print("\n--- END ROLL:",i," ---\n")
         i +=1
