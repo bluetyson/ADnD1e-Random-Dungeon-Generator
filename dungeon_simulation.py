@@ -318,6 +318,25 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
         return newfacing, nxw, nyw
 
+    def wm_facing(facing):
+        if facing[0] == 0:
+            if facing[1] == 1:
+                wm_coord = (coord[0],coord[1]+1,coord[2])        
+            else:
+                wm_coord = (coord[0],coord[1]-1,coord[2])        
+        elif facing[1] == -1:
+            if facing[1] == 1:
+                wm_coord = (coord[0]-1,coord[1]+1,coord[2])        
+            else:
+                wm_coord = (coord[0]-1,coord[1]-1,coord[2])        
+        else:
+            if facing[1] == 1:
+                wm_coord = (coord[0]+1,coord[1]+1,coord[2])        
+            else:
+                wm_coord = (coord[0]+1,coord[1]-1,coord[2])        
+
+        return wm_coord
+
     def random_check():
         pc_dict = {}
         pc = roll_dice(1,20)
@@ -1045,7 +1064,9 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                 if VERBOSITY:
                     print('wm key check',dungeon[(coord[0],coord[1]+1,coord[2])])
 
-            wm_coord = (coord[0],coord[1]+1,coord[2])
+            #wm_coord = (coord[0],coord[1]+1,coord[2])
+            wm_coord = wm_facing(facing)
+            
             wandering_monster_stack['key_count'] +=1
             wandering_monster_stack[wandering_monster_stack['key_count']] = {}
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord] = {}
