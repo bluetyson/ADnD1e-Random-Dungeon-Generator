@@ -318,7 +318,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
         return newfacing, nxw, nyw
 
-    def wm_facing(facing):
+    def wm_facing(facing, coord):
         if facing[0] == 0:
             if facing[1] == 1:
                 wm_coord = (coord[0],coord[1]+1,coord[2])        
@@ -639,8 +639,8 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                 xw = 1
                 yw = 0
             else:
-                yw = 1
                 xw = 0
+                yw = 1
            
             new_coord = coord
             s_dict = side(coord)
@@ -1065,8 +1065,8 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                     print('wm key check',dungeon[(coord[0],coord[1]+1,coord[2])])
 
             #wm_coord = (coord[0],coord[1]+1,coord[2])
-            wm_coord = wm_facing(facing)
-            
+            wm_coord = wm_facing(facing, coord)
+
             wandering_monster_stack['key_count'] +=1
             wandering_monster_stack[wandering_monster_stack['key_count']] = {}
             wandering_monster_stack[wandering_monster_stack['key_count']][wm_coord] = {}
