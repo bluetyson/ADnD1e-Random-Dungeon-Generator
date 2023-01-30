@@ -140,7 +140,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             else:
                 pass
                 #"do error?"
-            return facing
 
         elif facing[0] == -1 and facing[1] == 0:
             if move == 'L90':
@@ -164,7 +163,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             else:
                 pass
                 #"do error?"
-            return facing
 
         elif facing[0] == 0 and facing[1] == -1:
             if move == 'L90':
@@ -188,7 +186,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             else:
                 pass
                 #"do error?"
-            return facing
                 
         elif facing[0] == 1 and facing[1] == 0:
             if move == 'L90':
@@ -212,7 +209,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             else:
                 pass
                 #"do error?"
-            return facing
 
         #angles
         elif facing[0] == 1 and facing[1] == 1:
@@ -237,7 +233,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             else:
                 pass
                 #"do error?"
-            return facing
 
         elif facing[0] == -1 and facing[1] == 1:
             if move == 'L90':
@@ -261,7 +256,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             else:
                 pass
                 #"do error?"
-            return facing
 
         elif facing[0] == 1 and facing[1] == -1:
             if move == 'L90':
@@ -285,8 +279,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             else:
                 pass
                 #"do error?"
-            return facing
-
 
         else:  #facing[0] == -1 and facing[1] == -1:
             if move == 'L90':
@@ -318,7 +310,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                 yw = 1
                 xw = 0
 
-            return facing, xw, yw
+        return facing, xw, yw
 
     def new_facing(move, facing):
         newfacing = copy.deepcopy(facing)
