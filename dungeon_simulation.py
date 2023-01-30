@@ -463,8 +463,8 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                     #exit_stack[ex_coord] = {}
 
                     if e_dict['beyond'] == 'P':
-                        #will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
-                        will_fit = in_dungeon(ex_coord)
+                        will_fit = in_dungeon((coord[0]-1,coord[1],coord[2]))
+                        #will_fit = in_dungeon(ex_coord)
                         if not will_fit: #fit the zero door site
                             dungeon[(coord[0]-1,coord[1],coord[2])] = {}
                             #dungeon[ex_coord] = {}
@@ -740,7 +740,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                 #new_coord_ahead = passage_make(coord,ymod=1,yloop=1,xwidth=1)    
                 #use xy and yw as same direction and facing the same
                 new_coord_ahead = passage_make(coord,xmod=facing[0],xloop=facing[0],ymod=facing[1],yloop=facing[1],xwidth=xw, ywidth=yw)
-
 
                 if which_way == 1:
                     new_coord = new_coord_left
