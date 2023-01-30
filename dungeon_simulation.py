@@ -329,15 +329,15 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                 wm_coord = (coord[0]-1,coord[1]+1,coord[2])        
             elif facing[1] == -1:
                 wm_coord = (coord[0]-1,coord[1]-1,coord[2])        
-            else:
+            else: #0y
                 wm_coord = (coord[0]-1,coord[1],coord[2])        
         else:
             if facing[1] == 1:
                 wm_coord = (coord[0]+1,coord[1]+1,coord[2])        
             elif facing[1] == -1:
                 wm_coord = (coord[0]+1,coord[1]-1,coord[2])        
-            else:
-                wm_coord = (coord[0]+1,coord[1]0,coord[2])        
+            else: #0y
+                wm_coord = (coord[0]+1,coord[1],coord[2])        
 
         return wm_coord
 
