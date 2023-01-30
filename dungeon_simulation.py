@@ -662,11 +662,11 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
 
             elif s_dict['direction'] == 'T':
                 which_way = roll_dice(1,2)
-                newfacing, nxw, nxy = new_facing("L90",facing)
+                newfacing, nxw, nyw = new_facing("L90",facing)
                 #new_coord_left = passage_make(coord,xmod=-1,xloop=-1,ywidth=1)    
                 new_coord_left = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
 
-                newfacing, nxw, nxy = new_facing("R90",facing)
+                newfacing, nxw, nyw = new_facing("R90",facing)
                 #new_coord_right = passage_make(coord,xmod=1,xloop=1,ywidth=1)    
                 new_coord_right = passage_make(coord,xmod=newfacing[0],xloop=newfacing[0],ymod=newfacing[1],yloop=newfacing[1],xwidth=nxw, ywidth=nyw)
 
