@@ -3365,6 +3365,12 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
                 t_dict['trap']['fits'] = 'Y'
         else:  #inside a room, things already created
             t = roll_dice(1,20)
+            if LEVEL == "N": #no going down
+                if t >= 19:
+                    t = 5
+                if t >=9 and t <=11:
+                    t = 5                        
+                
             if t <= 5:
                 t_dict['secretdoor'] == 'Y'
                 s = roll_dice(1,20)
