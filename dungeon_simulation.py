@@ -4233,6 +4233,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
     first_action = check_action(roll_first, coord, room_stack, facing)    
 
     i = 0
+    j = 0
     result_coord = first_action
     if VERBOSITY:
         print("END SETUP:",)
