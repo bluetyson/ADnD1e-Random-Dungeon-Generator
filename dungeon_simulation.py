@@ -26,7 +26,8 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
 
     PI = math.pi
      #standard algorithm
-    LEVEL = "N" #in case want to not let levels go down  - NOT YET IMPLEMENTED
+    LEVEL = "Y" #in case want to not let levels go down  - NOT YET IMPLEMENTED
+    #this will have some problems - basically wandering to try and fit things in, so many, many possible wms
     #traps would have to change here too
     
     def roll_dice(number, sides):
