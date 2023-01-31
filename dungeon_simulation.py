@@ -4261,7 +4261,6 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
                 i = len(room_stack['shape_dict'])
             else:
                 i = room_stack['key_count']
-            print(room_stack)
 
     if ROOMS_CHECK == 0 and LEVELS_CHECK >= 0:
         print("LEVELS CHECK", LEVELS_CHECK)
@@ -4274,7 +4273,22 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
                 print("\n--- END ROLL:",i," ---\n")
 
             j = abs(result_coord[2])
-            print(room_stack)
+
+    if ROOMS_CHECK >= 0 and LEVELS_CHECK >= 0:
+        print("LEVELS CHECK", LEVELS_CHECK)
+        while i < ROOMS_CHECK and j < LEVELS_CHECK:
+            if VERBOSITY:
+                print("\n--- ROLL:",i," ---\n")
+            roll_first = random_check()
+            result_coord = check_action(roll_first, result_coord, room_stack, facing)
+            if VERBOSITY:
+                print("\n--- END ROLL:",i," ---\n")
+            if 'shape_dict' in room_stack:
+                i = len(room_stack['shape_dict'])
+            else:
+                i = room_stack['key_count']
+
+            j = abs(result_coord[2])
 
     coord_lim = coord_limits(dungeon)
     xmin = coord_lim[0][0]
