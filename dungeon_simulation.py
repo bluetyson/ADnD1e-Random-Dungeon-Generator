@@ -3098,6 +3098,8 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
 
                 t = roll_dice(1,20)
                 if LEVEL == "N": #no going down
+                    print(LEVEL)
+                    quit()
                     if t >= 19:
                         t = 5
                     if t >=9 and t <=11:
