@@ -5226,6 +5226,9 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
         with open('room_stack.pkl','wb') as fd:
             pickle.dump(room_stack, fd)
 
+        with open('exit_stack.pkl','wb') as fd:
+            pickle.dump(room_stack, fd)
+
         with open('wandering_monster_stack.pkl','wb') as fd:
             pickle.dump(wandering_monster_stack, fd)
 

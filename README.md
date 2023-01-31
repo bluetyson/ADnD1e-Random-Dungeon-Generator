@@ -1,7 +1,7 @@
 ## Advanced Dungeons & Dragons style random dungeon generator
 Convert DMG tables to code to do for wandering around and down to make a dungeon.
 
-- Version 1.2.1
+- Version 1.4.2
 - Additions now are embellishments, obscure errors and things not in the original algorithm
 - Thought it would take around a month, appears to have
 - See blog for more examples and notes as it was worked on https://cosmicheroes.space/blog/index.php/tag/random-dungeon-generator/
@@ -25,6 +25,24 @@ Convert DMG tables to code to do for wandering around and down to make a dungeon
   ```python
   python dungeon.py 20 1  
   ```
+
+  - More esoterically there are ROOM CHECK and LEVEL CHECK flags 3 and 4 - note that these ignore PERIODIC CHECK numbers
+  - You can try things like 'generate until 365 rooms'
+   ```python
+    python dungeon.py 20 0 365 0 
+    ```
+    - note that this may get more than 365 as in room exit secret door checks it can generate more rooms and this flag does not check for that
+        - so if looking to get actually 365 for example, may want to experiment with runs with smaller numbers than 365
+  - Less interestingly, 'generate until 5 levels'
+   ```python
+    python dungeon.py 20 0 0 5 
+    ```
+    - with traps and things, you can get more with elevators parts in them, in this case
+  - Or, 'generate until 32 rooms and 4 levels'
+   ```python
+    python dungeon.py 20 0 32 4 
+    ```
+    - see caveats above
  
 # Binder
 - click the below to fire up a web container environment that lets you run this in your browser
@@ -248,6 +266,14 @@ treasure:{'type': {'copper': 0, 'silver': 0, 'electrum': 0, 'gold': 2200, 'plati
 #3D View example - 200 Periodic Check Dungeon
 ![image](https://user-images.githubusercontent.com/17399794/215614721-7ab99b25-fe28-4e60-a310-9054d7ac117c.png)
 
+# Future possibilities
+- See issues
+- Filling in is more complicated take the exit stack, follow them - if get to a bounds, stop, take the next exit?
+
+- Level "N"
+    - there is a flag Level that if you set to "N" if won't go down past the first level
+    - no checking to see if it gets stuck though, which could happen e.g. if script is running for 30sec+ it probably has
+        - no flags for this as yet, but you can just change the "Y" to "N" in dungeon_simulation.py
 
 ## References
 - dungeon mapping icons : https://savevsdragon.blogspot.com/2012/03/free-download-master-dungeon-mapping.html
