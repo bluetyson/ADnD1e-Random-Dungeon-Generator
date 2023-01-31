@@ -4588,6 +4588,8 @@ if __name__ == '__main__':
     periodic_checks = 10 
     verbosity = 0
     simulations = 10
+    rooms_check = True
+    levels_check = True
 
     ARGV = sys.argv
     print(ARGV)

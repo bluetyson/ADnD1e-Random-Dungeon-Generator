@@ -1,4 +1,4 @@
-def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
+def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels_check):
 
     import timeit
     import time
@@ -21,19 +21,15 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
     from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item, treasure_choice
 
     VERBOSITY = verbosity
+    ROOMS_CHECK = rooms_check
+    LEVELS_CHECK = levels_check
 
     PI = math.pi
-    #ARGV = sys.argv
-
-    #standard algorithm
-    LEVEL = "Y"
-    #if len(ARGV) > 2:
-        #LEVEL = ARGV[2]
-        #stub to handle making a dungeon of just one level
-        #this would be checked to disable level descent in periodi check
-        #also in traps that go down, substitute
-
-    #pass location?
+     #standard algorithm
+    LEVEL = "Y" #in case want to not let levels go down  - NOT YET IMPLEMENTED
+    #this will have some problems - basically wandering to try and fit things in, so many, many possible wms
+    #traps would have to change here too
+    
     def roll_dice(number, sides):
         roll = random.randint(number,sides)
         return roll
@@ -3102,6 +3098,12 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                 dungeon[(coord[0],coord[1]+1,coord[2])] = {}
 
                 t = roll_dice(1,20)
+                if LEVEL == "N": #no going down
+                    if t >= 19:
+                        t = 5
+                    if t >=9 and t <=11:
+                        t = 5                        
+
                 if t <= 5:
                     t_dict['secretdoor'] == 'Y'
                     s = roll_dice(1,20)
@@ -3364,6 +3366,12 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                 t_dict['trap']['fits'] = 'Y'
         else:  #inside a room, things already created
             t = roll_dice(1,20)
+            if LEVEL == "N": #no going down
+                if t >= 19:
+                    t = 5
+                if t >=9 and t <=11:
+                    t = 5                        
+                
             if t <= 5:
                 t_dict['secretdoor'] == 'Y'
                 s = roll_dice(1,20)
@@ -4207,6 +4215,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
     human_d = human_data()
     xp_d = xp_hack()
 
+    "EXEC"
     dungeon = {}
     dungeon[(0,0,0)] = {}
     dungeon[(0,0,0)]['direction'] = 'level'
@@ -4238,19 +4247,62 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
     first_action = check_action(roll_first, coord, room_stack, facing)    
 
     i = 0
+    j = 0
     result_coord = first_action
     if VERBOSITY:
         print("END SETUP:",)
 
-    while i < PERIODIC_CHECKS:
-        if VERBOSITY:
-            print("\n--- ROLL:",i," ---\n")
-        roll_first = random_check()
-        result_coord = check_action(roll_first, result_coord, room_stack, facing)
-        if VERBOSITY:
-            print("\n--- END ROLL:",i," ---\n")
-        i +=1
-        
+    if ROOMS_CHECK == 0 and LEVELS_CHECK == 0:
+        while i < PERIODIC_CHECKS:
+            if VERBOSITY:
+                print("\n--- ROLL:",i," ---\n")
+            roll_first = random_check()
+            result_coord = check_action(roll_first, result_coord, room_stack, facing)
+            if VERBOSITY:
+                print("\n--- END ROLL:",i," ---\n")
+            i +=1
+
+    if ROOMS_CHECK >= 0 and LEVELS_CHECK == 0:
+        while i < ROOMS_CHECK:
+            if VERBOSITY:
+                print("\n--- ROLL:",i," ---\n")
+            roll_first = random_check()
+            result_coord = check_action(roll_first, result_coord, room_stack, facing)
+            if VERBOSITY:
+                print("\n--- END ROLL:",i," ---\n")
+
+            if 'shape_dict' in room_stack:
+                i = len(room_stack['shape_dict'])
+            else:
+                i = room_stack['key_count']
+
+    if ROOMS_CHECK == 0 and LEVELS_CHECK >= 0:
+        print("LEVELS CHECK", LEVELS_CHECK)
+        while j < LEVELS_CHECK:
+            if VERBOSITY:
+                print("\n--- ROLL:",i," ---\n")
+            roll_first = random_check()
+            result_coord = check_action(roll_first, result_coord, room_stack, facing)
+            if VERBOSITY:
+                print("\n--- END ROLL:",i," ---\n")
+
+            j = abs(result_coord[2])
+
+    if ROOMS_CHECK >= 0 and LEVELS_CHECK >= 0:
+        print("LEVELS CHECK", LEVELS_CHECK)
+        while i < ROOMS_CHECK or j < LEVELS_CHECK:
+            if VERBOSITY:
+                print("\n--- ROLL:",i," ---\n")
+            roll_first = random_check()
+            result_coord = check_action(roll_first, result_coord, room_stack, facing)
+            if VERBOSITY:
+                print("\n--- END ROLL:",i," ---\n")
+            if 'shape_dict' in room_stack:
+                i = len(room_stack['shape_dict'])
+            else:
+                i = room_stack['key_count']
+
+            j = abs(result_coord[2])
 
     coord_lim = coord_limits(dungeon)
     xmin = coord_lim[0][0]
@@ -4674,7 +4726,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                             f.write('Empty<br>')
                     else:
                         for key in room_stack['shape_dict'][room]['contents']:
-                            if key == 'monster' or key == 'treasure' or key == 'trap':
+                            if key == 'monster' or key == 'treasure' or key == 'trap' or key == 'level':
                                 if abs(keylist[0][2]) == down + 1:
                                     f.write(str(key) + ":" + str(room_stack['shape_dict'][room]['contents'][key]) + '<br>')
                                 if key == 'treasure':
@@ -4830,8 +4882,9 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
                             # to here??
                             else: #other key
                                 pass #just informational data
-                                f.write('<br><b>Key ' + str(room) + ': </b>')
-                                f.write('Empty<br>')                                
+                                #if 'empty' not in room_stack['shape_dict'][room]['contents']:
+                                    #f.write('<br><b>Key ' + str(room) + ': </b>')
+                                    #f.write('Empty<br>')                                
 
                     if 'water' in room_stack['shape_dict'][room] and room_stack['shape_dict'][room]['water'] != 'N':
                         #print(room_stack['shape_dict'][room])
@@ -5171,6 +5224,9 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity=0):
             pickle.dump(downlist, fd)
 
         with open('room_stack.pkl','wb') as fd:
+            pickle.dump(room_stack, fd)
+
+        with open('exit_stack.pkl','wb') as fd:
             pickle.dump(room_stack, fd)
 
         with open('wandering_monster_stack.pkl','wb') as fd:
