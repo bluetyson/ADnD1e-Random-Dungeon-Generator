@@ -27,6 +27,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
     PI = math.pi
      #standard algorithm
     LEVEL = "N" #in case want to not let levels go down  - NOT YET IMPLEMENTED
+    #traps would have to change here too
     
     def roll_dice(number, sides):
         roll = random.randint(number,sides)
@@ -3096,6 +3097,12 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
                 dungeon[(coord[0],coord[1]+1,coord[2])] = {}
 
                 t = roll_dice(1,20)
+                if LEVEL == "N": #no going down
+                    if t >= 19:
+                        t = 5
+                    if t >=9 and t <=11:
+                        t = 5                        
+
                 if t <= 5:
                     t_dict['secretdoor'] == 'Y'
                     s = roll_dice(1,20)
