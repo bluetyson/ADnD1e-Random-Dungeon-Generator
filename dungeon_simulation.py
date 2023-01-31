@@ -4276,7 +4276,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
 
     if ROOMS_CHECK >= 0 and LEVELS_CHECK >= 0:
         print("LEVELS CHECK", LEVELS_CHECK)
-        while i < ROOMS_CHECK and j < LEVELS_CHECK:
+        while i < ROOMS_CHECK or j < LEVELS_CHECK:
             if VERBOSITY:
                 print("\n--- ROLL:",i," ---\n")
             roll_first = random_check()
