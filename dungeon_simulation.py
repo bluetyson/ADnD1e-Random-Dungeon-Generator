@@ -2470,7 +2470,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
 
                         #ymin
 
-                        ##gotta check the exit passageways out etc.
+                        ##got to check the exit passageways out etc.
                         #if which_way == 1:
                             #new_coord = (el[0]-1-x,el[1]+1+x,rzmin)
                         #use exit_beyond function exit_beyond()
