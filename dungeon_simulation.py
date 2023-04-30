@@ -1094,7 +1094,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
             
         elif pc_dict['direction'] == 'room':
             '''
-                lr = roll_dict(1,2)
+                lr = roll_dice(1,2)
                 shape_dict['size'] = [2,2]
                 shape_dict['size'] = [4,4]
                 shape_dict['size'] = [1,2]
