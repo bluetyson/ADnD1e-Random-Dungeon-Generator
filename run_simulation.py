@@ -3878,7 +3878,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
                 return 'notreasure'
 
         
-        strpath = os.path.join(usepath, str(suffix), 'dungeon_' + str(down+1) + '.html')
+        strpath = os.path.join(str(usepath), str(suffix), 'dungeon_' + str(down+1) + '.html')
         if not os.path.exists(str(usepath)):
             os.mkdir(str(usepath))
         if not os.path.exists(os.path.join(str(usepath), str(suffix))):
