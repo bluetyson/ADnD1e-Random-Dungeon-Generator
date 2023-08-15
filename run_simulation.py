@@ -4638,7 +4638,7 @@ if __name__ == '__main__':
             #print(datainfo)
             try:
                 data = future.result()
-                print("DATASHAPE",data.shape)
+                #print("DATASHAPE",data.shape)
                 result_list.append(data)
 
                 #print("BS", bin_series)
