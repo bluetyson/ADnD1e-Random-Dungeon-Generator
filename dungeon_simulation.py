@@ -5215,7 +5215,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
             df['z'] = [zwidth-1]
             df['Periodic Checks'] = [PERIODIC_CHECKS]
 
-            #df.to_csv('dungeon-stats.csv', index=False)
+            df.to_csv('dungeon-stats.csv', index=False)
 
     if VERBOSITY:
         with open('dungeon.pkl','wb') as fd:
