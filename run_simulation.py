@@ -4592,8 +4592,8 @@ if __name__ == '__main__':
     periodic_checks = 1
     verbosity = 1
     simulations = 10
-    rooms_check = True
-    levels_check = True
+    rooms_check = False
+    levels_check = False
 
     ARGV = sys.argv
     print(ARGV)
