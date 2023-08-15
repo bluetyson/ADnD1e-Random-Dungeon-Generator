@@ -4649,7 +4649,7 @@ if __name__ == '__main__':
                 print('%r run finished' % (datainfo))
 
     #print(bin_series)
-    #print(result_list)
+    print(result_list)
     output = pd.concat(result_list)
     print(output.head())
 
