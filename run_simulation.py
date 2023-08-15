@@ -4600,9 +4600,11 @@ if __name__ == '__main__':
     #pc first param, simulations second
     if len(ARGV) > 1:
         periodic_checks = int(ARGV[1])
+        print("USING PERIODIC CHECKS:",periodic_checks)
 
     if len(ARGV) > 2:
         simulations = int(ARGV[2])
+        print("USING SIMULATIONS;",simulations)
 
     result_list = []
     index_list = []
