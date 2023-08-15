@@ -4635,6 +4635,7 @@ if __name__ == '__main__':
 
         for future in concurrent.futures.as_completed(future_to_data):
             datainfo = future_to_data[future]
+            print(datainfo)
         try:
             data = future.result()
             print("DATASHAPE",data.shape)
