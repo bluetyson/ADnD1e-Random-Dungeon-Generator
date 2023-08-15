@@ -4538,7 +4538,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
 
         
         if usepath != '' and str(suffix) != '':
-            
+            print("USEPATH:",usepath, "SUFFIX",suffix)
             if not os.path.exists(usepath):
                 os.mkdir(usepath)
             if not os.path.exists(os.path.join(usepath, str(suffix))):
