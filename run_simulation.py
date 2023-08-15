@@ -4588,7 +4588,7 @@ from dungeon_simulation import dungeon_sim
 if __name__ == '__main__':
 
     usepath = 'simulationstest'
-    periodic_checks = 10 
+    periodic_checks = 1
     verbosity = 0
     simulations = 10
     rooms_check = True
