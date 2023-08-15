@@ -4644,6 +4644,6 @@ if __name__ == '__main__':
     output = pd.concat(result_list)
     print(output.head())
 
-    output.to_csv(os.path.join(usepath,'dungeon-stats.csv'), index=False)
+    output.to_csv(os.path.join(str(usepath),'dungeon-stats.csv'), index=False)
 
 
