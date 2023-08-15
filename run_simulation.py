@@ -4590,7 +4590,7 @@ if __name__ == '__main__':
 
     usepath = 'simulationstest'
     periodic_checks = 1
-    verbosity = 1
+    verbosity = 0
     simulations = 10
     rooms_check = False
     levels_check = False
