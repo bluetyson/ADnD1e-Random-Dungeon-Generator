@@ -3877,7 +3877,7 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
             else:
                 return 'notreasure'
 
-        
+        print("STRPATH TIME!")
         strpath = os.path.join(str(usepath), str(suffix), 'dungeon_' + str(down+1) + '.html')
         print("STRPATH",strpath)
         usepath = "banana"
