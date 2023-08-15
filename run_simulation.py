@@ -4606,12 +4606,16 @@ if __name__ == '__main__':
     pc_list = []
     verbosity_list = []
     usepath_list = []
+    rooms_check_list = []
+    levels_check_list = []
     
     for i in range(simulations):
         index_list.append(i)
         pc_list.append(periodic_checks)
         verbosity_list.append(verbosity)
         usepath_list.append(usepath)
+        rooms_check_list.append(rooms_check)
+        levels_check_list.append(levels_check)
 
     #print(pc_list)
     idx_list = index_list
@@ -4621,7 +4625,7 @@ if __name__ == '__main__':
     #print(idx_list[use_index:use_index + 1]) ##
     ctx = mp.get_context("spawn")
     with concurrent.futures.ProcessPoolExecutor(mp_context=ctx) as executor:
-        future_to_data = {executor.submit(dungeon_sim, idx, pc_list[idx], verbosity_list[idx], usepath_list[idx]): idx for idx in idx_list}		
+        future_to_data = {executor.submit(dungeon_sim, idx, pc_list[idx], verbosity_list[idx], usepath_list[idx], rooms_check[idx], levels_check[id]): idx for idx in idx_list}		
 
         for future in concurrent.futures.as_completed(future_to_data):
             datainfo = future_to_data[future]
