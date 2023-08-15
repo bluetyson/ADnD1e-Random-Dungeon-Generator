@@ -4636,17 +4636,17 @@ if __name__ == '__main__':
         for future in concurrent.futures.as_completed(future_to_data):
             datainfo = future_to_data[future]
             #print(datainfo)
-        try:
-            data = future.result()
-            print("DATASHAPE",data.shape)
-            result_list.append(data)
+            try:
+                data = future.result()
+                print("DATASHAPE",data.shape)
+                result_list.append(data)
 
-            #print("BS", bin_series)
-            #if datainfo == '1-2021-10-25-06-21-Invert-the-Gawler-Mira_GeoscienceAnalyst.csv':
-        except Exception as exc:
-            print('%r generated an exception: %s' % (datainfo, exc))
-        else:
-            print('%r run finished' % (datainfo))
+                #print("BS", bin_series)
+                #if datainfo == '1-2021-10-25-06-21-Invert-the-Gawler-Mira_GeoscienceAnalyst.csv':
+            except Exception as exc:
+                print('%r generated an exception: %s' % (datainfo, exc))
+            else:
+                print('%r run finished' % (datainfo))
 
     #print(bin_series)
     #print(result_list)
