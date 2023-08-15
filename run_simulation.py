@@ -4635,9 +4635,9 @@ if __name__ == '__main__':
 
         for future in concurrent.futures.as_completed(future_to_data):
             datainfo = future_to_data[future]
-            print(datainfo)
+            #print(datainfo)
         try:
-            data = future.result()
+            data = future.result(datainfo)
             print("DATASHAPE",data.shape)
             result_list.append(data)
             #print("BS", bin_series)
