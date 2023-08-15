@@ -3881,10 +3881,11 @@ def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
         strpath = os.path.join(str(usepath), str(suffix), 'dungeon_' + str(down+1) + '.html')
         print("STRPATH",strpath)
         usepath = "banana"
-        if not os.path.exists(str(usepath)):
-            os.mkdir(str(usepath))
-        if not os.path.exists(os.path.join(str(usepath), str(suffix))):
-            os.mkdir(os.path.join(str(usepath), str(suffix)))
+        if 1 == 2:
+            if not os.path.exists(str(usepath)):
+                os.mkdir(str(usepath))
+            if not os.path.exists(os.path.join(str(usepath), str(suffix))):
+                os.mkdir(os.path.join(str(usepath), str(suffix)))
         #with open('dungeon_' + str(down+1) + '.html','w') as f:
         with open(strpath,'w') as f:            
             f.write(strhead)
