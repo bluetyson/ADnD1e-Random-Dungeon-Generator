@@ -4637,9 +4637,10 @@ if __name__ == '__main__':
             datainfo = future_to_data[future]
             #print(datainfo)
         try:
-            data = future.result(datainfo)
+            data = future.result()
             print("DATASHAPE",data.shape)
             result_list.append(data)
+
             #print("BS", bin_series)
             #if datainfo == '1-2021-10-25-06-21-Invert-the-Gawler-Mira_GeoscienceAnalyst.csv':
         except Exception as exc:
