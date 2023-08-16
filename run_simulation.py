@@ -4632,8 +4632,8 @@ if __name__ == '__main__':
     ctx = mp.get_context("spawn")
     with concurrent.futures.ProcessPoolExecutor(mp_context=ctx) as executor:
     #with concurrent.futures.ThreadPoolExecutor() as executor:
-        #future_to_data = {executor.submit(dungeon_sim, idx, usepath_list[idx], pc_list[idx], verbosity_list[idx],  rooms_check_list[idx], levels_check_list[idx]): idx for idx in idx_list}		
-        future_to_data = {executor.map(dungeon_sim, idx, usepath_list[idx], pc_list[idx], verbosity_list[idx],  rooms_check_list[idx], levels_check_list[idx],chunksize=10_000): idx for idx in idx_list}		
+        future_to_data = {executor.submit(dungeon_sim, idx, usepath_list[idx], pc_list[idx], verbosity_list[idx],  rooms_check_list[idx], levels_check_list[idx]): idx for idx in idx_list}		
+        #future_to_data = {executor.map(dungeon_sim, idx, usepath_list[idx], pc_list[idx], verbosity_list[idx],  rooms_check_list[idx], levels_check_list[idx],chunksize=10_000): idx for idx in idx_list}		
         #suffix, usepath, periodic_checks, verbosity, rooms_check, levels_check
         for future in concurrent.futures.as_completed(future_to_data):
             datainfo = future_to_data[future]
