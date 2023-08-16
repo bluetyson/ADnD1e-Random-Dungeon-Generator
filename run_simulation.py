@@ -4630,7 +4630,8 @@ if __name__ == '__main__':
     use_index = 0
     #print(idx_list[use_index:use_index + 1]) ##
     ctx = mp.get_context("spawn")
-    with concurrent.futures.ProcessPoolExecutor(mp_context=ctx) as executor:
+    #with concurrent.futures.ProcessPoolExecutor(mp_context=ctx) as executor:
+    with concurrent.futures.ThreadPoolExecutor() as executor:
         future_to_data = {executor.submit(dungeon_sim, idx, usepath_list[idx], pc_list[idx], verbosity_list[idx],  rooms_check_list[idx], levels_check_list[idx]): idx for idx in idx_list}		
         #suffix, usepath, periodic_checks, verbosity, rooms_check, levels_check
         for future in concurrent.futures.as_completed(future_to_data):
