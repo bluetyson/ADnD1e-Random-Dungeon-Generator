@@ -9,6 +9,9 @@ import pandas as pd
 
 import sys
 
+import random
+
+
 def dungeon_simr(suffix, periodic_checks, verbosity, usepath):
 
     import timeit
@@ -4617,6 +4620,8 @@ if __name__ == '__main__':
     
     for i in range(simulations):
         index_list.append(i)
+        periodic_checks = random.randint(1, 1000)
+
         pc_list.append(periodic_checks)
         verbosity_list.append(verbosity)
         usepath_list.append(usepath)
