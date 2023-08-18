@@ -4591,7 +4591,7 @@ from dungeon_simulation import dungeon_sim
 
 if __name__ == '__main__':
 
-    usepath = 'simulationstest'
+    usepath = 'simulationstestr'
     periodic_checks = 1
     verbosity = 0
     simulations = 10
@@ -4621,11 +4621,13 @@ if __name__ == '__main__':
     for i in range(simulations):
         index_list.append(i)
         periodic_checks = random.randint(1, 1000)
+        rooms_check = random.randint(1, 1000)
 
         pc_list.append(periodic_checks)
         verbosity_list.append(verbosity)
         usepath_list.append(usepath)
         rooms_check_list.append(rooms_check)
+        
         levels_check_list.append(levels_check)
 
     #print(pc_list)
