@@ -1,10 +1,27 @@
 ## Advanced Dungeons & Dragons style random dungeon generator
 Convert DMG tables to code to do for wandering around and down to make a dungeon.
 
-- Version 1.4.2
+- Version 1.4.3
 - Additions now are embellishments, obscure errors and things not in the original algorithm
 - Thought it would take around a month, appears to have
 - See blog for more examples and notes as it was worked on https://cosmicheroes.space/blog/index.php/tag/random-dungeon-generator/
+
+## ✨ NEW: Enhanced Visualization!
+
+The generator now creates **two types of output** for each dungeon level:
+
+1. **Classic HTML Table View** (`dungeon_X.html`) - The original basic table output with color coding
+2. **Enhanced SVG Map View** (`dungeon_X_enhanced.html`) - A sophisticated, modern visualization featuring:
+   - 🎨 Rich color-coded SVG rendering with better visual distinction
+   - 🔍 Interactive zoom controls (in/out/reset)
+   - 🖱️ Hover tooltips showing detailed room information
+   - 📊 Comprehensive legend and room details panel
+   - 🎯 Pan functionality for navigating large dungeons
+   - 🖨️ Print-friendly layout
+   - 📱 Responsive design that works on different screen sizes
+   - 🌙 Dark-themed interface perfect for dungeon exploration
+
+**Access both views:** Click the "🏰 View Enhanced Map" button in the classic view to see the upgraded visualization!
 
 # Setup
 - simulation is a current dev branch
@@ -184,6 +201,39 @@ legend_dict['G'] = "Treasure: Gems"
 legend_dict['j'] = "Treasure: Jewellery"
 legend_dict['M'] = "Treasure: Magic"
 ```
+
+# Output Visualization Examples
+
+## Enhanced Map View (NEW!)
+
+The new enhanced visualization provides a modern, interactive dungeon mapping experience:
+
+### Enhanced Map Features
+![Enhanced Map Example](https://github.com/user-attachments/assets/5925b25e-5933-438b-ba7d-3a11fa6afd1b)
+
+**Key Features:**
+- Interactive SVG-based rendering with 40x40px cells for detailed visibility
+- Zoom controls with smooth scaling (0.5x to 3x)
+- Mouse wheel zoom support (Ctrl + scroll)
+- Pan functionality (Shift + drag or middle mouse button)
+- Hover tooltips showing room contents, monsters, and treasures
+- Color-coded treasure types (gold, silver, gems, magic items, etc.)
+- Comprehensive legend with all dungeon elements
+- Detailed room information panel with statistics
+- Level summary showing total rooms, monsters, and treasure
+- Dark-themed UI optimized for dungeon exploration
+
+### Comparison: Classic vs Enhanced
+
+**Classic HTML Table View:**
+![Classic View](https://github.com/user-attachments/assets/a3f19b63-eb25-42bf-a0a8-f69b8a59b672)
+
+**Enhanced SVG Map View:**
+![Enhanced View](https://github.com/user-attachments/assets/4c405e3f-0986-437a-a545-b91292a451e6)
+
+The enhanced view maintains all the information from the classic table but presents it in a more visually appealing and interactive format.
+
+## Classic HTML Table Output
 
 # Example html testing output
 

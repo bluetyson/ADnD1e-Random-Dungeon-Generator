@@ -20,6 +20,7 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
 
     from monsters import monster_tables, monster_subtables_wet
     from treasure import select_gemstone, update_gemstone, select_jewellery, select_magic_item, treasure_choice
+    from enhanced_mapper import generate_enhanced_html
 
     VERBOSITY = verbosity
     ROOMS_CHECK = rooms_check
@@ -5191,6 +5192,10 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
             f.write('<b>Total Rooms: ' + str(room_stack['key_count'])  + '</b>')
 
             f.write('<br><br>')
+            # Add link to enhanced version
+            enhanced_url = 'dungeon_' + str(down+1) + '_enhanced.html'
+            f.write('<a href="' + enhanced_url + '" style="display: inline-block; background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); color: #000; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-bottom: 10px;">🏰 View Enhanced Map</a>' + '<br><br>')
+            
             for link in range(zwidth-1):                
                 url = 'dungeon_' + str(link+1) + '.html'
                 f.write('<a href="' + url + '"' + '>Dungeon Level ' + str(link+1) + '</a>' + '<br>')
@@ -5203,19 +5208,45 @@ def dungeon_sim(suffix, usepath, periodic_checks, verbosity, rooms_check, levels
 
             #end of page
             f.write(strend)
+        
+        # Generate enhanced HTML visualization
+        try:
+            enhanced_html = generate_enhanced_html(
+                dungeon_data={'level': down+1},
+                level_num=down,
+                room_stack=room_stack,
+                downlist=downlist,
+                coord_limits=coord_lim
+            )
+            
+            if usepath != '' and str(suffix) != '':
+                enhanced_path = os.path.join(usepath, str(suffix), 'dungeon_' + str(down+1) + '_enhanced.html')
+            else:
+                enhanced_path = 'dungeon_' + str(down+1) + '_enhanced.html'
+            
+            with open(enhanced_path, 'w', encoding='utf-8') as f:
+                f.write(enhanced_html)
+            
+            if VERBOSITY:
+                print(f"Generated enhanced visualization: {enhanced_path}")
+        except Exception as e:
+            print(f"Warning: Could not generate enhanced visualization for level {down+1}: {e}")
+            if VERBOSITY:
+                import traceback
+                traceback.print_exc()
 
-            df['Coins'] = [gold]
-            df['Gems'] = [gem_total]
-            df['Jewellery'] = [gem_total]
-            df['Magic'] = [magic_total]
-            df['Total Gold Equivalent'] = [gold + gem_total + jewellery_total + magic_total]
-            df['coord_lim'] = [coord_lim]
-            df['x'] = [xwidth]
-            df['y'] = [ywidth]
-            df['z'] = [zwidth-1]
-            df['Periodic Checks'] = [PERIODIC_CHECKS]
+        df['Coins'] = [gold]
+        df['Gems'] = [gem_total]
+        df['Jewellery'] = [jewellery_total]
+        df['Magic'] = [magic_total]
+        df['Total Gold Equivalent'] = [gold + gem_total + jewellery_total + magic_total]
+        df['coord_lim'] = [coord_lim]
+        df['x'] = [xwidth]
+        df['y'] = [ywidth]
+        df['z'] = [zwidth-1]
+        df['Periodic Checks'] = [PERIODIC_CHECKS]
 
-            df.to_csv('dungeon-stats.csv', index=False)
+        df.to_csv('dungeon-stats.csv', index=False)
 
     if VERBOSITY:
         with open('dungeon.pkl','wb') as fd:

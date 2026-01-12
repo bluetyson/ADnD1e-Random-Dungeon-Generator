@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Generated dungeon output files
+dungeon_*.html
+dungeon-stats.csv
+*.pkl
+
